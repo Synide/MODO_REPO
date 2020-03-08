@@ -1,0 +1,45 @@
+to @bluego's question re how to draw in screen space in viewports, Matt says:
+Yeah, you return LXfTMOD_DRAW_PIXEL from your ToolModel::Flags method.
+Then you'll be called for drawing into screen space.
+If you support multiple drawing modes; 3D and screen space, you can test in your Draw callback by calling ILxView::Flags, and testing the return type for LXiVIEWv_PIXEL.
+You can query the StrokeDraw object passed to your draw method for an ILxView.
+When you're in your drawing call, you can call ILxView::Dimensions to get the size of the viewport to calculate the position to draw.
+
+
+Something like this should do it.. (untested)
+	unsigned int
+tmod_Flags(void)
+{
+	return (LXfTMOD_DRAW_3D|LXfTMOD_DRAW_PIXEL);
+}
+	void
+tmod_Draw(
+	ILxUnknownID vts,
+	ILxUnknownID stroke,
+	int flags)
+{
+	CLxUser_StrokeDraw strokeDraw(stroke);
+	CLxUser_View view(stroke);
+	static double sBlack[] = {0.0, 0.0, 0.0};
+	if(LXiVIEWv_PIXEL == view.Type())
+	{
+		// Get the view dimensions.
+		int dimensions[2];
+		if(LXx_OK(view.Dimensions(&dimensions[0], &dimensions[1])))
+		{
+			// Map 0.5 x 0.5 to the dimensions.
+			double pixelPositions[] = {0.5, 0.5}
+			pixelPositions[0] = (pixelPositions[0] / ((double) dimensions[0]));
+			pixelPositions[1] = (pixelPositions[1] / ((double) dimensions[1]));
+			// Draw a dot at the centre of the screen.
+			strokeDraw.Begin(LXiSTROKE_POINTS, sBlack, 1.0);
+			strokeDraw.Vert(pixelPositions[0], pixelPositions[1], LXiSTROKE_ABSOLUTE);
+		}
+	}
+	else
+	{
+		// Draw a dot at the centre of the world.
+		strokeDraw.Begin(LXiSTROKE_POINTS, sBlack, 1.0);
+		strokeDraw.Vert(0.0, 0.0, 0.0, LXiSTROKE_ABSOLUTE);
+	}
+}
