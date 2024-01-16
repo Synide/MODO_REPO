@@ -1,0 +1,1818 @@
+==LXOB Scene File==
+
+The LXOB file format is the standard Luxology scene file format for modo. It is a IFF chunked based format extended from the Lightwave LWO2 format.
+By default the file name extension for LXOB files used by modo is '''.lxo'''.
+
+{| class="wikitable" width="90%"
+|-
+! colspan="3" align="center" style="background-color:#dddddd;" height="40em" |<h3>Hierarchy Summary</h3>
+|-
+|}
+
+''ToDo: chunk layout summary''
+
+
+----
+
+
+{| class="wikitable" width="90%"
+    |-
+    ! align="center" style="background-color:#dddddd;" height="40em" |<h3>Detailed Description</h3>
+|}
+
+
+{| class="tocFORM mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>FORM</h4>
+  | style="padding-left:1em; background:#dcdcdc;" | The file itself is a chunk with all other chunks/sub-chunks included in the body of the FORM chunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize. If this is zero, the file contents are larger than the maximum 32-bit unsigned int which is 2^32 bytes
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | File Type. ie. LXOB, LXPR, LXPM, LXPE etc.
+  |-
+  | align="center" | I1[ChunkSize]
+  | style="padding-left:1em;" | The data constituting the body of this chunk is represented and defined by the various chunks/sub-chunks following in this section.
+|} <!-- EndOf FORM -->
+
+
+{| class="tocVRSN mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>VRSN</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | This chunk is present at the start of the file. It contains the major and minor version numbers of the file format, and the name of the application (with app version) that saved the file. If you write an application that saves an LXO, you should save your application’s name here. In modo 202, the major version is 1 and the minor version is 2. In 301, 3,1 in 501 3,0 on 601 3,1, in 701 4,0
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Major version number.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Minor version number.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Application name that saved the file.
+|} <!-- EndOf VRSN -->
+
+
+{| class="tocAPPV mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>APPV</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Nexus application version that created this file. Note: 801+ ??? Needs proper description ???
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Major version number. eg. 8
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Minor version number. eg. 800 ??? Is this correct ???
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Unknown ??? Needs definition ???
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Build. eg. 70287
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Nexus level. eg. 'Nexus 8' ??? Needs proper description ???
+|} <!-- EndOf APPV -->
+
+
+{| class="tocTHUM mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>THUM</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | This chunk contains a thumbnail image as uncompressed 8-bit per channel RGBA data. It is currently used only for presets.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Image Width.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Image Height.
+    |-
+    | align="center" | U1
+    | style="padding-left:1em;" | Image Channels (=4 for RGBA).
+    |-
+    | align="center" | U1
+    | style="padding-left:1em;" | Flags.
+    |-
+    | align="center" | U1[]
+    | style="padding-left:1em;" | Image Data, width * height * channels bytes of pixels
+|} <!-- EndOf THUM -->
+
+
+{| class="tocPRVW mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>PRVW</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | This chunk contains a thumbnail image as compressed image data. It is currently used only for presets.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Image Width.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Image Height.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Type (image pixel format?)
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Flags (1=PNG compression).
+    |-
+    | align="center" | U1[]
+    | style="padding-left:1em;" | Compressed Image Data, padded if necessary to be an even number of bytes
+|} <!-- EndOf PRVW -->
+
+
+{| class="tocDESC mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>DESC</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | This chunk is used by presets to contain the primary item type of the preset and a user-friendly description of the content.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Type.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Description.
+|} <!-- EndOf DESC -->
+
+
+{| class="tocENCO mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>ENCO</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Encoding chunk. Describes the string encoding used by application for text strings stored in the file.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em; padding-right:1em;" |
+    {| class="tocENCOType mw-collapsible mw-collapsed wikitable" width="100%"
+      |-
+      | colspan="2" style="padding-left:1em;" | Encoding type.
+      |-
+      ! width="10%" | U4
+      ! align="left" | Description
+      |-
+      | align="center" | 0
+      | style="padding-left:1em;" | System Default
+      |-
+      | align="center" | 1
+      | style="padding-left:1em;" | ANSI
+      |-
+      | align="center" | 2
+      | style="padding-left:1em;" | UTF-8
+      |-
+      | align="center" | 3
+      | style="padding-left:1em;" | Shift-JIS (Japanese)
+      |-
+      | align="center" | 4
+      | style="padding-left:1em;" | EUC-JP (Japanese)
+      |-
+      | align="center" | 5
+      | style="padding-left:1em;" | EUC-KR (Korea KS C 5601)
+      |-
+      | align="center" | 6
+      | style="padding-left:1em;" | GB2312 (Simplified Chinese)
+      |-
+      | align="center" | 7
+      | style="padding-left:1em;" | BIG5 (Traditional Chinese)
+    |} <!-- EndOf tocENCOType -->
+|} <!-- EndOf ENCO -->
+
+
+{| class="tocTAGS mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>TAGS</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | This chunk is present at the start of the file. It lists the tag strings that can be associated with polygons via the PTAG chunk.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | S0[]
+    | style="padding-left:1em;" | An array of Tag strings from 1 to N.
+|} <!-- EndOf TAGS -->
+
+
+{| class="tocREFS mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>REFS</h4>
+  | style="padding-left:1em; background:#dcdcdc;" | This chunk, if present, is usually found near the begining of the file. It will only be present if there are 'reference' scene items detailed later in the file.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Count of References present.
+  |-
+  | align="center" | S0[]
+  | style="padding-left:1em;" | An array of strings from 1 to Count specifying the filespec to the reference scene file.
+  |-
+  | colspan="2" style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+  {| class="tocREFSSubs mw-collapsible wikitable" width="100%"
+    |-
+    | colspan="2" width="100%" align="center" style="background:#dcdcdc;" | '''Sub-Chunks'''
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>IDEL</h5>
+      | style="padding-left:1em;" | ''Todo: Needs description.''.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | Index. ''more needed''
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Reference Name within the scene.???
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Parent Item Name.???
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Something???
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Something???
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Something???
+    |} <!-- EndOf IDEL -->
+  |} <!-- EndOf REFS -->
+|} <!-- EndOf REFS -->
+
+
+{| class="tocCHNM mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>CHNM</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Channel Names are repeated throughout the file. Rather than repeating them unnecessarily and increasing the file size, they are consolidated into this chunk. ITEM and ACTN chunks can then index into the array of channel names to get the appropriate string. The first string in the table is usually "unknown".
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Count. The number of elements in the following array.
+    |-
+    | align="center" | S0[]
+    | style="padding-left:1em;" | An array of Channel Name strings from 1 to Count.
+|} <!-- EndOf CHNM -->
+
+
+{| class="tocLAYR mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>LAYR</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | The LAYR chunk is used with mesh items that have a corresponding LAYR sub-chunk in their ITEM chunk. This is a combination of LWO2 data and newer LXO data. There may be zero or more of these chunks present in an LXOB file.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Legacy index for LWO2 compatibility.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Flags. ''see below''.
+    |-
+    | align="center" | F4[3]
+    | style="padding-left:1em;" | Rotation pivot point location, which defines the center of rotation.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Layer name. May be empty if the layer has not been named.
+    |-
+    | align="center" | I2
+    | style="padding-left:1em;" | Legacy parent index for LWO2 compatibility. This chunk attribute/property is always set to -1. Parentage is now defined by a LINK subchunk (with a graph of 'parent') on the ITEM chunk associated with this LAYR.
+    |-
+    | align="center" | F4
+    | style="padding-left:1em;" | Refinement level used when freezing subdivision meshes into polygons for rendering. The display refinement level is a per-system user setting and is not stored in the LXO.
+    |-
+    | align="center" | F4
+    | style="padding-left:1em;" | Refinement level used when freezing curves, represented as the maximum angle between adjacent linear segments.
+    |-
+    | align="center" | F4[3]
+    | style="padding-left:1em;" | Scale pivot point location, which defines the center of scaling.
+    |-
+    | align="center" | U4[6]
+    | style="padding-left:1em;" | Currently unused.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Item reference for the mesh layer.
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Refinement level used when freezing spline patch surfaces.
+    |-
+    | align="center" | U2[3]
+    | style="padding-left:1em;" | For future expansion.
+|} <!-- EndOf LAYR -->
+
+
+{| class="tocPNTS mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>PNTS</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Lists (x, y, z) coordinate triples for a set of points.
+    |-
+    | colspan="2" style="padding-left:1em; padding-right:1em;" | The number of points in the chunk is just the chunk size divided by 12. The PNTS chunk must precede the POLS, VMAP and VMAD chunks that refer to it. These chunks list points using a zero-based index into this PNTS chunk. The coordinate system is left-handed, with +X to the right or east, +Y upward, and +Z forward or north. Coordinates in the PNTS chunk are relative to the pivot point of the layer.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | VEC12[ChunkSize/12]
+    | style="padding-left:1em;" | The XYZ positions of points. The number of points present is the ChunkSize / 12.
+|} <!-- EndOf PNTS -->
+
+
+{| class="tocBBOX mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>BBOX</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Bounding Box chunk is an optional chunk that stores the minimum and maximum vectors are the lower and upper corners of the bounding box.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | VEC12
+    | style="padding-left:1em;" | Minimum XYZ vector.
+    |-
+    | align="center" | VEC12
+    | style="padding-left:1em;" | Maximum XYZ vector.
+|} <!-- EndOf BBOX -->
+
+
+{| class="tocVMPA mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>VMPA</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | The ??? chunk is associated with every VMAP chunk and must precede it.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Something ???.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | Something ???.
+|} <!-- EndOf VMPA -->
+
+
+{| class="tocVMAP mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>VMAP</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Vertex Map.
+    |-
+    | colspan="2" style="padding-left:1em; padding-right:1em;" |Associates a set of floating-point vectors with a set of points. VMAPs begin with a type, a dimension (vector length) and a name. These are followed by a list of vertex/vector pairs. The vertex is given as an index into the most recent PNTS chunk, in VX format. The vector contains dimension floating-point values. There can be any number of these chunks, but they should all have different types or names. A particular point index in the PNTS chunk may or may not have a VMAP value.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | ID4
+    | style="padding-left:1em; padding-right:1em;" |
+    {| class="tocVMAPType mw-collapsible mw-collapsed wikitable" width="100%"
+      |-
+      | colspan="3" style="padding-left:1em;" | Vertex Map Type.
+      |-
+      ! width="10%" | ID4
+      ! width="10%" | Dimension
+      ! align="left" | Description
+      |-
+      | align="center" | MORF
+      | align="center" | 3
+      | style="padding-left:1em;" | A relative offset vertex morph map.
+      |-
+      | align="center" | NORM
+      | align="center" | 3
+      | style="padding-left:1em;" | A vertex normal map.
+      |-
+      | align="center" | PICK
+      | align="center" | 0
+      | style="padding-left:1em;" | A vertex (or point) selection set map. The mare existense of the PNTS index indcates that point/vertex is part of this selection set.
+      |-
+      | align="center" | RGB
+      | align="center" | 3
+      | style="padding-left:1em;" | A vertex colour map.
+      |-
+      | align="center" | RGBA
+      | align="center" | 4
+      | style="padding-left:1em;" | A vertex colour map with alpha.
+      |-
+      | align="center" | SPOT
+      | align="center" | 3
+      | style="padding-left:1em;" | A absolute offset vertex morph map.
+      |-
+      | align="center" | TXUV
+      | align="center" | 2
+      | style="padding-left:1em;" | A vertex UV coordinate map.
+      |-
+      | align="center" | WGHT
+      | align="center" | 1
+      | style="padding-left:1em;" | A vertex weight map.
+      |-
+      | align="center" | TBAS
+      | align="center" | 6
+      | style="padding-left:1em;" | A vertex tangent basis map. Usually (if not always) this map contains no information. The useable info. is stored in the corresponding VMAD (discontinuous) vmap on a per vertex / per polygon basis.
+    |}
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Dimension.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Vertex map name.
+    |-
+    | align="center" | VERTVALUES[]
+    | style="padding-left:1em;" | An array of vertex indexes and there associated float values.
+|} <!-- EndOf VMAP -->
+
+
+{| class="tocVMAD mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>VMAD</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Discontinuous Vertex Map.
+    |-
+    | colspan="2" style="padding-left:1em; padding-right:1em;" |The VMAD chunk holds information about discontinuous vertex maps, which are often used for UVs. This includes the type, dimensions, name and an array of vertex values for 1 or more polygons.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | ID4
+    | style="padding-left:1em; padding-right:1em;" |
+    {| class="tocVMADType mw-collapsible mw-collapsed wikitable" width="100%"
+      |-
+      | colspan="3" style="padding-left:1em;" | Vertex Map Type.
+      |-
+      ! width="10%" | ID4
+      ! width="10%" | Dimension
+      ! align="left" | Description
+      |-
+      | align="center" | MORF
+      | align="center" | 3
+      | style="padding-left:1em;" | A relative offset vertex morph map.
+      |-
+      | align="center" | NORM
+      | align="center" | 3
+      | style="padding-left:1em;" | A vertex normal map.
+      |-
+      | align="center" | RGB
+      | align="center" | 3
+      | style="padding-left:1em;" | A vertex colour map.
+      |-
+      | align="center" | RGBA
+      | align="center" | 4
+      | style="padding-left:1em;" | A vertex colour map with alpha.
+      |-
+      | align="center" | SPOT
+      | align="center" | 3
+      | style="padding-left:1em;" | A absolute offset vertex morph map.
+      |-
+      | align="center" | TXUV
+      | align="center" | 2
+      | style="padding-left:1em;" | A vertex UV coordinate map.
+      |-
+      | align="center" | WGHT
+      | align="center" | 1
+      | style="padding-left:1em;" | A vertex weight map.
+      |-
+      | align="center" | TBAS
+      | align="center" | 6
+      | style="padding-left:1em;" | A vertex tangent basis map.
+    |}
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Dimension.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Vertex map name.
+    |-
+    | align="center" | VERTPOLYVALUES[]
+    | style="padding-left:1em;" | An array of vertex/polygon indexes and dimension number of float values. Array(VX,VX,F4[n]).
+|} <!-- EndOf VMAD -->
+
+
+{| class="tocVMED mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>VMED</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Discontinuous Edge Map.
+    |-
+    | colspan="2" style="padding-left:1em; padding-right:1em;" |The VMED chunk holds dimension number of floating point values for a given edge. An edge is defined by 2 vertex indexes into the previous PNTS chunk.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | ID4
+    | style="padding-left:1em; padding-right:1em;" |
+    {| class="tocVMEDType mw-collapsible mw-collapsed wikitable" width="100%"
+      |-
+      | colspan="3" style="padding-left:1em;" | Vertex Map Type.
+      |-
+      ! width="10%" | ID4
+      ! width="10%" | Dimension
+      ! align="left" | Description
+      |-
+      | align="center" | SUBV
+      | align="center" | 1
+      | style="padding-left:1em;" | A subdivision edge weight map.
+      |-
+      | align="center" | EPCK
+      | align="center" | 0
+      | style="padding-left:1em;" | A edge selection set map.
+    |}
+    |-
+    | align="center" | U2
+    | style="padding-left:1em;" | Dimension.
+    |-
+    | align="center" | S0
+    | style="padding-left:1em;" | Vertex map name.
+    |-
+    | align="center" | EDGEVALUES[]
+    | style="padding-left:1em;" | An array of vertex A, vertex B and dimension number of float values. Array(VX,VX,F4[n]).
+|} <!-- EndOf VMED -->
+
+
+{| class="tocPOLS mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>POLS</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | A list of polygons of a given type for the current layer.
+    |-
+    | colspan="2" style="padding-left:1em; padding-right:1em;" | Each polygon is defined by a vertex count followed by a list of indexes into the most recent PNTS chunk. The maximum number of vertices is 1023. The 6 high-order bits of the vertex count are flag bits with different meanings for each polygon type. When reading POLS, remember to mask out the flags to obtain numverts. (For CURV polygon: The two low order flags are for continuity control point toggles. The four remaining high order flag bits are additional vertex count bits; this brings the maximum number of vertices for CURV polygons to 2^14 = 16383). When writing POLS, the vertex list for each polygon should begin at a convex vertex and proceed clockwise as seen from the visible side of the polygon. Polygons are single-sided (although double-sidedness is a possible surface property), and the normal is defined as the cross product of the first and last edges. As of 701 the HCRV & BCRV chunks have a seperate 'flags' U4 so the NoOfVerts count is a full U2. As of 801 the new 'LINE' chunk to define 'Polylines' was introduced and also has the seperate 'flags' U4.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | ID4
+    | style="padding-left:1em; padding-right:1em;" | Polygon Type.
+    {| class="tocPOLSType mw-collapsible mw-collapsed wikitable" width="100%"
+      |-
+      ! width="10%" | ID4
+      ! align="left" | Description
+      |-
+      | align="center" | FACE
+      | style="padding-left:1em;" | A standard polygon.
+      |-
+      | align="center" | CURV
+      | style="padding-left:1em;" | Catmull-Rom curve.
+      |-
+      | align="center" | LINE
+      | style="padding-left:1em;" | Polyline.
+      |-
+      | align="center" | BEZR
+      | style="padding-left:1em;" | Bezier curve.
+      |-
+      | align="center" | SPCH
+      | style="padding-left:1em;" | Spline patch, as generated by the patching tools.
+      |-
+      | align="center" | TEXT
+      | style="padding-left:1em;" | Text polygons, as generated by the Text tool.
+      |-
+      | align="center" | SUBD
+      | style="padding-left:1em;" | Subdivision surface polygons.
+      |-
+      | align="center" | PSUB
+      | style="padding-left:1em;" | Catmull-Clark subdivision surface, Pixar Subdivision surface.
+      |-
+      | align="center" | HCRV
+      | style="padding-left:1em;" | Hermite curve. As of 701 CURV is depricated in favour of HCRV.
+      |-
+      | align="center" | BCRV
+      | style="padding-left:1em;" | Bezier curve. As of 701 BEZR is depricated in favour of BCRV.
+    |}
+    |-
+    | align="center" | Polygons[]
+    | style="padding-left:1em;" | An array of polygons. Eg. U2,VX[] or U2,U4,VX[].
+|} <!-- EndOf POLS -->
+
+
+{| class="tocPTAG mw-collapsible wikitable" width="90%"
+    |-
+    ! width="10%" align="center" style="background:#FFA31D;" | <h4>PTAG</h4>
+    | style="padding-left:1em; background:#dcdcdc;" | Associates tags of a given type with polygons in the most recent POLS chunk.
+    |-
+    | colspan="2" style="padding-left:1em; padding-right:1em;" | The polygon is identified by an index into the most recent POLS chunk, and the tag is given by an index into the TAGS chunk. Not all polygons will have a value for every tag type. The behavior for polygons lacking a given tag depends on the type of the polygon.
+    |-
+    | align="center" | U4
+    | style="padding-left:1em;" | ChunkSize.
+    |-
+    | align="center" | ID4
+    | style="padding-left:1em; padding-right:1em;" |
+    {| class="tocPTAGType mw-collapsible mw-collapsed wikitable" width="100%"
+      |-
+      | colspan="2" style="padding-left:1em;" | Tag Type.
+      |-
+      ! width="10%" | ID4
+      ! align="left" | Description
+      |-
+      | align="center" | MATR
+      | style="padding-left:1em;" | A material assignment.
+      |-
+      | align="center" | PART
+      | style="padding-left:1em;" | The part the polygon belongs to. Parts are named groups of polygons within the current LAYR chunk. A polygon can belong to only one part.
+      |-
+      | align="center" | PICK
+      | style="padding-left:1em;" | A selection set a polygon belong's too. A given polygon may belong to many PICK chunks simultaneously.
+      |-
+      | align="center" | FONT
+      | style="padding-left:1em;" | If the most recent POLS chunk specifies polygons of type 'TEXT' then there will be a PTAG chunk of type 'FONT'. The 'TAGS' entry this chunk points too specifies the font details as a string.
+      |-
+      | align="center" | JUST
+      | style="padding-left:1em;" | If the most recent POLS chunk specifies polygons of type 'TEXT' then there will be a PTAG chunk of type 'JUST'. The 'TAGS' entry this chunk points too specifies the justification of the text.
+      |-
+      | align="center" | TEXT
+      | style="padding-left:1em;" | If the most recent POLS chunk specifies polygons of type 'TEXT' then there will be a PTAG chunk of type 'TEXT'. The 'TAGS' entry this chunk points too specifies the the actual text string that is to be displayed.
+      |-
+      | align="center" | SMGP
+      | style="padding-left:1em;" | The smoothing group the polygon belongs to. Shading is only interpolated within a smoothing group, not across groups.
+    |}
+    |-
+    | align="center" | ptag[]
+    | style="padding-left:1em;" | An array of POLS index, TAGS index. Eg. (VX,U2)[]. Where the index value into the most recent POLS chunk is specified in VX format. Either a U2 or U4. And, the TAGS index is a U2 into the TAGS chunk at the start of the file.
+|} <!-- EndOf PTAG -->
+
+
+{| class="tocITEM wikitable mw-collapsible" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>ITEM</h4>
+  | style="padding-left:1em; background:#dcdcdc;" | The LXOB file contains one ITEM chunk per item in the scene, which in turn contain various sub-chunks representing the item’s attributes. The ITEM chunk contains three fixed fields representing the type name, the user name for the item, and a reference ID.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Item Type Name. The type name of the item, such as ''camera'' or ''mesh''.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Item Name. The name the user has assigned to the item. This may be an empty string if a name has not been assigned.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Item reference ID, unique within the file. This is used to reference the item from other items.
+  |-
+  | colspan="2" style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+  {| class="tocITEMSubs wikitable" width="100%"
+    |-
+    | colspan="2" width="100%" align="center" style="background:#dcdcdc;" | '''Sub-Chunks'''
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>PAKG</h5>
+      | style="padding-left:1em;" | The ITEM.PAKG subchunk occurs when a user has added a package of channels to an ITEM. This type of subchunk is becomming more prevalent in recent .LXO's.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | PackageName. The internal name of the package.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | Reserved. Always zero.
+    |} <!-- EndOf ITEM.PAKG -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>XREF</h5>
+      | style="padding-left:1em;" | The XREF is an ''optional'' sub-chunk that identifies this item as an external reference item, and is only present if this item is indeed a reference.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | Index for the sub-scene in the [[File_Formats#REFS|REFS]] chunk.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Filename containing the source scene being referenced.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Item identifier in the source scene.
+    |} <!-- EndOf ITEM.XREF -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>LAYR</h5>
+      | style="padding-left:1em;" | Optional layer sub-chunk contains layer-specific features for the item. This consists of a layer index, flag bits, and a wireframe/element color.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | Index of the layer in the [[File_Formats#LAYR|LAYR]] chunk.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocITEMLAYRFlags mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Flags describing layer-specific properties.
+        |-
+        ! width="10%" | Mask
+        ! width="15%" | Name
+        ! align="left" | Description
+        |-
+        | align="center" | 0
+        | align="center" | Visible
+        | True if the layer is visible in GL.
+        |-
+        | align="center" | 1
+        | align="center" | Hidden
+        | True if the layer is hidden in GL.
+        |-
+        | align="center" | 2
+        | align="center" | Foreground
+        | Set if this layer is the foreground layer.
+        |-
+        | align="center" | 3
+        | align="center" | Background
+        | Set if this layer is a background layer.
+        |-
+        | align="center" | 4
+        | align="center" | Bounding Box
+        | Set if this layer is displayed as a bounding box only.
+        |-
+        | align="center" | 8
+        | align="center" | Linear Subdiv UV's
+        | Set to use linear interpolation of UVs on subdivision surfaces.
+        |-
+        | colspan="3" style="padding-left:1em; padding-right:1em;" |The first four bits of the flags represent the item’s visibility, and may be set as follows. Note that it is possible for both the Visible and Hidden to be set, in which case the layer’s visibility is in a mixed state and the true visibility is determined by the layer’s children. Also note that an item may be neither a foreground nor a background item. In that case, it is not currently selected and thus not visible in GL. This is different from the Hidden/Visible state. An item can still be the foreground or background object and also be hidden.
+      |}
+      |-
+      | align="center" | U1[4]
+      | style="padding-left:1em;" | Four-element array representing the RGBA element (wireframe) color in the UI.
+    |} <!-- EndOf ITEM.LAYR -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>LINK</h5>
+      | style="padding-left:1em;" | Item Link. There may be zero or more Item Link sub-chunks and relates one item to another item. Parenting is one kind of linking. LINK sub-chunks contain a graph type name, unique ID to the target item, and the index of the link.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| S0
+      | style="padding-left:1em;" | GraphName. The name of the graph that this link belongs to, such as 'parent', 'deformers', etc..
+      |-
+      | align="center" | I4
+      | style="padding-left:1em;" | ItemIndexID. The Index ID of the item that '''this''' item is linked too.
+      |-
+      | align="center" | I4
+      | style="padding-left:1em;" | LinkIndex. The index of the link. For instance, a locator may have 3 child locators. This item maybe the third child locator linked to the parent. This 'LinkIndex' reflects that order. Another example is transform items where this LINK chunk details a 'xfrmcore' graph link and the 'LinkIndex' defines the order of the various transform items. Thus facilitating Order Of Operations.
+    |} <!-- EndOf ITEM.LINK -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CLNK</h5>
+      | style="padding-left:1em;" | Channel Link. There may be zero or more CLNK sub-chunk's and relates a channel in one item to a channel in another item. This is commonly used to drive one channel's value to another channel's value.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| S0
+      | style="padding-left:1em;" | Graph Name. The name of the graph that this link belongs to, such as 'chanLinks'.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel From Name. Channel name of the 'from' channel. If '(none)', this is a channel-to item link.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | From Reference ID. The RefId of the 'from' item containing the 'from' channel.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel name for the 'to' channel.
+      |-
+      | align="center" | I4
+      | style="padding-left:1em;" | 'From' link index.
+      |-
+      | align="center" | I4
+      | style="padding-left:1em;" | 'To' link index.
+    |} <!-- EndOf ITEM.CLNK -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>UCHN</h5>
+      | style="padding-left:1em;" | User Channel. Is a custom user defined channel. All items have a set of standard channels that vary based on the item type. These can be further extended through the use of user channels, which allow for arbitrarily defined channels to be added to the end of the item's normal channel list. The UCHAN sub-chunk defines user channels. These channels behave just like other channels, and their values are stored in the file in the same way. ''Note that all UCHAN sub-chunks must come before any other channel chunks''.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| S0
+      | style="padding-left:1em;" | Channel Name. The name of the user channel, without any vector mode suffixes.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel Type Name. The name of the channel's datatype (ExoType).
+      |-
+      | align="center" | U4
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocUCHNVectorModes mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Vector Mode.
+        |-
+        | colspan="3" style="padding-left:1em;" |  Most channels are simple scalar channels, meaning they represent a single component. modo also supports vector mode channels. These are defined just like normal channels, but are actually created as two or more related channels with a standard suffix automatically applied to the base channel name. For example, a color channel named "mycolor" defined as an RGB vector implicitly creates three scalar channels identified as mycolor.r, mycolor.g and mycolor.b. Each of the component channels are accessed just like normal scalar channels.
+        |-
+        ! width="10%" | Value
+        ! width="15%" | Mode
+        ! align="left" | Description
+        |-
+        | align="center" | 0
+        | align="center" | Scalar
+        | The channel name has no suffixes applied, and only a single channel is created.
+        |-
+        | align="center" | 1
+        | align="center" | XY
+        | Two channels suffixed with ''.x'' and ''.y'' representing a two dimensional position, rotation or vector.
+        |-
+        | align="center" | 2
+        | align="center" | XYZ
+        | Three channels suffixed with ''.x'', ''.y'' and ''.z'' representing a three dimensional position, rotation or vector.
+        |-
+        | align="center" | 3
+        | align="center" | RGB
+        | Three channels suffixed with ''.r'', ''.g'' and ''.b'' representing a color.
+        |-
+        | align="center" | 4
+        | align="center" | RGBA
+        | Three channels suffixed with ''.r'', ''.g'', ''.b'' and ''.a'' representing a color plus an alpha.
+      |}
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | Flags. Currently always 0.
+      |-
+      | align="center" | I4
+      | style="padding-left:1em;" | Default Integer Value. Default value for integer channels.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Default Float Value. Default value for floating point channels.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | Hint Count. Number of text hints in the hints array that follows. May be zero if there are no hints.
+      |-
+      | align="center" | Hint[]
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocUCHNHint mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Hint. Optional, Zero to Hint Count number of Name/Value pairs.
+        |-
+        | width="10%" align="center" | S0
+        | style="padding-left:1em;" | Name of the hint, restricted by standard text hint naming rules.
+        |-
+        | align="center" | I4
+        | style="padding-left:1em;" | Value of the hint.
+      |}
+    |} <!-- EndOf ITEM.UCHN -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHNL</h5>
+      | style="padding-left:1em;" | Scalar Channel. There may be Zero or more of these sub-chunks in a given ITEM chunk. The CHNL sub-chunk contains the name, type and value of an individual channel. These are commonly found in preset files and older LXO files without CHNM tables, while newer LXOs contain only CHAN chunks and matching CHNM tables.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel Name.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocCHNLDataType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Channel Data Type. Which may be one of the following values.
+        |-
+        ! width="10%" | Value
+        ! width="15%" | Datatype
+        ! align="left" | Description
+        |-
+        | align="center" | 1
+        | align="center" | I4
+        | Signed integer.
+        |-
+        | align="center" | 2
+        | align="center" | F4
+        | Floating point number.
+        |-
+        | align="center" | 3
+        | align="center" | S0
+        | A padded NULL-terminated string. This is used for raw strings and for text hint discrete choices.
+      |}
+      |-
+      | align="center" | ??
+      | style="padding-left:1em;" | Channel Value. The type of this field is dependent on the above 'Channel Data Type' flag field. For example, if the flag field was 1, then the data type of this 'Value' field would be I4.
+    |} <!-- EndOf ITEM.CHNL -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHNV</h5>
+      | style="padding-left:1em;" | Vector Channel. There may be zero or more of these sub-chunks in a given ITEM chunk. The CHNV chuck represents the values of a channel vector. This is a combination of three channel values, usually RGB or XYZ. The chuck has the base name, datatype, array dimensions, and an array of values. Zero or more of these may be present in an ITEM chunk. These are commonly found in preset files and older LXO files without CHNM tables. They are becoming more prevalent in newer LXO's where packages added to item's may have channels that are vectors. Such as a F4[3] channel denoting an offset on a glItemShape package attched to a ITEM.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel Name. The base name of the channel. This is the channel name minus the vector component.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocCHNLDataType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Channel Data Type. Which may be one of the following values.
+        |-
+        ! width="10%" | Value
+        ! width="15%" | Datatype
+        ! align="left" | Description
+        |-
+        | align="center" | 1
+        | align="center" | I4
+        | Signed integer.
+        |-
+        | align="center" | 2
+        | align="center" | F4
+        | Floating point number.
+        |-
+        | align="center" | 3
+        | align="center" | S0
+        | A padded NULL-terminated string. This is used for raw strings and for text hint discrete choices.
+      |}
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | Vector Count. The number of elements in the vector. 3 for XYZ or RGB, four for RGBA, etc.
+      |-
+      | align="center" | ??[]
+      | style="padding-left:1em;" | Channel Value. An array of name/value pairs. The underlying type of the value component of the pair is dependent on the 'Channel Data Type' field above. For example, a commonly occuring CHNV sub-chunk is for the 'wireColor' channel on an item. The 'Channel Name' would be 'wireColor'. The 'Channel Data Type' flag would be 2 (for float). The 'Vector Count' would be 3, for each component ''.r'', ''.g'' & ''.b''. And the array of name/value pairs would be 3 pairs of [S0,F4]. Namely, [R,<somevalue>], [G,somevalue] & [B,somevalue].
+    |} <!-- EndOf ITEM.CHNV -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHNS</h5>
+      | style="padding-left:1em;" | String Channel. There may be zero or more 'String Channel' sub-chunk's present for an ITEM chunk and it represents a string channel containing the channel name and the string value. These are commonly found in preset files and older LXO files without CHNM tables, while newer LXOs contain only CHAN chunks and matching CHNM tables.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| S0
+      | style="padding-left:1em;" | Channel Name.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel Value.
+    |} <!-- EndOf ITEM.CHNS -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>GRAD</h5>
+      | style="padding-left:1em;" | Gradient Channel. The GRAD sub-chunk contains the values of a gradient channel, which consists of the channel name and the index of a related envelope (ENVL) chunk. Zero or more of these may be present in an ITEM chunk.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| S0
+      | style="padding-left:1em;" | Channel Name.
+      |-
+      | align="center" | VX
+      | style="padding-left:1em;" | Envelope Index. Index of the envelope (ENVL) chunk relating to this gradient channel.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocGRADInterpolationFlags mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Envelope Interpolation Flags. Which may be one of the following values.
+        |-
+        | colspan="2" style="padding-left:1em; padding-right:1em;" | The flag determines how the path between keyframes is resolved.
+        |-
+        ! width="10%" | Value
+        ! align="left" | Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Curve.
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Linear.
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Stepped.
+      |}
+    |} <!-- EndOf ITEM.GRAD -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHAN</h5>
+      | style="padding-left:1em;" | Channel Value. The CHAN sub-chunk is a newer, more generalized mechanism used to represent a channel value. The channel name is looked up by index in the CHNM chunk. The value’s type is determined by the U2 type field. Zero or more of these may be present in an ITEM chunk.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| VX
+      | style="padding-left:1em;" | Index into the CHNM (Channel Names) Chunk.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocCHANDataType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Channel Data Type. Which may be one of the following values. NOTE: If an associated envelope datatype then this ITEM.CHAN should be looked up in the ACTN.scene chunk.
+        |-
+        ! width="10%" | Value
+        ! align="left" | Description
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Integer.
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Float.
+        |-
+        | align="center" | 3
+        | style="padding-left:1em;" | String representing an integer text hint.
+        |-
+        | align="center" | 17
+        | style="padding-left:1em;" | Integer with an envelope.
+        |-
+        | align="center" | 18
+        | style="padding-left:1em;" | Float with an envelope.
+        |-
+        | align="center" | 19
+        | style="padding-left:1em;" | String representing an integer text hint with an envelope.
+      |}
+      |-
+      | align="center"| ??
+      | style="padding-left:1em;" | Channel Value. The datatype of this field is determined by the above 'Channel Data Type' field.
+    |} <!-- EndOf ITEM.CHAN -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHNC</h5>
+      | style="padding-left:1em;" | Custom channel value sub-chunk. Zero or more of these may be present in an ITEM chunk. Often these channels will equate to a persisted struct.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| U1[ChunkSize]
+      | style="padding-left:1em;" | Arbitrary byte array of custom data. NOTE: Often the ChunkSize of this sub-chunk will be a non-even amount of bytes, therefore the actual chunk size will have an additional padding-byte which is not counted in the ChunkSize.
+    |} <!-- EndOf ITEM.CHNC -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>ITAG</h5>
+      | style="padding-left:1em;" | Item Tag Channel. Items can be tagged with arbitrary strings, which are stored in ITAG sub-chunks. Zero or more of these may be present in an ITEM chunk.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| ID4
+      | style="padding-left:1em;" | Tag type, such as CMNT, DESC or CUE, etc.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel Value. This may be an empty string for some tags.
+    |} <!-- EndOf ITEM.ITAG -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>UNIQ</h5>
+      | style="padding-left:1em;" | Unique Identifier. This sub-chunk defines the absolute internal unique name indentifier for this item.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Identifier.
+    |} <!-- EndOf ITEM.UNIQ -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>UIDX</h5>
+      | style="padding-left:1em;" | User Interface Unique Index. An item can have 3 names. The ITEM.UNIQ sub-chunk defines the absolute internal scene unique name. The ITEM.Username attribute defines a modo user defined name, if any. If no ITEM.Username is specified by the user the composite synthetically generated name is defined by the Item-Type plus this UIDX value appended as a suffix. The synthetic name formatting is subject to message table & user preference settings. For instance, a locator item-type has a message table username of 'Locator' and if the modo user's preference settings (Preferences>Defaults>Application>Item Index Style) was 'Item2' then the composite name would be formated as 'Locator<ITEM.UIDX.Index>'. And, thus providing a unqiue user-friendly UI name for the internal scene unique name of say 'locator106'.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | Index.
+    |} <!-- EndOf ITEM.UIDX -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>VNAM</h5>
+      | style="padding-left:1em;" | Visible Name. The user-visible name of the item. If the item has not been explicitly been renamed, a 'synthetic name' is created (e.g. "Mesh (37)" or "Floor (Material)")
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Name.
+    |} <!-- EndOf ITEM.VNAM -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>BCHN</h5>
+      | style="padding-left:1em;" | 'B' Channel. Ostensibly used with procedural 'Mesh Operations' in modo 10+ series. Identifies an 'operation' type and a reference index ID that relates to a 'DATA' chunk (usually located at the end of the file).
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Operation Type.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em;" | 'DATA' chunk index ID. Identifies the appropriate 'DATA' chunk that conatins the value type and value data for this operation type.
+    |} <!-- EndOf ITEM.BCHN -->
+
+  |} <!-- EndOf ITEM -->
+|} <!-- EndOf ITEM -->
+
+
+{| class="tocENVL mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>ENVL</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The ENVL chunk describes an envelope applied to an item. In modo, envelopes define the keys of gradients and for normal keyframed animation. Note that this is not the same as the LWO2 envelope chunk. The envelope contains three sub-chunks representing the spline, TANI, TANO and KEY, as well as the behavior chunks PRE and POST. The spline type used in modo is a variation on the bezier spline. The specific implementation is not currently documented, but it should be close enough to standard bezier curves for you to use that at the moment.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | VX
+  | style="padding-left:1em;" | Envelope Index. Note: It is either U2 or U4 in size.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Envelope Type.
+  |-
+  | colspan="2" style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+  {| class="tocENVLSubs mw-collapsible wikitable" width="100%"
+    |-
+    | width="100%" align="center" style="background:#dcdcdc;" | '''Sub-Chunks'''
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>TANI</h5>
+      | style="padding-left:1em;" | The TANI, Incoming tangent is a sub-chunk of the ENVL chunk and it contains information about the incoming tangent of the spline.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocTANISlopeType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Slope Type. May be any of the following type values.
+        |-
+        ! width="20%" align="center" | Value
+        ! Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Manual
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Automatic
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Linear In
+        |-
+        | align="center" | 4
+        | style="padding-left:1em;" | Linear Out
+        |-
+        | align="center" | 8
+        | style="padding-left:1em;" | Flat
+        |-
+        | align="center" | 16
+        | style="padding-left:1em;" | Auto Flat
+        |-
+        | align="center" | 32
+        | style="padding-left:1em;" | Stepped
+        |-
+        | align="center" | 64
+        | style="padding-left:1em;" | Smooth Flat
+      |}
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocTANIWeightType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Weight Type. May be either manual or automatic.
+        |-
+        ! width="20%" align="center" | Value
+        ! Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Manual
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Automatic
+      |}
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Weight.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Slope.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Value.
+    |} <!-- EndOf ENVL.TANI -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>TANO</h5>
+      | style="padding-left:1em;" | TANO similarly contains the outgoing tangent. This is used only for broken keys.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocTANOBrokenKeyFlags mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Broken Key Flags. Describes which values are discontinuous. May be any ''combination'' of the following values.
+        |-
+        ! width="20%" align="center" | Value
+        ! Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Value
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Slope
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Weight
+      |}
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocTANOSlopeType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Slope Type. May be any of the following type values.
+        |-
+        ! width="20%" align="center" | Value
+        ! Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Manual
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Automatic
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Linear In
+       |-
+        | align="center" | 4
+        | style="padding-left:1em;" | Linear Out
+        |-
+        | align="center" | 8
+        | style="padding-left:1em;" | Flat
+        |-
+        | align="center" | 16
+        | style="padding-left:1em;" | Auto Flat
+        |-
+        | align="center" | 32
+        | style="padding-left:1em;" | Stepped
+        |-
+        | align="center" | 64
+        | style="padding-left:1em;" | Smooth Flat
+      |}
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocTANOWeightType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Weight Type. May be either manual or automatic.
+        |-
+        ! width="20%" align="center" | Value
+        ! Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Manual
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Automatic
+      |}
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Weight.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Slope.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Value.
+    |} <!-- EndOf ENVL.TANO -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>KEY</h5>
+      | style="padding-left:1em;" | This is the key value itself, which includes a key and an input value for the gradient. It also contains the FLAG sub-sub-chunk. (Depricated)
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Input value for the gradient.
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | Value for the key.
+    |} <!-- EndOf ENVL.KEY -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>PRE</h5>
+      | style="padding-left:1em;" | Behaviour ''before'' the first key.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocPreBehaviourType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Pre Behaviour Type. May be 1 of the following values.
+        |-
+        ! width="10%" | Mask
+        ! width="15%" | Name
+        ! align="left" | Description
+        |-
+        | align="center" | 0
+        | align="center" | Reset
+        | The default value. Values are set to flat 0 (zero) outside the key area.
+        |-
+        | align="center" | 1
+        | align="center" | Constant (Smooth)
+        | Same as Constant, but the keyframe slope values are adjusted to smoothly transition to the Constant behavior.
+        |-
+        | align="center" | 2
+        | align="center" | Repeat
+        | Values of keys are repeated. When incoming and outgoing values match, a loop can be created.
+        |-
+        | align="center" | 3
+        | align="center" | Oscillate (Smooth)
+        | Same as Oscillate but slope values are adjusted to smoothly transition to the next oscillation.
+        |-
+        | align="center" | 4
+        | align="center" | Offset Repeat (Smooth)
+        | Same as Offset Repeat but slope values are adjusted to smoothly transition to the repeated sections.
+        |-
+        | align="center" | 5
+        | align="center" | Linear
+        | Values project outward in a linear fashion from the first or last key, providing a constant offset.
+        |-
+        | align="center" | 6
+        | align="center" | Constant
+        | Values remain the same. With the AutoSlope and Weight options, ease-in or out as it transitions to the key values.
+        |-
+        | align="center" | 7
+        | align="center" | Oscillate
+        | Values are repeated forwards, and then reversed, like a ping-pong type effect.
+        |-
+        | align="center" | 8
+        | align="center" | Offset Repeat
+        | Values of keys are repeated, but each subsequent repeat is offset by the amount of the last key.
+      |}
+    |} <!-- EndOf ENVL.PRE -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>POST</h5>
+      | style="padding-left:1em;" | Behaviour ''after'' the last key.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocPostBehaviourType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="3" style="padding-left:1em;" | Post Behaviour Type. May be 1 of the following values.
+        |-
+        ! width="10%" | Mask
+        ! width="15%" | Name
+        ! align="left" | Description
+        |-
+        | align="center" | 0
+        | align="center" | Reset
+        | The default value. Values are set to flat 0 (zero) outside the key area.
+        |-
+        | align="center" | 1
+        | align="center" | Constant (Smooth)
+        | Same as Constant, but the keyframe slope values are adjusted to smoothly transition to the Constant behavior.
+        |-
+        | align="center" | 2
+        | align="center" | Repeat
+        | Values of keys are repeated. When incoming and outgoing values match, a loop can be created.
+        |-
+        | align="center" | 3
+        | align="center" | Oscillate (Smooth)
+        | Same as Oscillate but slope values are adjusted to smoothly transition to the next oscillation.
+        |-
+        | align="center" | 4
+        | align="center" | Offset Repeat (Smooth)
+        | Same as Offset Repeat but slope values are adjusted to smoothly transition to the repeated sections.
+        |-
+        | align="center" | 5
+        | align="center" | Linear
+        | Values project outward in a linear fashion from the first or last key, providing a constant offset.
+        |-
+        | align="center" | 6
+        | align="center" | Constant
+        | Values remain the same. With the AutoSlope and Weight options, ease-in or out as it transitions to the key values.
+        |-
+        | align="center" | 7
+        | align="center" | Oscillate
+        | Values are repeated forwards, and then reversed, like a ping-pong type effect.
+        |-
+        | align="center" | 8
+        | align="center" | Offset Repeat
+        | Values of keys are repeated, but each subsequent repeat is offset by the amount of the last key.
+      |}
+    |} <!-- EndOf ENVL.POST -->
+  |} <!-- EndOf tocENVLSubs -->
+|} <!-- EndOf tocENVL -->
+
+
+{| class="tocACTN mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>ACTN</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The ACTN chunk describes an 'Action Layer' which is a mechanism for storing one or more items' channel values in differing states. There are currently three default 'application action layer' '''types''' , 'edit', 'scene' and 'setup'. Also, there may be 1 or more additional user created action layers of type 'scene'.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | ActionLayerName. At least the three default action layers of edit, scene & setup plus any user defined action layers.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | ActionLayerType, either 'edit', 'scene' or 'setup'. The 'scene' action layer type is a slightly awkward name for the action layer type that identifies items within the scene with animated channels. The 'setup' action layer type identifies items with setup channel values. The 'edit' action layer type identifies items with edited channel values where the time slider has not yet been altered by the modo user at the time of saving the .lx? file. The setup & scene action layers allow for a start & end state for channel values facilitating animation.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ActionLayerIndex. The zero based Index ID of this action layer.
+  |-
+  | colspan="2" style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+  {| class="tocACTNSubs mw-collapsible wikitable" width="100%"
+    |-
+    | width="100%" align="center" style="background:#dcdcdc;" | '''Sub-Chunks'''
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>ITEM</h5>
+      | style="padding-left:1em;" | The ACTN.ITEM sub-chunk identifies the main [[File_Formats#ITEM|ITEM]] chunk that following ACTN sub-chunks are related too. Until the next ACT.ITEM sub-chunk.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+		  |-
+		  | align="center" | U4
+		  | style="padding-left:1em;" | Item reference ID, unique within the file.
+      |-
+    |} <!-- EndOf ACTN.ITEM -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHAN</h5>
+      | style="padding-left:1em;" | The ACTN.CHAN sub-chunk relates to the most recent ACTN.ITEM sub-chunk. It is similar in all respects to the [[File_Formats#CHAN|ITEM.CHAN]] sub-chunk except it has an extra VX field that identifies the Envelope associated with this ACTN.CHAN.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| VX
+      | style="padding-left:1em;" | Index into the CHNM (Channel Names) Chunk.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocACTNCHANDataType mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Channel Data Type. Which may be one of the following values.
+        |-
+        ! width="10%" | Value
+        ! align="left" | Description
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Integer.
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Float.
+        |-
+        | align="center" | 3
+        | style="padding-left:1em;" | String representing an integer text hint.
+        |-
+        | align="center" | 17
+        | style="padding-left:1em;" | Integer with an envelope.
+        |-
+        | align="center" | 18
+        | style="padding-left:1em;" | Float with an envelope.
+        |-
+        | align="center" | 19
+        | style="padding-left:1em;" | String representing an integer text hint with an envelope.
+      |} <!-- EndOf tocACTNCHANDataType -->
+      |-
+      | align="center"| VX
+      | style="padding-left:1em;" | Index of the associated ENVL (envelope) chunk.
+      |-
+      | align="center"| ??
+      | style="padding-left:1em;" | Channel Value. The datatype of this field is determined by the above 'Channel Data Type' field.
+    |} <!-- EndOf ACTN.CHAN -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>GRAD</h5>
+      | style="padding-left:1em;" | The ACTN.GRAD sub-chunk relates to the most recent ACTN.ITEM sub-chunk and contains the values of a gradient channel, which consists of the channel name (CHNM) index and the index of a related envelope (ENVL) chunk. Zero or more of these may be present in an ACTN chunk.
+      |-
+      | align="center"| U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| VX
+      | style="padding-left:1em;" | Index into the CHNM (Channel Names) Chunk.
+      |-
+      | align="center" | VX
+      | style="padding-left:1em;" | Envelope Index. Index of the envelope (ENVL) chunk relating to this gradient channel.
+      |-
+      | align="center" | U4
+      | style="padding-left:1em; padding-right:1em;" |
+      {| class="tocACTNGRADInterpolationFlags mw-collapsible mw-collapsed wikitable" width="100%"
+        |-
+        | colspan="2" style="padding-left:1em;" | Envelope Interpolation Flags. Which may be one of the following values.
+        |-
+        | colspan="2" style="padding-left:1em; padding-right:1em;" | The flag determines how the path between keyframes is resolved.
+        |-
+        ! width="10%" | Value
+        ! align="left" | Description
+        |-
+        | align="center" | 0
+        | style="padding-left:1em;" | Curve.
+        |-
+        | align="center" | 1
+        | style="padding-left:1em;" | Linear.
+        |-
+        | align="center" | 2
+        | style="padding-left:1em;" | Stepped.
+      |} <!-- EndOf tocACTNGRADInterpolationFlags -->
+    |} <!-- EndOf ACTN.GRAD -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>CHNS</h5>
+      | style="padding-left:1em;" | The ACTN.CHNS sub-chunk relates to the most recent ACTN.ITEM sub-chunk. It is similar in all respects to the [[File_Formats#CHNS|ITEM.CHNS]] sub-chunk except it has an extra VX field that identifies the index into the CHNM (Channel Names) chunk. Also, although the 'S0' channel name field is still present, it is no longer used in preference to the index variation.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center"| S0
+      | style="padding-left:1em;" | Channel Name.
+      |-
+      | align="center"| VX
+      | style="padding-left:1em;" | Index into the CHNM (Channel Names) Chunk.
+      |-
+      | align="center" | S0
+      | style="padding-left:1em;" | Channel Value.
+    |} <!-- EndOf ACTN.CHNS -->
+  |} <!-- EndOf tocACTNSubs -->
+|} <!-- EndOf tocACTN -->
+
+
+{| class="tocANNI mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>ANNI</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The ANNI chunk describes...
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | colspan="2" style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+  {| class="tocANNISubs mw-collapsible wikitable" width="100%"
+    |-
+    | width="100%" align="center" style="background:#dcdcdc;" | '''Sub-Chunks'''
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>AAIT</h5>
+      | style="padding-left:1em;" | The ANNI.AAIT sub-chunk identifies...
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+		  |-
+		  | align="center" | U4
+		  | style="padding-left:1em;" | Item reference ID, unique within the file.
+      |-
+    |} <!-- EndOf ANNI.AAIT -->
+    |-
+    | style="padding-left:1em; padding-right:1em; padding-top:2em; padding-bottom:2em;" |
+    {| class="mw-collapsible mw-collapsed wikitable" width="100%"
+      | width="10%" align="center" style="background:#F5E0C0;" | <h5>AASE</h5>
+      | style="padding-left:1em;" | The ANNI.AASE sub-chunk identifies...
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ChunkSize.
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | LoopMode. Describes the...
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | MuteState. Describes the...
+      |-
+      | align="center" | U2
+      | style="padding-left:1em;" | ScrubState. Describes the...
+      |-
+      | align="center" | F4
+      | style="padding-left:1em;" | StartTime. Describes the...
+    |} <!-- EndOf ANNI.AASE -->
+  |} <!-- EndOf tocANNISubs -->
+|} <!-- EndOf tocANNI -->
+
+
+{| class="tocBAKE mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>BAKE</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The BAKE chunk is essentially a summary chunk describing the number & frequency of 'static mesh' triangle surface definitions that have been saved to the file to represent an animation sequence in a similar fashion to MDD. Most commonly resulting from an Alembic importation to modo.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Reference ID.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Samples count. The number of 
+  |-
+  | align="center" | F4
+  | style="padding-left:1em;" | Start time.
+  |-
+  | align="center" | F4
+  | style="padding-left:1em;" | Samples per second.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Bake name. ???
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Bake name. ???
+|} <!-- EndOf tocBAKE -->
+
+
+{| class="toc3GRP mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>3GRP</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The 3GRP chunk is the first in a series of chunks that detail modo's triangle surface 'static mesh'.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Tri-Surf count. The number of triangle surf definitions that constitute the 'static mesh'. A triangle surface definition is a grouping of a following 3SRF chunk, VRTS chunk, a TRIS chunk, 1 or more VVEC chunks & a TTGS chunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Item reference ID. The unique ID of the [[File_Formats#ITEM|ITEM]] chunk associated with this 3GRP chunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Flags.
+|} <!-- EndOf toc3GRP -->
+
+
+{| class="toc3SRF mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>3SRF</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The 3SRF chunk is the second in a series of chunks that detail a 'static mesh' item and relates to the most recent 3GRP chunk. It is essentially a summary statistics chunk detailing the number of verts, tri's, vertex vectors, tags & flags for the triangle surfaces that constitute the 'static mesh'.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | VertexCount. The number of vertices' present in the triangle surface. This value will be consistent with a following 'VRTS' chunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | TrinagleCount. The number of triangles present in the triangle surface. This value will be consistent with a following 'TRIS' chunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | VertexVectorCount. The number of vertex vectors associated with this triangle surface. This value will be consistent with number of following VVEC chunks.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | TagsCount. The number of tags strings detailed in a following TTGS, triangle surface tags chunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Flags.
+|} <!-- EndOf toc3SRF -->
+
+
+{| class="tocVRTS mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>VRTS</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The VRTS chunk is the third in a series of chunks that detail a 'static mesh' item and relates to the most recent 3SRF chunk. It details 3 float values (xyz) for the count of vertices' from the most recent 3SRF.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | VEC12[3SRF.VertCount]
+  | style="padding-left:1em;" | An array of F4[3] (three float values) denoting XYZ position of 3SRF.VertexCount number of vertices.
+|} <!-- EndOf tocVRTS -->
+
+
+{| class="tocTRIS mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>TRIS</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The TRIS chunk is the fourth in a series of chunks that detail a 'static mesh' item and relates to the most recent 3SRF chunk. It details 3 U4 values for the count of triangles from the most recent 3SRF.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | (U4[3])[3SRF.TriCount]
+  | style="padding-left:1em;" | An array of U4[3] (three unsigned long values) denoting the 3 indices from the most recent VRTS chunk xyz point positions and thereby facilitating the definition of a triangle.
+|} <!-- EndOf tocTRIS -->
+
+
+{| class="tocVVEC mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>VVEC</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The VVEC chunk is the fifth in a series of chunks that detail a 'static mesh' item and relates to the most recent 3SRF chunk. They essentially contain the exact same sort of information as a 'VMAP' for a 'mesh' but are specifically detailed for 3SRF (triangle surface) items. These VVEC chunks can vary in size and makeup depending on the dimensionality required. For instance a 'normal' map VVEC will describe 3 floating point values for each point in the VRTS chunk associated with this 3SRF. A 'uv' VVEC chunk will describe 2 floating point values for each vertex. NOTE. These VVEC chunks can be inefficient in so much that the similar VMAP for MESH items only define values the user specified for particular vertices whereas VVEC chunks describe values for the total 3SRF.VertexCount irrespective of whether they had a value or not. If a user had numerous VMAPs defined for a MESH prior to converting it to a 'static mesh' item then the resulting VVECs can (and often do) contain much surpurfluous data.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | ID4
+  | style="padding-left:1em; padding-right:1em;" |
+  {| class="tocVVECType mw-collapsible mw-collapsed wikitable" width="100%"
+    |-
+    | colspan="3" style="padding-left:1em;" | Vertex Vector Type.
+    |-
+    ! width="10%" | ID4
+    ! width="10%" | Dimension
+    ! align="left" | Description
+    |-
+    | align="center" | MORF
+    | align="center" | 3
+    | style="padding-left:1em;" | A relative offset vertex morph map.
+    |-
+    | align="center" | NORM
+    | align="center" | 3
+    | style="padding-left:1em;" | A vertex normal map.
+    |-
+    | align="center" | PICK
+    | align="center" | 0
+    | style="padding-left:1em;" | A vertex (or point) selection set map. The mare existense of the PNTS index indcates that point/vertex is part of this selection set.
+    |-
+    | align="center" | RGB
+    | align="center" | 3
+    | style="padding-left:1em;" | A vertex colour map.
+    |-
+    | align="center" | RGBA
+    | align="center" | 4
+    | style="padding-left:1em;" | A vertex colour map with alpha.
+    |-
+    | align="center" | SPOT
+    | align="center" | 3
+    | style="padding-left:1em;" | A absolute offset vertex morph map.
+    |-
+    | align="center" | TXUV
+    | align="center" | 2
+    | style="padding-left:1em;" | A vertex UV coordinate map.
+    |-
+    | align="center" | WGHT
+    | align="center" | 1
+    | style="padding-left:1em;" | A vertex weight map.
+  |}
+  |-
+  | align="center" | U2
+  | style="padding-left:1em;" | Dimension.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Vertex vector name.
+  |-
+  | align="center" | VERTVALUES[]
+  | style="padding-left:1em;" | An array of VVEC.Dimension values for 3SRF.VertexCount vertices.
+|} <!-- EndOf tocVVEC -->
+
+
+{| class="tocTTGS mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>TTGS</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The TTGS chunk is the sixth in a series of chunks that detail a 'static mesh' item and relates to the most recent 3SRF chunk. These are essentially the same as PTAG's, polygon tags.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | (ID4,S0)[3SRF.TagsCount]
+  | style="padding-left:1em;" | An array of ID4,S0 (PTAG ID4's and S0 strings) for 3SRF.TagsCount. Usually only 'MATR' & 'PART' are detailed.
+  {| class="tocTTGSTag mw-collapsible mw-collapsed wikitable" width="100%"
+     |-
+      | colspan="2" style="padding-left:1em;" | Tag Type.
+      |-
+      ! width="10%" | ID4
+      ! align="left" | Description
+      |-
+      | align="center" | MATR
+      | style="padding-left:1em;" | A material assignment.
+      |-
+      | align="center" | PART
+      | style="padding-left:1em;" | The part the polygon belongs to. Parts are named groups of polygons within the current LAYR chunk. A polygon can belong to only one part.
+      |-
+      | align="center" | PICK
+      | style="padding-left:1em;" | A selection set a polygon belong's too. A given polygon may belong to many PICK chunks simultaneously.
+      |-
+      | align="center" | FONT
+      | style="padding-left:1em;" | If the most recent POLS chunk specifies polygons of type 'TEXT' then there will be a PTAG chunk of type 'FONT'. The 'TAGS' entry this chunk points too specifies the font details as a string.
+      |-
+      | align="center" | JUST
+      | style="padding-left:1em;" | If the most recent POLS chunk specifies polygons of type 'TEXT' then there will be a PTAG chunk of type 'JUST'. The 'TAGS' entry this chunk points too specifies the justification of the text.
+      |-
+      | align="center" | TEXT
+      | style="padding-left:1em;" | If the most recent POLS chunk specifies polygons of type 'TEXT' then there will be a PTAG chunk of type 'TEXT'. The 'TAGS' entry this chunk points too specifies the the actual text string that is to be displayed.
+      |-
+      | align="center" | SMGP
+      | style="padding-left:1em;" | The smoothing group the polygon belongs to. Shading is only interpolated within a smoothing group, not across groups.
+  |}
+|} <!-- EndOf tocTTGS -->
+
+{| class="tocDATA mw-collapsible wikitable" width="90%"
+  |-
+  ! width="10%" align="center" style="background:#FFA31D;" | <h4>DATA</h4>
+  | colspan="2" style="padding-left:1em; background:#dcdcdc;" | The DATA chunk is a general chunk in that it contains a name/value pair. The name identifying the 'type' by which the the value data is interpreted.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | ChunkSize.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Index. An index indentifying this 'DATA' chunk which is referenced from a 'ITEM.BCHN' subchunk.
+  |-
+  | align="center" | U4
+  | style="padding-left:1em;" | Unknown.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Value Type. A string describing how one interprets the followng 'value' string. eg. '+intrange' would indentify that the following 'value' string be interpreted as a range of integer values.
+  |-
+  | align="center" | S0
+  | style="padding-left:1em;" | Value. A string defining the 'value'. It should be processed in accordance with the preceeding 'type' string.
+|} <!-- EndOf tocDATA -->
