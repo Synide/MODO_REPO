@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Safemode|x64">
+      <Configuration>Debug Safemode</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Safemode|x64">
+      <Configuration>Release Safemode</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{e74e2d72-c671-4b48-a04c-76169df7ab09}</ProjectGuid>
+    <RootNamespace>LXSDK_17_251515</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>lxsdk</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Safemode|x64'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Safemode|x64'">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Safemode|x64'">
+    <OutDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Safemode|x64'">
+    <OutDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(LXSDK)\build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(LXSDK)\include;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(LXSDK)\build\$(Configuration)\Lib\" /F /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(LXSDK)\include;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(LXSDK)\build\$(Configuration)\Lib\" /F /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Safemode|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(LXSDK)\include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(LXSDK)\build\$(Configuration)\Lib\" /F /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Safemode|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(LXSDK)\include;</AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(LXSDK)\build\$(Configuration)\Lib\" /F /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="$(LXSDK)\include\lxaction.h" />
+    <ClInclude Include="$(LXSDK)\include\lxactionclip.h" />
+    <ClInclude Include="$(LXSDK)\include\lxanim.h" />
+    <ClInclude Include="$(LXSDK)\include\lxarray.h" />
+    <ClInclude Include="$(LXSDK)\include\lxarrayui.h" />
+    <ClInclude Include="$(LXSDK)\include\lxaudio.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcanvasitem.h" />
+    <ClInclude Include="$(LXSDK)\include\lxchanmod.h" />
+    <ClInclude Include="$(LXSDK)\include\lxchannelui.h" />
+    <ClInclude Include="$(LXSDK)\include\lxclip.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcliped.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcolor.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcolormapping.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcom.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcommand.h" />
+    <ClInclude Include="$(LXSDK)\include\lxcustomview.h" />
+    <ClInclude Include="$(LXSDK)\include\lxdeform.h" />
+    <ClInclude Include="$(LXSDK)\include\lxdirbrowse.h" />
+    <ClInclude Include="$(LXSDK)\include\lxdraw.h" />
+    <ClInclude Include="$(LXSDK)\include\lxdrawover.h" />
+    <ClInclude Include="$(LXSDK)\include\lxdrop.h" />
+    <ClInclude Include="$(LXSDK)\include\lxenvelope.h" />
+    <ClInclude Include="$(LXSDK)\include\lxexternalrender.h" />
+    <ClInclude Include="$(LXSDK)\include\lxfile.h" />
+    <ClInclude Include="$(LXSDK)\include\lxfilter.h" />
+    <ClInclude Include="$(LXSDK)\include\lxforce.h" />
+    <ClInclude Include="$(LXSDK)\include\lxformsys.h" />
+    <ClInclude Include="$(LXSDK)\include\lxgeneric.h" />
+    <ClInclude Include="$(LXSDK)\include\lxgroup.h" />
+    <ClInclude Include="$(LXSDK)\include\lxgroupui.h" />
+    <ClInclude Include="$(LXSDK)\include\lxhandles.h" />
+    <ClInclude Include="$(LXSDK)\include\lxidef.h" />
+    <ClInclude Include="$(LXSDK)\include\lximage.h" />
+    <ClInclude Include="$(LXSDK)\include\lximagemon.h" />
+    <ClInclude Include="$(LXSDK)\include\lxinputmap.h" />
+    <ClInclude Include="$(LXSDK)\include\lxinterviewer.h" />
+    <ClInclude Include="$(LXSDK)\include\lxintrange.h" />
+    <ClInclude Include="$(LXSDK)\include\lxio.h" />
+    <ClInclude Include="$(LXSDK)\include\lxitem.h" />
+    <ClInclude Include="$(LXSDK)\include\lxitemui.h" />
+    <ClInclude Include="$(LXSDK)\include\lxlayer.h" />
+    <ClInclude Include="$(LXSDK)\include\lxlistcache.h" />
+    <ClInclude Include="$(LXSDK)\include\lxlistener.h" />
+    <ClInclude Include="$(LXSDK)\include\lxlocator.h" />
+    <ClInclude Include="$(LXSDK)\include\lxlog.h" />
+    <ClInclude Include="$(LXSDK)\include\lxmedia.h" />
+    <ClInclude Include="$(LXSDK)\include\lxmesh.h" />
+    <ClInclude Include="$(LXSDK)\include\lxmeshOLD.h" />
+    <ClInclude Include="$(LXSDK)\include\lxmessage.h" />
+    <ClInclude Include="$(LXSDK)\include\lxnetwork.h" />
+    <ClInclude Include="$(LXSDK)\include\lxnotify.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpackage.h" />
+    <ClInclude Include="$(LXSDK)\include\lxparticle.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpattern.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpersist.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpmodel.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpoly.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpredest.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpretype.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpreview.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpreviewsocket.h" />
+    <ClInclude Include="$(LXSDK)\include\lxprojdir.h" />
+    <ClInclude Include="$(LXSDK)\include\lxproxy.h" />
+    <ClInclude Include="$(LXSDK)\include\lxpvedit.h" />
+    <ClInclude Include="$(LXSDK)\include\lxraycast.h" />
+    <ClInclude Include="$(LXSDK)\include\lxrender.h" />
+    <ClInclude Include="$(LXSDK)\include\lxrendercache.h" />
+    <ClInclude Include="$(LXSDK)\include\lxrenderslot.h" />
+    <ClInclude Include="$(LXSDK)\include\lxresult.h" />
+    <ClInclude Include="$(LXSDK)\include\lxrndjob.h" />
+    <ClInclude Include="$(LXSDK)\include\lxschematic.h" />
+    <ClInclude Include="$(LXSDK)\include\lxscripts.h" />
+    <ClInclude Include="$(LXSDK)\include\lxselect.h" />
+    <ClInclude Include="$(LXSDK)\include\lxseltypes.h" />
+    <ClInclude Include="$(LXSDK)\include\lxserver.h" />
+    <ClInclude Include="$(LXSDK)\include\lxshade.h" />
+    <ClInclude Include="$(LXSDK)\include\lxshdr.h" />
+    <ClInclude Include="$(LXSDK)\include\lxstddialog.h" />
+    <ClInclude Include="$(LXSDK)\include\lxstopwatch.h" />
+    <ClInclude Include="$(LXSDK)\include\lxsurface.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtableau.h" />
+    <ClInclude Include="$(LXSDK)\include\lxthread.h" />
+    <ClInclude Include="$(LXSDK)\include\lxthumbbrowse.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtool.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtoolui.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtree.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtreeview.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtrisurf.h" />
+    <ClInclude Include="$(LXSDK)\include\lxtxtr.h" />
+    <ClInclude Include="$(LXSDK)\include\lxuiimage.h" />
+    <ClInclude Include="$(LXSDK)\include\lxundo.h" />
+    <ClInclude Include="$(LXSDK)\include\lxu_attrdesc.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_attributes.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_chanmod.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_command.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_deform.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_dialog.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_drawover.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_drop.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_format.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_geometry.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_geometry_triangulation.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_getstring.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_io.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_log.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_math.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_matrix.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_message.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_meta.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_modifier.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_octree.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_oqtree.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_package.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_parser.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_prefvalue.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_quaternion.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_queries.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_rendercontext.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_result.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_scene.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_schematic.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_select.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_shade.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_simd.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_surface.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_tableau.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_value.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_vector.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxu_vectorarray.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxvalue.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvaluehud.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvariation.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvector.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvectortools.h" />
+    <ClInclude Include="$(LXSDK)\include\lxversion.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvertex.h" />
+    <ClInclude Include="$(LXSDK)\include\lxviewobject.h" />
+    <ClInclude Include="$(LXSDK)\include\lxviewportframe.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvmath.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvmodel.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvolume.h" />
+    <ClInclude Include="$(LXSDK)\include\lxvp.h" />
+    <ClInclude Include="$(LXSDK)\include\lxw_action.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_actionclip.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_anim.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_audio.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_chanmod.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_channelui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_clip.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_cliped.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_color.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_colormapping.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_com.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_command.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_customview.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_deform.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_dirbrowse.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_draw.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_drawover.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_drop.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_envelope.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_externalrender.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_file.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_filter.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_force.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_formsys.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_group.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_groupui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_handles.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_image.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_imagemon.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_inputmap.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_interviewer.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_intrange.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_io.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_item.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_itemui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_layer.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_listcache.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_listener.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_locator.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_log.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_media.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_mesh.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_message.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_network.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_notify.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_package.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_particle.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_pattern.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_persist.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_pmodel.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_poly.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_predest.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_pretype.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_preview.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_projdir.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_proxy.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_pvedit.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_raycast.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_render.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_rendercache.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_renderslot.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_rndjob.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_schematic.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_scripts.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_select.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_seltypes.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_server.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_shade.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_shdr.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_stddialog.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_stopwatch.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_surface.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_tableau.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_thread.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_thumbbrowse.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_tool.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_toolui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_tree.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_treeview.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_trisurf.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_txtr.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_undo.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_value.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_valuehud.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_variation.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_vector.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_vectortools.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_vertex.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_viewobject.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_viewportframe.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_vmodel.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_volume.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lxw_vp.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_action.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_actionclip.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_anim.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_audio.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_canvasitem.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_chanmod.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_channelui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_clip.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_cliped.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_color.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_colormapping.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_com.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_command.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_customview.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_deform.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_dirbrowse.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_draw.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_drawover.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_drop.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_envelope.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_externalrender.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_file.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_filter.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_force.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_formsys.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_group.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_groupui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_handles.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_image.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_imagemon.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_inputmap.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_interviewer.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_intrange.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_io.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_item.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_itemui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_layer.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_listcache.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_listener.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_locator.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_log.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_media.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_mesh.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_message.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_network.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_notify.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_package.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_particle.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_pattern.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_persist.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_plugin.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_pmodel.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_poly.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_predest.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_pretype.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_preview.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_projdir.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_proxy.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_pvedit.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_raycast.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_rendercache.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_renderslot.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_rndjob.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_schematic.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_scripts.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_select.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_seltypes.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_server.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_shade.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_shdr.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_stddialog.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_stopwatch.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_surface.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_tableau.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_thread.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_tool.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_toolui.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_tree.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_treeview.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_trisurf.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_undo.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_util.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_value.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_valuehud.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_variation.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_vector.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_vectortools.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_vertex.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_viewobject.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_viewportframe.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_visitor.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_vmath.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_vmodel.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_volume.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_vp.hpp" />
+    <ClInclude Include="$(LXSDK)\include\lx_wrap.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(LXSDK)\common\clean.cpp" />
+    <ClCompile Include="$(LXSDK)\common\cwrap.cpp" />
+    <ClCompile Include="$(LXSDK)\common\initialize.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_attrdesc.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_attributes.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_chanmod.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_command.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_deform.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_dialog.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_drawover.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_drop.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_format.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_geometry.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_geometry_triangulation.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_io.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_log.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_math.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_matrix.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_message.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_meta.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_modifier.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_octree.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_package.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_parser.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_prefvalue.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_quaternion.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_queries.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_rendercontext.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_scene.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_schematic.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_select.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_shade.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_simd.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_surface.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_tableau.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_value.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_vector.cpp" />
+    <ClCompile Include="$(LXSDK)\common\lxu_vectorarray.cpp" />
+    <ClCompile Include="$(LXSDK)\common\util.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
