@@ -1,0 +1,1207 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_dirbrowse.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dirbrowse &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Draw" href="lxd_draw.html" />
+    <link rel="prev" title="Deform" href="lxd_deform.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dirbrowse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircacheservice">ILxDirCacheService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircacheentry">ILxDirCacheEntry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdirentrythumbasync">ILxDirEntryThumbAsync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmergeddircacheentry">ILxMergedDirCacheEntry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircachefilemetrics">ILxDirCacheFileMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircachesynthetic">ILxDirCacheSynthetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircachesyntheticentry">ILxDirCacheSyntheticEntry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxbasepathadddest">ILxBasePathAddDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircachemanualorderdest">ILxDirCacheManualOrderDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdircachegridposdest">ILxDirCacheGridPosDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfilesysdest">ILxFileSysDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmergedfilesysdest">ILxMergedFileSysDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxdirbrowserbasepathentrydest">ILxDirBrowserBasePathEntryDest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Dirbrowse</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dirbrowse">
+<h1>Dirbrowse<a class="headerlink" href="#dirbrowse" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxdircacheservice" id="id1">ILxDirCacheService</a></p></li>
+<li><p><a class="reference internal" href="#ilxdircacheentry" id="id2">ILxDirCacheEntry</a></p></li>
+<li><p><a class="reference internal" href="#ilxdirentrythumbasync" id="id3">ILxDirEntryThumbAsync</a></p></li>
+<li><p><a class="reference internal" href="#ilxmergeddircacheentry" id="id4">ILxMergedDirCacheEntry</a></p></li>
+<li><p><a class="reference internal" href="#ilxdircachefilemetrics" id="id5">ILxDirCacheFileMetrics</a></p></li>
+<li><p><a class="reference internal" href="#ilxdircachesynthetic" id="id6">ILxDirCacheSynthetic</a></p></li>
+<li><p><a class="reference internal" href="#ilxdircachesyntheticentry" id="id7">ILxDirCacheSyntheticEntry</a></p></li>
+<li><p><a class="reference internal" href="#ilxbasepathadddest" id="id8">ILxBasePathAddDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxdircachemanualorderdest" id="id9">ILxDirCacheManualOrderDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxdircachegridposdest" id="id10">ILxDirCacheGridPosDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxfilesysdest" id="id11">ILxFileSysDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxmergedfilesysdest" id="id12">ILxMergedFileSysDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxdirbrowserbasepathentrydest" id="id13">ILxDirBrowserBasePathEntryDest</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxdircacheservice">
+<h2><a class="toc-backref" href="#id1">ILxDirCacheService</a><a class="headerlink" href="#ilxdircacheservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxDirCacheService">
+<span id="_CPPv318ILxDirCacheService"></span><span id="_CPPv218ILxDirCacheService"></span><span id="ILxDirCacheService"></span><span class="target" id="class_i_lx_dir_cache_service"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheService</code><a class="headerlink" href="#_CPPv418ILxDirCacheService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The service provides access to the root entires of the cache (which are all of the base paths from all of the browsers). </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxDirCacheService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxDirCacheService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxDirCacheService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_service_1a7efcb99afa5338cd4c58345210d148d2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As with all services, we start with the ScriptQuery method, although it is not implemented. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService9RootCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxDirCacheService9RootCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxDirCacheService9RootCountE11LXtObjectIDPi"></span><span id="ILxDirCacheService::RootCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_dir_cache_service_1a0e757b89e619ecb221ab1ec6cd7fadcc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RootCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService9RootCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Entries within a cache are represented by objects with an <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> interface. These can represent a file or directory, which can be either “real” (as in, it exists on disk) a synthetic construct. Often these objects also implement an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface to expose various bits of metadata. Its worth noting that not all non-synthetic files are in base paths. For example, a synthetic directory may be displaying all clips loaded in the scene, and those clips may not be from the standard content that are part of the default base paths. The root paths usually match the base paths of all of the DirBrowserBasePaths instances. However, if a base path is the child of another base path, then only the more root path will be in the root of the cache, as the other path will already be in the cache as a child. These functions allow the cache to be walked. Passing in NULL for the parent will return the root-level paths (ie: the base paths from all the DirBrowserBasePaths). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService11RootByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N18ILxDirCacheService11RootByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N18ILxDirCacheService11RootByIndexE11LXtObjectIDiPPv"></span><span id="ILxDirCacheService::RootByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_dir_cache_service_1ad87320f59c4d21e094516ab51e54dfcc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RootByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService11RootByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService8RootLockE11LXtObjectID">
+<span id="_CPPv3N18ILxDirCacheService8RootLockE11LXtObjectID"></span><span id="_CPPv2N18ILxDirCacheService8RootLockE11LXtObjectID"></span><span id="ILxDirCacheService::RootLock__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_service_1a92a096243224b51463351562ef6713bb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RootLock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService8RootLockE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When using the above two methods, it is important to lock the list so that it doesn’t change out from under you. This is accomplished with the locking methods. Lock calls are renetrant within a thread, and can be nested. It is usually wise to make a copy of the root list and then unlock it. This avoids any possible deadlocks that may arise from a lock being held on the root list while one of the dir cache threads attempts to lock it while already having a lock on one of its entries. The deadlock arises from each thread waiting for the other to release its lock so that it can obtain the next lock. This isn’t a problem if you always walk up the list (from base to child), but it will be an issue if you walk up the list (say, checking to see if a specific entry is a root entry by locking the entry and then locking the root). As long as the root is locked before any entries are locked in the thread, this issue can be avoided  or you can just copy the root list. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService10RootUnlockE11LXtObjectID">
+<span id="_CPPv3N18ILxDirCacheService10RootUnlockE11LXtObjectID"></span><span id="_CPPv2N18ILxDirCacheService10RootUnlockE11LXtObjectID"></span><span id="ILxDirCacheService::RootUnlock__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_service_1afde3a881f5d5673cd8794f0e8ab8247f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RootUnlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService10RootUnlockE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService6LookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N18ILxDirCacheService6LookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N18ILxDirCacheService6LookupE11LXtObjectIDPKcPPv"></span><span id="ILxDirCacheService::Lookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_dir_cache_service_1aa3e3cdc091bc3b9078cb1cda405fc6f0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService6LookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Lookup a cache entry by its path anywhere in the hierarchy. The path is expected to be in local platform format. This is thread-safe. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService26CachedThumbnailAsyncCancelE11LXtObjectIDPKc">
+<span id="_CPPv3N18ILxDirCacheService26CachedThumbnailAsyncCancelE11LXtObjectIDPKc"></span><span id="_CPPv2N18ILxDirCacheService26CachedThumbnailAsyncCancelE11LXtObjectIDPKc"></span><span id="ILxDirCacheService::CachedThumbnailAsyncCancel__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_dir_cache_service_1a037744d0588db9624d0f1b0778e16d97"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CachedThumbnailAsyncCancel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService26CachedThumbnailAsyncCancelE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This aborts any pending async operations given an identifier string. This is tested against that returned by all of the pending async objects’ Ident() methods, and all that match are canceled. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService12SetPosOnDropE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N18ILxDirCacheService12SetPosOnDropE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N18ILxDirCacheService12SetPosOnDropE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxDirCacheService::SetPosOnDrop__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_service_1ac9958704a67bf4d1854ad29785c3a92e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPosOnDrop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService12SetPosOnDropE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It is not uncommon to create a new file by D&amp;D’ing some content into a Preset Browser. If the view supports manual ordering or grid mode, it is often desirable to respect that and place the newly-created file in the appropraite location. This method handles all of that for you. You just need to provide an LXtObjectID from the drop destination and the path of the file you created, and this will update the manual order and grid position as appropraite. Note that the file’s path must match that of the directory provided by the destination object, or this will do nothing. It is important to note that this is only realy good for updating a single file; calling this multiple times may result in the paths being shuffled around oddly, as you really want to take into account the previosuly positioned file instead of just the information present in the destination object. With the introduction of merged base paths, the new SetPosOnDropForCLlent() should be used instead </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService17AttributesChangedE11LXtObjectID11LXtObjectIDiPKc">
+<span id="_CPPv3N18ILxDirCacheService17AttributesChangedE11LXtObjectID11LXtObjectIDiPKc"></span><span id="_CPPv2N18ILxDirCacheService17AttributesChangedE11LXtObjectID11LXtObjectIDiPKc"></span><span id="ILxDirCacheService::AttributesChanged__LXtObjectID.LXtObjectID.i.cCP"></span><span class="target" id="class_i_lx_dir_cache_service_1a8328f2773367231d53633753b87f231c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AttributesChanged</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dirCacheEntry</em>, int <em>which</em>, <em class="property">const</em> char *<em>attribute</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService17AttributesChangedE11LXtObjectID11LXtObjectIDiPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService14ScanForChangesE11LXtObjectIDPKc">
+<span id="_CPPv3N18ILxDirCacheService14ScanForChangesE11LXtObjectIDPKc"></span><span id="_CPPv2N18ILxDirCacheService14ScanForChangesE11LXtObjectIDPKc"></span><span id="ILxDirCacheService::ScanForChanges__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_dir_cache_service_1afcbf795ebfa2badd4ebfb4ec947d42a1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScanForChanges</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService14ScanForChangesE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The dir cache needs to be told when a file or directory changes. On app activation it will automatically rescan all directories looking for changes, and update as appropriate. If the files or dirs are added or removed while the app is running, this function should be called by the client that did that modification so that the cache will be refreshed. If the path provided points to a directory, that directory and its children will be scanned for changes. If the path is a file, the directory that contains the file and its children will be scanned. If the path is NULL, the entire cache is rescanned. Rescanning involves hitting the disk, testing each file and its sidecar files for changes. Scanning the entire standard content directory hierarchy in a development build on a spinning disk hard drive takes about four seconds, which isn’t too bad for 4000 or so files and dirs. Targetting a specific directory should be nearly instant from the user’s point of view. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService9AddClientE11LXtObjectID">
+<span id="_CPPv3N18ILxDirCacheService9AddClientE11LXtObjectID"></span><span id="_CPPv2N18ILxDirCacheService9AddClientE11LXtObjectID"></span><span id="ILxDirCacheService::AddClient__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_service_1a6f08d3dba92d4b382fe6820e45a71bd2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddClient</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService9AddClientE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>While it operates as a low-priority thread, dir cache background isn’t always desirable. A preference determines if the cache should always upgrade in the background or only when a client is actively using it. Clients declare that they’re using it by calling this method to increment the use count. This keeps the cahce thread running and makes sure that everything is up to date. If a client attempts to access the cache without increasing the use count, they may have stale cache data or no cache data at all. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService12RemoveClientE11LXtObjectID">
+<span id="_CPPv3N18ILxDirCacheService12RemoveClientE11LXtObjectID"></span><span id="_CPPv2N18ILxDirCacheService12RemoveClientE11LXtObjectID"></span><span id="ILxDirCacheService::RemoveClient__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_service_1acf44e31b46fae98474b07f53c4e44eda"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RemoveClient</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService12RemoveClientE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When a client no longer needs to access the cache, it should remove itself. This just keeps the cache from doing any further updates, but it will first finish writing any changes to disk as needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService9ParseNameE11LXtObjectIDPKcPciPci">
+<span id="_CPPv3N18ILxDirCacheService9ParseNameE11LXtObjectIDPKcPciPci"></span><span id="_CPPv2N18ILxDirCacheService9ParseNameE11LXtObjectIDPKcPciPci"></span><span id="ILxDirCacheService::ParseName__LXtObjectID.cCP.cP.i.cP.i"></span><span class="target" id="class_i_lx_dir_cache_service_1a474642a63a77b5e1ce4a0c3be3f89721"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ParseName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>baseName</em>, int <em>baseNameLen</em>, char *<em>path</em>, int <em>pathLen</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService9ParseNameE11LXtObjectIDPKcPciPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>With the introduction of synthetic paths, we need a way to parse those paths. This will automatically handle both file system paths and synthetic paths, with the caveat that the paths must be absolute (ie: a synthetic path starts with “[servername]:”) so that it can be properly identified. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService11PathComposeE11LXtObjectIDPciPKcPKc">
+<span id="_CPPv3N18ILxDirCacheService11PathComposeE11LXtObjectIDPciPKcPKc"></span><span id="_CPPv2N18ILxDirCacheService11PathComposeE11LXtObjectIDPciPKcPKc"></span><span id="ILxDirCacheService::PathCompose__LXtObjectID.cP.i.cCP.cCP"></span><span class="target" id="class_i_lx_dir_cache_service_1a64319e478fae7d646ced5f77df5ad5fe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathCompose</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>filename</em>, int <em>filenameLen</em>, <em class="property">const</em> char *<em>baseName</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService11PathComposeE11LXtObjectIDPciPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Similarly, this will compose a path, inserting the appropriate seperators for synthatic vs. local paths. The filename buffer will be a combination of the path, a separator, and the basename, although if the basename is absolute it will be the only thing in the filename buffer. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService13IsChildOfPathE11LXtObjectIDPKcPKci">
+<span id="_CPPv3N18ILxDirCacheService13IsChildOfPathE11LXtObjectIDPKcPKci"></span><span id="_CPPv2N18ILxDirCacheService13IsChildOfPathE11LXtObjectIDPKcPKci"></span><span id="ILxDirCacheService::IsChildOfPath__LXtObjectID.cCP.cCP.i"></span><span class="target" id="class_i_lx_dir_cache_service_1a5e8dcd0c49274aa4de9acbf3ddf7ff85"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsChildOfPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>possibleChild</em>, <em class="property">const</em> char *<em>parentToTestAgainsts</em>, int <em>orIsSame</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService13IsChildOfPathE11LXtObjectIDPKcPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Test to see if a path is a child of another path, returning LXe_TRUE if it is and LXe_FALSE if it’s not. This works on both real and synthetic paths. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService12ToLocalAliasE11LXtObjectIDPcPci">
+<span id="_CPPv3N18ILxDirCacheService12ToLocalAliasE11LXtObjectIDPcPci"></span><span id="_CPPv2N18ILxDirCacheService12ToLocalAliasE11LXtObjectIDPcPci"></span><span id="ILxDirCacheService::ToLocalAlias__LXtObjectID.cP.cP.i"></span><span class="target" id="class_i_lx_dir_cache_service_1a4262a62e8fb05aa13934a7ac8adfd9de"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLocalAlias</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>path</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService12ToLocalAliasE11LXtObjectIDPcPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This retuns the local version of a path. Synthetic paths are simply returned as the original path, while non-synethic paths are returned as though <a class="reference internal" href="lxd_file.html#class_i_lx_file_service_1acbbe981718673d52695c09e9ef5ead0a"><span class="std std-ref">ILxFileService::ToLocalAlias()</span></a> was called on it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService13ArePathsEqualE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N18ILxDirCacheService13ArePathsEqualE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N18ILxDirCacheService13ArePathsEqualE11LXtObjectIDPKcPKc"></span><span id="ILxDirCacheService::ArePathsEqual__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_dir_cache_service_1a410e1dc45c91c39871a59f69dbc82d66"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArePathsEqual</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path1</em>, <em class="property">const</em> char *<em>path2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService13ArePathsEqualE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns if two paths are equal. Synthetic paths are considered to be case insensitive. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService12CanBeRenamedE11LXtObjectIDPKc">
+<span id="_CPPv3N18ILxDirCacheService12CanBeRenamedE11LXtObjectIDPKc"></span><span id="_CPPv2N18ILxDirCacheService12CanBeRenamedE11LXtObjectIDPKc"></span><span id="ILxDirCacheService::CanBeRenamed__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_dir_cache_service_1a87fe10c3575036b9bea5c8f2233aa0d7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CanBeRenamed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService12CanBeRenamedE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns true if a path can be renamed with the file.rename and dircache.rename commands. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService16MakeDirHierarchyE11LXtObjectIDPKci">
+<span id="_CPPv3N18ILxDirCacheService16MakeDirHierarchyE11LXtObjectIDPKci"></span><span id="_CPPv2N18ILxDirCacheService16MakeDirHierarchyE11LXtObjectIDPKci"></span><span id="ILxDirCacheService::MakeDirHierarchy__LXtObjectID.cCP.i"></span><span class="target" id="class_i_lx_dir_cache_service_1a64c4d84d0d1fc7ff6d8835c1e586c365"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeDirHierarchy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int <em>skipLastPart</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService16MakeDirHierarchyE11LXtObjectIDPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This ensures that the path provided exists on disk, creating the directories along the path if they don’t. At leaast the first component of the path must exist, and the user must have approriate permissions to modify the path. If any part of the path can’t be created, this will fail. If skipLastPart is true, we assume that part is the file component and will not try to create a directory there, but will create them for all components up to that point. This works only on local paths, and will fail on synthetics and merged entries. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxDirCacheService12MakeUniqueInE11LXtObjectID11LXtObjectIDPKcPci">
+<span id="_CPPv3N18ILxDirCacheService12MakeUniqueInE11LXtObjectID11LXtObjectIDPKcPci"></span><span id="_CPPv2N18ILxDirCacheService12MakeUniqueInE11LXtObjectID11LXtObjectIDPKcPci"></span><span id="ILxDirCacheService::MakeUniqueIn__LXtObjectID.LXtObjectID.cCP.cP.i"></span><span class="target" id="class_i_lx_dir_cache_service_1a9953023275c754c8925d4a82cad2b872"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeUniqueIn</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxDirCacheService12MakeUniqueInE11LXtObjectID11LXtObjectIDPKcPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This generates a new path that has a guaranteed unique filename relative in the directory represented by the entry provided (more on that below). The name is a base filename that is appended to the entry’s path, and should include an extension, such as “color.lxc”. A unique name is generated by insering “_1”, “_2”, etc just before the extension until a file cannot be found at that location. The following objects can be passed to this method:<ul class="simple">
+<li><p><a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> If this is a directory, it will return a unique filename in that directory. If it is a file, it will return a unique filename in the parent directory.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_merged_dir_cache_entry"><span class="std std-ref">ILxMergedDirCacheEntry</span></a> Same as for <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a>, but the new name will be unique in all of the component entries that make up this merged entry, with the final path being composed from the user path and the name provided.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_file_sys_dest"><span class="std std-ref">ILxFileSysDest</span></a> The new name is unique within the local path found in the destination.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_merged_file_sys_dest"><span class="std std-ref">ILxMergedFileSysDest</span></a> The new name is unique within the paths of all entries in the merged destination. The final path will be placed in the <a class="reference internal" href="#class_i_lx_file_sys_dest"><span class="std std-ref">ILxFileSysDest</span></a> path if available, falling back to the path of the first entry if not. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiDCEMARKUP_UPDATED_USER">
+<span class="target" id="lxd__dirbrowse_8hpp_1ae8b28b03cb7d9058c6db5ce9a5ede356"></span><code class="sig-name descname">LXiDCEMARKUP_UPDATED_USER</code><a class="headerlink" href="#c.LXiDCEMARKUP_UPDATED_USER" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If you make changes to a markup attribute, you need to notify the dir cache service through this method so that it can udpate its state and so the attributes can be saved into the files. Simply pass in the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> and the name of the attribute you updated, or NULL if multiple attributes were changed on that entry. The “which” flag indicates if the attribute was changed in the user markup, the shared markup or both. Note that contrary to most other entry methods, if the entry is a file then it must NOT be locked before calling this method. The method will do its own locking, and attempting to lock it yourself can result in a deadlock. Directories can be locked without issue, as only the directory itself is updated, while for files, the parent directory also needs to be updatred. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiDCEMARKUP_UPDATED_SHARED</p></li>
+<li><p>LXiDCEMARKUP_UPDATED_BOTH</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXvDCETYPE_INVALID">
+<span class="target" id="lxd__dirbrowse_8hpp_1ae47d671cafaf242aefe68ce701b045c3"></span><code class="sig-name descname">LXvDCETYPE_INVALID</code><a class="headerlink" href="#c.LXvDCETYPE_INVALID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the type of the file as a bitmask. Files represent an end-point in the hierarchy, while directories contain child entries. References are synthetic entries that point to other files/dirs (synthetic or real), and are commonly used to create things similar to “playlists”  user-defined in-memory fodlers that contain arbitrary collections of files  and smart directories whose contents are defined by filters. Note that references never point to other references; attempting to do so weill cause both to point to the actual referenced entry. The FILE and DIR flags indicate the file type, and may be merged with the SYNTHETIC or REFERENCE flags. If neither FILE or DIR are set, then the entry does not exist. Usually non-existant entries simply aren’t in the cache, but they are used for base paths. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXmDCETYPE_FILEDIR</p></li>
+<li><p>LXmDCETYPE_FLAGS</p></li>
+<li><p>LXmDCETYPE_SYNTH</p></li>
+<li><p>LXmDCETYPE_SPECIAL</p></li>
+<li><p>LXfDCETYPE_FILE</p></li>
+<li><p>LXfDCETYPE_DIR</p></li>
+<li><p>LXfDCETYPE_READONLY</p></li>
+<li><p>LXfDCETYPE_DIR_AS_FILE</p></li>
+<li><p>LXfDCETYPE_SYNTHETIC</p></li>
+<li><p>LXfDCETYPE_REFERENCE</p></li>
+<li><p>LXfDCETYPE_FILTERED</p></li>
+<li><p>LXxDCETYPE_IS_FILE</p></li>
+<li><p>LXxDCETYPE_IS_DIR</p></li>
+<li><p>LXfDCETYPE_EXISTS</p></li>
+<li><p>LXxDCETYPE_IS_DIR_AS_FILE</p></li>
+<li><p>LXxDCETYPE_AS_FILE</p></li>
+<li><p>LXxDCETYPE_AS_DIR</p></li>
+<li><p>LXxDCETYPE_IS_READONLY</p></li>
+<li><p>LXxDCETYPE_IS_READWRITE</p></li>
+<li><p>LXxDCETYPE_IS_REAL</p></li>
+<li><p>LXxDCETYPE_IS_SYNTHETIC</p></li>
+<li><p>LXxDCETYPE_IS_REFERENCE</p></li>
+<li><p>LXxDCETYPE_IS_FILTERED</p></li>
+</ul>
+</div>
+<div class="section" id="ilxdircacheentry">
+<h2><a class="toc-backref" href="#id2">ILxDirCacheEntry</a><a class="headerlink" href="#ilxdircacheentry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxDirCacheEntry">
+<span id="_CPPv316ILxDirCacheEntry"></span><span id="_CPPv216ILxDirCacheEntry"></span><span id="ILxDirCacheEntry"></span><span class="target" id="class_i_lx_dir_cache_entry"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheEntry</code><a class="headerlink" href="#_CPPv416ILxDirCacheEntry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> represents a single file or directory. It may be “real” (as in, it exists on disk), or it may be a synthetic object that exists only in memmory. Objects with this interface usually also implement an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface so that their metadata can be read. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry4TypeE11LXtObjectIDPi">
+<span id="_CPPv3N16ILxDirCacheEntry4TypeE11LXtObjectIDPi"></span><span id="_CPPv2N16ILxDirCacheEntry4TypeE11LXtObjectIDPi"></span><span id="ILxDirCacheEntry::Type__LXtObjectID.iP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a335726e73a2acd10061d36fae885efa9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry4TypeE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry7DirListE11LXtObjectIDiPPvi">
+<span id="_CPPv3N16ILxDirCacheEntry7DirListE11LXtObjectIDiPPvi"></span><span id="_CPPv2N16ILxDirCacheEntry7DirListE11LXtObjectIDiPPvi"></span><span id="ILxDirCacheEntry::DirList__LXtObjectID.i.voidPP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a55b31cd3006ae68ac22097a5c038c6ee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DirList</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>listMode</em>, void **<em>ppvObj</em>, int <em>asCopy</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry7DirListE11LXtObjectIDiPPvi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry8DirCountE11LXtObjectIDi">
+<span id="_CPPv3N16ILxDirCacheEntry8DirCountE11LXtObjectIDi"></span><span id="_CPPv2N16ILxDirCacheEntry8DirCountE11LXtObjectIDi"></span><span id="ILxDirCacheEntry::DirCount__LXtObjectID.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a1a34f0acd30b92a0bf508f6c53168ec4"></span>unsigned int <code class="sig-name descname">DirCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>listMode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry8DirCountE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There are times when you just need a quick count of the entries or a way to tell if there are any at all. This returns that count. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry4PathE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry4PathE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry4PathE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::Path__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1ad25ddeb6bdab041f9fbb9bffd012bf77"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Path</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry4PathE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These can be used to get the local format path, name part (the last part of the path, including any extension) and extension, if available. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry4NameE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry4NameE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry4NameE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::Name__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a70ad98ea5cf595d56fea3c3e79a387be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry4NameE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry9ExtensionE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry9ExtensionE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry9ExtensionE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::Extension__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a939df1c514e9f6f08f9451ef88575566"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Extension</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry9ExtensionE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry4SizeE11LXtObjectIDPd">
+<span id="_CPPv3N16ILxDirCacheEntry4SizeE11LXtObjectIDPd"></span><span id="_CPPv2N16ILxDirCacheEntry4SizeE11LXtObjectIDPd"></span><span id="ILxDirCacheEntry::Size__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_dir_cache_entry_1ad422282681375a2e90b1c9b95763c6c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry4SizeE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The size of the file in bytes can also be read as a float. This is only supported for files, and will not currently return the size of the contents of a directory hierarchy (it doesn’t fail; it just returns 0 instead). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry7ModTimeE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry7ModTimeE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry7ModTimeE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::ModTime__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a29513906fd808479fd232627fe3b9a52"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ModTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry7ModTimeE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The time the file or directory was created or modified on disk (whichever time is more recent) can be read as a string. The format is “YYYY:MM:DD HH:MM:SS”, which makes it easy to compare dates with strcmp(). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry6ParentE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxDirCacheEntry6ParentE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxDirCacheEntry6ParentE11LXtObjectIDPPv"></span><span id="ILxDirCacheEntry::Parent__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a7f9f4341590a52052ce48b22fd3e0f84"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Parent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry6ParentE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the parent of an entry, or fails with NOTFOUND if this is a base entry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry15ReferenceSourceE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxDirCacheEntry15ReferenceSourceE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxDirCacheEntry15ReferenceSourceE11LXtObjectIDPPv"></span><span id="ILxDirCacheEntry::ReferenceSource__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a144fde4910a45721498bbbe94b0ef2b2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReferenceSource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry15ReferenceSourceE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the entry is a reference, this returns the entry it is referencing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry14ReferencedListE11LXtObjectIDPPvi">
+<span id="_CPPv3N16ILxDirCacheEntry14ReferencedListE11LXtObjectIDPPvi"></span><span id="_CPPv2N16ILxDirCacheEntry14ReferencedListE11LXtObjectIDPPvi"></span><span id="ILxDirCacheEntry::ReferencedList__LXtObjectID.voidPP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a6ee50484d36f271e5c0b6697bad57b51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReferencedList</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em>, int <em>asCopy</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry14ReferencedListE11LXtObjectIDPPvi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These can be used to get an ILxArrayID containing the list of entries referencing this entry as their source. As with the dir/file lists, the array maintains a read lock on the entry until it is released, and thus should be released as soon as possible. Note that as of modo 12.2, the asCopy argument is always considered to be true. This change in behavior avoids deadlocks that could happen in cerrtain circumstances. Always returning a copy avoids these problem with no real penalties </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry15ReferencedCountE11LXtObjectID">
+<span id="_CPPv3N16ILxDirCacheEntry15ReferencedCountE11LXtObjectID"></span><span id="_CPPv2N16ILxDirCacheEntry15ReferencedCountE11LXtObjectID"></span><span id="ILxDirCacheEntry::ReferencedCount__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_entry_1aa51c212d807853ea49ac3b6f40cccbe2"></span>unsigned int <code class="sig-name descname">ReferencedCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry15ReferencedCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This quickly returns a count of referencess to this entry, without the overhead of allocating an array object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry13WasRecognizedE11LXtObjectID">
+<span id="_CPPv3N16ILxDirCacheEntry13WasRecognizedE11LXtObjectID"></span><span id="_CPPv2N16ILxDirCacheEntry13WasRecognizedE11LXtObjectID"></span><span id="ILxDirCacheEntry::WasRecognized__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_entry_1a210f6dee35bc06fe33384f94b23df662"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WasRecognized</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry13WasRecognizedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if the file was recognized by a server, and LXe_FALSE if it was not. Unrecognized files are usually hidden from the browser. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry8MetadataE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxDirCacheEntry8MetadataE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxDirCacheEntry8MetadataE11LXtObjectIDPPv"></span><span id="ILxDirCacheEntry::Metadata__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a9788d675f9e3cd173ef027c74fd14d38"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Metadata</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry8MetadataE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods return <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interfaces assocaited with the entry. This metadata is basic information like image resolution or the number of polygons, and is read only. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry10UserMarkupE11LXtObjectIDPPvi">
+<span id="_CPPv3N16ILxDirCacheEntry10UserMarkupE11LXtObjectIDPPvi"></span><span id="_CPPv2N16ILxDirCacheEntry10UserMarkupE11LXtObjectIDPPvi"></span><span id="ILxDirCacheEntry::UserMarkup__LXtObjectID.voidPP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1aadb57ca90d70c058431d7627e3978542"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserMarkup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em>, int <em>asWritable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry10UserMarkupE11LXtObjectIDPPvi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Markup contains user-defined features like tags and star ratings. These objects are normally read only, but you can request a writable object by setting the isWrite flag to true. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry12SharedMarkupE11LXtObjectIDPPvi">
+<span id="_CPPv3N16ILxDirCacheEntry12SharedMarkupE11LXtObjectIDPPvi"></span><span id="_CPPv2N16ILxDirCacheEntry12SharedMarkupE11LXtObjectIDPPvi"></span><span id="ILxDirCacheEntry::SharedMarkup__LXtObjectID.voidPP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1aed83192adea01af35946b87eb26ed6b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SharedMarkup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em>, int <em>asWritable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry12SharedMarkupE11LXtObjectIDPPvi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry16CommitUserMarkupE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxDirCacheEntry16CommitUserMarkupE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxDirCacheEntry16CommitUserMarkupE11LXtObjectID11LXtObjectID"></span><span id="ILxDirCacheEntry::CommitUserMarkup__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_entry_1a46fa6dff20998bdc494e4bbdc4ed9788"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CommitUserMarkup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>userMarkup</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry16CommitUserMarkupE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The writable object is a copy of the original markup to which you can make any changes you like. Once you are finished, you must call one of the following functions to commit the changes. The contents of the object will be copied into the entry, after which your object can be freed. Note that you can also create a new object yourself (meaning, there is no need to use a writable object obtained by calling the above functions), which is most useful when you need to add or remove attributes instead of simply changing their values. Since this obtains a write lock, care must be taken to ensure that you do not currently have a lcok on the entry (say, by having a non-copied array returned from <a class="reference internal" href="#class_i_lx_dir_cache_entry_1a55b31cd3006ae68ac22097a5c038c6ee"><span class="std std-ref">DirList()</span></a>) or else the app will deadlock. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry18CommitSharedMarkupE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxDirCacheEntry18CommitSharedMarkupE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxDirCacheEntry18CommitSharedMarkupE11LXtObjectID11LXtObjectID"></span><span id="ILxDirCacheEntry::CommitSharedMarkup__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_entry_1aced9843f3471d78f5869ec9f4bdf5415"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CommitSharedMarkup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>sharedMarkup</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry18CommitSharedMarkupE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry5LabelE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry5LabelE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry5LabelE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::Label__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a5ffa9a60acae63948b01eab6a6c5db0f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Label</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry5LabelE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These utilities return label, tooltip and description strings. If they aren’t available from the metadata, they are generated from the filename. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry4DescE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry4DescE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry4DescE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::Desc__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a3bd1f2c991d9aafe33a9722112410ab5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Desc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry4DescE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry7ToolTipE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry7ToolTipE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry7ToolTipE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::ToolTip__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a9ea233b7ef763bbd53fe39e3191c9c77"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToolTip</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry7ToolTipE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry9ThumbnailE11LXtObjectIDiiPjPjPPv">
+<span id="_CPPv3N16ILxDirCacheEntry9ThumbnailE11LXtObjectIDiiPjPjPPv"></span><span id="_CPPv2N16ILxDirCacheEntry9ThumbnailE11LXtObjectIDiiPjPjPPv"></span><span id="ILxDirCacheEntry::Thumbnail__LXtObjectID.i.i.unsigned-iP.unsigned-iP.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1aae1eb688482a26805f77d2793a212e60"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Thumbnail</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>w</em>, int <em>h</em>, unsigned int *<em>idealW</em>, unsigned int *<em>idealH</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry9ThumbnailE11LXtObjectIDiiPjPjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There is one other special case: If the client returns an idealW/idealH of 0,0, the image is unbounded and any size is valid. Note that this method does not use the cache, and will always hit the disk, but it is capacble of getting an image up to the ideal size (the cache is limited to 512x512). Also note that if the image is from a resource, this will fail unless it is called from the main thread, as image resources cannot be processed from any other thread. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry15CachedThumbnailE11LXtObjectIDiPjPjPPv">
+<span id="_CPPv3N16ILxDirCacheEntry15CachedThumbnailE11LXtObjectIDiPjPjPPv"></span><span id="_CPPv2N16ILxDirCacheEntry15CachedThumbnailE11LXtObjectIDiPjPjPPv"></span><span id="ILxDirCacheEntry::CachedThumbnail__LXtObjectID.i.unsigned-iP.unsigned-iP.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a5e0ca9f440d277bc00c9cc64ae3f1e79"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CachedThumbnail</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>size</em>, unsigned int *<em>idealW</em>, unsigned int *<em>idealH</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry15CachedThumbnailE11LXtObjectIDiPjPjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method will block until it can return an image or fail. Note that images for resrouces can only be read from the main thread, meaning that if the thumbnail isn’t already cached this call will simply fail for those cases. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry21CachedThumbnailCustomE11LXtObjectIDiiPjPjPPv">
+<span id="_CPPv3N16ILxDirCacheEntry21CachedThumbnailCustomE11LXtObjectIDiiPjPjPPv"></span><span id="_CPPv2N16ILxDirCacheEntry21CachedThumbnailCustomE11LXtObjectIDiiPjPjPPv"></span><span id="ILxDirCacheEntry::CachedThumbnailCustom__LXtObjectID.i.i.unsigned-iP.unsigned-iP.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a78c14d22031c82757756ce8792c2d9c7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CachedThumbnailCustom</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>w</em>, int <em>h</em>, unsigned int *<em>idealW</em>, unsigned int *<em>idealH</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry21CachedThumbnailCustomE11LXtObjectIDiiPjPjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This related method returns a cached thumbnail scaled to the desired size. If necessary, it will load the closest cached thumbnail from disk and resize it as needed. The maximum size is 512x512. As above, this will block until it can return an image or has failed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry20CachedThumbnailAsyncE11LXtObjectIDiPjPjPPv11LXtObjectID">
+<span id="_CPPv3N16ILxDirCacheEntry20CachedThumbnailAsyncE11LXtObjectIDiPjPjPPv11LXtObjectID"></span><span id="_CPPv2N16ILxDirCacheEntry20CachedThumbnailAsyncE11LXtObjectIDiPjPjPPv11LXtObjectID"></span><span id="ILxDirCacheEntry::CachedThumbnailAsync__LXtObjectID.i.unsigned-iP.unsigned-iP.voidPP.LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_entry_1a94fe496de1b764b2720dd5a2fbdaedb1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CachedThumbnailAsync</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>size</em>, unsigned int *<em>idealW</em>, unsigned int *<em>idealH</em>, void **<em>ppvObj</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>asyncHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry20CachedThumbnailAsyncE11LXtObjectIDiPjPjPPv11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This version of the method returns as quickly as possible. If an image is avaialble in the in-memory cache, it returns that image directly; if not, it will be queued and loaded asynchronously and the method will return LXe_NOTREADY. The ILxDirEntryThumbAsyncID object provided will be called from the main thread when the thumbnail is ready. The async handler provided will be owned by this system and released when no longer needed. If this filename is already queued with this ident, the existing one will be removed and the new one will be added to the head of the list. These operations can be canceled by calling <a class="reference internal" href="#class_i_lx_dir_cache_service_1a037744d0588db9624d0f1b0778e16d97"><span class="std std-ref">ILxDirCacheService::CachedThumbnailAsyncCancel()</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry26CachedThumbnailCustomAsyncE11LXtObjectIDiiPjPjPPv11LXtObjectID">
+<span id="_CPPv3N16ILxDirCacheEntry26CachedThumbnailCustomAsyncE11LXtObjectIDiiPjPjPPv11LXtObjectID"></span><span id="_CPPv2N16ILxDirCacheEntry26CachedThumbnailCustomAsyncE11LXtObjectIDiiPjPjPPv11LXtObjectID"></span><span id="ILxDirCacheEntry::CachedThumbnailCustomAsync__LXtObjectID.i.i.unsigned-iP.unsigned-iP.voidPP.LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_entry_1ad292cee3aa389869c5f2fe1fe3c814f4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CachedThumbnailCustomAsync</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>w</em>, int <em>h</em>, unsigned int *<em>idealW</em>, unsigned int *<em>idealH</em>, void **<em>ppvObj</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>asyncHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry26CachedThumbnailCustomAsyncE11LXtObjectIDiiPjPjPPv11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry22ChildManualOrderLookupE11LXtObjectIDPKcPj">
+<span id="_CPPv3N16ILxDirCacheEntry22ChildManualOrderLookupE11LXtObjectIDPKcPj"></span><span id="_CPPv2N16ILxDirCacheEntry22ChildManualOrderLookupE11LXtObjectIDPKcPj"></span><span id="ILxDirCacheEntry::ChildManualOrderLookup__LXtObjectID.cCP.unsigned-iP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a44995dc20ea0fbae5fdf97ecf93a66e8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildManualOrderLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>childPath</em>, unsigned int *<em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry22ChildManualOrderLookupE11LXtObjectIDPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A directory maintains a manual sort list of all of the files/dirs contained within. Initially, all entries are alpha-sorted with directories sorted first. The manual sort position of an entry within a directory can be read with this method. The function takes either the name part of the entry or the full path (the last part of the path is always used), and returns the index of that entry relative to the other entries in the directory. Note that manual sort order is intended for sorting files relative to each other. It is possible for the order to return empty gaps between two otherwise adjacent entries. The most common cause of this is when a file is both copied to a directory and its order is set. Since the directory hasn’t been rescanned for the new file(s) yet, the manual sort list contains paths that don’t currently exist in the child file/dir list. The childPath argument can be a full path or simply the name of the file/dir itself. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry19ChildManualOrderSetE11LXtObjectIDPKcj">
+<span id="_CPPv3N16ILxDirCacheEntry19ChildManualOrderSetE11LXtObjectIDPKcj"></span><span id="_CPPv2N16ILxDirCacheEntry19ChildManualOrderSetE11LXtObjectIDPKcj"></span><span id="ILxDirCacheEntry::ChildManualOrderSet__LXtObjectID.cCP.unsigned-i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a8bb29d907ecb44ef32397b1b05a60356"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildManualOrderSet</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>childPath</em>, unsigned int <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry19ChildManualOrderSetE11LXtObjectIDPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry23ChildGridPositionLookupE11LXtObjectIDPKcPjPj">
+<span id="_CPPv3N16ILxDirCacheEntry23ChildGridPositionLookupE11LXtObjectIDPKcPjPj"></span><span id="_CPPv2N16ILxDirCacheEntry23ChildGridPositionLookupE11LXtObjectIDPKcPjPj"></span><span id="ILxDirCacheEntry::ChildGridPositionLookup__LXtObjectID.cCP.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a143f6ca50060dbed24e7913b9665feec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildGridPositionLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>childPath</em>, unsigned int *<em>x</em>, unsigned int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry23ChildGridPositionLookupE11LXtObjectIDPKcPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A directory maintains the grid positions of each of the files within when (directories are not supported for grid mode). Grid mode is commonly used in things like color pickers, where a palette of user-defined colors can be re-arranged at will. Entries in the grid need not be contiguous, allowing for gaps between entries. Grid positions are arbitrary, but must be positive numbers. Directories cannot be placed in the grid; this is only available for files. This looks up the grid position for a given child path. Only the filename portion of the path need be provided, but you can pass the whole path if you like. If no grid positions are assigned when this is called, the files in the dir are implicitly assigned new positions, starting with 0,0, with each row being 10 enries wide. If new files are added to the directory after the grid has been initialized, they are added to a new row below the last entry This ensures that new files are still in the grid, but aren’t inadvertently filling in gaps that were intentionally left by the user. Note that when doing a lookup on a file’s path, none of the children should be locked in the same thread, as it may be necessary to walk the children from this function. If any children are locked in the same thread, this will result in a deadlock. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry20ChildGridPositionSetE11LXtObjectIDPKcjj">
+<span id="_CPPv3N16ILxDirCacheEntry20ChildGridPositionSetE11LXtObjectIDPKcjj"></span><span id="_CPPv2N16ILxDirCacheEntry20ChildGridPositionSetE11LXtObjectIDPKcjj"></span><span id="ILxDirCacheEntry::ChildGridPositionSet__LXtObjectID.cCP.unsigned-i.unsigned-i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a33d6826765e7e0bddf2b52dba55e1104"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildGridPositionSet</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>childPath</em>, unsigned int <em>x</em>, unsigned int <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry20ChildGridPositionSetE11LXtObjectIDPKcjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This sets the grid position of an entry. If another entry is already at that position, the two will be swapped. If the new entry didn’t have a previous position, it will be moved to after the last entry in the grid. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry11GridExtentsE11LXtObjectIDPjPj">
+<span id="_CPPv3N16ILxDirCacheEntry11GridExtentsE11LXtObjectIDPjPj"></span><span id="_CPPv2N16ILxDirCacheEntry11GridExtentsE11LXtObjectIDPjPj"></span><span id="ILxDirCacheEntry::GridExtents__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_dir_cache_entry_1a49e3cd2c8fdf98a762a2b3595686410b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridExtents</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>bottom</em>, unsigned int *<em>right</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry11GridExtentsE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the rightmost and bottommost coordinates of a region all of the entries within the grid. While the box they define (starting from 0,0) will never be smaller than the region defined by the thumbnails coordinates, it may be larger. This larger space allows for “padding” into which users can D&amp;D files outside of the bounds of the existing entries. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry14GridSetExtentsE11LXtObjectIDjj">
+<span id="_CPPv3N16ILxDirCacheEntry14GridSetExtentsE11LXtObjectIDjj"></span><span id="_CPPv2N16ILxDirCacheEntry14GridSetExtentsE11LXtObjectIDjj"></span><span id="ILxDirCacheEntry::GridSetExtents__LXtObjectID.unsigned-i.unsigned-i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a6be3fa210beca009a53efbd84a3b9d3a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridSetExtents</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>bottom</em>, unsigned int <em>right</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry14GridSetExtentsE11LXtObjectIDjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allows the extents to be changed at any time. Attempting to make the extents smaller than the coordinates of the entries (meaning, attempting to make it so that some entries are not within the extents) will result in the extents being resized to fit the thumbnails. Thus, passing in 0,0 will result in the bottom right enclosing all entries. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry10GridInsertE11LXtObjectIDijjj">
+<span id="_CPPv3N16ILxDirCacheEntry10GridInsertE11LXtObjectIDijjj"></span><span id="_CPPv2N16ILxDirCacheEntry10GridInsertE11LXtObjectIDijjj"></span><span id="ILxDirCacheEntry::GridInsert__LXtObjectID.i.unsigned-i.unsigned-i.unsigned-i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a605c7f1a98541e948d8e41945492e271"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridInsert</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>doRows</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, unsigned int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry10GridInsertE11LXtObjectIDijjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry10GridRemoveE11LXtObjectIDijjji">
+<span id="_CPPv3N16ILxDirCacheEntry10GridRemoveE11LXtObjectIDijjji"></span><span id="_CPPv2N16ILxDirCacheEntry10GridRemoveE11LXtObjectIDijjji"></span><span id="ILxDirCacheEntry::GridRemove__LXtObjectID.i.unsigned-i.unsigned-i.unsigned-i.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1ac0a7663a7e5da1fcdc2796521491eb03"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridRemove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>doRows</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, unsigned int <em>count</em>, int <em>force</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry10GridRemoveE11LXtObjectIDijjji" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This similarly removes rows or columns from the grid. If force is false, then rows/columns will be removed only if no entries exist in that row/columm. If true, then entries will be shifted over to fill the empty slots, but nothing will happent to entries occupying those slots. Passing in a very larger number for “count” will effectively remove any empty space between entries. As with inserting rows, setting both x and y to valid coordinates will affect only cells on that row/column, while setting one of them to LXiDCEGRID_NONE will affect all entries with positions equal to or greater than the x or y coordinates provided. Removing may decrease the extents of the grid, including when removing empty rows/columns from the far bottom/right. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry11GridIsEmptyE11LXtObjectIDijj">
+<span id="_CPPv3N16ILxDirCacheEntry11GridIsEmptyE11LXtObjectIDijj"></span><span id="_CPPv2N16ILxDirCacheEntry11GridIsEmptyE11LXtObjectIDijj"></span><span id="ILxDirCacheEntry::GridIsEmpty__LXtObjectID.i.unsigned-i.unsigned-i"></span><span class="target" id="class_i_lx_dir_cache_entry_1a37cbaf09c5c4b0b008248b16f01e3f7f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridIsEmpty</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>doRows</em>, unsigned int <em>x</em>, unsigned int <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry11GridIsEmptyE11LXtObjectIDijj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if a grid row or column is empty, and LXe_FALSE if not. Setting both x and y to non-LXiDCEGRID_NONE values will test the row or column from that point on. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry15GridIsEmptyCellE11LXtObjectIDjjPPv">
+<span id="_CPPv3N16ILxDirCacheEntry15GridIsEmptyCellE11LXtObjectIDjjPPv"></span><span id="_CPPv2N16ILxDirCacheEntry15GridIsEmptyCellE11LXtObjectIDjjPPv"></span><span id="ILxDirCacheEntry::GridIsEmptyCell__LXtObjectID.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_dir_cache_entry_1affa025f9ecb038728537f4a1a3c653be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridIsEmptyCell</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry15GridIsEmptyCellE11LXtObjectIDjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if a grid cell or column is empty, and LXe_FALSE if not If it returns false, the ILxDirCachenEntry representing the thumb at that cell can be returned; if you don’t need this, ppvObj can be set to NULL. If it is set, the object must be released when no longer needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxDirCacheEntry8UsernameE11LXtObjectIDPci">
+<span id="_CPPv3N16ILxDirCacheEntry8UsernameE11LXtObjectIDPci"></span><span id="_CPPv2N16ILxDirCacheEntry8UsernameE11LXtObjectIDPci"></span><span id="ILxDirCacheEntry::Username__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_entry_1ae4f7bef019432325e0a2b5de2783eceb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Username</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxDirCacheEntry8UsernameE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the username of the entry. It’s primarily intended for synthetic directories, which may have usernames that are different from the internal name. For everything else, this just returns the internal name, which is that component of the path. Files can provide alternate names through the “label” property of their metadata. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXxDIRCACHE_IS_SYNTHETIC_PATH">
+<span class="target" id="lxd__dirbrowse_8hpp_1a0cc9ea70c23430069719d2f0657ec0ed"></span><code class="sig-name descname">LXxDIRCACHE_IS_SYNTHETIC_PATH</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.LXxDIRCACHE_IS_SYNTHETIC_PATH" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This macro just returns true if the path string is synthetic by testing the first character, for cases where you don’t have the type. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXxDIRCACHE_IS_MERGED_PATH">
+<span class="target" id="lxd__dirbrowse_8hpp_1a3688170c8ca0d0d30ee4b88c4502cb33"></span><code class="sig-name descname">LXxDIRCACHE_IS_MERGED_PATH</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.LXxDIRCACHE_IS_MERGED_PATH" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This similar macro tests for merged paths. Merged paths always start with a octothorpe (#) to indicate their unique status, and represent the contents of multiple real or synthetic paths merged into a single view. A full merged path prefix should be in the form of, “#basePathIdent(name):”, where basePathIdent is the name of config key (hash, identifier, whatever) used to associate this set with this browesr, and name is the name of the set. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXvDCELIST_DIRS">
+<span class="target" id="lxd__dirbrowse_8hpp_1a22f90f40f128bc7e6d02c3b0505b27ac"></span><code class="sig-name descname">LXvDCELIST_DIRS</code><a class="headerlink" href="#c.LXvDCELIST_DIRS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For directory types, this returns the child files and/or directories as a read-only <a class="reference internal" href="lxd_value.html#class_i_lx_array"><span class="std std-ref">ILxArray</span></a> object. For conveience, this can return just files (including dirs-as-files), just dirs, or both. It’s important to note that the returned array object should be considered transient, and should be released as soon as possible. The array object maintains a read lock on the entry to ensure that it doesn’t change while you are using it. This means that no part of the entry can be modified until the array is released. If you need to modify the directory entry while you have the array object, you can avoid the read lock by requesting a copy of the array. This is slower than just getting the array directly, but there is no lock to worry about, and since it’s a copy the list won’t change out form under you.</p>
+<p>Note that as of modo 12.2, the asCopy argument is always considered to be true. This change in behavior avoids deadlocks that could happen in cerrtain circumstances. Always returning a copy avoids these problem with no real penalties. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXvDCELIST_FILES</p></li>
+<li><p>LXvDCELIST_BOTH</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiDCE_THUMBSIZE_IDEAL_ONLY">
+<span class="target" id="lxd__dirbrowse_8hpp_1a849e51825a7ee65c803ec5a1206e84af"></span><code class="sig-name descname">LXiDCE_THUMBSIZE_IDEAL_ONLY</code><a class="headerlink" href="#c.LXiDCE_THUMBSIZE_IDEAL_ONLY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the thumbnail for an entry. You can request any size, but the image you actually get back may be larger or smaller than the one requested. The ideal width and height are returned indirectlry, and represent the full-resolution image. There are also two special image resolutions available, and are used if either the width or height are set to them:<ul class="simple">
+<li><p>IDEAL_ONLY *ppvObj will be NULL, but idealW and idealH will be set to the full image resolution.</p></li>
+<li><p>FULL *ppvObj will be set to the full-resolution image. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiDCE_THUMBSIZE_FULL</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiDCE_CACHEDTHUMBSIZE_32">
+<span class="target" id="lxd__dirbrowse_8hpp_1aa68a06bc629232aae9c94a3e56c50781"></span><code class="sig-name descname">LXiDCE_CACHEDTHUMBSIZE_32</code><a class="headerlink" href="#c.LXiDCE_CACHEDTHUMBSIZE_32" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The cache system does mantain an on-disk cache of thumbnails in a few fiuxed sizes. Furthermore, there is an in-memory cache capacble of storing images of arbitrary sizes. Requesting one of these is much faster than loading the full-size image from the source file with Thumbnail(). If no cached version exists, the 512x512 size is loaded from the source, resized and saved into the various cache images, and then returned in the desired size. This means that the first time a cached thumbnail is requested may take longer than normal, but subsequent requests will be faster, even though it still has to be loaded from disk. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiDCE_CACHEDTHUMBSIZE_64</p></li>
+<li><p>LXiDCE_CACHEDTHUMBSIZE_128</p></li>
+<li><p>LXiDCE_CACHEDTHUMBSIZE_256</p></li>
+<li><p>LXiDCE_CACHEDTHUMBSIZE_512</p></li>
+<li><p>LXiDCE_CAHCEDTHUMBSIZE_COUNT</p></li>
+</ul>
+</div>
+<div class="section" id="ilxdirentrythumbasync">
+<h2><a class="toc-backref" href="#id3">ILxDirEntryThumbAsync</a><a class="headerlink" href="#ilxdirentrythumbasync" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxDirEntryThumbAsync">
+<span id="_CPPv321ILxDirEntryThumbAsync"></span><span id="_CPPv221ILxDirEntryThumbAsync"></span><span id="ILxDirEntryThumbAsync"></span><span class="target" id="class_i_lx_dir_entry_thumb_async"></span><em class="property">class </em><code class="sig-name descname">ILxDirEntryThumbAsync</code><a class="headerlink" href="#_CPPv421ILxDirEntryThumbAsync" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_dir_entry_thumb_async"><span class="std std-ref">ILxDirEntryThumbAsync</span></a> interface is pretty simple. If the image was successfully loaded, the <a class="reference internal" href="#class_i_lx_dir_entry_thumb_async_1aad713023c0ccab2b35647d68f130d4d7"><span class="std std-ref">Ready()</span></a> method is called with the image and ideal w/h. If it fails, the <a class="reference internal" href="#class_i_lx_dir_entry_thumb_async_1ae52deef6caea12cc71c7000713435c9e"><span class="std std-ref">Failed()</span></a> method is called instead. Both methods include the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> that the method was called on, and are always called from the main thread. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxDirEntryThumbAsync5ReadyE11LXtObjectID11LXtObjectIDjj11LXtObjectID">
+<span id="_CPPv3N21ILxDirEntryThumbAsync5ReadyE11LXtObjectID11LXtObjectIDjj11LXtObjectID"></span><span id="_CPPv2N21ILxDirEntryThumbAsync5ReadyE11LXtObjectID11LXtObjectIDjj11LXtObjectID"></span><span id="ILxDirEntryThumbAsync::Ready__LXtObjectID.LXtObjectID.unsigned-i.unsigned-i.LXtObjectID"></span><span class="target" id="class_i_lx_dir_entry_thumb_async_1aad713023c0ccab2b35647d68f130d4d7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Ready</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dirCacheEntry</em>, unsigned int <em>idealW</em>, unsigned int <em>idealH</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxDirEntryThumbAsync5ReadyE11LXtObjectID11LXtObjectIDjj11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxDirEntryThumbAsync6FailedE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N21ILxDirEntryThumbAsync6FailedE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N21ILxDirEntryThumbAsync6FailedE11LXtObjectID11LXtObjectID"></span><span id="ILxDirEntryThumbAsync::Failed__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_dir_entry_thumb_async_1ae52deef6caea12cc71c7000713435c9e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Failed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dirCacheEntry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxDirEntryThumbAsync6FailedE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxDirEntryThumbAsync5IdentE11LXtObjectIDPPKc">
+<span id="_CPPv3N21ILxDirEntryThumbAsync5IdentE11LXtObjectIDPPKc"></span><span id="_CPPv2N21ILxDirEntryThumbAsync5IdentE11LXtObjectIDPPKc"></span><span id="ILxDirEntryThumbAsync::Ident__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_dir_entry_thumb_async_1a11f256a8cc47184470666bdb6f845727"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Ident</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxDirEntryThumbAsync5IdentE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_dir_entry_thumb_async_1a11f256a8cc47184470666bdb6f845727"><span class="std std-ref">Ident()</span></a> method is used to allow the client to cancel any pending async operations. It returns an arbitrary string, and is compared against the one passed into CachedThumbnailAsyncCancel(). All instances with that ident are canceled. If this method returns NOTIMPL, the operation cannot be canceled. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiDCE_MANUALORDER_FIRST">
+<span class="target" id="lxd__dirbrowse_8hpp_1a4f7d136d6efca2c289584f1d6cd1a1e6"></span><code class="sig-name descname">LXiDCE_MANUALORDER_FIRST</code><a class="headerlink" href="#c.LXiDCE_MANUALORDER_FIRST" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method allows the sort order of a child entry to be set. The special defines can be used to move the entry to the first or last position in the list. Passing in a position greater than the highest position will move it to the end of the list, and is equivalent to LXiDCE_MANUALORDER_LAST. Again, the childPath argument can be either the full path or just name part of the file/dir. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiDCE_MANUALORDER_LAST</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiDCEGRID_NONE">
+<span class="target" id="lxd__dirbrowse_8hpp_1ac33b9e305374cce63433e177d26a9c78"></span><code class="sig-name descname">LXiDCEGRID_NONE</code><a class="headerlink" href="#c.LXiDCEGRID_NONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allows empty rows and columns to be insert into the grid by shifting the coordinates of the entries at a given grid position. right (columns) or down (rows) Passing a count of 0 will result in no change. If doRows is true, “count” rows will be added at the coordinate provided; otherwise, it adds columns. The x and y coordinates determine which entries are moved. If both x and y are set along with doRows, then “count” empty cells are inserted below the specific cell at (x,y). If instead x was set to LXiDCEGRID_NONE, then “count” row of blank cells would be inserted between all entries at “y” or lower Inserting always increases the extents of the grid, even if adding empty rows/columns to the far bottom/right. If the x/y are beyond the extents, the extents are padded to that position and then the rows are inserted. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxmergeddircacheentry">
+<h2><a class="toc-backref" href="#id4">ILxMergedDirCacheEntry</a><a class="headerlink" href="#ilxmergeddircacheentry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxMergedDirCacheEntry">
+<span id="_CPPv322ILxMergedDirCacheEntry"></span><span id="_CPPv222ILxMergedDirCacheEntry"></span><span id="ILxMergedDirCacheEntry"></span><span class="target" id="class_i_lx_merged_dir_cache_entry"></span><em class="property">class </em><code class="sig-name descname">ILxMergedDirCacheEntry</code><a class="headerlink" href="#_CPPv422ILxMergedDirCacheEntry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When using merged hierarchies, the <a class="reference internal" href="#class_i_lx_merged_dir_cache_entry"><span class="std std-ref">ILxMergedDirCacheEntry</span></a> is available on the object in addition to the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> interface. This provides a list of the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> objects that were merged to create this entry. For directories, this is the list of directories whose contents were merged, in local format. For a file, this is the list of files that exist in all of the merged directories this file is from, in local format. In both cases, the ILxDirCacheEntryID points to the the best match for this location, and that can be used for most operations. The merged location is most useful for special operations, such as checking the local version of a file against a cloud version. The entry at index 0 os the same as the one returned by the ILxDirCacheEntryID, with them all being sorted in the order they are arranged in the base path list. The paths of the file and its parent directory in merged format can be returned, as well as the object representing the merged parent. This is different from the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a>’s parent method, which returns the true local parent. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxMergedDirCacheEntry4PathE11LXtObjectIDPci">
+<span id="_CPPv3N22ILxMergedDirCacheEntry4PathE11LXtObjectIDPci"></span><span id="_CPPv2N22ILxMergedDirCacheEntry4PathE11LXtObjectIDPci"></span><span id="ILxMergedDirCacheEntry::Path__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_merged_dir_cache_entry_1a67dfdf924d59d363e183a54ff8c569f7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Path</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxMergedDirCacheEntry4PathE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the path of this entry in the merged hierarchy, which means it starts with “#basePathIdent(setName):”. For directories, this is the same as their actual path, since merged directories are their own construct. For files, this will be different from the path returned by <a class="reference internal" href="#class_i_lx_dir_cache_entry_1ad25ddeb6bdab041f9fbb9bffd012bf77"><span class="std std-ref">ILxDirCacheEntry::Path()</span></a>, wtih the former being a merged path and the latter being the path of the entry that was merged to create this entry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxMergedDirCacheEntry10EntryCountE11LXtObjectIDPi">
+<span id="_CPPv3N22ILxMergedDirCacheEntry10EntryCountE11LXtObjectIDPi"></span><span id="_CPPv2N22ILxMergedDirCacheEntry10EntryCountE11LXtObjectIDPi"></span><span id="ILxMergedDirCacheEntry::EntryCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_merged_dir_cache_entry_1a64c4efab5ed31d86dd852133baa394e9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EntryCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxMergedDirCacheEntry10EntryCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the list of entries that were merged to create this entry. These will only have the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> interface, not the merged interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxMergedDirCacheEntry12EntryByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N22ILxMergedDirCacheEntry12EntryByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N22ILxMergedDirCacheEntry12EntryByIndexE11LXtObjectIDiPPv"></span><span id="ILxMergedDirCacheEntry::EntryByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_merged_dir_cache_entry_1a3f4a3c6ee019a89963f6ff4006c5bed4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EntryByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxMergedDirCacheEntry12EntryByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxMergedDirCacheEntry8UserPathE11LXtObjectIDPci">
+<span id="_CPPv3N22ILxMergedDirCacheEntry8UserPathE11LXtObjectIDPci"></span><span id="_CPPv2N22ILxMergedDirCacheEntry8UserPathE11LXtObjectIDPci"></span><span id="ILxMergedDirCacheEntry::UserPath__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_merged_dir_cache_entry_1a7710cb9881937eadd3c561db9787a77e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxMergedDirCacheEntry8UserPathE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For directories, this returns the user path, which is where new files are writen to. For files, this is the location the file would exist if it were in the user path (and will be if it actually does exist there). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxMergedDirCacheEntry6ParentE11LXtObjectIDPPv">
+<span id="_CPPv3N22ILxMergedDirCacheEntry6ParentE11LXtObjectIDPPv"></span><span id="_CPPv2N22ILxMergedDirCacheEntry6ParentE11LXtObjectIDPPv"></span><span id="ILxMergedDirCacheEntry::Parent__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_merged_dir_cache_entry_1a1351c8f27acb5faffba22f376b67edef"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Parent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxMergedDirCacheEntry6ParentE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the parent directory as a merged object. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxdircachefilemetrics">
+<h2><a class="toc-backref" href="#id5">ILxDirCacheFileMetrics</a><a class="headerlink" href="#ilxdircachefilemetrics" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxDirCacheFileMetrics">
+<span id="_CPPv322ILxDirCacheFileMetrics"></span><span id="_CPPv222ILxDirCacheFileMetrics"></span><span id="ILxDirCacheFileMetrics"></span><span class="target" id="class_i_lx_dir_cache_file_metrics"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheFileMetrics</code><a class="headerlink" href="#_CPPv422ILxDirCacheFileMetrics" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An object with this interface is returned by clients registed with the cache system. Currently this is only used internally, and won’t be called form the SDK, but is made public in case future expansion warrants it. See <a class="reference internal" href="lxd_pretype.html#class_i_lx_preset_type"><span class="std std-ref">ILxPresetType</span></a> for information on exposing file state from the Preset Browser system, even if your file is not a preset per say. <a class="reference internal" href="#class_i_lx_dir_cache_file_metrics"><span class="std std-ref">ILxDirCacheFileMetrics</span></a> objects are commonly used in threads, and must be thread safe. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxDirCacheFileMetrics8MetadataE11LXtObjectIDPPv">
+<span id="_CPPv3N22ILxDirCacheFileMetrics8MetadataE11LXtObjectIDPPv"></span><span id="_CPPv2N22ILxDirCacheFileMetrics8MetadataE11LXtObjectIDPPv"></span><span id="ILxDirCacheFileMetrics::Metadata__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_file_metrics_1afed0b82fbee4c613a8795d1b8881bea6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Metadata</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxDirCacheFileMetrics8MetadataE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns an object with an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface containing metadata from the file. This includes properties that are part of the file’s definition and won’t be changed from the browser itself, such as an image’s dimensions and bit depth, or a meshes polygon count. Metadata is considered read only. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxDirCacheFileMetrics6MarkupE11LXtObjectIDPPv">
+<span id="_CPPv3N22ILxDirCacheFileMetrics6MarkupE11LXtObjectIDPPv"></span><span id="_CPPv2N22ILxDirCacheFileMetrics6MarkupE11LXtObjectIDPPv"></span><span id="ILxDirCacheFileMetrics::Markup__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_file_metrics_1a7d0a3a5f2b5862f4381f18c2cd053d7a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Markup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxDirCacheFileMetrics6MarkupE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns an object with an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface representing the user-defined markup that is stored in the file itself. This includes properties like tags, star ratings and so on. Such markup is defined by the cache system; the file is just storing it for us. If this method returns NOTIMPL, it is assumed that markup cannot be stored in the file at all. Returning NOTFOUND indicates that markup is supported, but that the file simply didn’t contain any. An OK code indicates that markup was found and the object returned is valid. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxDirCacheFileMetrics5FlagsE11LXtObjectIDPi">
+<span id="_CPPv3N22ILxDirCacheFileMetrics5FlagsE11LXtObjectIDPi"></span><span id="_CPPv2N22ILxDirCacheFileMetrics5FlagsE11LXtObjectIDPi"></span><span id="ILxDirCacheFileMetrics::Flags__LXtObjectID.iP"></span><span class="target" id="class_i_lx_dir_cache_file_metrics_1a07781eef7d4c3996632523969bb6bc28"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxDirCacheFileMetrics5FlagsE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>DYNAMIC_THUMBNAIL If set, this indicates that the thumbnail images can be quickly dynamically generated and do not need to be stored in the on-disk cache. A prime example of this is the color switches used by color presets. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiDCFM_DYNAMIC_THUMBNAILS">
+<span class="target" id="lxd__dirbrowse_8hpp_1a2797facf73d8bf051aa4bf119ce0913b"></span><code class="sig-name descname">LXiDCFM_DYNAMIC_THUMBNAILS</code><a class="headerlink" href="#c.LXiDCFM_DYNAMIC_THUMBNAILS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns some special flags for the file. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsDCSYNTH_BACKING">
+<span class="target" id="lxd__dirbrowse_8hpp_1a92d75c406e0212089576b6e14d3131ac"></span><code class="sig-name descname">LXsDCSYNTH_BACKING</code><a class="headerlink" href="#c.LXsDCSYNTH_BACKING" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This server tag indicates the backing of the synthetic folder. It directly determiens the scan priority of the server’s folders relative to other servers. The current values are:<ul class="simple">
+<li><p>MEMORY State that already exists in memory and is very fast to load.</p></li>
+<li><p>NETWORK_SINGLE Network access to a server. This is specifically with regards to quickly pulling down a single file that contains all of the information for a directory. As such, the individual files inside the folder will be prioritized as MEMORY.</p></li>
+<li><p>NETWORK_MULTIPLE Same, but both files and dirs will be processed after in-memory files, as files are assumed to require extra network calls to get information about them.</p></li>
+<li><p>FILE_SINGLE An entired directory populated by a single file. Directories will be processed after NETWORK backings, but their files will be processed with MEMORY priority.</p></li>
+<li><p>FILE_MULTIPLE Each file and directory is separately processed by hitting the disk. These are always prioritized last.</p></li>
+</ul>
+</p>
+<p>If the tag isn’t set or has an unknown value, OTHER is assumed. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsDCSYNTH_BACKING_MEMORY</p></li>
+<li><p>LXsDCSYNTH_BACKING_NETWORK_SINGLE</p></li>
+<li><p>LXsDCSYNTH_BACKING_NETWORK_MULTIPLE</p></li>
+<li><p>LXsDCSYNTH_BACKING_FILE_SINGLE</p></li>
+<li><p>LXsDCSYNTH_BACKING_FILE_MULTIPLE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxdircachesynthetic">
+<h2><a class="toc-backref" href="#id6">ILxDirCacheSynthetic</a><a class="headerlink" href="#ilxdircachesynthetic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxDirCacheSynthetic">
+<span id="_CPPv320ILxDirCacheSynthetic"></span><span id="_CPPv220ILxDirCacheSynthetic"></span><span id="ILxDirCacheSynthetic"></span><span class="target" id="class_i_lx_dir_cache_synthetic"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheSynthetic</code><a class="headerlink" href="#_CPPv420ILxDirCacheSynthetic" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The core dir cache looks at a subset of the file system defined by base paths. It is also possible for plug-ins to serve content that doesn’t exist on disk through synthetic folders. Each server defines a single synthetic base path derrived from its server name. These are considered root-level paths in the cache, using the volume identifier “[servername]” Paths inside those dirs are accessed in neutral format, prefixed with the “[servername]:” identifier (ie: “[servername]:dir/file.ext”). If there a path component can be represented as a username or an internal name, it will always be encoded as the internal name. Information is read from the paths representing “files” through preset servers, just like for any other path. Such servers have to be flagged to support synthetic paths. Similarly, drag and drop requires clients to explicitly handle LXsDROPSOURCE_FILES_SYNTH, which may include both real and synthetic paths. Since all cache scanning is done through threads, all methods on the server must be thread safe. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxDirCacheSynthetic6LookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N20ILxDirCacheSynthetic6LookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N20ILxDirCacheSynthetic6LookupE11LXtObjectIDPKcPPv"></span><span id="ILxDirCacheSynthetic::Lookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_dir_cache_synthetic_1afce9085fe0bc07857a65e17424109596"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxDirCacheSynthetic6LookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The synthetic server returns synthetic entry objects representing directories with an and files with an <a class="reference internal" href="#class_i_lx_dir_cache_synthetic_entry"><span class="std std-ref">ILxDirCacheSyntheticEntry</span></a> interface. Given a path, this returns a matching interface, or returns LXe_NOTAVAILABLE if the path can’t be found. Note that all paths will be absolute and start with “[servername]:”, although the root ommits the colon. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxDirCacheSynthetic4RootE11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxDirCacheSynthetic4RootE11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxDirCacheSynthetic4RootE11LXtObjectIDPPv"></span><span id="ILxDirCacheSynthetic::Root__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_dir_cache_synthetic_1aab4681864f8ff2fbbd9acd0b2c37dd2d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Root</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxDirCacheSynthetic4RootE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the root entry, and is identical to calling <a class="reference internal" href="#class_i_lx_dir_cache_synthetic_1afce9085fe0bc07857a65e17424109596"><span class="std std-ref">Lookup()</span></a> with “[servername]”. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxdircachesyntheticentry">
+<h2><a class="toc-backref" href="#id7">ILxDirCacheSyntheticEntry</a><a class="headerlink" href="#ilxdircachesyntheticentry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv425ILxDirCacheSyntheticEntry">
+<span id="_CPPv325ILxDirCacheSyntheticEntry"></span><span id="_CPPv225ILxDirCacheSyntheticEntry"></span><span id="ILxDirCacheSyntheticEntry"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheSyntheticEntry</code><a class="headerlink" href="#_CPPv425ILxDirCacheSyntheticEntry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The syntheric entry represents a single directory or file, from the root at “[servername]:” through to to individual files. For directories, it provides access files and dirs within as yet more synthetic entries. All methods on this interface must be thread safe. The most common way to constuct an entry is to build one when requested such that all of the state it needs is part of the entry object, without any external dependencies. This ensures that if whatever was used to build the entry changes in another thread, the scan thread will still have a valid entry object. In effect, the entry is a snapshot of the dir/file state and is considered disposable. The first time an directory entry is requested, the server may need to do some expensive setup. Rather than blocking the scan thread, it can return that it has zero children, do the setup separately, and later call <a class="reference internal" href="#class_i_lx_dir_cache_service_1afcbf795ebfa2badd4ebfb4ec947d42a1"><span class="std std-ref">ILxDirCacheService::ScanForChanges()</span></a> to tell the dir cache to update that path. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry4PathE11LXtObjectIDPci">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry4PathE11LXtObjectIDPci"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry4PathE11LXtObjectIDPci"></span><span id="ILxDirCacheSyntheticEntry::Path__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1a1461ada5fb411ee0e87c9888d6a8386c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Path</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry4PathE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the path to this entry, including the “[servername]:” portion. Due to the nature of synthetic dirs, the path should be a generic path without any localization (ie: an internal name string). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry4NameE11LXtObjectIDPci">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry4NameE11LXtObjectIDPci"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry4NameE11LXtObjectIDPci"></span><span id="ILxDirCacheSyntheticEntry::Name__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1aaec55344a6bf1a26de4582b361174305"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry4NameE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These return the username and internal name of the entry itself. The internal name is suitable for building a path For files, the name is execpted to include any extension, if present. The username is for display purposes, and is only used for directories. Files get their username from the label stored in the metadata. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry11DirUsernameE11LXtObjectIDPci">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry11DirUsernameE11LXtObjectIDPci"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry11DirUsernameE11LXtObjectIDPci"></span><span id="ILxDirCacheSyntheticEntry::DirUsername__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1aa392cdec42b9d953c50ef6eb326ed6b2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DirUsername</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry11DirUsernameE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry13FileExtensionE11LXtObjectIDPci">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry13FileExtensionE11LXtObjectIDPci"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry13FileExtensionE11LXtObjectIDPci"></span><span id="ILxDirCacheSyntheticEntry::FileExtension__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1a8532aab20e7f51a7219e1ea2de781920"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileExtension</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry13FileExtensionE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For files, this returns the extension, if there is any. Files are not required to have extensions, and some synthetic files may have periods that are not mark an extension, so this makes it very clear what the extension is to the caller. If there is no extension, this can return LXe_NOTFOUND, or simply LXe_NOTIMPL when no extensions are supported. Other codes will be considered actual failures. As usual, SHORTBUF should be returned if the buffer isn’t big enough. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry6IsFileE11LXtObjectID">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry6IsFileE11LXtObjectID"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry6IsFileE11LXtObjectID"></span><span id="ILxDirCacheSyntheticEntry::IsFile__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1a3dc7583d06464ddf155a7670d8ef9f13"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsFile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry6IsFileE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if the entry is a file, and LXe_FALSE if it is a directory that can contain other files. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry8DirBuildE11LXtObjectID">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry8DirBuildE11LXtObjectID"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry8DirBuildE11LXtObjectID"></span><span id="ILxDirCacheSyntheticEntry::DirBuild__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1a0da831a8740cf6ba113f257b54ff9d70"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DirBuild</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry8DirBuildE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For directories, these methods allow the list of files and directories to be walked. First, a scan request is made. Often the child list is burned into the synthetic entry on creation, in which case this does nothing and returns immediately. In other cases but in some cases it is desirable to build the child list just before it is walked. If this fails, we consider the directory to be empty, but it can be marked for rescan later <a class="reference internal" href="#class_i_lx_dir_cache_service_1afcbf795ebfa2badd4ebfb4ec947d42a1"><span class="std std-ref">ILxDirCacheService::ScanForChanges()</span></a>. Since these are commonly used from threads, care should be taken to not change this list out from under the caller. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry8DirCountE11LXtObjectIDi">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry8DirCountE11LXtObjectIDi"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry8DirCountE11LXtObjectIDi"></span><span id="ILxDirCacheSyntheticEntry::DirCount__LXtObjectID.i"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1aa0d16c1a1a524a4e87d2b3e5705cad9c"></span>unsigned int <code class="sig-name descname">DirCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>listMode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry8DirCountE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>listMode is a LXvDCELIST_ indicating if files, directories or both should are going to be requested by the upcoming <a class="reference internal" href="#class_i_lx_dir_cache_synthetic_entry_1aa0d16c1a1a524a4e87d2b3e5705cad9c"><span class="std std-ref">DirCount()</span></a> and <a class="reference internal" href="#class_i_lx_dir_cache_synthetic_entry_1ae2fa4f29845afbbbad6ce9ef2bb51a12"><span class="std std-ref">DirByIndex()</span></a> calls. The object returned from <a class="reference internal" href="#class_i_lx_dir_cache_synthetic_entry_1ae2fa4f29845afbbbad6ce9ef2bb51a12"><span class="std std-ref">DirByIndex()</span></a> should have the <a class="reference internal" href="#class_i_lx_dir_cache_synthetic_entry"><span class="std std-ref">ILxDirCacheSyntheticEntry</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry10DirByIndexE11LXtObjectIDijPPv">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry10DirByIndexE11LXtObjectIDijPPv"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry10DirByIndexE11LXtObjectIDijPPv"></span><span id="ILxDirCacheSyntheticEntry::DirByIndex__LXtObjectID.i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1ae2fa4f29845afbbbad6ce9ef2bb51a12"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DirByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>listMode</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry10DirByIndexE11LXtObjectIDijPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry7ModTimeE11LXtObjectIDPci">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry7ModTimeE11LXtObjectIDPci"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry7ModTimeE11LXtObjectIDPci"></span><span id="ILxDirCacheSyntheticEntry::ModTime__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1a5f14cf3a36a299f271e43ed8fc8b8d81"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ModTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry7ModTimeE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the modification time of the entry as a string. The exact nature of this is arbitrary and up to the server, but it should be possible to compare it with strcmp() such that more recent dates are considered larger than less recent dates. This is used to decide if the dir cache needs ot be updated with new state from the synthetic folder. If this is a directory, then if any of the files inside of it have changed, the directory time should also have changed. If the stirng is empty, it is always considered to have changed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxDirCacheSyntheticEntry4SizeE11LXtObjectID">
+<span id="_CPPv3N25ILxDirCacheSyntheticEntry4SizeE11LXtObjectID"></span><span id="_CPPv2N25ILxDirCacheSyntheticEntry4SizeE11LXtObjectID"></span><span id="ILxDirCacheSyntheticEntry::Size__LXtObjectID"></span><span class="target" id="class_i_lx_dir_cache_synthetic_entry_1a43890e95b9bdbf581ce1270bd540e3c9"></span>double <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxDirCacheSyntheticEntry4SizeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the size of a file in bytes. This is mostly used for searches/filtering, and is expected to return 0 for directories or for files where size doesn’t make sense. This is returned as a double to handle very large file sizes beyond what a 32 bit int can hold. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxbasepathadddest">
+<h2><a class="toc-backref" href="#id8">ILxBasePathAddDest</a><a class="headerlink" href="#ilxbasepathadddest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxBasePathAddDest">
+<span id="_CPPv318ILxBasePathAddDest"></span><span id="_CPPv218ILxBasePathAddDest"></span><span id="ILxBasePathAddDest"></span><span class="target" id="class_i_lx_base_path_add_dest"></span><em class="property">class </em><code class="sig-name descname">ILxBasePathAddDest</code><a class="headerlink" href="#_CPPv418ILxBasePathAddDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An object with this interface is exposed during drag and drop in the Dir Browser. Its single method can be called by an <a class="reference internal" href="lxd_drop.html#class_i_lx_drop"><span class="std std-ref">ILxDrop</span></a> server to add a new base path to the browser. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxBasePathAddDest11AddBasePathE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N18ILxBasePathAddDest11AddBasePathE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N18ILxBasePathAddDest11AddBasePathE11LXtObjectIDPKcPKc"></span><span id="ILxBasePathAddDest::AddBasePath__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_base_path_add_dest_1ab2a8097c230ac859a8757234caaec997"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddBasePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>setName</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxBasePathAddDest11AddBasePathE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calling this method adds a new base path to the named set in the associated browser, creating the set if needed. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxdircachemanualorderdest">
+<h2><a class="toc-backref" href="#id9">ILxDirCacheManualOrderDest</a><a class="headerlink" href="#ilxdircachemanualorderdest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv426ILxDirCacheManualOrderDest">
+<span id="_CPPv326ILxDirCacheManualOrderDest"></span><span id="_CPPv226ILxDirCacheManualOrderDest"></span><span id="ILxDirCacheManualOrderDest"></span><span class="target" id="class_i_lx_dir_cache_manual_order_dest"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheManualOrderDest</code><a class="headerlink" href="#_CPPv426ILxDirCacheManualOrderDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The dir cache also manages the manual sort order of files/dirs within a directory. This is exposed through drag and drop through an <a class="reference internal" href="#class_i_lx_dir_cache_manual_order_dest"><span class="std std-ref">ILxDirCacheManualOrderDest</span></a> interface on the destination object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N26ILxDirCacheManualOrderDest12BetweenPathsE11LXtObjectIDPPvPPKcPPKci">
+<span id="_CPPv3N26ILxDirCacheManualOrderDest12BetweenPathsE11LXtObjectIDPPvPPKcPPKci"></span><span id="_CPPv2N26ILxDirCacheManualOrderDest12BetweenPathsE11LXtObjectIDPPvPPKcPPKci"></span><span id="ILxDirCacheManualOrderDest::BetweenPaths__LXtObjectID.voidPP.cCPP.cCPP.i"></span><span class="target" id="class_i_lx_dir_cache_manual_order_dest_1ac8c344d91add48ca018bac21b0c8a083"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BetweenPaths</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em>, <em class="property">const</em> char **<em>nameBefore</em>, <em class="property">const</em> char **<em>nameAfter</em>, int <em>asPaths</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxDirCacheManualOrderDest12BetweenPathsE11LXtObjectIDPPvPPKcPPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the names of the two files/dirs that the drop point is between. It will return NULL for a name if the drop point is at the beginning/end of the list. Clients can call ILxDirCacheEntry::ManualChildOrderSet() on the parent object (returned as ppvObj) to set the position of a path relative to another path. If the asPaths is true, then the strings returned represent the full path instead of just the name. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxdircachegridposdest">
+<h2><a class="toc-backref" href="#id10">ILxDirCacheGridPosDest</a><a class="headerlink" href="#ilxdircachegridposdest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxDirCacheGridPosDest">
+<span id="_CPPv322ILxDirCacheGridPosDest"></span><span id="_CPPv222ILxDirCacheGridPosDest"></span><span id="ILxDirCacheGridPosDest"></span><span class="target" id="class_i_lx_dir_cache_grid_pos_dest"></span><em class="property">class </em><code class="sig-name descname">ILxDirCacheGridPosDest</code><a class="headerlink" href="#_CPPv422ILxDirCacheGridPosDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The dir cache also manages the grid positions of files within a directory (directories themseves cannot be placed on the grid, and are not supported). This is exposed through drag and drop through an <a class="reference internal" href="#class_i_lx_dir_cache_grid_pos_dest"><span class="std std-ref">ILxDirCacheGridPosDest</span></a> interface on the destination object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxDirCacheGridPosDest7GridPosE11LXtObjectIDPPvPjPj">
+<span id="_CPPv3N22ILxDirCacheGridPosDest7GridPosE11LXtObjectIDPPvPjPj"></span><span id="_CPPv2N22ILxDirCacheGridPosDest7GridPosE11LXtObjectIDPPvPjPj"></span><span id="ILxDirCacheGridPosDest::GridPos__LXtObjectID.voidPP.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_dir_cache_grid_pos_dest_1a4126b40a5e61b77949c17e96f07f92d7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GridPos</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em>, unsigned int *<em>x</em>, unsigned int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxDirCacheGridPosDest7GridPosE11LXtObjectIDPPvPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> containing the drop point, as well as the x and y coordinates of the drop point. The coordinates represent an empty cell or a cell already in use by a file. Clients can call <a class="reference internal" href="#class_i_lx_dir_cache_entry_1a33d6826765e7e0bddf2b52dba55e1104"><span class="std std-ref">ILxDirCacheEntry::ChildGridPositionSet()</span></a> on the directory (returned as ppvObj) to set new coordiantes for a file within. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxfilesysdest">
+<h2><a class="toc-backref" href="#id11">ILxFileSysDest</a><a class="headerlink" href="#ilxfilesysdest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxFileSysDest">
+<span id="_CPPv314ILxFileSysDest"></span><span id="_CPPv214ILxFileSysDest"></span><span id="ILxFileSysDest"></span><span class="target" id="class_i_lx_file_sys_dest"></span><em class="property">class </em><code class="sig-name descname">ILxFileSysDest</code><a class="headerlink" href="#_CPPv414ILxFileSysDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The FilePath destination simply provides a path to a file or directory. This is often used to create new files or move existing files at the time of the drop. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxFileSysDest4PathE11LXtObjectIDPPKc">
+<span id="_CPPv3N14ILxFileSysDest4PathE11LXtObjectIDPPKc"></span><span id="_CPPv2N14ILxFileSysDest4PathE11LXtObjectIDPPKc"></span><span id="ILxFileSysDest::Path__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_file_sys_dest_1a9e3ba7c0cbb0aa6415644f2b62a37bdd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Path</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileSysDest4PathE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the destination’s path. The server can use this to create new files, move existing files to the path, or overwrite an existing file with a new one. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileSysDest5IsDirE11LXtObjectID">
+<span id="_CPPv3N14ILxFileSysDest5IsDirE11LXtObjectID"></span><span id="_CPPv2N14ILxFileSysDest5IsDirE11LXtObjectID"></span><span id="ILxFileSysDest::IsDir__LXtObjectID"></span><span class="target" id="class_i_lx_file_sys_dest_1aff42caf9d82a40f81a04468c1817e8dd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsDir</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileSysDest5IsDirE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This utility returns LXe_TRUE if the path is a file, and LXe_FALSE if it is a directory. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileSysDest5AsDirE11LXtObjectIDPPKc">
+<span id="_CPPv3N14ILxFileSysDest5AsDirE11LXtObjectIDPPKc"></span><span id="_CPPv2N14ILxFileSysDest5AsDirE11LXtObjectIDPPKc"></span><span id="ILxFileSysDest::AsDir__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_file_sys_dest_1a7b8eb02fb377281ac93f674e2e991d38"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsDir</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileSysDest5AsDirE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is similar to <a class="reference internal" href="#class_i_lx_file_sys_dest_1a9e3ba7c0cbb0aa6415644f2b62a37bdd"><span class="std std-ref">Path()</span></a>. The difference is that the path returned by <a class="reference internal" href="#class_i_lx_file_sys_dest_1a9e3ba7c0cbb0aa6415644f2b62a37bdd"><span class="std std-ref">Path()</span></a> may point to a file or directory. <a class="reference internal" href="#class_i_lx_file_sys_dest_1a7b8eb02fb377281ac93f674e2e991d38"><span class="std std-ref">AsDir()</span></a> will return <a class="reference internal" href="#class_i_lx_file_sys_dest_1a9e3ba7c0cbb0aa6415644f2b62a37bdd"><span class="std std-ref">Path()</span></a> if <a class="reference internal" href="#class_i_lx_file_sys_dest_1aff42caf9d82a40f81a04468c1817e8dd"><span class="std std-ref">IsDir()</span></a> would return false, but if not it will instead return the parent of <a class="reference internal" href="#class_i_lx_file_sys_dest_1a9e3ba7c0cbb0aa6415644f2b62a37bdd"><span class="std std-ref">Path()</span></a>. This is useful if the intention of the drop is to create a new file in the same directory as a file path returned by <a class="reference internal" href="#class_i_lx_file_sys_dest_1a9e3ba7c0cbb0aa6415644f2b62a37bdd"><span class="std std-ref">Path()</span></a>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxmergedfilesysdest">
+<h2><a class="toc-backref" href="#id12">ILxMergedFileSysDest</a><a class="headerlink" href="#ilxmergedfilesysdest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxMergedFileSysDest">
+<span id="_CPPv320ILxMergedFileSysDest"></span><span id="_CPPv220ILxMergedFileSysDest"></span><span id="ILxMergedFileSysDest"></span><span class="target" id="class_i_lx_merged_file_sys_dest"></span><em class="property">class </em><code class="sig-name descname">ILxMergedFileSysDest</code><a class="headerlink" href="#_CPPv420ILxMergedFileSysDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When dropping into a merged directory, <a class="reference internal" href="#class_i_lx_file_sys_dest"><span class="std std-ref">ILxFileSysDest</span></a> isn’t quite good enough. While it can still be used for drops into the user dir, extra information is available through this interface. Both interfaces are usually present on the same object when merged paths are available. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxMergedFileSysDest11MergedEntryE11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxMergedFileSysDest11MergedEntryE11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxMergedFileSysDest11MergedEntryE11LXtObjectIDPPv"></span><span id="ILxMergedFileSysDest::MergedEntry__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_merged_file_sys_dest_1a2ed348ddb8bc8466721dd516b3b4305f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MergedEntry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxMergedFileSysDest11MergedEntryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the entry represented by the merged path. This can be queried for the <a class="reference internal" href="#class_i_lx_dir_cache_entry"><span class="std std-ref">ILxDirCacheEntry</span></a> and <a class="reference internal" href="#class_i_lx_merged_dir_cache_entry"><span class="std std-ref">ILxMergedDirCacheEntry</span></a> interfaces </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxMergedFileSysDest10EntryCountE11LXtObjectIDPj">
+<span id="_CPPv3N20ILxMergedFileSysDest10EntryCountE11LXtObjectIDPj"></span><span id="_CPPv2N20ILxMergedFileSysDest10EntryCountE11LXtObjectIDPj"></span><span id="ILxMergedFileSysDest::EntryCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_merged_file_sys_dest_1a99c1636a19ce7cac013f7c5d63a71819"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EntryCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxMergedFileSysDest10EntryCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The rest of these methods are just convenience methods that pass through to the object returned by <a class="reference internal" href="#class_i_lx_merged_file_sys_dest_1a2ed348ddb8bc8466721dd516b3b4305f"><span class="std std-ref">MergedEntry()</span></a>. These allow the list of paths that were merged to create this specific destination point to be walked. If the drop location is on a file, this is a list of filenames that exist in the merged directories. If the location is a dir, this is all the dirs that were merged. The first entry in the list represents the “user” location, and is where edits should be made on a drop (such as where to create a new directory). This is also the path that is always returned by the <a class="reference internal" href="#class_i_lx_file_sys_dest"><span class="std std-ref">ILxFileSysDest</span></a> interface. The objects returned from ByIndex() will have the ILxDirCacheEntryID interface, and in the case of directories, also the ILxMergedDirCacheEntryID interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxMergedFileSysDest12EntryByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N20ILxMergedFileSysDest12EntryByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N20ILxMergedFileSysDest12EntryByIndexE11LXtObjectIDiPPv"></span><span id="ILxMergedFileSysDest::EntryByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_merged_file_sys_dest_1a0eafabb9dcc29062fcae5eb02167873e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EntryByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxMergedFileSysDest12EntryByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxMergedFileSysDest4PathE11LXtObjectIDPci">
+<span id="_CPPv3N20ILxMergedFileSysDest4PathE11LXtObjectIDPci"></span><span id="_CPPv2N20ILxMergedFileSysDest4PathE11LXtObjectIDPci"></span><span id="ILxMergedFileSysDest::Path__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_merged_file_sys_dest_1a20b2a3c8a8d35cffd1ab6de2f5b94b3f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Path</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxMergedFileSysDest4PathE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the merged version of the path (ie: “#basePathIdent(setName):path”). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsDROPSOURCE_BASEPATHENTRIES">
+<span class="target" id="lxd__dirbrowse_8hpp_1a4ce92113c18a9ebce70276e2a0b6f498"></span><code class="sig-name descname">LXsDROPSOURCE_BASEPATHENTRIES</code><a class="headerlink" href="#c.LXsDROPSOURCE_BASEPATHENTRIES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This internal interface is used when dragging and dropping onto a base path entry, and is used to re-order the entries in a set. The two ordinals of the entries before and after the drop location are provided, and the dropped path should be inserted between them. This is commonly used with the BASEPATHENTRIES source type, which is an ILxValueArrayID containing strings in the form of “#basePathIdent(setName):entryPath”. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxdirbrowserbasepathentrydest">
+<h2><a class="toc-backref" href="#id13">ILxDirBrowserBasePathEntryDest</a><a class="headerlink" href="#ilxdirbrowserbasepathentrydest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv430ILxDirBrowserBasePathEntryDest">
+<span id="_CPPv330ILxDirBrowserBasePathEntryDest"></span><span id="_CPPv230ILxDirBrowserBasePathEntryDest"></span><span id="ILxDirBrowserBasePathEntryDest"></span><span class="target" id="class_i_lx_dir_browser_base_path_entry_dest"></span><em class="property">class </em><code class="sig-name descname">ILxDirBrowserBasePathEntryDest</code><a class="headerlink" href="#_CPPv430ILxDirBrowserBasePathEntryDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This internal interface is used when dragging and dropping onto a base path entry, and is used to re-order the entries in a set. The two ordinals of the entries before and after the drop location are provided, and the dropped path should be inserted between them. This is commonly used with the BASEPATHENTRIES source type, which is an ILxValueArrayID containing strings in the form of “#basePathIdent(setName):entryPath”. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N30ILxDirBrowserBasePathEntryDest7SetPathE11LXtObjectIDPPKc">
+<span id="_CPPv3N30ILxDirBrowserBasePathEntryDest7SetPathE11LXtObjectIDPPKc"></span><span id="_CPPv2N30ILxDirBrowserBasePathEntryDest7SetPathE11LXtObjectIDPPKc"></span><span id="ILxDirBrowserBasePathEntryDest::SetPath__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_dir_browser_base_path_entry_dest_1a779840cf2461c9049c3fa09148b0459f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N30ILxDirBrowserBasePathEntryDest7SetPathE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the path of the set being dragged into, in the form of “#basePathIdent(setName):”. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N30ILxDirBrowserBasePathEntryDest13OrdinalBeforeE11LXtObjectIDPPKc">
+<span id="_CPPv3N30ILxDirBrowserBasePathEntryDest13OrdinalBeforeE11LXtObjectIDPPKc"></span><span id="_CPPv2N30ILxDirBrowserBasePathEntryDest13OrdinalBeforeE11LXtObjectIDPPKc"></span><span id="ILxDirBrowserBasePathEntryDest::OrdinalBefore__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_dir_browser_base_path_entry_dest_1af4f8026915f60fd2aeb7384c729f1631"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OrdinalBefore</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>ordinal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N30ILxDirBrowserBasePathEntryDest13OrdinalBeforeE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Ordinals may be NULL if this is the beginning/end of the list. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N30ILxDirBrowserBasePathEntryDest12OrdinalAfterE11LXtObjectIDPPKc">
+<span id="_CPPv3N30ILxDirBrowserBasePathEntryDest12OrdinalAfterE11LXtObjectIDPPKc"></span><span id="_CPPv2N30ILxDirBrowserBasePathEntryDest12OrdinalAfterE11LXtObjectIDPPKc"></span><span id="ILxDirBrowserBasePathEntryDest::OrdinalAfter__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_dir_browser_base_path_entry_dest_1a9052fd04e359a5bfe7ec92449bb793ae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OrdinalAfter</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>ordinal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N30ILxDirBrowserBasePathEntryDest12OrdinalAfterE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_draw.html" class="btn btn-neutral float-right" title="Draw" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_deform.html" class="btn btn-neutral float-left" title="Deform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_dirbrowse.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

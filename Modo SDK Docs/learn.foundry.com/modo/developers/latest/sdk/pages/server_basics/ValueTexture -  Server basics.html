@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/ValueTexture -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ValueTexture: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Editorial Info" href="../general/_general.html" />
+    <link rel="prev" title="Value: Server basics" href="Value%20-%20%20Server%20basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ValueTexture: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-methods">Sample Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#valuetexture-setupchannels">ValueTexture::SetupChannels()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuetexture-linkchannels">ValueTexture::LinkChannels()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuetexture-readchannels">ValueTexture::ReadChannels()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuetexture-evaluate">ValueTexture::Evaluate()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuetexture-cleanup">ValueTexture::Cleanup()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions">Extensions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>ValueTexture: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="valuetexture-server-basics">
+<h1>ValueTexture: Server basics<a class="headerlink" href="#valuetexture-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id2">Headers</a></p></li>
+<li><p><a class="reference internal" href="#sample-methods" id="id3">Sample Methods</a></p>
+<ul>
+<li><p><a class="reference internal" href="#valuetexture-setupchannels" id="id4">ValueTexture::SetupChannels()</a></p></li>
+<li><p><a class="reference internal" href="#valuetexture-linkchannels" id="id5">ValueTexture::LinkChannels()</a></p></li>
+<li><p><a class="reference internal" href="#valuetexture-readchannels" id="id6">ValueTexture::ReadChannels()</a></p></li>
+<li><p><a class="reference internal" href="#valuetexture-evaluate" id="id7">ValueTexture::Evaluate()</a></p></li>
+<li><p><a class="reference internal" href="#valuetexture-cleanup" id="id8">ValueTexture::Cleanup()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#extensions" id="id9">Extensions</a></p></li>
+</ul>
+</div>
+<p>A <strong>ValueTexture</strong> is a plug-in server that implements a texture that can compute a color or percentage value.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Texture layers are item types with texture-related interfaces, but those are very complex and hard to use. So to make things easier we created the Value Texture server. Every value texture server becomes an item type, so it has some package-like features. It also runs as a modifier so it has some eval modifier-like features. Basically it serves as a lightweight way to create a texture layer that can be used for color or scalar effects.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id2">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’shade (lx-shade.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_ValueTexture’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’action (lx-action.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_Evaluation’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’package (lx-package.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_AddChannel’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’value (lx-value.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_Attributes’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’vector (lx-vector.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_PacketService’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>(none special)</p>
+</div>
+<div class="section" id="sample-methods">
+<h2><a class="toc-backref" href="#id3">Sample Methods</a><a class="headerlink" href="#sample-methods" title="Permalink to this headline">¶</a></h2>
+<p>The plug-in server class derives from CLxImpl_ValueTexture, and exports the ILxValueTexture interface. For speed purposes the class will also want to keep the packet service ready to hand.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CLxUser_PacketService</span>   <span class="n">pkt_service</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="valuetexture-setupchannels">
+<h3><a class="toc-backref" href="#id4">ValueTexture::SetupChannels()</a><a class="headerlink" href="#valuetexture-setupchannels" title="Permalink to this headline">¶</a></h3>
+<p>Like a package, a value texture server must define its channels. The <em>SetupChannels()</em> method is identical to the one used by Package: Server basics.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">vtx_SetupChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">addChan</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_AddChannel</span>      <span class="n">ac</span> <span class="p">(</span><span class="n">addChan</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">ac</span><span class="o">.</span><span class="n">NewChannel</span> <span class="p">(</span><span class="s2">&quot;myInput&quot;</span><span class="p">,</span> <span class="s2">&quot;percent&quot;</span><span class="p">);</span>
+         <span class="n">ac</span><span class="o">.</span><span class="n">SetDefault</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="valuetexture-linkchannels">
+<h3><a class="toc-backref" href="#id5">ValueTexture::LinkChannels()</a><a class="headerlink" href="#valuetexture-linkchannels" title="Permalink to this headline">¶</a></h3>
+<p>The value texture reads its channel values in a modifier context. That means that it has to declare the channels it wants to read using the Evaluation Interface. This is also a good place to cache the offsets for any vector packets that it wants to read.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">vtx_LinkChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="nb">eval</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">item</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Evaluation</span>      <span class="n">ev</span> <span class="p">(</span><span class="nb">eval</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">idx_value</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">AddChan</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;myInput&quot;</span><span class="p">);</span>
+         <span class="n">tin_offset</span> <span class="o">=</span> <span class="n">pkt_service</span><span class="o">.</span><span class="n">GetOffset</span> <span class="p">(</span><span class="n">LXsCATEGORY_SAMPLE</span><span class="p">,</span> <span class="n">LXsP_TEXTURE_INPUT</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="valuetexture-readchannels">
+<h3><a class="toc-backref" href="#id6">ValueTexture::ReadChannels()</a><a class="headerlink" href="#valuetexture-readchannels" title="Permalink to this headline">¶</a></h3>
+<p>Linking channels occurs once as items are added or their relationships are changed. Reading channels then happens any time channel values change. For example changing time may cause channels to be read again if they are animated. Values are read from an Attributes Interface using the index cached when linking channels. The values are then stored in an allocated data structure which is returned from the method.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">vtx_ReadChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">attr</span><span class="p">,</span>
+         <span class="n">void</span>                  <span class="o">**</span><span class="n">ppvData</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Attributes</span>      <span class="n">at</span> <span class="p">(</span><span class="n">attr</span><span class="p">);</span>
+         <span class="n">RendData</span>               <span class="o">*</span><span class="n">rd</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RendData</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">rd</span><span class="o">-&gt;</span><span class="n">value</span>  <span class="o">=</span> <span class="n">at</span><span class="o">.</span><span class="n">Float</span> <span class="p">(</span><span class="n">idx_value</span><span class="p">);</span>
+         <span class="n">ppvData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rd</span><span class="p">;</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="valuetexture-evaluate">
+<h3><a class="toc-backref" href="#id7">ValueTexture::Evaluate()</a><a class="headerlink" href="#valuetexture-evaluate" title="Permalink to this headline">¶</a></h3>
+<p>Evaluation actually performs the texture computation. This may happen thousands or even millions of times per frame, so it’s intended to be as fast as possible. The private data struct containing channel values is passed as data. The plug-in can read common input packets from the vector given their offset, and the results are written to the texture output packet, already extracted from the vector as an argument. Values may be written as scalar or vector.</p>
+<p>Note also that this is a <em>void</em> function. Anything that can fail, such as allocations, should already have been done as part of reading channels. The texture evaluation is assumed to succeed and there is no allowance for failure.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">void</span>
+ <span class="n">vtx_Evaluate</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">vector</span><span class="p">,</span>
+         <span class="n">LXpTextureOutput</span>       <span class="o">*</span><span class="n">tOut</span><span class="p">,</span>
+         <span class="n">void</span>                   <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">RendData</span>               <span class="o">*</span><span class="n">rd</span> <span class="o">=</span> <span class="p">(</span><span class="n">RendData</span> <span class="o">*</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+         <span class="n">LXpTextureInput</span>                <span class="o">*</span><span class="n">tInp</span><span class="p">;</span>
+         <span class="n">LXtFVector</span>              <span class="n">rgb</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">tInp</span> <span class="o">=</span> <span class="p">(</span><span class="n">LXpTextureInput</span> <span class="o">*</span><span class="p">)</span> <span class="n">pkt_service</span><span class="o">.</span><span class="n">FastPacket</span> <span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">tin_offset</span><span class="p">);</span>
+         <span class="n">compute_rgb_from_pos</span> <span class="p">(</span><span class="n">rd</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">,</span> <span class="n">tInp</span><span class="p">,</span> <span class="n">rgb</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">tOut</span><span class="o">-&gt;</span><span class="n">direct</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="n">tOut</span><span class="o">-&gt;</span><span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+         <span class="n">tOut</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">LXx_VLEN</span> <span class="p">(</span><span class="n">rgb</span><span class="p">);</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">tInp</span><span class="o">-&gt;</span><span class="n">context</span> <span class="o">==</span> <span class="n">LXi_TFX_COLOR</span><span class="p">)</span>
+                 <span class="n">LXx_VCPY</span> <span class="p">(</span><span class="n">tOut</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgb</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="valuetexture-cleanup">
+<h3><a class="toc-backref" href="#id8">ValueTexture::Cleanup()</a><a class="headerlink" href="#valuetexture-cleanup" title="Permalink to this headline">¶</a></h3>
+<p>The allocated private struct is freed by the <em>Cleanup()</em> method.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">void</span>
+ <span class="n">vtx_Cleanup</span> <span class="p">(</span>
+         <span class="n">void</span>                   <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">RendData</span>               <span class="o">*</span><span class="n">rd</span> <span class="o">=</span> <span class="p">(</span><span class="n">RendData</span> <span class="o">*</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">delete</span> <span class="n">rd</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="extensions">
+<h2><a class="toc-backref" href="#id9">Extensions</a><a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+<p>The value texture server can also present a ChannelUI Interface for configuring the UI of its channels.</p>
+<p>The <em>ValueTexture::Customize()</em> method can be passed a ValueTextureCustom Interface to allow for further customization of the texture’s evaluation.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../general/_general.html" class="btn btn-neutral float-right" title="Editorial Info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Value%20-%20%20Server%20basics.html" class="btn btn-neutral float-left" title="Value: Server basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/ValueTexture -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

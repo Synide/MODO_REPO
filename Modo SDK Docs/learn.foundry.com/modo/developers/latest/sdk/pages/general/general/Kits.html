@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/general/Kits.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kits &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Overview" href="Overview.html" />
+    <link rel="prev" title="File Types" href="File%20Types.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#general-info">General Info</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Common%20Datatypes.html">Common Datatypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="File%20Formats.html">File Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="File%20Types.html">File Types</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Kits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defining-a-kit">Defining a Kit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#referencing-other-files">Referencing Other Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-kit">Installing a Kit</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Remote%20Debug%20example.html">Remote Debug example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Remote%20Debugging.html">Remote Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Using%20External%20Python%20Modules%20and%20the%20site-packages%20D">Using External Python Modules and the site-packages Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Kits</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kits">
+<h1>Kits<a class="headerlink" href="#kits" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id15">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#defining-a-kit" id="id16">Defining a Kit</a></p></li>
+<li><p><a class="reference internal" href="#referencing-other-files" id="id17">Referencing Other Files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#resources" id="id18">Resources</a></p></li>
+<li><p><a class="reference internal" href="#scripts" id="id19">Scripts</a></p></li>
+<li><p><a class="reference internal" href="#images" id="id20">Images</a></p></li>
+<li><p><a class="reference internal" href="#preset-items" id="id21">Preset Items</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#installing-a-kit" id="id22">Installing a Kit</a></p>
+<ul>
+<li><p><a class="reference internal" href="#making-installers-for-modo-kits-on-os-x" id="id23">Making Installers for modo Kits on OS X</a></p></li>
+<li><p><a class="reference internal" href="#preparation" id="id24">Preparation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#step-1-setup-and-os-version" id="id25">Step 1: Setup and OS Version</a></p></li>
+<li><p><a class="reference internal" href="#step-2-setting-requirements" id="id26">Step 2: Setting Requirements</a></p></li>
+<li><p><a class="reference internal" href="#step-3-payload-and-configuration" id="id27">Step 3: Payload and Configuration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#step-5-installer-interface" id="id28">Step 5: Installer Interface</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#making-installers-for-modo-kits-on-windows" id="id29">Making Installers for modo Kits on Windows</a></p></li>
+<li><p><a class="reference internal" href="#building-the-script" id="id30">Building the Script</a></p>
+<ul>
+<li><p><a class="reference internal" href="#compiling" id="id31">Compiling</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#making-installers-for-modo-kits-on-linux" id="id32">Making Installers for Modo Kits on Linux</a></p>
+<ul>
+<li><p><a class="reference internal" href="#directory-layout" id="id33">Directory Layout</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#making-lpk-installers-for-all-platforms" id="id34">Making LPK Installers for all platforms</a></p>
+<ul>
+<li><p><a class="reference internal" href="#best-practices-when-using-lpks-for-kit-installers" id="id35">Best Practices when using LPKs for Kit Installers</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id15">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>A kit in modo 501 and later versions is a collection of configs, resource images, scripts, plug-ins and content that add a specific set of features to modo. Ideally this is a unified feature set that a user would want to install or uninstall as a unit.</p>
+<p>modo finds kits when it searches for configs on startup, and any such directory can contain kits. This includes user:Configs, content:Kits and the main resource directory.</p>
+</div>
+<div class="section" id="defining-a-kit">
+<h2><a class="toc-backref" href="#id16">Defining a Kit</a><a class="headerlink" href="#defining-a-kit" title="Permalink to this headline">¶</a></h2>
+<p>A kit is a sub-directory containing a file called index.cfg. This is a normal config file but with a slightly different preamble containing the name of the kit.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The kit name is an internal name (alphanumeric and underscore only, starting with a letter), and must be globally unique. A alias is automatically created for refering to the kit directory, and is called kit_name.</p>
+<p>A version can be associated with a kit by adding a <em>version</em> string with the kit directive:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Specific kits can be included or excluded on specific system types. For example, this kit only loads on the PC.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span> <span class="na">and=</span><span class="s">&quot;nt&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>This one will load in 32-bit modo and on any Mac.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span> <span class="na">and=</span><span class="s">&quot;app32&quot;</span> <span class="na">or=</span><span class="s">&quot;mac&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The boolean operators are ungrouped and are simply applied in order. Forms like !x86 can also be used for a negative test. The supported keys are:</p>
+<ul class="simple">
+<li><p><strong>app32</strong> – 32-bit application on any platform</p></li>
+<li><p><strong>app64</strong> – 64-bit application on any platform</p></li>
+<li><p><strong>unix</strong> – Linux platform</p></li>
+<li><p>‘’’osx, mac’’’ – Macintosh platform</p></li>
+<li><p>‘’’win, nt’’’ – Windows platform</p></li>
+<li><p><strong>x86</strong> – 32-bit Windows</p></li>
+<li><p><strong>x64</strong> – 64-bit Windows</p></li>
+</ul>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  query platformservice appversion ?
+</pre></div>
+</td></tr></table></div>
+<p>You can then set your kit to only load in this release, releases before this, or later releases.  This kit will only load in in a version late enough to have a required bug fix. (The xml-safe characters “[” and “]” stand in for the less-than and greater-than operators. “=” also works.)</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span> <span class="na">and=</span><span class="s">&quot;ver]40345&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span> <span class="na">and=</span><span class="s">&quot;rel=501&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>modo kits can also key off of the identifying word “major”, so that a kit will load for all releases in a major series.  For example, this kit would load in modo 10.0, 10.1, and 10.2. Note: since <em>major</em> will not be recognized in versions prior to 10.0, <em>and=”rel]1000”</em> should be added to make sure that the kit does not run in 90x or earlier.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span> <span class="na">and=</span><span class="s">&quot;rel]1000&quot;</span> <span class="na">and=</span><span class="s">&quot;major=10&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="referencing-other-files">
+<h2><a class="toc-backref" href="#id17">Referencing Other Files</a><a class="headerlink" href="#referencing-other-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="resources">
+<h3><a class="toc-backref" href="#id18">Resources</a><a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<p>The index.cfg file is the only config file read by default. It can contain all the resources for the kit, or it can import other resources by placing them in a sub-directory of the kit and referencing that with an import directive in the index config.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;import&gt;</span>resrc<span class="nt">&lt;/import&gt;</span>
+
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Alternately, the index can import specific resource files.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;import&gt;</span>icons.cfg<span class="nt">&lt;/import&gt;</span>
+        <span class="nt">&lt;import&gt;</span>forms.cfg<span class="nt">&lt;/import&gt;</span>
+
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>An alias with <em>kit_’’kitName’’’:’</em> format is the alias for the kit’s folder.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;import&gt;</span>kit_kitName:<span class="nt">&lt;/import&gt;</span>
+
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+
+The &#39;:&#39; tells modo that the string precedding it should be treated as an alias so &#39;<span class="nt">&lt;import&gt;</span>kit_kitName:<span class="nt">&lt;/import&gt;</span>&#39; is basically importing the root folder of the kit.
+
+==== Plug-ins ====
+
+The kit can also contain plug-ins, which can be found by putting them into a subdirectory and adding auto-scan directives for 32 and/or 64 bits of that directory. If there are no platform dependencies, you can have your plug-ins stored in the &#39;&#39;extra&#39;&#39; subdirectory.
+
+<span class="nt">&lt;source</span> <span class="na">lang=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Extensions32&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>extra<span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Extensions64&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>extra<span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;/atom&gt;</span>
+
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>If you have different versions for different platforms, for example, if the kit contains both Windows plug-ins – which are compiled separately for 32 and 64 bit – and Mac fat binaries containing code for both architectures, and Linux, they can be referenced this way:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+    <span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;kitName&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Extensions32&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>win32<span class="nt">&lt;/list&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>mac<span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Extensions64&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>win64<span class="nt">&lt;/list&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>mac<span class="nt">&lt;/list&gt;</span>
+            <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;AutoScan&quot;</span><span class="nt">&gt;</span>unix<span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;/atom&gt;</span>
+
+        [...]
+    <span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The Linux &amp; mac plug-ins will be ignored on Windows and vice-versa.</p>
+</div>
+<div class="section" id="scripts">
+<h3><a class="toc-backref" href="#id19">Scripts</a><a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h3>
+<p>Scripts can also be referenced from kits. This is done by defining an alias to the script. If the script is in the root of the kit’s directory, nothing beyond the script’s name is needed.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;ScriptSystem&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;ScriptAlias&quot;</span> <span class="na">key=</span><span class="s">&quot;myScript&quot;</span><span class="nt">&gt;</span>doit.pl&quot;<span class="nt">&lt;/hash&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;ScriptAlias&quot;</span> <span class="na">key=</span><span class="s">&quot;myScript2&quot;</span><span class="nt">&gt;</span>dir/doi2t.pl&quot;<span class="nt">&lt;/hash&gt;</span>
+    <span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Once defined, the script alias can be used in place of the path to the script. For example, “&#64;myScript” will execute the above script at “doit.pl”, automatically taking into account the alias and the kit’s location (or more specifically, the location of the config that the alias is defined in). This will work if the script is called directly by the user (say, from a key mapping they created) or if it is called from within the kit itself.</p>
+<p>It is recommended that all scripts used within kits use script aliases to ensure that attempts by the user to map the script to a key will work correctly. An alternative is to execute the script more directly through the kit’s path alias, but the script alias is cleaner.</p>
+</div>
+<div class="section" id="images">
+<h3><a class="toc-backref" href="#id20">Images</a><a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
+<p>Image resources can also be accessed with relative paths. The image name for an image resource can be relative to the directory that contains the config file making the resource declaration. This fragment defines an icon that could be used for an item type. The key for the image resource has to be globally unique.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;UIElements&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">key=</span><span class="s">&quot;testKit_icons&quot;</span><span class="nt">&gt;</span>icon.tga<span class="nt">&lt;/hash&gt;</span>
+
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Icon&quot;</span> <span class="na">key=</span><span class="s">&quot;item.val.test.texture&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Source&quot;</span><span class="nt">&gt;</span>testKit_icons<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Location&quot;</span><span class="nt">&gt;</span>0 0 13 13<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/hash&gt;</span>
+
+    <span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="preset-items">
+<h3><a class="toc-backref" href="#id21">Preset Items</a><a class="headerlink" href="#preset-items" title="Permalink to this headline">¶</a></h3>
+<p>Users can also import a kit directory to modo’s preset browser through the kit config file.  This allows preset items contained within the kit to appear within modo’s preset browser without the need to manually add the directory.  Each identified directory should be followed with a sequential index number. This fragment will add the folders “MyMaterials” and “MyMeshes” contained in the testKit root folder to modo’s preset browser.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;DirBrowser&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;ClientPath&quot;</span> <span class="na">key=</span><span class="s">&quot;presetChoice@kit_testKit:MyMaterials&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/hash&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;ClientPath&quot;</span> <span class="na">key=</span><span class="s">&quot;presetChoice@kit_testKit:MyMeshes&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/hash&gt;</span>
+    <span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="installing-a-kit">
+<h2><a class="toc-backref" href="#id22">Installing a Kit</a><a class="headerlink" href="#installing-a-kit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="making-installers-for-modo-kits-on-os-x">
+<h3><a class="toc-backref" href="#id23">Making Installers for modo Kits on OS X</a><a class="headerlink" href="#making-installers-for-modo-kits-on-os-x" title="Permalink to this headline">¶</a></h3>
+<p>modo Kits installers are created using PackageMaker, which is installed with the Apple Developer Tools.  It can be found at:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Utilities</span><span class="o">/</span><span class="n">PackageMaker</span><span class="o">.</span><span class="n">app</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the case of Kits, all we need to do to install the Kit is copy it into the content directory (at root level)</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Application</span> <span class="n">Support</span><span class="o">/</span><span class="n">Luxology</span><span class="o">/</span><span class="n">Content</span><span class="o">/</span><span class="n">Kits</span>
+</pre></div>
+</td></tr></table></div>
+<p>and that’s it.  Note that PackageMaker will create any or all of this path as needed and will not affect any currently existing folders (it’s non-destructive).</p>
+</div>
+<div class="section" id="preparation">
+<h3><a class="toc-backref" href="#id24">Preparation</a><a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h3>
+<p>We’ll start by setting up a project folder.Create a folder (anywhere) called MyKitInstaller.  This will be our working folder where we build the installer.</p>
+<p>Within MyKitInstaller, create the empty folder hierarchy that is where the Kit should be placed in content directory as explained above.In this case, it would be</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Application</span> <span class="n">Support</span><span class="o">/</span><span class="n">Luxology</span><span class="o">/</span><span class="n">Content</span><span class="o">/</span><span class="n">Kits</span><span class="o">/</span><span class="n">myKit</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now put your Kit files in myKit (your index.cfg and all other folders &amp; files that make up your Kit).</p>
+<img alt="../../../_images/Pasted_Graphic_3.png" src="../../../_images/Pasted_Graphic_3.png" />
+<p>Now it’s time to make the installer itself.</p>
+<div class="section" id="step-1-setup-and-os-version">
+<h4><a class="toc-backref" href="#id25">Step 1: Setup and OS Version</a><a class="headerlink" href="#step-1-setup-and-os-version" title="Permalink to this headline">¶</a></h4>
+<p>Launch PackageMaker.You will be greeted with an initial window that looks like the following.  You should enter in a suitable value for field using reverse-domain notation.  Then select what the oldest version of Mac OS X you want your installer to be able to run on.</p>
+<img alt="../../../_images/Pasted_Graphic_1.png" src="../../../_images/Pasted_Graphic_1.png" />
+</div>
+<div class="section" id="step-2-setting-requirements">
+<h4><a class="toc-backref" href="#id26">Step 2: Setting Requirements</a><a class="headerlink" href="#step-2-setting-requirements" title="Permalink to this headline">¶</a></h4>
+<p>Now we’ll set the Requirements for our installer.  From the default initial project you’ll only need to set the name and change the Install Destination fields.  The important one is Install Destination - we want it to be ‘’’System volume.’’’  Basically, our installer is going to contain a mirror of the final path to our installer and non-destructively extract that into /Library/Application Support/.  That’s all we’re going to need to do for this top level setting.It should now look something like this:</p>
+<img alt="../../../_images/Pasted_Graphic_5.png" src="../../../_images/Pasted_Graphic_5.png" />
+</div>
+<div class="section" id="step-3-payload-and-configuration">
+<h4><a class="toc-backref" href="#id27">Step 3: Payload and Configuration</a><a class="headerlink" href="#step-3-payload-and-configuration" title="Permalink to this headline">¶</a></h4>
+<p>Now we’ll add our payload.  Drag and Drop the Luxology folder you set up (the one containing kit) onto the Contents area.  PackageMaker should look like this:</p>
+<img alt="../../../_images/Pasted_Graphic_7.png" src="../../../_images/Pasted_Graphic_7.png" />
+<p>The first thing we need to do is make a change to the Configuration tab so switch to it and make sure “Require admin authentication” is off.  Now we’ll switch to the Contents tab and make sure the “Include root in package” option is selected.  It’s a good idea to also click on the “Apply Recommendations” button to fix any ownership problems with your payload.</p>
+<img alt="pages\general\general\./../../../images/Kits_PackageInstall.png" src="images/Kits_PackageInstall.html" />
+<p>At this point, you should have a functional installer.  Save it into your myKitInstaller dir (or wherever).  Now clicking Build will actually generate the installer itself (Build and Run of course does just that).</p>
+<div class="section" id="step-5-installer-interface">
+<h5><a class="toc-backref" href="#id28">Step 5: Installer Interface</a><a class="headerlink" href="#step-5-installer-interface" title="Permalink to this headline">¶</a></h5>
+<p>The last thing you probably want to do is edit the interface the user sees.  Clicking on the Edit Interface button brings up a window allowing you to add Read Me, License, background art and a message.  You can load a text file or simply type in the message.  The interface is very straightforward the actual steps for doing these tasks will not be covered but it looks like this:</p>
+<img alt="../../../_images/Final.png" src="../../../_images/Final.png" />
+</div>
+</div>
+<div class="section" id="making-installers-for-modo-kits-on-windows">
+<h4><a class="toc-backref" href="#id29">Making Installers for modo Kits on Windows</a><a class="headerlink" href="#making-installers-for-modo-kits-on-windows" title="Permalink to this headline">¶</a></h4>
+<p>modo Kits installers are created using the free and open source NSIS.  It can be found at:</p>
+<p>[<a class="reference external" href="http://nsis.sourceforge.net/Main_Page">http://nsis.sourceforge.net/Main_Page</a> NSIS.Sourceforge.Net]</p>
+<p>NSIS2 is a text based installer compiler, code highlighting is available for many common text editors including Programmer’s Notepad</p>
+</div>
+<div class="section" id="building-the-script">
+<h4><a class="toc-backref" href="#id30">Building the Script</a><a class="headerlink" href="#building-the-script" title="Permalink to this headline">¶</a></h4>
+<p>NSIS scripts are broken down into several sections that are best explained by the NSIS documentation, however this script will get you most of the way, replacing any path references with your own.</p>
+<p>This first section sets up the included plugins, in this case we’re using MUI2 (the modern user interface) WinVer (to determine version of windows) LogicLib and x64, keep in mind that commented lines begin with a ;</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>;NSIS Luxology Installer V.1
+;Kits Installer
+;Written by Dion Burgoyne
+;--------------------------------
+;Include Modern UI
+        !include &quot;MUI2.nsh&quot;
+        !include &quot;WinVer.nsh&quot;
+        !include &quot;LogicLib.nsh&quot;
+        !include &quot;x64.nsh&quot;
+;--------------------------------
+</pre></div>
+</td></tr></table></div>
+<p>This second section contains the variable defines that will be referenced later in the script</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span>;Custom Defines
+
+!define BuildSourcePath &quot;PATH TO SOURCE FILE&quot;
+!define BuildSourceExtra &quot;PATH TO EXTRA NEEDED FILES&quot;
+!define ContentInstallDir &quot;$DOCUMENTS\Luxology\Content\&quot;
+!define productName &quot;NAME OF KIT&quot;
+!define versionName &quot;1&quot;
+!define uninstallDir &quot;$LOCALAPPDATA\Luxology\modo\KIT NAME\&quot;
+!define kitsDesc &quot;SHORT DESCRIPTION OF KIT&quot;
+
+!define SetContent $8
+!define regKeyInstallDir $9
+
+;--------------------------------
+</pre></div>
+</td></tr></table></div>
+<p>Here we define our general script parameters, some of these can be automatically filled in with the generated variables from the first section but here they’re made manually. The branding name referenced below is the small text that will appear in the lower left corner of the installer.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">;</span><span class="n">General</span>
+
+  <span class="p">;</span><span class="n">Name</span> <span class="ow">and</span> <span class="n">file</span>
+  <span class="n">Name</span> <span class="s2">&quot;MY KIT NAME&quot;</span>
+  <span class="n">OutFile</span> <span class="s2">&quot;MY INSTALLERS NAME.exe&quot;</span>
+  <span class="n">BrandingText</span> <span class="s2">&quot;MY BRANDING NAME&quot;</span>
+
+  <span class="p">;</span><span class="n">Default</span> <span class="n">installation</span> <span class="n">folder</span>
+  <span class="n">InstallDir</span> <span class="s2">&quot;$APPDATA\Luxology\Configs</span><span class="se">\&quot;</span>
+
+  <span class="p">;</span><span class="n">Get</span> <span class="n">installation</span> <span class="n">folder</span> <span class="kn">from</span> <span class="nn">registry</span> <span class="k">if</span> <span class="n">available</span>
+
+  <span class="p">;</span><span class="n">Request</span> <span class="n">application</span> <span class="n">privileges</span> <span class="k">for</span> <span class="n">Windows</span> <span class="n">Vista</span>
+  <span class="n">RequestExecutionLevel</span> <span class="n">none</span>
+
+<span class="p">;</span><span class="o">--------------------------------</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here we define the script interface, colors, background images and icons.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>;Interface Configuration
+
+        !define MUI_HEADERIMAGE
+        !define MUI_HEADERIMAGE_BITMAP &quot;${BuildSourceExtra}\PATH TO ART\MYIMAGE.BMP&quot; ; optional
+        !define MUI_ICON &quot;${BuildSourceExtra}\PATH TO ICONS\MyIcon128.ico&quot;
+
+        !define MUI_ABORTWARNING
+        !define MUI_INSTFILESPAGE_COLORS &quot;9db3c2 000000&quot;
+
+
+;--------------------------------
+</pre></div>
+</td></tr></table></div>
+<p>Here are the page definitions… In this case we only have a EULA page and an install page (and its Uninstaller)</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>;Pages
+
+  !insertmacro MUI_PAGE_LICENSE &quot;${BuildSourceExtra}\Common\EULA\EULA_501.rtf&quot;
+
+        !insertmacro MUI_PAGE_INSTFILES
+
+;uninstall
+        !insertmacro MUI_UNPAGE_INSTFILES
+
+;--------------------------------
+</pre></div>
+</td></tr></table></div>
+<p>Language definition</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>;Languages
+
+        !insertmacro MUI_LANGUAGE &quot;English&quot;
+
+;--------------------------------
+</pre></div>
+</td></tr></table></div>
+<p>Here’s where the file work is done, this first part is the install section</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">;</span><span class="n">Sections</span>
+<span class="n">Section</span> <span class="s2">&quot;-My Install Section&quot;</span> <span class="n">SecContent</span>
+<span class="n">SetShellVarContext</span> <span class="n">current</span>
+
+        <span class="n">SetOutPath</span> <span class="s2">&quot;$INSTDIR\WRITE TO PATH</span><span class="se">\&quot;</span>
+
+        <span class="n">File</span> <span class="o">/</span><span class="n">r</span> <span class="s2">&quot;$</span><span class="si">{BuildSourcePath}</span><span class="s2">\SOURCE FILES\*.*&quot;</span>
+
+<span class="n">SetShellVarContext</span> <span class="nb">all</span>
+
+        <span class="p">;</span><span class="n">Create</span> <span class="n">uninstaller</span>
+        <span class="n">CreateDirectory</span> <span class="s2">&quot;$</span><span class="si">{uninstallDir}</span><span class="s2">&quot;</span>
+        <span class="n">WriteUninstaller</span> <span class="s2">&quot;$</span><span class="si">{uninstallDir}</span><span class="s2">uninstall.exe&quot;</span>
+
+        <span class="n">SetOutPath</span> <span class="s2">&quot;$SMPROGRAMS\WRITE TO PATH&quot;</span>
+        <span class="n">CreateShortCut</span> <span class="s2">&quot;$SMPROGRAMS\Luxology\modo\KIT NAME\Uninstall.lnk&quot;</span> <span class="s2">&quot;$</span><span class="si">{uninstallDir}</span><span class="s2">uninstall.exe&quot;</span>
+
+        <span class="n">WriteRegStr</span> <span class="n">HKLM</span> <span class="s2">&quot;Software\Microsoft\Windows\CurrentVersion\Uninstall\KIT REGISTRY NAME&quot;</span> <span class="s2">&quot;DisplayName&quot;</span> <span class="s2">&quot;$</span><span class="si">{productName}</span><span class="s2">&quot;</span>
+
+<span class="n">SectionEnd</span>
+
+<span class="p">;</span><span class="o">--------------------------------</span>
+</pre></div>
+</td></tr></table></div>
+<p>This section is our Description section, it can be anywhere, but visually it helps separate the different code sections</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>;Descriptions
+
+        LangString DESC_SecContent ${LANG_ENGLISH} &quot;NAME OF KIT&quot;
+
+
+;--------------------------------
+</pre></div>
+</td></tr></table></div>
+<p>Here’s our uninstaller section, this simply undoes everything that was done in the installer section and cleans itself up</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">;</span><span class="n">Uninstaller</span> <span class="n">Section</span>
+
+<span class="n">Section</span> <span class="s2">&quot;un.Uninstall Content&quot;</span> <span class="n">uncontent</span>
+        <span class="n">SetShellVarContext</span> <span class="n">current</span>
+
+        <span class="p">;</span><span class="n">ADD</span> <span class="n">YOUR</span> <span class="n">OWN</span> <span class="n">FILES</span> <span class="n">HERE</span><span class="o">...</span>
+        <span class="n">RMDir</span> <span class="o">/</span><span class="n">r</span> <span class="s2">&quot;$APPDATA\Luxology\Configs\NAME OF KIT</span><span class="se">\&quot;</span>
+
+        <span class="n">SetShellVarContext</span> <span class="nb">all</span>
+        <span class="n">DeleteRegKey</span> <span class="n">HKLM</span> <span class="s2">&quot;Software\Microsoft\Windows\CurrentVersion\Uninstall\KIT REGISTRY NAME&quot;</span>
+
+        <span class="n">Delete</span> <span class="s2">&quot;$</span><span class="si">{uninstallDir}</span><span class="s2">uninstall.exe&quot;</span>
+
+        <span class="n">Delete</span> <span class="s2">&quot;$SMPROGRAMS\Luxology\modo\WRITE TO PATH\Uninstall.lnk&quot;</span>
+        <span class="n">RMDir</span> <span class="s2">&quot;$SMPROGRAMS\Luxology\modo\KIT NAME</span><span class="se">\&quot;</span>
+<span class="n">SectionEnd</span>
+
+<span class="p">;</span><span class="o">--------------------------------</span>
+</pre></div>
+</td></tr></table></div>
+<p>And finally we have our basic plugins function call to setup the plugins at the beginning of the script</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">;</span><span class="n">functions</span>
+<span class="n">Function</span> <span class="o">.</span><span class="n">onInit</span>
+
+        <span class="n">InitPluginsDir</span>
+
+<span class="n">FunctionEnd</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="compiling">
+<h5><a class="toc-backref" href="#id31">Compiling</a><a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h5>
+<p>Once the script has been finished you simply need to fire up the NSIS compiler, choose load and navigate to your script. NSIS will take care of the rest!</p>
+</div>
+</div>
+<div class="section" id="making-installers-for-modo-kits-on-linux">
+<h4><a class="toc-backref" href="#id32">Making Installers for Modo Kits on Linux</a><a class="headerlink" href="#making-installers-for-modo-kits-on-linux" title="Permalink to this headline">¶</a></h4>
+<p>modo kit installers can be created using the free and open source makeself.</p>
+<p><a class="reference external" href="http://megastep.org/makeself/">http://megastep.org/makeself/</a></p>
+<p>Installers are run from the console without a graphical user interface.</p>
+<p>Makeself creates a self extracting archive that contains the kit.</p>
+<p>We have a custom version of makeself that adds support for a default installation directory using the ‘–target’ flag.
+By default this version creates a foundry license directory, which you shouldn’t need. Use the ‘–nolicensing’ flag to disable this.</p>
+<p>:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>./ media: Linux_makeself.zip‎ `</p>
+<p>The modo content installer is created with a single invocation of makeself.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">makeself</span> <span class="o">--</span><span class="n">target</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">Luxology</span><span class="o">/</span><span class="n">Content</span><span class="o">/</span> <span class="o">--</span><span class="n">nolicensing</span> <span class="o">--</span><span class="n">notemp</span> <span class="n">Content</span><span class="o">/</span> <span class="n">modoContent</span><span class="o">.</span><span class="n">run</span> <span class="s2">&quot;modo Content&quot;</span> <span class="n">echo</span> <span class="s2">&quot;Installation Complete&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>To create an installer for your kit, first off ensure that you have your kit directory set out as you would like it installed, with an ‘index.cfg’ file at it’s top level. See :doc:<a href="#id3"><span class="problematic" id="id4">`</span></a>./ #Defining a Kit ` for how to write your config file.</p>
+<p>The and/or configuration platform value for linux is ‘unix’.</p>
+<p>So where your configuration on windows might look like this:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">configuration</span> <span class="n">kit</span><span class="o">-</span><span class="s2">&quot;kitName&quot;</span> <span class="ow">and</span><span class="o">=</span><span class="s2">&quot;nt&quot;</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>and on mac might look like this</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">configuration</span> <span class="n">kit</span><span class="o">-</span><span class="s2">&quot;kitName&quot;</span> <span class="ow">and</span><span class="o">=</span><span class="s2">&quot;mac&quot;</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>on linux it would be this</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">configuration</span> <span class="n">kit</span><span class="o">-</span><span class="s2">&quot;kitName&quot;</span> <span class="ow">and</span><span class="o">=</span><span class="s2">&quot;unix&quot;</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>To create an archive of your kit directory invoke makeself.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">makeself</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">nolicensing</span> <span class="o">--</span><span class="n">notemp</span> <span class="n">MyKitDir</span> <span class="n">MyKit</span><span class="o">.</span><span class="n">run</span> <span class="s2">&quot;My Kit&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>This will create an installer that extracts to the current working directory.</p>
+<p>Using our custom version of makeself you can specify a target directory.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">makeself</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">nolicensing</span> <span class="o">--</span><span class="n">target</span> <span class="s2">&quot;/usr/share/Luxology/Content/Kits&quot;</span> <span class="o">--</span><span class="n">notemp</span> <span class="n">MyKitDir</span> <span class="n">MyKit</span><span class="o">.</span><span class="n">run</span> <span class="s2">&quot;My Kit&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="directory-layout">
+<h5><a class="toc-backref" href="#id33">Directory Layout</a><a class="headerlink" href="#directory-layout" title="Permalink to this headline">¶</a></h5>
+<p>makeself will place the contents of your archive in to the target directory. It will not include the top level target directory.</p>
+<p>So create a directory under the kit source directory.</p>
+<p>Below is an example directory layout.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>MyKitDir
+`-- MyKit
+    |-- unix
+    |   `-- myKitPlugin.lx
+    `-- index.cfg
+</pre></div>
+</td></tr></table></div>
+<p>To install to multiple locations in the Content directory, say to install to Contents/Assets/Images and Content/Kits, create a directory structure that maps to the structure of the content directory.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>MyKitDir
+`-- Content
+    |-- Assets
+    |   `-- Images
+    |       `-- myImage.jpg
+    `-- Kits
+        `-- MyKit
+            |-- unix
+            |   `-- myKitPlugin.lx
+            `-- index.cfg
+</pre></div>
+</td></tr></table></div>
+<p>Now we can use makeself to create an installer which will install to Content/Kits and Content/Assets.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">makeself</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">nolicensing</span> <span class="o">--</span><span class="n">target</span> <span class="s2">&quot;/usr/share/Lxuology/Content&quot;</span> <span class="o">--</span><span class="n">notemp</span> <span class="n">MyKitDir</span> <span class="n">MyKit</span><span class="o">.</span><span class="n">run</span> <span class="s2">&quot;My Kit&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="making-lpk-installers-for-all-platforms">
+<h4><a class="toc-backref" href="#id34">Making LPK Installers for all platforms</a><a class="headerlink" href="#making-lpk-installers-for-all-platforms" title="Permalink to this headline">¶</a></h4>
+<p>An .lpk installer file is just a zip file of a kit’s contents.  When users drag and drop the lpk file onto an open modo window, modo will unpack the contents based on a special index.xml file included with the kit contents.  Here’s an example of the bare minimum required in an index.xml file:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+  <span class="nt">&lt;package</span> <span class="na">version=</span><span class="s">&quot;801&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;kit</span> <span class="na">name=</span><span class="s">&quot;Yay&quot;</span> <span class="na">restart=</span><span class="s">&quot;YES&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;source</span> <span class="na">target=</span><span class="s">&quot;Yay/index.cfg&quot;</span><span class="nt">&gt;</span>index.cfg<span class="nt">&lt;/source&gt;</span>
+    <span class="nt">&lt;/kit&gt;</span>
+    <span class="nt">&lt;message</span> <span class="na">button=</span><span class="s">&quot;Help&quot;</span><span class="nt">&gt;</span>Yay Kit installation complete.<span class="nt">&lt;/message&gt;</span>
+  <span class="nt">&lt;/package&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here’s the anatomy of what’s going on in the file:</p>
+<img alt="../../../_images/Lpk_indexfile.png" src="../../../_images/Lpk_indexfile.png" />
+<p>Even though the word “kit” looks innocuous, it actually specifies the path where the kit is to be installed.  Kit specifically means that any paths specified as target directories later in the file will be relative to the user’s Content/Kits directory.  Here are some other known acceptable path aliases to use in place of the ‘kit’ directory used above:
+<a href="#id5"><span class="problematic" id="id6">*</span></a>Asset (all source target paths will be relative to the user’s Content/Assets directory)
+<a href="#id7"><span class="problematic" id="id8">*</span></a>Config (all source target paths will be relative to the user’s Scripts directory)
+<a href="#id9"><span class="problematic" id="id10">*</span></a>Script (all source target paths will be relative to the user’s Configs directory)</p>
+<p>This gets pretty tedious for kits containing lots of files, so here’s a script to generate this file automatically: <a class="reference download internal" download="" href="../../../_downloads/14c53c3c5eb8426f85496f46fb5c3299/LpkIndexCreator.zip"><code class="xref download docutils literal notranslate"><span class="pre">LpkIndexCreator</span></code></a>.</p>
+<p>To use it, just open it in a text editor and change the Setup Variables to whatever you need.  Put your kit in a folder and point to that directory in the kitFolder variable.  The rest should be fairly self-explanatory.  Then run the script in python, and it should generate a file called index.xml inside of the folder you specified.</p>
+<p>The next step is just to zip up all the files of your kit.  You need to select all the files in the root folder of your kit at the same time, and zip them together.  If you just try to zip up the folder containing your kit, the lpk file won’t work correctly.  After you have the zip file, just rename it from <a href="#id11"><span class="problematic" id="id12">*</span></a>.zip to <a href="#id13"><span class="problematic" id="id14">*</span></a>.lpk, and you should be all set.</p>
+<img alt="../../../_images/lpk_ZipFiles.png" src="../../../_images/lpk_ZipFiles.png" />
+<div class="section" id="best-practices-when-using-lpks-for-kit-installers">
+<h5><a class="toc-backref" href="#id35">Best Practices when using LPKs for Kit Installers</a><a class="headerlink" href="#best-practices-when-using-lpks-for-kit-installers" title="Permalink to this headline">¶</a></h5>
+<p>When setting up an LPK for Kit installation, it is advisable to use a source directory structure that matches the final installed structure, so that in the event that the user wants to manually install, they can rename the LPK file as a ZIP and extract the files and install them that way.</p>
+<p>If an LPK is being used to install plugins, plugins for each platform can be included in a single LPK installer and only those specific to the platform in use can be installed, by adding the <strong>platform=</strong> argument to the source line.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;syntaxhighlight lang=”xml”&gt;&lt;source platform=”MacOSX” …</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="File%20Types.html" class="btn btn-neutral float-left" title="File Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/general/Kits.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:51 GMT -->
+</html>

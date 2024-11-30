@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Package -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Package: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Saver: Server basics" href="Saver%20-%20%20Server%20basics.html" />
+    <link rel="prev" title="Movie: Server basics" href="Movie%20-%20%20Server%20basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#package-instance">Package Instance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package">Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-interfaces">Adding Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>Package: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="package-server-basics">
+<h1>Package: Server basics<a class="headerlink" href="#package-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id2">Headers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#package-instance" id="id3">Package Instance</a></p>
+<ul>
+<li><p><a class="reference internal" href="#packageinstance-initialize" id="id4">PackageInstance::Initialize()</a></p></li>
+<li><p><a class="reference internal" href="#packageinstance-cleanup" id="id5">PackageInstance::Cleanup()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#package" id="id6">Package</a></p>
+<ul>
+<li><p><a class="reference internal" href="#package-setupchannels" id="id7">Package::SetupChannels()</a></p></li>
+<li><p><a class="reference internal" href="#package-testinterface" id="id8">Package::TestInterface()</a></p></li>
+<li><p><a class="reference internal" href="#package-attach" id="id9">Package::Attach()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#adding-interfaces" id="id10">Adding Interfaces</a></p></li>
+<li><p><a class="reference internal" href="#resources" id="id11">Resources</a></p>
+<ul>
+<li><p><a class="reference internal" href="#item-help" id="id12">Item Help</a></p></li>
+<li><p><a class="reference internal" href="#properties" id="id13">Properties</a></p></li>
+<li><p><a class="reference internal" href="#icons-categories" id="id14">Icons &amp; Categories</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>A <strong>Package</strong> is a plug-in server that defines a collection of channels for an item, or a new item type. The capabilities of these new packages or types are determined by the interfaces presented by the package instance.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Items are made from a collection of Package Object which provides the implementation for the item’s features. For example, interfaces allow an item to draw in the 3D view, or act as a channel modifier, or act as a 3D surface. Some can even be combined in the same item.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id2">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’package (lx-package.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_Package’’</p></li>
+<li><p>‘’CLxUser_PackageInstance’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’idef (lxidef.h)’’’</dt><dd><ul>
+<li><p>‘’LXsITYPE_LOCATOR’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>LXsPKG_SUPERTYPE</strong> – the name of the item type to act as super-type (e.g. “LXsITYPE_LOCATOR”) or “.” for a root item type.</p></li>
+<li><p><strong>LXsPKG_GRAPHS</strong> –</p></li>
+<li><p><strong>LXsPKG_CREATECMD</strong> – LXs_PKG_NODIRECTCREATE</p></li>
+<li><p><strong>LXsPKG_CONVERTCMD</strong> – LXs_PKG_DIRECTCONVERTOK</p></li>
+<li><p><strong>LXsPKG_IS_MASK</strong> –</p></li>
+<li><p><strong>LXsPKG_SHADER_CONTEXT</strong> –</p></li>
+<li><p><strong>LXsPKG_CREATE_INDIRECT</strong> –</p></li>
+</ul>
+<p>For a plug-in package we need to define two classes, one for the package and one for the instance.</p>
+<div class="section" id="package-instance">
+<h3><a class="toc-backref" href="#id3">Package Instance</a><a class="headerlink" href="#package-instance" title="Permalink to this headline">¶</a></h3>
+<p>The instance class at minimum derives from CLxImpl_PackageInstance, and exports the ILxPackageInstance interface. It can also derive from other possible Package Interfaces.</p>
+<div class="section" id="packageinstance-initialize">
+<h4><a class="toc-backref" href="#id4">PackageInstance::Initialize()</a><a class="headerlink" href="#packageinstance-initialize" title="Permalink to this headline">¶</a></h4>
+<p>The Initialize() method is called when the instance is associated with the item. It gets the Item Object]] which it can store, plus the [[PackageInstance Object of the super-type.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">pins_Initialize</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">item</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="nb">super</span><span class="p">)</span>        <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">m_item</span><span class="o">.</span><span class="n">set</span> <span class="p">(</span><span class="n">item</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="packageinstance-cleanup">
+<h4><a class="toc-backref" href="#id5">PackageInstance::Cleanup()</a><a class="headerlink" href="#packageinstance-cleanup" title="Permalink to this headline">¶</a></h4>
+<p>Cleanup() is called before the item is destroyed.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">void</span>
+ <span class="n">pins_Cleanup</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>                           <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">m_item</span><span class="o">.</span><span class="n">clear</span> <span class="p">();</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="package">
+<h3><a class="toc-backref" href="#id6">Package</a><a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h3>
+<p>The plug-in package server class derives from CLxImpl_Package and exports the ILxPackage interface. Since the package will need to spawn the instances, the spawner will be a member variable.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMyPackage</span> <span class="p">:</span>
+         <span class="n">public</span> <span class="n">CLxImpl_Package</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+         <span class="n">CLxSpawner</span><span class="o">&lt;</span><span class="n">CInstance</span><span class="o">&gt;</span>   <span class="n">inst_spawn</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CMyPackage</span> <span class="p">()</span> <span class="p">:</span> <span class="n">inst_spawn</span> <span class="p">(</span><span class="s2">&quot;myInstSpawner&quot;</span><span class="p">)</span> <span class="p">{}</span>
+         <span class="o">...</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="package-setupchannels">
+<h4><a class="toc-backref" href="#id7">Package::SetupChannels()</a><a class="headerlink" href="#package-setupchannels" title="Permalink to this headline">¶</a></h4>
+<p>The SetupChannels() method is called the first time and instance of this package is to be created, allowing the package to define the set of channels that it wants. Channels are given by name and type, and optional settings may be applied to each one.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">pkg_SetupChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">addChan</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_AddChannel</span>      <span class="n">ac</span> <span class="p">(</span><span class="n">addChan</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">ac</span><span class="o">.</span><span class="n">NewChannel</span>  <span class="p">(</span><span class="s2">&quot;range&quot;</span><span class="p">,</span>       <span class="n">LXsTYPE_DISTANCE</span><span class="p">);</span>
+         <span class="n">ac</span><span class="o">.</span><span class="n">SetDefault</span>  <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">ac</span><span class="o">.</span><span class="n">NewChannel</span>  <span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span>        <span class="n">LXsTYPE_INTEGER</span><span class="p">);</span>
+         <span class="n">ac</span><span class="o">.</span><span class="n">SetDefault</span>  <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">MODE_LINEAR</span><span class="p">);</span>
+         <span class="n">ac</span><span class="o">.</span><span class="n">SetHint</span>     <span class="p">(</span><span class="n">hint_Mode</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="package-testinterface">
+<h4><a class="toc-backref" href="#id8">Package::TestInterface()</a><a class="headerlink" href="#package-testinterface" title="Permalink to this headline">¶</a></h4>
+<p>The TestInterface() method is required. It just calls the same method on the spawner.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">pkg_TestInterface</span> <span class="p">(</span>
+         <span class="n">const</span> <span class="n">LXtGUID</span>          <span class="o">*</span><span class="n">guid</span><span class="p">)</span>        <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="k">return</span> <span class="n">inst_spawn</span><span class="o">.</span><span class="n">TestInterfaceRC</span> <span class="p">(</span><span class="n">guid</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="package-attach">
+<h4><a class="toc-backref" href="#id9">Package::Attach()</a><a class="headerlink" href="#package-attach" title="Permalink to this headline">¶</a></h4>
+<p>Attach() is called to create the instance for a new item. We use the spawner to create a new default instance which can then be customized for this object. We have to wait until the instance’s own Initialize() method to know the item that’s being created.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">pkg_Attach</span> <span class="p">(</span>
+         <span class="n">void</span>                  <span class="o">**</span><span class="n">ppvObj</span><span class="p">)</span>      <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">CMyInstance</span>            <span class="o">*</span><span class="n">inst</span> <span class="o">=</span> <span class="n">inst_spawn</span><span class="o">.</span><span class="n">Alloc</span> <span class="p">(</span><span class="n">ppvObj</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="s1">&#39;&#39;</span><span class="o">&lt;</span> <span class="n">intialize</span> <span class="n">inst</span> <span class="o">&gt;</span><span class="s1">&#39;&#39;</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="adding-interfaces">
+<h3><a class="toc-backref" href="#id10">Adding Interfaces</a><a class="headerlink" href="#adding-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>Additional capability, such as ViewItem3D: Package basics, are enabled by presenting more interfaces on the instance. The package instance for a minimal package will be declared using code similar to this.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMyPInstance</span> <span class="p">:</span>
+         <span class="n">public</span> <span class="n">CLxImpl_</span><span class="p">[[</span><span class="n">PackageInstance</span> <span class="n">Interface</span><span class="o">|</span><span class="n">PackageInstance</span><span class="p">]]</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+                 <span class="n">static</span> <span class="n">void</span>
+         <span class="n">initialize</span> <span class="p">()</span>
+         <span class="p">{</span>
+                <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CMyInstance</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_</span><span class="p">[[</span><span class="n">PackageInstance</span> <span class="n">Interface</span><span class="o">|</span><span class="n">PackageInstance</span><span class="p">]]</span><span class="o">&lt;</span><span class="n">CInstance</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">lx</span><span class="p">::</span><span class="n">AddSpawner</span> <span class="p">(</span><span class="s2">&quot;myInstance&quot;</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+         <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="o">...</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Adding a new interface is just a matter of adding a new parent implementation class, and presenting a new interface.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMyPInstance</span> <span class="p">:</span>
+         <span class="n">public</span> <span class="n">CLxImpl_</span><span class="p">[[</span><span class="n">PackageInstance</span> <span class="n">Interface</span><span class="o">|</span><span class="n">PackageInstance</span><span class="p">]],</span>
+         <span class="s1">&#39;&#39;</span><span class="n">public</span> <span class="n">CLxImpl_</span><span class="p">[[</span><span class="n">ViewItem3D</span> <span class="n">Interface</span><span class="o">|</span><span class="n">ViewItem3D</span><span class="p">]]</span><span class="s1">&#39;&#39;</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+                 <span class="n">static</span> <span class="n">void</span>
+         <span class="n">initialize</span> <span class="p">()</span>
+         <span class="p">{</span>
+                <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CMyPInstance</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_</span><span class="p">[[</span><span class="n">PackageInstance</span> <span class="n">Interface</span><span class="o">|</span><span class="n">PackageInstance</span><span class="p">]]</span><span class="o">&lt;</span><span class="n">CMyPInstance</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="s1">&#39;&#39;</span><span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_</span><span class="p">[[</span><span class="n">ViewItem3D</span> <span class="n">Interface</span><span class="o">|</span><span class="n">ViewItem3D</span><span class="p">]]</span><span class="o">&lt;</span><span class="n">CMyPInstance</span><span class="o">&gt;</span><span class="p">);</span><span class="s1">&#39;&#39;</span>
+                <span class="n">lx</span><span class="p">::</span><span class="n">AddSpawner</span> <span class="p">(</span><span class="s2">&quot;myInstance&quot;</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+         <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="o">...</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="resources">
+<h3><a class="toc-backref" href="#id11">Resources</a><a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<p>A package with a supertype tag will show up in modo as an item type that can be created and selected, and its channels can be viewed in the item list. This can be sufficient for initial testings, but to really integrate the item into the UI it requires resources to define user names, tooltips, forms, and icons.</p>
+<div class="section" id="item-help">
+<h4><a class="toc-backref" href="#id12">Item Help</a><a class="headerlink" href="#item-help" title="Permalink to this headline">¶</a></h4>
+<p>Information about item types and their channels are stored in a <em>CommandHelp/Item</em> hash. The channels are keyed by internal name and allow for properties like the user name and tooltip. These are used to display the channel list and property sheets. Messages can also be stored in the item help info.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;CommandHelp&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Item&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;myItemType@en_US&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;UserName&quot;</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Item</span> <span class="n">Type</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Channel&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;enable&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;UserName&quot;</span><span class="o">&gt;</span><span class="n">Enable</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Tooltip&quot;</span><span class="o">&gt;</span><span class="n">When</span> <span class="n">enabled</span> <span class="n">this</span> <span class="n">item</span> <span class="n">performs</span> <span class="n">its</span> <span class="n">function</span><span class="o">.&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Channel&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;color&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;UserName&quot;</span><span class="o">&gt;</span><span class="n">Color</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Tooltip&quot;</span><span class="o">&gt;</span><span class="n">Sets</span> <span class="n">the</span> <span class="n">display</span> <span class="n">color</span> <span class="n">of</span> <span class="n">the</span> <span class="n">item</span><span class="o">.&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Message&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;isDisabled&quot;</span><span class="o">&gt;</span><span class="n">This</span> <span class="n">item</span> <span class="ow">is</span> <span class="n">disabled</span><span class="o">.&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="properties">
+<h4><a class="toc-backref" href="#id13">Properties</a><a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<p>The properties are displayed based on a selection filter. This filter tests true when an item of your type is selected.  Filters are best treated as black boxes; simply replace <em>myItemType</em> and ‘’My Item Type’’ with those of your item type or package.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Filters&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Preset&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;myItemType.item:filterPreset&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Item</span> <span class="n">Type</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Enable&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="o">&gt;</span><span class="mi">1</span> <span class="o">.</span><span class="n">group</span> <span class="mi">0</span> <span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="o">&gt;</span><span class="mi">1</span> <span class="n">itemtype</span> <span class="mi">0</span> <span class="mi">1</span> <span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">myItemType</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="o">&gt;-</span><span class="mi">1</span> <span class="o">.</span><span class="n">endgroup</span> <span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The properties form (also known as an attribute sheet) is defined by an <em>Attribute/Sheet</em> hash. This sheet is for an item type derived from ‘’locator’’, and inserts itself into the general item properties via a Form Categories and Groups determining the order of its tab relative to the others in that category. For the most part sheets like this consist of <em>item.channel</em> commands for the item’s channels.  Note that the filter is also set to the <em>myItemType</em> filter that was defined above.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Attributes&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Sheet&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;myItemType.item:sheet&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Label&quot;</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Item</span> <span class="n">Type</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Filter&quot;</span><span class="o">&gt;</span><span class="n">myItemType</span><span class="o">.</span><span class="n">item</span><span class="p">:</span><span class="n">filterPreset</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="o">&gt;</span><span class="n">itemprops</span><span class="o">/</span><span class="n">render</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;InCategory&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;itemprops:general#head&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Ordinal&quot;</span><span class="o">&gt;</span><span class="mi">129</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span> <span class="n">val</span><span class="o">=</span><span class="s2">&quot;ref 11145884454:sheet&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span> <span class="n">val</span><span class="o">=</span><span class="s2">&quot;ref 80746857872:sheet&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span> <span class="n">val</span><span class="o">=</span><span class="s2">&quot;div &quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Label&quot;</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Item</span> <span class="n">Type</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Alignment&quot;</span><span class="o">&gt;</span><span class="n">full</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span> <span class="n">val</span><span class="o">=</span><span class="s2">&quot;cmd item.channel myItemType$enable ?&quot;</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span> <span class="n">val</span><span class="o">=</span><span class="s2">&quot;cmd item.channel myItemType$color ?&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="icons-categories">
+<h4><a class="toc-backref" href="#id14">Icons &amp; Categories</a><a class="headerlink" href="#icons-categories" title="Permalink to this headline">¶</a></h4>
+<p>Defining Item Categories determine where your item type shows up in various “add item” popups in the UI.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Categories&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Category&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;itemtype:locator&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;myItemType&quot;</span><span class="o">&gt;</span><span class="n">locators</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Icon Resources are define in the <em>UIElements</em> root-level atom. You specify a resource image with a unique key string, and then reference that to pick the icons out of it, usually based on a grid.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;UIElements&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;my_items&quot;</span><span class="o">&gt;</span><span class="n">my_items</span><span class="o">.</span><span class="n">tga</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Icon&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;item.myItemType&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Source&quot;</span><span class="o">&gt;</span><span class="n">my_items</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Grid&quot;</span><span class="o">&gt;</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">13</span> <span class="mi">13</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Saver%20-%20%20Server%20basics.html" class="btn btn-neutral float-right" title="Saver: Server basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Movie%20-%20%20Server%20basics.html" class="btn btn-neutral float-left" title="Movie: Server basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Package -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

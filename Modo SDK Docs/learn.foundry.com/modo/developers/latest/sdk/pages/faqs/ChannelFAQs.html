@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/ChannelFAQs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Channels &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="C++ Specific" href="CppFAQs.html" />
+    <link rel="prev" title="About COM" href="COMFAQs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_faqs.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="COMFAQs.html">About COM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Channels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-read-the-transform-channels-for-a-locator-type-item">How do I read the transform channels for a locator type item?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-read-an-item-s-channel-value">How do I read an item’s channel value?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-set-the-default-value-of-a-string-channel">How do I set the default value of a string channel?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-write-a-value-to-an-item-s-channel">How do I write a value to an item’s channel?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-read-a-gradient-channel">How do I read a gradient channel?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CppFAQs.html">C++ Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ItemFAQs.html">Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MeshFAQ.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModifierFAQ.html">Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PythonFAQs.html">Python Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TimeFAQs.html">Dealing with Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UIFAQ.html">User Interface</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_faqs.html">Frequently Asked Questions</a> &raquo;</li>
+        
+      <li>Channels</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="channels">
+<h1>Channels<a class="headerlink" href="#channels" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-do-i-read-the-transform-channels-for-a-locator-type-item">
+<h2>How do I read the transform channels for a locator type item?<a class="headerlink" href="#how-do-i-read-the-transform-channels-for-a-locator-type-item" title="Permalink to this headline">¶</a></h2>
+<p>Unlike other 3D applications, modo allows you create multiple transforms (position, rotation and scale) on a single item, and allows you to reorder them to control how those transforms are applied. This results in an extremely flexible rigging workflow, allowing you to create complex transforms on a single item, without requiring a hierarchy of multiple items.</p>
+<p>These transforms are stored as a separate item, connected to the locator type item that they want to manipulate, via a graph. This can be somewhat confusing, as you may try and search for the transform channels on the locator item and be unable to find them.</p>
+<p>There are two ways to access and manipulate these transforms. Firstly, you can use the Locator Interface, this is an interface on the locator type item and has various methods for manipulating transforms. For example, if you want to get the main transform item for either rotation, scale or translation, you use the GetTransformItem method and pass it the type of transform you want. You can then read the channels on that item directly. There are also some helpful methods for getting and setting both the world and local transforms.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//CLxUser_Item         item; - given</span>
+<span class="n">CLxUser_Scene</span>          <span class="n">scene</span><span class="p">;</span>
+<span class="n">CLxUser_ChannelRead</span>    <span class="n">chan_read</span><span class="p">;</span>
+<span class="n">CLxUser_Locator</span>        <span class="nf">locator</span> <span class="p">(</span><span class="n">item</span><span class="p">);</span>
+
+<span class="n">LXtMatrix</span>              <span class="n">xfrm</span><span class="p">;</span>
+<span class="n">LXtVector</span>              <span class="n">pos</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">scene</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">))</span>
+<span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">scene</span><span class="p">.</span><span class="n">GetChannels</span> <span class="p">(</span><span class="n">chan_read</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+                <span class="n">locator</span><span class="p">.</span><span class="n">WorldTransform</span> <span class="p">(</span><span class="n">chan_read</span><span class="p">,</span> <span class="n">xfrm</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#item = lx.object.Item () # Given</span>
+<span class="n">locator</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Locator</span> <span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">Context</span> <span class="p">()</span>
+
+<span class="n">chan_read</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">ChannelRead</span> <span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">Channels</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+
+<span class="n">transforms</span> <span class="o">=</span> <span class="n">locator</span><span class="o">.</span><span class="n">WorldTransform</span> <span class="p">(</span><span class="n">chan_read</span><span class="p">)</span>
+
+<span class="n">xfrm</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The alternative method for getting transform items, is to walk the graph and find the transform item directly. This is a little more in-depth, but allows greater control over the values returned, and also allows you to manipulate the transform items themselves.</p>
+<p>The transform items are linked to the locator item they provide transforms for, in the XfrmCore graph, with the transform items connecting into the locator item. A single locator type item could potentially have multiple transforms connected through this graph. The order they are connected is the reverse order of the order they appear in the channel list inside of modo.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//CLxUser_Item         item; - given</span>
+<span class="n">CLxUser_Scene</span>          <span class="n">scene</span><span class="p">;</span>
+<span class="n">CLxUser_Item</span>           <span class="n">transform</span><span class="p">;</span>
+<span class="n">CLxUser_ItemGraph</span>      <span class="n">graph</span><span class="p">;</span>
+
+<span class="kt">unsigned</span>               <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">scene</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">))</span>
+<span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">scene</span><span class="p">.</span><span class="n">GetGraph</span> <span class="p">(</span><span class="n">LXsGRAPH_XFRMCORE</span><span class="p">,</span> <span class="n">graph</span><span class="p">))</span>
+       <span class="p">{</span>
+              <span class="n">count</span> <span class="o">=</span> <span class="n">graph</span><span class="p">.</span><span class="n">Reverse</span> <span class="p">(</span><span class="n">item</span><span class="p">);</span>
+
+              <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+              <span class="p">{</span>
+                     <span class="n">graph</span><span class="p">.</span><span class="n">Reverse</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">transform</span><span class="p">);</span>
+              <span class="p">}</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#item = lx.object.Item () # Given</span>
+
+<span class="n">scene</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">Context</span> <span class="p">()</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">ItemGraph</span> <span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">GraphLookup</span> <span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sGRAPH_XFRMCORE</span><span class="p">))</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">RevCount</span> <span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">RevByIndex</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-read-an-item-s-channel-value">
+<h2>How do I read an item’s channel value?<a class="headerlink" href="#how-do-i-read-an-item-s-channel-value" title="Permalink to this headline">¶</a></h2>
+<p>It depends on the context. Mostly you use a ChannelRead Interface, unless you are in a modifier of some kind, in which case a different API should be used.</p>
+<p>The normal case also has two forms. The first allows you to access channel values stored in the base (edit) action. Given a scene, an item in the scene and the channel index, you can get a channel read object from the scene and use that to access the value of channels in the action. It should be noted that in python, a time needs to be provided even if it’s not necessarily used.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_Item</span>           <span class="n">item</span><span class="p">;</span>    <span class="c1">// given</span>
+<span class="n">CLxUser_Scene</span>          <span class="n">scene</span><span class="p">;</span>   <span class="c1">// given</span>
+<span class="kt">unsigned</span>               <span class="n">index</span><span class="p">;</span>   <span class="c1">// given</span>
+<span class="n">CLxUser_ChannelRead</span>    <span class="n">chan_read</span><span class="p">;</span>
+
+<span class="n">scene</span><span class="p">.</span><span class="n">GetChannels</span> <span class="p">(</span><span class="n">chan_read</span><span class="p">,</span> <span class="n">LXs_ACTIONLAYER_EDIT</span><span class="p">);</span>
+<span class="n">fval</span> <span class="o">=</span> <span class="n">chan_read</span><span class="p">.</span><span class="n">FValue</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Item</span><span class="p">()</span>   <span class="c1"># given</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span> <span class="c1"># given</span>
+<span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">channelIndex</span><span class="p">)</span>  <span class="c1"># given</span>
+
+<span class="n">chan_read</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">s_ACTIONLAYER_EDIT</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">fval</span> <span class="o">=</span> <span class="n">chan_read</span><span class="o">.</span><span class="n">Double</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are alternate methods for reading different channel types. Channels can be read given their name rather than index, as well. In python, this is built into the Value user method, which can read float, integer, or string channels without needing to specify the type in advance.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ival</span> <span class="o">=</span> <span class="n">chan_read</span><span class="p">.</span><span class="n">IValue</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">LXsICHAN_TEXTURELAYER_ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ival</span> <span class="o">=</span> <span class="n">chan_read</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sICHAN_TEXTURELAYER_ENABLE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The other form is for reading evaluated channels, like the various matricies which are computed from the transform channels. In that case you provide the time for the evaluation rather than the action name:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_ChannelRead</span>     <span class="n">chan_read</span><span class="p">;</span>
+<span class="n">CLxUser_Matrix</span>          <span class="n">xfrm</span><span class="p">;</span>
+
+<span class="n">chan_read</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+<span class="n">chan_read</span><span class="p">.</span><span class="n">Object</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">xfrm</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chan_read</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">xfrm</span> <span class="o">=</span> <span class="n">chan_read</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If all you have is an item you can get a scene from that, and if you want to keep the index for faster access you can look it up from the item.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">ChannelIndex</span> <span class="p">(</span><span class="s">&quot;ChannelName&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="s2">&quot;ChannelName&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-set-the-default-value-of-a-string-channel">
+<h2>How do I set the default value of a string channel?<a class="headerlink" href="#how-do-i-set-the-default-value-of-a-string-channel" title="Permalink to this headline">¶</a></h2>
+<p>After adding the channel with the AddChannel Interface, you can obtain the default value object and call the methods of its Value Interface to set the string. The storage type of the channel has to be set to string.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_AddChannel</span>  <span class="n">ac</span><span class="p">;</span> <span class="c1">// given</span>
+<span class="n">LXtObjectID</span>         <span class="n">obj</span><span class="p">;</span>
+<span class="n">CLxUser_Value</span>       <span class="n">val</span><span class="p">;</span>
+
+<span class="n">ac</span><span class="p">.</span><span class="n">SetStorage</span> <span class="p">(</span><span class="n">LXsTYPE_STRING</span><span class="p">);</span>
+<span class="n">ac</span><span class="p">.</span><span class="n">SetDefaultObj</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
+<span class="n">val</span><span class="p">.</span><span class="n">take</span> <span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+<span class="n">val</span><span class="p">.</span><span class="n">SetString</span> <span class="p">(</span><span class="s">&quot;Default Value&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The somewhat misleadingly named SetDefaultObj() returns an object on which you can call its Value Interface methods to set the default value, in this case a string.</p>
+<p>Example item plugin: <a class="reference internal" href="../examples/Setting%20a%20string%20channels%20default%20value.html"><span class="doc">Setting a string channels default value</span></a></p>
+</div>
+<div class="section" id="how-do-i-write-a-value-to-an-item-s-channel">
+<h2>How do I write a value to an item’s channel?<a class="headerlink" href="#how-do-i-write-a-value-to-an-item-s-channel" title="Permalink to this headline">¶</a></h2>
+<p>Get a ChannelWrite Object, initialize it and set the channel’s value. The channel argument can be the channel index or the channel name: C++ will pick the right method for you. value can be integer, float or string.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_ChannelWrite</span>     <span class="n">chan</span><span class="p">;</span>
+
+<span class="n">chan</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="n">chan</span><span class="p">.</span><span class="n">Set</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-read-a-gradient-channel">
+<h2>How do I read a gradient channel?<a class="headerlink" href="#how-do-i-read-a-gradient-channel" title="Permalink to this headline">¶</a></h2>
+<p>A gradient channel is read using the ILxGradientFilter interface.</p>
+<p>The evalulate method on the GradientFilter interface takes an input value (the X axis) and returns the corresponding output value or Y axis. In Python, gradient channels can be read into Value Objects, which are then read through a Gradient Filter Object just like C++.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_GradientFilter</span>  <span class="n">grad_filt</span><span class="p">;</span>
+<span class="n">CLxUser_Attributes</span>              <span class="nf">attr</span><span class="p">(</span><span class="n">attr_obj</span><span class="p">);</span>
+
+<span class="kt">double</span>                  <span class="n">yAxis</span><span class="p">,</span> <span class="n">xAxis</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">unsigned</span>                        <span class="n">channelIndex</span><span class="p">;</span>
+
+<span class="n">attr</span><span class="p">.</span><span class="n">ObjectRO</span><span class="p">(</span><span class="n">channelIndex</span><span class="p">,</span> <span class="n">grad_filt</span><span class="p">);</span>
+<span class="n">yAxis</span> <span class="o">=</span> <span class="n">grad_filt</span><span class="p">.</span><span class="n">Evaluate</span><span class="p">(</span><span class="n">xAxis</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">meshItem</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
+<span class="n">chanRead</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">valueObj</span> <span class="o">=</span> <span class="n">chanRead</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">meshItem</span><span class="p">,</span> <span class="n">meshItem</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="s1">&#39;radGrad&#39;</span><span class="p">))</span>
+<span class="n">grad_filt</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">GradientFilter</span><span class="p">(</span><span class="n">valueObj</span><span class="p">)</span>
+<span class="n">yAxis</span> <span class="o">=</span> <span class="n">grad_filt</span><span class="o">.</span><span class="n">Evaluate</span><span class="p">(</span><span class="n">xAxis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>yAxis now holds the gradient channel value at the position on the gradient defined by xAxis.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CppFAQs.html" class="btn btn-neutral float-right" title="C++ Specific" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="COMFAQs.html" class="btn btn-neutral float-left" title="About COM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/ChannelFAQs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

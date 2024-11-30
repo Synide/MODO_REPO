@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Script lua.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Script lua &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ScriptQuery Interface 701 Updates" href="ScriptQuery%20Interface%20701%20Updates.html" />
+    <link rel="prev" title="Perl" href="Perl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_scripting.html">Scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppleScript.html">AppleScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bouncing%20Ball%20Script%20(Transform%20Channels).html">Bouncing Ball Script (Transform Channels)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChangeRenderFrameRange%20Script.html">ChangeRenderFrameRange Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layerservice.html">Layerservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lua.html">Lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Macros.html">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Perl.html">Perl</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Script lua</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#declarations">Declarations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-declarations">Class Declarations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server-tags"><span class="xref std std-doc">./Server_Tags</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-index"><span class="xref std std-doc">./Initialize_(index)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementations">Implementations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Interface%20701%20Updates.html">ScriptQuery Interface 701 Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Overview.html">ScriptQuery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting.html">Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting%20Preview.html">Scripting Preview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_scripting.html">Scripting</a> &raquo;</li>
+        
+      <li>Script lua</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="script-lua">
+<h1>Script lua<a class="headerlink" href="#script-lua" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-walkthrough" id="id2">Code Walkthrough</a></p>
+<ul>
+<li><p><a class="reference internal" href="#declarations" id="id3">Declarations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#lxlua-h" id="id4">lxlua.h</a></p></li>
+<li><p><a class="reference internal" href="#lxlua-cpp" id="id5">lxlua.cpp</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#class-declarations" id="id6">Class Declarations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#intrlua-cpp" id="id7">intrlua.cpp</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#server-tags" id="id8"><span class="xref std std-doc">./Server_Tags</span></a></p></li>
+<li><p><a class="reference internal" href="#initialize-index" id="id9"><span class="xref std std-doc">./Initialize_(index)</span></a></p></li>
+<li><p><a class="reference internal" href="#implementations" id="id10">Implementations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id11">lxlua.cpp</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Script_lua is a basic example plugin. This wiki page is intended as a walkthrough of the code in order to help you better understand the SDK.</p>
+<p>This plugin serves as a Lua script interpreter.</p>
+<div class="section" id="code-walkthrough">
+<h2><a class="toc-backref" href="#id2">Code Walkthrough</a><a class="headerlink" href="#code-walkthrough" title="Permalink to this headline">¶</a></h2>
+<p>The code structure for this plugin is somewhat atypical. In our header we declare a variety of functions which we define in the related cpp. However, our main class, the one from which we will build our server, is in another cpp entirely and has a utility that takes the functions that we defined and adds them to the aforementioned class.</p>
+<div class="section" id="declarations">
+<h3><a class="toc-backref" href="#id3">Declarations</a><a class="headerlink" href="#declarations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="lxlua-h">
+<h4><a class="toc-backref" href="#id4">lxlua.h</a><a class="headerlink" href="#lxlua-h" title="Permalink to this headline">¶</a></h4>
+<p>This is a struct that defines certain objects and constants that will be used by the plugin.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        typedef struct st_IntrInstance {
+               ILxScriptID      script;                // Script being executed.
+               ILxMonitorID     monitor;               // Progress monitor used by lxmon??? functions.
+               int              askedForMonitor;       // True if we asked for the monitor.
+               LxResult         rc;                    // Result code from the most recently executed/queried command.
+               int              tracing;               // 1 if tracing is active, 0 if inactive.
+               int              execFlags;             // Flags provided by the caller of Run() and used for command execution.
+
+               CLxUser_LogEntry log;                   // For logging data
+
+               int              queryAnglesAsDegrees;  // True if queried angles should be returned in degrees instead of radians.
+} IntrInstance;
+</pre></div>
+</div>
+<p>Declaration of functions that will be used by the plugin.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxout</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lx</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxq</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxqt</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxeval</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxok</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxres</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxtrace</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxoption</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxsetOption</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxmonInit</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+ <span class="n">extern</span> <span class="s2">&quot;C&quot;</span>  <span class="nb">int</span>   <span class="n">l_lxmonStep</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lxlua-cpp">
+<h4><a class="toc-backref" href="#id5">lxlua.cpp</a><a class="headerlink" href="#lxlua-cpp" title="Permalink to this headline">¶</a></h4>
+<p>Here we declare a variety of scripts and services that will be used below. “extern” indicates that the objects inside have already been defined elsewhere so the compiler won’t complain.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        extern &quot;C&quot; {
+
+        ILxScriptSysServiceID           scriptSrv;                     /* Script system service; common to all instances                */
+        ILxStdDialogServiceID           dlgSrv;                        /* Standard dialog service; common to all instances              */
+        IntrInstance                    intrStack[ MAX_STACK ];        /* Interpreter stack; allows scripts to execute other scripts    */
+        int                             intrTop        = -1;           /* The current script being executed as an index into interStack */
+        IntrInstance                   *intrCur        = NULL;         /* The same as &amp;intrStack[ intrTop ], or NULL if intrTop is -1   */
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="class-declarations">
+<h3><a class="toc-backref" href="#id6">Class Declarations</a><a class="headerlink" href="#class-declarations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="intrlua-cpp">
+<h4><a class="toc-backref" href="#id7">intrlua.cpp</a><a class="headerlink" href="#intrlua-cpp" title="Permalink to this headline">¶</a></h4>
+<p>This class is intended to take a lua script and interpret it, so we need it to be a modified text editor. To this end, we inherit from Scripts_(lx-scripts.hpp)#Text_Script_Interpreter.</p>
+<p>The first two functions of note inside the class are those with the tsi prefix, indicating that they are redeclarations of virtual functions inside the CLxImpl_TextScriptInterpreter class.The ValidateFileType makes sure that the file we are being passed is of the correct format. The Run function takes the file we have been given and interprets it line by line.</p>
+<p>The Init starts up our interpreter. However, on top of that it also adds all the functions that we declared in the header file and then defined in a separate cpp. These functions handle logging, options, and the progress bar. There is also a sort of master function which performs all the queries or executes. The Kill function simply shuts down our interpreter.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CLuaInterpreter : public CLxImpl_TextScriptInterpreter
+        {
+               CLxUser_LogService      logSvc;
+               CLxUser_CommandService  cmdSvc;
+               CLxUser_ValueService    valueSvc;
+
+           public:
+               virtual                 ~CLuaInterpreter () {}
+
+               virtual LxResult         tsi_ValidateFileType (
+                                               ILxUnknownID     scriptObj,
+                                               const char      *firstLine) LXx_OVERRIDE;
+               virtual LxResult         tsi_Run (
+                                               ILxUnknownID     scriptObj,
+                                               int              execFlags,
+                                               const char      *args,
+                                               ILxUnknownID     messObj) LXx_OVERRIDE;
+
+               void                     Init ();
+               void                     Kill ();
+
+               static LXtTagInfoDesc    descInfo[];
+
+           private:
+               lua_State               *L;
+};
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="server-tags">
+<h3><a class="toc-backref" href="#id8"><span class="xref std std-doc">./Server_Tags</span></a><a class="headerlink" href="#server-tags" title="Permalink to this headline">¶</a></h3>
+<p>Servers tags are examined when the server is initialized, and give information about the server. We set the tags in this case by taking descinfo[] arrays and associating the relevant data with the corresponding flags.</p>
+<p>The tags here indicate that the server we will be exporting has the name “Lua Scripts” and deals with files of the type .lua.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LXtTagInfoDesc  CLuaInterpreter::descInfo[] = {
+               { LXsSRV_USERNAME,      &quot;Lua Scripts&quot;   },
+               { LXsLOD_DOSPATTERN,    &quot;*.lua&quot;         },
+               { 0 }
+};
+</pre></div>
+</div>
+<p>The tags here indicate that CLuaInterpreter has the name Lua Scripts and takes files with the .lua extension.</p>
+</div>
+<div class="section" id="initialize-index">
+<h3><a class="toc-backref" href="#id9"><span class="xref std std-doc">./Initialize_(index)</span></a><a class="headerlink" href="#initialize-index" title="Permalink to this headline">¶</a></h3>
+<p>Intialize is called when we add the plugin to modo, and is the utility that exports the server. The LXx_ADD_SERVER method is simply a wrapper that is identical to normal method of adding a server, with the arguments being (interface_to_be_added, class_you_depend_on, server_name).</p>
+<p>This initialize function exports one server of the type TextScriptInterpreter that is dependent on the class CLuaInterpreter and has the name lua.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        initialize ()
+        {
+               LXx_ADD_SERVER (TextScriptInterpreter, CLuaInterpreter, &quot;lua&quot;);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementations">
+<h3><a class="toc-backref" href="#id10">Implementations</a><a class="headerlink" href="#implementations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4><a class="toc-backref" href="#id11">lxlua.cpp</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Add a string to a parent log, possibly returning a log entry for sub-entries</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">static</span> <span class="n">void</span>
+ <span class="n">AddLogStringEntry</span> <span class="p">(</span>
+        <span class="n">CLxLoc_LogEntry</span>         <span class="o">&amp;</span><span class="n">parent</span><span class="p">,</span>
+        <span class="n">const</span> <span class="n">char</span>              <span class="o">*</span><span class="n">s</span><span class="p">,</span>
+        <span class="n">LxResult</span>                 <span class="n">code</span><span class="p">,</span>
+        <span class="nb">int</span>                      <span class="n">persist</span><span class="p">,</span>
+        <span class="n">CLxLoc_LogEntry</span>         <span class="o">&amp;</span><span class="n">entry</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Adding a log entry to a parent, for clients with no need for the entry.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        void
+        AddLogString (
+               CLxLoc_LogEntry         &amp;parent,
+               const char              *s,
+               LxResult                 code,
+               int                      persist)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Logging for clients with no need for the entry.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        LogString (
+               const char              *s,
+               LxResult                 code,
+               int                      persist)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>lxout:  Output a string to the log</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxout(lua_State *L)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Internal function to perform queries and executions</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        #define LXEVALMODEf_QUERY      1                                               // Query only; fail if no query is marked
+        #define LXEVALMODEf_EXECUTE    2                                               // Execute only; fail if a query is marked
+        #define LXEVALMODEf_EITHER     (LXEVALMODEf_QUERY | LXEVALMODEf_EXECUTE)       // Query or execute, whatever works
+
+               LxResult
+        lxeval(lua_State *L, int mode)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>At some point in the future, lxq() needs to use the raw string conversion feature to ensure that the values that are queried are the same kinds of values that get passed to commands.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxq(lua_State *L)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>lxqt(): Query a toggle command’s toggle argument.  Returns the query state on success (1 or 0), or 0 on failure.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxqt(lua_State *L)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Return true if the last command executed/queried successfully.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="nb">int</span>
+ <span class="n">l_lxok</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Return the LxResult code of the last command executed or quieried.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxres(lua_State *L)
+        {
+              ...
+}
+</pre></div>
+</div>
+<p>When activated, lx() and lxq() data is output to the event log.  If no args are passed in, this returns if tracing is active or not.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxtrace(lua_State *L)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Get the state of an option.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxoption(lua_State *L)
+        {
+              ...
+}
+</pre></div>
+</div>
+<p>Get the state of an option.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxsetOption(lua_State *L)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Initialize the progress bar. Initialize the progress bar with n total steps.  Returns 0 on error.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxmonInit(lua_State *L)
+        {
+              ...
+}
+</pre></div>
+</div>
+<p>Step the progress bar. Increment the progress bar by n steps, or 1 step if no steps are provided.  This always returns true unless the user aborts, in which case it returns false.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               int
+        l_lxmonStep(lua_State *L)
+        {
+              ...
+}
+</pre></div>
+</div>
+<p>verifies that the file passed in is of the lua type.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CLuaInterpreter::tsi_ValidateFileType (
+               ILxUnknownID              scriptObj,
+               const char               *firstLine)
+        {
+               ...
+        }&lt;/syntaxhighlight&gt;
+
+       ====intrlua.cpp====
+
+       adds all of the functions just implemented in lxlua.cpp to CLuaInterpreter
+
+       &lt;syntaxhighlight&gt;
+               void
+        CLuaInterpreter::Init()
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>performs most of the work, is the function that actually interprets the file.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CLuaInterpreter::tsi_Run (
+               ILxUnknownID             scriptObj,
+               int                      execFlags,
+               const char              *args,
+               ILxUnknownID             messObj )
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>This function cleans up.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CLuaInterpreter::Kill()
+        {
+               ...
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ScriptQuery%20Interface%20701%20Updates.html" class="btn btn-neutral float-right" title="ScriptQuery Interface 701 Updates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Perl.html" class="btn btn-neutral float-left" title="Perl" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Script lua.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_render.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Render &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rendercache" href="lxd_rendercache.html" />
+    <link rel="prev" title="Raycast" href="lxd_raycast.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Render</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lxtrenderoutputprocess">LXtRenderOutputProcess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtrenderoutputprocesslist">LXtRenderOutputProcessList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxrenderbucket">ILxRenderBucket</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Render</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="render">
+<h1>Render<a class="headerlink" href="#render" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#lxtrenderoutputprocess" id="id1">LXtRenderOutputProcess</a></p></li>
+<li><p><a class="reference internal" href="#lxtrenderoutputprocesslist" id="id2">LXtRenderOutputProcessList</a></p></li>
+<li><p><a class="reference internal" href="#ilxrenderbucket" id="id3">ILxRenderBucket</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiIP_ALL_OPERATORS_ENABLED">
+<span class="target" id="lxd__render_8hpp_1a86cad412339c354fcc6da6ea887bc719"></span><code class="sig-name descname">LXiIP_ALL_OPERATORS_ENABLED</code><a class="headerlink" href="#c.LXiIP_ALL_OPERATORS_ENABLED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Image processing operators control how the rendered image is processed, and are non-destructive. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiIP_ALL_OPERATORS_DISABLED</p></li>
+<li><p>LXiIP_NO_OPERATOR_OVERRIDE</p></li>
+<li><p>LXiIP_STEREO</p></li>
+<li><p>LXiIP_COMPONENT_STEREO</p></li>
+<li><p>LXiIP_SOURCE_IMAGE_GAMMA</p></li>
+<li><p>LXiIP_BLOOM</p></li>
+<li><p>LXiIP_VIGNETTE</p></li>
+<li><p>LXiIP_INPUT_BLACK_LEVEL</p></li>
+<li><p>LXiIP_INPUT_GRAY_LEVEL</p></li>
+<li><p>LXiIP_INPUT_WHITE_LEVEL</p></li>
+<li><p>LXiIP_INPUT_MIN_RGB_LEVEL</p></li>
+<li><p>LXiIP_INPUT_RGB_GRAY_LEVEL</p></li>
+<li><p>LXiIP_INPUT_MAX_RGB_LEVEL</p></li>
+<li><p>LXiIP_TONE_MAPPING</p></li>
+<li><p>LXiIP_HUE_OFFSET</p></li>
+<li><p>LXiIP_SATURATION</p></li>
+<li><p>LXiIP_COLORIZATION</p></li>
+<li><p>LXiIP_OUTPUT_BLACK_LEVEL</p></li>
+<li><p>LXiIP_OUTPUT_WHITE_LEVEL</p></li>
+<li><p>LXiIP_OUTPUT_MIN_RGB_LEVEL</p></li>
+<li><p>LXiIP_OUTPUT_MAX_RGB_LEVEL</p></li>
+<li><p>LXiIP_OUTPUT_GAMMA</p></li>
+<li><p>LXiIP_DITHER</p></li>
+<li><p>LXiIP_USE_DISPLAY_GAMMA_PREF</p></li>
+<li><p>LXiIP_APPLY_DISPLAY_COLORSPACE</p></li>
+</ul>
+<dl class="type">
+<dt id="_CPPv427LXtImageProcessingOperators">
+<span id="_CPPv327LXtImageProcessingOperators"></span><span id="_CPPv227LXtImageProcessingOperators"></span><span id="LXtImageProcessingOperators"></span><span class="target" id="lxd__render_8hpp_1a979ebe645eac9d028324c1356e2316de"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtImageProcessingOperators</code><a class="headerlink" href="#_CPPv427LXtImageProcessingOperators" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<ul class="simple">
+<li><p>LXiSE_LEFT</p></li>
+<li><p>LXiSE_RIGHT</p></li>
+<li><p>LXiSE_BOTH</p></li>
+</ul>
+<dl class="type">
+<dt id="_CPPv412LXtStereoEye">
+<span id="_CPPv312LXtStereoEye"></span><span id="_CPPv212LXtStereoEye"></span><span id="LXtStereoEye"></span><span class="target" id="lxd__render_8hpp_1a80cc1037161d0eba5039500dec152c48"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtStereoEye</code><a class="headerlink" href="#_CPPv412LXtStereoEye" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<ul class="simple">
+<li><p>LXeSC_NO_COMPOSITE</p></li>
+<li><p>LXeSC_ANAGLYPH_RED_CYAN</p></li>
+<li><p>LXeSC_ANAGLYPH_GRAYSCALE</p></li>
+<li><p>LXeSC_ANAGLYPH_RED_CYAN_HALF</p></li>
+<li><p>LXeSC_ANAGLYPH_RED_CYAN_OPT</p></li>
+<li><p>LXeSC_ANAGLYPH_RED_BLUE_LS</p></li>
+<li><p>LXeSC_LAST_ANAGLYPH_MODE</p></li>
+<li><p>LXeSC_SIDE_BY_SIDE</p></li>
+<li><p>LXeSC_SIDE_BY_SIDE_FULL_WIDTH</p></li>
+<li><p>LXeSC_SIDE_BY_SIDE_CROSSED</p></li>
+<li><p>LXeSC_SIDE_BY_SIDE_CROSSED_FULL</p></li>
+<li><p>LXeSC_LAST_SIDE_BY_SIDE_MODE</p></li>
+<li><p>LXeSC_DROPDOWN_COUNT</p></li>
+<li><p>LXeSC_UNDEFINED</p></li>
+</ul>
+<dl class="type">
+<dt id="_CPPv418LXtStereoComposite">
+<span id="_CPPv318LXtStereoComposite"></span><span id="_CPPv218LXtStereoComposite"></span><span id="LXtStereoComposite"></span><span class="target" id="lxd__render_8hpp_1a517dcfb22b2bcf50cb7509fc962c73ea"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtStereoComposite</code><a class="headerlink" href="#_CPPv418LXtStereoComposite" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<div class="section" id="lxtrenderoutputprocess">
+<h2><a class="toc-backref" href="#id1">LXtRenderOutputProcess</a><a class="headerlink" href="#lxtrenderoutputprocess" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv425st_LXtRenderOutputProcess">
+<span id="_CPPv325st_LXtRenderOutputProcess"></span><span id="_CPPv225st_LXtRenderOutputProcess"></span><span id="st_LXtRenderOutputProcess"></span><span class="target" id="structst___l_xt_render_output_process"></span><em class="property">struct </em><code class="sig-name descname">st_LXtRenderOutputProcess</code><a class="headerlink" href="#_CPPv425st_LXtRenderOutputProcess" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess3opsE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess3opsE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess3opsE"></span><span id="st_LXtRenderOutputProcess::ops__LXtImageProcessingOperators"></span><span class="target" id="structst___l_xt_render_output_process_1a6508ded7effe9f4280564f72cd2ad916"></span><a class="reference internal" href="#_CPPv427LXtImageProcessingOperators" title="LXtImageProcessingOperators">LXtImageProcessingOperators</a> <code class="sig-name descname">ops</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess3opsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess4typeE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess4typeE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess4typeE"></span><span id="st_LXtRenderOutputProcess::type__i"></span><span class="target" id="structst___l_xt_render_output_process_1ae280a1981cc3fa71f5bfcbf0f4313f57"></span>int <code class="sig-name descname">type</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8typeSizeE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8typeSizeE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8typeSizeE"></span><span id="st_LXtRenderOutputProcess::typeSize__i"></span><span class="target" id="structst___l_xt_render_output_process_1ae783ec4e5a7f09b871daaefeccd55454"></span>int <code class="sig-name descname">typeSize</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8typeSizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8unpremulE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8unpremulE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8unpremulE"></span><span id="st_LXtRenderOutputProcess::unpremul__i"></span><span class="target" id="structst___l_xt_render_output_process_1acde89c47a4f3c8a09bc32b72d630f4ae"></span>int <code class="sig-name descname">unpremul</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8unpremulE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess10alphaIndexE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess10alphaIndexE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess10alphaIndexE"></span><span id="st_LXtRenderOutputProcess::alphaIndex__i"></span><span class="target" id="structst___l_xt_render_output_process_1adbda827aff0bdde6a385e99c4326971d"></span>int <code class="sig-name descname">alphaIndex</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess10alphaIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess13isFactoryNameE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess13isFactoryNameE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess13isFactoryNameE"></span><span id="st_LXtRenderOutputProcess::isFactoryName__i"></span><span class="target" id="structst___l_xt_render_output_process_1a748cddaccad3009d4cdd1819e1776941"></span>int <code class="sig-name descname">isFactoryName</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess13isFactoryNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess16sourceImageGammaE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess16sourceImageGammaE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess16sourceImageGammaE"></span><span id="st_LXtRenderOutputProcess::sourceImageGamma__float"></span><span class="target" id="structst___l_xt_render_output_process_1a99fd052ddf4121313da2784d726b6a3e"></span>float <code class="sig-name descname">sourceImageGamma</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess16sourceImageGammaE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess29sourceImageIsStereoSideBySideE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess29sourceImageIsStereoSideBySideE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess29sourceImageIsStereoSideBySideE"></span><span id="st_LXtRenderOutputProcess::sourceImageIsStereoSideBySide__i"></span><span class="target" id="structst___l_xt_render_output_process_1ab900e61267f8d4e24779e7f28c1f2556"></span>int <code class="sig-name descname">sourceImageIsStereoSideBySide</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess29sourceImageIsStereoSideBySideE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess13saveProcessedE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess13saveProcessedE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess13saveProcessedE"></span><span id="st_LXtRenderOutputProcess::saveProcessed__i"></span><span class="target" id="structst___l_xt_render_output_process_1ab40df8a6d2a1c5e9e2d8c3c155b6b96f"></span>int <code class="sig-name descname">saveProcessed</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess13saveProcessedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess9stereoEyeE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess9stereoEyeE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess9stereoEyeE"></span><span id="st_LXtRenderOutputProcess::stereoEye__i"></span><span class="target" id="structst___l_xt_render_output_process_1a1f25c5ea4ba90da309996123f8954b5f"></span>int <code class="sig-name descname">stereoEye</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess9stereoEyeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess15stereoCompositeE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess15stereoCompositeE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess15stereoCompositeE"></span><span id="st_LXtRenderOutputProcess::stereoComposite__i"></span><span class="target" id="structst___l_xt_render_output_process_1a9c7b5aada2a391ea0d895c2a8bc4eadd"></span>int <code class="sig-name descname">stereoComposite</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess15stereoCompositeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess5bloomE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess5bloomE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess5bloomE"></span><span id="st_LXtRenderOutputProcess::bloom__i"></span><span class="target" id="structst___l_xt_render_output_process_1a05a9539e0a676ac4e242d15a8010c938"></span>int <code class="sig-name descname">bloom</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess5bloomE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8bloomThrE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8bloomThrE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8bloomThrE"></span><span id="st_LXtRenderOutputProcess::bloomThr__float"></span><span class="target" id="structst___l_xt_render_output_process_1a153377ba7b396ad3e3e694616360d781"></span>float <code class="sig-name descname">bloomThr</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8bloomThrE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8bloomRadE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8bloomRadE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8bloomRadE"></span><span id="st_LXtRenderOutputProcess::bloomRad__float"></span><span class="target" id="structst___l_xt_render_output_process_1aab0fad2244ab4af859c3d6d126e27303"></span>float <code class="sig-name descname">bloomRad</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8bloomRadE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7invResXE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7invResXE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7invResXE"></span><span id="st_LXtRenderOutputProcess::invResX__float"></span><span class="target" id="structst___l_xt_render_output_process_1ac0fec47255ec31b6106ea0f5ab34466c"></span>float <code class="sig-name descname">invResX</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7invResXE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7invResYE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7invResYE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7invResYE"></span><span id="st_LXtRenderOutputProcess::invResY__float"></span><span class="target" id="structst___l_xt_render_output_process_1a6e7ada3ed271e7d2c077168468e68d55"></span>float <code class="sig-name descname">invResY</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7invResYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7vignAmtE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7vignAmtE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7vignAmtE"></span><span id="st_LXtRenderOutputProcess::vignAmt__float"></span><span class="target" id="structst___l_xt_render_output_process_1acbeafcbe3487f617a22b3b9816fb7366"></span>float <code class="sig-name descname">vignAmt</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7vignAmtE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess15inputBlackLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess15inputBlackLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess15inputBlackLevelE"></span><span id="st_LXtRenderOutputProcess::inputBlackLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a46ad35437021b0c1718e43dc77cd8510"></span>float <code class="sig-name descname">inputBlackLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess15inputBlackLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess14inputGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess14inputGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess14inputGrayLevelE"></span><span id="st_LXtRenderOutputProcess::inputGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a42157f9b077c755e2b8088f8b11a8b81"></span>float <code class="sig-name descname">inputGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess14inputGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess17invInputGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess17invInputGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess17invInputGrayLevelE"></span><span id="st_LXtRenderOutputProcess::invInputGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1ae9f741d1b522b654b382235d43857d16"></span>float <code class="sig-name descname">invInputGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess17invInputGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess5whiteE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess5whiteE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess5whiteE"></span><span id="st_LXtRenderOutputProcess::white__float"></span><span class="target" id="structst___l_xt_render_output_process_1aaf5a79a18616e7cadd7760e99e4bd78a"></span>float <code class="sig-name descname">white</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess5whiteE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8exposureE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8exposureE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8exposureE"></span><span id="st_LXtRenderOutputProcess::exposure__float"></span><span class="target" id="structst___l_xt_render_output_process_1a284248306518a5ea68d34d58d6e7f845"></span>float <code class="sig-name descname">exposure</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8exposureE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess16inputMinRedLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess16inputMinRedLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess16inputMinRedLevelE"></span><span id="st_LXtRenderOutputProcess::inputMinRedLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1aa6fafcc4b1cb3b79b37b9c9ab07f3dba"></span>float <code class="sig-name descname">inputMinRedLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess16inputMinRedLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess17inputRedGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess17inputRedGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess17inputRedGrayLevelE"></span><span id="st_LXtRenderOutputProcess::inputRedGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a62f533eb1a5778047b0a1297fbf212bb"></span>float <code class="sig-name descname">inputRedGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess17inputRedGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess20invInputRedGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess20invInputRedGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess20invInputRedGrayLevelE"></span><span id="st_LXtRenderOutputProcess::invInputRedGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1aa2b0826eab3a803aaef7818fbe2bc43a"></span>float <code class="sig-name descname">invInputRedGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess20invInputRedGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess3redE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess3redE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess3redE"></span><span id="st_LXtRenderOutputProcess::red__float"></span><span class="target" id="structst___l_xt_render_output_process_1a938502763589b9f3f7a8f78e25303581"></span>float <code class="sig-name descname">red</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess3redE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess11redExposureE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess11redExposureE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess11redExposureE"></span><span id="st_LXtRenderOutputProcess::redExposure__float"></span><span class="target" id="structst___l_xt_render_output_process_1aeac01eb3f7cbbb49b0561369ed8db0c6"></span>float <code class="sig-name descname">redExposure</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess11redExposureE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess18inputMinGreenLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess18inputMinGreenLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess18inputMinGreenLevelE"></span><span id="st_LXtRenderOutputProcess::inputMinGreenLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a13dc84a8275360d405b266c702f496c2"></span>float <code class="sig-name descname">inputMinGreenLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess18inputMinGreenLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess19inputGreenGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess19inputGreenGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess19inputGreenGrayLevelE"></span><span id="st_LXtRenderOutputProcess::inputGreenGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a0d3a7724acfec1597b4e0a0fa4e4b450"></span>float <code class="sig-name descname">inputGreenGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess19inputGreenGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess22invInputGreenGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess22invInputGreenGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess22invInputGreenGrayLevelE"></span><span id="st_LXtRenderOutputProcess::invInputGreenGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1acc6cd74b354dfef548d837848fe597a0"></span>float <code class="sig-name descname">invInputGreenGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess22invInputGreenGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess5greenE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess5greenE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess5greenE"></span><span id="st_LXtRenderOutputProcess::green__float"></span><span class="target" id="structst___l_xt_render_output_process_1a0ab6f8ed5b189a38d438eec282c168ae"></span>float <code class="sig-name descname">green</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess5greenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess13greenExposureE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess13greenExposureE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess13greenExposureE"></span><span id="st_LXtRenderOutputProcess::greenExposure__float"></span><span class="target" id="structst___l_xt_render_output_process_1aa0b79aec2292b7ce34957aa0f7ee5113"></span>float <code class="sig-name descname">greenExposure</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess13greenExposureE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess17inputMinBlueLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess17inputMinBlueLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess17inputMinBlueLevelE"></span><span id="st_LXtRenderOutputProcess::inputMinBlueLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a284ab3275fa378b4adc35bd96b71450b"></span>float <code class="sig-name descname">inputMinBlueLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess17inputMinBlueLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess18inputBlueGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess18inputBlueGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess18inputBlueGrayLevelE"></span><span id="st_LXtRenderOutputProcess::inputBlueGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a0c7f124f1c1b4d61b75dd21e4771c057"></span>float <code class="sig-name descname">inputBlueGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess18inputBlueGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess21invInputBlueGrayLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess21invInputBlueGrayLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess21invInputBlueGrayLevelE"></span><span id="st_LXtRenderOutputProcess::invInputBlueGrayLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a09c226f044598cc323133227edd8b0d1"></span>float <code class="sig-name descname">invInputBlueGrayLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess21invInputBlueGrayLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess4blueE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess4blueE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess4blueE"></span><span id="st_LXtRenderOutputProcess::blue__float"></span><span class="target" id="structst___l_xt_render_output_process_1ad5cf617356b7faa8676c54a3d4a646c6"></span>float <code class="sig-name descname">blue</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess4blueE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess12blueExposureE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess12blueExposureE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess12blueExposureE"></span><span id="st_LXtRenderOutputProcess::blueExposure__float"></span><span class="target" id="structst___l_xt_render_output_process_1ab5f580e080353c36868e51db3832d172"></span>float <code class="sig-name descname">blueExposure</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess12blueExposureE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7expTypeE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7expTypeE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7expTypeE"></span><span id="st_LXtRenderOutputProcess::expType__i"></span><span class="target" id="structst___l_xt_render_output_process_1ac358f3be44727657e0aab58dbbb65706"></span>int <code class="sig-name descname">expType</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7expTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess3isoE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess3isoE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess3isoE"></span><span id="st_LXtRenderOutputProcess::iso__float"></span><span class="target" id="structst___l_xt_render_output_process_1a5b639334cc86807db8e22ad34f2b9279"></span>float <code class="sig-name descname">iso</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess3isoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7expTimeE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7expTimeE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7expTimeE"></span><span id="st_LXtRenderOutputProcess::expTime__float"></span><span class="target" id="structst___l_xt_render_output_process_1a25e31de8f1eaef30d16bea540dfcf33e"></span>float <code class="sig-name descname">expTime</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7expTimeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess5fStopE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess5fStopE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess5fStopE"></span><span id="st_LXtRenderOutputProcess::fStop__float"></span><span class="target" id="structst___l_xt_render_output_process_1aaf29e06c92b2f84bb0b145d7ff2799b5"></span>float <code class="sig-name descname">fStop</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess5fStopE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7toneMapE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7toneMapE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7toneMapE"></span><span id="st_LXtRenderOutputProcess::toneMap__i"></span><span class="target" id="structst___l_xt_render_output_process_1a291966770fcfd93d431e841884f99cac"></span>int <code class="sig-name descname">toneMap</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7toneMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess7toneAmtE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess7toneAmtE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess7toneAmtE"></span><span id="st_LXtRenderOutputProcess::toneAmt__float"></span><span class="target" id="structst___l_xt_render_output_process_1a5a60ccdf4434a74b6c0f14fb4d5a64c9"></span>float <code class="sig-name descname">toneAmt</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess7toneAmtE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess9hueOffsetE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess9hueOffsetE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess9hueOffsetE"></span><span id="st_LXtRenderOutputProcess::hueOffset__float"></span><span class="target" id="structst___l_xt_render_output_process_1a5678234b000682027fad3d1fc873f1b5"></span>float <code class="sig-name descname">hueOffset</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess9hueOffsetE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess10saturationE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess10saturationE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess10saturationE"></span><span id="st_LXtRenderOutputProcess::saturation__float"></span><span class="target" id="structst___l_xt_render_output_process_1ade8d18b1a415ff92ebf1eea88a092c9e"></span>float <code class="sig-name descname">saturation</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess10saturationE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess12colorizationE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess12colorizationE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess12colorizationE"></span><span id="st_LXtRenderOutputProcess::colorization__float"></span><span class="target" id="structst___l_xt_render_output_process_1a7c3c746ae32d5a36b9ae5da7416e52b8"></span>float <code class="sig-name descname">colorization</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess12colorizationE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess11targetColorE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess11targetColorE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess11targetColorE"></span><span id="st_LXtRenderOutputProcess::targetColor__LXtVector"></span><span class="target" id="structst___l_xt_render_output_process_1ab443c3d2be44e164489aa40bf80d56d0"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">targetColor</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess11targetColorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess9targetHSVE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess9targetHSVE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess9targetHSVE"></span><span id="st_LXtRenderOutputProcess::targetHSV__LXtVector"></span><span class="target" id="structst___l_xt_render_output_process_1a02b880888315db9113e33de88470b3f3"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">targetHSV</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess9targetHSVE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess16outputBlackLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess16outputBlackLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess16outputBlackLevelE"></span><span id="st_LXtRenderOutputProcess::outputBlackLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a3ed1dd090b2167d1e52b6a59457ffa4d"></span>float <code class="sig-name descname">outputBlackLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess16outputBlackLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess16outputWhiteLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess16outputWhiteLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess16outputWhiteLevelE"></span><span id="st_LXtRenderOutputProcess::outputWhiteLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a1cd51ab91d14dae2094032ab33f48ad9"></span>float <code class="sig-name descname">outputWhiteLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess16outputWhiteLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess17outputMinRedLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess17outputMinRedLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess17outputMinRedLevelE"></span><span id="st_LXtRenderOutputProcess::outputMinRedLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1af1e1e402c9c781b2a68e67515a244436"></span>float <code class="sig-name descname">outputMinRedLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess17outputMinRedLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess17outputMaxRedLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess17outputMaxRedLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess17outputMaxRedLevelE"></span><span id="st_LXtRenderOutputProcess::outputMaxRedLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1afd1618ff9842f4b2b68ff92797f992ca"></span>float <code class="sig-name descname">outputMaxRedLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess17outputMaxRedLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess19outputMinGreenLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess19outputMinGreenLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess19outputMinGreenLevelE"></span><span id="st_LXtRenderOutputProcess::outputMinGreenLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a42396b361b4d2afea9feb8d0dda410d2"></span>float <code class="sig-name descname">outputMinGreenLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess19outputMinGreenLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess19outputMaxGreenLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess19outputMaxGreenLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess19outputMaxGreenLevelE"></span><span id="st_LXtRenderOutputProcess::outputMaxGreenLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a05baa834838a520588689fb961efcb22"></span>float <code class="sig-name descname">outputMaxGreenLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess19outputMaxGreenLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess18outputMinBlueLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess18outputMinBlueLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess18outputMinBlueLevelE"></span><span id="st_LXtRenderOutputProcess::outputMinBlueLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a14f73300737d22caec28c7f5b9b64039"></span>float <code class="sig-name descname">outputMinBlueLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess18outputMinBlueLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess18outputMaxBlueLevelE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess18outputMaxBlueLevelE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess18outputMaxBlueLevelE"></span><span id="st_LXtRenderOutputProcess::outputMaxBlueLevel__float"></span><span class="target" id="structst___l_xt_render_output_process_1a9f7fc254defb5fa9a7abf1ad17ea9727"></span>float <code class="sig-name descname">outputMaxBlueLevel</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess18outputMaxBlueLevelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess5gammaE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess5gammaE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess5gammaE"></span><span id="st_LXtRenderOutputProcess::gamma__float"></span><span class="target" id="structst___l_xt_render_output_process_1a2d488dcf9961d171f45ebf9e172731e3"></span>float <code class="sig-name descname">gamma</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess5gammaE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8invGammaE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8invGammaE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8invGammaE"></span><span id="st_LXtRenderOutputProcess::invGamma__float"></span><span class="target" id="structst___l_xt_render_output_process_1a7e5f35f6fbab49804f57fa6f269205c0"></span>float <code class="sig-name descname">invGamma</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8invGammaE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess10colorspaceE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess10colorspaceE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess10colorspaceE"></span><span id="st_LXtRenderOutputProcess::colorspace__cCP"></span><span class="target" id="structst___l_xt_render_output_process_1a6392e7e01a9d5eb2b78548ea3ff4c1d2"></span><em class="property">const</em> char *<code class="sig-name descname">colorspace</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess10colorspaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess12colormappingE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess12colormappingE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess12colormappingE"></span><span id="st_LXtRenderOutputProcess::colormapping__ILxColorMappingID"></span><span class="target" id="structst___l_xt_render_output_process_1acdf9520cc132bd567294b2e0ab1e178e"></span>ILxColorMappingID <code class="sig-name descname">colormapping</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess12colormappingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess19colorspaceEmbeddingE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess19colorspaceEmbeddingE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess19colorspaceEmbeddingE"></span><span id="st_LXtRenderOutputProcess::colorspaceEmbedding__i"></span><span class="target" id="structst___l_xt_render_output_process_1a735cc79f45b9b7d6eb88efd98d69142d"></span>int <code class="sig-name descname">colorspaceEmbedding</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess19colorspaceEmbeddingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8userNameE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8userNameE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8userNameE"></span><span id="st_LXtRenderOutputProcess::userName__cA"></span><span class="target" id="structst___l_xt_render_output_process_1a89e37696b2f5863e833c7b4108525cff"></span>char <code class="sig-name descname">userName</code>[64]<a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8userNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess8identityE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess8identityE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess8identityE"></span><span id="st_LXtRenderOutputProcess::identity__cA"></span><span class="target" id="structst___l_xt_render_output_process_1af3bec47d45fd674e5537152e2d39728e"></span>char <code class="sig-name descname">identity</code>[256]<a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess8identityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N25st_LXtRenderOutputProcess15itemUniqueIndexE">
+<span id="_CPPv3N25st_LXtRenderOutputProcess15itemUniqueIndexE"></span><span id="_CPPv2N25st_LXtRenderOutputProcess15itemUniqueIndexE"></span><span id="st_LXtRenderOutputProcess::itemUniqueIndex__i"></span><span class="target" id="structst___l_xt_render_output_process_1a44250473836d8e9ad34d8b8fad75edd7"></span>int <code class="sig-name descname">itemUniqueIndex</code><a class="headerlink" href="#_CPPv4N25st_LXtRenderOutputProcess15itemUniqueIndexE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtrenderoutputprocesslist">
+<h2><a class="toc-backref" href="#id2">LXtRenderOutputProcessList</a><a class="headerlink" href="#lxtrenderoutputprocesslist" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv429st_LXtRenderOutputProcessList">
+<span id="_CPPv329st_LXtRenderOutputProcessList"></span><span id="_CPPv229st_LXtRenderOutputProcessList"></span><span id="st_LXtRenderOutputProcessList"></span><span class="target" id="structst___l_xt_render_output_process_list"></span><em class="property">struct </em><code class="sig-name descname">st_LXtRenderOutputProcessList</code><a class="headerlink" href="#_CPPv429st_LXtRenderOutputProcessList" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N29st_LXtRenderOutputProcessList5countE">
+<span id="_CPPv3N29st_LXtRenderOutputProcessList5countE"></span><span id="_CPPv2N29st_LXtRenderOutputProcessList5countE"></span><span id="st_LXtRenderOutputProcessList::count__unsigned"></span><span class="target" id="structst___l_xt_render_output_process_list_1ae188854236099bf96ffe819c95a24198"></span>unsigned <code class="sig-name descname">count</code><a class="headerlink" href="#_CPPv4N29st_LXtRenderOutputProcessList5countE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N29st_LXtRenderOutputProcessList7outputsE">
+<span id="_CPPv3N29st_LXtRenderOutputProcessList7outputsE"></span><span id="_CPPv2N29st_LXtRenderOutputProcessList7outputsE"></span><span id="st_LXtRenderOutputProcessList::outputs__LXtRenderOutputProcessP"></span><span class="target" id="structst___l_xt_render_output_process_list_1a7e0ae4f0a1dc25864f8dcebbeb7c7205"></span>LXtRenderOutputProcess *<code class="sig-name descname">outputs</code><a class="headerlink" href="#_CPPv4N29st_LXtRenderOutputProcessList7outputsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiRENDEROUTPUT_INVALID">
+<span class="target" id="lxd__render_8hpp_1a1a54bdc2ad942d3dd0c68a8b2e767ea8"></span><code class="sig-name descname">LXiRENDEROUTPUT_INVALID</code><a class="headerlink" href="#c.LXiRENDEROUTPUT_INVALID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Render outputs currently have specific type codes for efficiency (avoiding the need for string comparisons). </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiRENDEROUTPUT_COLOR</p></li>
+<li><p>LXiRENDEROUTPUT_ALPHA</p></li>
+<li><p>LXiRENDEROUTPUT_DIFF</p></li>
+<li><p>LXiRENDEROUTPUT_DIFFDIR</p></li>
+<li><p>LXiRENDEROUTPUT_DIFFIND</p></li>
+<li><p>LXiRENDEROUTPUT_DIFFUNS</p></li>
+<li><p>LXiRENDEROUTPUT_SPEC</p></li>
+<li><p>LXiRENDEROUTPUT_REFL</p></li>
+<li><p>LXiRENDEROUTPUT_TRAN</p></li>
+<li><p>LXiRENDEROUTPUT_SUBS</p></li>
+<li><p>LXiRENDEROUTPUT_LUMI</p></li>
+<li><p>LXiRENDEROUTPUT_DEPTH</p></li>
+<li><p>LXiRENDEROUTPUT_MOTION</p></li>
+<li><p>LXiRENDEROUTPUT_SHADOW</p></li>
+<li><p>LXiRENDEROUTPUT_OCCLAMB</p></li>
+<li><p>LXiRENDEROUTPUT_OCCLREF</p></li>
+<li><p>LXiRENDEROUTPUT_SNORM</p></li>
+<li><p>LXiRENDEROUTPUT_SINC</p></li>
+<li><p>LXiRENDEROUTPUT_GNORM</p></li>
+<li><p>LXiRENDEROUTPUT_GINC</p></li>
+<li><p>LXiRENDEROUTPUT_SURFACE</p></li>
+<li><p>LXiRENDEROUTPUT_SEGMENT</p></li>
+<li><p>LXiRENDEROUTPUT_OPOS</p></li>
+<li><p>LXiRENDEROUTPUT_WPOS</p></li>
+<li><p>LXiRENDEROUTPUT_UV</p></li>
+<li><p>LXiRENDEROUTPUT_DPDU</p></li>
+<li><p>LXiRENDEROUTPUT_DPDV</p></li>
+<li><p>LXiRENDEROUTPUT_ICPOS</p></li>
+<li><p>LXiRENDEROUTPUT_ICVAL</p></li>
+<li><p>LXiRENDEROUTPUT_MDIFFCOL</p></li>
+<li><p>LXiRENDEROUTPUT_MDIFFAMT</p></li>
+<li><p>LXiRENDEROUTPUT_MDIFFROUGH</p></li>
+<li><p>LXiRENDEROUTPUT_MDIFFENG</p></li>
+<li><p>LXiRENDEROUTPUT_ROUGHNESS</p></li>
+<li><p>LXiRENDEROUTPUT_MDIFF</p></li>
+<li><p>LXiRENDEROUTPUT_MSPEC</p></li>
+<li><p>LXiRENDEROUTPUT_MREFL</p></li>
+<li><p>LXiRENDEROUTPUT_ILLUM</p></li>
+<li><p>LXiRENDEROUTPUT_ILLUMDIR</p></li>
+<li><p>LXiRENDEROUTPUT_ILLUMIND</p></li>
+<li><p>LXiRENDEROUTPUT_ILLUMUNS</p></li>
+<li><p>LXiRENDEROUTPUT_SAMPLES</p></li>
+<li><p>LXiRENDEROUTPUT_VARIANCE</p></li>
+<li><p>LXiRENDEROUTPUT_VOL_LUM</p></li>
+<li><p>LXiRENDEROUTPUT_VOL_OPA</p></li>
+<li><p>LXiRENDEROUTPUT_VOL_DEPTH</p></li>
+<li><p>LXiRENDEROUTPUT_SUBS_AMOUNT</p></li>
+<li><p>LXiRENDEROUTPUT_SUBS_COLOR</p></li>
+<li><p>LXiRENDEROUTPUT_TRAN_AMOUNT</p></li>
+<li><p>LXiRENDEROUTPUT_TRAN_COLOR</p></li>
+<li><p>LXiRENDEROUTPUT_PARTICLE_ID</p></li>
+<li><p>LXiRENDEROUTPUT_PARTICLE_AGE</p></li>
+<li><p>LXiRENDEROUTPUT_PARTICLE_VEL</p></li>
+<li><p>LXiRENDEROUTPUT_DRIVER_A</p></li>
+<li><p>LXiRENDEROUTPUT_DRIVER_B</p></li>
+<li><p>LXiRENDEROUTPUT_DRIVER_C</p></li>
+<li><p>LXiRENDEROUTPUT_DRIVER_D</p></li>
+<li><p>LXiRENDEROUTPUT_RECOLOR_TO</p></li>
+<li><p>LXiRENDEROUTPUT_RECOLOR_WHITE</p></li>
+<li><p>LXiRENDEROUTPUT_MATERIAL_MAP</p></li>
+<li><p>LXiRENDEROUTPUT_LPE</p></li>
+<li><p>LXiRENDEROUTPUT_ALBEDO</p></li>
+<li><p>LXiRENDEROUTPUT_CRYPTOMATTE</p></li>
+<li><p>LXiRENDEROUTPUT_CRYPTOMATTE_ID</p></li>
+<li><p>LXiRENDEROUTPUT_CRYPTOMATTE_COVERAGE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXe_GEO_SIZE_LIMIT">
+<span class="target" id="lxd__render_8hpp_1a0fe02ba4f9cbecddc2a40b30d6abbda1"></span><code class="sig-name descname">LXe_GEO_SIZE_LIMIT</code><a class="headerlink" href="#c.LXe_GEO_SIZE_LIMIT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Geometry caches include memory blocks for fast allocation of geometry elements with fewer system memory calls. This scheme also increases the chances that elements used together will be in the same area of memory and generally results in faster rendering. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxrenderbucket">
+<h2><a class="toc-backref" href="#id3">ILxRenderBucket</a><a class="headerlink" href="#ilxrenderbucket" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxRenderBucket">
+<span id="_CPPv315ILxRenderBucket"></span><span id="_CPPv215ILxRenderBucket"></span><span id="ILxRenderBucket"></span><span class="target" id="class_i_lx_render_bucket"></span><em class="property">class </em><code class="sig-name descname">ILxRenderBucket</code><a class="headerlink" href="#_CPPv415ILxRenderBucket" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket6ThreadE11LXtObjectID">
+<span id="_CPPv3N15ILxRenderBucket6ThreadE11LXtObjectID"></span><span id="_CPPv2N15ILxRenderBucket6ThreadE11LXtObjectID"></span><span id="ILxRenderBucket::Thread__LXtObjectID"></span><span class="target" id="class_i_lx_render_bucket_1a2baa04e1cc65e40436c18300e1bdcdd8"></span>unsigned int <code class="sig-name descname">Thread</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket6ThreadE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The bucket is exposed to clients via the render bucket interface, which is actually a packet in the sample vector. The simplest thing the RenderBucket interface can be used for is to get the thread number of the current rendering thread. This will be a value from 0 through n-1, where n is the number of rendering threads. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket9SampleVecE11LXtObjectIDPPv">
+<span id="_CPPv3N15ILxRenderBucket9SampleVecE11LXtObjectIDPPv"></span><span id="_CPPv2N15ILxRenderBucket9SampleVecE11LXtObjectIDPPv"></span><span id="ILxRenderBucket::SampleVec__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_render_bucket_1aac37c3645a540dbf65461404c84b79ea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SampleVec</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket9SampleVecE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We can also get the sample vector back from the bucket object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket7PushRayE11LXtObjectID">
+<span id="_CPPv3N15ILxRenderBucket7PushRayE11LXtObjectID"></span><span id="_CPPv2N15ILxRenderBucket7PushRayE11LXtObjectID"></span><span id="ILxRenderBucket::PushRay__LXtObjectID"></span><span class="target" id="class_i_lx_render_bucket_1a9c006bf0d4962a5214b58c1fa685cd0a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PushRay</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket7PushRayE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We can push and pop rays onto the ray stack. These functions are equivalent to those in the Raycast interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket6PopRayE11LXtObjectID">
+<span id="_CPPv3N15ILxRenderBucket6PopRayE11LXtObjectID"></span><span id="_CPPv2N15ILxRenderBucket6PopRayE11LXtObjectID"></span><span id="ILxRenderBucket::PopRay__LXtObjectID"></span><span class="target" id="class_i_lx_render_bucket_1a67fbed3aecdfb49eef7bd850d08bbee0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PopRay</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket6PopRayE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket11GetGIBounceE11LXtObjectID">
+<span id="_CPPv3N15ILxRenderBucket11GetGIBounceE11LXtObjectID"></span><span id="_CPPv2N15ILxRenderBucket11GetGIBounceE11LXtObjectID"></span><span id="ILxRenderBucket::GetGIBounce__LXtObjectID"></span><span class="target" id="class_i_lx_render_bucket_1acccbbfe534a7f6f561267ad320747ae9"></span>int <code class="sig-name descname">GetGIBounce</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket11GetGIBounceE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GetGIBounce will directly return the number of global illumination bounces prior to the current shading evaluation. This will allow a shader to compare it against the maximum global illumination bounces, and exit if it’s already reached the maximum. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket8GetPixelE11LXtObjectIDPiPi">
+<span id="_CPPv3N15ILxRenderBucket8GetPixelE11LXtObjectIDPiPi"></span><span id="_CPPv2N15ILxRenderBucket8GetPixelE11LXtObjectIDPiPi"></span><span id="ILxRenderBucket::GetPixel__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_render_bucket_1ae9248918ff5b3f25396ee66b1dac20ec"></span>void <code class="sig-name descname">GetPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>x</em>, int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket8GetPixelE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GetPixel will indirectly (through the x and y argument pointers) return the current pixel being evaluated by this thread. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket11GetSubPixelE11LXtObjectIDPfPf">
+<span id="_CPPv3N15ILxRenderBucket11GetSubPixelE11LXtObjectIDPfPf"></span><span id="_CPPv2N15ILxRenderBucket11GetSubPixelE11LXtObjectIDPfPf"></span><span id="ILxRenderBucket::GetSubPixel__LXtObjectID.floatP.floatP"></span><span class="target" id="class_i_lx_render_bucket_1a6d9b1f94ab8cb6b69924dc9ade18ae25"></span>void <code class="sig-name descname">GetSubPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>x</em>, float *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket11GetSubPixelE11LXtObjectIDPfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GetSubPixel will get the position of the current sample being evaluated within the pixel. It indirectly returns the values via the pointers to x and y. The values returned are between 0.0 and 1.0. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxRenderBucket13GetTimeOffsetE11LXtObjectID">
+<span id="_CPPv3N15ILxRenderBucket13GetTimeOffsetE11LXtObjectID"></span><span id="_CPPv2N15ILxRenderBucket13GetTimeOffsetE11LXtObjectID"></span><span id="ILxRenderBucket::GetTimeOffset__LXtObjectID"></span><span class="target" id="class_i_lx_render_bucket_1ad1ba18503d1d399cce010a8dd3ea5e3c"></span>float <code class="sig-name descname">GetTimeOffset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxRenderBucket13GetTimeOffsetE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GetTimeOffset will return a value between 0.0 and 1.0 indicating the time within an exposure being currently evaluated (to allow motion / temporal blur in shading, for instance). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_rendercache.html" class="btn btn-neutral float-right" title="Rendercache" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_raycast.html" class="btn btn-neutral float-left" title="Raycast" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_render.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

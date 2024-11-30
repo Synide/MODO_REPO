@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Command -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CompShader: Server basics" href="CompShader%20-%20%20Server%20basics.html" />
+    <link rel="prev" title="Server Basics" href="_server_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#command-flags">Command::Flags()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-execute">Command::Execute()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-classes">Helper Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basiccommand-basic-cmdflags">BasicCommand::basic_CmdFlags()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Command::Execute()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basiccommand-constructor">BasicCommand::’’constructor’’</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basiccommand-basic-enable">BasicCommand::basic_Enable()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#basiccommand-basic-notifiers">BasicCommand::basic_Notifiers()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>Command: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-server-basics">
+<h1>Command: Server basics<a class="headerlink" href="#command-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id2">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id3">Headers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#command-flags" id="id4">Command::Flags()</a></p></li>
+<li><p><a class="reference internal" href="#command-execute" id="id5">Command::Execute()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#helper-classes" id="id6">Helper Classes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basiccommand-basic-cmdflags" id="id7">BasicCommand::basic_CmdFlags()</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id8">Command::Execute()</a></p></li>
+<li><p><a class="reference internal" href="#basiccommand-constructor" id="id9">BasicCommand::’’constructor’’</a></p></li>
+<li><p><a class="reference internal" href="#basiccommand-basic-enable" id="id10">BasicCommand::basic_Enable()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#basiccommand-basic-notifiers" id="id11">BasicCommand::basic_Notifiers()</a></p></li>
+</ul>
+</div>
+<p>Commands are central to how the nexus system functions, and are potentially quite Command System. Not only do they perform all the essential state changes, they also constitute the greater part of the nexus UI through their detailed behaviors and hints. As result it’s not really possible to go into any great depth when discussing the basics of command servers, and it’s hard to untangle the core of the implementation from the wrappers that are intended to hide its complexities. Let’s start with the very basics.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id2">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Any button in a form corresponds to a command. The command provides an <em>Enable()</em> method which is used to compare the state of the system with the state required for the command to run, and those that can’t are greyed out. When the user presses the button there may be a dialog created automatically from command arguments. Once arguments are filled in the command’s <em>Execute()</em> is called to perform the action.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id3">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’command (lx-command.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_Command’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’value (lx-value.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_Attributes’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’command (lxu-command.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxBasicCommand’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>At the very least a command server derives from CLxImpl_Command, and exports an ILxCommand interface. Don’t be daunted by the number of method on the command object; many of them are implemented for you. The object you get from spawning a command from the system is actually different from the one that you implement in your server plug-in. The command system wraps your core command and adds the extra support methods.</p>
+<p>However, there is a minimal set of required methods.</p>
+<div class="section" id="command-flags">
+<h3><a class="toc-backref" href="#id4">Command::Flags()</a><a class="headerlink" href="#command-flags" title="Permalink to this headline">¶</a></h3>
+<p>Your command flags tell the system what your command expects to do, and in which context it’s valid. For example a command that expects to make undoable changes is a MODEL and UNDO command.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">cmd_Flags</span> <span class="p">(</span>
+         <span class="n">unsigned</span> <span class="nb">int</span>          <span class="o">*</span><span class="n">flags</span><span class="p">)</span>            <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">flags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">LXfCMD_MODEL</span> <span class="o">|</span> <span class="n">LXfCMD_UNDO</span><span class="p">;</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="command-execute">
+<h3><a class="toc-backref" href="#id5">Command::Execute()</a><a class="headerlink" href="#command-execute" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Execute()</em> method does the actual work of the command, so you have to have that. Note that it cannot return an error code. This is done instead using a Message Object and is beyond the scope of this simple example.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">void</span>
+ <span class="n">cmd_Execute</span> <span class="p">(</span>
+         <span class="n">unsigned</span> <span class="nb">int</span>           <span class="n">flags</span><span class="p">)</span>            <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="helper-classes">
+<h2><a class="toc-backref" href="#id6">Helper Classes</a><a class="headerlink" href="#helper-classes" title="Permalink to this headline">¶</a></h2>
+<p>All commands in the sample code are created by deriving from the CLxBasicCommand class which – as its name implies – provides a framework for creating basic commands. Command derived this way export the ILxCommand, ILxAttributes and ILxAttributesUI interfaces (the latter two for arguments). The class also provides a template for defining an appropriate server.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMyCommand</span> <span class="p">:</span> <span class="n">public</span> <span class="n">CLxBasicCommand</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+                 <span class="n">static</span> <span class="n">void</span>
+         <span class="n">initialize</span> <span class="p">()</span>
+         <span class="p">{</span>
+                 <span class="n">CLxExport_BasicCommand</span><span class="o">&lt;</span><span class="n">CMyCommand</span><span class="o">&gt;</span> <span class="p">(</span><span class="s2">&quot;myCommandName&quot;</span><span class="p">);</span>
+         <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="o">...</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="basiccommand-basic-cmdflags">
+<h3><a class="toc-backref" href="#id7">BasicCommand::basic_CmdFlags()</a><a class="headerlink" href="#basiccommand-basic-cmdflags" title="Permalink to this headline">¶</a></h3>
+<p>Flags have the same meaning in the basic command, but with a simpler method.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="nb">int</span>
+ <span class="n">basic_CmdFlags</span> <span class="p">()</span>            <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="k">return</span> <span class="n">LXfCMD_MODEL</span> <span class="o">|</span> <span class="n">LXfCMD_UNDO</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id8">Command::Execute()</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The execute method is exactly the same and derives from the CLxImpl_Command class. The main difference is that the basic command class provides an accessor to the message for errors.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">void</span>
+ <span class="n">cmd_Execute</span> <span class="p">(</span>
+         <span class="n">unsigned</span> <span class="nb">int</span>           <span class="n">flags</span><span class="p">)</span>            <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">do_the_thing</span> <span class="p">())</span>
+                 <span class="k">return</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CLxUser_Message</span>       <span class="o">&amp;</span><span class="n">msg</span> <span class="o">=</span> <span class="n">basic_Message</span> <span class="p">();</span>
+         <span class="n">msg</span><span class="o">.</span><span class="n">SetCode</span> <span class="p">(</span><span class="n">LXe_FAILED</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="basiccommand-constructor">
+<h3><a class="toc-backref" href="#id9">BasicCommand::’’constructor’’</a><a class="headerlink" href="#basiccommand-constructor" title="Permalink to this headline">¶</a></h3>
+<p>One critical aspect of commands not yet described is arguments. The basic command class also inherits from CLxDynamicAttributes (index) that defines the command’s arguments. The set of arguments and their order are defined in the constructor.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">CMyCommand</span> <span class="p">()</span>
+ <span class="p">{</span>
+         <span class="n">dyna_Add</span> <span class="p">(</span><span class="s2">&quot;component&quot;</span><span class="p">,</span> <span class="n">LXsTYPE_INTEGER</span><span class="p">);</span>
+         <span class="n">dyna_Add</span> <span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>     <span class="n">LXsTYPE_FLOAT</span><span class="p">);</span>
+         <span class="n">dyna_Add</span> <span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span>      <span class="n">LXsTYPE_STRING</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="basiccommand-basic-enable">
+<h3><a class="toc-backref" href="#id10">BasicCommand::basic_Enable()</a><a class="headerlink" href="#basiccommand-basic-enable" title="Permalink to this headline">¶</a></h3>
+<p>Commands can be disabled when the circumstances make them impossible to run. This method can just return false for a generic “command disabled” message, or it can use the message object for more detailed information.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="nb">bool</span>
+ <span class="n">basic_Enable</span> <span class="p">(</span>
+         <span class="n">CLxUser_Message</span>        <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span>            <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="basiccommand-basic-notifiers">
+<h2><a class="toc-backref" href="#id11">BasicCommand::basic_Notifiers()</a><a class="headerlink" href="#basiccommand-basic-notifiers" title="Permalink to this headline">¶</a></h2>
+<p>If a command can be disabled, it can also change between enabled and disabled. In order for buttons to change the command must provide notifiers that will send the appropriate update codes for events that might change the enable state. For example this method adds a single notifier that signals a change in the disable state of the command based on any change in item selection. notify (lx-notify.hpp) are provided for common cases or custom notifiers can be created.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">void</span>
+ <span class="n">basic_Notifiers</span> <span class="p">()</span>            <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">basic_AddNotify</span> <span class="p">(</span><span class="n">LXsNOTIFIER_SELECT</span><span class="p">,</span> <span class="s2">&quot;item +d&quot;</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CompShader%20-%20%20Server%20basics.html" class="btn btn-neutral float-right" title="CompShader: Server basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_server_basics.html" class="btn btn-neutral float-left" title="Server Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Command -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

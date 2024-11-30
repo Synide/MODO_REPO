@@ -1,0 +1,947 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_surface.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Surface &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tableau" href="lxd_tableau.html" />
+    <link rel="prev" title="Stddialog" href="lxd_stddialog.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Surface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsurfaceitem">ILxSurfaceItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtrayinfo">LXtRayInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtrayhit">LXtRayHit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsurface">ILxSurface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsurfacebin">ILxSurfaceBin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcurvegroup">ILxCurveGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcurve">ILxCurve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcurve1">ILxCurve1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcurve2">ILxCurve2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcurve3">ILxCurve3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Surface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="surface">
+<h1>Surface<a class="headerlink" href="#surface" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxsurfaceitem" id="id1">ILxSurfaceItem</a></p></li>
+<li><p><a class="reference internal" href="#lxtrayinfo" id="id2">LXtRayInfo</a></p></li>
+<li><p><a class="reference internal" href="#lxtrayhit" id="id3">LXtRayHit</a></p></li>
+<li><p><a class="reference internal" href="#ilxsurface" id="id4">ILxSurface</a></p></li>
+<li><p><a class="reference internal" href="#ilxsurfacebin" id="id5">ILxSurfaceBin</a></p></li>
+<li><p><a class="reference internal" href="#ilxcurvegroup" id="id6">ILxCurveGroup</a></p></li>
+<li><p><a class="reference internal" href="#ilxcurve" id="id7">ILxCurve</a></p></li>
+<li><p><a class="reference internal" href="#ilxcurve1" id="id8">ILxCurve1</a></p></li>
+<li><p><a class="reference internal" href="#ilxcurve2" id="id9">ILxCurve2</a></p></li>
+<li><p><a class="reference internal" href="#ilxcurve3" id="id10">ILxCurve3</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxsurfaceitem">
+<h2><a class="toc-backref" href="#id1">ILxSurfaceItem</a><a class="headerlink" href="#ilxsurfaceitem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxSurfaceItem">
+<span id="_CPPv314ILxSurfaceItem"></span><span id="_CPPv214ILxSurfaceItem"></span><span id="ILxSurfaceItem"></span><span class="target" id="class_i_lx_surface_item"></span><em class="property">class </em><code class="sig-name descname">ILxSurfaceItem</code><a class="headerlink" href="#_CPPv414ILxSurfaceItem" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxSurfaceItem10GetSurfaceE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N14ILxSurfaceItem10GetSurfaceE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N14ILxSurfaceItem10GetSurfaceE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxSurfaceItem::GetSurface__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_surface_item_1a43f34a1f130d3aa88672947007071c31"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSurface</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, unsigned <em>morph</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxSurfaceItem10GetSurfaceE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>All item types that produce a surface can be queried for their <a class="reference internal" href="#class_i_lx_surface_item"><span class="std std-ref">ILxSurfaceItem</span></a> interface.<ul class="simple">
+<li><p>GetSurface returns the <a class="reference internal" href="#class_i_lx_surface"><span class="std std-ref">ILxSurface</span></a> object, ‘morph’ should be set if the client is intertested in the morphed surface.</p></li>
+<li><p>Prepare adds the channels for the surface modifier and</p></li>
+<li><p>Evaluate evaluates the surface. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxSurfaceItem7PrepareE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N14ILxSurfaceItem7PrepareE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N14ILxSurfaceItem7PrepareE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSurfaceItem::Prepare__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_surface_item_1a9e9ea79476a3f9f9f842264c44414b9b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Prepare</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>eval</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxSurfaceItem7PrepareE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxSurfaceItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N14ILxSurfaceItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N14ILxSurfaceItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxSurfaceItem::Evaluate__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_surface_item_1a15de3ba2ed37e96dbabcd49e31b71e2e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxSurfaceItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDbR14CLxLoc_Surface">
+<span id="_CPPv3N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDbR14CLxLoc_Surface"></span><span id="_CPPv2N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDbR14CLxLoc_Surface"></span><span id="ILxSurfaceItem::AllocSurf__ILxUnknownID.b.CLxLoc_SurfaceR"></span><span class="target" id="class_i_lx_surface_item_1a14b0d82dd4a9102adf98ce85c80c3ca4"></span>bool <code class="sig-name descname">AllocSurf</code><span class="sig-paren">(</span>ILxUnknownID <em>chanRead</em>, bool <em>morph</em>, CLxLoc_Surface &amp;<em>surf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDbR14CLxLoc_Surface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDjR14CLxLoc_Surface">
+<span id="_CPPv3N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDjR14CLxLoc_Surface"></span><span id="_CPPv2N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDjR14CLxLoc_Surface"></span><span id="ILxSurfaceItem::AllocSurf__ILxUnknownID.unsigned.CLxLoc_SurfaceR"></span><span class="target" id="class_i_lx_surface_item_1a2c945ae343f1dff36f47399c611bdda8"></span>bool <code class="sig-name descname">AllocSurf</code><span class="sig-paren">(</span>ILxUnknownID <em>attr</em>, unsigned <em>index</em>, CLxLoc_Surface &amp;<em>surf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxSurfaceItem9AllocSurfE12ILxUnknownIDjR14CLxLoc_Surface" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtrayinfo">
+<h2><a class="toc-backref" href="#id2">LXtRayInfo</a><a class="headerlink" href="#lxtrayinfo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413st_LXtRayInfo">
+<span id="_CPPv313st_LXtRayInfo"></span><span id="_CPPv213st_LXtRayInfo"></span><span id="st_LXtRayInfo"></span><span class="target" id="structst___l_xt_ray_info"></span><em class="property">struct </em><code class="sig-name descname">st_LXtRayInfo</code><a class="headerlink" href="#_CPPv413st_LXtRayInfo" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Surface objects have a number of properties that can be queried with the ILxBinnedSurface interface.<ul class="simple">
+<li><p>GetBBox returns the surface bounding box.</p></li>
+<li><p>FrontBBox sets the front bounding box for that bin. The ‘front’ bounding box is formed by the geometry facing the viewer given by its position and direction vectors.</p></li>
+<li><p>RayCast casts a ray on the surface.</p></li>
+</ul>
+</p>
+<p>The input is the rayInfo structure which holds the position &amp; direction of the ray plus some optional settings. ‘cull’ must be true to cull hidden geometry, ‘half’ only raycasts the geoemtry in front of the viewer and ‘vmapName’ must be set to calculate the UVs (or other vmap values) at the hit point. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N13st_LXtRayInfo3posE">
+<span id="_CPPv3N13st_LXtRayInfo3posE"></span><span id="_CPPv2N13st_LXtRayInfo3posE"></span><span id="st_LXtRayInfo::pos__LXtVector"></span><span class="target" id="structst___l_xt_ray_info_1a1d07ae78a6bdf8f019699e7aad1b60ab"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">pos</code><a class="headerlink" href="#_CPPv4N13st_LXtRayInfo3posE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N13st_LXtRayInfo3dirE">
+<span id="_CPPv3N13st_LXtRayInfo3dirE"></span><span id="_CPPv2N13st_LXtRayInfo3dirE"></span><span id="st_LXtRayInfo::dir__LXtVector"></span><span class="target" id="structst___l_xt_ray_info_1a97e179d61614f08a1ccd02ad6c8cac0d"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">dir</code><a class="headerlink" href="#_CPPv4N13st_LXtRayInfo3dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N13st_LXtRayInfo4cullE">
+<span id="_CPPv3N13st_LXtRayInfo4cullE"></span><span id="_CPPv2N13st_LXtRayInfo4cullE"></span><span id="st_LXtRayInfo::cull__unsigned"></span><span class="target" id="structst___l_xt_ray_info_1a624ad9422973b936e50d6e4bb22b4e18"></span>unsigned <code class="sig-name descname">cull</code><a class="headerlink" href="#_CPPv4N13st_LXtRayInfo4cullE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N13st_LXtRayInfo4halfE">
+<span id="_CPPv3N13st_LXtRayInfo4halfE"></span><span id="_CPPv2N13st_LXtRayInfo4halfE"></span><span id="st_LXtRayInfo::half__unsigned"></span><span class="target" id="structst___l_xt_ray_info_1ace56bac9d837f63ed81f56ebc29d006b"></span>unsigned <code class="sig-name descname">half</code><a class="headerlink" href="#_CPPv4N13st_LXtRayInfo4halfE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N13st_LXtRayInfo8vmapNameE">
+<span id="_CPPv3N13st_LXtRayInfo8vmapNameE"></span><span id="_CPPv2N13st_LXtRayInfo8vmapNameE"></span><span id="st_LXtRayInfo::vmapName__cCP"></span><span class="target" id="structst___l_xt_ray_info_1a6c69634751c5aa80960816902a8c63e9"></span><em class="property">const</em> char *<code class="sig-name descname">vmapName</code><a class="headerlink" href="#_CPPv4N13st_LXtRayInfo8vmapNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N13st_LXtRayInfo8vmapTypeE">
+<span id="_CPPv3N13st_LXtRayInfo8vmapTypeE"></span><span id="_CPPv2N13st_LXtRayInfo8vmapTypeE"></span><span id="st_LXtRayInfo::vmapType__LXtID4"></span><span class="target" id="structst___l_xt_ray_info_1ac6e87a947e7c3dadf934ad1c5c390282"></span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <code class="sig-name descname">vmapType</code><a class="headerlink" href="#_CPPv4N13st_LXtRayInfo8vmapTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtrayhit">
+<h2><a class="toc-backref" href="#id3">LXtRayHit</a><a class="headerlink" href="#lxtrayhit" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412st_LXtRayHit">
+<span id="_CPPv312st_LXtRayHit"></span><span id="_CPPv212st_LXtRayHit"></span><span id="st_LXtRayHit"></span><span class="target" id="structst___l_xt_ray_hit"></span><em class="property">struct </em><code class="sig-name descname">st_LXtRayHit</code><a class="headerlink" href="#_CPPv412st_LXtRayHit" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The output is the rayHIt stucture. pos &amp; nrm are the position and normal vectors at the hit point. ‘dist’ is the distance along the ray, ‘uvw’ are the vmap values if ‘vmap’ is set in the input and ‘bin’ is the hit bin. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N12st_LXtRayHit3posE">
+<span id="_CPPv3N12st_LXtRayHit3posE"></span><span id="_CPPv2N12st_LXtRayHit3posE"></span><span id="st_LXtRayHit::pos__LXtVector"></span><span class="target" id="structst___l_xt_ray_hit_1a92819e922a236ee65874cf6aa199ebd8"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">pos</code><a class="headerlink" href="#_CPPv4N12st_LXtRayHit3posE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N12st_LXtRayHit3nrmE">
+<span id="_CPPv3N12st_LXtRayHit3nrmE"></span><span id="_CPPv2N12st_LXtRayHit3nrmE"></span><span id="st_LXtRayHit::nrm__LXtVector"></span><span class="target" id="structst___l_xt_ray_hit_1aa2d909b574c19c8790dd9e3002e25a42"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">nrm</code><a class="headerlink" href="#_CPPv4N12st_LXtRayHit3nrmE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N12st_LXtRayHit3uvwE">
+<span id="_CPPv3N12st_LXtRayHit3uvwE"></span><span id="_CPPv2N12st_LXtRayHit3uvwE"></span><span id="st_LXtRayHit::uvw__LXtVector"></span><span class="target" id="structst___l_xt_ray_hit_1a168a71db0eac07c9b2ea52ac198bef8f"></span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <code class="sig-name descname">uvw</code><a class="headerlink" href="#_CPPv4N12st_LXtRayHit3uvwE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N12st_LXtRayHit4distE">
+<span id="_CPPv3N12st_LXtRayHit4distE"></span><span id="_CPPv2N12st_LXtRayHit4distE"></span><span id="st_LXtRayHit::dist__double"></span><span class="target" id="structst___l_xt_ray_hit_1a7798ea343206ef692a33c0162759ca69"></span>double <code class="sig-name descname">dist</code><a class="headerlink" href="#_CPPv4N12st_LXtRayHit4distE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N12st_LXtRayHit3binE">
+<span id="_CPPv3N12st_LXtRayHit3binE"></span><span id="_CPPv2N12st_LXtRayHit3binE"></span><span id="st_LXtRayHit::bin__voidP"></span><span class="target" id="structst___l_xt_ray_hit_1a7ffcee7d8cd7400b56124fe51822783c"></span>void *<code class="sig-name descname">bin</code><a class="headerlink" href="#_CPPv4N12st_LXtRayHit3binE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N12st_LXtRayHit7polygonE">
+<span id="_CPPv3N12st_LXtRayHit7polygonE"></span><span id="_CPPv2N12st_LXtRayHit7polygonE"></span><span id="st_LXtRayHit::polygon__LXtPolygonID"></span><span class="target" id="structst___l_xt_ray_hit_1ac66a86cfe2ab7947bbb91992c8407f74"></span>LXtPolygonID <code class="sig-name descname">polygon</code><a class="headerlink" href="#_CPPv4N12st_LXtRayHit7polygonE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxsurface">
+<h2><a class="toc-backref" href="#id4">ILxSurface</a><a class="headerlink" href="#ilxsurface" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxSurface">
+<span id="_CPPv310ILxSurface"></span><span id="_CPPv210ILxSurface"></span><span id="ILxSurface"></span><span class="target" id="class_i_lx_surface"></span><em class="property">class </em><code class="sig-name descname">ILxSurface</code><a class="headerlink" href="#_CPPv410ILxSurface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface7GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N10ILxSurface7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N10ILxSurface7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxSurface::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_surface_1ad93d473ea4a96c69e776226877b8c191"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface7GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>BinCount returns the number of bins on a surface.</p></li>
+<li><p>BinByIndex returns the <a class="reference internal" href="#class_i_lx_surface_bin"><span class="std std-ref">ILxSurfaceBin</span></a> object by its index in the surface.</p></li>
+<li><p>TagCount returns the number of string tags per tag type</p></li>
+<li><p>TagByIndex returns the string tag interface given by its type and index in the list.</p></li>
+<li><p>GLCount returns the number of GL polygons displayed by the surface. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox">
+<span id="_CPPv3N10ILxSurface9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox"></span><span id="_CPPv2N10ILxSurface9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox"></span><span id="ILxSurface::FrontBBox__LXtObjectID.LXtVectorC.LXtVectorC.LXtBBoxP"></span><span class="target" id="class_i_lx_surface_1a6bf006573fbfc2511ba8372fc085ec2b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FrontBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>dir</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface7RayCastE11LXtObjectIDPK10LXtRayInfoP9LXtRayHit">
+<span id="_CPPv3N10ILxSurface7RayCastE11LXtObjectIDPK10LXtRayInfoP9LXtRayHit"></span><span id="_CPPv2N10ILxSurface7RayCastE11LXtObjectIDPK10LXtRayInfoP9LXtRayHit"></span><span id="ILxSurface::RayCast__LXtObjectID.LXtRayInfoCP.LXtRayHitP"></span><span class="target" id="class_i_lx_surface_1a8285d5f20c0dc30829159d3d20fd66c2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RayCast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtRayInfo *<em>ray</em>, LXtRayHit *<em>hit</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface7RayCastE11LXtObjectIDPK10LXtRayInfoP9LXtRayHit" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface8BinCountE11LXtObjectIDPj">
+<span id="_CPPv3N10ILxSurface8BinCountE11LXtObjectIDPj"></span><span id="_CPPv2N10ILxSurface8BinCountE11LXtObjectIDPj"></span><span id="ILxSurface::BinCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_surface_1a47930c26333771750076cc28bbda75ea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BinCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface8BinCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface10BinByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N10ILxSurface10BinByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N10ILxSurface10BinByIndexE11LXtObjectIDjPPv"></span><span id="ILxSurface::BinByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_surface_1a0a80a045494e07998bc286b69f508099"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BinByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface10BinByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface8TagCountE11LXtObjectID6LXtID4Pj">
+<span id="_CPPv3N10ILxSurface8TagCountE11LXtObjectID6LXtID4Pj"></span><span id="_CPPv2N10ILxSurface8TagCountE11LXtObjectID6LXtID4Pj"></span><span id="ILxSurface::TagCount__LXtObjectID.LXtID4.unsigned-iP"></span><span class="target" id="class_i_lx_surface_1a2ce3fb44bbd8df0d829eeff79b2cd01f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TagCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface8TagCountE11LXtObjectID6LXtID4Pj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface10TagByIndexE11LXtObjectID6LXtID4jPPKc">
+<span id="_CPPv3N10ILxSurface10TagByIndexE11LXtObjectID6LXtID4jPPKc"></span><span id="_CPPv2N10ILxSurface10TagByIndexE11LXtObjectID6LXtID4jPPKc"></span><span id="ILxSurface::TagByIndex__LXtObjectID.LXtID4.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_surface_1afdbe40f942c392a9aeed091028c8ef47"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TagByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>stag</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface10TagByIndexE11LXtObjectID6LXtID4jPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface7GLCountE11LXtObjectIDPj">
+<span id="_CPPv3N10ILxSurface7GLCountE11LXtObjectIDPj"></span><span id="_CPPv2N10ILxSurface7GLCountE11LXtObjectIDPj"></span><span id="ILxSurface::GLCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_surface_1a8bb0531c72d8ce4071cd268eee092c32"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GLCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface7GLCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxSurface6GetBinEjR17CLxLoc_SurfaceBin">
+<span id="_CPPv3N10ILxSurface6GetBinEjR17CLxLoc_SurfaceBin"></span><span id="_CPPv2N10ILxSurface6GetBinEjR17CLxLoc_SurfaceBin"></span><span id="ILxSurface::GetBin__unsigned.CLxLoc_SurfaceBinR"></span><span class="target" id="class_i_lx_surface_1aeee9d1e33f00ad900414ca1674fbc8db"></span>bool <code class="sig-name descname">GetBin</code><span class="sig-paren">(</span>unsigned <em>index</em>, CLxLoc_SurfaceBin &amp;<em>bin</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxSurface6GetBinEjR17CLxLoc_SurfaceBin" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxsurfacebin">
+<h2><a class="toc-backref" href="#id5">ILxSurfaceBin</a><a class="headerlink" href="#ilxsurfacebin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxSurfaceBin">
+<span id="_CPPv313ILxSurfaceBin"></span><span id="_CPPv213ILxSurfaceBin"></span><span id="ILxSurfaceBin"></span><span class="target" id="class_i_lx_surface_bin"></span><em class="property">class </em><code class="sig-name descname">ILxSurfaceBin</code><a class="headerlink" href="#_CPPv413ILxSurfaceBin" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxSurfaceBin7GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N13ILxSurfaceBin7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N13ILxSurfaceBin7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxSurfaceBin::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_surface_bin_1adcbb44823d64d6d1f486a4cbc30bf46f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSurfaceBin7GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Finally we have surface bins which represents a segment of the surface with the same tags and thus the same shader.<ul class="simple">
+<li><p>GetBBox sets the bounding box for that bin</p></li>
+<li><p>FrontBBox sets the front bounding box for that bin. The ‘front’ bounding box is formed by the geometry facing the viewer given by its position and direction vectors. The surface bin object should also present an ILxStringTags interface to get the polygon tags on the bin for shader tree masking, and an <a class="reference internal" href="lxd_tableau.html#class_i_lx_tableau_surface"><span class="std std-ref">ILxTableauSurface</span></a> interface to allow the surface to be sampled into a triangle soup. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSurfaceBin9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox">
+<span id="_CPPv3N13ILxSurfaceBin9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox"></span><span id="_CPPv2N13ILxSurfaceBin9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox"></span><span id="ILxSurfaceBin::FrontBBox__LXtObjectID.LXtVectorC.LXtVectorC.LXtBBoxP"></span><span class="target" id="class_i_lx_surface_bin_1add15b997d55fcf2e6def59716d366ac7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FrontBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>dir</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSurfaceBin9FrontBBoxE11LXtObjectIDK9LXtVectorK9LXtVectorP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcurvegroup">
+<h2><a class="toc-backref" href="#id6">ILxCurveGroup</a><a class="headerlink" href="#ilxcurvegroup" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxCurveGroup">
+<span id="_CPPv313ILxCurveGroup"></span><span id="_CPPv213ILxCurveGroup"></span><span id="ILxCurveGroup"></span><span class="target" id="class_i_lx_curve_group"></span><em class="property">class </em><code class="sig-name descname">ILxCurveGroup</code><a class="headerlink" href="#_CPPv413ILxCurveGroup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Items declare that they can provide curves with a package tag giving the name of the curve channel. Read in an evaluated context, this will be an ValueReference object channel holding the curve group object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxCurveGroup7GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N13ILxCurveGroup7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N13ILxCurveGroup7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxCurveGroup::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_curve_group_1a7ecb705ceab6169910920162c6af3bc7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxCurveGroup7GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Any item can present itself as a group of curves. The bounding box and count of curves can be read from the root object, and curve accessors can be allocated for each one by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxCurveGroup5CountE11LXtObjectIDPj">
+<span id="_CPPv3N13ILxCurveGroup5CountE11LXtObjectIDPj"></span><span id="_CPPv2N13ILxCurveGroup5CountE11LXtObjectIDPj"></span><span id="ILxCurveGroup::Count__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_curve_group_1aa6b5aa8205e138c7d023232744da1396"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxCurveGroup5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxCurveGroup7ByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N13ILxCurveGroup7ByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N13ILxCurveGroup7ByIndexE11LXtObjectIDjPPv"></span><span id="ILxCurveGroup::ByIndex__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_curve_group_1ad027d63c8adb90d2690c06fffcd426f2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxCurveGroup7ByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcurve">
+<h2><a class="toc-backref" href="#id7">ILxCurve</a><a class="headerlink" href="#ilxcurve" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv48ILxCurve">
+<span id="_CPPv38ILxCurve"></span><span id="_CPPv28ILxCurve"></span><span id="ILxCurve"></span><span class="target" id="class_i_lx_curve"></span><em class="property">class </em><code class="sig-name descname">ILxCurve</code><a class="headerlink" href="#_CPPv48ILxCurve" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Items declare that they can provide curves with a package tag giving the name of the curve channel. Read in an evaluated context, this will be an ValueReference object channel holding the curve group object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve7GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N8ILxCurve7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N8ILxCurve7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxCurve::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_curve_1a7de78bdcad01148dc83f2d6db1b9f56c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve7GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The curve accessor allows the client to read the attributes and shape of the curve. It also has StringTag interface for bin tags. The bounding box and length are gross features. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve6LengthE11LXtObjectID">
+<span id="_CPPv3N8ILxCurve6LengthE11LXtObjectID"></span><span id="_CPPv2N8ILxCurve6LengthE11LXtObjectID"></span><span id="ILxCurve::Length__LXtObjectID"></span><span class="target" id="class_i_lx_curve_1a83539d5b1cdcec321a988bb36621d3b6"></span>double <code class="sig-name descname">Length</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve6LengthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve11SplineCountE11LXtObjectIDPj">
+<span id="_CPPv3N8ILxCurve11SplineCountE11LXtObjectIDPj"></span><span id="_CPPv2N8ILxCurve11SplineCountE11LXtObjectIDPj"></span><span id="ILxCurve::SplineCount__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_curve_1a13e4405c319bc58c44d8bec62814190c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve11SplineCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the curve is piecewise cubic, the spline segments can be read as Bezier control points. If the curve is not a spline then Count() returns NOTFOUND. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve13SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector">
+<span id="_CPPv3N8ILxCurve13SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="_CPPv2N8ILxCurve13SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="ILxCurve::SplineByIndex__LXtObjectID.unsigned.LXtVector.LXtVector.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve_1a571837b8181567a35faa9429c3829790"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b0</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b1</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b2</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b3</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve13SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve19SplineLengthByIndexE11LXtObjectIDjPd">
+<span id="_CPPv3N8ILxCurve19SplineLengthByIndexE11LXtObjectIDjPd"></span><span id="_CPPv2N8ILxCurve19SplineLengthByIndexE11LXtObjectIDjPd"></span><span id="ILxCurve::SplineLengthByIndex__LXtObjectID.unsigned.doubleP"></span><span class="target" id="class_i_lx_curve_1a499be64bfad8ab2b700369be370390da"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineLengthByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, double *<em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve19SplineLengthByIndexE11LXtObjectIDjPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve9BendCountE11LXtObjectID">
+<span id="_CPPv3N8ILxCurve9BendCountE11LXtObjectID"></span><span id="_CPPv2N8ILxCurve9BendCountE11LXtObjectID"></span><span id="ILxCurve::BendCount__LXtObjectID"></span><span class="target" id="class_i_lx_curve_1a41825406da514d0da8c9b4bf11e3fe7b"></span>unsigned <code class="sig-name descname">BendCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve9BendCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Curves can also be parameteric. In that case they aren’t made of splines, but we want to know aproximately how many bends they have in case we need to sample it and capture the shape. A bend is a flex in the curve, and we’re counting how many of them there are relative to the parameterization. For piecewise cubic curves this is twice the number of splines. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve5ParamE11LXtObjectID">
+<span id="_CPPv3N8ILxCurve5ParamE11LXtObjectID"></span><span id="_CPPv2N8ILxCurve5ParamE11LXtObjectID"></span><span id="ILxCurve::Param__LXtObjectID"></span><span class="target" id="class_i_lx_curve_1a6985215d8447142000b97817f55973b4"></span>double <code class="sig-name descname">Param</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve5ParamE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Points along the curve are read by setting the parameter for the curve to a value between 0 and 1. The parameter can also be set by the fraction of the curve’s total length. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve8SetParamE11LXtObjectIDd">
+<span id="_CPPv3N8ILxCurve8SetParamE11LXtObjectIDd"></span><span id="_CPPv2N8ILxCurve8SetParamE11LXtObjectIDd"></span><span id="ILxCurve::SetParam__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve_1a1cb408ed1a58066e4259f24184dcabbe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetParam</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve8SetParamE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve11LenFractionE11LXtObjectID">
+<span id="_CPPv3N8ILxCurve11LenFractionE11LXtObjectID"></span><span id="_CPPv2N8ILxCurve11LenFractionE11LXtObjectID"></span><span id="ILxCurve::LenFraction__LXtObjectID"></span><span class="target" id="class_i_lx_curve_1aca4ff6a71db483cf4f8e6f0083d25f60"></span>double <code class="sig-name descname">LenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve11LenFractionE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve14SetLenFractionE11LXtObjectIDd">
+<span id="_CPPv3N8ILxCurve14SetLenFractionE11LXtObjectIDd"></span><span id="_CPPv2N8ILxCurve14SetLenFractionE11LXtObjectIDd"></span><span id="ILxCurve::SetLenFraction__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve_1a7db2c6d27b12a4a4d07367915b3b4d83"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetLenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>frac</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve14SetLenFractionE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve8PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N8ILxCurve8PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N8ILxCurve8PositionE11LXtObjectID9LXtVector"></span><span id="ILxCurve::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve_1a3baaedb0948e3ff0a6dfca93c30af663"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve8PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The position, tangent, and curvature can then be read. The position is in world coordinates, the tangent is the rate of change relative to the parameter, and the curvature is the tangent’s rate of change relative to the parameter. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve7TangentE11LXtObjectID9LXtVector">
+<span id="_CPPv3N8ILxCurve7TangentE11LXtObjectID9LXtVector"></span><span id="_CPPv2N8ILxCurve7TangentE11LXtObjectID9LXtVector"></span><span id="ILxCurve::Tangent__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve_1a5912129d9dfd1dadddd71291d47d18a8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Tangent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>tan</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve7TangentE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve9CurvatureE11LXtObjectIDPd">
+<span id="_CPPv3N8ILxCurve9CurvatureE11LXtObjectIDPd"></span><span id="_CPPv2N8ILxCurve9CurvatureE11LXtObjectIDPd"></span><span id="ILxCurve::Curvature__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_curve_1a5a1c60722eb75005360bca0a94f2fa01"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Curvature</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>curv</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve9CurvatureE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve6NormalE11LXtObjectID9LXtVector">
+<span id="_CPPv3N8ILxCurve6NormalE11LXtObjectID9LXtVector"></span><span id="_CPPv2N8ILxCurve6NormalE11LXtObjectID9LXtVector"></span><span id="ILxCurve::Normal__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve_1a417660889338aefef50f1af11414446c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Normal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>normal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve6NormalE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The normal of the curve can also be computed. This should always be a vector at 90 degrees to the tangent. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve10MeshNormalE11LXtObjectID11LXtObjectID10LXtMatrix49LXtVector">
+<span id="_CPPv3N8ILxCurve10MeshNormalE11LXtObjectID11LXtObjectID10LXtMatrix49LXtVector"></span><span id="_CPPv2N8ILxCurve10MeshNormalE11LXtObjectID11LXtObjectID10LXtMatrix49LXtVector"></span><span id="ILxCurve::MeshNormal__LXtObjectID.LXtObjectID.LXtMatrix4.LXtVector"></span><span class="target" id="class_i_lx_curve_1a18d20d0825d20be9d9edaf45a927a588"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshNormal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>meshObj</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>xfrm</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>normal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve10MeshNormalE11LXtObjectID11LXtObjectID10LXtMatrix49LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Normals can also be computed using the closest polygon normal from a given mesh, or the direction to the closest point on another curve. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve16GuideCurveNormalE11LXtObjectID11LXtObjectID9LXtVector">
+<span id="_CPPv3N8ILxCurve16GuideCurveNormalE11LXtObjectID11LXtObjectID9LXtVector"></span><span id="_CPPv2N8ILxCurve16GuideCurveNormalE11LXtObjectID11LXtObjectID9LXtVector"></span><span id="ILxCurve::GuideCurveNormal__LXtObjectID.LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve_1ad6a4c74c994b82f7860a64b4f5348f52"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GuideCurveNormal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>other</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>normal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve16GuideCurveNormalE11LXtObjectID11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve7ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector">
+<span id="_CPPv3N8ILxCurve7ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="_CPPv2N8ILxCurve7ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="ILxCurve::Closest__LXtObjectID.LXtVectorC.doubleP.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve_1a27f9f6da908bd4cf445edc70dd5b8bbe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Closest</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>probe</em>, double *<em>param</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>norm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve7ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This finds the closest point on the curve at the probe position. Results are returned as the parameter value, the position on the curve, and the normal to the curve in the direction of the probe. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve8IsClosedE11LXtObjectID">
+<span id="_CPPv3N8ILxCurve8IsClosedE11LXtObjectID"></span><span id="_CPPv2N8ILxCurve8IsClosedE11LXtObjectID"></span><span id="ILxCurve::IsClosed__LXtObjectID"></span><span class="target" id="class_i_lx_curve_1a6f8a07f718aa36da690e699c18bbc65b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsClosed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve8IsClosedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE or LXe_FALSE, depending on whether the curve is closed or not. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxCurve11WalkByAngleE11LXtObjectIDddd11LXtObjectID">
+<span id="_CPPv3N8ILxCurve11WalkByAngleE11LXtObjectIDddd11LXtObjectID"></span><span id="_CPPv2N8ILxCurve11WalkByAngleE11LXtObjectIDddd11LXtObjectID"></span><span id="ILxCurve::WalkByAngle__LXtObjectID.double.double.double.LXtObjectID"></span><span class="target" id="class_i_lx_curve_1aab001fef57749e2bded089c399e304c9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WalkByAngle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>start</em>, double <em>end</em>, double <em>angle</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxCurve11WalkByAngleE11LXtObjectIDddd11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sometimes, it can be useful to walk a curve from a start point to an end point, based on an angle. Samples will be placed along the curve where the angle deviation from the last sample is greater than the threshold angle. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsPKG_CURVES_CHANNEL</p></li>
+</ul>
+</div>
+<div class="section" id="ilxcurve1">
+<h2><a class="toc-backref" href="#id8">ILxCurve1</a><a class="headerlink" href="#ilxcurve1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxCurve1">
+<span id="_CPPv39ILxCurve1"></span><span id="_CPPv29ILxCurve1"></span><span id="ILxCurve1"></span><span class="target" id="class_i_lx_curve1"></span><em class="property">class </em><code class="sig-name descname">ILxCurve1</code><a class="headerlink" href="#_CPPv49ILxCurve1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve17GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N9ILxCurve17GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N9ILxCurve17GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxCurve1::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_curve1_1a816eed3f38818a575ae90786e73caf18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve17GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 901, and was replaced with an updated one that added a few more methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve16LengthE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve16LengthE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve16LengthE11LXtObjectID"></span><span id="ILxCurve1::Length__LXtObjectID"></span><span class="target" id="class_i_lx_curve1_1ab64d7e716e3886a029a3ab1d7aa5562e"></span>double <code class="sig-name descname">Length</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve16LengthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve111SplineCountE11LXtObjectIDPj">
+<span id="_CPPv3N9ILxCurve111SplineCountE11LXtObjectIDPj"></span><span id="_CPPv2N9ILxCurve111SplineCountE11LXtObjectIDPj"></span><span id="ILxCurve1::SplineCount__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_curve1_1a7b35becfdd3984eee1ff5b0c92fd0011"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve111SplineCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve113SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxCurve113SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxCurve113SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="ILxCurve1::SplineByIndex__LXtObjectID.unsigned.LXtVector.LXtVector.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve1_1a557ac452487d69652a4d6d111846717a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b0</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b1</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b2</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b3</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve113SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve19BendCountE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve19BendCountE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve19BendCountE11LXtObjectID"></span><span id="ILxCurve1::BendCount__LXtObjectID"></span><span class="target" id="class_i_lx_curve1_1a443f430fe27fd9560bd8665b42f37801"></span>unsigned <code class="sig-name descname">BendCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve19BendCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve15ParamE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve15ParamE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve15ParamE11LXtObjectID"></span><span id="ILxCurve1::Param__LXtObjectID"></span><span class="target" id="class_i_lx_curve1_1aff7368671691333474422d10db7b7068"></span>double <code class="sig-name descname">Param</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve15ParamE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve18SetParamE11LXtObjectIDd">
+<span id="_CPPv3N9ILxCurve18SetParamE11LXtObjectIDd"></span><span id="_CPPv2N9ILxCurve18SetParamE11LXtObjectIDd"></span><span id="ILxCurve1::SetParam__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve1_1a5f5fb1e40c08b535c7d1c2aa45e90de8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetParam</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve18SetParamE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve114SetLenFractionE11LXtObjectIDd">
+<span id="_CPPv3N9ILxCurve114SetLenFractionE11LXtObjectIDd"></span><span id="_CPPv2N9ILxCurve114SetLenFractionE11LXtObjectIDd"></span><span id="ILxCurve1::SetLenFraction__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve1_1ac91a77e82341f7f31ffa17f28ff5fcf2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetLenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>frac</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve114SetLenFractionE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve18PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxCurve18PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxCurve18PositionE11LXtObjectID9LXtVector"></span><span id="ILxCurve1::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve1_1aec91beb24565aaead55174185b08a463"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve18PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve17TangentE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxCurve17TangentE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxCurve17TangentE11LXtObjectID9LXtVector"></span><span id="ILxCurve1::Tangent__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve1_1a2a87d33c3ef8dce839261a46587cbbc8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Tangent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>tan</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve17TangentE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve17ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxCurve17ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxCurve17ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="ILxCurve1::Closest__LXtObjectID.LXtVectorC.doubleP.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve1_1a8b096f736efc92eb6e2ac7f99a7c84eb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Closest</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>probe</em>, double *<em>param</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>norm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve17ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcurve2">
+<h2><a class="toc-backref" href="#id9">ILxCurve2</a><a class="headerlink" href="#ilxcurve2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxCurve2">
+<span id="_CPPv39ILxCurve2"></span><span id="_CPPv29ILxCurve2"></span><span id="ILxCurve2"></span><span class="target" id="class_i_lx_curve2"></span><em class="property">class </em><code class="sig-name descname">ILxCurve2</code><a class="headerlink" href="#_CPPv49ILxCurve2" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve27GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N9ILxCurve27GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N9ILxCurve27GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxCurve2::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_curve2_1a4ccb205c37f95d72773fc02f85370a13"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve27GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 10, and was replaced with an updated one that added a few more methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve26LengthE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve26LengthE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve26LengthE11LXtObjectID"></span><span id="ILxCurve2::Length__LXtObjectID"></span><span class="target" id="class_i_lx_curve2_1afa00c80313a199c8afed605e12ad0772"></span>double <code class="sig-name descname">Length</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve26LengthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve211SplineCountE11LXtObjectIDPj">
+<span id="_CPPv3N9ILxCurve211SplineCountE11LXtObjectIDPj"></span><span id="_CPPv2N9ILxCurve211SplineCountE11LXtObjectIDPj"></span><span id="ILxCurve2::SplineCount__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_curve2_1aae6aff8b22dba3eb5b2522f29b187f31"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve211SplineCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve213SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxCurve213SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxCurve213SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="ILxCurve2::SplineByIndex__LXtObjectID.unsigned.LXtVector.LXtVector.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve2_1af47ffedaff6f96ada1f44808689eef1d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b0</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b1</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b2</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b3</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve213SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve29BendCountE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve29BendCountE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve29BendCountE11LXtObjectID"></span><span id="ILxCurve2::BendCount__LXtObjectID"></span><span class="target" id="class_i_lx_curve2_1aca8972cb9d7d948839566068ae78cce7"></span>unsigned <code class="sig-name descname">BendCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve29BendCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve25ParamE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve25ParamE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve25ParamE11LXtObjectID"></span><span id="ILxCurve2::Param__LXtObjectID"></span><span class="target" id="class_i_lx_curve2_1a15c0347294740f524a00ffb2f6caaa62"></span>double <code class="sig-name descname">Param</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve25ParamE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve28SetParamE11LXtObjectIDd">
+<span id="_CPPv3N9ILxCurve28SetParamE11LXtObjectIDd"></span><span id="_CPPv2N9ILxCurve28SetParamE11LXtObjectIDd"></span><span id="ILxCurve2::SetParam__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve2_1a2b2d9d88123fdda8d239594ea2fe569f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetParam</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve28SetParamE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve211LenFractionE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve211LenFractionE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve211LenFractionE11LXtObjectID"></span><span id="ILxCurve2::LenFraction__LXtObjectID"></span><span class="target" id="class_i_lx_curve2_1a0864167a6b3c8252ffeb595b333a7e68"></span>double <code class="sig-name descname">LenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve211LenFractionE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve214SetLenFractionE11LXtObjectIDd">
+<span id="_CPPv3N9ILxCurve214SetLenFractionE11LXtObjectIDd"></span><span id="_CPPv2N9ILxCurve214SetLenFractionE11LXtObjectIDd"></span><span id="ILxCurve2::SetLenFraction__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve2_1a84473e535c8e39ef3227c803d31fbc75"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetLenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>frac</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve214SetLenFractionE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve28PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxCurve28PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxCurve28PositionE11LXtObjectID9LXtVector"></span><span id="ILxCurve2::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve2_1a6737e7a6213a377a6b2c4a0b12ebae56"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve28PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve27TangentE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxCurve27TangentE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxCurve27TangentE11LXtObjectID9LXtVector"></span><span id="ILxCurve2::Tangent__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve2_1a19ef1029d7516b174732d1c73a7408bb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Tangent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>tan</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve27TangentE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve27ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxCurve27ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxCurve27ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="ILxCurve2::Closest__LXtObjectID.LXtVectorC.doubleP.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve2_1a7f1426350c347b46fd444c3b412909e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Closest</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>probe</em>, double *<em>param</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>norm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve27ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve28IsClosedE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve28IsClosedE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve28IsClosedE11LXtObjectID"></span><span id="ILxCurve2::IsClosed__LXtObjectID"></span><span class="target" id="class_i_lx_curve2_1a9b291ebb6787ea4cd82ca58299c305bd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsClosed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve28IsClosedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcurve3">
+<h2><a class="toc-backref" href="#id10">ILxCurve3</a><a class="headerlink" href="#ilxcurve3" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxCurve3">
+<span id="_CPPv39ILxCurve3"></span><span id="_CPPv29ILxCurve3"></span><span id="ILxCurve3"></span><span class="target" id="class_i_lx_curve3"></span><em class="property">class </em><code class="sig-name descname">ILxCurve3</code><a class="headerlink" href="#_CPPv49ILxCurve3" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve37GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N9ILxCurve37GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N9ILxCurve37GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxCurve3::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_curve3_1a7ec428b23732af5df8f8d99d231e97b8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve37GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 13, and was replaced with an updated one that added a few more methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve36LengthE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve36LengthE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve36LengthE11LXtObjectID"></span><span id="ILxCurve3::Length__LXtObjectID"></span><span class="target" id="class_i_lx_curve3_1aa0a91bed94b32871a6ae9a9d3058fef0"></span>double <code class="sig-name descname">Length</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve36LengthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve311SplineCountE11LXtObjectIDPj">
+<span id="_CPPv3N9ILxCurve311SplineCountE11LXtObjectIDPj"></span><span id="_CPPv2N9ILxCurve311SplineCountE11LXtObjectIDPj"></span><span id="ILxCurve3::SplineCount__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_curve3_1af75335fb27f42828abe5b900c9248f24"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve311SplineCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve313SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxCurve313SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxCurve313SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="ILxCurve3::SplineByIndex__LXtObjectID.unsigned.LXtVector.LXtVector.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve3_1a97386c310e6572de2ae30e30540875f5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplineByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b0</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b1</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b2</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>b3</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve313SplineByIndexE11LXtObjectIDj9LXtVector9LXtVector9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve39BendCountE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve39BendCountE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve39BendCountE11LXtObjectID"></span><span id="ILxCurve3::BendCount__LXtObjectID"></span><span class="target" id="class_i_lx_curve3_1a65c610e278dd404b9f189a4a52a21ffc"></span>unsigned <code class="sig-name descname">BendCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve39BendCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve35ParamE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve35ParamE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve35ParamE11LXtObjectID"></span><span id="ILxCurve3::Param__LXtObjectID"></span><span class="target" id="class_i_lx_curve3_1a7ed15b4609b9adad0468143feaa2361f"></span>double <code class="sig-name descname">Param</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve35ParamE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve38SetParamE11LXtObjectIDd">
+<span id="_CPPv3N9ILxCurve38SetParamE11LXtObjectIDd"></span><span id="_CPPv2N9ILxCurve38SetParamE11LXtObjectIDd"></span><span id="ILxCurve3::SetParam__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve3_1a9cafa0ce04a81ab51230ddf3832f0d8a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetParam</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve38SetParamE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve311LenFractionE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve311LenFractionE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve311LenFractionE11LXtObjectID"></span><span id="ILxCurve3::LenFraction__LXtObjectID"></span><span class="target" id="class_i_lx_curve3_1a6fc6239c8f39acbe7b7985524841ae6c"></span>double <code class="sig-name descname">LenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve311LenFractionE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve314SetLenFractionE11LXtObjectIDd">
+<span id="_CPPv3N9ILxCurve314SetLenFractionE11LXtObjectIDd"></span><span id="_CPPv2N9ILxCurve314SetLenFractionE11LXtObjectIDd"></span><span id="ILxCurve3::SetLenFraction__LXtObjectID.double"></span><span class="target" id="class_i_lx_curve3_1a8d816ab555a6bb0c93bcbfd8ed01c0bf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetLenFraction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>frac</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve314SetLenFractionE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve38PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxCurve38PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxCurve38PositionE11LXtObjectID9LXtVector"></span><span id="ILxCurve3::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve3_1a6bc3a62c9505715fd2a3128d7719a642"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve38PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve37TangentE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxCurve37TangentE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxCurve37TangentE11LXtObjectID9LXtVector"></span><span id="ILxCurve3::Tangent__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_curve3_1a4c13499faa680d86ca8569d07e1bade8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Tangent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>tan</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve37TangentE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve37ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxCurve37ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxCurve37ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector"></span><span id="ILxCurve3::Closest__LXtObjectID.LXtVectorC.doubleP.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_curve3_1a4b1eb51c765cfbc100a79e5636305f16"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Closest</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>probe</em>, double *<em>param</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>norm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve37ClosestE11LXtObjectIDK9LXtVectorPd9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve38IsClosedE11LXtObjectID">
+<span id="_CPPv3N9ILxCurve38IsClosedE11LXtObjectID"></span><span id="_CPPv2N9ILxCurve38IsClosedE11LXtObjectID"></span><span id="ILxCurve3::IsClosed__LXtObjectID"></span><span class="target" id="class_i_lx_curve3_1a8d0a309dc77d86f1cf690cc28e0deccb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsClosed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve38IsClosedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxCurve311WalkByAngleE11LXtObjectIDddd11LXtObjectID">
+<span id="_CPPv3N9ILxCurve311WalkByAngleE11LXtObjectIDddd11LXtObjectID"></span><span id="_CPPv2N9ILxCurve311WalkByAngleE11LXtObjectIDddd11LXtObjectID"></span><span id="ILxCurve3::WalkByAngle__LXtObjectID.double.double.double.LXtObjectID"></span><span class="target" id="class_i_lx_curve3_1a3f3a89000e894708c41542b54e13989a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WalkByAngle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>start</em>, double <em>end</em>, double <em>angle</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxCurve311WalkByAngleE11LXtObjectIDddd11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_tableau.html" class="btn btn-neutral float-right" title="Tableau" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_stddialog.html" class="btn btn-neutral float-left" title="Stddialog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_surface.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

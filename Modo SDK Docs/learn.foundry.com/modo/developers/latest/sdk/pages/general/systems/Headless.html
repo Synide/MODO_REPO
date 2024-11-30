@@ -1,0 +1,973 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/systems/Headless.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Headless &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Interfacing with the Undo System" href="Interfacing%20with%20the%20Undo%20System.html" />
+    <link rel="prev" title="DDE" href="DDE.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#general-info">General Info</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Bonjour.html">Bonjour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Command%20System.html">Command System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DDE.html">DDE</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Headless</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preface">Preface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#headless-basics">Headless Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatting">Formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#executing-and-querying-commands">Executing and Querying Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#from-the-console">From the Console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#redirected-from-a-file">Redirected From a File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#from-a-pipe">From a Pipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logging-to-the-console">Logging to the Console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-command-line-switches">Other Command Line Switches</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Interfacing%20with%20the%20Undo%20System.html">Interfacing with the Undo System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Selection%20System%20Overview.html">Selection System Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Telnet.html">Telnet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Headless</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="headless">
+<h1>Headless<a class="headerlink" href="#headless" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#preface" id="id1">Preface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#license" id="id2">License</a></p></li>
+<li><p><a class="reference internal" href="#config-file" id="id3">Config File</a></p></li>
+<li><p><a class="reference internal" href="#telnet-vs-headless" id="id4">Telnet vs. Headless</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#headless-basics" id="id5">Headless Basics</a></p>
+<ul>
+<li><p><a class="reference internal" href="#running-headless" id="id6">Running Headless</a></p></li>
+<li><p><a class="reference internal" href="#exiting-headless-mode" id="id7">Exiting Headless Mode</a></p></li>
+<li><p><a class="reference internal" href="#changing-the-prompt" id="id8">Changing the Prompt</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#formatting" id="id9">Formatting</a></p></li>
+<li><p><a class="reference internal" href="#executing-and-querying-commands" id="id10">Executing and Querying Commands</a></p></li>
+<li><p><a class="reference internal" href="#from-the-console" id="id11">From the Console</a></p></li>
+<li><p><a class="reference internal" href="#redirected-from-a-file" id="id12">Redirected From a File</a></p></li>
+<li><p><a class="reference internal" href="#from-a-pipe" id="id13">From a Pipe</a></p></li>
+<li><p><a class="reference internal" href="#logging-to-the-console" id="id14">Logging to the Console</a></p>
+<ul>
+<li><p><a class="reference internal" href="#what-gets-output" id="id15">What Gets Output</a></p></li>
+<li><p><a class="reference internal" href="#one-time-saving" id="id16">One-Time Saving</a></p></li>
+<li><p><a class="reference internal" href="#saving-on-the-fly" id="id17">Saving On The Fly</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#other-command-line-switches" id="id18">Other Command Line Switches</a></p>
+<ul>
+<li><p><a class="reference internal" href="#headless-mode-console-and-prompt" id="id19">Headless mode: -console and -prompt</a></p>
+<ul>
+<li><p><a class="reference internal" href="#console" id="id20">-console</a></p></li>
+<li><p><a class="reference internal" href="#prompt" id="id21">-prompt</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#executing-an-initial-command-cmd" id="id22">Executing an Initial Command: -cmd</a></p></li>
+<li><p><a class="reference internal" href="#executing-a-late-initial-command-cmdlate" id="id23">Executing a Late Initial Command: -cmdlate</a></p></li>
+<li><p><a class="reference internal" href="#changing-the-user-config-path-config" id="id24">Changing the User Config Path: -config</a></p></li>
+<li><p><a class="reference internal" href="#changing-the-license-path-license" id="id25">Changing the License Path: -license</a></p></li>
+<li><p><a class="reference internal" href="#changing-other-standard-paths-path" id="id26">Changing Other Standard Paths: -path</a></p>
+<ul>
+<li><p><a class="reference internal" href="#changing-paths-through-environment-variables" id="id27">Changing Paths through Environment Variables</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#running-in-slave-mode-slave" id="id28">Running in slave mode: -slave</a></p></li>
+<li><p><a class="reference internal" href="#telnet-server" id="id29">Telnet Server</a></p></li>
+<li><p><a class="reference internal" href="#loading-an-initial-scene" id="id30">Loading an Initial Scene</a></p></li>
+<li><p><a class="reference internal" href="#debug-flags-dblog-dbon-dboff-and-debug" id="id31">Debug Flags:  -dblog, -dbon, -dboff and -debug</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dblog" id="id32">-dblog</a></p></li>
+<li><p><a class="reference internal" href="#dbon-and-dboff" id="id33">-dbon and -dboff</a></p></li>
+<li><p><a class="reference internal" href="#debug" id="id34">-debug</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#more-information" id="id35">More Information</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>‘’modo’’ 302 introduced “‘headless’” operation, allowing modo to act as a command line program with no graphical user interface.</p>
+<div class="section" id="preface">
+<h2><a class="toc-backref" href="#id1">Preface</a><a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h2>
+<p>Various command line switches are also used in this article. Many of these switches also work with the full GUI mode as well. You should be comfortable with the MS-DOS prompt in Windows and the Terminal in OS X to use headless mode. The MS-DOS prompt and Terminal will henceforth be referred to as the ‘’command line’’ or ‘’console’’.</p>
+<div class="section" id="license">
+<h3><a class="toc-backref" href="#id2">License</a><a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
+<p>The headless mode still requires a normal modo license to operate, and will fail with a license not found error if none is present.</p>
+</div>
+<div class="section" id="config-file">
+<h3><a class="toc-backref" href="#id3">Config File</a><a class="headerlink" href="#config-file" title="Permalink to this headline">¶</a></h3>
+<p>Console mode uses its own config file. For modo 501 on Windows, this is modo_cl501.cfg, while on OS X this would be com.luxology.modo_cl501.</p>
+</div>
+<div class="section" id="telnet-vs-headless">
+<h3><a class="toc-backref" href="#id4">Telnet vs. Headless</a><a class="headerlink" href="#telnet-vs-headless" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="Telnet.html"><span class="doc">Telnet</span></a> operates very similar to headless mode, except that telnet can also be used from the GUI.  The way commands are sent to and output is received from <em>modo</em> is identical for both telnet and headless.</p>
+</div>
+</div>
+<div class="section" id="headless-basics">
+<h2><a class="toc-backref" href="#id5">Headless Basics</a><a class="headerlink" href="#headless-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-headless">
+<h3><a class="toc-backref" href="#id6">Running Headless</a><a class="headerlink" href="#running-headless" title="Permalink to this headline">¶</a></h3>
+<p>Headless modo is a separate executable. On Windows, it is ‘’modo_cl.exe’’, and is run just like any other command line program through the MS-DOS prompt.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span>
+</pre></div>
+</td></tr></table></div>
+<p>On OS X, <em>modo_cl</em> is inside the application bundle, and can be run from the Terminal.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span>
+</pre></div>
+</td></tr></table></div>
+<p>After modo finishes stating up, you?ll be greeted with the following lines, which include a start message containing the build number, followed by a line showing the registered name associated with the license modo is using.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nd">@start</span>  <span class="n">modo</span> <span class="p">[</span><span class="n">xxxxx</span><span class="p">]</span>  <span class="n">Luxology</span> <span class="n">LLC</span>
+ <span class="n">John</span> <span class="n">Smith</span>
+ <span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>modo is now ready to start accepting commands. You can type any normal, non-UI command here and it will execute normally, with its results returned through stout.</p>
+</div>
+<div class="section" id="exiting-headless-mode">
+<h3><a class="toc-backref" href="#id7">Exiting Headless Mode</a><a class="headerlink" href="#exiting-headless-mode" title="Permalink to this headline">¶</a></h3>
+<p>You can quit headless mode just like you can in GUI mode, by executing the <em>app.quit</em> command. You may also be able to use <em>ctrl-C</em> to immediately terminate modo, but using <em>app.quit</em> ensures a proper shutdown.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">app</span><span class="o">.</span><span class="n">quit</span>
+ <span class="nd">@exit</span>
+ <span class="n">ok</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="changing-the-prompt">
+<h3><a class="toc-backref" href="#id8">Changing the Prompt</a><a class="headerlink" href="#changing-the-prompt" title="Permalink to this headline">¶</a></h3>
+<p>By default, modo shows an greater than symbol (‘’&gt;’’) when it is read for you to enter commands. You can use the <em>-prompt</em> switch to set the prompt to any character sequence you?d like. The following replaces the standard prompt with the string <em>ready:</em> and a space.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-prompt:ready: &quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span> <span class="s2">&quot;-prompt:ready: &quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After modo finishes starting up, you?ll see this:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nd">@start</span>  <span class="n">modo</span> <span class="p">[</span><span class="n">xxxxx</span><span class="p">]</span>  <span class="n">Luxology</span> <span class="n">LLC</span>
+ <span class="n">John</span> <span class="n">Smith</span>
+ <span class="n">ready</span><span class="p">:</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="formatting">
+<h2><a class="toc-backref" href="#id9">Formatting</a><a class="headerlink" href="#formatting" title="Permalink to this headline">¶</a></h2>
+<p>Headless mode conveys information to the user by prefixing certain lines with special characters. As of <em>modo</em> 501, all lines will start with a prefix.  These were further standardized in 601.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Prefix</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&gt;</p></td>
+<td><p>Prompt, indicating that you can enter more commands. The prompt can be replaced with a custom one via the -prompt: command line switch.</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>The last command executed successfully</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>The last command returned an error</p></td>
+</tr>
+<tr class="row-odd"><td><p>:</p></td>
+<td><p>A result from a query. There is one result per line, with each line starting with a colon.</p></td>
+</tr>
+<tr class="row-even"><td><p>#</p></td>
+<td><p>A comment line output by modo, which can be ignored</p></td>
+</tr>
+<tr class="row-odd"><td><p>!</p></td>
+<td><p>Output from the log system</p></td>
+</tr>
+<tr class="row-even"><td><p>&#64;</p></td>
+<td><p>System message</p></td>
+</tr>
+</tbody>
+</table>
+<p>This is an example of a system message.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nd">@start</span>  <span class="n">modo</span> <span class="p">[</span><span class="n">xxxxx</span><span class="p">]</span>  <span class="n">Luxology</span> <span class="n">LLC</span>
+</pre></div>
+</td></tr></table></div>
+<p>This is an example of the prompt, a series of queried results, and a success message.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span> &gt; query platformservice &quot;&quot; ?
+ : licensedto
+ : iseval
+ : expiresin
+ : serialnumber
+ : numlicenses
+ : appname
+ : appversion
+ : appbuild
+ : isheadless
+ : ostype
+ : osname
+ : osversion
+ : paths
+ : path.path
+ : importpaths
+ : isapp64bit
+ : alias
+ + ok
+</pre></div>
+</td></tr></table></div>
+<p>Lines beginning with an exclamation point (‘’!’’) are from the log system. The exclamation point is immediately followed by the name of the subsystem that issued the event wrapped in parentheses, followed by a space and the logged event itself. This output is otherwise identical to what is shown in the Event Log Viewport]] or the [[Feedback Viewport]] (for rolling messages). Log system output can be toggled with the [[log.toConsole]] and [[log.toConsoleRolling]] commands, and is disabled by default.  See [[#Logging to the Console for more information.</p>
+</div>
+<div class="section" id="executing-and-querying-commands">
+<h2><a class="toc-backref" href="#id10">Executing and Querying Commands</a><a class="headerlink" href="#executing-and-querying-commands" title="Permalink to this headline">¶</a></h2>
+<p>Commands are executed just like they are from the full Command History Viewport]] of the <em>modo</em> GUI. You can think of the headless prompt as being like the Command History’s [[Command History Viewport#Command Entry. Results of command executions and queries go right to stdout and appear in the console.</p>
+</div>
+<div class="section" id="from-the-console">
+<h2><a class="toc-backref" href="#id11">From the Console</a><a class="headerlink" href="#from-the-console" title="Permalink to this headline">¶</a></h2>
+<p>When you see the prompt, you can enter a new command to execute or query.  The Command System: Basics is exactly the same as it is from within ‘’modo’’. The formatting described above is about the only real difference.</p>
+<p>Obviously, no commands requiring a GUI will work from headless mode, including dialogs. Most commands that open dialogs also include arguments that can be used in lieu of the dialogs, so no functionality is lost by running in headless mode.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span> &gt; select.item Camera
+ + ok
+ &gt; item.channel focalLen ?
+ : 0.05
+ + ok
+ &gt; item.channel focalLen 0.1
+ + ok
+ &gt; item.channel focalLen ?
+ : 0.1
+ + ok
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="redirected-from-a-file">
+<h2><a class="toc-backref" href="#id12">Redirected From a File</a><a class="headerlink" href="#redirected-from-a-file" title="Permalink to this headline">¶</a></h2>
+<p>You can pass a list of commands from a file directly into modo on startup via redirection. Redirection is a standard feature of the console. Each line of a file is processed as a separate command, and each is executed in turn, similar to a macro. Once all lines are processed, modo will quit.</p>
+<p>It is important to note the the redirection syntax is a feature of the console, not a feature of ‘’modo’’.  This means that it is unlikely to work from a scripting language or another program that doesn’t also emulate console behaviors like redirection.  In those cases, you should use one of the other methods, such as <span class="xref std std-ref">From a Pipe</span>, to pass commands into modo.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">&lt;</span> <span class="n">commands</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span> <span class="o">&lt;</span> <span class="n">commands</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="from-a-pipe">
+<h2><a class="toc-backref" href="#id13">From a Pipe</a><a class="headerlink" href="#from-a-pipe" title="Permalink to this headline">¶</a></h2>
+<p>The real power of the headless mode comes from piping commands into it by redirecting stdio (specifically, stdin and stdout) to your application. This allows scripts and external programs to have direct control over modo by emulating the input and output provided by a console.  For example, Perl]] has a standard syntax for opening a one-way pipe. Once the connection has been established, perl?s <em>print()</em> function can be used to send commands to modo. When you are finished you can call [[app.quit to close ‘’modo’’.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1">#perl</span>
+<span class="nb">open</span> <span class="p">(</span><span class="n">MODOCMD</span><span class="p">,</span> <span class="s">&quot;| modo_cl&quot;</span><span class="p">);</span>
+<span class="k">print</span> <span class="n">MODOCMD</span> <span class="s">&quot;scene.open $myscene\n&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="n">MODOCMD</span> <span class="s">&quot;render.animation\n&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#python</span>
+ <span class="c1">#-------------------------------------------------------------------------</span>
+ <span class="c1">#vs9841 2013-10-23 Add Edit</span>
+ <span class="c1">#The python script running on python v3.3.2,and the test in modo v701 sp2.</span>
+ <span class="c1">#This script does not need the built- in modo python environment to run ,</span>
+ <span class="c1">#I was using the operating system installed python v3.3.2 tested.</span>
+ <span class="c1">#-------------------------------------------------------------------------</span>
+ <span class="kn">import</span> <span class="nn">subprocess</span> <span class="n">modocl</span> <span class="o">=</span> <span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">Program Files</span><span class="se">\\</span><span class="s2">Luxology</span><span class="se">\\</span><span class="s2">modo</span><span class="se">\\</span><span class="s2">701_sp2</span><span class="se">\\</span><span class="s2">modo_cl.exe&quot;</span>
+ <span class="n">modosc</span> <span class="o">=</span> <span class="s1">&#39;scene.open &quot;H:</span><span class="se">\\</span><span class="s1">modo</span><span class="se">\\</span><span class="s1">Study</span><span class="se">\\</span><span class="s1">zx.lxo&quot;</span><span class="se">\n</span><span class="s1">&#39;</span>
+ <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">modocl</span><span class="p">,</span>
+                <span class="n">stdin</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                <span class="n">stdout</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                <span class="n">stderr</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">shell</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+ <span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">modosc</span><span class="p">)</span>
+ <span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;query sceneservice scene.name ? current</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+ <span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;app.quit</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p>Two way pipes can be opened from other programs and scripts. This permits full two way communication with modo, allowing commands to be sent and results to be received. Programs can also capture stdin and stdout and handle input and output that way. See the documentation for your scripting language or platform API for more information on using stdin, stdout, pipes and controlling command line programs.</p>
+</div>
+<div class="section" id="logging-to-the-console">
+<h2><a class="toc-backref" href="#id14">Logging to the Console</a><a class="headerlink" href="#logging-to-the-console" title="Permalink to this headline">¶</a></h2>
+<p>By default, the logged messages are not output in the console. The <em>log.toConsole</em> command will cause entries that would normally appear in the ‘’Event Log Viewport’’ to go to the console. <em>log.toConsoleRolling</em> does the same for rolling log entries that would normally appear in the Feedback Viewport.  These events are prefixed with an exclamation point and the subsystem name in parentheses.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">log</span><span class="o">.</span><span class="n">toConsole</span> <span class="n">true</span>
+ <span class="n">log</span><span class="o">.</span><span class="n">toConsoleRolling</span> <span class="n">true</span>
+</pre></div>
+</td></tr></table></div>
+<p>Logging rolling log output to the console is most useful to get Network Rendering#Extended Render Progress Information while rendering.  This will also enable the <em>messageDialogs</em> output, which contains the human-readable output of various dialogs that would open in the full version of modo, but which are suppressed in headless mode.</p>
+<p>Another example might be dialogs created with the <em>dialog.???</em> commands.  Output of the most recent dialog is always logged to the <em>messageDialogs</em> rolling log.  For example, the following <em>loginfo.py</em> shows the modo version in a dialog:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+
+<span class="kn">import</span> <span class="nn">lx</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;query platformservice appversion ?&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">401</span><span class="p">:</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.setup info&#39;</span><span class="p">)</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.title {Version...}&quot;</span><span class="p">)</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.msg {Your modo version is </span><span class="si">%d</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.open&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Dialogs will not open in headless mode, but they are still logged.  After executing <em>log.toConsoleRolling</em> command, you will see the following in the console:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> @start  modo_cl [xxxxx]  Luxology LLC
+ &gt;log.toConsoleRolling true
+ + ok
+ &gt;@loginfo.py
+ ! (messageDialogs) [Info] - Version... | Your modo version is 701
+ + ok
+ &gt;
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="what-gets-output">
+<h3><a class="toc-backref" href="#id15">What Gets Output</a><a class="headerlink" href="#what-gets-output" title="Permalink to this headline">¶</a></h3>
+<p>By default, all <strong>enabled</strong> log subsystems are output to the console (and displayed in the Log View).  Subsystems are enabled and disabled with ‘’log.subEnable’’.  Many subsystems are enabled by default, but some of the more esoteric ones aren’t.</p>
+<p>Rather than outputting all enabled subsystems, you can choose a specific subset with the following commands:</p>
+<ul class="simple">
+<li><p><strong>log.subToConsole</strong> makes it possible to output just a specific subsystem or set of subsystems to the console.   Once this is called with ‘’true’’, only that one subsystem will be output.  Calling it with <em>true</em> again for other subsystem will output that subsystem’s entries as well.  Calling it again with <em>false</em> for all of those subsystems will reset it back to showing all enabled log subsystems.  You can think of it as the “when nothing is selected, everything is selected” behavior that <em>modo</em> normally uses.</p></li>
+<li><p><strong>log.consoleReset</strong> turns back on all log subsystem console output, and is equivalent to calling <em>log.subToConsole</em> with false for all subsystems..</p></li>
+<li><p><strong>log.subToConsoleOnly</strong> can be used to stop outputting all log subsystems except for one specific one.  This is the same as calling <em>log.consoleReset</em> followed by <em>log.subToConsole</em> for the one system you want enabled.</p></li>
+</ul>
+</div>
+<div class="section" id="one-time-saving">
+<h3><a class="toc-backref" href="#id16">One-Time Saving</a><a class="headerlink" href="#one-time-saving" title="Permalink to this headline">¶</a></h3>
+<p>‘’log.masterSave’’ and <em>log.subSave</em> can also be used to save the log to a file, wether or not log.toConsole is enabled. These work in the same way that the Save popup in the Event Log viewport does, and will save the same information – meaning, only entries from subsystems that were enabled at the time they were added, not at the time of saving the log .</p>
+<p>Note that rolling log messages cannot currently be saved, since the previous message is discarded as soon as a new one comes in (hence the term “rolling”).</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">log</span><span class="o">.</span><span class="n">masterSave</span> <span class="s2">&quot;c:\masterLog.txt&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="saving-on-the-fly">
+<h3><a class="toc-backref" href="#id17">Saving On The Fly</a><a class="headerlink" href="#saving-on-the-fly" title="Permalink to this headline">¶</a></h3>
+<p>‘’log.subToFile’’ and <em>log.subToFileRolling</em> can be used to write log entries to disk as they come in.  The master log (meaning, all enabled subsystems, instead of a single specific subsystem) can also be saved by passing an empty string or <em>master</em> as the subsystem. <em>log.subToFileCloseAll</em> stops writing to all open files and closes them.</p>
+</div>
+</div>
+<div class="section" id="other-command-line-switches">
+<h2><a class="toc-backref" href="#id18">Other Command Line Switches</a><a class="headerlink" href="#other-command-line-switches" title="Permalink to this headline">¶</a></h2>
+<p>There are a few other command line switches used in modo. These can be used from both the headless and GUI modes, unless otherwise specified.</p>
+<div class="section" id="headless-mode-console-and-prompt">
+<h3><a class="toc-backref" href="#id19">Headless mode: -console and -prompt</a><a class="headerlink" href="#headless-mode-console-and-prompt" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="console">
+<h4><a class="toc-backref" href="#id20">-console</a><a class="headerlink" href="#console" title="Permalink to this headline">¶</a></h4>
+<p>The -console switch determines how headless handles input.  The default is to use the command parser, like the one used at the bottom of the Command History viewport. The other option is to treat input as Python instructions, thus allowing it to behave as a Python shell.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">console</span><span class="p">:</span><span class="n">python</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span> <span class="o">-</span><span class="n">console</span><span class="p">:</span><span class="n">python</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In older versions of modo, the -console switch was used in older versions of <em>modo</em> to launch the main <em>modo</em> application in headless mode on OS X. This switch is no longer used in that way; instead, a separate <em>modo_cl</em> program (stored within the <em>modo</em> application bundle) is used in exactly the same way as its Windows counterpart, as described above.</p>
+</div>
+<div class="section" id="prompt">
+<h4><a class="toc-backref" href="#id21">-prompt</a><a class="headerlink" href="#prompt" title="Permalink to this headline">¶</a></h4>
+<p>The -prompt switch is also described above, and allows you to change the prompt modo uses to request input from the user in headless mode. This does nothing in GUI mode.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-prompt:ready: &quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span> <span class="s2">&quot;-prompt:ready: &quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="executing-an-initial-command-cmd">
+<h3><a class="toc-backref" href="#id22">Executing an Initial Command: -cmd</a><a class="headerlink" href="#executing-an-initial-command-cmd" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to tell modo to run an intiial command at startup through the <em>-cmd</em> switch. This can be thought of as a single startup command, and is executed after all config-based startup commands.</p>
+<p>This feature is most useful for Newtork Rendering, allowing them to launch modo and tell it to execute a specific script on startup while also passing arguments to that script. For example, this would pass two arguments with the values <em>path</em> and <em>range</em> to the <em>&#64;myrender.pl</em> script on startup.</p>
+<p>Note that the redirection method described above or <a class="reference internal" href="Telnet.html"><span class="doc">Telnet</span></a> might be better than using the -cmd switch, as redirection allows multiple commands to be passed and automatically quits modo when finished.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-cmd:@myrender.pl {path range}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span> <span class="s2">&quot;-cmd:@myrender.pl {path range}&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="executing-a-late-initial-command-cmdlate">
+<h3><a class="toc-backref" href="#id23">Executing a Late Initial Command: -cmdlate</a><a class="headerlink" href="#executing-a-late-initial-command-cmdlate" title="Permalink to this headline">¶</a></h3>
+<p>‘’-cmdlate’’ is identical to ‘’-cmd’’, except for when it is executed. <em>-cmd</em> commands are executed immediately after the config-based startup commands, but before licensing and networking are started. <em>-cmdlate</em> commands are executed well after those systems are started up, and are basically the last thing that is done before control is given over to the user.</p>
+<p>The main use for this is to open telnet]] or [[Preview Socket listeners on startup from a script.  Using conventional startup commands this is not possible, as they would all run before networking is available.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-cmdlate:@mytelnet.py&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo_cl</span> <span class="s2">&quot;-cmdlate:@mytelnet.py&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-the-user-config-path-config">
+<h3><a class="toc-backref" href="#id24">Changing the User Config Path: -config</a><a class="headerlink" href="#changing-the-user-config-path-config" title="Permalink to this headline">¶</a></h3>
+<p>The <em>-config</em> switch tells modo to use a different path for the user configuration file. This can be used by render nodes to load a specific config, or used in conjunction with <em>-license</em> to run modo off of a memory stick without requiring anything to be written to the local machine.</p>
+<p>The path provided can either point to an actual config file, or to a directory containing a config file with the standard Standard User Config Filenames. The specified config will used in place of the default, which means that not only will initial settings be loaded from this config, but settings will also be saved to this file on quit.</p>
+<p>Note that on OS X all paths must be absolute; relative paths, including the home (~) path, are not supported.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-config:c:\myUserConfigDir&quot;</span>
+<span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-config:c:\myUserConfig.cfg&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="s2">&quot;-config:/Volumes/Macintosh HD/Users/myusername/myUserConfigDir&quot;</span>
+<span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="s2">&quot;-config:/Volumes/Macintosh HD/Users/myusername/myUserConfigDir.cfg&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-the-license-path-license">
+<h3><a class="toc-backref" href="#id25">Changing the License Path: -license</a><a class="headerlink" href="#changing-the-license-path-license" title="Permalink to this headline">¶</a></h3>
+<p>The <em>-license</em> switch allows you to tell modo to search for the license file in a specific path. This must point to the directory containing the license, not the license file itself.  When combined with the <em>-config</em> switch, this can be used to run modo off of a memory stick without needing to write anything to the system drive. <em>-license</em> is functionally identical to ‘’-path:license=&lt;path&gt;’’, as described below.</p>
+<p>Note that on OS X all paths must be absolute; relative paths, including the home (~) path, are not supported.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-license:c:\Licenses&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="s2">&quot;-license:/Volumes/Macintosh HD/Users/myusername/Licenses&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-other-standard-paths-path">
+<h3><a class="toc-backref" href="#id26">Changing Other Standard Paths: -path</a><a class="headerlink" href="#changing-other-standard-paths-path" title="Permalink to this headline">¶</a></h3>
+<p>The <em>-path</em> parameter allows you to override many of modo’s standard paths. The format is ‘’-path:&lt;name&gt;=&lt;path&gt;’’. The following names are currently defined.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>temp</p></td>
+<td><p>Directory for temporary files</p></td>
+</tr>
+<tr class="row-odd"><td><p>license</p></td>
+<td><p>License directory containing license keys</p></td>
+</tr>
+<tr class="row-even"><td><p>resource</p></td>
+<td><p>Resource directory used to load default application resources</p></td>
+</tr>
+<tr class="row-odd"><td><p>module</p></td>
+<td><p>Plug-in auto-search directory</p></td>
+</tr>
+<tr class="row-even"><td><p>prefs</p></td>
+<td><p>Location of the user config</p></td>
+</tr>
+<tr class="row-odd"><td><p>help</p></td>
+<td><p>Directory containing help files</p></td>
+</tr>
+<tr class="row-even"><td><p>user</p></td>
+<td><p>User directory, used as a search path for user-specific resources, scripts and other extensions</p></td>
+</tr>
+<tr class="row-odd"><td><p>content</p></td>
+<td><p>Location of installed content</p></td>
+</tr>
+<tr class="row-even"><td><p>asset</p></td>
+<td><p>Location of installed assets, usually a sub-directory of ‘’content’’</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that on OS X all paths must be absolute; relative paths, including the home (~) path, are not supported.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-path:temp=c:</span><span class="se">\t</span><span class="s2">emp&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="s2">&quot;-path:temp=/Volumes/Macintosh HD/Users/myusername/temp&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-paths-through-environment-variables">
+<h4><a class="toc-backref" href="#id27">Changing Paths through Environment Variables</a><a class="headerlink" href="#changing-paths-through-environment-variables" title="Permalink to this headline">¶</a></h4>
+<p>Each of these paths can also be overridden through environment variables named <em>NEXUS_</em> followed by the name to remap. For example, <em>content</em> can be redirected with the environment variable ‘’NEXUS_CONTENT’’.</p>
+</div>
+</div>
+<div class="section" id="running-in-slave-mode-slave">
+<h3><a class="toc-backref" href="#id28">Running in slave mode: -slave</a><a class="headerlink" href="#running-in-slave-mode-slave" title="Permalink to this headline">¶</a></h3>
+<p>The <em>-slave</em> switch forces modo to start up in slave mode for <a class="reference internal" href="../../tutorials/Network%20Rendering.html"><span class="doc">Network Rendering</span></a> command cannot be executed as a startup command or through the <em>-cmd</em> switch. Furthermore, slave mode can only be run from the GUI version of modo, and will not work from the headless mode.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">slave</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">slave</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="telnet-server">
+<h3><a class="toc-backref" href="#id29">Telnet Server</a><a class="headerlink" href="#telnet-server" title="Permalink to this headline">¶</a></h3>
+<p>The <em>-telnet</em> switch can be used to launch <em>modo</em> and automatically start the <a class="reference internal" href="Telnet.html"><span class="doc">Telnet</span></a> article for more information on using telnet.</p>
+<p>It is also possible to open telnet in ‘’named pipe’’ mode, in which case the port number is replaced with the pipe name.  Note that this pipe mode is simply a way of using raw mode telnet-style functionality from a named pipe, and is different from <span class="xref std std-ref">From a pipe</span>.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="mi">12357</span>
+<span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="n">telnet</span><span class="o">@</span><span class="mi">12357</span>
+<span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="n">raw</span><span class="o">@</span><span class="mi">12357</span>
+<span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="n">pipe</span><span class="nd">@myPipeName</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="mi">12357</span>
+<span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="n">telnet</span><span class="o">@</span><span class="mi">12357</span>
+<span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="n">raw</span><span class="o">@</span><span class="mi">12357</span>
+<span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">telnet</span><span class="p">:</span><span class="n">pipe</span><span class="nd">@myPipeName</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="../../examples/Modo%20Socket%20comms%20wrapper.html"><span class="doc">Modo Socket comms wrapper</span></a>, an example wrapper for ‘raw’ socket mode written in Python.</p>
+</div>
+<div class="section" id="loading-an-initial-scene">
+<h3><a class="toc-backref" href="#id30">Loading an Initial Scene</a><a class="headerlink" href="#loading-an-initial-scene" title="Permalink to this headline">¶</a></h3>
+<p>Any scene can be loaded at startup by entering its path at the end of the argument list. There is no special argument name for this feature.</p>
+<p>Once again, note that on OS X, all paths must be absolute; relative paths, including the home (~) path, are not supported.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;c:\MyScene.lxo&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="s2">&quot;/Volumes/Macintosh HD/Users/myusername/MyScene.lxo&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="debug-flags-dblog-dbon-dboff-and-debug">
+<h3><a class="toc-backref" href="#id31">Debug Flags:  -dblog, -dbon, -dboff and -debug</a><a class="headerlink" href="#debug-flags-dblog-dbon-dboff-and-debug" title="Permalink to this headline">¶</a></h3>
+<p>A few debugging flags exist in modo.  These are generally only for internal use, but you may be asked by customer service to enable them to help track down an issue.</p>
+<div class="section" id="dblog">
+<h4><a class="toc-backref" href="#id32">-dblog</a><a class="headerlink" href="#dblog" title="Permalink to this headline">¶</a></h4>
+<p>The <em>-dblog</em> switch instructs modo to write a log to the path provided.  The exact contents of this log varies depending on which other debug flags are set.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="s2">&quot;-dblog:C:\modolog.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="s2">&quot;-dblog:/Volumes/Macintosh HD/Users/myusername/modolog.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dbon-and-dboff">
+<h4><a class="toc-backref" href="#id33">-dbon and -dboff</a><a class="headerlink" href="#dbon-and-dboff" title="Permalink to this headline">¶</a></h4>
+<p>The <em>-dbon</em> and <em>-dboff</em> switches toggle specific debugging operations on and off.  Most of these are only useful for internal purposes, but there are a few that are useful to end users.  For example, <em>-dbon:noconfig</em> will load your user config on startup, but will not save to it when the application quits.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">dbon</span><span class="p">:</span><span class="n">noconfig</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">dbon</span><span class="p">:</span><span class="n">noconfig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="debug">
+<h4><a class="toc-backref" href="#id34">-debug</a><a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h4>
+<p>This sets the verbosity of the debug output that is saved to the log.  The options are ‘’quiet’’, ‘’error’’, ‘’normal’’, <em>track</em> and ‘’verbose’’. Note that turning on <em>track</em> or <em>verbose</em> can affect the performance of the application.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-win">
+<p class="tab-title">Windows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo_cl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">debug</span><span class="p">:</span><span class="n">normal</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-osx">
+<p class="tab-title">OSX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modo</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">modo</span> <span class="o">-</span><span class="n">dbon</span><span class="p">:</span><span class="n">normal</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="more-information">
+<h3><a class="toc-backref" href="#id35">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="Telnet.html"><span class="doc">Telnet</span></a></p></li>
+<li><p><a class="reference internal" href="Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p><a class="reference internal" href="../../scripting/Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../../tutorials/Network%20Rendering.html"><span class="doc">Network Rendering</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Interfacing%20with%20the%20Undo%20System.html" class="btn btn-neutral float-right" title="Interfacing with the Undo System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="DDE.html" class="btn btn-neutral float-left" title="DDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/systems/Headless.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+</html>

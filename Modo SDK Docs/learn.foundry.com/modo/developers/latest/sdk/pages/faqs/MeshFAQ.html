@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/MeshFAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Meshes &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Modifiers" href="ModifierFAQ.html" />
+    <link rel="prev" title="Items" href="ItemFAQs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_faqs.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="COMFAQs.html">About COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChannelFAQs.html">Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CppFAQs.html">C++ Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ItemFAQs.html">Items</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meshes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-get-a-clxuser-mesh-from-a-mesh-item">How do I get a CLxUser_Mesh from a mesh item?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-get-the-bounding-box-of-a-mesh-with-the-python-api">How do I get the bounding box of a mesh with the Python API?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-mesh-object-can-be-retrieved-via-a-layer-scan-or-mesh-channel-what-method-is-preferred">A mesh object can be retrieved via a layer scan or mesh channel - what method is preferred?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-get-the-primary-mesh-layer-item">How do I get the primary mesh layer item?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ModifierFAQ.html">Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PythonFAQs.html">Python Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TimeFAQs.html">Dealing with Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UIFAQ.html">User Interface</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_faqs.html">Frequently Asked Questions</a> &raquo;</li>
+        
+      <li>Meshes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meshes">
+<h1>Meshes<a class="headerlink" href="#meshes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-do-i-get-a-clxuser-mesh-from-a-mesh-item">
+<h2>How do I get a CLxUser_Mesh from a mesh item?<a class="headerlink" href="#how-do-i-get-a-clxuser-mesh-from-a-mesh-item" title="Permalink to this headline">¶</a></h2>
+<p>There are two meshes you can get. If you want the base mesh – the mesh that the user edits – then you need to use the form of GetChannels which specifies the action layer, and use LXs_ACTIONLAYER_EDIT. This allows you to read the mesh channel from the action directly:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span>                 <span class="n">index</span><span class="p">;</span>
+<span class="n">CLxUser_Scene</span>            <span class="n">scene</span><span class="p">;</span>
+<span class="n">CLxUser_ChannelRead</span>      <span class="n">rchan</span><span class="p">;</span>
+<span class="n">CLxUser_Mesh</span>             <span class="n">umesh</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">LXx_OK</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">ChannelLookup</span> <span class="p">(</span><span class="n">LXsICHAN_MESH_MESH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">index</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="n">item</span><span class="p">.</span><span class="n">GetContext</span> <span class="p">(</span><span class="n">scene</span><span class="p">);</span>
+        <span class="n">scene</span><span class="p">.</span><span class="n">GetChannels</span> <span class="p">(</span><span class="n">rchan</span><span class="p">,</span> <span class="n">LXs_ACTIONLAYER_EDIT</span><span class="p">);</span> <span class="c1">// this version is crucial here!!!</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rchan</span><span class="p">.</span><span class="n">Object</span> <span class="p">(</span><span class="n">itm</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">umesh</span><span class="p">))</span>
+                <span class="n">np</span> <span class="o">=</span> <span class="n">umesh</span><span class="p">.</span><span class="n">NPoints</span> <span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Item</span><span class="p">()</span>   <span class="c1"># given</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
+<span class="n">rchan</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">s_ACTIONLAYER_EDIT</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sICHAN_MESH_MESH</span><span class="p">)</span>
+<span class="n">meshChanVal</span> <span class="o">=</span> <span class="n">rchan</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+<span class="n">umesh</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">meshChanVal</span><span class="p">)</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">umesh</span><span class="o">.</span><span class="n">PointCount</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to access the mesh after deformation, then you want to read from the evaluated mesh channel. This is done by specifying the time at which you want to evaluate. You can then read the channel as a MeshFilter Interface which can be evaluated:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span>                 <span class="n">index</span><span class="p">;</span>
+<span class="n">CLxUser_Scene</span>            <span class="n">scene</span><span class="p">;</span>
+<span class="n">CLxUser_ChannelRead</span>      <span class="n">rchan</span><span class="p">;</span>
+<span class="n">CLxUser_MeshFilter</span>       <span class="n">mfilt</span><span class="p">;</span>
+<span class="n">CLxUser_Mesh</span>             <span class="n">umesh</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">LXx_OK</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">ChannelLookup</span> <span class="p">(</span><span class="n">LXsICHAN_MESH_MESH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">index</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="n">scene</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">);</span>
+        <span class="n">scene</span><span class="p">.</span><span class="n">GetChannels</span> <span class="p">(</span><span class="n">rchan</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span> <span class="c1">// read the deformed mesh at time zero</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rchan</span><span class="p">.</span><span class="n">Object</span> <span class="p">(</span><span class="n">itm</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">mfilt</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">mfilt</span><span class="p">.</span><span class="n">GetMesh</span> <span class="p">(</span><span class="n">umesh</span><span class="p">))</span>
+                        <span class="n">np</span> <span class="o">=</span> <span class="n">umesh</span><span class="p">.</span><span class="n">NPoints</span> <span class="p">();</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Item</span><span class="p">()</span>   <span class="c1"># given</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
+<span class="n">rchan</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sICHAN_MESH_MESH</span><span class="p">)</span>
+<span class="n">meshChanVal</span> <span class="o">=</span> <span class="n">rchan</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+<span class="n">mfilt</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">MeshFilter</span><span class="p">(</span><span class="n">meshChanVal</span><span class="p">)</span>
+<span class="n">umesh</span> <span class="o">=</span> <span class="n">mfilt</span><span class="o">.</span><span class="n">Generate</span><span class="p">()</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">umesh</span><span class="o">.</span><span class="n">PointCount</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the channel is a Mesh Object in one case and a EvaluationStack Object in the other. You have to know the source of your ChannelRead Object to know which one you will get. Alternately you could query for the different interface types to probe the object as runtime.</p>
+<p>The MeshFilter is also what you get from a modifier. You’d specify the mesh channel as an input and store its attribute index. During evaluation you’d read the channel as a MeshFilter:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_MeshFilter</span>       <span class="n">mfilt</span><span class="p">;</span>
+<span class="n">CLxUser_Mesh</span>             <span class="n">mesh</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">m_attr</span><span class="p">.</span><span class="n">ObjectRO</span> <span class="p">(</span><span class="n">i_mesh</span><span class="p">,</span> <span class="n">mfilt</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">mfilt</span><span class="p">.</span><span class="n">GetMesh</span> <span class="p">(</span><span class="n">mesh</span><span class="p">))</span>
+                <span class="n">np</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">NPoints</span> <span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-get-the-bounding-box-of-a-mesh-with-the-python-api">
+<h2>How do I get the bounding box of a mesh with the Python API?<a class="headerlink" href="#how-do-i-get-the-bounding-box-of-a-mesh-with-the-python-api" title="Permalink to this headline">¶</a></h2>
+<p>There are a couple of ways to do this, assuming you have the mesh as an item object, one is by using the “Surface” interface:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chan_eval</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">surfItem</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">SurfaceItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">surfItem</span><span class="o">.</span><span class="n">GetSurface</span><span class="p">(</span><span class="n">chan_eval</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="n">surf</span><span class="o">.</span><span class="n">GetBBox</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or alternatively you can cast the mesh item as a Mesh object and query it’s BoundingBox:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chan_read</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">s_ACTIONLAYER_EDIT</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Selection</span><span class="p">()</span><span class="o">.</span><span class="n">GetTime</span><span class="p">())</span>
+<span class="n">mesh_chan</span> <span class="o">=</span> <span class="n">chan_read</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sICHAN_MESH_MESH</span><span class="p">))</span>
+<span class="n">mesh_obj</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">mesh_chan</span><span class="p">)</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="n">mesh_obj</span><span class="o">.</span><span class="n">BoundingBox</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iMARK_ANY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-mesh-object-can-be-retrieved-via-a-layer-scan-or-mesh-channel-what-method-is-preferred">
+<h2>A mesh object can be retrieved via a layer scan or mesh channel - what method is preferred?<a class="headerlink" href="#a-mesh-object-can-be-retrieved-via-a-layer-scan-or-mesh-channel-what-method-is-preferred" title="Permalink to this headline">¶</a></h2>
+<p>The preferred way of editing a mesh is by using a layer scan. The mesh channel object does not internally store deltas and thus does not support undoing edits. The mesh channel object is rather useful to evaluate a deformed mesh at an arbitrary time from animation.</p>
+</div>
+<div class="section" id="how-do-i-get-the-primary-mesh-layer-item">
+<h2>How do I get the primary mesh layer item?<a class="headerlink" href="#how-do-i-get-the-primary-mesh-layer-item" title="Permalink to this headline">¶</a></h2>
+<p>The best way to get the primary mesh layer item is using the layer service. This will allocate a layer scan for the primary layer, and then lookup the mesh item.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lyr_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span> <span class="p">()</span>
+<span class="n">scan</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">LayerScan</span> <span class="p">(</span><span class="n">lyr_svc</span><span class="o">.</span><span class="n">ScanAllocate</span> <span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_PRIMARY</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">scan</span><span class="o">.</span><span class="n">Count</span> <span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="n">MeshItem</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">scan</span><span class="o">.</span><span class="n">Apply</span> <span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ModifierFAQ.html" class="btn btn-neutral float-right" title="Modifiers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ItemFAQs.html" class="btn btn-neutral float-left" title="Items" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/MeshFAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

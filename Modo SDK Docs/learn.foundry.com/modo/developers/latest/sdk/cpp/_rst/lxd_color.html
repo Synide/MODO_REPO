@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_color.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Color &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Colormapping" href="lxd_colormapping.html" />
+    <link rel="prev" title="Cliped" href="lxd_cliped.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Color</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lxtcolorpickerpacket">LXtColorPickerPacket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolormodel">ILxColorModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolor">ILxColor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Color</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="color">
+<h1>Color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#lxtcolorpickerpacket" id="id1">LXtColorPickerPacket</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolormodel" id="id2">ILxColorModel</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolor" id="id3">ILxColor</a></p></li>
+</ul>
+</div>
+<div class="section" id="lxtcolorpickerpacket">
+<h2><a class="toc-backref" href="#id1">LXtColorPickerPacket</a><a class="headerlink" href="#lxtcolorpickerpacket" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423st_LXtColorPickerPacket">
+<span id="_CPPv323st_LXtColorPickerPacket"></span><span id="_CPPv223st_LXtColorPickerPacket"></span><span id="st_LXtColorPickerPacket"></span><span class="target" id="structst___l_xt_color_picker_packet"></span><em class="property">struct </em><code class="sig-name descname">st_LXtColorPickerPacket</code><a class="headerlink" href="#_CPPv423st_LXtColorPickerPacket" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Selection is usually performed by executing the select.color commands, which takes each of the color command strings. as arguments, Another powerful feature is support for <a class="reference internal" href="lxd_command.html#class_i_lx_u_i_value_hints_1a7b8361e769d7fa1f2331f0c1032961ed"><span class="std std-ref">ILxUIValueHints::ColorPickerCommands()</span></a>. By providing the rgbCommand with a command that implements ILxCommand::UIValueHints(), and then implementing <a class="reference internal" href="lxd_command.html#class_i_lx_u_i_value_hints_1a7b8361e769d7fa1f2331f0c1032961ed"><span class="std std-ref">ILxUIValueHints::ColorPickerCommands()</span></a> from the returned object, it is possible for the command itself to specify all of the other commands. For example, item.channel command (“item.channel channelName ?”) uses this mechanism to check the channel’s <a class="reference internal" href="lxd_channelui.html#class_i_lx_channel_u_i"><span class="std std-ref">ILxChannelUI</span></a> interface for an <a class="reference internal" href="lxd_command.html#class_i_lx_u_i_value_hints"><span class="std std-ref">ILxUIValueHints</span></a> object and returns the ColorPickerCommands() implemented there, thus allowing a channel to specify its own set of colors when it itself is selected, even if the channel referenced by item.channel is not itself a color vector. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N23st_LXtColorPickerPacket10rgbCommandE">
+<span id="_CPPv3N23st_LXtColorPickerPacket10rgbCommandE"></span><span id="_CPPv2N23st_LXtColorPickerPacket10rgbCommandE"></span><span id="st_LXtColorPickerPacket::rgbCommand__cA"></span><span class="target" id="structst___l_xt_color_picker_packet_1a9bb9db6c76eee2e8b7ea59f798a57016"></span>char <code class="sig-name descname">rgbCommand</code>[1024]<a class="headerlink" href="#_CPPv4N23st_LXtColorPickerPacket10rgbCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N23st_LXtColorPickerPacket12alphaCommandE">
+<span id="_CPPv3N23st_LXtColorPickerPacket12alphaCommandE"></span><span id="_CPPv2N23st_LXtColorPickerPacket12alphaCommandE"></span><span id="st_LXtColorPickerPacket::alphaCommand__cA"></span><span class="target" id="structst___l_xt_color_picker_packet_1a7c70e99e7f933e1de7e8ebaa7ab45556"></span>char <code class="sig-name descname">alphaCommand</code>[1024]<a class="headerlink" href="#_CPPv4N23st_LXtColorPickerPacket12alphaCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N23st_LXtColorPickerPacket13rgbAltCommandE">
+<span id="_CPPv3N23st_LXtColorPickerPacket13rgbAltCommandE"></span><span id="_CPPv2N23st_LXtColorPickerPacket13rgbAltCommandE"></span><span id="st_LXtColorPickerPacket::rgbAltCommand__cA"></span><span class="target" id="structst___l_xt_color_picker_packet_1a3e3e0b772ba1592d2588e969af525bee"></span>char <code class="sig-name descname">rgbAltCommand</code>[1024]<a class="headerlink" href="#_CPPv4N23st_LXtColorPickerPacket13rgbAltCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N23st_LXtColorPickerPacket15alphaAltCommandE">
+<span id="_CPPv3N23st_LXtColorPickerPacket15alphaAltCommandE"></span><span id="_CPPv2N23st_LXtColorPickerPacket15alphaAltCommandE"></span><span id="st_LXtColorPickerPacket::alphaAltCommand__cA"></span><span class="target" id="structst___l_xt_color_picker_packet_1a1a2c5a74355d5a5d689d640ded3c5557"></span>char <code class="sig-name descname">alphaAltCommand</code>[1024]<a class="headerlink" href="#_CPPv4N23st_LXtColorPickerPacket15alphaAltCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N23st_LXtColorPickerPacket13useAltCommandE">
+<span id="_CPPv3N23st_LXtColorPickerPacket13useAltCommandE"></span><span id="_CPPv2N23st_LXtColorPickerPacket13useAltCommandE"></span><span id="st_LXtColorPickerPacket::useAltCommand__cA"></span><span class="target" id="structst___l_xt_color_picker_packet_1abfbda06ca180d628526cfbed045319b8"></span>char <code class="sig-name descname">useAltCommand</code>[1024]<a class="headerlink" href="#_CPPv4N23st_LXtColorPickerPacket13useAltCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>ID_COLR</p></li>
+</ul>
+</div>
+<div class="section" id="ilxcolormodel">
+<h2><a class="toc-backref" href="#id2">ILxColorModel</a><a class="headerlink" href="#ilxcolormodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxColorModel">
+<span id="_CPPv313ILxColorModel"></span><span id="_CPPv213ILxColorModel"></span><span id="ILxColorModel"></span><span class="target" id="class_i_lx_color_model"></span><em class="property">class </em><code class="sig-name descname">ILxColorModel</code><a class="headerlink" href="#_CPPv413ILxColorModel" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>modo supports an extensible set of color models that define how the color picker is displayed. Each color model can have 1, 3 or 4 components. They are represented by the <a class="reference internal" href="#class_i_lx_color_model"><span class="std std-ref">ILxColorModel</span></a> interface. We internally support the RGB color model, but other models can be defined as needed by plug-ins. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel13NumComponentsE11LXtObjectID">
+<span id="_CPPv3N13ILxColorModel13NumComponentsE11LXtObjectID"></span><span id="_CPPv2N13ILxColorModel13NumComponentsE11LXtObjectID"></span><span id="ILxColorModel::NumComponents__LXtObjectID"></span><span class="target" id="class_i_lx_color_model_1a2c22558e84ca7fdf0d19b26f0f1a0e27"></span>int <code class="sig-name descname">NumComponents</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel13NumComponentsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It should be noted that color models should be “stateless”. This means that everything you need to compute the values for a given method should be derived from the arguments provided. This ensures that a single color model instance can be safely used across color picker views, and avoids unforeseen complications from storing state in your object. For speed, floats are used instead of doubles in all methods. It is important to keep this conversion in mind, as many other parts of the nexus architecture use doubles for colors. Be sure to double-check the datatype when passing float/double pointers to avoid crashes. Color models can have 1, 3 or 4 components. Examples, include color temperature (1), RGB/HSV/LAB (3) and CMYK (4). Models with 2 or more than 4 components are not currently supported. This method must be implemented. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel13ComponentTypeE11LXtObjectIDjPPKc">
+<span id="_CPPv3N13ILxColorModel13ComponentTypeE11LXtObjectIDjPPKc"></span><span id="_CPPv2N13ILxColorModel13ComponentTypeE11LXtObjectIDjPPKc"></span><span id="ILxColorModel::ComponentType__LXtObjectID.unsigned.cCPP"></span><span class="target" id="class_i_lx_color_model_1aeb05a7560dfd2c40cfecf00473fbd3b3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ComponentType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>component</em>, <em class="property">const</em> char **<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel13ComponentTypeE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each component can have its own datatype. For example, the Hue component of HSV is in degrees. More generic units, like the components of RGB, can use the “color1” datatype to have their units determined by the current color system. This must be a floating point datatype. If not implemented, color1 is assumed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel14ComponentRangeE11LXtObjectIDjPfPf">
+<span id="_CPPv3N13ILxColorModel14ComponentRangeE11LXtObjectIDjPfPf"></span><span id="_CPPv2N13ILxColorModel14ComponentRangeE11LXtObjectIDjPfPf"></span><span id="ILxColorModel::ComponentRange__LXtObjectID.unsigned.floatP.floatP"></span><span class="target" id="class_i_lx_color_model_1acffd19a65a0448de2ca1c762ab516fb3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ComponentRange</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>component</em>, float *<em>min</em>, float *<em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel14ComponentRangeE11LXtObjectIDjPfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each component can also have its own min/max range. For example, Hue ranges from 0 to 360. If not implemented, we default to 0.0 to 1.0. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel5ToRGBE11LXtObjectIDPKfPf">
+<span id="_CPPv3N13ILxColorModel5ToRGBE11LXtObjectIDPKfPf"></span><span id="_CPPv2N13ILxColorModel5ToRGBE11LXtObjectIDPKfPf"></span><span id="ILxColorModel::ToRGB__LXtObjectID.floatCP.floatP"></span><span class="target" id="class_i_lx_color_model_1ad160ec708f32f600ca1db37b5e3550c4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToRGB</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> float *<em>vector</em>, float *<em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel5ToRGBE11LXtObjectIDPKfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The main job of a color model is to convert between RGB and a vector in the model’s space. These functions facilitate this. The vector is assumed to have <a class="reference internal" href="#class_i_lx_color_model_1a2c22558e84ca7fdf0d19b26f0f1a0e27"><span class="std std-ref">NumComponents()</span></a> number of elements. The output vectors will already be allocated and simply need to be populated by the server. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel7FromRGBE11LXtObjectIDPKfPf">
+<span id="_CPPv3N13ILxColorModel7FromRGBE11LXtObjectIDPKfPf"></span><span id="_CPPv2N13ILxColorModel7FromRGBE11LXtObjectIDPKfPf"></span><span id="ILxColorModel::FromRGB__LXtObjectID.floatCP.floatP"></span><span class="target" id="class_i_lx_color_model_1aa19da52fa96b5af08b5280a88cdf08d6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromRGB</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> float *<em>rgb</em>, float *<em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel7FromRGBE11LXtObjectIDPKfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel9DrawSliceE11LXtObjectID11LXtObjectIDjjPKf">
+<span id="_CPPv3N13ILxColorModel9DrawSliceE11LXtObjectID11LXtObjectIDjjPKf"></span><span id="_CPPv2N13ILxColorModel9DrawSliceE11LXtObjectID11LXtObjectIDjjPKf"></span><span id="ILxColorModel::DrawSlice__LXtObjectID.LXtObjectID.unsigned.unsigned.floatCP"></span><span class="target" id="class_i_lx_color_model_1ad2c04fb713643dad7b7941a6ec780663"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DrawSlice</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, unsigned <em>xAxis</em>, unsigned <em>yAxis</em>, <em class="property">const</em> float *<em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel9DrawSliceE11LXtObjectID11LXtObjectIDjjPKf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>By default, the color picker draws a rectangular image depecting a 2D slices through the color space (or a 1D slice in the case of single-component modes). It also will draw one or two horizontal strips representing the remaining axes for three and four component modes. The server can define it’s own version of the 2D slice by implementing this method. An ILxImageID is provided to the caller, who is then responsible for filling the image with a representation of the space given two numbered axes. Note that this image may not initially be empty, and should be completely drawn by the server. The image will be RGBA32, and you should clear the alpha for areas of the image that do not have contents. vec[xAxis] and vec[yAxis] will be undefined, but the remaining vec elements will be set from the current color. If this method is not implemented, a default slice image is computed directly by the color picker. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel15DrawSliceMarkerE11LXtObjectID11LXtObjectIDjjPKfPKf">
+<span id="_CPPv3N13ILxColorModel15DrawSliceMarkerE11LXtObjectID11LXtObjectIDjjPKfPKf"></span><span id="_CPPv2N13ILxColorModel15DrawSliceMarkerE11LXtObjectID11LXtObjectIDjjPKfPKf"></span><span id="ILxColorModel::DrawSliceMarker__LXtObjectID.LXtObjectID.unsigned.unsigned.floatCP.floatCP"></span><span class="target" id="class_i_lx_color_model_1a094137afd2239ad30fb2264381f327c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DrawSliceMarker</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, unsigned <em>xAxis</em>, unsigned <em>yAxis</em>, <em class="property">const</em> float *<em>downVec</em>, <em class="property">const</em> float *<em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel15DrawSliceMarkerE11LXtObjectID11LXtObjectIDjjPKfPKf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This second function is called to mark the current color in the image, or as close as it can get. The image will already be filled with a slice returned by a previous call to DrawSlace(), and the server should simply draw a marker at the position identified by vec. If this method is not implemented, a default marker will be drawn by the color picker itself. The current fstops are also provided so that the image can be drawn with the correct exposure. The “down vector” is also provided to the slice. This is the color that was current at the time the mouse button went down, and may be different than the current color provided by vec. If no mouse buttons are down, this is the same as vec. Most clients will simply use vec to draw their marker. Clients that do advanced drawing (such as the swatches in the HSV color model) will use downVec as well, updating the original downVec themselves during their <a class="reference internal" href="#class_i_lx_color_model_1a5cd572228549bb124a1c638b1a2f74ef"><span class="std std-ref">FromSlicePos()</span></a> call. See <a class="reference internal" href="#class_i_lx_color_model_1a5cd572228549bb124a1c638b1a2f74ef"><span class="std std-ref">FromSlicePos()</span></a> for more information. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel16CanSliceBeReusedE11LXtObjectIDjjPKfPKf">
+<span id="_CPPv3N13ILxColorModel16CanSliceBeReusedE11LXtObjectIDjjPKfPKf"></span><span id="_CPPv2N13ILxColorModel16CanSliceBeReusedE11LXtObjectIDjjPKfPKf"></span><span id="ILxColorModel::CanSliceBeReused__LXtObjectID.unsigned.unsigned.floatCP.floatCP"></span><span class="target" id="class_i_lx_color_model_1a5393026b221d705bb3bf6a864d3eaa88"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CanSliceBeReused</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>xAxis</em>, unsigned <em>yAxis</em>, <em class="property">const</em> float *<em>oldVec</em>, <em class="property">const</em> float *<em>newVec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel16CanSliceBeReusedE11LXtObjectIDjjPKfPKf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is called to ask the color model if it needs to redraw the slice when the current color has changed. If it does not need to, we will simply ask for a new marker to be drawn. If this returns LXe_FALSE, we redraw the slice; if it returns LXe_TRUE or any other success code, we reuse the existing slice and ask for a new marker to be drawn over it (the marker is always drawn fresh). If not implemented, we will only redraw if a component of the vector other than the xAxis or yAxis have changed; otherwise, we reuse the slice. This is only called if you drew the slice yourself in the first palce, and only if it is possible for the slice to be reused (because the image size or colorspace didn’t change, for example). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel10ToSlicePosE11LXtObjectIDjjjjPKfPjPj">
+<span id="_CPPv3N13ILxColorModel10ToSlicePosE11LXtObjectIDjjjjPKfPjPj"></span><span id="_CPPv2N13ILxColorModel10ToSlicePosE11LXtObjectIDjjjjPKfPjPj"></span><span id="ILxColorModel::ToSlicePos__LXtObjectID.unsigned.unsigned.unsigned.unsigned.floatCP.unsignedP.unsignedP"></span><span class="target" id="class_i_lx_color_model_1a740d43f80553ee677afaeaa02583fb52"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToSlicePos</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>xAxis</em>, unsigned <em>yAxis</em>, unsigned <em>imgW</em>, unsigned <em>imgH</em>, <em class="property">const</em> float *<em>vec</em>, unsigned *<em>imgX</em>, unsigned *<em>imgY</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel10ToSlicePosE11LXtObjectIDjjjjPKfPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The server doesn’t need to draw the marker itself, in which case it needs to be able to convert the color vector into an XY coordinate within the slice image for us. This only needs to be implemented if the server is drawing the image but not the marker position itself. imgX and imgY are expected to be coordinates with the image defined by imgW and imgH. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel12FromSlicePosE11LXtObjectIDjjjjjjPfPf">
+<span id="_CPPv3N13ILxColorModel12FromSlicePosE11LXtObjectIDjjjjjjPfPf"></span><span id="_CPPv2N13ILxColorModel12FromSlicePosE11LXtObjectIDjjjjjjPfPf"></span><span id="ILxColorModel::FromSlicePos__LXtObjectID.unsigned.unsigned.unsigned.unsigned.unsigned.unsigned.floatP.floatP"></span><span class="target" id="class_i_lx_color_model_1a5cd572228549bb124a1c638b1a2f74ef"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromSlicePos</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>xAxis</em>, unsigned <em>yAxis</em>, unsigned <em>imgW</em>, unsigned <em>imgH</em>, unsigned <em>imgX</em>, unsigned <em>imgY</em>, float *<em>downVec</em>, float *<em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel12FromSlicePosE11LXtObjectIDjjjjjjPfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This reciprocal method gets a color vector given an XY coordinate in the slice image itself. Again the XY coordinates range from zero to imgW and imgH, and the xAxis and yAxis of the vector provided should be set to the values represented by those coordinates. The remaining components do not need to be set. This function is usually called when the users is clicking and dragging over the color picker. The downVec represents the color at the time the mouse button went down. This value is initialized when the mouse button goes down, and is not changed by the color picker until the next time the button goes down. This allows you to use it as a kind of scratch area, letting you change the color between calls to <a class="reference internal" href="#class_i_lx_color_model_1a5cd572228549bb124a1c638b1a2f74ef"><span class="std std-ref">FromSlicePos()</span></a>. An example of where this is useful is the HSV color model, which shows both a color wheel and a series of swatches. Clicking on a swatch would always use the downVec to compute a new vec. Meanwhile, clicking on the wheel should update downVec in case the user drags from the wheel over to the swatch. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxColorModel15StripBaseVectorE11LXtObjectIDjiPf">
+<span id="_CPPv3N13ILxColorModel15StripBaseVectorE11LXtObjectIDjiPf"></span><span id="_CPPv2N13ILxColorModel15StripBaseVectorE11LXtObjectIDjiPf"></span><span id="ILxColorModel::StripBaseVector__LXtObjectID.unsigned.i.floatP"></span><span class="target" id="class_i_lx_color_model_1a840760f8f8cd851133ecae557d516e16"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StripBaseVector</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>axis</em>, int <em>dynamic</em>, float *<em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxColorModel15StripBaseVectorE11LXtObjectIDjiPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used in 3D color models to get a “clean” color vector in the model’s space that the color picker will use as the basis for draw drawing the horizontal strip. The given component index in the vetor will be incremented through the component’s range and passed to the <a class="reference internal" href="#class_i_lx_color_model_1ad160ec708f32f600ca1db37b5e3550c4"><span class="std std-ref">ToRGB()</span></a> method to draw the strip, so the vector should represent useful colors for the full range of the component. For example, the Hue channel of an HSV model this might return a vector of 0.0,1.0,1.0, while for value it might return 0.0,0.0,0.0. Meanwhile, an RGB color model would also present 0.0,0.0,0.0 for all of its components. The vector passed to the method is initialized with the current color if dynamic is true. If false, a vector set to all zeros is passed in. The dynamic flag allows the client to decide if it wants to set all of the components of the vector itself (when dynamic is off), or to set only some components and leave the others alone (when dynamic is on). This allows the saturation of HSV to be set to set the value to 1 but leave the hue alone, causing the strip to reflect the current hue at different saturation levels. If this method isn’t implemented, the vector provided is used directly as the base. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXs_NOTIFIER_COLOR_CHANGED">
+<span class="target" id="lxd__color_8hpp_1a69feceb88a41cc7c60e052b85cdfa222"></span><code class="sig-name descname">LXs_NOTIFIER_COLOR_CHANGED</code><a class="headerlink" href="#c.LXs_NOTIFIER_COLOR_CHANGED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We support a simple notifier that can be used by custom color picker commands so that they can be made aware of changes to the system. This is pretty brute-force, in that it reports any change to the current color, the color model, the axis or the color unit system, sending VALUE and DISABLE events to any listening clients. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcolor">
+<h2><a class="toc-backref" href="#id3">ILxColor</a><a class="headerlink" href="#ilxcolor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv48ILxColor">
+<span id="_CPPv38ILxColor"></span><span id="_CPPv28ILxColor"></span><span id="ILxColor"></span><span class="target" id="class_i_lx_color"></span><em class="property">class </em><code class="sig-name descname">ILxColor</code><a class="headerlink" href="#_CPPv48ILxColor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>modo supports an extensible set of color models that define how the color picker is displayed. Each color model can have 1, 3 or 4 components. They are represented by the <a class="reference internal" href="#class_i_lx_color_model"><span class="std std-ref">ILxColorModel</span></a> interface. We internally support the RGB color model, but other models can be defined as needed by plug-ins. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N8ILxColor5ColorE11LXtObjectIDPf">
+<span id="_CPPv3N8ILxColor5ColorE11LXtObjectIDPf"></span><span id="_CPPv2N8ILxColor5ColorE11LXtObjectIDPf"></span><span id="ILxColor::Color__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_color_1a7483b353067a7197eaf2ee93be4b4623"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Color</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxColor5ColorE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These return the RGB and alpha components. The color argument must be a three element float array, which will be filled in with the color. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxColor5AlphaE11LXtObjectIDPf">
+<span id="_CPPv3N8ILxColor5AlphaE11LXtObjectIDPf"></span><span id="_CPPv2N8ILxColor5AlphaE11LXtObjectIDPf"></span><span id="ILxColor::Alpha__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_color_1a05367950d7b3a9fad016ba6b97fe49fa"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Alpha</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxColor5AlphaE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Alpha is optional. If not implemented, it is assumed to be 1.0. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxColor10ColorModelE11LXtObjectIDPPKc">
+<span id="_CPPv3N8ILxColor10ColorModelE11LXtObjectIDPPKc"></span><span id="_CPPv2N8ILxColor10ColorModelE11LXtObjectIDPPKc"></span><span id="ILxColor::ColorModel__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_color_1a4a37231ad62f116d04f53146bf48688b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ColorModel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxColor10ColorModelE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the optional color model name, and a the color in the model’s model’s space. These may not be implemented, in which case the raw RGB values should be used. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxColor17ColorInModelSpaceE11LXtObjectIDPf">
+<span id="_CPPv3N8ILxColor17ColorInModelSpaceE11LXtObjectIDPf"></span><span id="_CPPv2N8ILxColor17ColorInModelSpaceE11LXtObjectIDPf"></span><span id="ILxColor::ColorInModelSpace__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_color_1abed383b983ac23955cae3c90a8f5e821"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ColorInModelSpace</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxColor17ColorInModelSpaceE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A color model can contain up to four components, and thus a four element float array must be provided, which will be filled in with the vector. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_colormapping.html" class="btn btn-neutral float-right" title="Colormapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_cliped.html" class="btn btn-neutral float-left" title="Cliped" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_color.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

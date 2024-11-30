@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Read a Driven Channel.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Read a Driven Channel &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rebuild Curve" href="Rebuild%20Curve.html" />
+    <link rel="prev" title="PlaneTool example" href="PlaneTool%20example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20Vertex%20Mesh%20Operation.html">CreateVertex Mesh Operation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example%20cmd%20sy%20partifymesh.html">Example cmd sy partifymesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Socket%20comms%20wrapper.html">Modo Socket comms wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlaneTool%20example.html">PlaneTool example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Read a Driven Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rebuild%20Curve.html">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spherize%20example.html">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>Read a Driven Channel</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="read-a-driven-channel">
+<h1>Read a Driven Channel<a class="headerlink" href="#read-a-driven-channel" title="Permalink to this headline">¶</a></h1>
+<p>Code snippet demonstrating how to read a driven channel - in this case the “Azimuth” channel of a Directional Light when used in a “Physical Daylight” setting.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lxu.select</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">select</span><span class="o">.</span><span class="n">SceneSelection</span><span class="p">()</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+<span class="n">scnsvc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+
+<span class="n">sunlight</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">ItemLookup</span><span class="p">(</span><span class="s1">&#39;Directional Light&#39;</span><span class="p">)</span>
+<span class="c1"># this is a driven channel so we can just pass &#39;None&#39; as the type argument</span>
+<span class="n">chan</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="c1"># get the index of the light&#39;s &quot;Azimuth&quot; channel</span>
+<span class="n">chan_idx</span> <span class="o">=</span> <span class="n">sunlight</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sICHAN_SUNLIGHT_AZIMUTH</span><span class="p">)</span>
+<span class="c1"># read the channel&#39;s value</span>
+<span class="n">azimuth</span> <span class="o">=</span> <span class="n">chan</span><span class="o">.</span><span class="n">Double</span><span class="p">(</span><span class="n">sunlight</span><span class="p">,</span> <span class="n">chan_idx</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Rebuild%20Curve.html" class="btn btn-neutral float-right" title="Rebuild Curve" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PlaneTool%20example.html" class="btn btn-neutral float-left" title="PlaneTool example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Read a Driven Channel.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/python.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:25 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Reference &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Attrdesc" href="_rst/Attrdesc.html" />
+    <link rel="prev" title="Wav Dump example" href="../pages/examples/Wav%20Dump%20example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attrdesc.html">Attrdesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attributes.html">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html">Meta.chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.channel.html">Meta.channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html">Meta.command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html">Meta.drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html">Meta.falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html">Meta.modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html">Meta.package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html">Meta.schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html">Meta.select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Vector.html">Vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Python Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-reference">
+<h1>Python Reference<a class="headerlink" href="#python-reference" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Attrdesc.html">Attrdesc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attrdesc.html#attributedesc">AttributeDesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attrdesc.html#attr">Attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attrdesc.html#attributedescdata">AttributeDescData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attrdesc.html#attributedescvector">AttributeDescVector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attrdesc.html#customchannelui">CustomChannelUI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attributes.html#dynamicarguments">DynamicArguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Attributes.html#dynamicattributes">DynamicAttributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Command.html">Command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Command.html#basiccommand">BasicCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Command.html#basichints">BasicHints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Command.html#notifierhost">NotifierHost</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.chanmod.html">Meta.chanmod</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#channelmodifier">ChannelModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#channels">Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#metainterface">MetaInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#id1">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#meta-channelmodifier">Meta_ChannelModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#id2">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#meta-channels">Meta_Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#id3">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#meta-package">Meta_Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#id4">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#package">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#impl-channelmodmanager">impl_ChannelModManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#impl-channelmodoperator">impl_ChannelModOperator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#meta-channelmodmanager">meta_ChannelModManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.chanmod.html#id5">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.channel.html">Meta.channel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.channel.html#channels">Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.channel.html#meta">Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.channel.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.channel.html#meta-channels">Meta_Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.channel.html#id1">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.command.html">Meta.command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#command">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#customargument">CustomArgument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#id1">Meta_Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#id2">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#notifierhost">NotifierHost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.command.html#impl-command">impl_Command</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.drop.html">Meta.drop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#drop">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#dropaction">DropAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#id1">Meta_Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#id2">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.drop.html#impl-server">impl_Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.falloff.html">Meta.falloff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html#falloff">Falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html#metaobject">MetaObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html#id1">Meta_Falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html#id2">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.falloff.html#impl-falloff">impl_Falloff</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.modifier.html">Meta.modifier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#evalmodifier">EvalModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#evaluator">Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#itemsbytest">ItemsByTest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#itemsbytype">ItemsByType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#meta">Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#metaevaluator">MetaEvaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id1">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#metainterface">MetaInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id2">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id3">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#meta-evalmodifier">Meta_EvalModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id4">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#meta-objectevaluation">Meta_ObjectEvaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id5">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#objectevaluation">ObjectEvaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#simulation">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#impl-evalmodifier">impl_EvalModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#impl-modifier">impl_Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#impl-objectevaluation">impl_ObjectEvaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#impl-simulation">impl_Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id6">meta_Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#meta-simulation">meta_Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.modifier.html#id7">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.package.html">Meta.package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#channelui">ChannelUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#metainterface">MetaInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#id1">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#meta-channelui">Meta_ChannelUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#id2">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#id3">Meta_Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#id4">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#meta-viewitem3d">Meta_ViewItem3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#id5">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#package">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#viewitem3d">ViewItem3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#impl-channelui">impl_ChannelUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#impl-instance">impl_Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#impl-server">impl_Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#impl-viewitem3d">impl_ViewItem3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.package.html#meta-instance">meta_Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.schematic.html">Meta.schematic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html#meta-schematicconnection">Meta_SchematicConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html#id1">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html#schematicconnection">SchematicConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.schematic.html#impl-server">impl_Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Meta.select.html">Meta.select</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html#metaserver">MetaServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html#types">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html#meta-selectiontype">Meta_SelectionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html#id1">Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html#selectiontype">SelectionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Meta.select.html#impl-server">impl_Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Object.html">Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#actionclip">ActionClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#actionlayerpackettranslation">ActionLayerPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#actionlistener">ActionListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#addchannel">AddChannel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#adddropaction">AddDropAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#adjusttool">AdjustTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#animlistener">AnimListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#appactivelistener">AppActiveListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#asyncmonitorinfo">AsyncMonitorInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#asyncmonitorsystem">AsyncMonitorSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#attrsequence">AttrSequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#attributesui">AttributesUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#audio">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#audiodevice">AudioDevice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#audiohandle">AudioHandle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#audioloadertarget">AudioLoaderTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#audiowrite">AudioWrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#autosavelistener">AutoSaveListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#baggenerator">BagGenerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#basepathadddest">BasePathAddDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#blockread">BlockRead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#blockstore">BlockStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#blockwrite">BlockWrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#buffer">Buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#cachedata">CacheData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#centerpackettranslation">CenterPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channeldest">ChannelDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channeldroppreview">ChannelDropPreview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channelgraph">ChannelGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channelpackettranslation">ChannelPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channelread">ChannelRead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channelui">ChannelUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#channelwrite">ChannelWrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#cmdsyslistener">CmdSysListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#color">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#colordialog">ColorDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#colormapping">ColorMapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#colormodel">ColorModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#colorpredest">ColorPreDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#command">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#commanddbhelp">CommandDBHelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#commandevent">CommandEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#compshader">CompShader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#curve">Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#curvegroup">CurveGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#custommaterial">CustomMaterial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#custompane">CustomPane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#customview">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dtbbadgeoverride">DTBBadgeOverride</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dtbgroupsortoverride">DTBGroupSortOverride</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#deformation">Deformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#deformer">Deformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dirbrowserbasepathentrydest">DirBrowserBasePathEntryDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dircacheentry">DirCacheEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dircachefilemetrics">DirCacheFileMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dircachegridposdest">DirCacheGridPosDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#dircachemanualorderdest">DirCacheManualOrderDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#direntrythumbasync">DirEntryThumbAsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#drawingoverride">DrawingOverride</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#drop">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#droppreviewdefault">DropPreviewDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#edge">Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#edgepackettranslation">EdgePacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#elementaxispacket">ElementAxisPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#elementcenterpacket">ElementCenterPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#envelope">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#evalmodifier">EvalModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#evaluation">Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#evaluationstack">EvaluationStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#eventguide">EventGuide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#eventtranslatepacket">EventTranslatePacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#externalrender">ExternalRender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#externalrendernotifier">ExternalRenderNotifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#factory">Factory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#falloff">Falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#falloffpacket">FalloffPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#fileredirect">FileRedirect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#filereference">FileReference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#filesysdest">FileSysDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#force">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#glimage">GLImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#glmaterial">GLMaterial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#gradientfilter">GradientFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#groupdeformer">GroupDeformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#groupdest">GroupDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#groupenumerator">GroupEnumerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#groupitem">GroupItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#groupmemberchandest">GroupMemberChanDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#groupmemberitemdest">GroupMemberItemDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#handledraw">HandleDraw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#image">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imagefilter">ImageFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imagefiltermetrics">ImageFilterMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imagelevelsample">ImageLevelSample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imageloadertarget">ImageLoaderTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imagemonitor">ImageMonitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imageprocessing">ImageProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imageprocessinglistener">ImageProcessingListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imageprocessingread">ImageProcessingRead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imagesegment">ImageSegment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#imagewrite">ImageWrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#indeximage">IndexImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#indeximagewrite">IndexImageWrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#inputdeviceinstance">InputDeviceInstance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#inputdevices">InputDevices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#intrange">IntRange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#item">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#itemchannel">ItemChannel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#itemcollection">ItemCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#itemgraph">ItemGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#iteminfluence">ItemInfluence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#itemlisttype">ItemListType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#itempackettranslation">ItemPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#itemtypedest">ItemTypeDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#keyframe">Keyframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#layerscan">LayerScan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#layeredimage">LayeredImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#layeredimagewrite">LayeredImageWrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#lightsample">LightSample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#lighting">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#lineexecution">LineExecution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#lineinterpreter">LineInterpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#linkpackettranslation">LinkPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#listenerport">ListenerPort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#loader">Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#loaderinfo">LoaderInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#locator">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#locatordest">LocatorDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#logentry">LogEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#loginfoblock">LogInfoBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#loglistener">LogListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#matrix">Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#mergeddircacheentry">MergedDirCacheEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#mergedfilesysdest">MergedFileSysDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#mesh">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshblend">MeshBlend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshdest">MeshDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshelementgroup">MeshElementGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshfilter">MeshFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshfilterbbox">MeshFilterBBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshfilterblend">MeshFilterBlend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshfilterident">MeshFilterIdent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshinfluence">MeshInfluence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshlayerpredest">MeshLayerPreDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshmap">MeshMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshopdest">MeshOpDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshoperation">MeshOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshtracker">MeshTracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#meshxtradata">MeshXtraData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#message">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#modifier">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#module">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#monitor">Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#navigationlistener">NavigationListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#needcontext">NeedContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#nodepackettranslation">NodePacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#notifier">Notifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#package">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#packageinstance">PackageInstance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#packeteffect">PacketEffect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#paintbrushpacket">PaintBrushPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#paintinkpacket">PaintInkPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#paintnozzlepacket">PaintNozzlePacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#particlecooperator">ParticleCoOperator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#particleevalframe">ParticleEvalFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#particlefilter">ParticleFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#particlegeneratorpacket">ParticleGeneratorPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#particleitem">ParticleItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#pathgeneratorpacket">PathGeneratorPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#pathstep">PathStep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#pattern">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#persistenceclient">PersistenceClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#persistententry">PersistentEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#pivotpackettranslation">PivotPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#point">Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#pointcacheitem">PointCacheItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#polygon">Polygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#polygonpackettranslation">PolygonPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#polygonslice">PolygonSlice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#presetbrowsersource">PresetBrowserSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#presetdo">PresetDo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#presetloadertarget">PresetLoaderTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#presetmetrics">PresetMetrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#presetpathpackettranslation">PresetPathPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#presettype">PresetType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#previewnotifier">PreviewNotifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#profile1dpredest">Profile1DPreDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#profile2dpredest">Profile2DPreDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#projdiroverride">ProjDirOverride</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#proxyoptions">ProxyOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#quaternion">Quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#raycast">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#raycastpacket">RaycastPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#raymarch">Raymarch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#renderjob">RenderJob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#renderprogresslistener">RenderProgressListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#renderstats">RenderStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#replicatorenumerator">ReplicatorEnumerator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#saver">Saver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scene">Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scenecontents">SceneContents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#sceneevallistener">SceneEvalListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scenegraph">SceneGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#sceneitemlistener">SceneItemListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#sceneitempredest">SceneItemPreDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#sceneloadertarget">SceneLoaderTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scenepackettranslation">ScenePacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scenesubset">SceneSubset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#schemadest">SchemaDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#schematicconnection">SchematicConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#schematicgroup">SchematicGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#schematicnode">SchematicNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#script">Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scriptlineevent">ScriptLineEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scriptmanager">ScriptManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#scriptquery">ScriptQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#selectionlistener">SelectionListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#selectionoperation">SelectionOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#selectionstate">SelectionState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#selectiontype">SelectionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#sessionlistener">SessionListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#shader">Shader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#shaderpredest">ShaderPreDest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#shaderslice">ShaderSlice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#shapedraw">ShapeDraw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#simulationlistener">SimulationListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#simulationmodifier">SimulationModifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#soliddrill">SolidDrill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#stackfilter">StackFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#streamio">StreamIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#stringconversion">StringConversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#stringconversionnice">StringConversionNice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#stringtag">StringTag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#strokedraw">StrokeDraw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#subject2packet">Subject2Packet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#surface">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#surfacebin">SurfaceBin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#surfaceitem">SurfaceItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#symmetrypacket">SymmetryPacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableau">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableauelement">TableauElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableauinstance">TableauInstance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableaulight">TableauLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableauproxy">TableauProxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableaushader">TableauShader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableausource">TableauSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableausurface">TableauSurface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableauvertex">TableauVertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tableauvolume">TableauVolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tagdescription">TagDescription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#textencoding">TextEncoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#textscriptinterpreter">TextScriptInterpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#texture">Texture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#textureeffect">TextureEffect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#texturepacket">TexturePacket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tileimage">TileImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tool">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#toolmodel">ToolModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tooloperation">ToolOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#transformscan">TransformScan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#tree">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#treelistener">TreeListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#treeview">TreeView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#trianglegroup">TriangleGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#trianglesoup">TriangleSoup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#trianglesurface">TriangleSurface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#uihints">UIHints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#uihintsread">UIHintsRead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#uivaluehints">UIValueHints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#undo">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#uservalue">UserValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#uservaluelistener">UserValueListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vmappackettranslation">VMapPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#valuearray">ValueArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#valueconversion">ValueConversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#valuemath">ValueMath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#valuereference">ValueReference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#valuetexture">ValueTexture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#valuetexturecustom">ValueTextureCustom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#variation">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorcanvas">VectorCanvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorknotpackettranslation">VectorKnotPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorlist">VectorList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorlistener">VectorListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorpath">VectorPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorpathpackettranslation">VectorPathPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorshape">VectorShape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorshapepackettranslation">VectorShapePacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectorstack">VectorStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vectortype">VectorType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#vertexpackettranslation">VertexPacketTranslation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#videoclipitem">VideoClipItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#view">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#view3d">View3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#viewitem3d">ViewItem3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#viewobject">ViewObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#virtualdevice">VirtualDevice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#virtualmodel">VirtualModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#visitor">Visitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Object.html#weightmapdeformeritem">WeightMapDeformerItem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Package.html">Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Package.html#basicitembehaviors">BasicItemBehaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Package.html#basicpackage">BasicPackage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Package.html#basicpackageinstance">BasicPackageInstance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Package.html#defaultpackage">DefaultPackage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Package.html#defaultpackageinstance">DefaultPackageInstance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Select.html">Select</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Select.html#anyselection">AnySelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Select.html#channelselection">ChannelSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Select.html#itemselection">ItemSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Select.html#presetpathselection">PresetPathSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Select.html#sceneselection">SceneSelection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Service.html">Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#audioanim">AudioAnim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#cache">Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#channelui">ChannelUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#colormapping">ColorMapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#command">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#deformer">Deformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#dircache">DirCache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#drop">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#file">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#guid">GUID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#host">Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#io">IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#image">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#imagemonitor">ImageMonitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#imageprocessing">ImageProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#inputmap">InputMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#layer">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#listener">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#mesh">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#message">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#network">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#nodal">Nodal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#notifysys">NotifySys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#packet">Packet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#particle">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#persistence">Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#platform">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#presetbrowser">PresetBrowser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#presetdestination">PresetDestination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#render">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#scene">Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#scriptsys">ScriptSys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#selection">Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#shader">Shader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#stddialog">StdDialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#tableau">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#textencoding">TextEncoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#undo">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#value">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#variation">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#vertexfeature">VertexFeature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Service.html#view3dport">View3Dport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Utils.html">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Utils.html#itemtype">ItemType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_rst/Utils.html#threadbody">ThreadBody</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_rst/Vector.html">Vector</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="_rst/Attrdesc.html" class="btn btn-neutral float-right" title="Attrdesc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../pages/examples/Wav%20Dump%20example.html" class="btn btn-neutral float-left" title="Wav Dump example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/python.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:26 GMT -->
+</html>

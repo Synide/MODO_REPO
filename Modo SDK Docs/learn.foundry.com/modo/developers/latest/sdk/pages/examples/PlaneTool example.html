@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/PlaneTool example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PlaneTool example &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Read a Driven Channel" href="Read%20a%20Driven%20Channel.html" />
+    <link rel="prev" title="Modo Socket comms wrapper" href="Modo%20Socket%20comms%20wrapper.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20Vertex%20Mesh%20Operation.html">CreateVertex Mesh Operation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example%20cmd%20sy%20partifymesh.html">Example cmd sy partifymesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Socket%20comms%20wrapper.html">Modo Socket comms wrapper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PlaneTool example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read%20a%20Driven%20Channel.html">Read a Driven Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rebuild%20Curve.html">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spherize%20example.html">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>PlaneTool example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="planetool-example">
+<h1>PlaneTool example<a class="headerlink" href="#planetool-example" title="Permalink to this headline">¶</a></h1>
+<p>The code below implements a simple tool plugin that demonstrates how to create geometry using Python. It essentially creates a plane on the active layer. Hauling in the viewport changes its size.</p>
+<p>There’s no support for specifying the origin of the tool, there’s no support for snapping, workplane, falloffs, tool handles…etc. It’s really really simple. It doesn’t even have a form for displaying the properties that drive the tool. It’s just a very basic example of a tool.</p>
+<p>To activate the tool, type “tool.set prim.plane on” into the command history.</p>
+<p>‘’’Note’’’: As a plugin, the python source file needs to be placed in an ‘lxserv’ folder.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!python</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    A simple tool plugin to demonstrate geometry creation. A plane is</span>
+<span class="sd">    created on the active mesh layer, with the size controlled by hauling</span>
+<span class="sd">    in the viewport.</span>
+
+<span class="sd">    Tools are rather advanced and there is a lot of potential for taking</span>
+<span class="sd">    this example further. For example, drawing tool handles, defining the</span>
+<span class="sd">    origin of the geometry creation, support for falloffs, generating UVs...etc.</span>
+
+<span class="sd">    Author: Matt Cox</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+<span class="kn">import</span> <span class="nn">lxu.attributes</span>
+
+<span class="k">class</span> <span class="nc">Plane_Tool</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Tool</span><span class="p">,</span> <span class="n">lxifc</span><span class="o">.</span><span class="n">ToolModel</span><span class="p">,</span> <span class="n">lxu</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">DynamicAttributes</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">lxu</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">DynamicAttributes</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Our tool is going to have a single value that controls how it</span>
+<span class="sd">            operates. This value will control the size of the plane geometry</span>
+<span class="sd">            that we create. So we create a new Dynamic Attribute, who&#39;s type</span>
+<span class="sd">            is float and it&#39;s initial value is 1.0.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna_Add</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sTYPE_FLOAT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_SetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Allocate a vector type. We&#39;re setting the mimimum required here,</span>
+<span class="sd">            but we could add some packets to the vector stack, that would</span>
+<span class="sd">            allow us to do things like work with symmetry or falloffs.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">pkt_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Packet</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vec_type</span> <span class="o">=</span> <span class="n">pkt_svc</span><span class="o">.</span><span class="n">CreateVectorType</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sCATEGORY_TOOL</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tool_Reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This function is called to reset the tool back to it&#39;s default.</span>
+<span class="sd">            In our case, we are simply setting the plane size attribute</span>
+<span class="sd">            back to the default of 1m.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_SetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tool_Evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">vts</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This is where our tool is actually evaluated. We&#39;re going to get</span>
+<span class="sd">            the current layers and loop through them, generating new vertices</span>
+<span class="sd">            and polygons, defined by the size attribute.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We&#39;ll be using the LayerService to interact with meshes in the</span>
+<span class="sd">            scene. We also want to localize a LayerScan object using the</span>
+<span class="sd">            ScanAllocate method. The symbol &quot;f_LAYERSCAN_EDIT&quot;, tells modo</span>
+<span class="sd">            that we want to scan active layers and edit the mesh. See the SDK</span>
+<span class="sd">            wiki for the declaration of this symbol.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">layer_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+        <span class="n">layer_scan</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">LayerScan</span><span class="p">(</span><span class="n">layer_svc</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_EDIT</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">layer_scan</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We have a single attribute that defines the size of the plane. We</span>
+<span class="sd">            read it&#39;s value using the index or the order the attributes were</span>
+<span class="sd">            added in the constructor. As we only have a single attribute on</span>
+<span class="sd">            this tool, it&#39;s clearly going to be 0.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">size_attr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We&#39;re going to operate on all active layers, so we simply want</span>
+<span class="sd">            to loop through the active layers and perform some operation.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">layer_scan</span><span class="o">.</span><span class="n">Count</span><span class="p">()):</span>
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                We want to grab the Edit Mesh on the current layer and</span>
+<span class="sd">                localize it into a Mesh object, so that we can edit it.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">mesh_loc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">layer_scan</span><span class="o">.</span><span class="n">MeshEdit</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">mesh_loc</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                As we are editing both Points and Polygons, we need to get</span>
+<span class="sd">                some Point and Polygon interfaces from the mesh.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">point_loc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">mesh_loc</span><span class="o">.</span><span class="n">PointAccessor</span><span class="p">())</span>
+            <span class="n">poly_loc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">mesh_loc</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">())</span>
+
+            <span class="k">if</span> <span class="n">poly_loc</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">point_loc</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Now we are going to construct the plane geometry. To keep things</span>
+<span class="sd">                simple, we&#39;re going to loop through a statement that creates 4</span>
+<span class="sd">                new points. For each of the points, we&#39;ll store their ID in a</span>
+<span class="sd">                list. Finally, we&#39;ll iterrate over the list and create the</span>
+<span class="sd">                new polygon from the four points.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="p">()</span>
+            <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    First we want to calculate a position for the new point.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">point_pos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">point</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">point_pos</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,(</span><span class="o">-</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">point</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">point_pos</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,(</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">point</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">point_pos</span> <span class="o">=</span> <span class="p">((</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,(</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">point</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="n">point_pos</span> <span class="o">=</span> <span class="p">((</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,(</span><span class="o">-</span><span class="n">size_attr</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    Create a new point. This method takes a position and</span>
+<span class="sd">                    return a PointID, so we pass it the position vector we</span>
+<span class="sd">                    created.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">current_point</span> <span class="o">=</span> <span class="n">point_loc</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">point_pos</span><span class="p">)</span>
+
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    We have to pass a list of points to the Polygon New()</span>
+<span class="sd">                    method. So we add the current PointID to the Points tuple.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">points</span> <span class="o">=</span> <span class="n">points</span> <span class="o">+</span> <span class="p">(</span><span class="n">current_point</span><span class="p">,)</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                The Polygon New() method requires the list of points to be</span>
+<span class="sd">                passed as a Storage Buffer. So we create a storage buffer, set</span>
+<span class="sd">                it&#39;s type to store pointers, set the size to be number of points</span>
+<span class="sd">                we intend to store in it and then finally, write out Points</span>
+<span class="sd">                tuple to it.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">points_storage</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">()</span>
+            <span class="n">points_storage</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+            <span class="n">points_storage</span><span class="o">.</span><span class="n">setSize</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">points_storage</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Now we have our point positions, we create a new polygon.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">poly_loc</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iPTYP_FACE</span><span class="p">,</span><span class="n">points_storage</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Before we move on to the next layer, we tell modo that have</span>
+<span class="sd">                edited this mesh layer.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">layer_scan</span><span class="o">.</span><span class="n">SetMeshChange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_MESHEDIT_GEOMETRY</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Finally, we call the Apply function, which closes our LayerScan</span>
+<span class="sd">            interface and applies all our changes to the mesh.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">layer_scan</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">tool_VectorType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This function simply returns the tool VectorType that we created</span>
+<span class="sd">            in the constructor.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec_type</span>
+
+    <span class="k">def</span> <span class="nf">tool_Order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This sets the position of the tool in the toolpipe.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">s_ORD_ACTR</span>
+
+    <span class="k">def</span> <span class="nf">tool_Task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Simply defines the type of task performed by this tool. We set</span>
+<span class="sd">            this to an Action tool, which basically means it will alter the</span>
+<span class="sd">            state of modo.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">i_TASK_ACTR</span>
+
+    <span class="k">def</span> <span class="nf">tmod_Flags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This sets how we intend to interact with the tool. The symbol</span>
+<span class="sd">            &quot;fTMOD_I0_ATTRHAUL&quot; basically says that we expect to haul an</span>
+<span class="sd">            attribute when clicking and dragging with the left mouse button.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fTMOD_I0_ATTRHAUL</span>
+
+    <span class="k">def</span> <span class="nf">tmod_Initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">vts</span><span class="p">,</span><span class="n">adjust</span><span class="p">,</span><span class="n">flags</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            This is called when the tool is activated. We use it to simply</span>
+<span class="sd">            set the attribute that we hauling back to the default.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">adj_tool</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">AdjustTool</span><span class="p">(</span><span class="n">adjust</span><span class="p">)</span>
+        <span class="n">adj_tool</span><span class="o">.</span><span class="n">SetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tmod_Haul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Hauling is dependent on the direction of the haul. So a vertical</span>
+<span class="sd">            haul can drive a different parameter to a horizontal haul. The</span>
+<span class="sd">            direction of the haul is represented by an index, with 0</span>
+<span class="sd">            representing horizontal and 1 representing vertical. The function</span>
+<span class="sd">            simply returns the name of the attribute to drive, given it&#39;s index.</span>
+<span class="sd">            As we only have one attribute, we&#39;ll set horizontal hauling to</span>
+<span class="sd">            control it and vertical hauling to do nothing.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;size&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    &quot;Blessing&quot; the class promotes it to a fist class server. This basically</span>
+<span class="sd">    means that modo will now recognize this plugin script as a tool plugin.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">Plane_Tool</span><span class="p">,</span> <span class="s2">&quot;prim.plane&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Read%20a%20Driven%20Channel.html" class="btn btn-neutral float-right" title="Read a Driven Channel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Modo%20Socket%20comms%20wrapper.html" class="btn btn-neutral float-left" title="Modo Socket comms wrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/PlaneTool example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

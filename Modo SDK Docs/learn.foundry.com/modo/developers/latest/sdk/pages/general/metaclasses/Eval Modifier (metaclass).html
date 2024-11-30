@@ -1,0 +1,532 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/metaclasses/Eval Modifier (metaclass).html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:53 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Eval Modifier (metaclass) &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Schematic Connection (metaclass)" href="Schematic%20Connection%20(metaclass).html" />
+    <link rel="prev" title="Channels (metaclass)" href="Channels%20(metaclass).html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#general-info">General Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="About%20Metaclasses.html">About Metaclasses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Channel%20Modifier%20(metaclass).html">Channel Modifier (metaclass)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Channels%20(metaclass).html">Channels (metaclass)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Eval Modifier (metaclass)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#client-class">Client Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#item-inclusion">Item Inclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#binding-channels">Binding Channels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-changes">Handling Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#object-evaluation">Object Evaluation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cache-evaluation">Cache Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Schematic%20Connection%20(metaclass).html">Schematic Connection (metaclass)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Value%20Texture%20(metaclass).html">Value Texture (metaclass)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Eval Modifier (metaclass)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eval-modifier-metaclass">
+<h1>Eval Modifier (metaclass)<a class="headerlink" href="#eval-modifier-metaclass" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#client-class" id="id1">Client Class</a></p></li>
+<li><p><a class="reference internal" href="#item-inclusion" id="id2">Item Inclusion</a></p></li>
+<li><p><a class="reference internal" href="#binding-channels" id="id3">Binding Channels</a></p></li>
+<li><p><a class="reference internal" href="#handling-changes" id="id4">Handling Changes</a></p></li>
+<li><p><a class="reference internal" href="#object-evaluation" id="id5">Object Evaluation</a></p></li>
+<li><p><a class="reference internal" href="#cache-evaluation" id="id6">Cache Evaluation</a></p></li>
+</ul>
+</div>
+<p>‘’EvalModifier’’ servers can be created using appropriate metaclasses, supporting a rich set of functionality. The most common form, however, is an eval modifier associated with an item type with channels. The item type and channels are defined by the Channels (metaclass)  metaclasses and are found automatically. In this sample the eval modifier reads all the channels on the item and writes to an output channel on the same item.</p>
+<div class="section" id="client-class">
+<h2><a class="toc-backref" href="#id1">Client Class</a><a class="headerlink" href="#client-class" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyEvalModifier</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CLxEvalModifier</span>
+<span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="kt">void</span> <span class="n">bind</span> <span class="p">(</span>
+                <span class="n">CLxUser_Item</span>    <span class="o">&amp;</span><span class="n">item</span><span class="p">,</span>
+                <span class="kt">unsigned</span>         <span class="n">ident</span><span class="p">)</span>    <span class="n">LXx_OVERRIDE</span>
+        <span class="p">{</span>
+                <span class="n">mod_add_chan</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s">&quot;outputChannelName&quot;</span><span class="p">,</span> <span class="n">LXfECHAN_WRITE</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kt">void</span> <span class="n">eval</span> <span class="p">()</span>                       <span class="n">LXx_OVERRIDE</span>
+        <span class="p">{</span>
+                <span class="n">MyChannels</span>  <span class="n">my</span><span class="p">;</span>
+
+                <span class="n">mod_read_attr</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">my</span><span class="p">);</span>
+                <span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="n">my</span><span class="p">.</span><span class="n">cv_float</span> <span class="o">*</span> <span class="n">my</span><span class="p">.</span><span class="n">cv_int</span><span class="p">;</span>
+                <span class="n">mod_cust_write</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="n">CLxMeta_EvalModifier</span><span class="o">&lt;</span><span class="n">MyEvalModifier</span><span class="o">&gt;</span>  <span class="n">mod_meta</span> <span class="p">(</span><span class="s">&quot;myItemModifierServerName&quot;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <em>bind()</em> method is called to define the input and output channels. All the channels in the Channels metaclass marked for read are added automatically, so the only channels that needs to be custom added is the output channel using ‘’mod_add_chan()’’. This is custom channel zero.</p>
+<p>The <em>eval()</em> method is called to read inputs and compute outputs. First <em>mod_read_attr()</em> is called to read the channels defined as inputs into the <em>MyChannels</em> struct which was associated with the Channels metaclass. The next line computes the result value. The final line writes the value to custom channel zero.</p>
+<p>The eval modifier metaclass is added as a sibling of the channels and package. This allows the modifier to use the channels and associate itself with the item type.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">root</span>
+  <span class="o">|</span>
+  <span class="o">+---</span> <span class="n">channels</span>
+  <span class="o">|</span>
+  <span class="o">+---</span> <span class="n">package</span> <span class="p">(</span><span class="n">item</span> <span class="nb">type</span><span class="p">)</span>
+  <span class="o">|</span>
+  <span class="o">+---</span> <span class="nb">eval</span> <span class="n">modifier</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">root_meta</span><span class="p">.</span><span class="n">add</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">chan_meta</span><span class="p">);</span>
+        <span class="n">root_meta</span><span class="p">.</span><span class="n">add</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">pkg_meta</span><span class="p">);</span>
+        <span class="n">root_meta</span><span class="p">.</span><span class="n">add</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">mod_meta</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="item-inclusion">
+<h2><a class="toc-backref" href="#id2">Item Inclusion</a><a class="headerlink" href="#item-inclusion" title="Permalink to this headline">¶</a></h2>
+<p>By default the eval modifier will create one modifier node for each item of the automatically detected type. If for some reason the automatic detection is wrong, the item type can be set manually:</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">mod_meta</span><span class="p">.</span><span class="n">set_itemtype</span> <span class="p">(</span><span class="s">&quot;itemTypeName&quot;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>Sometimes there will need to be a modifier node for different combinations of item types, or multiple nodes for a single item. This can be accomplished by implementing the <em>include_item()</em> method. The overridden function will be called for all items in the scene, and it can decide to allocate a node for any of them by calling ‘’mod_add_node()’’.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyEvalModifier</span> <span class="o">:</span>
+<span class="p">[...]</span>
+        <span class="kt">void</span> <span class="n">include_item</span><span class="p">(</span>
+                <span class="n">CLxUser_Item</span>    <span class="o">&amp;</span><span class="n">item</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+        <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">item</span><span class="o">-</span><span class="n">needs</span><span class="o">-</span><span class="n">modifier</span><span class="o">-</span><span class="n">node</span><span class="o">&gt;</span><span class="p">)</span>
+                        <span class="n">mod_add_node</span> <span class="p">();</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>If an eval modifier wants to allocate multiple nodes for a single item, they each need to be given an identifier in the form of an unsigned int. That will be passed back during binding.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyEvalModifier</span> <span class="o">:</span>
+<span class="p">[...]</span>
+        <span class="kt">void</span> <span class="n">include_item</span><span class="p">(</span>
+                <span class="n">CLxUser_Item</span>    <span class="o">&amp;</span><span class="n">item</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+        <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">item</span><span class="o">-</span><span class="n">needs</span><span class="o">-</span><span class="n">multiple</span><span class="o">-</span><span class="n">nodes</span><span class="o">&gt;</span><span class="p">)</span>
+                <span class="p">{</span>
+                        <span class="n">mod_add_node</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+                        <span class="n">mod_add_node</span> <span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This behavior needs to be enabled on the metaclass by asking for all items.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">mod_meta</span><span class="p">.</span><span class="n">get_all_items</span> <span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="binding-channels">
+<h2><a class="toc-backref" href="#id3">Binding Channels</a><a class="headerlink" href="#binding-channels" title="Permalink to this headline">¶</a></h2>
+<p>The method for binding custom channels was shown in the first example. It should be noted that any number of custom channels can be bound from any other items in the scene. The number of bindings can vary based on graph links or any other type of scene variable state. Although the Evaluation interface is available from ‘’mod_eval()’’, channels should not be bound using those methods but only with ‘’mod_add_chan()’’. The reason for this is that a client object may be asked to bind channels just for the purpose of testing against an existing node. The channels are not actually added to the evaluation in that case, but are just used to see if the modifier has changed.</p>
+</div>
+<div class="section" id="handling-changes">
+<h2><a class="toc-backref" href="#id4">Handling Changes</a><a class="headerlink" href="#handling-changes" title="Permalink to this headline">¶</a></h2>
+<p>There are two types of common changes needed for modifier nodes: adding and removing nodes, and updating the bindings of nodes. Both of these are most typically triggered by adding and removing items, and by changes to graph links. These can be tracked and the modifiers invalidated by adding these dependencies to the metaclass. Item types and graphs are added one by one.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">mod_meta</span><span class="p">.</span><span class="n">add_dependent_type</span> <span class="p">(</span><span class="s">&quot;depType1Name&quot;</span><span class="p">);</span>
+        <span class="n">mod_meta</span><span class="p">.</span><span class="n">add_dependent_type</span> <span class="p">(</span><span class="s">&quot;depType2Name&quot;</span><span class="p">);</span>
+        <span class="n">mod_meta</span><span class="p">.</span><span class="n">add_dependent_graph</span> <span class="p">(</span><span class="s">&quot;depGraph1Name&quot;</span><span class="p">);</span>
+        <span class="n">mod_meta</span><span class="p">.</span><span class="n">add_dependent_graph</span> <span class="p">(</span><span class="s">&quot;depGraph2Name&quot;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>It’s also possible for other types of events to invalidate modifiers. If that’s the case there will need to be a listener to watch for those events and to trigger invalidation manually. The invalidation function can take an item or scene.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">mod_meta</span><span class="p">.</span><span class="n">invalidate</span> <span class="p">(</span><span class="n">scene</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>The eval modifier metaclass will automatically handle the case of items being added and removed, and of changes to the bindings of existing modifiers. If there is any other reason that a modifier should be invalid the client can implement the <em>CLxEvalModifier::change_test()</em> function and return false in those cases.</p>
+</div>
+<div class="section" id="object-evaluation">
+<h2><a class="toc-backref" href="#id5">Object Evaluation</a><a class="headerlink" href="#object-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>The eval modifier metaclass provides a system for alternate forms of evaluation. One common modifier pattern is a modifier that reads the channels of an item and writes an object encapsulating those settings to an <em>OBJREF</em> channel. For example this is how falloffs work – the falloff object is allocated in the modifier, the input channels are read into it, and the COM object is stored to the common falloff channel.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModifier</span> <span class="o">:</span>
+                <span class="k">public</span> <span class="n">CLxEvalModifier</span><span class="p">,</span>
+                <span class="k">public</span> <span class="n">CLxObjectEvaluation</span>
+<span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="n">CLxSpawner</span><span class="o">&lt;</span><span class="n">MyFalloff</span><span class="o">&gt;</span> <span class="n">spawn</span><span class="p">;</span>
+        <span class="n">MyModifier</span> <span class="p">()</span> <span class="o">:</span> <span class="n">spawn</span> <span class="p">(</span><span class="s">&quot;my.falloff.spawner&quot;</span><span class="p">)</span> <span class="p">{}</span>
+
+                <span class="kt">void</span>
+        <span class="n">alloc_obj</span> <span class="p">(</span>
+                <span class="n">CLxEvalModifier</span>         <span class="o">&amp;</span><span class="n">com</span><span class="p">,</span>
+                <span class="n">ILxUnknownID</span>            <span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span>           <span class="n">LXx_OVERRIDE</span>
+        <span class="p">{</span>
+                <span class="n">MyFalloff</span>               <span class="o">*</span><span class="n">fall</span><span class="p">;</span>
+
+                <span class="n">fall</span> <span class="o">=</span> <span class="n">spawn</span><span class="p">.</span><span class="n">Alloc</span> <span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+                <span class="n">com</span><span class="p">.</span><span class="n">mod_read_attr</span> <span class="p">((</span><span class="n">MyChannels</span> <span class="o">*</span><span class="p">)</span> <span class="n">fall</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="n">CLxMeta_EvalModifier</span><span class="o">&lt;</span><span class="n">CModifier</span><span class="o">&gt;</span>          <span class="n">mod_meta</span> <span class="p">(</span><span class="n">SRVNAME_MODIFIER</span><span class="p">);</span>
+<span class="k">static</span> <span class="n">CLxMeta_ObjectEvaluation</span><span class="o">&lt;</span><span class="n">CModifier</span><span class="o">&gt;</span>      <span class="n">eval_meta</span> <span class="p">(</span><span class="n">LXsICHAN_FALLOFF_FALLOFF</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>Our modifier class inherits from both <em>CLxEvalModifier</em> and ‘’CLxObjectEvaluation’’. We’ll use a Spawner to allocate our falloff object. (Creating new metaclasses is a process, so any object type that hasn’t been converted can still use the older idiom.) The <em>alloc_obj()</em> method allocates the falloff, which will be returned indirectly through the <em>obj</em> argument. We then use the <em>CLxEvalModifier</em> – passed as an argument – to read the defined channel values into the destination struct. In this case our <em>MyFallff</em> class inherits from ‘’MyChannels’’, so casting gets us a valid pointer.</p>
+<p>(Falloffs usually need to read their own world matrix. Because this isn’t one of the channels defined by the Channels metaclas, it has to be added in a <em>bind()</em> method and read as a custom channel. This was omitted for clarity.)</p>
+<p>There are two metaclasses declared, one for the eval modifier and one for the evaluation pattern. The object evaluation metaclass takes the channel name as argument to the constructor. The evaluation is placed under the modifier in the metaclass tree.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">root</span>
+  <span class="o">|</span>
+  <span class="o">+---</span> <span class="nb">eval</span> <span class="n">modifier</span>
+        <span class="o">|</span>
+        <span class="o">+---</span> <span class="n">evaluation</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">mod_meta</span><span class="p">.</span><span class="n">add</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">eval_meta</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="cache-evaluation">
+<h2><a class="toc-backref" href="#id6">Cache Evaluation</a><a class="headerlink" href="#cache-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>Another alternate form of evaluation involves caching the results of a previous evaluation to speed up reevaluating the same output. The client declares a class inheriting from <em>CLxObject</em> to serve as the cache, and creates a method for allocating one. This is then passed to the <em>cache_eval()</em> method along with a flag indicating if the cache has been evaluated before.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModifier</span> <span class="o">:</span>
+                <span class="k">public</span> <span class="n">CLxEvalModifier</span><span class="p">,</span>
+                <span class="k">public</span> <span class="n">CLxCacheEvaluation</span>
+<span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="k">class</span> <span class="nc">cCache</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CLxObject</span>
+        <span class="p">{</span>
+                <span class="p">[...]</span>
+        <span class="p">};</span>
+
+                <span class="n">CLxObject</span> <span class="o">*</span>
+        <span class="nf">cache_alloc</span> <span class="p">()</span>
+        <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="n">cCache</span><span class="p">;</span>
+        <span class="p">]</span>
+
+                <span class="kt">void</span>
+        <span class="n">cache_eval</span> <span class="p">(</span>
+                <span class="n">CLxEvalModifier</span>         <span class="o">&amp;</span><span class="n">com</span><span class="p">,</span>
+                <span class="n">CLxObject</span>               <span class="o">*</span><span class="n">cache</span><span class="p">,</span>
+                <span class="kt">bool</span>                     <span class="n">exists</span><span class="p">)</span>
+        <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">exists</span><span class="p">)</span>
+                        <span class="o">&lt;</span><span class="n">process</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">previous</span><span class="o">-</span><span class="n">eval</span><span class="o">&gt;</span>
+                <span class="k">else</span>
+                        <span class="o">&lt;</span><span class="n">init</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">eval</span><span class="o">&gt;</span>
+        <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>This evaluation pattern is also placed under the eval modifier in the metaclass tree, just like previous evaluation patterns.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Schematic%20Connection%20(metaclass).html" class="btn btn-neutral float-right" title="Schematic Connection (metaclass)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Channels%20(metaclass).html" class="btn btn-neutral float-left" title="Channels (metaclass)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/metaclasses/Eval Modifier (metaclass).html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:53 GMT -->
+</html>

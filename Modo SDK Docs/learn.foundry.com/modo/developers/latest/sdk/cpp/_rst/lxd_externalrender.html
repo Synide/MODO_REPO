@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_externalrender.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Externalrender &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File" href="lxd_file.html" />
+    <link rel="prev" title="Envelope" href="lxd_envelope.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Externalrender</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxexternalrender">ILxExternalRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtexternalrenderbuffer">LXtExternalRenderBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxexternalrenderbufferqueue">ILxExternalRenderBufferQueue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxexternalrendernotifier">ILxExternalRenderNotifier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Externalrender</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="externalrender">
+<h1>Externalrender<a class="headerlink" href="#externalrender" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxexternalrender" id="id1">ILxExternalRender</a></p></li>
+<li><p><a class="reference internal" href="#lxtexternalrenderbuffer" id="id2">LXtExternalRenderBuffer</a></p></li>
+<li><p><a class="reference internal" href="#ilxexternalrenderbufferqueue" id="id3">ILxExternalRenderBufferQueue</a></p></li>
+<li><p><a class="reference internal" href="#ilxexternalrendernotifier" id="id4">ILxExternalRenderNotifier</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXs_EXTERNALRENDER_ATTR_DEVCOUNT">
+<span class="target" id="lxd__externalrender_8hpp_1aed5377823453303eb7129c521fd9f9b1"></span><code class="sig-name descname">LXs_EXTERNALRENDER_ATTR_DEVCOUNT</code><a class="headerlink" href="#c.LXs_EXTERNALRENDER_ATTR_DEVCOUNT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The External Render SDK API allows a plug-in to create and perform headless, interactive Preview renders using external renderers. External Render attribute query </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXs_EXTERNALRENDER_ATTR_DEVNAME</p></li>
+</ul>
+<div class="section" id="ilxexternalrender">
+<h2><a class="toc-backref" href="#id1">ILxExternalRender</a><a class="headerlink" href="#ilxexternalrender" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxExternalRender">
+<span id="_CPPv317ILxExternalRender"></span><span id="_CPPv217ILxExternalRender"></span><span id="ILxExternalRender"></span><span class="target" id="class_i_lx_external_render"></span><em class="property">class </em><code class="sig-name descname">ILxExternalRender</code><a class="headerlink" href="#_CPPv417ILxExternalRender" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The External Render object is where all the interesting things happen. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender5StartE11LXtObjectID">
+<span id="_CPPv3N17ILxExternalRender5StartE11LXtObjectID"></span><span id="_CPPv2N17ILxExternalRender5StartE11LXtObjectID"></span><span id="ILxExternalRender::Start__LXtObjectID"></span><span class="target" id="class_i_lx_external_render_1a1acb9d5a95dda4f772b456d98e17236b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Start</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender5StartE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The first method will start an External Render rendering. The External Render could either be stopped or paused. If it’s neither, this will have no effect. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender4StopE11LXtObjectID">
+<span id="_CPPv3N17ILxExternalRender4StopE11LXtObjectID"></span><span id="_CPPv2N17ILxExternalRender4StopE11LXtObjectID"></span><span id="ILxExternalRender::Stop__LXtObjectID"></span><span class="target" id="class_i_lx_external_render_1a5fe3504f4b5d086433af830f0b1225ed"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Stop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender4StopE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>And this method will stop it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender5PauseE11LXtObjectID">
+<span id="_CPPv3N17ILxExternalRender5PauseE11LXtObjectID"></span><span id="_CPPv2N17ILxExternalRender5PauseE11LXtObjectID"></span><span id="ILxExternalRender::Pause__LXtObjectID"></span><span class="target" id="class_i_lx_external_render_1aa8d37cbfaf3c76126848b82ba86431af"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Pause</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender5PauseE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Alternatively, we can pause the External Render. This stops rendering, but a future start will not clear the image and will resume where it left off, unless the scene has been updated. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender5ResetE11LXtObjectID">
+<span id="_CPPv3N17ILxExternalRender5ResetE11LXtObjectID"></span><span id="_CPPv2N17ILxExternalRender5ResetE11LXtObjectID"></span><span id="ILxExternalRender::Reset__LXtObjectID"></span><span class="target" id="class_i_lx_external_render_1ae022f2687404c80a2a658478e83acd86"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Reset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender5ResetE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function will both set External Render such that the next time it starts, it will do a full update, completely rebuilding all the render data and tableau from scratch. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender15SelectedPixelAtE11LXtObjectIDKiKi">
+<span id="_CPPv3N17ILxExternalRender15SelectedPixelAtE11LXtObjectIDKiKi"></span><span id="_CPPv2N17ILxExternalRender15SelectedPixelAtE11LXtObjectIDKiKi"></span><span id="ILxExternalRender::SelectedPixelAt__LXtObjectID.iC.iC"></span><span class="target" id="class_i_lx_external_render_1a9458242794ea378627b68d0d1bd7331f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectedPixelAt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> int <em>x</em>, <em class="property">const</em> int <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender15SelectedPixelAtE11LXtObjectIDKiKi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function passes the image coordinates of the pixel of the rendered image [(0,0) is top-left] on which the mouse has been clicked. This allows the external renderer to perform operations such as hit detection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender11SetNotifierE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxExternalRender11SetNotifierE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxExternalRender11SetNotifierE11LXtObjectID11LXtObjectID"></span><span id="ILxExternalRender::SetNotifier__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_external_render_1a918572d2a95aed830c4eaf097461399f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetNotifier</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>notifier</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender11SetNotifierE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function takes a <a class="reference internal" href="#class_i_lx_external_render_notifier"><span class="std std-ref">ILxExternalRenderNotifier</span></a> object, which will get notified when a new image is available. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxExternalRender14SetBufferQueueE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxExternalRender14SetBufferQueueE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxExternalRender14SetBufferQueueE11LXtObjectID11LXtObjectID"></span><span id="ILxExternalRender::SetBufferQueue__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_external_render_1a68ce7d16d5054045e7b73a902ca1932e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetBufferQueue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>bufferQueue</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxExternalRender14SetBufferQueueE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtexternalrenderbuffer">
+<h2><a class="toc-backref" href="#id2">LXtExternalRenderBuffer</a><a class="headerlink" href="#lxtexternalrenderbuffer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv426st_LXtExternalRenderBuffer">
+<span id="_CPPv326st_LXtExternalRenderBuffer"></span><span id="_CPPv226st_LXtExternalRenderBuffer"></span><span id="st_LXtExternalRenderBuffer"></span><span class="target" id="structst___l_xt_external_render_buffer"></span><em class="property">struct </em><code class="sig-name descname">st_LXtExternalRenderBuffer</code><a class="headerlink" href="#_CPPv426st_LXtExternalRenderBuffer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N26st_LXtExternalRenderBuffer3ptrE">
+<span id="_CPPv3N26st_LXtExternalRenderBuffer3ptrE"></span><span id="_CPPv2N26st_LXtExternalRenderBuffer3ptrE"></span><span id="st_LXtExternalRenderBuffer::ptr__voidP"></span><span class="target" id="structst___l_xt_external_render_buffer_1a556a03f63a68f8005493a13905d4296c"></span>void *<code class="sig-name descname">ptr</code><a class="headerlink" href="#_CPPv4N26st_LXtExternalRenderBuffer3ptrE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N26st_LXtExternalRenderBuffer1wE">
+<span id="_CPPv3N26st_LXtExternalRenderBuffer1wE"></span><span id="_CPPv2N26st_LXtExternalRenderBuffer1wE"></span><span id="st_LXtExternalRenderBuffer::w__unsigned"></span><span class="target" id="structst___l_xt_external_render_buffer_1a3559c68c2ae5b599b31898cb27d722e0"></span>unsigned <code class="sig-name descname">w</code><a class="headerlink" href="#_CPPv4N26st_LXtExternalRenderBuffer1wE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N26st_LXtExternalRenderBuffer1hE">
+<span id="_CPPv3N26st_LXtExternalRenderBuffer1hE"></span><span id="_CPPv2N26st_LXtExternalRenderBuffer1hE"></span><span id="st_LXtExternalRenderBuffer::h__unsigned"></span><span class="target" id="structst___l_xt_external_render_buffer_1ac8796c5c4977e56a979528a5df08d612"></span>unsigned <code class="sig-name descname">h</code><a class="headerlink" href="#_CPPv4N26st_LXtExternalRenderBuffer1hE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N26st_LXtExternalRenderBuffer3fmtE">
+<span id="_CPPv3N26st_LXtExternalRenderBuffer3fmtE"></span><span id="_CPPv2N26st_LXtExternalRenderBuffer3fmtE"></span><span id="st_LXtExternalRenderBuffer::fmt__unsigned"></span><span class="target" id="structst___l_xt_external_render_buffer_1a2d008c9414fdaba2426d431be107eaf7"></span>unsigned <code class="sig-name descname">fmt</code><a class="headerlink" href="#_CPPv4N26st_LXtExternalRenderBuffer3fmtE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N26st_LXtExternalRenderBuffer8reservedE">
+<span id="_CPPv3N26st_LXtExternalRenderBuffer8reservedE"></span><span id="_CPPv2N26st_LXtExternalRenderBuffer8reservedE"></span><span id="st_LXtExternalRenderBuffer::reserved__unsigned"></span><span class="target" id="structst___l_xt_external_render_buffer_1a1a83809972ce13493e18b3d24cd43237"></span>unsigned <code class="sig-name descname">reserved</code><a class="headerlink" href="#_CPPv4N26st_LXtExternalRenderBuffer8reservedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxexternalrenderbufferqueue">
+<h2><a class="toc-backref" href="#id3">ILxExternalRenderBufferQueue</a><a class="headerlink" href="#ilxexternalrenderbufferqueue" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv428ILxExternalRenderBufferQueue">
+<span id="_CPPv328ILxExternalRenderBufferQueue"></span><span id="_CPPv228ILxExternalRenderBufferQueue"></span><span id="ILxExternalRenderBufferQueue"></span><span class="target" id="class_i_lx_external_render_buffer_queue"></span><em class="property">class </em><code class="sig-name descname">ILxExternalRenderBufferQueue</code><a class="headerlink" href="#_CPPv428ILxExternalRenderBufferQueue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ExternalRender will use ExternalRenderBufferQueue to communicate with external render clients </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N28ILxExternalRenderBufferQueue10WriteBeginE11LXtObjectIDP23LXtExternalRenderBuffer">
+<span id="_CPPv3N28ILxExternalRenderBufferQueue10WriteBeginE11LXtObjectIDP23LXtExternalRenderBuffer"></span><span id="_CPPv2N28ILxExternalRenderBufferQueue10WriteBeginE11LXtObjectIDP23LXtExternalRenderBuffer"></span><span id="ILxExternalRenderBufferQueue::WriteBegin__LXtObjectID.LXtExternalRenderBufferP"></span><span class="target" id="class_i_lx_external_render_buffer_queue_1aa0bde3faf08428d5c99627b82acf89f4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteBegin</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtExternalRenderBuffer *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28ILxExternalRenderBufferQueue10WriteBeginE11LXtObjectIDP23LXtExternalRenderBuffer" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N28ILxExternalRenderBufferQueue8WriteEndE11LXtObjectIDP23LXtExternalRenderBuffer">
+<span id="_CPPv3N28ILxExternalRenderBufferQueue8WriteEndE11LXtObjectIDP23LXtExternalRenderBuffer"></span><span id="_CPPv2N28ILxExternalRenderBufferQueue8WriteEndE11LXtObjectIDP23LXtExternalRenderBuffer"></span><span id="ILxExternalRenderBufferQueue::WriteEnd__LXtObjectID.LXtExternalRenderBufferP"></span><span class="target" id="class_i_lx_external_render_buffer_queue_1ab50b6b3eab3d6efc5fd49bac23024f51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteEnd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtExternalRenderBuffer *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28ILxExternalRenderBufferQueue8WriteEndE11LXtObjectIDP23LXtExternalRenderBuffer" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxexternalrendernotifier">
+<h2><a class="toc-backref" href="#id4">ILxExternalRenderNotifier</a><a class="headerlink" href="#ilxexternalrendernotifier" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv425ILxExternalRenderNotifier">
+<span id="_CPPv325ILxExternalRenderNotifier"></span><span id="_CPPv225ILxExternalRenderNotifier"></span><span id="ILxExternalRenderNotifier"></span><span class="target" id="class_i_lx_external_render_notifier"></span><em class="property">class </em><code class="sig-name descname">ILxExternalRenderNotifier</code><a class="headerlink" href="#_CPPv425ILxExternalRenderNotifier" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is the ExternalRenderNotifier interface class that users can implement to get notified when a preview image is available. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N25ILxExternalRenderNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi">
+<span id="_CPPv3N25ILxExternalRenderNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi"></span><span id="_CPPv2N25ILxExternalRenderNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi"></span><span id="ILxExternalRenderNotifier::Notify__LXtObjectID.LXtRenderOutputProcessCP.LXtObjectID.i"></span><span class="target" id="class_i_lx_external_render_notifier_1afec7db7faa03bce7fd58c0f1f75ff95e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Notify</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtRenderOutputProcess *<em>rndrProcess</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, int <em>completed</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxExternalRenderNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N25ILxExternalRenderNotifier13SetStatusTextE11LXtObjectIDPKc">
+<span id="_CPPv3N25ILxExternalRenderNotifier13SetStatusTextE11LXtObjectIDPKc"></span><span id="_CPPv2N25ILxExternalRenderNotifier13SetStatusTextE11LXtObjectIDPKc"></span><span id="ILxExternalRenderNotifier::SetStatusText__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_external_render_notifier_1a6bdd596009430969b1e4b39fca9d9251"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetStatusText</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N25ILxExternalRenderNotifier13SetStatusTextE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_file.html" class="btn btn-neutral float-right" title="File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_envelope.html" class="btn btn-neutral float-left" title="Envelope" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_externalrender.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

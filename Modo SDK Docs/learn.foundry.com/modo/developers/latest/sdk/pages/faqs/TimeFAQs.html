@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/TimeFAQs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dealing with Time &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="User Interface" href="UIFAQ.html" />
+    <link rel="prev" title="General" href="SelectionFAQ.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_faqs.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="COMFAQs.html">About COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChannelFAQs.html">Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CppFAQs.html">C++ Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ItemFAQs.html">Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MeshFAQ.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModifierFAQ.html">Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PythonFAQs.html">Python Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFAQ.html">General</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dealing with Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-determine-the-current-time">How do I determine the current time?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-know-when-the-current-time-changes">How do I know when the current time changes?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-can-my-channel-modifier-read-inputs-at-different-times">How can my channel modifier read inputs at different times?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-can-i-make-sure-modifier-is-evaluated-for-every-time-change">How can I make sure modifier is evaluated for every time change?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="UIFAQ.html">User Interface</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_faqs.html">Frequently Asked Questions</a> &raquo;</li>
+        
+      <li>Dealing with Time</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dealing-with-time">
+<h1>Dealing with Time<a class="headerlink" href="#dealing-with-time" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-do-i-determine-the-current-time">
+<h2>How do I determine the current time?<a class="headerlink" href="#how-do-i-determine-the-current-time" title="Permalink to this headline">¶</a></h2>
+<p>Actually this is a fairly complex question. As a user the answer is simple – the current time is shown on the time slider and you scrub it to change time. But when writing plug-ins you have to realize that nexus takes a much more holistic view of time and simple linear thinking can cause problems.</p>
+<p>For commands that perform edits, or items that draw themselves in 3D, the current global time can generally be used. This is maintained as part of the selection system along with all the other user-controlled state that affects UI interaction.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_SelectionService</span>  <span class="n">sel_svc</span><span class="p">;</span>
+<span class="kt">double</span>                    <span class="n">time</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">sel_svc</span><span class="p">.</span><span class="n">GetTime</span> <span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Selection</span> <span class="p">()</span><span class="o">.</span><span class="n">GetTime</span> <span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As part of modifier evaluation however, time is not universal. Modifiers can be evaluated at arbitrary times and should not rely on the time provided by the selection system. Instead, they should allocate time as an input to the modifier, allowing the evaluation time to be determined.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>          <span class="n">LxResult</span>
+<span class="nf">eval_Alloc</span> <span class="p">(</span>
+          <span class="n">ILxUnknownID</span>              <span class="n">item_obj</span><span class="p">,</span>
+          <span class="kt">unsigned</span>                  <span class="n">index</span><span class="p">,</span>
+          <span class="n">ILxUnknownID</span>              <span class="n">eval_obj</span><span class="p">,</span>
+          <span class="kt">void</span>                    <span class="o">**</span><span class="n">ppvObj</span><span class="p">)</span>
+<span class="p">{</span>
+          <span class="n">CLxUser_Evaluation</span>        <span class="n">eval</span> <span class="p">(</span><span class="n">eval_obj</span><span class="p">);</span>
+
+          <span class="c1">// CLxUser_Attributes</span>
+          <span class="n">_attr</span><span class="p">.</span><span class="n">set</span> <span class="p">(</span><span class="n">eval_obj</span><span class="p">);</span>
+
+          <span class="n">_time_idx</span> <span class="o">=</span> <span class="n">eval</span><span class="p">.</span><span class="n">AddTime</span> <span class="p">();</span>
+
+          <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+          <span class="kt">void</span>
+<span class="nf">mod_Evaluate</span> <span class="p">()</span>
+<span class="p">{</span>
+          <span class="kt">double</span>                    <span class="n">time</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+          <span class="n">time</span> <span class="o">=</span> <span class="n">_attr</span><span class="p">.</span><span class="n">Float</span> <span class="p">(</span><span class="n">_time_idx</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eval_Alloc</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_obj</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">eval_obj</span><span class="p">):</span>
+          <span class="nb">eval</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Evaluation</span> <span class="p">(</span><span class="n">eval_obj</span><span class="p">)</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">attr</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Attributes</span> <span class="p">(</span><span class="n">eval_obj</span><span class="p">)</span>
+
+          <span class="bp">self</span><span class="o">.</span><span class="n">time_idx</span> <span class="o">=</span> <span class="nb">eval</span><span class="o">.</span><span class="n">AddTime</span> <span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">mod_Evaluate</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr</span><span class="o">.</span><span class="n">GetFlt</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-know-when-the-current-time-changes">
+<h2>How do I know when the current time changes?<a class="headerlink" href="#how-do-i-know-when-the-current-time-changes" title="Permalink to this headline">¶</a></h2>
+<p>Getting notified of global state changes is done though a Global Listener Object. This is an object that you create and export to modo, and your methods will be called when events happen. The easiest way to create a one-off object of this type is to use a Singleton Polymorph. The selevent_Time() method will be called with the new time as the user scrubs the timeline.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CTimeChangeTracker</span> <span class="o">:</span>
+        <span class="k">public</span> <span class="n">CLxImpl_</span><span class="p">[[</span><span class="n">SelectionListener</span> <span class="n">Interface</span><span class="o">|</span><span class="n">SelectionListener</span><span class="p">]],</span>
+        <span class="k">public</span> <span class="n">CLxSingletonPolymorph</span>
+<span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+                <span class="n">LXxSINGLETON_METHOD</span><span class="p">;</span>
+
+        <span class="n">CTimeChangeTracker</span> <span class="p">()</span>
+        <span class="p">{</span>
+                <span class="n">AddInterface</span> <span class="p">(</span><span class="k">new</span> <span class="n">CLxIfc_</span><span class="p">[[</span><span class="n">SelectionListener</span> <span class="n">Interface</span><span class="o">|</span><span class="n">SelectionListener</span><span class="p">]]</span><span class="o">&lt;</span><span class="n">CTimeChangeTracker</span><span class="o">&gt;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+                <span class="kt">void</span>
+        <span class="n">selevent_Time</span> <span class="p">(</span>
+                <span class="kt">double</span>                   <span class="n">time</span><span class="p">)</span> <span class="n">LXx_OVERRIDE</span>
+        <span class="p">{</span>
+                <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since this is a singleton you’d store it as global state in your plug-in.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">CTimeChangeTracker</span>      <span class="o">*</span><span class="n">time_tracker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first time you need to start tracking time you create the object and register it with the ListenerService. Do not do this in your initialize() function since that may be too soon.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+</div>
+</div>
+<p>When you are done tracking time changes you should unregister your listener.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_ListenerService</span>         <span class="n">ls</span><span class="p">;</span>
+
+<span class="n">ls</span><span class="p">.</span><span class="n">RemoveListener</span> <span class="p">(</span><span class="o">*</span><span class="n">time_tracker</span><span class="p">);</span>
+<span class="k">delete</span> <span class="n">time_tracker</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-can-my-channel-modifier-read-inputs-at-different-times">
+<h2>How can my channel modifier read inputs at different times?<a class="headerlink" href="#how-can-my-channel-modifier-read-inputs-at-different-times" title="Permalink to this headline">¶</a></h2>
+<p>This is done by using methods on the Evaluation Interface. You need to cache this interface as part of your member data in your Allocate() method.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>                <span class="n">LxResult</span>
+<span class="n">CTimeOffset</span><span class="o">::</span><span class="n">cmod_Allocate</span> <span class="p">(</span>
+                <span class="n">ILxUnknownID</span>             <span class="n">cmod</span><span class="p">,</span>
+                <span class="n">ILxUnknownID</span>             <span class="n">eval</span><span class="p">,</span>
+                <span class="n">ILxUnknownID</span>             <span class="n">item</span><span class="p">,</span>
+                <span class="kt">void</span>                   <span class="o">**</span><span class="n">ppvData</span><span class="p">)</span>
+<span class="p">{</span>
+                <span class="n">m_eval</span><span class="p">.</span><span class="n">set</span> <span class="p">(</span><span class="n">eval</span><span class="p">);</span>
+                <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-can-i-make-sure-modifier-is-evaluated-for-every-time-change">
+<h2>How can I make sure modifier is evaluated for every time change?<a class="headerlink" href="#how-can-i-make-sure-modifier-is-evaluated-for-every-time-change" title="Permalink to this headline">¶</a></h2>
+<p>Time can be allocated as an input for the modifier. As changes to input channels invalidates modifiers and causes them to be re-evaluated, allocating time as an input to the modifier will cause the modifier to be invalidated and re-evaluated whenever time changes.</p>
+<p>Allocate time as an input channel:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_Evaluation</span>       <span class="nf">ev</span> <span class="p">(</span><span class="n">eval</span><span class="p">);</span>
+<span class="n">idx_currentTime</span> <span class="o">=</span> <span class="n">ev</span><span class="p">.</span><span class="n">AddTime</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the modifier Evaluate function, read the current time.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_Attributes</span>       <span class="nf">at</span> <span class="p">(</span><span class="n">attr</span><span class="p">);</span>
+<span class="kt">double</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="n">at</span><span class="p">.</span><span class="n">Float</span><span class="p">(</span><span class="n">idx_currentTime</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UIFAQ.html" class="btn btn-neutral float-right" title="User Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SelectionFAQ.html" class="btn btn-neutral float-left" title="General" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/TimeFAQs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

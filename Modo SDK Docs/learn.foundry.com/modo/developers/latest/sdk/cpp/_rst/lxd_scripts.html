@@ -1,0 +1,1422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_scripts.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scripts &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Select" href="lxd_select.html" />
+    <link rel="prev" title="Schematic" href="lxd_schematic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxscriptsysservice">ILxScriptSysService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxuservalue">ILxUserValue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsessionlistener">ILxSessionListener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxuservaluelistener">ILxUserValueListener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxscriptmanager">ILxScriptManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtextscriptinterpreter">ILxTextScriptInterpreter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxscript">ILxScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxplatformservice">ILxPlatformService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxappactivelistener">ILxAppActiveListener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlineinterpreter">ILxLineInterpreter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlineexecution">ILxLineExecution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxscriptlineevent">ILxScriptLineEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scripts">
+<h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxscriptsysservice" id="id1">ILxScriptSysService</a></p></li>
+<li><p><a class="reference internal" href="#ilxuservalue" id="id2">ILxUserValue</a></p></li>
+<li><p><a class="reference internal" href="#ilxsessionlistener" id="id3">ILxSessionListener</a></p></li>
+<li><p><a class="reference internal" href="#ilxuservaluelistener" id="id4">ILxUserValueListener</a></p></li>
+<li><p><a class="reference internal" href="#ilxscriptmanager" id="id5">ILxScriptManager</a></p></li>
+<li><p><a class="reference internal" href="#ilxtextscriptinterpreter" id="id6">ILxTextScriptInterpreter</a></p></li>
+<li><p><a class="reference internal" href="#ilxscript" id="id7">ILxScript</a></p></li>
+<li><p><a class="reference internal" href="#ilxplatformservice" id="id8">ILxPlatformService</a></p></li>
+<li><p><a class="reference internal" href="#ilxappactivelistener" id="id9">ILxAppActiveListener</a></p></li>
+<li><p><a class="reference internal" href="#ilxlineinterpreter" id="id10">ILxLineInterpreter</a></p></li>
+<li><p><a class="reference internal" href="#ilxlineexecution" id="id11">ILxLineExecution</a></p></li>
+<li><p><a class="reference internal" href="#ilxscriptlineevent" id="id12">ILxScriptLineEvent</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>LXe_SCRIPT_UNKNOWN</p></li>
+<li><p>LXe_SCRIPT_ERROR</p></li>
+<li><p>LXe_SCRIPT_OPAQUE</p></li>
+<li><p>LXe_SCRIPT_READONLY</p></li>
+<li><p>LXe_SCRIPT_ALREADY_EXISTS</p></li>
+<li><p>LXe_SCRIPT_NOT_ENOUGH_ARGS</p></li>
+<li><p>LXe_SCRIPT_TOO_MANY_ARGS</p></li>
+<li><p>LXe_SCRIPT_RECOGNIZED_INVALID</p></li>
+<li><p>LXe_SCRIPT_LINEISCOMMENT</p></li>
+<li><p>LXe_SCRIPT_WARNING</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsLOG_SCRIPTSYS">
+<span class="target" id="lxd__scripts_8hpp_1a4039b23aecd30fbc75e377e53f77d2cd"></span><code class="sig-name descname">LXsLOG_SCRIPTSYS</code><a class="headerlink" href="#c.LXsLOG_SCRIPTSYS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We also define a script subsystem that script clients can use for their messages </p>
+</dd></dl>
+
+<div class="section" id="ilxscriptsysservice">
+<h2><a class="toc-backref" href="#id1">ILxScriptSysService</a><a class="headerlink" href="#ilxscriptsysservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxScriptSysService">
+<span id="_CPPv319ILxScriptSysService"></span><span id="_CPPv219ILxScriptSysService"></span><span id="ILxScriptSysService"></span><span class="target" id="class_i_lx_script_sys_service"></span><em class="property">class </em><code class="sig-name descname">ILxScriptSysService</code><a class="headerlink" href="#_CPPv419ILxScriptSysService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The script system service provides a list of available script managers, rather than having clients browse the plug-in database themselves. Managers are sorted by their internal name (i.e., the name of the plug-in itself), which can also be obtained. Managers must be released when no longer needed. The objects returned by <a class="reference internal" href="#class_i_lx_script_sys_service_1afa05f8da16a8df597d3bdfe08a725f1f"><span class="std std-ref">ByIndex()</span></a>, <a class="reference internal" href="#class_i_lx_script_sys_service_1a64b93f71b554fff53e079885d4ead31d"><span class="std std-ref">NameByIndex()</span></a> and <a class="reference internal" href="#class_i_lx_script_sys_service_1a0acb5b219a5bc9b63641bbc125c801d0"><span class="std std-ref">Lookup()</span></a> must be released by the caller. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxScriptSysService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxScriptSysService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxScriptSysService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_script_sys_service_1adc74f30a0cb7380f3c9887fead661b4c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService5CountE11LXtObjectIDPj">
+<span id="_CPPv3N19ILxScriptSysService5CountE11LXtObjectIDPj"></span><span id="_CPPv2N19ILxScriptSysService5CountE11LXtObjectIDPj"></span><span id="ILxScriptSysService::Count__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_script_sys_service_1a4387ec9cf91d19bd0b8f14ea5450987f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService7ByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N19ILxScriptSysService7ByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N19ILxScriptSysService7ByIndexE11LXtObjectIDjPPv"></span><span id="ILxScriptSysService::ByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_script_sys_service_1afa05f8da16a8df597d3bdfe08a725f1f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService7ByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService11NameByIndexE11LXtObjectIDjPPKc">
+<span id="_CPPv3N19ILxScriptSysService11NameByIndexE11LXtObjectIDjPPKc"></span><span id="_CPPv2N19ILxScriptSysService11NameByIndexE11LXtObjectIDjPPKc"></span><span id="ILxScriptSysService::NameByIndex__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_script_sys_service_1a64b93f71b554fff53e079885d4ead31d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NameByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService11NameByIndexE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService6LookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxScriptSysService6LookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxScriptSysService6LookupE11LXtObjectIDPKcPPv"></span><span id="ILxScriptSysService::Lookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_script_sys_service_1a0acb5b219a5bc9b63641bbc125c801d0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService6LookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Managers can also be looked up by name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService8UserNameE11LXtObjectID11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxScriptSysService8UserNameE11LXtObjectID11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxScriptSysService8UserNameE11LXtObjectID11LXtObjectIDPPKc"></span><span id="ILxScriptSysService::UserName__LXtObjectID.LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_sys_service_1a0d24dd8bd7abb0a621370d1ede3d42ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>manager</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService8UserNameE11LXtObjectID11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Some user interface information about a manager can be read with these functions. User strings are looked up in the message table matching the manager’s name with “{scriptservice} ” prefixed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService4DescE11LXtObjectID11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxScriptSysService4DescE11LXtObjectID11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxScriptSysService4DescE11LXtObjectID11LXtObjectIDPPKc"></span><span id="ILxScriptSysService::Desc__LXtObjectID.LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_sys_service_1aaaedbb45fbb3d848c7c0d0478592dd5c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Desc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>manager</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService4DescE11LXtObjectID11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService14UserValueCountE11LXtObjectIDPi">
+<span id="_CPPv3N19ILxScriptSysService14UserValueCountE11LXtObjectIDPi"></span><span id="_CPPv2N19ILxScriptSysService14UserValueCountE11LXtObjectIDPi"></span><span id="ILxScriptSysService::UserValueCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_script_sys_service_1a9ab1d422607480f8b1a7b72e54692ee1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserValueCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService14UserValueCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The list of user values can be walked directly, or a specific user value can be looked up by name. The object returned has an ILxUIserValueDef interface. This includes all config, temporary and momentary user values. These methods are implemented as of nexus 801. User values can only be created with user.defNew, edited with user.def, the value set with user.value. None of these functions or those commands are thread-safe, and care should be taken to not call these from a thread. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService16UserValueByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N19ILxScriptSysService16UserValueByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N19ILxScriptSysService16UserValueByIndexE11LXtObjectIDiPPv"></span><span id="ILxScriptSysService::UserValueByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_script_sys_service_1abfcbaf150444c84faeb9cdbb42f9d995"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserValueByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService16UserValueByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService15UserValueLookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxScriptSysService15UserValueLookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxScriptSysService15UserValueLookupE11LXtObjectIDPKcPPv"></span><span id="ILxScriptSysService::UserValueLookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_script_sys_service_1a50abd0f446f8f581ad43da0a0286e183"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserValueLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService15UserValueLookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService12ResolveAliasE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N19ILxScriptSysService12ResolveAliasE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N19ILxScriptSysService12ResolveAliasE11LXtObjectIDPKcPPKc"></span><span id="ILxScriptSysService::ResolveAlias__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_script_sys_service_1a17cec43fd216271e0ffd158296dd8c0d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ResolveAlias</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>alias</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService12ResolveAliasE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>To simplify the use of scripts in kits, we support script aliases. This allows a script hash (aka the path to a script on disk) to be aliased to an arbitrary string. Script aliases are defined solely from within configs, usually by the script’s developer. The alias may include path aliases, and may included any ASCII characters, although it is important to note that it is not a translatable string. When used in kits, the simple form can be used when the script is in the kit’s directory: &lt;hash type=”ScriptAlias” key=”aliasedScriptName”&gt;myScript.pl</p>
+<p>When defined outside of a kit, the full path to the script must be used. &lt;hash type=”ScriptAlias” key=”aliasedScriptName”&gt;pathAlias:dir/myScript.pl</p>
+<p>&lt;hash type=”ScriptAlias” key=”aliasedScriptName”&gt;c:\dir\myScript.pl</p>
+<p>Once defined, the script alias can be used in place of the script’s path at any time to lookup and/or execute the script, including in commands like script.run, script.implicit, and the &#64; syntax. This utility can be used by clients to resolve a script alias to its full path. The path returned will always be a valid string, returning a the resolved path if possible, and returning the alias otherwise. This allows you to just pass in any script path or a known alias and get back a usable path, even though the function will fail if the alias cannot be resolved. This returns LXe_NOTFOUND if the alias does not exist, in which case the alias passed in is returned. This returns LXe_FAILED if the alias exists, but could not be resolved into an absolute path. In this case, the aliased path will be returned instead of the alias name or the resolved path. Just to clarify:<ul class="simple">
+<li><p>LXe_FAILED returns the alias: aliasedScriptName</p></li>
+<li><p>LXe_NOTFOUND returns the alias path: pathAlias:dir/myScript.pl</p></li>
+<li><p>LXE_OK returns the resolved absolute path: &lt;path that ‘pathAlias:’ points to&gt;/dir/myScript.pl </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService12LookupScriptE11LXtObjectIDPKciiPPvPPv">
+<span id="_CPPv3N19ILxScriptSysService12LookupScriptE11LXtObjectIDPKciiPPvPPv"></span><span id="_CPPv2N19ILxScriptSysService12LookupScriptE11LXtObjectIDPKciiPPvPPv"></span><span id="ILxScriptSysService::LookupScript__LXtObjectID.cCP.i.i.voidPP.voidPP"></span><span class="target" id="class_i_lx_script_sys_service_1a0a9454a9ef371090e4a0eb86fcbdc9a0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LookupScript</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>hash</em>, int <em>write</em>, int <em>tryAsUsername</em>, void **<em>service</em>, void **<em>script</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService12LookupScriptE11LXtObjectIDPKciiPPvPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This provides a high-level way to look up a scriopt by path. It loops though all of the script servers and returns the <a class="reference internal" href="#class_i_lx_script_manager"><span class="std std-ref">ILxScriptManager</span></a> that found the script, and an <a class="reference internal" href="#class_i_lx_script"><span class="std std-ref">ILxScript</span></a> representing the script itself. The write and tryAsUsername arguments work identically to those on the <a class="reference internal" href="#class_i_lx_script_manager_1a59dfd142db03ee3c35c676e15e410a37"><span class="std std-ref">ILxScriptManager::Lookup()</span></a> method. This also provides a caching mechanism based on the script’s path, making it efficient to look up a script without having to hit the disk each time for disk-based scripts. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService16UserValueByIndexEiR17CLxUser_UserValue">
+<span id="_CPPv3N19ILxScriptSysService16UserValueByIndexEiR17CLxUser_UserValue"></span><span id="_CPPv2N19ILxScriptSysService16UserValueByIndexEiR17CLxUser_UserValue"></span><span id="ILxScriptSysService::UserValueByIndex__i.CLxUser_UserValueR"></span><span class="target" id="class_i_lx_script_sys_service_1a47ebc59256d724442367f13c7cbb9e29"></span>bool <code class="sig-name descname">UserValueByIndex</code><span class="sig-paren">(</span>int <em>index</em>, CLxUser_UserValue &amp;<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService16UserValueByIndexEiR17CLxUser_UserValue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxScriptSysService15UserValueLookupEPKcR17CLxUser_UserValue">
+<span id="_CPPv3N19ILxScriptSysService15UserValueLookupEPKcR17CLxUser_UserValue"></span><span id="_CPPv2N19ILxScriptSysService15UserValueLookupEPKcR17CLxUser_UserValue"></span><span id="ILxScriptSysService::UserValueLookup__cCP.CLxUser_UserValueR"></span><span class="target" id="class_i_lx_script_sys_service_1a65427ed8aa56afc7717525452a911f1b"></span>bool <code class="sig-name descname">UserValueLookup</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, CLxUser_UserValue &amp;<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxScriptSysService15UserValueLookupEPKcR17CLxUser_UserValue" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxuservalue">
+<h2><a class="toc-backref" href="#id2">ILxUserValue</a><a class="headerlink" href="#ilxuservalue" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxUserValue">
+<span id="_CPPv312ILxUserValue"></span><span id="_CPPv212ILxUserValue"></span><span id="ILxUserValue"></span><span class="target" id="class_i_lx_user_value"></span><em class="property">class </em><code class="sig-name descname">ILxUserValue</code><a class="headerlink" href="#_CPPv412ILxUserValue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface provides read-only information about a user value. The type, type name and value are available from the ILxScriptSysService::UserValues(). If the user value has been deleted, all of these methods will fail. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue4NameE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue4NameE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue4NameE11LXtObjectIDPPKc"></span><span id="ILxUserValue::Name__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1aa10f108f55da58ce608ba6f380711d5a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue4NameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods get the value’s name and username. If the username is not set, this just returns the name. The <a class="reference internal" href="#class_i_lx_user_value_1a96a1f7d4b93a36ad8b66d43357c1132c"><span class="std std-ref">Name()</span></a> method will always succeed as long as the underlying user value exists. This can be used as a way to test if the object is still valid, or if the user value itself has been deleted out from under the object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8UserNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue8UserNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue8UserNameE11LXtObjectIDPPKc"></span><span id="ILxUserValue::UserName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a70c9fdc071847c6e4b2ef0916924f676"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8UserNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue4TypeE11LXtObjectIDPi">
+<span id="_CPPv3N12ILxUserValue4TypeE11LXtObjectIDPi"></span><span id="_CPPv2N12ILxUserValue4TypeE11LXtObjectIDPi"></span><span id="ILxUserValue::Type__LXtObjectID.iP"></span><span class="target" id="class_i_lx_user_value_1a96e6de90633bd765a6d3b4a3305db593"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue4TypeE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These return the type (as an LXi_TYPE_ define) and type name of the user value. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8TypeNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue8TypeNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue8TypeNameE11LXtObjectIDPPKc"></span><span id="ILxUserValue::TypeName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a8378f00f12418c6932533fc961d16048"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TypeName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>tname</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8TypeNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue11IsTransientE11LXtObjectIDPi">
+<span id="_CPPv3N12ILxUserValue11IsTransientE11LXtObjectIDPi"></span><span id="_CPPv2N12ILxUserValue11IsTransientE11LXtObjectIDPi"></span><span id="ILxUserValue::IsTransient__LXtObjectID.iP"></span><span class="target" id="class_i_lx_user_value_1ad362d84c1744d9a1f2c5bd070f2b9125"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsTransient</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>isTransient</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue11IsTransientE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For config user values, this returns LXe_TRUE if a user value is transient, and LXe_FAILS if not. Transient values have a default that is loaded from the config, but the new value is never written to the config  it is only stored in memory. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue6GetIntE11LXtObjectIDPi">
+<span id="_CPPv3N12ILxUserValue6GetIntE11LXtObjectIDPi"></span><span id="_CPPv2N12ILxUserValue6GetIntE11LXtObjectIDPi"></span><span id="ILxUserValue::GetInt__LXtObjectID.iP"></span><span class="target" id="class_i_lx_user_value_1a35c40d4ceefe652eb54382588bd8588e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetInt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue6GetIntE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These return the value of the user value. <a class="reference internal" href="#class_i_lx_user_value_1abe918babee20d6a40f6cb0caa0df5f5c"><span class="std std-ref">GetString()</span></a> will work on anything, and will return the “raw” string version of the value. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue6GetFltE11LXtObjectIDPd">
+<span id="_CPPv3N12ILxUserValue6GetFltE11LXtObjectIDPd"></span><span id="_CPPv2N12ILxUserValue6GetFltE11LXtObjectIDPd"></span><span id="ILxUserValue::GetFlt__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_user_value_1a0ba4343de1fbefbab908f3605ff8923e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetFlt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue6GetFltE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue9GetStringE11LXtObjectIDPcj">
+<span id="_CPPv3N12ILxUserValue9GetStringE11LXtObjectIDPcj"></span><span id="_CPPv2N12ILxUserValue9GetStringE11LXtObjectIDPcj"></span><span id="ILxUserValue::GetString__LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_user_value_1abe918babee20d6a40f6cb0caa0df5f5c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetString</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue9GetStringE11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8LifespanE11LXtObjectIDPi">
+<span id="_CPPv3N12ILxUserValue8LifespanE11LXtObjectIDPi"></span><span id="_CPPv2N12ILxUserValue8LifespanE11LXtObjectIDPi"></span><span id="ILxUserValue::Lifespan__LXtObjectID.iP"></span><span class="target" id="class_i_lx_user_value_1ae82264da71eb270650f9b0dfe3e73e1f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lifespan</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>life</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8LifespanE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue10FloatRangeE11LXtObjectIDPiPdPiPd">
+<span id="_CPPv3N12ILxUserValue10FloatRangeE11LXtObjectIDPiPdPiPd"></span><span id="_CPPv2N12ILxUserValue10FloatRangeE11LXtObjectIDPiPdPiPd"></span><span id="ILxUserValue::FloatRange__LXtObjectID.iP.doubleP.iP.doubleP"></span><span class="target" id="class_i_lx_user_value_1a5f95416562b70c9c496cacf88819b185"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FloatRange</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>hasMin</em>, double *<em>min</em>, int *<em>hasMax</em>, double *<em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue10FloatRangeE11LXtObjectIDPiPdPiPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the min/max values. There are separate functions for float and int types, as well as flags indiciating if min/max is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8IntRangeE11LXtObjectIDPiPiPiPi">
+<span id="_CPPv3N12ILxUserValue8IntRangeE11LXtObjectIDPiPiPiPi"></span><span id="_CPPv2N12ILxUserValue8IntRangeE11LXtObjectIDPiPiPiPi"></span><span id="ILxUserValue::IntRange__LXtObjectID.iP.iP.iP.iP"></span><span class="target" id="class_i_lx_user_value_1a5179cd75b1abce383c4d9d746bb04e72"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IntRange</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>hasMin</em>, int *<em>min</em>, int *<em>hasMax</em>, int *<em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8IntRangeE11LXtObjectIDPiPiPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue4ListE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue4ListE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue4ListE11LXtObjectIDPPKc"></span><span id="ILxUserValue::List__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1af010ec3d9a674d06d56c56cefbcb79c1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">List</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue4ListE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the list and their names as string, similar to the one passed to user.def. The ArgumentType used to get usernames from the config is also available. These methods fail with NOTAVAILABLE for non-integer types, and fail with NOTFOUND if they are not set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue9ListNamesE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue9ListNamesE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue9ListNamesE11LXtObjectIDPPKc"></span><span id="ILxUserValue::ListNames__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a49744533e212e0d9aaf89450bd062653"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ListNames</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>listNames</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue9ListNamesE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue7ArgTypeE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue7ArgTypeE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue7ArgTypeE11LXtObjectIDPPKc"></span><span id="ILxUserValue::ArgType__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a21fcef166978aae96cdb21c301f63e3b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArgType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>argType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue7ArgTypeE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue6ActionE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue6ActionE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue6ActionE11LXtObjectIDPPKc"></span><span id="ILxUserValue::Action__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a39c26578eec9d04dc9b859b18febcc14"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Action</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue6ActionE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the action (command string) executed when the user value changes. Returns NOTFOUND if no action is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue11DeferActionE11LXtObjectID">
+<span id="_CPPv3N12ILxUserValue11DeferActionE11LXtObjectID"></span><span id="_CPPv2N12ILxUserValue11DeferActionE11LXtObjectID"></span><span id="ILxUserValue::DeferAction__LXtObjectID"></span><span class="target" id="class_i_lx_user_value_1ae04b7b036cedab8cc3078893369bfa8c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DeferAction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue11DeferActionE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if an action is to be deferred after refiring has completed, and LXe_FALSE if not. It returns NOTFOUND if no action is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue14DialogUserNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue14DialogUserNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue14DialogUserNameE11LXtObjectIDPPKc"></span><span id="ILxUserValue::DialogUserName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a22a21051eaacc5c2988a250b523c9029"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DialogUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue14DialogUserNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the dialog username string for the user value. Returns NOTFOUND if none is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue17ValuePresetCookieE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue17ValuePresetCookieE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue17ValuePresetCookieE11LXtObjectIDPPKc"></span><span id="ILxUserValue::ValuePresetCookie__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a5c2fefcfc95a0335e8596fa1d6c91a18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ValuePresetCookie</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue17ValuePresetCookieE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the value preset cookie string for the user value. Returns NOTFOUND if no action is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue13EnableCommandE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue13EnableCommandE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue13EnableCommandE11LXtObjectIDPPKc"></span><span id="ILxUserValue::EnableCommand__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a76eaa4343db7a277a2eacdb7850d874b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnableCommand</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue13EnableCommandE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the command whose enable state is also applied to this user value. Returns NOTFOUND if none is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8NotifierE11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxUserValue8NotifierE11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxUserValue8NotifierE11LXtObjectIDPPKc"></span><span id="ILxUserValue::Notifier__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_user_value_1a45b2591c4649f590eeb088fff7808376"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Notifier</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>notifier</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8NotifierE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the notifier that causes the user value’s control to be updated in the interface. Returns NOTFOUND if none is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue12DefaultValueE11LXtObjectIDPPv">
+<span id="_CPPv3N12ILxUserValue12DefaultValueE11LXtObjectIDPPv"></span><span id="_CPPv2N12ILxUserValue12DefaultValueE11LXtObjectIDPPv"></span><span id="ILxUserValue::DefaultValue__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_user_value_1ad112582838edf794e8a1b6b9e0da6150"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DefaultValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue12DefaultValueE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the default value as an <a class="reference internal" href="lxd_value.html#class_i_lx_value"><span class="std std-ref">ILxValue</span></a>. This fails with NOTFOUND if none is set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue4AsUIE11LXtObjectID">
+<span id="_CPPv3N12ILxUserValue4AsUIE11LXtObjectID"></span><span id="_CPPv2N12ILxUserValue4AsUIE11LXtObjectID"></span><span id="ILxUserValue::AsUI__LXtObjectID"></span><span class="target" id="class_i_lx_user_value_1a8dfb9e888369c23929a189d6f067b24f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsUI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue4AsUIE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get if changing the user value via user.value be treated as an undoable UI command instead of an undoable model command. UI commands exist in the undo stack only until a model command is executed, while model commands persist in the stack. UI mode is useful when creating preferences, while model mode is useful when the user value is used to directly affect the scene itself, usually by performing an assocated action when the value changes. This returns LXe_TRUE for UI style behavior, and LXe_FALSE for model style behaviors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue23InvertEnableCommandTestE11LXtObjectID">
+<span id="_CPPv3N12ILxUserValue23InvertEnableCommandTestE11LXtObjectID"></span><span id="_CPPv2N12ILxUserValue23InvertEnableCommandTestE11LXtObjectID"></span><span id="ILxUserValue::InvertEnableCommandTest__LXtObjectID"></span><span class="target" id="class_i_lx_user_value_1a169409f4bf490fc74f4a78994ef414d4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InvertEnableCommandTest</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue23InvertEnableCommandTestE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get if the enable command test is inverted or not. Normally, when the enable command is disabled, or it is enabled but queries to false, then the user value is also disabled. This simply flips the test. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue6UIModeE11LXtObjectIDPi">
+<span id="_CPPv3N12ILxUserValue6UIModeE11LXtObjectIDPi"></span><span id="_CPPv2N12ILxUserValue6UIModeE11LXtObjectIDPi"></span><span id="ILxUserValue::UIMode__LXtObjectID.iP"></span><span class="target" id="class_i_lx_user_value_1a68ec31a6f4f3e3c504aa06795097b8dc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UIMode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>uiMode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue6UIModeE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue4NameEv">
+<span id="_CPPv3N12ILxUserValue4NameEv"></span><span id="_CPPv2N12ILxUserValue4NameEv"></span><span id="ILxUserValue::Name"></span><span class="target" id="class_i_lx_user_value_1a96a1f7d4b93a36ad8b66d43357c1132c"></span>std::string <code class="sig-name descname">Name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue4NameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8UserNameEv">
+<span id="_CPPv3N12ILxUserValue8UserNameEv"></span><span id="_CPPv2N12ILxUserValue8UserNameEv"></span><span id="ILxUserValue::UserName"></span><span class="target" id="class_i_lx_user_value_1a7cd0727f6bf96bebd6b318a7626902e0"></span>std::string <code class="sig-name descname">UserName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8UserNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8TypeNameEv">
+<span id="_CPPv3N12ILxUserValue8TypeNameEv"></span><span id="_CPPv2N12ILxUserValue8TypeNameEv"></span><span id="ILxUserValue::TypeName"></span><span class="target" id="class_i_lx_user_value_1a9db6e0c8cec23e7b167a3249dcbd23a8"></span>std::string <code class="sig-name descname">TypeName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8TypeNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue4ListEv">
+<span id="_CPPv3N12ILxUserValue4ListEv"></span><span id="_CPPv2N12ILxUserValue4ListEv"></span><span id="ILxUserValue::List"></span><span class="target" id="class_i_lx_user_value_1ac9e449d19d2e5e51ec20b055ed6cf3cd"></span>std::string <code class="sig-name descname">List</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue4ListEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue9ListNamesEv">
+<span id="_CPPv3N12ILxUserValue9ListNamesEv"></span><span id="_CPPv2N12ILxUserValue9ListNamesEv"></span><span id="ILxUserValue::ListNames"></span><span class="target" id="class_i_lx_user_value_1a4373beb0157aea37c7a3399a92996ea5"></span>std::string <code class="sig-name descname">ListNames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue9ListNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue7ArgTypeEv">
+<span id="_CPPv3N12ILxUserValue7ArgTypeEv"></span><span id="_CPPv2N12ILxUserValue7ArgTypeEv"></span><span id="ILxUserValue::ArgType"></span><span class="target" id="class_i_lx_user_value_1adaedb40c8774014c0c31a2a22710e694"></span>std::string <code class="sig-name descname">ArgType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue7ArgTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue6ActionEv">
+<span id="_CPPv3N12ILxUserValue6ActionEv"></span><span id="_CPPv2N12ILxUserValue6ActionEv"></span><span id="ILxUserValue::Action"></span><span class="target" id="class_i_lx_user_value_1a05a61805522336cbcc88bcb31552bca0"></span>std::string <code class="sig-name descname">Action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue6ActionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue14DialogUserNameEv">
+<span id="_CPPv3N12ILxUserValue14DialogUserNameEv"></span><span id="_CPPv2N12ILxUserValue14DialogUserNameEv"></span><span id="ILxUserValue::DialogUserName"></span><span class="target" id="class_i_lx_user_value_1a75d6f43d794f4968fcdd8a113bb2b3c0"></span>std::string <code class="sig-name descname">DialogUserName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue14DialogUserNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue17ValuePresetCookieEv">
+<span id="_CPPv3N12ILxUserValue17ValuePresetCookieEv"></span><span id="_CPPv2N12ILxUserValue17ValuePresetCookieEv"></span><span id="ILxUserValue::ValuePresetCookie"></span><span class="target" id="class_i_lx_user_value_1a012e882ba10eebe6bd29e4e4913e2a95"></span>std::string <code class="sig-name descname">ValuePresetCookie</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue17ValuePresetCookieEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue13EnableCommandEv">
+<span id="_CPPv3N12ILxUserValue13EnableCommandEv"></span><span id="_CPPv2N12ILxUserValue13EnableCommandEv"></span><span id="ILxUserValue::EnableCommand"></span><span class="target" id="class_i_lx_user_value_1a8ac5533854b05501ef9d14c0c00c1d19"></span>std::string <code class="sig-name descname">EnableCommand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue13EnableCommandEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxUserValue8NotifierEv">
+<span id="_CPPv3N12ILxUserValue8NotifierEv"></span><span id="_CPPv2N12ILxUserValue8NotifierEv"></span><span id="ILxUserValue::Notifier"></span><span class="target" id="class_i_lx_user_value_1afccda96fae6dada1801a46252efec7ee"></span>std::string <code class="sig-name descname">Notifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxUserValue8NotifierEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiUSERVALUELIFE_CONFIG">
+<span class="target" id="lxd__scripts_8hpp_1ac8343395baaaa87129a6c94c4eee8d62"></span><code class="sig-name descname">LXiUSERVALUELIFE_CONFIG</code><a class="headerlink" href="#c.LXiUSERVALUELIFE_CONFIG" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the lifespan of the user value. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiUSERVALUELIFE_TEMPORARY</p></li>
+<li><p>LXiUSERVALUELIFE_MOMENTARY</p></li>
+<li><p>LXiUSERVALUELIFE_COUNT</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiUSERVALUE_UIMODE_UNDO_MODEL">
+<span class="target" id="lxd__scripts_8hpp_1a92087823ffcd65e96195aaebaf67ad10"></span><code class="sig-name descname">LXiUSERVALUE_UIMODE_UNDO_MODEL</code><a class="headerlink" href="#c.LXiUSERVALUE_UIMODE_UNDO_MODEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>12.2 adds support for pure UI commands that are not undoable. AsUI() will only return true if the user values is undoable UI, and false if it’s undoable model. With this new functionality, it will also return true for pure UI user values. This method returns which of the three states the user values is defined. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiUSERVALUE_UIMODE_UNDO_UI</p></li>
+<li><p>LXiUSERVALUE_UIMODE_PURE_UI</p></li>
+</ul>
+</div>
+<div class="section" id="ilxsessionlistener">
+<h2><a class="toc-backref" href="#id3">ILxSessionListener</a><a class="headerlink" href="#ilxsessionlistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxSessionListener">
+<span id="_CPPv318ILxSessionListener"></span><span id="_CPPv218ILxSessionListener"></span><span id="ILxSessionListener"></span><span class="target" id="class_i_lx_session_listener"></span><em class="property">class </em><code class="sig-name descname">ILxSessionListener</code><a class="headerlink" href="#_CPPv418ILxSessionListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The session listener provides information about application startup and shutdown. A “session” is defined as the time the app is running, from when it starts to when it exits. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener18FirstWindowOpeningE11LXtObjectID">
+<span id="_CPPv3N18ILxSessionListener18FirstWindowOpeningE11LXtObjectID"></span><span id="_CPPv2N18ILxSessionListener18FirstWindowOpeningE11LXtObjectID"></span><span id="ILxSessionListener::FirstWindowOpening__LXtObjectID"></span><span class="target" id="class_i_lx_session_listener_1a10bc381b39408e3b08165d80c6990aa6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FirstWindowOpening</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener18FirstWindowOpeningE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called just before the first window (usually the main window) is opened, which generally means that the app is nearing final readiness. This is not sent in headless mode for obvious reasons. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener21BeforeStartupCommandsE11LXtObjectID">
+<span id="_CPPv3N18ILxSessionListener21BeforeStartupCommandsE11LXtObjectID"></span><span id="_CPPv2N18ILxSessionListener21BeforeStartupCommandsE11LXtObjectID"></span><span id="ILxSessionListener::BeforeStartupCommands__LXtObjectID"></span><span class="target" id="class_i_lx_session_listener_1ae166afec6dca0832196c99d611c16f3f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BeforeStartupCommands</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener21BeforeStartupCommandsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called just before the startup commands are executed. This can be used to execute other startup commands from code, for example, or to query commands. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener11SystemReadyE11LXtObjectID">
+<span id="_CPPv3N18ILxSessionListener11SystemReadyE11LXtObjectID"></span><span id="_CPPv2N18ILxSessionListener11SystemReadyE11LXtObjectID"></span><span id="ILxSessionListener::SystemReady__LXtObjectID"></span><span class="target" id="class_i_lx_session_listener_1aa876cffed61c0e6667cdaa487274f5f7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SystemReady</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener11SystemReadyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called after any startup comamnds have executed, and just before the application main loop starts, and indicates that the application is fully initialized and ready. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener11CheckQuitUIE11LXtObjectIDi">
+<span id="_CPPv3N18ILxSessionListener11CheckQuitUIE11LXtObjectIDi"></span><span id="_CPPv2N18ILxSessionListener11CheckQuitUIE11LXtObjectIDi"></span><span id="ILxSessionListener::CheckQuitUI__LXtObjectID.i"></span><span class="target" id="class_i_lx_session_listener_1ae5f338cebae531b38895b4be5ebda7d3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CheckQuitUI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>quitWasAborted</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener11CheckQuitUIE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called when the app’s UI is told to quit, usually because the user tried to close the main window or chose Quit from the system menu. Most importantly, the main window is still open at this time, and the listener can open dialogs and is able to abort the quit by returning LXe_FALSE. Remember that you may not be the only session listener, that all listeners will get this event, and that the abort state won’t be read until all listeners have returned (this is jsut how listeners work). Before opening a dialog or doing any other quit tests, you should check the value of quitWasAborted; if ture, you may simply want to exit early because another listeener has decided that we’re not going to quit after all. As the name implies, this method is only sent from the UI, and never from headless. If you need to save critical state, yous hould do so from <a class="reference internal" href="#class_i_lx_session_listener_1afef6b7d2143d3fcd9dd27dca4b902268"><span class="std std-ref">ShuttingDown()</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener10QuittingUIE11LXtObjectID">
+<span id="_CPPv3N18ILxSessionListener10QuittingUIE11LXtObjectID"></span><span id="_CPPv2N18ILxSessionListener10QuittingUIE11LXtObjectID"></span><span id="ILxSessionListener::QuittingUI__LXtObjectID"></span><span class="target" id="class_i_lx_session_listener_1ad5cf77944f56ffb224cb3d4af44226ee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">QuittingUI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener10QuittingUIE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If no listeners have aborted the quit, this method is called to indicate that we really are going to exit the app. At this point the main window is still open, so if you want to save something with a progress bar or the possibility of opening an error dialog, you can. However, you will not be able to keep the app from quitting. Once again, this is not sent from headless mode. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener16LastWindowClosedE11LXtObjectID">
+<span id="_CPPv3N18ILxSessionListener16LastWindowClosedE11LXtObjectID"></span><span id="_CPPv2N18ILxSessionListener16LastWindowClosedE11LXtObjectID"></span><span id="ILxSessionListener::LastWindowClosed__LXtObjectID"></span><span class="target" id="class_i_lx_session_listener_1a442b2c567c3802362eb752e75a189fbc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LastWindowClosed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener16LastWindowClosedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called just after the last window (usually the main window) has closed, indicating that the application is about to shut down. This is not sent in headless mode for obvious reasons. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxSessionListener12ShuttingDownE11LXtObjectID">
+<span id="_CPPv3N18ILxSessionListener12ShuttingDownE11LXtObjectID"></span><span id="_CPPv2N18ILxSessionListener12ShuttingDownE11LXtObjectID"></span><span id="ILxSessionListener::ShuttingDown__LXtObjectID"></span><span class="target" id="class_i_lx_session_listener_1afef6b7d2143d3fcd9dd27dca4b902268"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShuttingDown</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxSessionListener12ShuttingDownE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>After all windows have been closed (or in headless, if we’re about to quit), this is called to indicate that we’re going to start shutting down the remaining systems and exit the app. This is a good time to store any other state you may want to persist between sessions. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxuservaluelistener">
+<h2><a class="toc-backref" href="#id4">ILxUserValueListener</a><a class="headerlink" href="#ilxuservaluelistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxUserValueListener">
+<span id="_CPPv320ILxUserValueListener"></span><span id="_CPPv220ILxUserValueListener"></span><span id="ILxUserValueListener"></span><span class="target" id="class_i_lx_user_value_listener"></span><em class="property">class </em><code class="sig-name descname">ILxUserValueListener</code><a class="headerlink" href="#_CPPv420ILxUserValueListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The user value listener alerts clients when a user value has changed. It also has methods that are called at various points in the startup sequence so that user values can be cached after startup or actions can be taken during the startup process. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxUserValueListener5AddedE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxUserValueListener5AddedE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxUserValueListener5AddedE11LXtObjectID11LXtObjectID"></span><span id="ILxUserValueListener::Added__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_user_value_listener_1a2edca0451c4939d0817e6d4427ff3cbe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Added</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>userValue</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxUserValueListener5AddedE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called after a new user value is added. The object provided has an <a class="reference internal" href="#class_i_lx_user_value"><span class="std std-ref">ILxUserValue</span></a> interface. Since the value was just added, the obejct is only immediately useful for getting its name, as everything else will be defaults. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxUserValueListener7DeletedE11LXtObjectIDPKc">
+<span id="_CPPv3N20ILxUserValueListener7DeletedE11LXtObjectIDPKc"></span><span id="_CPPv2N20ILxUserValueListener7DeletedE11LXtObjectIDPKc"></span><span id="ILxUserValueListener::Deleted__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_user_value_listener_1a6fffc0b828766e88d52c35de4b158da1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Deleted</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxUserValueListener7DeletedE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called just after an existing user value is deleted. Since the object was just deleted, only the name is provided. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxUserValueListener10DefChangedE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxUserValueListener10DefChangedE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxUserValueListener10DefChangedE11LXtObjectID11LXtObjectID"></span><span id="ILxUserValueListener::DefChanged__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_user_value_listener_1aabf766cc8fb283a43cc9b79cfe3f3e2c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DefChanged</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>userValue</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxUserValueListener10DefChangedE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called when the definition (one of the properties) of a user value has changed. The object provided has an <a class="reference internal" href="#class_i_lx_user_value"><span class="std std-ref">ILxUserValue</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxUserValueListener12ValueChangedE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxUserValueListener12ValueChangedE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxUserValueListener12ValueChangedE11LXtObjectID11LXtObjectID"></span><span id="ILxUserValueListener::ValueChanged__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_user_value_listener_1a916586667d9d384dbabbcaa7f3641670"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ValueChanged</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>userValue</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxUserValueListener12ValueChangedE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called when the user value’s value changes. It is also called for all user values on startup, thus ensuring that clients that only listen for this event can get useful default values. The object provided has an <a class="reference internal" href="#class_i_lx_user_value"><span class="std std-ref">ILxUserValue</span></a> interface. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxscriptmanager">
+<h2><a class="toc-backref" href="#id5">ILxScriptManager</a><a class="headerlink" href="#ilxscriptmanager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxScriptManager">
+<span id="_CPPv316ILxScriptManager"></span><span id="_CPPv216ILxScriptManager"></span><span id="ILxScriptManager"></span><span class="target" id="class_i_lx_script_manager"></span><em class="property">class </em><code class="sig-name descname">ILxScriptManager</code><a class="headerlink" href="#_CPPv416ILxScriptManager" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The script manager is provided as a global. It is used to obtain information about a particular scripting subsystem. Each type of script has a matching script manager, although one manager can handle multiple script types. As well as providing a list of available scripts known to the manager, they also include the interpreter used to execute said scripts. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager4NameE11LXtObjectIDPPKc">
+<span id="_CPPv3N16ILxScriptManager4NameE11LXtObjectIDPPKc"></span><span id="_CPPv2N16ILxScriptManager4NameE11LXtObjectIDPPKc"></span><span id="ILxScriptManager::Name__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_manager_1a6b1d93b5414d4aff8f8ba66db0066170"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager4NameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the name of the script manager, which should be the name of the plug-in itself, or else the system will get very confused. Script manager names should have the format “name.scriptservice”, as the .scriptservice part is automatically skipped during lookup for convenience. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager5FlagsE11LXtObjectIDPi">
+<span id="_CPPv3N16ILxScriptManager5FlagsE11LXtObjectIDPi"></span><span id="_CPPv2N16ILxScriptManager5FlagsE11LXtObjectIDPi"></span><span id="ILxScriptManager::Flags__LXtObjectID.iP"></span><span class="target" id="class_i_lx_script_manager_1a7aa639cfd9eeca5539bf264c68d3b6ee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager5FlagsE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>CREATE</p></li>
+<li><p>REMOVE These should be set if the Script Editor can create or delete scripts.</p></li>
+<li><p>LINE_ACTION This is set if an operation is defined for single lines in a script. For example, double-clicking on a macro line to execute that command. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager5CountE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxScriptManager5CountE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxScriptManager5CountE11LXtObjectIDPj"></span><span id="ILxScriptManager::Count__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_script_manager_1a7051fd5604bfb2ae0a9be04e56b689e2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These functions allow the list of available scripts to be walked. When getting a script from the manager, the write flag determines if the script is read-only or read/write. This is just a hint; if the script cannot be modified and the write flag is set, the function should fail with LXe_SCRIPT_READONLY. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager7ByIndexE11LXtObjectIDjPPvi">
+<span id="_CPPv3N16ILxScriptManager7ByIndexE11LXtObjectIDjPPvi"></span><span id="_CPPv2N16ILxScriptManager7ByIndexE11LXtObjectIDjPPvi"></span><span id="ILxScriptManager::ByIndex__LXtObjectID.unsigned-i.voidPP.i"></span><span class="target" id="class_i_lx_script_manager_1a41a709105f01cde5bf11f49f1b7d0629"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em>, int <em>write</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager7ByIndexE11LXtObjectIDjPPvi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager6LookupE11LXtObjectIDPKcPPvii">
+<span id="_CPPv3N16ILxScriptManager6LookupE11LXtObjectIDPKcPPvii"></span><span id="_CPPv2N16ILxScriptManager6LookupE11LXtObjectIDPKcPPvii"></span><span id="ILxScriptManager::Lookup__LXtObjectID.cCP.voidPP.i.i"></span><span class="target" id="class_i_lx_script_manager_1a59dfd142db03ee3c35c676e15e410a37"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>hash</em>, void **<em>ppvObj</em>, int <em>write</em>, int <em>tryAsUserName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager6LookupE11LXtObjectIDPKcPPvii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This looks up a script by its hash. Note the lookup may succeed even if it is not in the script list, as the manager may try to load the script off disk, for example. If tryAsUserName is true, the hash will be looked up as a username if it cannot be found as a hash. It is important to note that the hash may not be what you expect. For example, if you normally expect a path to a file, you should be able to handle arbitrary cases like config hashes (say, “872345659345:macro”) and not try to pass them to file system functions that might hit the network and create long delays. Similarly, if you recognize the hash as your own but cannot find the contents, you should return LXe_SCRIPT_RECOGNIZED_INVALID. This keeps other servers from having to scan servers that only you recognize. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager9ReadWriteE11LXtObjectIDPKci">
+<span id="_CPPv3N16ILxScriptManager9ReadWriteE11LXtObjectIDPKci"></span><span id="_CPPv2N16ILxScriptManager9ReadWriteE11LXtObjectIDPKci"></span><span id="ILxScriptManager::ReadWrite__LXtObjectID.cCP.i"></span><span class="target" id="class_i_lx_script_manager_1afff798ba11216f798c1d302ab349a87c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadWrite</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>hash</em>, int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager9ReadWriteE11LXtObjectIDPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Scripts can be read-only (for example, if the perl script is read-only on disk, or the config the macro is in is imported). This function tells if the script can be instanced as read/write or just read-only. Since the intention is to see if the script can be instanced as read/write before you have a script ID, this takes a hash or index as its args; the index is checked if the hash is NULL. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager3NewE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N16ILxScriptManager3NewE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N16ILxScriptManager3NewE11LXtObjectIDPKcPPv"></span><span id="ILxScriptManager::New__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_script_manager_1a96c969b44bdf6290126d70747d28c5a5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">New</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager3NewE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A new script for this manager can be created and filled in by the client. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager6RemoveE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxScriptManager6RemoveE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxScriptManager6RemoveE11LXtObjectID11LXtObjectID"></span><span id="ILxScriptManager::Remove__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_script_manager_1a6264e5a0e85ba98722bc641e3fd5db11"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Remove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>script</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager6RemoveE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An existing script can be removed from the system. This only removes the script; it does not necessarily delete it from disk. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxScriptManager8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxScriptManager8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxScriptManager::Validate__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_script_manager_1ac0112cdd3c5c2d0fe1dd7c4fdc1b8ee0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Validate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>script</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Scripts can be validated to ensure that they are supported by the interpreter and to check that they are free of errors before execution. The interpreter should return SCRIPT_UNKNOWN if the script is not supported by the interpreter, and SCRIPT_ERROR if there is a problem parsing the script. SCRIPT_WARNING can be returned if there are only warnings, but since this is an OK code, the script can still be considered mostly valid and thus executable. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScriptManager3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID">
+<span id="_CPPv3N16ILxScriptManager3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID"></span><span id="_CPPv2N16ILxScriptManager3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID"></span><span id="ILxScriptManager::Run__LXtObjectID.LXtObjectID.i.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_script_manager_1a6d01ffcd9bafdf0fada418983e7d60dd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Run</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>script</em>, int <em>execFlags</em>, <em class="property">const</em> char *<em>args</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScriptManager3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A script can be executed with this function. The command services global can be used to query and execute commands as needed. Commend execution flags are also provided, which can be used to decide how to interact with the user for warnings, etc. A list of optional arguments can also be provided as a string, or be NULL. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfSCRIPTSRV_CREATE">
+<span class="target" id="lxd__scripts_8hpp_1aba9ea59a47114daf90d97451fb2bc22c"></span><code class="sig-name descname">LXfSCRIPTSRV_CREATE</code><a class="headerlink" href="#c.LXfSCRIPTSRV_CREATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Script managers can return a number of flags describing how the manager operates. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfSCRIPTSRV_REMOVE</p></li>
+<li><p>LXfSCRIPTSRV_LINE_ACTION</p></li>
+</ul>
+</div>
+<div class="section" id="ilxtextscriptinterpreter">
+<h2><a class="toc-backref" href="#id6">ILxTextScriptInterpreter</a><a class="headerlink" href="#ilxtextscriptinterpreter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv424ILxTextScriptInterpreter">
+<span id="_CPPv324ILxTextScriptInterpreter"></span><span id="_CPPv224ILxTextScriptInterpreter"></span><span id="ILxTextScriptInterpreter"></span><span class="target" id="class_i_lx_text_script_interpreter"></span><em class="property">class </em><code class="sig-name descname">ILxTextScriptInterpreter</code><a class="headerlink" href="#_CPPv424ILxTextScriptInterpreter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Many scripts simply involve parsing text files and interpreting the lines in turn. Rather than forcing the creating of a completely new manager each time, a simple text script interpreter can be created. The script system automatically handles loading of text files from disc, and provides search paths for scripts and so on. All the interpreter needs to do is confirm that it actually can deal with this kind of script and execute it. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N24ILxTextScriptInterpreter16ValidateFileTypeE11LXtObjectID11LXtObjectIDPKc">
+<span id="_CPPv3N24ILxTextScriptInterpreter16ValidateFileTypeE11LXtObjectID11LXtObjectIDPKc"></span><span id="_CPPv2N24ILxTextScriptInterpreter16ValidateFileTypeE11LXtObjectID11LXtObjectIDPKc"></span><span id="ILxTextScriptInterpreter::ValidateFileType__LXtObjectID.LXtObjectID.cCP"></span><span class="target" id="class_i_lx_text_script_interpreter_1ad4f7fc027be6b70417752318f3ac8b71"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ValidateFileType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>script</em>, <em class="property">const</em> char *<em>firstLine</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24ILxTextScriptInterpreter16ValidateFileTypeE11LXtObjectID11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An initial validation of the file is performed to figure out what interpreters support which files. The interpreter is provided with an ILxScriptID and the first line of the script, which allows for a common first-line check or a more complete check of the script’s contents via GetBuffer(). The hash of the script is the path of the file on disk, and can be used to check the extension if desired. The interpreter should return LXe_OK if it can deal with this script, and LXe_SCRIPT_UNKNOWN if it cannot. This method should be quick, since it may be called often. Simply check the file type here; don’t test the script for errors or anything like that. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N24ILxTextScriptInterpreter8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N24ILxTextScriptInterpreter8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N24ILxTextScriptInterpreter8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxTextScriptInterpreter::Validate__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_text_script_interpreter_1ad9c4a4d24ae03e2184f9fee9afae5d4e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Validate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>script</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24ILxTextScriptInterpreter8ValidateE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Before execution of a script, this function is called to ensure that the script is properly formatted for execution by this interpreter. SCRIPT_ERROR can be returned on failer, and SCRIPT_WARNING if the script can be executed, but there may be problems with it. The ILxMessageID can be used to report specific errors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N24ILxTextScriptInterpreter3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID">
+<span id="_CPPv3N24ILxTextScriptInterpreter3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID"></span><span id="_CPPv2N24ILxTextScriptInterpreter3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID"></span><span id="ILxTextScriptInterpreter::Run__LXtObjectID.LXtObjectID.i.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_text_script_interpreter_1adef16dd293eeea60c9605ffb4800f15e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Run</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>script</em>, int <em>execFlags</em>, <em class="property">const</em> char *<em>args</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24ILxTextScriptInterpreter3RunE11LXtObjectID11LXtObjectIDiPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A script can be executed with this function. The command services global can be used to query and execute commands as needed. Commend execution flags are also provided, which can be used to decide how to interact with the user for warnings, etc. A list of optional arguments can also be provided as a string, or be NULL. The ILxMessageID can be used to report specific errors. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxscript">
+<h2><a class="toc-backref" href="#id7">ILxScript</a><a class="headerlink" href="#ilxscript" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxScript">
+<span id="_CPPv39ILxScript"></span><span id="_CPPv29ILxScript"></span><span id="ILxScript"></span><span class="target" id="class_i_lx_script"></span><em class="property">class </em><code class="sig-name descname">ILxScript</code><a class="headerlink" href="#_CPPv49ILxScript" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The script system service provides a list of available script managers, rather than having clients browse the plug-in database themselves. Managers are sorted by their internal name (i.e., the name of the plug-in itself), which can also be obtained. Managers must be released when no longer needed. The objects returned by ByIndex(), NameByIndex() and Lookup() must be released by the caller. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxScript4HashE11LXtObjectIDPPKc">
+<span id="_CPPv3N9ILxScript4HashE11LXtObjectIDPPKc"></span><span id="_CPPv2N9ILxScript4HashE11LXtObjectIDPPKc"></span><span id="ILxScript::Hash__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_1a6120fa5f94e7f34af7aec52867204455"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Hash</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>hash</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript4HashE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Scripts have a hash used for lookup. For macros, it’s just the hash in the config; for scripts in files, it might be the filename. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript8UserNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N9ILxScript8UserNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N9ILxScript8UserNameE11LXtObjectIDPPKc"></span><span id="ILxScript::UserName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_1a78b50beef7b58879d3e32a682a065272"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>userName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript8UserNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Scripts may have a username and description. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript11SetUserNameE11LXtObjectIDPKc">
+<span id="_CPPv3N9ILxScript11SetUserNameE11LXtObjectIDPKc"></span><span id="_CPPv2N9ILxScript11SetUserNameE11LXtObjectIDPKc"></span><span id="ILxScript::SetUserName__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_script_1aab467f90af930df262d72c0928ff4b94"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>userName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript11SetUserNameE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript4DescE11LXtObjectIDPPKc">
+<span id="_CPPv3N9ILxScript4DescE11LXtObjectIDPPKc"></span><span id="_CPPv2N9ILxScript4DescE11LXtObjectIDPPKc"></span><span id="ILxScript::Desc__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_1a8f9a1f5bd313d4c37547d96597c3869e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Desc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript4DescE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript7SetDescE11LXtObjectIDPKc">
+<span id="_CPPv3N9ILxScript7SetDescE11LXtObjectIDPKc"></span><span id="_CPPv2N9ILxScript7SetDescE11LXtObjectIDPKc"></span><span id="ILxScript::SetDesc__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_script_1a2a10f880f205be790679207a6051f78d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetDesc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript7SetDescE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript4IconE11LXtObjectIDPPKc">
+<span id="_CPPv3N9ILxScript4IconE11LXtObjectIDPPKc"></span><span id="_CPPv2N9ILxScript4IconE11LXtObjectIDPPKc"></span><span id="ILxScript::Icon__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_script_1ac47ff6f7bf1221a26d9af1f496b3966e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Icon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>icon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript4IconE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns a semicolon-delimited list of icon resources. If not implemented, the hash of the script is used. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript7HelpKeyE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N9ILxScript7HelpKeyE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N9ILxScript7HelpKeyE11LXtObjectIDPKcPPKc"></span><span id="ILxScript::HelpKey__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_script_1afce3f136b204715a3510efaccbc8aa5a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">HelpKey</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>args</em>, <em class="property">const</em> char **<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript7HelpKeyE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The script manager can also return a help key, which will be looked up in the HelpURLs config entries. An argument string can also be provided for more specific lookups. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript7ManagerE11LXtObjectIDPPv">
+<span id="_CPPv3N9ILxScript7ManagerE11LXtObjectIDPPv"></span><span id="_CPPv2N9ILxScript7ManagerE11LXtObjectIDPPv"></span><span id="ILxScript::Manager__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_script_1a3030183dc385b2dad5c8783fca6cbb18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Manager</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript7ManagerE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The script’s type is obtained by asking for its manager. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript9GetBufferE11LXtObjectIDPPKcPj">
+<span id="_CPPv3N9ILxScript9GetBufferE11LXtObjectIDPPKcPj"></span><span id="_CPPv2N9ILxScript9GetBufferE11LXtObjectIDPPKcPj"></span><span id="ILxScript::GetBuffer__LXtObjectID.cCPP.unsigned-iP"></span><span class="target" id="class_i_lx_script_1a970d471bfc44d105868ca403f4c8106c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>buffer</em>, unsigned int *<em>bufferLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript9GetBufferE11LXtObjectIDPPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This gets the full text of the script as one large buffer, read-only NUL-terminated text buffer. The length of the buffer is also returned. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxScript9SetBufferE11LXtObjectIDPKcj">
+<span id="_CPPv3N9ILxScript9SetBufferE11LXtObjectIDPKcj"></span><span id="_CPPv2N9ILxScript9SetBufferE11LXtObjectIDPKcj"></span><span id="ILxScript::SetBuffer__LXtObjectID.cCP.unsigned-i"></span><span class="target" id="class_i_lx_script_1a52eb4ab91b489d49eec159bc6637715d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>buffer</em>, unsigned int <em>bufferLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxScript9SetBufferE11LXtObjectIDPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This replaces the existing script’s contents with a new one. The buffer should be NUL-terminated, and the buffer length should include the NUL. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxplatformservice">
+<h2><a class="toc-backref" href="#id8">ILxPlatformService</a><a class="headerlink" href="#ilxplatformservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxPlatformService">
+<span id="_CPPv318ILxPlatformService"></span><span id="_CPPv218ILxPlatformService"></span><span id="ILxPlatformService"></span><span class="target" id="class_i_lx_platform_service"></span><em class="property">class </em><code class="sig-name descname">ILxPlatformService</code><a class="headerlink" href="#_CPPv418ILxPlatformService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The platform service provides information about the application and OS. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxPlatformService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxPlatformService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxPlatformService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_platform_service_1a5d87d5ac90f306ec4678df4bfe6a4a5e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10LicensedToE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPlatformService10LicensedToE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPlatformService10LicensedToE11LXtObjectIDPPKc"></span><span id="ILxPlatformService::LicensedTo__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_platform_service_1a86136c9dcc1f892ecfb1df49e8ce035c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LicensedTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>licensee</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10LicensedToE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the user the app is licensed to. If not licensed, this fails. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService9ExpiresInE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService9ExpiresInE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService9ExpiresInE11LXtObjectIDPi"></span><span id="ILxPlatformService::ExpiresIn__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1ae282759de029c1e2ff25523227aa173f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ExpiresIn</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>daysLeft</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService9ExpiresInE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the number of days left until the key expires, or -1 if the key is permanent. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService12SerialNumberE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPlatformService12SerialNumberE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPlatformService12SerialNumberE11LXtObjectIDPPKc"></span><span id="ILxPlatformService::SerialNumber__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_platform_service_1a5cd9ae44fd9822cd0c95386a692a70c1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SerialNumber</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>serial</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService12SerialNumberE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the serial number of this key. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11NumLicensesE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService11NumLicensesE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService11NumLicensesE11LXtObjectIDPi"></span><span id="ILxPlatformService::NumLicenses__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a6194d6a9f585faf2efb955343952ec45"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NumLicenses</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>licenses</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11NumLicensesE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the number of licenses this key works with. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService7AppNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPlatformService7AppNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPlatformService7AppNameE11LXtObjectIDPPKc"></span><span id="ILxPlatformService::AppName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_platform_service_1adea8dba6bb239801590140259e2c70b9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService7AppNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the application name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10AppVersionE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService10AppVersionE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService10AppVersionE11LXtObjectIDPi"></span><span id="ILxPlatformService::AppVersion__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a3893e285ea96050e8a3f89ce41f5e5af"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppVersion</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10AppVersionE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the version and build numbers of the application. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService8AppBuildE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService8AppBuildE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService8AppBuildE11LXtObjectIDPi"></span><span id="ILxPlatformService::AppBuild__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1af1a6b5e1e39c99a31d027682a1fd5ec6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppBuild</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>build</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService8AppBuildE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10IsHeadlessE11LXtObjectID">
+<span id="_CPPv3N18ILxPlatformService10IsHeadlessE11LXtObjectID"></span><span id="_CPPv2N18ILxPlatformService10IsHeadlessE11LXtObjectID"></span><span id="ILxPlatformService::IsHeadless__LXtObjectID"></span><span class="target" id="class_i_lx_platform_service_1a8e7f3d90a701411c7f890469e9ad6d8f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsHeadless</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10IsHeadlessE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if the app is running in headless mode, and LXe_FALSE if not. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService6OSTypeE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService6OSTypeE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService6OSTypeE11LXtObjectIDPi"></span><span id="ILxPlatformService::OSType__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a3f6b3abe1d753cf1bb85de0891709e28"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OSType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService6OSTypeE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService6OSNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPlatformService6OSNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPlatformService6OSNameE11LXtObjectIDPPKc"></span><span id="ILxPlatformService::OSName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_platform_service_1a62015df2206324936141ba30f0201cd0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OSName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService6OSNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService9OSVersionE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPlatformService9OSVersionE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPlatformService9OSVersionE11LXtObjectIDPPKc"></span><span id="ILxPlatformService::OSVersion__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_platform_service_1a7cb32a520543a96f46fb6ce8533dabdf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OSVersion</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService9OSVersionE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService9PathCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService9PathCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService9PathCountE11LXtObjectIDPi"></span><span id="ILxPlatformService::PathCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a94e4b21ff16c09054a64338532cf9cc4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService9PathCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Walk the list of paths. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11PathByIndexE11LXtObjectIDiPPKc">
+<span id="_CPPv3N18ILxPlatformService11PathByIndexE11LXtObjectIDiPPKc"></span><span id="_CPPv2N18ILxPlatformService11PathByIndexE11LXtObjectIDiPPKc"></span><span id="ILxPlatformService::PathByIndex__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_platform_service_1ac5ee39d1ef5f2f801f221f31621a68ed"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11PathByIndexE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService15PathNameByIndexE11LXtObjectIDiPPKc">
+<span id="_CPPv3N18ILxPlatformService15PathNameByIndexE11LXtObjectIDiPPKc"></span><span id="_CPPv2N18ILxPlatformService15PathNameByIndexE11LXtObjectIDiPPKc"></span><span id="ILxPlatformService::PathNameByIndex__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_platform_service_1a02534bcb77358367886442bb3451fe25"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathNameByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService15PathNameByIndexE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the internal name of the path, or NULL if the path doesn’t have one. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService15ImportPathCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService15ImportPathCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService15ImportPathCountE11LXtObjectIDPi"></span><span id="ILxPlatformService::ImportPathCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a7ed08aa691cafd8a825188cf85b81214"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ImportPathCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService15ImportPathCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Walk the list of imported resource paths. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService17ImportPathByIndexE11LXtObjectIDiPPKc">
+<span id="_CPPv3N18ILxPlatformService17ImportPathByIndexE11LXtObjectIDiPPKc"></span><span id="_CPPv2N18ILxPlatformService17ImportPathByIndexE11LXtObjectIDiPPKc"></span><span id="ILxPlatformService::ImportPathByIndex__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_platform_service_1a23be39853e8b32e228250f631a9bcd42"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ImportPathByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService17ImportPathByIndexE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10IsApp64BitE11LXtObjectID">
+<span id="_CPPv3N18ILxPlatformService10IsApp64BitE11LXtObjectID"></span><span id="_CPPv2N18ILxPlatformService10IsApp64BitE11LXtObjectID"></span><span id="ILxPlatformService::IsApp64Bit__LXtObjectID"></span><span class="target" id="class_i_lx_platform_service_1ac89bc6e40ec8dad5aa31f090cbdfe0a2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsApp64Bit</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10IsApp64BitE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns true if the application (but not necessarily the platform) is 64 bit, and false if it’s 32 bit. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService16DoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N18ILxPlatformService16DoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N18ILxPlatformService16DoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi"></span><span id="ILxPlatformService::DoWhenUserIsIdle__LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_platform_service_1aa7a5d8bb715edbf94e8fac93f5a56652"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DoWhenUserIsIdle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService16DoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This arms a user idle action, preferably only once until it has been fired, after which you can arm it again if necessary. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService22CancelDoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N18ILxPlatformService22CancelDoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N18ILxPlatformService22CancelDoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi"></span><span id="ILxPlatformService::CancelDoWhenUserIsIdle__LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_platform_service_1a37897ee3637f40481dd527dcf7ea3786"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CancelDoWhenUserIsIdle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService22CancelDoWhenUserIsIdleE11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This can be used to remove a pending user idle action. It will do nothing if the idle action isn’t armed. Note that flags and the vistor pointer must be exactly the same as the one passed to <a class="reference internal" href="#class_i_lx_platform_service_1aa7a5d8bb715edbf94e8fac93f5a56652"><span class="std std-ref">DoWhenUserIsIdle()</span></a>, or else it will not be found and the action will remain armed. Note that when doing this from Python, you must pass the exact same visitor COM object (not Python object). This is also necessary when removing listeners and canceling timers, as discussed here: <a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/FAQ#Q:_How_do_I_remove_a_listener_object_in_Python.3F">http://modo.sdk.thefoundry.co.uk/wiki/FAQ#Q:_How_do_I_remove_a_listener_object_in_Python.3F</a> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10IsUserIdleE11LXtObjectID">
+<span id="_CPPv3N18ILxPlatformService10IsUserIdleE11LXtObjectID"></span><span id="_CPPv2N18ILxPlatformService10IsUserIdleE11LXtObjectID"></span><span id="ILxPlatformService::IsUserIdle__LXtObjectID"></span><span class="target" id="class_i_lx_platform_service_1a7ccab4d48fa50a267131a47fd11dd4bc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsUserIdle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10IsUserIdleE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This simply returns if the user is currently idle. It can be useful at times, but generally you always want to perform your idle actions from <a class="reference internal" href="#class_i_lx_platform_service_1aa7a5d8bb715edbf94e8fac93f5a56652"><span class="std std-ref">DoWhenUserIsIdle()</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11IsAppActiveE11LXtObjectID">
+<span id="_CPPv3N18ILxPlatformService11IsAppActiveE11LXtObjectID"></span><span id="_CPPv2N18ILxPlatformService11IsAppActiveE11LXtObjectID"></span><span id="ILxPlatformService::IsAppActive__LXtObjectID"></span><span class="target" id="class_i_lx_platform_service_1a441fbdbfc2481d1ec416ca8fc2b33655"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsAppActive</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11IsAppActiveE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Another useful feature is to be able to know when the app has become active or inactive. This returns LXe_TRUE if the app is currently active. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService12SessionStageE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService12SessionStageE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService12SessionStageE11LXtObjectIDPi"></span><span id="ILxPlatformService::SessionStage__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a70122b82e99ac63029d108d08cc6f7b0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SessionStage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>stage</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService12SessionStageE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The current session stage can be read with this method, indicating the status of the application. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11AppUsernameE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPlatformService11AppUsernameE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPlatformService11AppUsernameE11LXtObjectIDPPKc"></span><span id="ILxPlatformService::AppUsername__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_platform_service_1adf235593bbe19caca41348464005a374"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppUsername</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11AppUsernameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>NOT_READY The system is in the very early startup phase, and is not yet ready to be accessed.</p></li>
+<li><p>STARTUP_COMMANDS Startup commands are or have just executed, and the system is almost completely up and running.</p></li>
+<li><p>SYSTEM_READY The main event loop is running, and the application is fully started.</p></li>
+<li><p>SHUTTING_DOWN The main event loop has stopped, and the applicatin is shutting down. You can register an <a class="reference internal" href="#class_i_lx_session_listener"><span class="std std-ref">ILxSessionListener</span></a> to be notified when the stage changes. The application username may be different from the internal name returned by <a class="reference internal" href="#class_i_lx_platform_service_1acd150b7aff94cd87e4f62b03293439ff"><span class="std std-ref">AppName()</span></a>. Usually this is farily minor, such as the case of the name. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10TimerStartE11LXtObjectID11LXtObjectIDii">
+<span id="_CPPv3N18ILxPlatformService10TimerStartE11LXtObjectID11LXtObjectIDii"></span><span id="_CPPv2N18ILxPlatformService10TimerStartE11LXtObjectID11LXtObjectIDii"></span><span id="ILxPlatformService::TimerStart__LXtObjectID.LXtObjectID.i.i"></span><span class="target" id="class_i_lx_platform_service_1ad84941b0e7c3a18c4e661c865cb5c4fd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TimerStart</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em>, int <em>milliseconds</em>, int <em>idleFlags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10TimerStartE11LXtObjectID11LXtObjectIDii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Timers execute after a pre-determiend number of milliseconds. A timer executes only once, but you can re-arm it when it expires if you want. The most common use of timers is to check files for changes or trigger periodic refreshes of part of the UI. Note that timers can trigger at arbitrary and unsafe times, such as in the middle of rendering or while saving a file. You should never execute a command from a timer, for exmaple, but rather arm a user idle action (and even then executing commands is a bit iffy, since now you’re adding something to the command history or undo list that the user didn’t do directly, but sometimes it is necessary). <p> If idleFlags are LXiUSERIDLE_ALWAYS, then the timer’s visitor is called as soon as the timer expires. Otherwise, the action is deferred until user idle state matches the flags. </p>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11TimerCancelE11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N18ILxPlatformService11TimerCancelE11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N18ILxPlatformService11TimerCancelE11LXtObjectID11LXtObjectIDi"></span><span id="ILxPlatformService::TimerCancel__LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_platform_service_1a3b21f21c582493234e5f3a451dfda9cc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TimerCancel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em>, int <em>idleFlags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11TimerCancelE11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A currently-running timer can be canceled with this function. The visitor and flags must match what the timer was armed with. Note that when doing this from Python, you must pass the exact same visitor COM object (not Python object). This is also necessary when removing listeners and canceling user idle actions, as discussed here: <a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/FAQ#Q:_How_do_I_remove_a_listener_object_in_Python.3F">http://modo.sdk.thefoundry.co.uk/wiki/FAQ#Q:_How_do_I_remove_a_listener_object_in_Python.3F</a> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10IsSafeModeE11LXtObjectID">
+<span id="_CPPv3N18ILxPlatformService10IsSafeModeE11LXtObjectID"></span><span id="_CPPv2N18ILxPlatformService10IsSafeModeE11LXtObjectID"></span><span id="ILxPlatformService::IsSafeMode__LXtObjectID"></span><span class="target" id="class_i_lx_platform_service_1a9bf2a7eb06cca0a642d20544c9fb1765"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsSafeMode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10IsSafeModeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This will return true if the app was started in safe mode. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService15AppVersionMinorE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService15AppVersionMinorE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService15AppVersionMinorE11LXtObjectIDPi"></span><span id="ILxPlatformService::AppVersionMinor__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a45ce5716e5c055cf2c188ea2397df715"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppVersionMinor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService15AppVersionMinorE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the minor and service back version numbers. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService12AppVersionSPE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService12AppVersionSPE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService12AppVersionSPE11LXtObjectIDPi"></span><span id="ILxPlatformService::AppVersionSP__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1aadf67a1569e483f237f5f7bbeaa6e4b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppVersionSP</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService12AppVersionSPE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService15AppVersionMajorE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxPlatformService15AppVersionMajorE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxPlatformService15AppVersionMajorE11LXtObjectIDPi"></span><span id="ILxPlatformService::AppVersionMajor__LXtObjectID.iP"></span><span class="target" id="class_i_lx_platform_service_1a4b97117ec28983a04e91a56eda916a22"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppVersionMajor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService15AppVersionMajorE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10LicensedToEv">
+<span id="_CPPv3N18ILxPlatformService10LicensedToEv"></span><span id="_CPPv2N18ILxPlatformService10LicensedToEv"></span><span id="ILxPlatformService::LicensedTo"></span><span class="target" id="class_i_lx_platform_service_1a26afc9eb60f78ec998df9e323f90cc8d"></span>std::string <code class="sig-name descname">LicensedTo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10LicensedToEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService12SerialNumberEv">
+<span id="_CPPv3N18ILxPlatformService12SerialNumberEv"></span><span id="_CPPv2N18ILxPlatformService12SerialNumberEv"></span><span id="ILxPlatformService::SerialNumber"></span><span class="target" id="class_i_lx_platform_service_1a781bad00570a09347d3f558cae869020"></span>std::string <code class="sig-name descname">SerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService12SerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService7AppNameEv">
+<span id="_CPPv3N18ILxPlatformService7AppNameEv"></span><span id="_CPPv2N18ILxPlatformService7AppNameEv"></span><span id="ILxPlatformService::AppName"></span><span class="target" id="class_i_lx_platform_service_1acd150b7aff94cd87e4f62b03293439ff"></span>std::string <code class="sig-name descname">AppName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService7AppNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10IsHeadlessEv">
+<span id="_CPPv3N18ILxPlatformService10IsHeadlessEv"></span><span id="_CPPv2N18ILxPlatformService10IsHeadlessEv"></span><span id="ILxPlatformService::IsHeadless"></span><span class="target" id="class_i_lx_platform_service_1ad8609ea1292fa8fe2a1a4993a77e4865"></span>bool <code class="sig-name descname">IsHeadless</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10IsHeadlessEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService6OSNameEv">
+<span id="_CPPv3N18ILxPlatformService6OSNameEv"></span><span id="_CPPv2N18ILxPlatformService6OSNameEv"></span><span id="ILxPlatformService::OSName"></span><span class="target" id="class_i_lx_platform_service_1a2b5682092c2d2b42df7fb4e28e617a07"></span>std::string <code class="sig-name descname">OSName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService6OSNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService9OSVersionEv">
+<span id="_CPPv3N18ILxPlatformService9OSVersionEv"></span><span id="_CPPv2N18ILxPlatformService9OSVersionEv"></span><span id="ILxPlatformService::OSVersion"></span><span class="target" id="class_i_lx_platform_service_1afa0cf45b59efbaf690077fc772d7fb2d"></span>std::string <code class="sig-name descname">OSVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService9OSVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService7GetPathEi">
+<span id="_CPPv3N18ILxPlatformService7GetPathEi"></span><span id="_CPPv2N18ILxPlatformService7GetPathEi"></span><span id="ILxPlatformService::GetPath__i"></span><span class="target" id="class_i_lx_platform_service_1a6fbe1dd5fef3ec6149a84bf5b4631bec"></span><em class="property">const</em> char *<code class="sig-name descname">GetPath</code><span class="sig-paren">(</span>int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService7GetPathEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11GetPathNameEi">
+<span id="_CPPv3N18ILxPlatformService11GetPathNameEi"></span><span id="_CPPv2N18ILxPlatformService11GetPathNameEi"></span><span id="ILxPlatformService::GetPathName__i"></span><span class="target" id="class_i_lx_platform_service_1a502f9897b5b64d037ccd9f68cb2a8f27"></span><em class="property">const</em> char *<code class="sig-name descname">GetPathName</code><span class="sig-paren">(</span>int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11GetPathNameEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService13GetImportPathEi">
+<span id="_CPPv3N18ILxPlatformService13GetImportPathEi"></span><span id="_CPPv2N18ILxPlatformService13GetImportPathEi"></span><span id="ILxPlatformService::GetImportPath__i"></span><span class="target" id="class_i_lx_platform_service_1a6a0e3256db9e137790769465491dc7cc"></span><em class="property">const</em> char *<code class="sig-name descname">GetImportPath</code><span class="sig-paren">(</span>int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService13GetImportPathEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService10IsApp64BitEv">
+<span id="_CPPv3N18ILxPlatformService10IsApp64BitEv"></span><span id="_CPPv2N18ILxPlatformService10IsApp64BitEv"></span><span id="ILxPlatformService::IsApp64Bit"></span><span class="target" id="class_i_lx_platform_service_1a995b29640cbc9c5e757b7337715b84cf"></span>bool <code class="sig-name descname">IsApp64Bit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService10IsApp64BitEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPlatformService11AppUsernameEv">
+<span id="_CPPv3N18ILxPlatformService11AppUsernameEv"></span><span id="_CPPv2N18ILxPlatformService11AppUsernameEv"></span><span id="ILxPlatformService::AppUsername"></span><span class="target" id="class_i_lx_platform_service_1afa7b064e16cc80560653605e44e2a886"></span>std::string <code class="sig-name descname">AppUsername</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPlatformService11AppUsernameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiOSTYPE_UNKNOWN">
+<span class="target" id="lxd__scripts_8hpp_1a924abb9c3784c388ade548d37503a4ac"></span><code class="sig-name descname">LXiOSTYPE_UNKNOWN</code><a class="headerlink" href="#c.LXiOSTYPE_UNKNOWN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the OS type, OS name and OS version string. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiOSTYPE_WIN32</p></li>
+<li><p>LXiOSTYPE_MACOSX</p></li>
+<li><p>LXiOSTYPE_LINUX</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiUSERIDLE_ALWAYS">
+<span class="target" id="lxd__scripts_8hpp_1ad59dfc562c3803380d1fc5099fc8714a"></span><code class="sig-name descname">LXiUSERIDLE_ALWAYS</code><a class="headerlink" href="#c.LXiUSERIDLE_ALWAYS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There are cases where plug-ins have out-of-band actions they need to execute from the main thread when it is safe to do so. An example might be modo’s own telnet service, which can receive commands at any time but can only execute them when it is safe to do so, a time that we refer to as “user idle”. This method can be used to perform an action a visitor when the user is idle. It is always performed from the main thread. There are a number of criteria that can be used to define “idle”. You can set whatever combination of flags you want, except for ALWAYS, which is a special case that is executed immediately.</p>
+<p>Generally speaking, you’ll want to use ALL_IDLE, combined with APP_MUST_BE_ACTIVE when applicable and just leave it at that. It should be rare to need to remove specific flags.</p>
+<p><ul class="simple">
+<li><p>ALWAYS A special-case value; if passed, the user idle action is executed as soon as possible. This is rarely used, as it does not make sure it is safe to perform such an action  the user may be in the middle of a file dialog or rendering or something like that. Extreme care should be taken when using his functionality.</p></li>
+<li><p>APP_MUST_BE_ACTIVE The application must be active, meaning that it currently has the focus in the OS.</p></li>
+<li><p>KEYS_UP No keys on the keyboard can be pressed.</p></li>
+<li><p>MODIFIER_KEYS_UP No keys defined as modifiers can be pressed.</p></li>
+<li><p>NO_DIALOGS_OPEN All dialogs (system dialogs, modal dialogs, etc) must be closed.</p></li>
+<li><p>CMD_STACK_EMPTY No commands can be currently be executing.</p></li>
+<li><p>NO_SUB_INPUT_LOOP Somewhat escoteric, this ensures that we’re in the main application input loop. In some cases there are secondary input loops used for special things, like modal dialogs.</p></li>
+<li><p>EDIT_FIELDS_UNFOCUSED No edit fields have focus.</p></li>
+<li><p>ALL_IDLE This mask is what is usually set, and contains all of the above flags except for APP_MUST_BE_ACTIVE.</p></li>
+</ul>
+</p>
+<p>NOTE: These defines MUST match the USERIDLEf_ defines in awin. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfUSERIDLE_APP_MUST_BE_ACTIVE</p></li>
+<li><p>LXfUSERIDLE_MOUSE_BUTTONS_UP</p></li>
+<li><p>LXfUSERIDLE_KEYS_UP</p></li>
+<li><p>LXfUSERIDLE_MODIFIER_KEYS_UP</p></li>
+<li><p>LXfUSERIDLE_NO_DIALOGS_OPEN</p></li>
+<li><p>LXfUSERIDLE_NO_POPS_OPEN</p></li>
+<li><p>LXfUSERIDLE_CMD_STACK_EMPTY</p></li>
+<li><p>LXfUSERIDLE_NO_SUB_INPUT_LOOP</p></li>
+<li><p>LXfUSERIDLE_EDIT_FIELDS_UNFOCUSED</p></li>
+<li><p>LXfUSERIDLE_SCENE_STABLE</p></li>
+<li><p>USERIDLEf_ALL_IDLE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfSESSIONSTAGE_STARTUP">
+<span class="target" id="lxd__scripts_8hpp_1a158be1da8f013b1348a7f57ea9323690"></span><code class="sig-name descname">LXfSESSIONSTAGE_STARTUP</code><a class="headerlink" href="#c.LXfSESSIONSTAGE_STARTUP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The stage can be one of the following: </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfSESSIONSTAGE_READY</p></li>
+<li><p>LXfSESSIONSTAGE_SHUTDOWN</p></li>
+<li><p>LXiSESSIONSTAGE_NOT_READY</p></li>
+<li><p>LXiSESSIONSTAGE_STARTUP_COMMANDS</p></li>
+<li><p>LXiSESSIONSTAGE_SYSTEM_READY</p></li>
+<li><p>LXiSESSIONSTAGE_SHUTTING_DOWN</p></li>
+</ul>
+</div>
+<div class="section" id="ilxappactivelistener">
+<h2><a class="toc-backref" href="#id9">ILxAppActiveListener</a><a class="headerlink" href="#ilxappactivelistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxAppActiveListener">
+<span id="_CPPv320ILxAppActiveListener"></span><span id="_CPPv220ILxAppActiveListener"></span><span id="ILxAppActiveListener"></span><span class="target" id="class_i_lx_app_active_listener"></span><em class="property">class </em><code class="sig-name descname">ILxAppActiveListener</code><a class="headerlink" href="#_CPPv420ILxAppActiveListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients can be notified when the application gets or loses focus by listening to the <a class="reference internal" href="#class_i_lx_app_active_listener"><span class="std std-ref">ILxAppActiveListener</span></a> port. A common use of this is to check to see if any files have changed since the user last left the app, or to pause some networking or other interprocess communication until the app gains/loses focus again. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxAppActiveListener11IsNowActiveE11LXtObjectIDi">
+<span id="_CPPv3N20ILxAppActiveListener11IsNowActiveE11LXtObjectIDi"></span><span id="_CPPv2N20ILxAppActiveListener11IsNowActiveE11LXtObjectIDi"></span><span id="ILxAppActiveListener::IsNowActive__LXtObjectID.i"></span><span class="target" id="class_i_lx_app_active_listener_1ab9b52a4259e3fb4b6a6d750fd0d484a2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsNowActive</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>isActive</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAppActiveListener11IsNowActiveE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called with true when the app becomes active, and false when it becomes inactive. User idle actions can be armed from this method to execute commands as needed. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxlineinterpreter">
+<h2><a class="toc-backref" href="#id10">ILxLineInterpreter</a><a class="headerlink" href="#ilxlineinterpreter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxLineInterpreter">
+<span id="_CPPv318ILxLineInterpreter"></span><span id="_CPPv218ILxLineInterpreter"></span><span id="ILxLineInterpreter"></span><span class="target" id="class_i_lx_line_interpreter"></span><em class="property">class </em><code class="sig-name descname">ILxLineInterpreter</code><a class="headerlink" href="#_CPPv418ILxLineInterpreter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A line interpreter is a persistent server that interprets lines of text as interactive commands. The simplest (built-in) interpreter is one that treats each line of input as a command or query and generates output. More complex interpreters could process input using a scripting language. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxLineInterpreter5FlagsE11LXtObjectID">
+<span id="_CPPv3N18ILxLineInterpreter5FlagsE11LXtObjectID"></span><span id="_CPPv2N18ILxLineInterpreter5FlagsE11LXtObjectID"></span><span id="ILxLineInterpreter::Flags__LXtObjectID"></span><span class="target" id="class_i_lx_line_interpreter_1a62e354c4583ee7c4ff9dc760657d1e50"></span>unsigned <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxLineInterpreter5FlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxLineInterpreter6PromptE11LXtObjectIDPPKcj">
+<span id="_CPPv3N18ILxLineInterpreter6PromptE11LXtObjectIDPPKcj"></span><span id="_CPPv2N18ILxLineInterpreter6PromptE11LXtObjectIDPPKcj"></span><span id="ILxLineInterpreter::Prompt__LXtObjectID.cCPP.unsigned"></span><span class="target" id="class_i_lx_line_interpreter_1a1e456f489e0c2057bb5e815e6de3a1ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Prompt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>prompt</em>, unsigned <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxLineInterpreter6PromptE11LXtObjectIDPPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>NOPROMPT The user-provided or default prompt is used, and the server does not define its own.</p></li>
+<li><p>NORESULT Determines if the “ok” text is output in headless mode after successfully executing a line.</p></li>
+<li><p>NOCOOKING Dunno.</p></li>
+<li><p>NOUNDOS The server does not create undos, and will not appear in the Command Histroy’s unod list or history. This used for the special-case of the built-in command line interpreter, since commands implicitly have undos and are directly handled by the undo systme. It is extremely dangerous to perform undos (intentionally or not) with this flag set. Get the prompt string. CURRENT returns the active prompt based on the state of the interpreter. ALTERNATE gives the other possible prompt, if any. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxLineInterpreter7ExecuteE11LXtObjectIDPKci11LXtObjectID">
+<span id="_CPPv3N18ILxLineInterpreter7ExecuteE11LXtObjectIDPKci11LXtObjectID"></span><span id="_CPPv2N18ILxLineInterpreter7ExecuteE11LXtObjectIDPKci11LXtObjectID"></span><span id="ILxLineInterpreter::Execute__LXtObjectID.cCP.i.LXtObjectID"></span><span class="target" id="class_i_lx_line_interpreter_1ad4acf6f59f88ff51e22c1beaa82221a4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Execute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>line</em>, int <em>execFlags</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>execution</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxLineInterpreter7ExecuteE11LXtObjectIDPKci11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute a line. The flags are used for executing commands, and the execution object receives the results. Errors can be returned as the return value or through the message object, although return values take precedence. The special value LINEISCOMMENT can also be returned. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfLINT_NOPROMPT</p></li>
+<li><p>LXfLINT_NORESULT</p></li>
+<li><p>LXfLINT_NOCOOKING</p></li>
+<li><p>LXfLINT_NOUNDOS</p></li>
+<li><p>LXiLINT_CURRENT</p></li>
+<li><p>LXiLINT_ALTERNATE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxlineexecution">
+<h2><a class="toc-backref" href="#id11">ILxLineExecution</a><a class="headerlink" href="#ilxlineexecution" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxLineExecution">
+<span id="_CPPv316ILxLineExecution"></span><span id="_CPPv216ILxLineExecution"></span><span id="ILxLineExecution"></span><span class="target" id="class_i_lx_line_execution"></span><em class="property">class </em><code class="sig-name descname">ILxLineExecution</code><a class="headerlink" href="#_CPPv416ILxLineExecution" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The execution object is just a way for the interpreter to pass results back to the caller. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxLineExecution10CookedLineE11LXtObjectIDPKc">
+<span id="_CPPv3N16ILxLineExecution10CookedLineE11LXtObjectIDPKc"></span><span id="_CPPv2N16ILxLineExecution10CookedLineE11LXtObjectIDPKc"></span><span id="ILxLineExecution::CookedLine__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_line_execution_1a82d587db0b6d1b304dec62b84ee5820a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CookedLine</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxLineExecution10CookedLineE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>All of these methods are optional and hold the results of ececuting the interpreted line.<ul class="simple">
+<li><p>CookedLine the line string echoed back after processing. For the command interpreter this includes normalizing arguments.</p></li>
+<li><p>Message a Message object holding the result code and success/failure statement.</p></li>
+<li><p>Results a ValueArray object holding a list of query results.</p></li>
+<li><p>ResultHints hints for decoding integer results into strings.</p></li>
+<li><p>Info text lines to report status back to the user. This may be called multiple times. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxLineExecution7MessageE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxLineExecution7MessageE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxLineExecution7MessageE11LXtObjectID11LXtObjectID"></span><span id="ILxLineExecution::Message__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_line_execution_1a9ec5f7eac72516084d67bc4497de5270"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Message</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxLineExecution7MessageE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxLineExecution7ResultsE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxLineExecution7ResultsE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxLineExecution7ResultsE11LXtObjectID11LXtObjectID"></span><span id="ILxLineExecution::Results__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_line_execution_1ac3e0dff88dce6884b71ba0f692fdeb8e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Results</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>valArray</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxLineExecution7ResultsE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxLineExecution11ResultHintsE11LXtObjectIDPK16LXtTextValueHint">
+<span id="_CPPv3N16ILxLineExecution11ResultHintsE11LXtObjectIDPK16LXtTextValueHint"></span><span id="_CPPv2N16ILxLineExecution11ResultHintsE11LXtObjectIDPK16LXtTextValueHint"></span><span id="ILxLineExecution::ResultHints__LXtObjectID.LXtTextValueHintCP"></span><span class="target" id="class_i_lx_line_execution_1a544e3f1e25e550c58e0ff3cd460e2274"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ResultHints</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtTextValueHint *<em>hints</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxLineExecution11ResultHintsE11LXtObjectIDPK16LXtTextValueHint" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxLineExecution4InfoE11LXtObjectIDPKc">
+<span id="_CPPv3N16ILxLineExecution4InfoE11LXtObjectIDPKc"></span><span id="_CPPv2N16ILxLineExecution4InfoE11LXtObjectIDPKc"></span><span id="ILxLineExecution::Info__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_line_execution_1acabedc8619d33005b88776f642f92516"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Info</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxLineExecution4InfoE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxscriptlineevent">
+<h2><a class="toc-backref" href="#id12">ILxScriptLineEvent</a><a class="headerlink" href="#ilxscriptlineevent" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxScriptLineEvent">
+<span id="_CPPv318ILxScriptLineEvent"></span><span id="_CPPv218ILxScriptLineEvent"></span><span id="ILxScriptLineEvent"></span><span class="target" id="class_i_lx_script_line_event"></span><em class="property">class </em><code class="sig-name descname">ILxScriptLineEvent</code><a class="headerlink" href="#_CPPv418ILxScriptLineEvent" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface provides the line number edited and the script it was edited in. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxScriptLineEvent5IndexE11LXtObjectIDPj">
+<span id="_CPPv3N18ILxScriptLineEvent5IndexE11LXtObjectIDPj"></span><span id="_CPPv2N18ILxScriptLineEvent5IndexE11LXtObjectIDPj"></span><span id="ILxScriptLineEvent::Index__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_script_line_event_1a1b0649596c08166ae824b4c581640f18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Index</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxScriptLineEvent5IndexE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxScriptLineEvent6ScriptE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxScriptLineEvent6ScriptE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxScriptLineEvent6ScriptE11LXtObjectIDPPv"></span><span id="ILxScriptLineEvent::Script__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_script_line_event_1ae4c8191c0ee7fc99e8bfd9127641cb67"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Script</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxScriptLineEvent6ScriptE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_select.html" class="btn btn-neutral float-right" title="Select" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_schematic.html" class="btn btn-neutral float-left" title="Schematic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_scripts.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

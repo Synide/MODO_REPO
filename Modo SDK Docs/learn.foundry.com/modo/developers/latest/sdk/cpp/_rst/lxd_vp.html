@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_vp.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vp &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Volume" href="lxd_volume.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxview3d">ILxView3D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxglviewport">ILxGLViewport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxglviewportclient">ILxGLViewportClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxview3dportservice">ILxView3DportService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsimulationlistener">ILxSimulationListener</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Vp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vp">
+<h1>Vp<a class="headerlink" href="#vp" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxview3d" id="id1">ILxView3D</a></p></li>
+<li><p><a class="reference internal" href="#ilxglviewport" id="id2">ILxGLViewport</a></p></li>
+<li><p><a class="reference internal" href="#ilxglviewportclient" id="id3">ILxGLViewportClient</a></p></li>
+<li><p><a class="reference internal" href="#ilxview3dportservice" id="id4">ILxView3DportService</a></p></li>
+<li><p><a class="reference internal" href="#ilxsimulationlistener" id="id5">ILxSimulationListener</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>LXi_VPSPACE_MODEL</p></li>
+<li><p>LXi_VPSPACE_TEXTURE</p></li>
+<li><p>LXi_VPSPACE_WORLD</p></li>
+<li><p>LXi_VPSPACE_PREVIEW</p></li>
+<li><p>LXi_VPSPACE_MODEL2D</p></li>
+<li><p>LXi_VPSPACE_GRAPH</p></li>
+<li><p>LXi_VPSPACE_SCHEMATIC</p></li>
+<li><p>LXi_VP_AXIS_X</p></li>
+<li><p>LXi_VP_AXIS_Y</p></li>
+<li><p>LXi_VP_AXIS_Z</p></li>
+<li><p>LXi_VP_AXIS_PERSP</p></li>
+<li><p>LXi_VP_AXIS_UV</p></li>
+<li><p>LXi_VP_CAM_LEFT</p></li>
+<li><p>LXi_VP_CAM_RIGHT</p></li>
+<li><p>LXi_VP_CAM_TOP</p></li>
+<li><p>LXi_VP_CAM_BOTTOM</p></li>
+<li><p>LXi_VP_CAM_FRONT</p></li>
+<li><p>LXi_VP_CAM_BACK</p></li>
+<li><p>LXi_VP_CAM_PERSP</p></li>
+</ul>
+<div class="section" id="ilxview3d">
+<h2><a class="toc-backref" href="#id1">ILxView3D</a><a class="headerlink" href="#ilxview3d" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxView3D">
+<span id="_CPPv39ILxView3D"></span><span id="_CPPv29ILxView3D"></span><span id="ILxView3D"></span><span class="target" id="class_i_lx_view3_d"></span><em class="property">class </em><code class="sig-name descname">ILxView3D</code><a class="headerlink" href="#_CPPv49ILxView3D" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The application 3D and UV viewports are exposed as a list of <a class="reference internal" href="#class_i_lx_view3_d"><span class="std std-ref">ILxView3D</span></a> objects. Clients will generally find a view in the list, then use the <a class="reference internal" href="#class_i_lx_view3_d"><span class="std std-ref">ILxView3D</span></a> interface to get its specific properties. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D5SpaceE11LXtObjectID">
+<span id="_CPPv3N9ILxView3D5SpaceE11LXtObjectID"></span><span id="_CPPv2N9ILxView3D5SpaceE11LXtObjectID"></span><span id="ILxView3D::Space__LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a284b555849d66a0e4ba9d4563aaaa501"></span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <code class="sig-name descname">Space</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D5SpaceE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>LxResult Bounds (self, x, y, w, h) Returns the upper left corner coordinates for the view, and its width and height in pixels. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D4AxisE11LXtObjectIDPi9LXtVector">
+<span id="_CPPv3N9ILxView3D4AxisE11LXtObjectIDPi9LXtVector"></span><span id="_CPPv2N9ILxView3D4AxisE11LXtObjectIDPi9LXtVector"></span><span id="ILxView3D::Axis__LXtObjectID.iP.LXtVector"></span><span class="target" id="class_i_lx_view3_d_1ab553c0af006040d3f07b57a66b02f667"></span>int <code class="sig-name descname">Axis</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>cam</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>axis</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D4AxisE11LXtObjectIDPi9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D6BoundsE11LXtObjectIDPiPiPiPi">
+<span id="_CPPv3N9ILxView3D6BoundsE11LXtObjectIDPiPiPiPi"></span><span id="_CPPv2N9ILxView3D6BoundsE11LXtObjectIDPiPiPiPi"></span><span id="ILxView3D::Bounds__LXtObjectID.iP.iP.iP.iP"></span><span class="target" id="class_i_lx_view3_d_1a29a7f51efec62d4ef36e9585bd9cdcb6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Bounds</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>x</em>, int *<em>y</em>, int *<em>w</em>, int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D6BoundsE11LXtObjectIDPiPiPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D5StyleE11LXtObjectIDi">
+<span id="_CPPv3N9ILxView3D5StyleE11LXtObjectIDi"></span><span id="_CPPv2N9ILxView3D5StyleE11LXtObjectIDi"></span><span id="ILxView3D::Style__LXtObjectID.i"></span><span class="target" id="class_i_lx_view3_d_1a1871584a9c96d81a5ebb0d0a6198a751"></span>int <code class="sig-name descname">Style</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>option</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D5StyleE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9PixelSizeE11LXtObjectID">
+<span id="_CPPv3N9ILxView3D9PixelSizeE11LXtObjectID"></span><span id="_CPPv2N9ILxView3D9PixelSizeE11LXtObjectID"></span><span id="ILxView3D::PixelSize__LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a8151bebe3615d04330ca8f8df8cdb9cb"></span>double <code class="sig-name descname">PixelSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9PixelSizeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D6CenterE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxView3D6CenterE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxView3D6CenterE11LXtObjectID9LXtVector"></span><span id="ILxView3D::Center__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_view3_d_1ace307dd3d9a8d008c8428661e9a38971"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Center</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>center</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D6CenterE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9EyeVectorE11LXtObjectID9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxView3D9EyeVectorE11LXtObjectID9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxView3D9EyeVectorE11LXtObjectID9LXtVector9LXtVector"></span><span id="ILxView3D::EyeVector__LXtObjectID.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_view3_d_1a495e8829843be6cdbcf3474888f41d7d"></span>double <code class="sig-name descname">EyeVector</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9EyeVectorE11LXtObjectID9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D6MatrixE11LXtObjectID9LXtMatrixi">
+<span id="_CPPv3N9ILxView3D6MatrixE11LXtObjectID9LXtMatrixi"></span><span id="_CPPv2N9ILxView3D6MatrixE11LXtObjectID9LXtMatrixi"></span><span id="ILxView3D::Matrix__LXtObjectID.LXtMatrix.i"></span><span class="target" id="class_i_lx_view3_d_1aef8593a42636cfbbd7f90d8d09f27332"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Matrix</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>mat</em>, int <em>inverse</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D6MatrixE11LXtObjectID9LXtMatrixi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D6AnglesE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxView3D6AnglesE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxView3D6AnglesE11LXtObjectID9LXtVector"></span><span id="ILxView3D::Angles__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_view3_d_1a494d4501858d02ecc89540d67b7d1253"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Angles</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>hpb</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D6AnglesE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9WorkPlaneE11LXtObjectID9LXtVector">
+<span id="_CPPv3N9ILxView3D9WorkPlaneE11LXtObjectID9LXtVector"></span><span id="_CPPv2N9ILxView3D9WorkPlaneE11LXtObjectID9LXtVector"></span><span id="ILxView3D::WorkPlane__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_view3_d_1a991dc7dbc520cc32d9f49ed64b0a735a"></span>int <code class="sig-name descname">WorkPlane</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>center</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9WorkPlaneE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D4To3DE11LXtObjectIDff9LXtVectori">
+<span id="_CPPv3N9ILxView3D4To3DE11LXtObjectIDff9LXtVectori"></span><span id="_CPPv2N9ILxView3D4To3DE11LXtObjectIDff9LXtVectori"></span><span id="ILxView3D::To3D__LXtObjectID.float.float.LXtVector.i"></span><span class="target" id="class_i_lx_view3_d_1a4f9f96113c211a32f7a974600001163a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">To3D</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>x</em>, float <em>y</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D4To3DE11LXtObjectIDff9LXtVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D7To3DHitE11LXtObjectIDff9LXtVector9LXtVector">
+<span id="_CPPv3N9ILxView3D7To3DHitE11LXtObjectIDff9LXtVector9LXtVector"></span><span id="_CPPv2N9ILxView3D7To3DHitE11LXtObjectIDff9LXtVector9LXtVector"></span><span id="ILxView3D::To3DHit__LXtObjectID.float.float.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_view3_d_1a5c785b4e204a3719b6d1b06262f5d5b2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">To3DHit</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>x</em>, float <em>y</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>nrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D7To3DHitE11LXtObjectIDff9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D8BackdropE11LXtObjectIDPPv">
+<span id="_CPPv3N9ILxView3D8BackdropE11LXtObjectIDPPv"></span><span id="_CPPv2N9ILxView3D8BackdropE11LXtObjectIDPPv"></span><span id="ILxView3D::Backdrop__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_view3_d_1a55dfcad7739badf1ce729c8acf71eb5d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Backdrop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D8BackdropE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Background images in viewports a whole kettle of worms, enjoy.<ul class="simple">
+<li><p>LxResult Backdrop(self, item) Returns the <a class="reference internal" href="lxd_item.html#class_i_lx_item"><span class="std std-ref">ILxItem</span></a> for the image used by the specified view. Naturally, this object must be released by the client when it is no longer needed. If there is no image, LXe_NOTFOUND will be returned.</p></li>
+<li><p>const char *BackdropName(self) Returns the name of the image used by the specified view. If there is no image it will be null.</p></li>
+<li><p>LxResult BackdropPlace(self, x, y, w, h) Returns the center position and dimensions of the backdrop image. If there is no image, LXe_NOTFOUND will be returned.</p></li>
+<li><p>int BackdropAspect(self, asp) Returns the aspect ratio of the backdrop image, and whether the aspect is locked. If there is no image, LXe_NOTFOUND will be returned.</p></li>
+<li><p>int BackdropOrient(self, ang) Returns the rotation and horizontal-flip state of the backdrop image. If there is no image, LXe_NOTFOUND will be returned.</p></li>
+<li><p>int BackdropLook(self, brit, cont, trans) Returns the invert state and fills brightness, contrast, and transparency of the backdrop image. If there is no image, LXe_NOTFOUND will be returned.</p></li>
+<li><p>int BackdropRender(self, res, blend) Returns the overlay state and fills resolution and pixel-blending of the backdrop image. If there is no image, LXe_NOTFOUND will be returned. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D12BackdropNameE11LXtObjectID">
+<span id="_CPPv3N9ILxView3D12BackdropNameE11LXtObjectID"></span><span id="_CPPv2N9ILxView3D12BackdropNameE11LXtObjectID"></span><span id="ILxView3D::BackdropName__LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a6229fad8b72b55d7c490761d00bd3cb0"></span><em class="property">const</em> char *<code class="sig-name descname">BackdropName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D12BackdropNameE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D13BackdropPlaceE11LXtObjectIDPdPdPdPd">
+<span id="_CPPv3N9ILxView3D13BackdropPlaceE11LXtObjectIDPdPdPdPd"></span><span id="_CPPv2N9ILxView3D13BackdropPlaceE11LXtObjectIDPdPdPdPd"></span><span id="ILxView3D::BackdropPlace__LXtObjectID.doubleP.doubleP.doubleP.doubleP"></span><span class="target" id="class_i_lx_view3_d_1abe0e49a0e09dabc39b2ae65a81a41c6e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BackdropPlace</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>cx</em>, double *<em>cy</em>, double *<em>w</em>, double *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D13BackdropPlaceE11LXtObjectIDPdPdPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D14BackdropAspectE11LXtObjectIDPd">
+<span id="_CPPv3N9ILxView3D14BackdropAspectE11LXtObjectIDPd"></span><span id="_CPPv2N9ILxView3D14BackdropAspectE11LXtObjectIDPd"></span><span id="ILxView3D::BackdropAspect__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_view3_d_1adf575381a8e8c3e6c27b3d5b154bfe76"></span>int <code class="sig-name descname">BackdropAspect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>asp</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D14BackdropAspectE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D14BackdropOrientE11LXtObjectIDPd">
+<span id="_CPPv3N9ILxView3D14BackdropOrientE11LXtObjectIDPd"></span><span id="_CPPv2N9ILxView3D14BackdropOrientE11LXtObjectIDPd"></span><span id="ILxView3D::BackdropOrient__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_view3_d_1a22e875d80291b17f02341171c1526bf5"></span>int <code class="sig-name descname">BackdropOrient</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>ang</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D14BackdropOrientE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D12BackdropLookE11LXtObjectIDPdPdPd">
+<span id="_CPPv3N9ILxView3D12BackdropLookE11LXtObjectIDPdPdPd"></span><span id="_CPPv2N9ILxView3D12BackdropLookE11LXtObjectIDPdPdPd"></span><span id="ILxView3D::BackdropLook__LXtObjectID.doubleP.doubleP.doubleP"></span><span class="target" id="class_i_lx_view3_d_1ae8529490aa1b3c048087a9232865affd"></span>int <code class="sig-name descname">BackdropLook</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>brit</em>, double *<em>cont</em>, double *<em>trns</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D12BackdropLookE11LXtObjectIDPdPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D14BackdropRenderE11LXtObjectIDPiPi">
+<span id="_CPPv3N9ILxView3D14BackdropRenderE11LXtObjectIDPiPi"></span><span id="_CPPv2N9ILxView3D14BackdropRenderE11LXtObjectIDPiPi"></span><span id="ILxView3D::BackdropRender__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_view3_d_1a71c3373ce4a97a7919b74acf2004b4cc"></span>int <code class="sig-name descname">BackdropRender</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>resolution</em>, int *<em>blend</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D14BackdropRenderE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D10HitElementE11LXtObjectID6LXtID4ffPPv">
+<span id="_CPPv3N9ILxView3D10HitElementE11LXtObjectID6LXtID4ffPPv"></span><span id="_CPPv2N9ILxView3D10HitElementE11LXtObjectID6LXtID4ffPPv"></span><span id="ILxView3D::HitElement__LXtObjectID.LXtID4.float.float.voidPP"></span><span class="target" id="class_i_lx_view3_d_1a2814818e522ff43fe8b60cfaee5ba8b2"></span>int <code class="sig-name descname">HitElement</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, float <em>x</em>, float <em>y</em>, void **<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D10HitElementE11LXtObjectID6LXtID4ffPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D8GridSizeE11LXtObjectID">
+<span id="_CPPv3N9ILxView3D8GridSizeE11LXtObjectID"></span><span id="_CPPv2N9ILxView3D8GridSizeE11LXtObjectID"></span><span id="ILxView3D::GridSize__LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a3e2cfc0778bda63383e0ded2d4a3170d"></span>double <code class="sig-name descname">GridSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D8GridSizeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>double GridSize (self) Returns the current grid size of the view.</p></li>
+<li><p>int FrameRate(self) Returns the frame rate of the view, meanng how quickly GL is drawing. This is identical to the results displayed in the viewport from the “glmeter” command. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9FrameRateE11LXtObjectID">
+<span id="_CPPv3N9ILxView3D9FrameRateE11LXtObjectID"></span><span id="_CPPv2N9ILxView3D9FrameRateE11LXtObjectID"></span><span id="ILxView3D::FrameRate__LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a036a33fc61bb1002b245524d79ff5cd1"></span>double <code class="sig-name descname">FrameRate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9FrameRateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9SetMatrixE11LXtObjectIDK9LXtMatrix">
+<span id="_CPPv3N9ILxView3D9SetMatrixE11LXtObjectIDK9LXtMatrix"></span><span id="_CPPv2N9ILxView3D9SetMatrixE11LXtObjectIDK9LXtMatrix"></span><span id="ILxView3D::SetMatrix__LXtObjectID.LXtMatrixC"></span><span class="target" id="class_i_lx_view3_d_1a2e201ea7847a956e0ce59bd206ba05c9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMatrix</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>mat</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9SetMatrixE11LXtObjectIDK9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9SetCenterE11LXtObjectIDK9LXtVector">
+<span id="_CPPv3N9ILxView3D9SetCenterE11LXtObjectIDK9LXtVector"></span><span id="_CPPv2N9ILxView3D9SetCenterE11LXtObjectIDK9LXtVector"></span><span id="ILxView3D::SetCenter__LXtObjectID.LXtVectorC"></span><span class="target" id="class_i_lx_view3_d_1abe857287805be6b20e16c8aadc9bd8db"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCenter</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9SetCenterE11LXtObjectIDK9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D8SetScaleE11LXtObjectIDd">
+<span id="_CPPv3N9ILxView3D8SetScaleE11LXtObjectIDd"></span><span id="_CPPv2N9ILxView3D8SetScaleE11LXtObjectIDd"></span><span id="ILxView3D::SetScale__LXtObjectID.double"></span><span class="target" id="class_i_lx_view3_d_1ae35f34954db17c4a362dd11f7f954dcf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetScale</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>scl</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D8SetScaleE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9ItemShadeE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N9ILxView3D9ItemShadeE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N9ILxView3D9ItemShadeE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxView3D::ItemShade__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_view3_d_1ae804826962f30463649d2939e0c6c241"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemShade</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>shade</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9ItemShadeE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These functions are to get item specific properties on the viewport. When “Enable Independent Drawing” is enabled on the viewport, they returns the properties from “Draw Options” on the item.<ul class="simple">
+<li><p>LxResult ItemShade (self, item, shade) Return the shading style (VPOPT_SHADE_XXX) of the given item.</p></li>
+<li><p>LxResult ItemColor (self, item, color) Returns the basic wireframe color and alpha of the item.</p></li>
+<li><p>LxResult ItemSelColor (self, item, color) Returns the wireframe color of the selected item. If the item is not selected, it returs basic wireframe color.</p></li>
+<li><p>LxResult ItemWireOverlay (self, item, color, wireframe) Returns the wireframe overlay mode and the overlay color of the selected item. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9ItemColorE11LXtObjectID11LXtObjectID11LXtFVector4">
+<span id="_CPPv3N9ILxView3D9ItemColorE11LXtObjectID11LXtObjectID11LXtFVector4"></span><span id="_CPPv2N9ILxView3D9ItemColorE11LXtObjectID11LXtObjectID11LXtFVector4"></span><span id="ILxView3D::ItemColor__LXtObjectID.LXtObjectID.LXtFVector4"></span><span class="target" id="class_i_lx_view3_d_1a86a0c7accc244b26674229e626184e35"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv411LXtFVector4" title="LXtFVector4">LXtFVector4</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9ItemColorE11LXtObjectID11LXtObjectID11LXtFVector4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D12ItemSelColorE11LXtObjectID11LXtObjectID11LXtFVector4">
+<span id="_CPPv3N9ILxView3D12ItemSelColorE11LXtObjectID11LXtObjectID11LXtFVector4"></span><span id="_CPPv2N9ILxView3D12ItemSelColorE11LXtObjectID11LXtObjectID11LXtFVector4"></span><span id="ILxView3D::ItemSelColor__LXtObjectID.LXtObjectID.LXtFVector4"></span><span class="target" id="class_i_lx_view3_d_1a9b09822aec54b454b0a67e598c3dce91"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemSelColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv411LXtFVector4" title="LXtFVector4">LXtFVector4</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D12ItemSelColorE11LXtObjectID11LXtObjectID11LXtFVector4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D15ItemWireOverlayE11LXtObjectID11LXtObjectID11LXtFVector4Pj">
+<span id="_CPPv3N9ILxView3D15ItemWireOverlayE11LXtObjectID11LXtObjectID11LXtFVector4Pj"></span><span id="_CPPv2N9ILxView3D15ItemWireOverlayE11LXtObjectID11LXtObjectID11LXtFVector4Pj"></span><span id="ILxView3D::ItemWireOverlay__LXtObjectID.LXtObjectID.LXtFVector4.unsignedP"></span><span class="target" id="class_i_lx_view3_d_1af00c9496b91db03286857011107a9324"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemWireOverlay</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv411LXtFVector4" title="LXtFVector4">LXtFVector4</a> <em>color</em>, unsigned *<em>wireframe</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D15ItemWireOverlayE11LXtObjectID11LXtObjectID11LXtFVector4Pj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D9DeformersE11LXtObjectID">
+<span id="_CPPv3N9ILxView3D9DeformersE11LXtObjectID"></span><span id="_CPPv2N9ILxView3D9DeformersE11LXtObjectID"></span><span id="ILxView3D::Deformers__LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a7d823f9177b5a0a92119bc92f1358dcb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Deformers</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D9DeformersE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>LxResult Deformers (self) Returns LXe_TRUE if “Deformers” stat of the view is ON, otherwise it returns LXe_FALSE. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D13ItemIsVisibleE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N9ILxView3D13ItemIsVisibleE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N9ILxView3D13ItemIsVisibleE11LXtObjectID11LXtObjectID"></span><span id="ILxView3D::ItemIsVisible__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a70fce4e481452b2278dee8a09881b2c3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemIsVisible</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D13ItemIsVisibleE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>LxResult ItemIsVisible (self, item) Returns LXe_TRUE if the item is visible, otherwise it returns LXe_FALSE. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D7ToUVHitE11LXtObjectIDPKcffjPfPf">
+<span id="_CPPv3N9ILxView3D7ToUVHitE11LXtObjectIDPKcffjPfPf"></span><span id="_CPPv2N9ILxView3D7ToUVHitE11LXtObjectIDPKcffjPfPf"></span><span id="ILxView3D::ToUVHit__LXtObjectID.cCP.float.float.unsigned.floatP.floatP"></span><span class="target" id="class_i_lx_view3_d_1af1f1566819243ef82aab3d4a4ae7f75c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToUVHit</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, float <em>x</em>, float <em>y</em>, unsigned <em>layer</em>, float *<em>u</em>, float *<em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D7ToUVHitE11LXtObjectIDPKcffjPfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>LxResult ToUVHit(self, x, y, u, v) Sets the U and V for the ray hit for screen coordinate x,y. Return LXe_OK if there is a hit, LXe_NOTFOUND if there is no hit. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxView3D17InvalidateSurfaceE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N9ILxView3D17InvalidateSurfaceE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N9ILxView3D17InvalidateSurfaceE11LXtObjectID11LXtObjectID"></span><span id="ILxView3D::InvalidateSurface__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_view3_d_1a2e94be82af2e92c916db3d1db8344b84"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InvalidateSurface</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxView3D17InvalidateSurfaceE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>LxResult InvalidateSurface(self, item) Invalidate GL Draw Cache for an item. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_VPOPT_OFF</p></li>
+<li><p>LXi_VPOPT_ON</p></li>
+<li><p>LXi_VPOPT_SHADE_WIRE</p></li>
+<li><p>LXi_VPOPT_SHADE_SKCH</p></li>
+<li><p>LXi_VPOPT_SHADE_VCLR</p></li>
+<li><p>LXi_VPOPT_SHADE_SHAD</p></li>
+<li><p>LXi_VPOPT_SHADE_TEXT</p></li>
+<li><p>LXi_VPOPT_SHADE_REFL</p></li>
+<li><p>LXi_VPOPT_SHADE_PRG1</p></li>
+<li><p>LXi_VPOPT_SHADE_PRG2</p></li>
+<li><p>LXi_VPOPT_WIRE_NONE</p></li>
+<li><p>LXi_VPOPT_WIRE_COLR</p></li>
+<li><p>LXi_VPOPT_WIRE_UNIF</p></li>
+<li><p>LXi_VPOPT_VCLR_SEL</p></li>
+<li><p>LXi_VPOPT_VCLR_WGT</p></li>
+<li><p>LXi_VPOPT_VCLR_RGB</p></li>
+<li><p>LXi_VPOPT_BACK_WIRE</p></li>
+<li><p>LXi_VPOPT_BACK_FLAT</p></li>
+<li><p>LXi_VPOPT_BACK_ACTV</p></li>
+<li><p>LXi_VPTO3D_SNAP</p></li>
+<li><p>LXi_VPTO3D_WORK</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXi_VPHIT_VERT">
+<span class="target" id="lxd__vp_8hpp_1a76d284266ec09930a4fc86a8df00d277"></span><code class="sig-name descname">LXi_VPHIT_VERT</code><a class="headerlink" href="#c.LXi_VPHIT_VERT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Raycasting to hit scene elements is facilitated at the viewport level and generalized to use any 2D position on the view. Often the view and the position will be taken from the mouse position.<ul class="simple">
+<li><p>int HitElement(self, type, x, y, list) Returns the number of elements of the requested type along the eye vector going through (x,y). The elements themselves are in the read-only array of pointers returned in list. Type should be one of the following </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_VPHIT_EDGE</p></li>
+<li><p>LXi_VPHIT_POLY</p></li>
+<li><p>LXi_VPHIT_ITEM</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPKG_DEFERRED_UPDATE">
+<span class="target" id="lxd__vp_8hpp_1ab4f4cf9494ad6442c82d56055926076d"></span><code class="sig-name descname">LXsPKG_DEFERRED_UPDATE</code><a class="headerlink" href="#c.LXsPKG_DEFERRED_UPDATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An item type can define a tag for a deferred update channel. This is an integer channel that will be tested to see if deferred updates should be done. Any non-zero int value enables deferred updates. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxglviewport">
+<h2><a class="toc-backref" href="#id2">ILxGLViewport</a><a class="headerlink" href="#ilxglviewport" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxGLViewport">
+<span id="_CPPv313ILxGLViewport"></span><span id="_CPPv213ILxGLViewport"></span><span id="ILxGLViewport"></span><span class="target" id="class_i_lx_g_l_viewport"></span><em class="property">class </em><code class="sig-name descname">ILxGLViewport</code><a class="headerlink" href="#_CPPv413ILxGLViewport" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The GLViewport object allows clients to get a fully domesticated GL viewport of their own. The object is not associated with any on-screen viewport and can be used with no nexus-native windows at all. Instead it represents GL state that can draw and react to input. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxGLViewport10InitializeE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N13ILxGLViewport10InitializeE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N13ILxGLViewport10InitializeE11LXtObjectID11LXtObjectID"></span><span id="ILxGLViewport::Initialize__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_g_l_viewport_1a36acd75abd443f17e15ea114d1d6bb8b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLViewport10InitializeE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the new viewport object with the client interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLViewport7SetSizeE11LXtObjectIDjj">
+<span id="_CPPv3N13ILxGLViewport7SetSizeE11LXtObjectIDjj"></span><span id="_CPPv2N13ILxGLViewport7SetSizeE11LXtObjectIDjj"></span><span id="ILxGLViewport::SetSize__LXtObjectID.unsigned.unsigned"></span><span class="target" id="class_i_lx_g_l_viewport_1a49c44eef25c4ddb1a64f9b38ff9a5a3a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>w</em>, unsigned <em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLViewport7SetSizeE11LXtObjectIDjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the size of the GL area. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLViewport4DrawE11LXtObjectID">
+<span id="_CPPv3N13ILxGLViewport4DrawE11LXtObjectID"></span><span id="_CPPv2N13ILxGLViewport4DrawE11LXtObjectID"></span><span id="ILxGLViewport::Draw__LXtObjectID"></span><span class="target" id="class_i_lx_g_l_viewport_1ab4e91b8397369315a28343d036c4a5d4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Draw</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLViewport4DrawE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Call this to draw the viewport. The GL context must be set correctly. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLViewport10MouseEventE11LXtObjectIDj">
+<span id="_CPPv3N13ILxGLViewport10MouseEventE11LXtObjectIDj"></span><span id="_CPPv2N13ILxGLViewport10MouseEventE11LXtObjectIDj"></span><span id="ILxGLViewport::MouseEvent__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_g_l_viewport_1a1a3daa745df887495d3a3b981097592f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MouseEvent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLViewport10MouseEventE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Call this to process a mouse event. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLViewport14SelectViewportE11LXtObjectID">
+<span id="_CPPv3N13ILxGLViewport14SelectViewportE11LXtObjectID"></span><span id="_CPPv2N13ILxGLViewport14SelectViewportE11LXtObjectID"></span><span id="ILxGLViewport::SelectViewport__LXtObjectID"></span><span class="target" id="class_i_lx_g_l_viewport_1ae856a0a94d6db2b03b74effee1242c19"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectViewport</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLViewport14SelectViewportE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Select the viewport, allowing the various view3d.??? commands to target it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLViewport15DropDestinationE11LXtObjectIDiiPPv">
+<span id="_CPPv3N13ILxGLViewport15DropDestinationE11LXtObjectIDiiPPv"></span><span id="_CPPv2N13ILxGLViewport15DropDestinationE11LXtObjectIDiiPPv"></span><span id="ILxGLViewport::DropDestination__LXtObjectID.i.i.voidPP"></span><span class="target" id="class_i_lx_g_l_viewport_1a3ac3a0811503ef218993afb41847cde4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DropDestination</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>x</em>, int <em>y</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLViewport15DropDestinationE11LXtObjectIDiiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When performing drag and drop, clients can get the drop destination for elements under the mouse. This will be a PreDest object that can be queried for information about the drop destination. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiGLMOUSE_EVENT_TERMINATE</p></li>
+<li><p>LXiGLMOUSE_EVENT_NONE</p></li>
+<li><p>LXiGLMOUSE_EVENT_ENTER</p></li>
+<li><p>LXiGLMOUSE_EVENT_LEAVE</p></li>
+<li><p>LXiGLMOUSE_EVENT_DOWN</p></li>
+<li><p>LXiGLMOUSE_EVENT_MOVE</p></li>
+<li><p>LXiGLMOUSE_EVENT_UP</p></li>
+<li><p>LXiGLMOUSE_EVENT_WHEEL</p></li>
+<li><p>LXiGLMOUSE_EVENT_MOD_KEY</p></li>
+</ul>
+</div>
+<div class="section" id="ilxglviewportclient">
+<h2><a class="toc-backref" href="#id3">ILxGLViewportClient</a><a class="headerlink" href="#ilxglviewportclient" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxGLViewportClient">
+<span id="_CPPv319ILxGLViewportClient"></span><span id="_CPPv219ILxGLViewportClient"></span><span id="ILxGLViewportClient"></span><span class="target" id="class_i_lx_g_l_viewport_client"></span><em class="property">class </em><code class="sig-name descname">ILxGLViewportClient</code><a class="headerlink" href="#_CPPv419ILxGLViewportClient" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The client object allows the owner of the viewport to provide essential information to the GL viewport, and to handle invalidation. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxGLViewportClient10InvalidateE11LXtObjectID">
+<span id="_CPPv3N19ILxGLViewportClient10InvalidateE11LXtObjectID"></span><span id="_CPPv2N19ILxGLViewportClient10InvalidateE11LXtObjectID"></span><span id="ILxGLViewportClient::Invalidate__LXtObjectID"></span><span class="target" id="class_i_lx_g_l_viewport_client_1a081e36bbfae1e9770180077d1242b970"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Invalidate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxGLViewportClient10InvalidateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called by the GL viewport when it needs to redraw. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxGLViewportClient13MousePositionE11LXtObjectIDPiPi">
+<span id="_CPPv3N19ILxGLViewportClient13MousePositionE11LXtObjectIDPiPi"></span><span id="_CPPv2N19ILxGLViewportClient13MousePositionE11LXtObjectIDPiPi"></span><span id="ILxGLViewportClient::MousePosition__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_g_l_viewport_client_1af8ff527a1e03d2da8664cc2fb661a106"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MousePosition</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>x</em>, int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxGLViewportClient13MousePositionE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the current mouse position. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxGLViewportClient11MouseButtonE11LXtObjectIDPj">
+<span id="_CPPv3N19ILxGLViewportClient11MouseButtonE11LXtObjectIDPj"></span><span id="_CPPv2N19ILxGLViewportClient11MouseButtonE11LXtObjectIDPj"></span><span id="ILxGLViewportClient::MouseButton__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_g_l_viewport_client_1a76fd095c711c57957e610654d6eae87f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MouseButton</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>button</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxGLViewportClient11MouseButtonE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the current mouse button depressed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxGLViewportClient14TabletPressureE11LXtObjectIDPd">
+<span id="_CPPv3N19ILxGLViewportClient14TabletPressureE11LXtObjectIDPd"></span><span id="_CPPv2N19ILxGLViewportClient14TabletPressureE11LXtObjectIDPd"></span><span id="ILxGLViewportClient::TabletPressure__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_g_l_viewport_client_1a76d10175f70164d83da7726c746df22b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TabletPressure</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>press</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxGLViewportClient14TabletPressureE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the current pressure for stylus devices. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxGLViewportClient10TabletTiltE11LXtObjectIDPd">
+<span id="_CPPv3N19ILxGLViewportClient10TabletTiltE11LXtObjectIDPd"></span><span id="_CPPv2N19ILxGLViewportClient10TabletTiltE11LXtObjectIDPd"></span><span id="ILxGLViewportClient::TabletTilt__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_g_l_viewport_client_1a58bb6d4944c5ce34951ddac4a2c53ee8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TabletTilt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>tilt</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxGLViewportClient10TabletTiltE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the current tilt for stylus devices. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxGLViewportClient10MouseCountE11LXtObjectIDPi">
+<span id="_CPPv3N19ILxGLViewportClient10MouseCountE11LXtObjectIDPi"></span><span id="_CPPv2N19ILxGLViewportClient10MouseCountE11LXtObjectIDPi"></span><span id="ILxGLViewportClient::MouseCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_g_l_viewport_client_1a54f1f48e04c89cc00837244668156ca5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MouseCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxGLViewportClient10MouseCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the count associated with the last input event. If it was a mouse button, this is used to resolve double click (2) from single click (1). For the scroll wheel, this is the number of steps the wheel has turned since the last wheel event, with positive numbers for one direction and negative for the other. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiGLMOUSE_BUTTON_NONE</p></li>
+<li><p>LXiGLMOUSE_BUTTON_LEFT</p></li>
+<li><p>LXiGLMOUSE_BUTTON_RIGHT</p></li>
+<li><p>LXiGLMOUSE_BUTTON_MIDDLE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxview3dportservice">
+<h2><a class="toc-backref" href="#id4">ILxView3DportService</a><a class="headerlink" href="#ilxview3dportservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxView3DportService">
+<span id="_CPPv320ILxView3DportService"></span><span id="_CPPv220ILxView3DportService"></span><span id="ILxView3DportService"></span><span class="target" id="class_i_lx_view3_dport_service"></span><em class="property">class </em><code class="sig-name descname">ILxView3DportService</code><a class="headerlink" href="#_CPPv420ILxView3DportService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxView3DportService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxView3DportService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxView3DportService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_view3_dport_service_1ad00c62d8f055cfb452b59e6133c63f09"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As with all globals, the first method gets the ILxScriptQueryID interface for the system.<ul class="simple">
+<li><p>ScriptQuery(self, sq) </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService5CountE11LXtObjectID">
+<span id="_CPPv3N20ILxView3DportService5CountE11LXtObjectID"></span><span id="_CPPv2N20ILxView3DportService5CountE11LXtObjectID"></span><span id="ILxView3DportService::Count__LXtObjectID"></span><span class="target" id="class_i_lx_view3_dport_service_1a8fd79610d5ae9016d2d52f916b344426"></span>int <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService5CountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The viewport service will provide access to a list of 3d and UV viewports referenced by index.<ul class="simple">
+<li><p>int Count(self) Returns the number of viewports</p></li>
+<li><p>int Current(self) Returns the most recently selected viewport’s index</p></li>
+<li><p>LxResult View(self, index, view) Returns an <a class="reference internal" href="#class_i_lx_view3_d"><span class="std std-ref">ILxView3D</span></a> for viewport at index. Naturally the client is responsible for releasing the returned object.</p></li>
+<li><p>int Mouse(self, x, y) Returns the index of the viewport currently under the mouse, or -1 if the mouse is not over a 3D view. The position relative to that view is fillde into x and y, if they are not NULL.</p></li>
+<li><p>LxResult SetHitUVMap(self, name) Sets the UV vertex map used for hit testing by tools. If the name is NULL, then the hit vmap is cleared. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService7CurrentE11LXtObjectID">
+<span id="_CPPv3N20ILxView3DportService7CurrentE11LXtObjectID"></span><span id="_CPPv2N20ILxView3DportService7CurrentE11LXtObjectID"></span><span id="ILxView3DportService::Current__LXtObjectID"></span><span class="target" id="class_i_lx_view3_dport_service_1adf9b2933a37f75a0659401083eb98e93"></span>int <code class="sig-name descname">Current</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService7CurrentE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService4ViewE11LXtObjectIDiPPv">
+<span id="_CPPv3N20ILxView3DportService4ViewE11LXtObjectIDiPPv"></span><span id="_CPPv2N20ILxView3DportService4ViewE11LXtObjectIDiPPv"></span><span id="ILxView3DportService::View__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_view3_dport_service_1a9368d50ecb9bccd1b617cce4b07ab809"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">View</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService4ViewE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService5MouseE11LXtObjectIDPiPi">
+<span id="_CPPv3N20ILxView3DportService5MouseE11LXtObjectIDPiPi"></span><span id="_CPPv2N20ILxView3DportService5MouseE11LXtObjectIDPiPi"></span><span id="ILxView3DportService::Mouse__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_view3_dport_service_1afbe50c3810a234c6e1b69166288bd674"></span>int <code class="sig-name descname">Mouse</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>x</em>, int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService5MouseE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService11SetHitUVMapE11LXtObjectIDPKc">
+<span id="_CPPv3N20ILxView3DportService11SetHitUVMapE11LXtObjectIDPKc"></span><span id="_CPPv2N20ILxView3DportService11SetHitUVMapE11LXtObjectIDPKc"></span><span id="ILxView3DportService::SetHitUVMap__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_view3_dport_service_1aa46990aa8613a5bd3fe5de6d205a703e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetHitUVMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService11SetHitUVMapE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService19InvalidateOverriderE11LXtObjectID11LXtObjectIDPKc">
+<span id="_CPPv3N20ILxView3DportService19InvalidateOverriderE11LXtObjectID11LXtObjectIDPKc"></span><span id="_CPPv2N20ILxView3DportService19InvalidateOverriderE11LXtObjectID11LXtObjectIDPKc"></span><span id="ILxView3DportService::InvalidateOverrider__LXtObjectID.LXtObjectID.cCP"></span><span class="target" id="class_i_lx_view3_dport_service_1aac6adf631b839ad2d8c0bfc790b911dc"></span>int <code class="sig-name descname">InvalidateOverrider</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>scene</em>, <em class="property">const</em> char *<em>pkgName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService19InvalidateOverriderE11LXtObjectID11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService10GLMaterialE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxView3DportService10GLMaterialE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxView3DportService10GLMaterialE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxView3DportService::GLMaterial__LXtObjectID.LXtObjectID.LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_view3_dport_service_1a44328561a34398881719bdce11a5cdfa"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GLMaterial</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>bin</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>view</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService10GLMaterialE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function allocates a GL material object (<a class="reference internal" href="lxd_draw.html#class_i_lx_g_l_material"><span class="std std-ref">ILxGLMaterial</span></a>) with given bin, item and view objects. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService20TriGroupToViewObjectE11LXtObjectIDj11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxView3DportService20TriGroupToViewObjectE11LXtObjectIDj11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxView3DportService20TriGroupToViewObjectE11LXtObjectIDj11LXtObjectIDPPv"></span><span id="ILxView3DportService::TriGroupToViewObject__LXtObjectID.unsigned-i.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_view3_dport_service_1a184b29b41ad6f3f854e1c9786274f5b8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TriGroupToViewObject</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>type</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>triGroup</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService20TriGroupToViewObjectE11LXtObjectIDj11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Converts a <a class="reference internal" href="lxd_trisurf.html#class_i_lx_triangle_group"><span class="std std-ref">ILxTriangleGroup</span></a> into an <a class="reference internal" href="lxd_viewobject.html#class_i_lx_view_object"><span class="std std-ref">ILxViewObject</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService14ImageToGLImageE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxView3DportService14ImageToGLImageE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxView3DportService14ImageToGLImageE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxView3DportService::ImageToGLImage__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_view3_dport_service_1a87d31a23015ebbb6be5763b02654cc93"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ImageToGLImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService14ImageToGLImageE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Converts an <a class="reference internal" href="lxd_image.html#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> object into a <a class="reference internal" href="lxd_draw.html#class_i_lx_g_l_image"><span class="std std-ref">ILxGLImage</span></a> object for drawing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService15AllocGLViewportE11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxView3DportService15AllocGLViewportE11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxView3DportService15AllocGLViewportE11LXtObjectIDPPv"></span><span id="ILxView3DportService::AllocGLViewport__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_view3_dport_service_1a1726ec67bdbb2b2845c93bea41bb82c0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllocGLViewport</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService15AllocGLViewportE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate a GLViewport. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService15AddVirtualModelE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxView3DportService15AddVirtualModelE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxView3DportService15AddVirtualModelE11LXtObjectID11LXtObjectID"></span><span id="ILxView3DportService::AddVirtualModel__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_view3_dport_service_1a99fcae42575ceb606c4b1de849999630"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddVirtualModel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vmodel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService15AddVirtualModelE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds an <a class="reference internal" href="lxd_vmodel.html#class_i_lx_virtual_model"><span class="std std-ref">ILxVirtualModel</span></a> for drawing into GL viewports. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService18RemoveVirtualModelE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxView3DportService18RemoveVirtualModelE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxView3DportService18RemoveVirtualModelE11LXtObjectID11LXtObjectID"></span><span id="ILxView3DportService::RemoveVirtualModel__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_view3_dport_service_1abe62a37310b55501819a9b29e2ad73bd"></span>void <code class="sig-name descname">RemoveVirtualModel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vmodel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService18RemoveVirtualModelE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Removes an <a class="reference internal" href="lxd_vmodel.html#class_i_lx_virtual_model"><span class="std std-ref">ILxVirtualModel</span></a> from GL viewports so it stops being drawn. If the provided vmodel isn’t currently being drawn, the function will do nothing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxView3DportService18UpdateVirtualModelE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxView3DportService18UpdateVirtualModelE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxView3DportService18UpdateVirtualModelE11LXtObjectID11LXtObjectID"></span><span id="ILxView3DportService::UpdateVirtualModel__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_view3_dport_service_1ad5b638230ae3f92981a57f234fd82359"></span>void <code class="sig-name descname">UpdateVirtualModel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vmodel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxView3DportService18UpdateVirtualModelE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Updates drawing for the provided virtual model. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxsimulationlistener">
+<h2><a class="toc-backref" href="#id5">ILxSimulationListener</a><a class="headerlink" href="#ilxsimulationlistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxSimulationListener">
+<span id="_CPPv321ILxSimulationListener"></span><span id="_CPPv221ILxSimulationListener"></span><span id="ILxSimulationListener"></span><span class="target" id="class_i_lx_simulation_listener"></span><em class="property">class </em><code class="sig-name descname">ILxSimulationListener</code><a class="headerlink" href="#_CPPv421ILxSimulationListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This global listener can be used to track the state changes related to interactive simulation. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxSimulationListener5StartE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N21ILxSimulationListener5StartE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N21ILxSimulationListener5StartE11LXtObjectID11LXtObjectID"></span><span id="ILxSimulationListener::Start__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_simulation_listener_1ac55a272b61b78dd7c6067cf4280af3c2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Start</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>channels</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSimulationListener5StartE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods are called when the simulation mode starts and ends. The start event is passed a ChannelRead object for reading the outputs of the simulation. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSimulationListener3EndE11LXtObjectID">
+<span id="_CPPv3N21ILxSimulationListener3EndE11LXtObjectID"></span><span id="_CPPv2N21ILxSimulationListener3EndE11LXtObjectID"></span><span id="ILxSimulationListener::End__LXtObjectID"></span><span class="target" id="class_i_lx_simulation_listener_1ad565bf14f78a1ec3bf314b75f75bd0e9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">End</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSimulationListener3EndE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSimulationListener4TimeE11LXtObjectIDd">
+<span id="_CPPv3N21ILxSimulationListener4TimeE11LXtObjectIDd"></span><span id="_CPPv2N21ILxSimulationListener4TimeE11LXtObjectIDd"></span><span id="ILxSimulationListener::Time__LXtObjectID.double"></span><span class="target" id="class_i_lx_simulation_listener_1adcfea431ded11a4b37e7905bb5a0a768"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Time</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSimulationListener4TimeE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Current time for the simulation is set here. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSimulationListener10InvalidateE11LXtObjectID">
+<span id="_CPPv3N21ILxSimulationListener10InvalidateE11LXtObjectID"></span><span id="_CPPv2N21ILxSimulationListener10InvalidateE11LXtObjectID"></span><span id="ILxSimulationListener::Invalidate__LXtObjectID"></span><span class="target" id="class_i_lx_simulation_listener_1a823b0ee5393c9939d5b3a23d59ebbc05"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Invalidate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSimulationListener10InvalidateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Any time the simulation has new results the listener clients are invalidated. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="lxd_volume.html" class="btn btn-neutral float-left" title="Volume" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_vp.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_raycast.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Raycast &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Render" href="lxd_render.html" />
+    <link rel="prev" title="Pvedit" href="lxd_pvedit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Raycast</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lxppixelgeometry">LXpPixelGeometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxppixelgeometryseg">LXpPixelGeometrySeg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxraycast1">ILxRaycast1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxraycast">ILxRaycast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlighting">ILxLighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Raycast</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="raycast">
+<h1>Raycast<a class="headerlink" href="#raycast" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#lxppixelgeometry" id="id1">LXpPixelGeometry</a></p></li>
+<li><p><a class="reference internal" href="#lxppixelgeometryseg" id="id2">LXpPixelGeometrySeg</a></p></li>
+<li><p><a class="reference internal" href="#ilxraycast1" id="id3">ILxRaycast1</a></p></li>
+<li><p><a class="reference internal" href="#ilxraycast" id="id4">ILxRaycast</a></p></li>
+<li><p><a class="reference internal" href="#ilxlighting" id="id5">ILxLighting</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>RAY_EPSILON</p></li>
+<li><p>RAY_BIAS</p></li>
+</ul>
+<div class="section" id="lxppixelgeometry">
+<h2><a class="toc-backref" href="#id1">LXpPixelGeometry</a><a class="headerlink" href="#lxppixelgeometry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419st_LXpPixelGeometry">
+<span id="_CPPv319st_LXpPixelGeometry"></span><span id="_CPPv219st_LXpPixelGeometry"></span><span id="st_LXpPixelGeometry"></span><span class="target" id="structst___l_xp_pixel_geometry"></span><em class="property">struct </em><code class="sig-name descname">st_LXpPixelGeometry</code><a class="headerlink" href="#_CPPv419st_LXpPixelGeometry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Every pixel can be evaluated for its basic geometry which is stored in this structure: </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N19st_LXpPixelGeometry3nrmE">
+<span id="_CPPv3N19st_LXpPixelGeometry3nrmE"></span><span id="_CPPv2N19st_LXpPixelGeometry3nrmE"></span><span id="st_LXpPixelGeometry::nrm__LXtFVector"></span><span class="target" id="structst___l_xp_pixel_geometry_1a249ceead12a8f15bbae2f724773e5d81"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">nrm</code><a class="headerlink" href="#_CPPv4N19st_LXpPixelGeometry3nrmE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXpPixelGeometry4wposE">
+<span id="_CPPv3N19st_LXpPixelGeometry4wposE"></span><span id="_CPPv2N19st_LXpPixelGeometry4wposE"></span><span id="st_LXpPixelGeometry::wpos__LXtFVector"></span><span class="target" id="structst___l_xp_pixel_geometry_1ac96978bee0bebcc26d74291fabc185c1"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">wpos</code><a class="headerlink" href="#_CPPv4N19st_LXpPixelGeometry4wposE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXpPixelGeometry4oposE">
+<span id="_CPPv3N19st_LXpPixelGeometry4oposE"></span><span id="_CPPv2N19st_LXpPixelGeometry4oposE"></span><span id="st_LXpPixelGeometry::opos__LXtFVector"></span><span class="target" id="structst___l_xp_pixel_geometry_1ae7362f8b2b2c093484bc0b7c0b7cf6f3"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">opos</code><a class="headerlink" href="#_CPPv4N19st_LXpPixelGeometry4oposE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXpPixelGeometry4distE">
+<span id="_CPPv3N19st_LXpPixelGeometry4distE"></span><span id="_CPPv2N19st_LXpPixelGeometry4distE"></span><span id="st_LXpPixelGeometry::dist__float"></span><span class="target" id="structst___l_xp_pixel_geometry_1a18d0c80b29f58a86885b80071af6617c"></span>float <code class="sig-name descname">dist</code><a class="headerlink" href="#_CPPv4N19st_LXpPixelGeometry4distE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXpPixelGeometry4gsrfE">
+<span id="_CPPv3N19st_LXpPixelGeometry4gsrfE"></span><span id="_CPPv2N19st_LXpPixelGeometry4gsrfE"></span><span id="st_LXpPixelGeometry::gsrf__voidP"></span><span class="target" id="structst___l_xp_pixel_geometry_1a9491f99e0bb71630c14175e2da0e120f"></span>void *<code class="sig-name descname">gsrf</code><a class="headerlink" href="#_CPPv4N19st_LXpPixelGeometry4gsrfE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxppixelgeometryseg">
+<h2><a class="toc-backref" href="#id2">LXpPixelGeometrySeg</a><a class="headerlink" href="#lxppixelgeometryseg" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422st_LXpPixelGeometrySeg">
+<span id="_CPPv322st_LXpPixelGeometrySeg"></span><span id="_CPPv222st_LXpPixelGeometrySeg"></span><span id="st_LXpPixelGeometrySeg"></span><span class="target" id="structst___l_xp_pixel_geometry_seg"></span><em class="property">struct </em><code class="sig-name descname">st_LXpPixelGeometrySeg</code><a class="headerlink" href="#_CPPv422st_LXpPixelGeometrySeg" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Same as the LXpPixelGeometry, but also supports geometry segments </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N22st_LXpPixelGeometrySeg3nrmE">
+<span id="_CPPv3N22st_LXpPixelGeometrySeg3nrmE"></span><span id="_CPPv2N22st_LXpPixelGeometrySeg3nrmE"></span><span id="st_LXpPixelGeometrySeg::nrm__LXtFVector"></span><span class="target" id="structst___l_xp_pixel_geometry_seg_1aa5a2baf527a9e701dc38dd5af99b0918"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">nrm</code><a class="headerlink" href="#_CPPv4N22st_LXpPixelGeometrySeg3nrmE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N22st_LXpPixelGeometrySeg4wposE">
+<span id="_CPPv3N22st_LXpPixelGeometrySeg4wposE"></span><span id="_CPPv2N22st_LXpPixelGeometrySeg4wposE"></span><span id="st_LXpPixelGeometrySeg::wpos__LXtFVector"></span><span class="target" id="structst___l_xp_pixel_geometry_seg_1aa0c077abce3f25c245e1ae789256d6cc"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">wpos</code><a class="headerlink" href="#_CPPv4N22st_LXpPixelGeometrySeg4wposE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N22st_LXpPixelGeometrySeg4oposE">
+<span id="_CPPv3N22st_LXpPixelGeometrySeg4oposE"></span><span id="_CPPv2N22st_LXpPixelGeometrySeg4oposE"></span><span id="st_LXpPixelGeometrySeg::opos__LXtFVector"></span><span class="target" id="structst___l_xp_pixel_geometry_seg_1aed7d27c3a3d77c68ef3f68451bf974a1"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">opos</code><a class="headerlink" href="#_CPPv4N22st_LXpPixelGeometrySeg4oposE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N22st_LXpPixelGeometrySeg4distE">
+<span id="_CPPv3N22st_LXpPixelGeometrySeg4distE"></span><span id="_CPPv2N22st_LXpPixelGeometrySeg4distE"></span><span id="st_LXpPixelGeometrySeg::dist__float"></span><span class="target" id="structst___l_xp_pixel_geometry_seg_1ab32ae20913285c0052c85b63fdc9f16c"></span>float <code class="sig-name descname">dist</code><a class="headerlink" href="#_CPPv4N22st_LXpPixelGeometrySeg4distE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N22st_LXpPixelGeometrySeg4gsrfE">
+<span id="_CPPv3N22st_LXpPixelGeometrySeg4gsrfE"></span><span id="_CPPv2N22st_LXpPixelGeometrySeg4gsrfE"></span><span id="st_LXpPixelGeometrySeg::gsrf__voidP"></span><span class="target" id="structst___l_xp_pixel_geometry_seg_1a16a1235f921bc1dda7c4d4e09636da89"></span>void *<code class="sig-name descname">gsrf</code><a class="headerlink" href="#_CPPv4N22st_LXpPixelGeometrySeg4gsrfE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N22st_LXpPixelGeometrySeg4gsegE">
+<span id="_CPPv3N22st_LXpPixelGeometrySeg4gsegE"></span><span id="_CPPv2N22st_LXpPixelGeometrySeg4gsegE"></span><span id="st_LXpPixelGeometrySeg::gseg__voidP"></span><span class="target" id="structst___l_xp_pixel_geometry_seg_1a1ef5fde60d8bb5f67d315aaec34acfae"></span>void *<code class="sig-name descname">gseg</code><a class="headerlink" href="#_CPPv4N22st_LXpPixelGeometrySeg4gsegE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxraycast1">
+<h2><a class="toc-backref" href="#id3">ILxRaycast1</a><a class="headerlink" href="#ilxraycast1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxRaycast1">
+<span id="_CPPv311ILxRaycast1"></span><span id="_CPPv211ILxRaycast1"></span><span id="ILxRaycast1"></span><span class="target" id="class_i_lx_raycast1"></span><em class="property">class </em><code class="sig-name descname">ILxRaycast1</code><a class="headerlink" href="#_CPPv411ILxRaycast1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast17RayPushE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxRaycast17RayPushE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxRaycast17RayPushE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast1::RayPush__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast1_1a649a7f781ef9addba3c9c9b0b29add11"></span>ILxUnknownID <code class="sig-name descname">RayPush</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast17RayPushE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Raycast1 interface is the old version. Much of the functionality has been moved to the RenderBucket and Lighting interfaces. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast16RayPopE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxRaycast16RayPopE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxRaycast16RayPopE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast1::RayPop__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast1_1a3a63a805e6ce1edbc0abc46994df51ac"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RayPop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast16RayPopE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast17RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector">
+<span id="_CPPv3N11ILxRaycast17RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector"></span><span id="_CPPv2N11ILxRaycast17RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector"></span><span id="ILxRaycast1::Raycast__LXtObjectID.LXtObjectID.LXtVectorC.LXtFVectorC"></span><span class="target" id="class_i_lx_raycast1_1a644c162ec9144e662119f627d6571e59"></span>float <code class="sig-name descname">Raycast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast17RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast18RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori">
+<span id="_CPPv3N11ILxRaycast18RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori"></span><span id="_CPPv2N11ILxRaycast18RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori"></span><span id="ILxRaycast1::Raytrace__LXtObjectID.LXtObjectID.LXtVectorC.LXtFVectorC.i"></span><span class="target" id="class_i_lx_raycast1_1a8b8f5ec5b04c4a0487dd9f068d927c9c"></span>float <code class="sig-name descname">Raytrace</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>dir</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast18RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast113InternalShadeE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxRaycast113InternalShadeE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxRaycast113InternalShadeE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast1::InternalShade__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast1_1a4075ecb6041b3fadf9d080f7dd686262"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InternalShade</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast113InternalShadeE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast110LightCountE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxRaycast110LightCountE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxRaycast110LightCountE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast1::LightCount__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast1_1ac27d1ff6805192ddec0b19485c5d9a0b"></span>int <code class="sig-name descname">LightCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast110LightCountE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast116LightSampleCountE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectorPi">
+<span id="_CPPv3N11ILxRaycast116LightSampleCountE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectorPi"></span><span id="_CPPv2N11ILxRaycast116LightSampleCountE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectorPi"></span><span id="ILxRaycast1::LightSampleCount__LXtObjectID.LXtObjectID.LXtVectorC.LXtFVectorC.iP"></span><span class="target" id="class_i_lx_raycast1_1a9b372d5e8ce29f59fdfd993c9fcf0166"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LightSampleCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>nrm</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast116LightSampleCountE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectorPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast115LightShadowTypeE11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N11ILxRaycast115LightShadowTypeE11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N11ILxRaycast115LightShadowTypeE11LXtObjectID11LXtObjectIDi"></span><span id="ILxRaycast1::LightShadowType__LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_raycast1_1a0ab28399e8cb007ff94a20ecd28835e5"></span>int <code class="sig-name descname">LightShadowType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>lgtIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast115LightShadowTypeE11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast123LightSampleCountByLightE11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N11ILxRaycast123LightSampleCountByLightE11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N11ILxRaycast123LightSampleCountByLightE11LXtObjectID11LXtObjectIDi"></span><span id="ILxRaycast1::LightSampleCountByLight__LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_raycast1_1af25b05ed307fc1de79fb4f50c3cc723b"></span>int <code class="sig-name descname">LightSampleCountByLight</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>lgtIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast123LightSampleCountByLightE11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast118LightSampleByIndexE11LXtObjectID11LXtObjectIDiP13LXpLightColorPf">
+<span id="_CPPv3N11ILxRaycast118LightSampleByIndexE11LXtObjectID11LXtObjectIDiP13LXpLightColorPf"></span><span id="_CPPv2N11ILxRaycast118LightSampleByIndexE11LXtObjectID11LXtObjectIDiP13LXpLightColorPf"></span><span id="ILxRaycast1::LightSampleByIndex__LXtObjectID.LXtObjectID.i.LXpLightColorP.floatP"></span><span class="target" id="class_i_lx_raycast1_1ae13af66d278b4f99b2e929068f86766f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LightSampleByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>index</em>, LXpLightColor *<em>lCol</em>, float *<em>dot</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast118LightSampleByIndexE11LXtObjectID11LXtObjectIDiP13LXpLightColorPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast110LightValueE11LXtObjectID11LXtObjectIDiP10LXtFVectorPf">
+<span id="_CPPv3N11ILxRaycast110LightValueE11LXtObjectID11LXtObjectIDiP10LXtFVectorPf"></span><span id="_CPPv2N11ILxRaycast110LightValueE11LXtObjectID11LXtObjectIDiP10LXtFVectorPf"></span><span id="ILxRaycast1::LightValue__LXtObjectID.LXtObjectID.i.LXtFVectorP.floatP"></span><span class="target" id="class_i_lx_raycast1_1a4f6fa84785e1d099dc522d8ecb488868"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LightValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>lgtIndex</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> *<em>color</em>, float *<em>intensity</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast110LightValueE11LXtObjectID11LXtObjectIDiP10LXtFVectorPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast116GetNextShadowRayE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVectorPi">
+<span id="_CPPv3N11ILxRaycast116GetNextShadowRayE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVectorPi"></span><span id="_CPPv2N11ILxRaycast116GetNextShadowRayE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVectorPi"></span><span id="ILxRaycast1::GetNextShadowRay__LXtObjectID.LXtObjectID.i.LXtVector.LXtFVectorP.iP"></span><span class="target" id="class_i_lx_raycast1_1a74db119ccb549f31107cad653353fe95"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetNextShadowRay</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>lgtIndex</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> *<em>dir</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast116GetNextShadowRayE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVectorPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast118GetNextGIRaySphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi">
+<span id="_CPPv3N11ILxRaycast118GetNextGIRaySphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi"></span><span id="_CPPv2N11ILxRaycast118GetNextGIRaySphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi"></span><span id="ILxRaycast1::GetNextGIRaySphere__LXtObjectID.LXtObjectID.LXtFVectorP.iP"></span><span class="target" id="class_i_lx_raycast1_1a5bd2db33f713eab29c03d6a0cc4ec51c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetNextGIRaySphere</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> *<em>dir</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast118GetNextGIRaySphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast122GetNextGIRayHemisphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi">
+<span id="_CPPv3N11ILxRaycast122GetNextGIRayHemisphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi"></span><span id="_CPPv2N11ILxRaycast122GetNextGIRayHemisphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi"></span><span id="ILxRaycast1::GetNextGIRayHemisphere__LXtObjectID.LXtObjectID.LXtFVectorP.iP"></span><span class="target" id="class_i_lx_raycast1_1ab16accd92dcd329b72bd0f65ff475fda"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetNextGIRayHemisphere</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> *<em>dir</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast122GetNextGIRayHemisphereE11LXtObjectID11LXtObjectIDP10LXtFVectorPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast112GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N11ILxRaycast112GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N11ILxRaycast112GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxRaycast1::GetSurfaceID__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_raycast1_1aa431698403f7b9cab67f408a557c9e03"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSurfaceID</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, void **<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast112GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast110PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay">
+<span id="_CPPv3N11ILxRaycast110PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay"></span><span id="_CPPv2N11ILxRaycast110PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay"></span><span id="ILxRaycast1::PixelToRay__LXtObjectID.LXtObjectID.i.float.float.LXpSampleRayP"></span><span class="target" id="class_i_lx_raycast1_1a51986712234328514bc38cadae30a262"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PixelToRay</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>mode</em>, float <em>x</em>, float <em>y</em>, LXpSampleRay *<em>sRay</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast110PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast113PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry">
+<span id="_CPPv3N11ILxRaycast113PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry"></span><span id="_CPPv2N11ILxRaycast113PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry"></span><span id="ILxRaycast1::PixelGeometry__LXtObjectID.LXtObjectID.i.float.float.LXpPixelGeometryP"></span><span class="target" id="class_i_lx_raycast1_1ae7324e264e44480662b4218665b967a5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PixelGeometry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>mode</em>, float <em>x</em>, float <em>y</em>, LXpPixelGeometry *<em>pGeo</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast113PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast113PoissonOffsetE11LXtObjectID11LXtObjectIDPfPf">
+<span id="_CPPv3N11ILxRaycast113PoissonOffsetE11LXtObjectID11LXtObjectIDPfPf"></span><span id="_CPPv2N11ILxRaycast113PoissonOffsetE11LXtObjectID11LXtObjectIDPfPf"></span><span id="ILxRaycast1::PoissonOffset__LXtObjectID.LXtObjectID.floatP.floatP"></span><span class="target" id="class_i_lx_raycast1_1aba08cca9e4962993abdf1af14d848340"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PoissonOffset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, float *<em>u</em>, float *<em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast113PoissonOffsetE11LXtObjectID11LXtObjectIDPfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast110IrradianceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector10LXtFVector">
+<span id="_CPPv3N11ILxRaycast110IrradianceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector10LXtFVector"></span><span id="_CPPv2N11ILxRaycast110IrradianceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector10LXtFVector"></span><span id="ILxRaycast1::Irradiance__LXtObjectID.LXtObjectID.LXtVectorC.LXtFVectorC.LXtFVector"></span><span class="target" id="class_i_lx_raycast1_1ab26fcdb5d9ea20be131d02a8a280c1ee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Irradiance</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>nrm</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>lum</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast110IrradianceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast121GetBucketGlobalBounceE11LXtObjectID11LXtObjectIDPi">
+<span id="_CPPv3N11ILxRaycast121GetBucketGlobalBounceE11LXtObjectID11LXtObjectIDPi"></span><span id="_CPPv2N11ILxRaycast121GetBucketGlobalBounceE11LXtObjectID11LXtObjectIDPi"></span><span id="ILxRaycast1::GetBucketGlobalBounce__LXtObjectID.LXtObjectID.iP"></span><span class="target" id="class_i_lx_raycast1_1a325e20a6deba3c59c9a70196c0e1d318"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBucketGlobalBounce</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int *<em>globBounce</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast121GetBucketGlobalBounceE11LXtObjectID11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast114GetBucketPixelE11LXtObjectID11LXtObjectIDPiPi">
+<span id="_CPPv3N11ILxRaycast114GetBucketPixelE11LXtObjectID11LXtObjectIDPiPi"></span><span id="_CPPv2N11ILxRaycast114GetBucketPixelE11LXtObjectID11LXtObjectIDPiPi"></span><span id="ILxRaycast1::GetBucketPixel__LXtObjectID.LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_raycast1_1a087518d00e21cc756ef00d4600f8bb11"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBucketPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int *<em>x</em>, int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast114GetBucketPixelE11LXtObjectID11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast117GetBucketSubPixelE11LXtObjectID11LXtObjectIDPfPf">
+<span id="_CPPv3N11ILxRaycast117GetBucketSubPixelE11LXtObjectID11LXtObjectIDPfPf"></span><span id="_CPPv2N11ILxRaycast117GetBucketSubPixelE11LXtObjectID11LXtObjectIDPfPf"></span><span id="ILxRaycast1::GetBucketSubPixel__LXtObjectID.LXtObjectID.floatP.floatP"></span><span class="target" id="class_i_lx_raycast1_1a74b3a6677bd4cafcb6b8a849374f1618"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBucketSubPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, float *<em>x</em>, float *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast117GetBucketSubPixelE11LXtObjectID11LXtObjectIDPfPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast119GetBucketTimeOffsetE11LXtObjectID11LXtObjectIDPf">
+<span id="_CPPv3N11ILxRaycast119GetBucketTimeOffsetE11LXtObjectID11LXtObjectIDPf"></span><span id="_CPPv2N11ILxRaycast119GetBucketTimeOffsetE11LXtObjectID11LXtObjectIDPf"></span><span id="ILxRaycast1::GetBucketTimeOffset__LXtObjectID.LXtObjectID.floatP"></span><span class="target" id="class_i_lx_raycast1_1a2156e37848f1b5bc751b82954eebef3d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBucketTimeOffset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, float *<em>tOffset</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast119GetBucketTimeOffsetE11LXtObjectID11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast114GetSurfaceTypeE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxRaycast114GetSurfaceTypeE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxRaycast114GetSurfaceTypeE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast1::GetSurfaceType__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast1_1a066666c9c571af9217ef1a04f0535673"></span>int <code class="sig-name descname">GetSurfaceType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast114GetSurfaceTypeE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxRaycast123GetLightSampleDirectionE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVector">
+<span id="_CPPv3N11ILxRaycast123GetLightSampleDirectionE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVector"></span><span id="_CPPv2N11ILxRaycast123GetLightSampleDirectionE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVector"></span><span id="ILxRaycast1::GetLightSampleDirection__LXtObjectID.LXtObjectID.i.LXtVector.LXtFVectorP"></span><span class="target" id="class_i_lx_raycast1_1aa9d642e390891a9b9fbcfc6c0ce4b63d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetLightSampleDirection</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>lgtIndex</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> *<em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxRaycast123GetLightSampleDirectionE11LXtObjectID11LXtObjectIDi9LXtVectorP10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxraycast">
+<h2><a class="toc-backref" href="#id4">ILxRaycast</a><a class="headerlink" href="#ilxraycast" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxRaycast">
+<span id="_CPPv310ILxRaycast"></span><span id="_CPPv210ILxRaycast"></span><span id="ILxRaycast"></span><span class="target" id="class_i_lx_raycast"></span><em class="property">class </em><code class="sig-name descname">ILxRaycast</code><a class="headerlink" href="#_CPPv410ILxRaycast" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast7RayPushE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxRaycast7RayPushE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxRaycast7RayPushE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast::RayPush__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast_1a25160e665ce2007a9d847a3effd335ca"></span>ILxUnknownID <code class="sig-name descname">RayPush</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast7RayPushE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The raycast object is exposed to clients via the raycast interface, which is actually a packet in the sample vector.<ul class="simple">
+<li><p>RayPush/Pop Push and pop a new ray on the stack. This is required for recursive raytracing and should wrap all the calls to raycast, raytrace and pixelGeometry.</p></li>
+<li><p>Raycast Casts a ray in the scene and returns the hit distance or -1 if nothing was hit.</p></li>
+<li><p>Raytrace Raytraces the scene, the results can be extracted from the sample vector.</p></li>
+<li><p>InternalShade Will shade the current hit point using modo’s internal shader, and settings set through the LXpSampleParms packet.</p></li>
+<li><p>PixelToRay Returns the ray direction given the pixel. the ‘mode’ is either relative or absolute, relative pixels are set from the current pixel position.</p></li>
+<li><p>PixelGeometry Returns the pixel geometric information for the given pixel. This is really a wrapper on the raycast function.</p></li>
+<li><p>Irradiance Evaluates the irradiance at the given point (and direction) in space. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast6RayPopE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxRaycast6RayPopE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxRaycast6RayPopE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast::RayPop__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast_1a0b6ad3e8f58b4db2ccc3713737949911"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RayPop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast6RayPopE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast7RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector">
+<span id="_CPPv3N10ILxRaycast7RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector"></span><span id="_CPPv2N10ILxRaycast7RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector"></span><span id="ILxRaycast::Raycast__LXtObjectID.LXtObjectID.LXtVectorC.LXtFVectorC"></span><span class="target" id="class_i_lx_raycast_1a7440f4456c1f35365010f291c2732752"></span>float <code class="sig-name descname">Raycast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast7RaycastE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast8RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori">
+<span id="_CPPv3N10ILxRaycast8RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori"></span><span id="_CPPv2N10ILxRaycast8RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori"></span><span id="ILxRaycast::Raytrace__LXtObjectID.LXtObjectID.LXtVectorC.LXtFVectorC.i"></span><span class="target" id="class_i_lx_raycast_1a9642487b335b0895a012febe1ff3c017"></span>float <code class="sig-name descname">Raytrace</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>dir</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast8RaytraceE11LXtObjectID11LXtObjectIDK9LXtVectorK10LXtFVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast13InternalShadeE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxRaycast13InternalShadeE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxRaycast13InternalShadeE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast::InternalShade__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast_1a5ca94072ff2ad9d7330ef26cdab792f1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InternalShade</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast13InternalShadeE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast12GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N10ILxRaycast12GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N10ILxRaycast12GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxRaycast::GetSurfaceID__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_raycast_1a723e92acb6dfbb94e00c7d4fcbeb9119"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSurfaceID</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, void **<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast12GetSurfaceIDE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast14GetSurfaceTypeE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxRaycast14GetSurfaceTypeE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxRaycast14GetSurfaceTypeE11LXtObjectID11LXtObjectID"></span><span id="ILxRaycast::GetSurfaceType__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_raycast_1ad3ccd9e27a4f977e024b5610a788a42a"></span>int <code class="sig-name descname">GetSurfaceType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast14GetSurfaceTypeE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast10PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay">
+<span id="_CPPv3N10ILxRaycast10PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay"></span><span id="_CPPv2N10ILxRaycast10PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay"></span><span id="ILxRaycast::PixelToRay__LXtObjectID.LXtObjectID.i.float.float.LXpSampleRayP"></span><span class="target" id="class_i_lx_raycast_1a3dc63f6c9640312d264bd0cfa74553c0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PixelToRay</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>mode</em>, float <em>x</em>, float <em>y</em>, LXpSampleRay *<em>sRay</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast10PixelToRayE11LXtObjectID11LXtObjectIDiffP12LXpSampleRay" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast13PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry">
+<span id="_CPPv3N10ILxRaycast13PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry"></span><span id="_CPPv2N10ILxRaycast13PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry"></span><span id="ILxRaycast::PixelGeometry__LXtObjectID.LXtObjectID.i.float.float.LXpPixelGeometryP"></span><span class="target" id="class_i_lx_raycast_1a225f9cf07ef004863ee0ca68ce79705e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PixelGeometry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>mode</em>, float <em>x</em>, float <em>y</em>, LXpPixelGeometry *<em>pGeo</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast13PixelGeometryE11LXtObjectID11LXtObjectIDiffP16LXpPixelGeometry" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxRaycast16PixelGeometrySegE11LXtObjectID11LXtObjectIDiffP19LXpPixelGeometrySeg">
+<span id="_CPPv3N10ILxRaycast16PixelGeometrySegE11LXtObjectID11LXtObjectIDiffP19LXpPixelGeometrySeg"></span><span id="_CPPv2N10ILxRaycast16PixelGeometrySegE11LXtObjectID11LXtObjectIDiffP19LXpPixelGeometrySeg"></span><span id="ILxRaycast::PixelGeometrySeg__LXtObjectID.LXtObjectID.i.float.float.LXpPixelGeometrySegP"></span><span class="target" id="class_i_lx_raycast_1ad8a4f7ee3183264b9e072e2de6cde157"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PixelGeometrySeg</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>mode</em>, float <em>x</em>, float <em>y</em>, LXpPixelGeometrySeg *<em>pGeo</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxRaycast16PixelGeometrySegE11LXtObjectID11LXtObjectIDiffP19LXpPixelGeometrySeg" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXi_PIXELRAY_RELATIVE">
+<span class="target" id="lxd__raycast_8hpp_1afd74645242d5614746601c3dd2c56cd3"></span><code class="sig-name descname">LXi_PIXELRAY_RELATIVE</code><a class="headerlink" href="#c.LXi_PIXELRAY_RELATIVE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Raycast pixel modes. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_PIXELRAY_ABSOLUTE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXmRAY_PRIMARY">
+<span class="target" id="lxd__raycast_8hpp_1a4a0ba7d3373d246de6911eeb3f029d63"></span><code class="sig-name descname">LXmRAY_PRIMARY</code><a class="headerlink" href="#c.LXmRAY_PRIMARY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Raycast flags. These are made of 3 flag types, that describe the full context of the ray:<ul class="simple">
+<li><p>SCOPE this is what the raytracer sees (polygons, volumetrics, etc)</p></li>
+<li><p>EVAL this is what the raytracer evaluates when the ray intersects something (material, shading, opacity, etc)</p></li>
+<li><p>TYPE this is the ray type which specifies the evaluation context (camera rays, indirect rays, etc). The context is important for various raytracing optimizations and surface visibility options. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXmRAY_PREVIEW</p></li>
+<li><p>LXmRAY_REFLECT</p></li>
+<li><p>LXmRAY_REFRACT</p></li>
+<li><p>LXmRAY_INDIRECT</p></li>
+<li><p>LXmRAY_SHADOW</p></li>
+<li><p>LXmRAY_OCCLUSION</p></li>
+<li><p>LXmRAY_CAUSTIC</p></li>
+<li><p>LXmRAY_SUBSURFACE</p></li>
+<li><p>LXsP_RAYCAST</p></li>
+</ul>
+</div>
+<div class="section" id="ilxlighting">
+<h2><a class="toc-backref" href="#id5">ILxLighting</a><a class="headerlink" href="#ilxlighting" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxLighting">
+<span id="_CPPv311ILxLighting"></span><span id="_CPPv211ILxLighting"></span><span id="ILxLighting"></span><span class="target" id="class_i_lx_lighting"></span><em class="property">class </em><code class="sig-name descname">ILxLighting</code><a class="headerlink" href="#_CPPv411ILxLighting" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxLighting16LightSourceCountE11LXtObjectID11LXtObjectIDPi">
+<span id="_CPPv3N11ILxLighting16LightSourceCountE11LXtObjectID11LXtObjectIDPi"></span><span id="_CPPv2N11ILxLighting16LightSourceCountE11LXtObjectID11LXtObjectIDPi"></span><span id="ILxLighting::LightSourceCount__LXtObjectID.LXtObjectID.iP"></span><span class="target" id="class_i_lx_lighting_1a0de0c05765bdea8808f81b7a533b60ac"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LightSourceCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLighting16LightSourceCountE11LXtObjectID11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The lighting object can be used to evaluate the light samples reaching the surface from the various light sources in the scene. It can also be used to evaluate the environment for global illumination. The lighting object is a packet object that can be accessed from the sample vector.<ul class="simple">
+<li><p>LightSourceCount Returns the number of light samples hitting the current surface</p></li>
+<li><p>LightSourceByIndex Returns the light source given by its index, each light source has informations about the light element it is coming from and the direction to the current sample position.</p></li>
+<li><p>LightSourceEvaluate This evaluates the given light source and places the result in ‘lum’ which accounts for everything including the visibility factor, projected textures and shadows.</p></li>
+<li><p>EnvironmentEvaluate This evaluates the environment using the current position and normal packets. The flags are raytrace flags which indicate what the scope of the ray is (environment, surfaces, volumes, etc)</p></li>
+<li><p>GIRequired Returns true if the current surface needs global illumination according to the render settings and the surface properties. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLighting18LightSourceByIndexE11LXtObjectID11LXtObjectIDiP14LXpLightSource">
+<span id="_CPPv3N11ILxLighting18LightSourceByIndexE11LXtObjectID11LXtObjectIDiP14LXpLightSource"></span><span id="_CPPv2N11ILxLighting18LightSourceByIndexE11LXtObjectID11LXtObjectIDiP14LXpLightSource"></span><span id="ILxLighting::LightSourceByIndex__LXtObjectID.LXtObjectID.i.LXpLightSourceP"></span><span class="target" id="class_i_lx_lighting_1a62e0c674d032b93a35d637076884b62c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LightSourceByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>index</em>, LXpLightSource *<em>lSrc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLighting18LightSourceByIndexE11LXtObjectID11LXtObjectIDiP14LXpLightSource" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLighting19LightSourceEvaluateE11LXtObjectID11LXtObjectIDPK14LXpLightSource10LXtFVector">
+<span id="_CPPv3N11ILxLighting19LightSourceEvaluateE11LXtObjectID11LXtObjectIDPK14LXpLightSource10LXtFVector"></span><span id="_CPPv2N11ILxLighting19LightSourceEvaluateE11LXtObjectID11LXtObjectIDPK14LXpLightSource10LXtFVector"></span><span id="ILxLighting::LightSourceEvaluate__LXtObjectID.LXtObjectID.LXpLightSourceCP.LXtFVector"></span><span class="target" id="class_i_lx_lighting_1a8221598bcac30dfb0ee9e654ecc4335c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LightSourceEvaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, <em class="property">const</em> LXpLightSource *<em>lSrc</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>lum</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLighting19LightSourceEvaluateE11LXtObjectID11LXtObjectIDPK14LXpLightSource10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLighting19EnvironmentEvaluateE11LXtObjectID11LXtObjectIDii10LXtFVector">
+<span id="_CPPv3N11ILxLighting19EnvironmentEvaluateE11LXtObjectID11LXtObjectIDii10LXtFVector"></span><span id="_CPPv2N11ILxLighting19EnvironmentEvaluateE11LXtObjectID11LXtObjectIDii10LXtFVector"></span><span id="ILxLighting::EnvironmentEvaluate__LXtObjectID.LXtObjectID.i.i.LXtFVector"></span><span class="target" id="class_i_lx_lighting_1a2b02d7dc0cd4f76917b80624579e6464"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnvironmentEvaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em>, int <em>samples</em>, int <em>flags</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>lum</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLighting19EnvironmentEvaluateE11LXtObjectID11LXtObjectIDii10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLighting10GIRequiredE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxLighting10GIRequiredE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxLighting10GIRequiredE11LXtObjectID11LXtObjectID"></span><span id="ILxLighting::GIRequired__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_lighting_1a8162d6107320efe542bb1206efa647ef"></span>int <code class="sig-name descname">GIRequired</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLighting10GIRequiredE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_render.html" class="btn btn-neutral float-right" title="Render" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_pvedit.html" class="btn btn-neutral float-left" title="Pvedit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_raycast.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

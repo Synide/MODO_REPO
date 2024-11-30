@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_select.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Select &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Seltypes" href="lxd_seltypes.html" />
+    <link rel="prev" title="Scripts" href="lxd_scripts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Select</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectiontype">ILxSelectionType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectionlistener">ILxSelectionListener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectionservice">ILxSelectionService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectionpacket1service">ILxSelectionPacket1Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Select</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="select">
+<h1>Select<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxselectiontype" id="id1">ILxSelectionType</a></p></li>
+<li><p><a class="reference internal" href="#ilxselectionlistener" id="id2">ILxSelectionListener</a></p></li>
+<li><p><a class="reference internal" href="#ilxselectionservice" id="id3">ILxSelectionService</a></p></li>
+<li><p><a class="reference internal" href="#ilxselectionpacket1service" id="id4">ILxSelectionPacket1Service</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>LXsSELTYPE_CODE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXf_SELPACKET_UNDOABLE">
+<span class="target" id="lxd__select_8hpp_1adc99ab0c2e5471fa954841b733fb1d3f"></span><code class="sig-name descname">LXf_SELPACKET_UNDOABLE</code><a class="headerlink" href="#c.LXf_SELPACKET_UNDOABLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A selection type is defined by a few methods:<ul class="simple">
+<li><p>Size This returns the packet size in bytes. The selection system itself will handle memory management. In general the packet should be as small as possible.</p></li>
+<li><p>Flags The flags give information about the selection type. If UNDOABLE is set then the selection will be managed as part of the undoable model state. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<div class="section" id="ilxselectiontype">
+<h2><a class="toc-backref" href="#id1">ILxSelectionType</a><a class="headerlink" href="#ilxselectiontype" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxSelectionType">
+<span id="_CPPv316ILxSelectionType"></span><span id="_CPPv216ILxSelectionType"></span><span id="ILxSelectionType"></span><span class="target" id="class_i_lx_selection_type"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionType</code><a class="headerlink" href="#_CPPv416ILxSelectionType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The types of entities that can be selected are determined by the extensible <a class="reference internal" href="#class_i_lx_selection_type"><span class="std std-ref">ILxSelectionType</span></a> interface. Individual selections themselves are defined as opaque packets which are allocated and managed by the selection system. For extracting specific information about the selection, the selection type can provide an alternate packet translation interface. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType4SizeE11LXtObjectID">
+<span id="_CPPv3N16ILxSelectionType4SizeE11LXtObjectID"></span><span id="_CPPv2N16ILxSelectionType4SizeE11LXtObjectID"></span><span id="ILxSelectionType::Size__LXtObjectID"></span><span class="target" id="class_i_lx_selection_type_1ac807d49f316a145d42190f18a1773338"></span>unsigned int <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType4SizeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>MessageTable This returns the name of the message table for the selection type. The message table will be used to find user messages for the selection type.</p></li>
+<li><p>Compare This method compares two packets and returns a ranking using the same sign logic as strcmp(). This is used to sort packets and to search on packets.</p></li>
+<li><p>SubType This returns the subtype of the packet. For selections that can contain heterogenous elements this should be non-zero, while for selections where all the elements are the same this should be zero. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType5FlagsE11LXtObjectID">
+<span id="_CPPv3N16ILxSelectionType5FlagsE11LXtObjectID"></span><span id="_CPPv2N16ILxSelectionType5FlagsE11LXtObjectID"></span><span id="ILxSelectionType::Flags__LXtObjectID"></span><span class="target" id="class_i_lx_selection_type_1ad821905e0781d3d440d6f0a90696ad41"></span>unsigned int <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType5FlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType12MessageTableE11LXtObjectID">
+<span id="_CPPv3N16ILxSelectionType12MessageTableE11LXtObjectID"></span><span id="_CPPv2N16ILxSelectionType12MessageTableE11LXtObjectID"></span><span id="ILxSelectionType::MessageTable__LXtObjectID"></span><span class="target" id="class_i_lx_selection_type_1a8a2e968244d418f5d460a0c1adc4896f"></span><em class="property">const</em> char *<code class="sig-name descname">MessageTable</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType12MessageTableE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType7CompareE11LXtObjectIDPvPv">
+<span id="_CPPv3N16ILxSelectionType7CompareE11LXtObjectIDPvPv"></span><span id="_CPPv2N16ILxSelectionType7CompareE11LXtObjectIDPvPv"></span><span id="ILxSelectionType::Compare__LXtObjectID.voidP.voidP"></span><span class="target" id="class_i_lx_selection_type_1a3611b9dfa25ea8ea04713f281a0c3452"></span>int <code class="sig-name descname">Compare</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>pkey</em>, void *<em>pelt</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType7CompareE11LXtObjectIDPvPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType7SubTypeE11LXtObjectIDPv">
+<span id="_CPPv3N16ILxSelectionType7SubTypeE11LXtObjectIDPv"></span><span id="_CPPv2N16ILxSelectionType7SubTypeE11LXtObjectIDPv"></span><span id="ILxSelectionType::SubType__LXtObjectID.voidP"></span><span class="target" id="class_i_lx_selection_type_1a9933317906449c876237ae4032cb1312"></span>unsigned int <code class="sig-name descname">SubType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>pkt</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType7SubTypeE11LXtObjectIDPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType8fromTypeEPKc">
+<span id="_CPPv3N16ILxSelectionType8fromTypeEPKc"></span><span id="_CPPv2N16ILxSelectionType8fromTypeEPKc"></span><span id="ILxSelectionType::fromType__cCP"></span><span class="target" id="class_i_lx_selection_type_1a3baffce4412dd00724fcc6f4b8a20aca"></span>bool <code class="sig-name descname">fromType</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType8fromTypeEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> User methods allow the selection type wrapper to be initialized given the name or type code for a selection type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSelectionType8fromTypeE6LXtID4">
+<span id="_CPPv3N16ILxSelectionType8fromTypeE6LXtID4"></span><span id="_CPPv2N16ILxSelectionType8fromTypeE6LXtID4"></span><span id="ILxSelectionType::fromType__LXtID4"></span><span class="target" id="class_i_lx_selection_type_1a97a502a1e4ec9d3594df849082f21a97"></span>bool <code class="sig-name descname">fromType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSelectionType8fromTypeE6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxselectionlistener">
+<h2><a class="toc-backref" href="#id2">ILxSelectionListener</a><a class="headerlink" href="#ilxselectionlistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxSelectionListener">
+<span id="_CPPv320ILxSelectionListener"></span><span id="_CPPv220ILxSelectionListener"></span><span id="ILxSelectionListener"></span><span class="target" id="class_i_lx_selection_listener"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionListener</code><a class="headerlink" href="#_CPPv420ILxSelectionListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxSelectionListener7CurrentE11LXtObjectID6LXtID4">
+<span id="_CPPv3N20ILxSelectionListener7CurrentE11LXtObjectID6LXtID4"></span><span id="_CPPv2N20ILxSelectionListener7CurrentE11LXtObjectID6LXtID4"></span><span id="ILxSelectionListener::Current__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_listener_1a63df31e56d72393fd3395133aa3d8bc0"></span>void <code class="sig-name descname">Current</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxSelectionListener7CurrentE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>ADD when elements are added to a selection list.</p></li>
+<li><p>REMOVE when elements are removed from a selection list.</p></li>
+<li><p>CURRENT when a new list is put on top of the stack making it current. The subType for this event is always zero.</p></li>
+<li><p>IMPLICIT when a new type is put on top of the implicit stack. The subType for this event is always zero.</p></li>
+<li><p>TIME_PRE Sent before the internal time is checked and updated, this allows clients to prepare for possible time changes if needed.</p></li>
+<li><p>TIME when the current time is altered.</p></li>
+<li><p>TIMERANGE when any of the specific time ranges is altered. The type is included in the notification data. The <a class="reference internal" href="#class_i_lx_selection_listener"><span class="std std-ref">ILxSelectionListener</span></a> interface allows SDK clients to listen to the global selection events. These are just methods that the client defines that we will call to signal change events. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxSelectionListener3AddE11LXtObjectID6LXtID4j">
+<span id="_CPPv3N20ILxSelectionListener3AddE11LXtObjectID6LXtID4j"></span><span id="_CPPv2N20ILxSelectionListener3AddE11LXtObjectID6LXtID4j"></span><span id="ILxSelectionListener::Add__LXtObjectID.LXtID4.unsigned-i"></span><span class="target" id="class_i_lx_selection_listener_1ad06e7b72b7a45643442f482d67583fa6"></span>void <code class="sig-name descname">Add</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned int <em>subtType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxSelectionListener3AddE11LXtObjectID6LXtID4j" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxSelectionListener6RemoveE11LXtObjectID6LXtID4j">
+<span id="_CPPv3N20ILxSelectionListener6RemoveE11LXtObjectID6LXtID4j"></span><span id="_CPPv2N20ILxSelectionListener6RemoveE11LXtObjectID6LXtID4j"></span><span id="ILxSelectionListener::Remove__LXtObjectID.LXtID4.unsigned-i"></span><span class="target" id="class_i_lx_selection_listener_1a370bd8574bc8e06e02bd6229dd46c22f"></span>void <code class="sig-name descname">Remove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned int <em>subtType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxSelectionListener6RemoveE11LXtObjectID6LXtID4j" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxSelectionListener4TimeE11LXtObjectIDd">
+<span id="_CPPv3N20ILxSelectionListener4TimeE11LXtObjectIDd"></span><span id="_CPPv2N20ILxSelectionListener4TimeE11LXtObjectIDd"></span><span id="ILxSelectionListener::Time__LXtObjectID.double"></span><span class="target" id="class_i_lx_selection_listener_1ad1e3dfd83eb24ebebe50b3b71cb72e4f"></span>void <code class="sig-name descname">Time</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxSelectionListener4TimeE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxSelectionListener9TimeRangeE11LXtObjectID6LXtID4">
+<span id="_CPPv3N20ILxSelectionListener9TimeRangeE11LXtObjectID6LXtID4"></span><span id="_CPPv2N20ILxSelectionListener9TimeRangeE11LXtObjectID6LXtID4"></span><span id="ILxSelectionListener::TimeRange__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_listener_1afdd0fa47cdc50379c26b423b5e71f6d6"></span>void <code class="sig-name descname">TimeRange</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxSelectionListener9TimeRangeE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxselectionservice">
+<h2><a class="toc-backref" href="#id3">ILxSelectionService</a><a class="headerlink" href="#ilxselectionservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxSelectionService">
+<span id="_CPPv319ILxSelectionService"></span><span id="_CPPv219ILxSelectionService"></span><span id="ILxSelectionService"></span><span class="target" id="class_i_lx_selection_service"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionService</code><a class="headerlink" href="#_CPPv419ILxSelectionService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This service has the same GUID as the old SelectionStack interface. They have the same second and third methods, which are all that were ever used in plug-ins, so we should be good for backwards compatibility. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxSelectionService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxSelectionService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxSelectionService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_selection_service_1a93da94b7423fdd961754b2110d130f05"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The selection system is wrapped by a selection service interface for reading and altering the selection state. The <a class="reference internal" href="#class_i_lx_selection_service"><span class="std std-ref">ILxSelectionService</span></a> interface has the obligatory SQ method, and some basic methods to read the current state of the selection by type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService5CountE11LXtObjectID6LXtID4">
+<span id="_CPPv3N19ILxSelectionService5CountE11LXtObjectID6LXtID4"></span><span id="_CPPv2N19ILxSelectionService5CountE11LXtObjectID6LXtID4"></span><span id="ILxSelectionService::Count__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_service_1ae731ee5dfc3cfb26ddd795d601c983fe"></span>int <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService5CountE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService7ByIndexE11LXtObjectID6LXtID4j">
+<span id="_CPPv3N19ILxSelectionService7ByIndexE11LXtObjectID6LXtID4j"></span><span id="_CPPv2N19ILxSelectionService7ByIndexE11LXtObjectID6LXtID4j"></span><span id="ILxSelectionService::ByIndex__LXtObjectID.LXtID4.unsigned-i"></span><span class="target" id="class_i_lx_selection_service_1a09e802acf1d083752b581be54e01f5b3"></span>void *<code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned int <em>idx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService7ByIndexE11LXtObjectID6LXtID4j" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService6RecentE11LXtObjectID6LXtID4">
+<span id="_CPPv3N19ILxSelectionService6RecentE11LXtObjectID6LXtID4"></span><span id="_CPPv2N19ILxSelectionService6RecentE11LXtObjectID6LXtID4"></span><span id="ILxSelectionService::Recent__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_service_1ab0f382645ec5d57fafce83a55387711a"></span>void *<code class="sig-name descname">Recent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService6RecentE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService4TestE11LXtObjectID6LXtID4Pv">
+<span id="_CPPv3N19ILxSelectionService4TestE11LXtObjectID6LXtID4Pv"></span><span id="_CPPv2N19ILxSelectionService4TestE11LXtObjectID6LXtID4Pv"></span><span id="ILxSelectionService::Test__LXtObjectID.LXtID4.voidP"></span><span class="target" id="class_i_lx_selection_service_1a400df6253a785a5b129475b67131273a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Test</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void *<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService4TestE11LXtObjectID6LXtID4Pv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService8ScanLoopE11LXtObjectID13LXtScanInfoID6LXtID4PPv">
+<span id="_CPPv3N19ILxSelectionService8ScanLoopE11LXtObjectID13LXtScanInfoID6LXtID4PPv"></span><span id="_CPPv2N19ILxSelectionService8ScanLoopE11LXtObjectID13LXtScanInfoID6LXtID4PPv"></span><span id="ILxSelectionService::ScanLoop__LXtObjectID.LXtScanInfoID.LXtID4.voidPP"></span><span class="target" id="class_i_lx_selection_service_1ad1d07ac95305bec9389ae365c067e042"></span><a class="reference internal" href="#_CPPv413LXtScanInfoID" title="LXtScanInfoID">LXtScanInfoID</a> <code class="sig-name descname">ScanLoop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv413LXtScanInfoID" title="LXtScanInfoID">LXtScanInfoID</a> <em>scan</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void **<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService8ScanLoopE11LXtObjectID13LXtScanInfoID6LXtID4PPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService15ScanLoopCurrentE11LXtObjectID13LXtScanInfoID6LXtID4PPv">
+<span id="_CPPv3N19ILxSelectionService15ScanLoopCurrentE11LXtObjectID13LXtScanInfoID6LXtID4PPv"></span><span id="_CPPv2N19ILxSelectionService15ScanLoopCurrentE11LXtObjectID13LXtScanInfoID6LXtID4PPv"></span><span id="ILxSelectionService::ScanLoopCurrent__LXtObjectID.LXtScanInfoID.LXtID4.voidPP"></span><span class="target" id="class_i_lx_selection_service_1ab6c199e20f3c283150a2fb1e0dbd1a6f"></span><a class="reference internal" href="#_CPPv413LXtScanInfoID" title="LXtScanInfoID">LXtScanInfoID</a> <code class="sig-name descname">ScanLoopCurrent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv413LXtScanInfoID" title="LXtScanInfoID">LXtScanInfoID</a> <em>scan</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void **<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService15ScanLoopCurrentE11LXtObjectID13LXtScanInfoID6LXtID4PPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService6SelectE11LXtObjectID6LXtID4Pv">
+<span id="_CPPv3N19ILxSelectionService6SelectE11LXtObjectID6LXtID4Pv"></span><span id="_CPPv2N19ILxSelectionService6SelectE11LXtObjectID6LXtID4Pv"></span><span id="ILxSelectionService::Select__LXtObjectID.LXtID4.voidP"></span><span class="target" id="class_i_lx_selection_service_1a09846971a1058bb13d929428ec671304"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Select</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void *<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService6SelectE11LXtObjectID6LXtID4Pv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Editing the selection can be done selecting or deselecting, removing packets from all selections, and manipulating the batch state. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService8DeselectE11LXtObjectID6LXtID4Pv">
+<span id="_CPPv3N19ILxSelectionService8DeselectE11LXtObjectID6LXtID4Pv"></span><span id="_CPPv2N19ILxSelectionService8DeselectE11LXtObjectID6LXtID4Pv"></span><span id="ILxSelectionService::Deselect__LXtObjectID.LXtID4.voidP"></span><span class="target" id="class_i_lx_selection_service_1a96eefa9ac39f5ed602b3cbd31f890d6f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Deselect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void *<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService8DeselectE11LXtObjectID6LXtID4Pv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService6RemoveE11LXtObjectID6LXtID4Pv">
+<span id="_CPPv3N19ILxSelectionService6RemoveE11LXtObjectID6LXtID4Pv"></span><span id="_CPPv2N19ILxSelectionService6RemoveE11LXtObjectID6LXtID4Pv"></span><span id="ILxSelectionService::Remove__LXtObjectID.LXtID4.voidP"></span><span class="target" id="class_i_lx_selection_service_1a38911795ec044675918abc3f1f4fc488"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Remove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void *<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService6RemoveE11LXtObjectID6LXtID4Pv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService6ToggleE11LXtObjectID6LXtID4Pv">
+<span id="_CPPv3N19ILxSelectionService6ToggleE11LXtObjectID6LXtID4Pv"></span><span id="_CPPv2N19ILxSelectionService6ToggleE11LXtObjectID6LXtID4Pv"></span><span id="ILxSelectionService::Toggle__LXtObjectID.LXtID4.voidP"></span><span class="target" id="class_i_lx_selection_service_1a8dc9879a76913da10d4376490be602de"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Toggle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void *<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService6ToggleE11LXtObjectID6LXtID4Pv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService4DropE11LXtObjectID6LXtID4">
+<span id="_CPPv3N19ILxSelectionService4DropE11LXtObjectID6LXtID4"></span><span id="_CPPv2N19ILxSelectionService4DropE11LXtObjectID6LXtID4"></span><span id="ILxSelectionService::Drop__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_service_1a3fb6127aa953d402fa424694aed37f39"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Drop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService4DropE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService10StartBatchE11LXtObjectID">
+<span id="_CPPv3N19ILxSelectionService10StartBatchE11LXtObjectID"></span><span id="_CPPv2N19ILxSelectionService10StartBatchE11LXtObjectID"></span><span id="ILxSelectionService::StartBatch__LXtObjectID"></span><span class="target" id="class_i_lx_selection_service_1abe540695f3b90c45104be4e28463b2b5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StartBatch</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService10StartBatchE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService8EndBatchE11LXtObjectID">
+<span id="_CPPv3N19ILxSelectionService8EndBatchE11LXtObjectID"></span><span id="_CPPv2N19ILxSelectionService8EndBatchE11LXtObjectID"></span><span id="ILxSelectionService::EndBatch__LXtObjectID"></span><span class="target" id="class_i_lx_selection_service_1a771e169e84042e5a5f98f0409f0bbb8d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EndBatch</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService8EndBatchE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService10AbortBatchE11LXtObjectID">
+<span id="_CPPv3N19ILxSelectionService10AbortBatchE11LXtObjectID"></span><span id="_CPPv2N19ILxSelectionService10AbortBatchE11LXtObjectID"></span><span id="ILxSelectionService::AbortBatch__LXtObjectID"></span><span class="target" id="class_i_lx_selection_service_1a2e1369dec3eaa223c7b97c29dfcedf63"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AbortBatch</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService10AbortBatchE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService10LookupNameE11LXtObjectID6LXtID4">
+<span id="_CPPv3N19ILxSelectionService10LookupNameE11LXtObjectID6LXtID4"></span><span id="_CPPv2N19ILxSelectionService10LookupNameE11LXtObjectID6LXtID4"></span><span id="ILxSelectionService::LookupName__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_service_1aed8ed9da892654238b6f627b9ac6b65c"></span><em class="property">const</em> char *<code class="sig-name descname">LookupName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService10LookupNameE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods allow clients to look up name-type associations and to allocate our own instances of the packet interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService10LookupTypeE11LXtObjectIDPKc">
+<span id="_CPPv3N19ILxSelectionService10LookupTypeE11LXtObjectIDPKc"></span><span id="_CPPv2N19ILxSelectionService10LookupTypeE11LXtObjectIDPKc"></span><span id="ILxSelectionService::LookupType__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_selection_service_1a0836bdcb7edc903fd159b99fa6590321"></span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <code class="sig-name descname">LookupType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService10LookupTypeE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService8AllocateE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxSelectionService8AllocateE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxSelectionService8AllocateE11LXtObjectIDPKcPPv"></span><span id="ILxSelectionService::Allocate__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_selection_service_1a2f81b8f9a6ce164706b897c1334ea095"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Allocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService8AllocateE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService7GetTimeE11LXtObjectID">
+<span id="_CPPv3N19ILxSelectionService7GetTimeE11LXtObjectID"></span><span id="_CPPv2N19ILxSelectionService7GetTimeE11LXtObjectID"></span><span id="ILxSelectionService::GetTime__LXtObjectID"></span><span class="target" id="class_i_lx_selection_service_1ae022691bbac18acc4ae62b0f87673a04"></span>double <code class="sig-name descname">GetTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService7GetTimeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods allow clients to read and set the current time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService7SetTimeE11LXtObjectIDd">
+<span id="_CPPv3N19ILxSelectionService7SetTimeE11LXtObjectIDd"></span><span id="_CPPv2N19ILxSelectionService7SetTimeE11LXtObjectIDd"></span><span id="ILxSelectionService::SetTime__LXtObjectID.double"></span><span class="target" id="class_i_lx_selection_service_1ab7f498a4c534d7412ea046db4b1194cb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService7SetTimeE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService5ClearE11LXtObjectID6LXtID4">
+<span id="_CPPv3N19ILxSelectionService5ClearE11LXtObjectID6LXtID4"></span><span id="_CPPv2N19ILxSelectionService5ClearE11LXtObjectID6LXtID4"></span><span id="ILxSelectionService::Clear__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_service_1ab070a608815446897619c75f98889de9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService5ClearE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is like <a class="reference internal" href="#class_i_lx_selection_service_1a3fb6127aa953d402fa424694aed37f39"><span class="std std-ref">Drop()</span></a> but doesn’t change the current selection mode. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService5StateE11LXtObjectID6LXtID4Pv">
+<span id="_CPPv3N19ILxSelectionService5StateE11LXtObjectID6LXtID4Pv"></span><span id="_CPPv2N19ILxSelectionService5StateE11LXtObjectID6LXtID4Pv"></span><span id="ILxSelectionService::State__LXtObjectID.LXtID4.voidP"></span><span class="target" id="class_i_lx_selection_service_1afa75c00a33ec1f2af6c54a435842dd2d"></span>int <code class="sig-name descname">State</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, void *<em>packet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService5StateE11LXtObjectID6LXtID4Pv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is similar to <a class="reference internal" href="#class_i_lx_selection_service_1a400df6253a785a5b129475b67131273a"><span class="std std-ref">Test()</span></a>, but returns the actual selection state for the element. State can have one or more of the LXf_SELECTION_* bits set, or be LXf_SELECTION_NONE. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService11CurrentTypeE11LXtObjectIDPK6LXtID4">
+<span id="_CPPv3N19ILxSelectionService11CurrentTypeE11LXtObjectIDPK6LXtID4"></span><span id="_CPPv2N19ILxSelectionService11CurrentTypeE11LXtObjectIDPK6LXtID4"></span><span id="ILxSelectionService::CurrentType__LXtObjectID.LXtID4CP"></span><span class="target" id="class_i_lx_selection_service_1a9c885213ee21ffc27f3facbafcaaace9"></span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <code class="sig-name descname">CurrentType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> *<em>types</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService11CurrentTypeE11LXtObjectIDPK6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the most recent selection type  the one the user acted on last. If ‘types’ is non-null, it will be an array of types terminated with zero, and the type returned will be one of the ones in the list. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService15CurrentSubTypesE11LXtObjectID6LXtID4PjjPj">
+<span id="_CPPv3N19ILxSelectionService15CurrentSubTypesE11LXtObjectID6LXtID4PjjPj"></span><span id="_CPPv2N19ILxSelectionService15CurrentSubTypesE11LXtObjectID6LXtID4PjjPj"></span><span id="ILxSelectionService::CurrentSubTypes__LXtObjectID.LXtID4.unsignedP.unsigned.unsignedP"></span><span class="target" id="class_i_lx_selection_service_1a0264842f64f443e0849a48fff3ed6d53"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurrentSubTypes</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned *<em>sub</em>, unsigned <em>len</em>, unsigned *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService15CurrentSubTypesE11LXtObjectID6LXtID4PjjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the list of current subtypes into the client’s array. If the number of current subtypes is laarger than the length of the buffer then SHORTBUFFER is returned. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService17GetImplementationEPKcR20CLxLoc_SelectionType">
+<span id="_CPPv3N19ILxSelectionService17GetImplementationEPKcR20CLxLoc_SelectionType"></span><span id="_CPPv2N19ILxSelectionService17GetImplementationEPKcR20CLxLoc_SelectionType"></span><span id="ILxSelectionService::GetImplementation__cCP.CLxLoc_SelectionTypeR"></span><span class="target" id="class_i_lx_selection_service_1a8fc5874940846381af13479c8dfe16f9"></span>bool <code class="sig-name descname">GetImplementation</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, CLxLoc_SelectionType &amp;<em>sel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService17GetImplementationEPKcR20CLxLoc_SelectionType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Nicer ways to get a selection type implementation in C++. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService17GetImplementationE6LXtID4R20CLxLoc_SelectionType">
+<span id="_CPPv3N19ILxSelectionService17GetImplementationE6LXtID4R20CLxLoc_SelectionType"></span><span id="_CPPv2N19ILxSelectionService17GetImplementationE6LXtID4R20CLxLoc_SelectionType"></span><span id="ILxSelectionService::GetImplementation__LXtID4.CLxLoc_SelectionTypeR"></span><span class="target" id="class_i_lx_selection_service_1a6e843a168f65567e0ec3a30d960887a4"></span>bool <code class="sig-name descname">GetImplementation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, CLxLoc_SelectionType &amp;<em>sel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService17GetImplementationE6LXtID4R20CLxLoc_SelectionType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSelectionService14GetSubtypeListE6LXtID4RNSt6vectorIjEE">
+<span id="_CPPv3N19ILxSelectionService14GetSubtypeListE6LXtID4RNSt6vectorIjEE"></span><span id="_CPPv2N19ILxSelectionService14GetSubtypeListE6LXtID4RNSt6vectorIjEE"></span><span id="ILxSelectionService::GetSubtypeList__LXtID4.std::vector:unsigned:R"></span><span class="target" id="class_i_lx_selection_service_1a4720ad249d9e0b8b86bfcbac6e912e6d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSubtypeList</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, std::vector&lt;unsigned&gt; &amp;<em>subTypes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSelectionService14GetSubtypeListE6LXtID4RNSt6vectorIjEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> User class gives a nice wrapper method for getting the array. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv413LXtScanInfoID">
+<span id="_CPPv313LXtScanInfoID"></span><span id="_CPPv213LXtScanInfoID"></span><span id="LXtScanInfoID"></span><span class="target" id="lxd__select_8hpp_1abb9a36a5d2e1d0b4c0dce3e23f144279"></span><em class="property">typedef </em>void *<code class="sig-name descname">LXtScanInfoID</code><a class="headerlink" href="#_CPPv413LXtScanInfoID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients can also enumerate packets in sequence, which may be more efficient than accessing them by index for loops that want to hit everything. ScanLoop() gets all elements of the given type, while ScanLoopCurrent() gets only those that match the current subtypes. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXf_SELECTION_NONE</p></li>
+<li><p>LXf_SELECTION_PRIMARY</p></li>
+<li><p>LXf_SELECTION_SECONDARY</p></li>
+<li><p>LXf_SELECTION_LAST</p></li>
+<li><p>LXf_SELECTION_CURRENT</p></li>
+<li><p>LXf_SELECTION_HISTORY</p></li>
+</ul>
+</div>
+<div class="section" id="ilxselectionpacket1service">
+<h2><a class="toc-backref" href="#id4">ILxSelectionPacket1Service</a><a class="headerlink" href="#ilxselectionpacket1service" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv426ILxSelectionPacket1Service">
+<span id="_CPPv326ILxSelectionPacket1Service"></span><span id="_CPPv226ILxSelectionPacket1Service"></span><span id="ILxSelectionPacket1Service"></span><span class="target" id="class_i_lx_selection_packet1_service"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionPacket1Service</code><a class="headerlink" href="#_CPPv426ILxSelectionPacket1Service" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N26ILxSelectionPacket1Service11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N26ILxSelectionPacket1Service11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N26ILxSelectionPacket1Service11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxSelectionPacket1Service::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_selection_packet1_service_1a0b08a25b42a0a2487d180e3fc3e4b255"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSelectionPacket1Service11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is a legacy service global that implements a subset of the monolithic service. Since we used it in the old wrappers we need to allow queries to succeed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSelectionPacket1Service10LookupNameE11LXtObjectID6LXtID4">
+<span id="_CPPv3N26ILxSelectionPacket1Service10LookupNameE11LXtObjectID6LXtID4"></span><span id="_CPPv2N26ILxSelectionPacket1Service10LookupNameE11LXtObjectID6LXtID4"></span><span id="ILxSelectionPacket1Service::LookupName__LXtObjectID.LXtID4"></span><span class="target" id="class_i_lx_selection_packet1_service_1ad1d72a574c72e2503dca2f1daf158046"></span><em class="property">const</em> char *<code class="sig-name descname">LookupName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSelectionPacket1Service10LookupNameE11LXtObjectID6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSelectionPacket1Service10LookupTypeE11LXtObjectIDPKc">
+<span id="_CPPv3N26ILxSelectionPacket1Service10LookupTypeE11LXtObjectIDPKc"></span><span id="_CPPv2N26ILxSelectionPacket1Service10LookupTypeE11LXtObjectIDPKc"></span><span id="ILxSelectionPacket1Service::LookupType__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_selection_packet1_service_1a4d42f0321cc0ba97f3ea215775ed2961"></span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <code class="sig-name descname">LookupType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSelectionPacket1Service10LookupTypeE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSelectionPacket1Service8AllocateE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N26ILxSelectionPacket1Service8AllocateE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N26ILxSelectionPacket1Service8AllocateE11LXtObjectIDPKcPPv"></span><span id="ILxSelectionPacket1Service::Allocate__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_selection_packet1_service_1a95a2f5c662c32eda7f4d3118d86b4249"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Allocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSelectionPacket1Service8AllocateE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_seltypes.html" class="btn btn-neutral float-right" title="Seltypes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_scripts.html" class="btn btn-neutral float-left" title="Scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_select.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

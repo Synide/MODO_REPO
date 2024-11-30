@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_rendercache.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rendercache &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Result" href="lxd_result.html" />
+    <link rel="prev" title="Render" href="lxd_render.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Rendercache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxrendercacheservice">ILxRenderCacheService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxrendercache">ILxRenderCache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxrendercachelistener1">ILxRenderCacheListener1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxrendercachelistener">ILxRenderCacheListener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxgeocachesegment">ILxGeoCacheSegment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtgeocachesrfvisibility">LXtGeoCacheSrfVisibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxgeocachesurface">ILxGeoCacheSurface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Rendercache</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rendercache">
+<h1>Rendercache<a class="headerlink" href="#rendercache" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxrendercacheservice" id="id1">ILxRenderCacheService</a></p></li>
+<li><p><a class="reference internal" href="#ilxrendercache" id="id2">ILxRenderCache</a></p></li>
+<li><p><a class="reference internal" href="#ilxrendercachelistener1" id="id3">ILxRenderCacheListener1</a></p></li>
+<li><p><a class="reference internal" href="#ilxrendercachelistener" id="id4">ILxRenderCacheListener</a></p></li>
+<li><p><a class="reference internal" href="#ilxgeocachesegment" id="id5">ILxGeoCacheSegment</a></p></li>
+<li><p><a class="reference internal" href="#lxtgeocachesrfvisibility" id="id6">LXtGeoCacheSrfVisibility</a></p></li>
+<li><p><a class="reference internal" href="#ilxgeocachesurface" id="id7">ILxGeoCacheSurface</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxrendercacheservice">
+<h2><a class="toc-backref" href="#id1">ILxRenderCacheService</a><a class="headerlink" href="#ilxrendercacheservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxRenderCacheService">
+<span id="_CPPv321ILxRenderCacheService"></span><span id="_CPPv221ILxRenderCacheService"></span><span id="ILxRenderCacheService"></span><span class="target" id="class_i_lx_render_cache_service"></span><em class="property">class </em><code class="sig-name descname">ILxRenderCacheService</code><a class="headerlink" href="#_CPPv421ILxRenderCacheService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxRenderCacheService17CreateRenderCacheE11LXtObjectIDPPvj">
+<span id="_CPPv3N21ILxRenderCacheService17CreateRenderCacheE11LXtObjectIDPPvj"></span><span id="_CPPv2N21ILxRenderCacheService17CreateRenderCacheE11LXtObjectIDPPvj"></span><span id="ILxRenderCacheService::CreateRenderCache__LXtObjectID.voidPP.unsigned-i"></span><span class="target" id="class_i_lx_render_cache_service_1a41df4d87c4b3153b92d9208e42115a5e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateRenderCache</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em>, unsigned int <em>createFlags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxRenderCacheService17CreateRenderCacheE11LXtObjectIDPPvj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create render cache. Caller can pass LXiRENDERCACHE_XXX flags to guide the cache initialization. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxRenderCacheService14NewRenderCacheER18CLxLoc_RenderCachej">
+<span id="_CPPv3N21ILxRenderCacheService14NewRenderCacheER18CLxLoc_RenderCachej"></span><span id="_CPPv2N21ILxRenderCacheService14NewRenderCacheER18CLxLoc_RenderCachej"></span><span id="ILxRenderCacheService::NewRenderCache__CLxLoc_RenderCacheR.unsigned"></span><span class="target" id="class_i_lx_render_cache_service_1a402b6fa4ce17638955f395c9367f999c"></span>bool <code class="sig-name descname">NewRenderCache</code><span class="sig-paren">(</span>CLxLoc_RenderCache &amp;<em>rcache</em>, unsigned <em>createFlags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxRenderCacheService14NewRenderCacheER18CLxLoc_RenderCachej" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfRENDERCACHE_GEOCACHE_DISPLACE</p></li>
+<li><p>LXfRENDERCACHE_GEOCACHE_GENFUR</p></li>
+<li><p>LXfRENDERCACHE_FULL</p></li>
+<li><p>LXfRENDERCACHE_TRACK_CURRENT_SCENE</p></li>
+<li><p>LXfRENDERCACHE_TURN_OFF_AUTO_UPDATES</p></li>
+<li><p>LXfRENDERCACHE_FORCE_FULL_UPDATE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxrendercache">
+<h2><a class="toc-backref" href="#id2">ILxRenderCache</a><a class="headerlink" href="#ilxrendercache" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxRenderCache">
+<span id="_CPPv314ILxRenderCache"></span><span id="_CPPv214ILxRenderCache"></span><span id="ILxRenderCache"></span><span class="target" id="class_i_lx_render_cache"></span><em class="property">class </em><code class="sig-name descname">ILxRenderCache</code><a class="headerlink" href="#_CPPv414ILxRenderCache" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxRenderCache4TimeE11LXtObjectIDPdPd">
+<span id="_CPPv3N14ILxRenderCache4TimeE11LXtObjectIDPdPd"></span><span id="_CPPv2N14ILxRenderCache4TimeE11LXtObjectIDPdPd"></span><span id="ILxRenderCache::Time__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_render_cache_1a9450633e6b0778f356fcf9342f35fb56"></span>void <code class="sig-name descname">Time</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>time</em>, double *<em>timeOffsets</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxRenderCache4TimeE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return current render cache time and time offsets (for motion blur). Argument timeOffsets is an array of 2 double values. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxRenderCache6UpdateE11LXtObjectIDdi">
+<span id="_CPPv3N14ILxRenderCache6UpdateE11LXtObjectIDdi"></span><span id="_CPPv2N14ILxRenderCache6UpdateE11LXtObjectIDdi"></span><span id="ILxRenderCache::Update__LXtObjectID.double.i"></span><span class="target" id="class_i_lx_render_cache_1a5079a14e89dcca01eaa6022f7fdd963e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Update</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, int <em>force</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxRenderCache6UpdateE11LXtObjectIDdi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Update render cache to given time. If render cache is created without LXfRENDERCACHE_TURN_OFF_AUTO_UPDATES flag, the method will return LXe_FAILED. If time is the same as internal time no update will happen. In that case specify the force to force the full render cache update. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxRenderCache5ClearE11LXtObjectID">
+<span id="_CPPv3N14ILxRenderCache5ClearE11LXtObjectID"></span><span id="_CPPv2N14ILxRenderCache5ClearE11LXtObjectID"></span><span id="ILxRenderCache::Clear__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_1a9f86a5e2632b821a5d0a65f09786b6c1"></span>void <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxRenderCache5ClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clear the render cache. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxRenderCache15GeoSurfaceCountE11LXtObjectIDPi">
+<span id="_CPPv3N14ILxRenderCache15GeoSurfaceCountE11LXtObjectIDPi"></span><span id="_CPPv2N14ILxRenderCache15GeoSurfaceCountE11LXtObjectIDPi"></span><span id="ILxRenderCache::GeoSurfaceCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_render_cache_1aacdd1b43da47fdbb0cf6fa60f921c080"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GeoSurfaceCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxRenderCache15GeoSurfaceCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return number of geo cache surfaces. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxRenderCache12GeoSurfaceAtE11LXtObjectIDiPPv">
+<span id="_CPPv3N14ILxRenderCache12GeoSurfaceAtE11LXtObjectIDiPPv"></span><span id="_CPPv2N14ILxRenderCache12GeoSurfaceAtE11LXtObjectIDiPPv"></span><span id="ILxRenderCache::GeoSurfaceAt__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_render_cache_1adc9e286f9a0d8a923104d3dd9ae2580b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GeoSurfaceAt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>srf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxRenderCache12GeoSurfaceAtE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get geo cache surface at given index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxRenderCache13GetGeoSurfaceEiR22CLxLoc_GeoCacheSurface">
+<span id="_CPPv3N14ILxRenderCache13GetGeoSurfaceEiR22CLxLoc_GeoCacheSurface"></span><span id="_CPPv2N14ILxRenderCache13GetGeoSurfaceEiR22CLxLoc_GeoCacheSurface"></span><span id="ILxRenderCache::GetGeoSurface__i.CLxLoc_GeoCacheSurfaceR"></span><span class="target" id="class_i_lx_render_cache_1a77a49935db0ed9eef4f4b3103c1208b6"></span>bool <code class="sig-name descname">GetGeoSurface</code><span class="sig-paren">(</span>int <em>index</em>, CLxLoc_GeoCacheSurface &amp;<em>srf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxRenderCache13GetGeoSurfaceEiR22CLxLoc_GeoCacheSurface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxrendercachelistener1">
+<h2><a class="toc-backref" href="#id3">ILxRenderCacheListener1</a><a class="headerlink" href="#ilxrendercachelistener1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxRenderCacheListener1">
+<span id="_CPPv323ILxRenderCacheListener1"></span><span id="_CPPv223ILxRenderCacheListener1"></span><span id="ILxRenderCacheListener1"></span><span class="target" id="class_i_lx_render_cache_listener1"></span><em class="property">class </em><code class="sig-name descname">ILxRenderCacheListener1</code><a class="headerlink" href="#_CPPv423ILxRenderCacheListener1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener118RenderCacheDestroyE11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener118RenderCacheDestroyE11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener118RenderCacheDestroyE11LXtObjectID"></span><span id="ILxRenderCacheListener1::RenderCacheDestroy__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1aef85aab9860119efbe954c6c1b245c6e"></span>void <code class="sig-name descname">RenderCacheDestroy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener118RenderCacheDestroyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener111UpdateBeginE11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener111UpdateBeginE11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener111UpdateBeginE11LXtObjectID"></span><span id="ILxRenderCacheListener1::UpdateBegin__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1aa7d39db3880bf908ddb1bd7c0f698bf7"></span>void <code class="sig-name descname">UpdateBegin</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener111UpdateBeginE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener19UpdateEndE11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener19UpdateEndE11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener19UpdateEndE11LXtObjectID"></span><span id="ILxRenderCacheListener1::UpdateEnd__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1a0df4f3840740c52797c0d9c3973b0f6b"></span>void <code class="sig-name descname">UpdateEnd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener19UpdateEndE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener118GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener118GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener118GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener1::GeoCacheSurfaceAdd__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1af46afabc95c87abad55bb905b68f4658"></span>void <code class="sig-name descname">GeoCacheSurfaceAdd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener118GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener121GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener121GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener121GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener1::GeoCacheSurfaceRemove__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1ab4592a29c26e0d10b1c9a5ab2b5a2574"></span>void <code class="sig-name descname">GeoCacheSurfaceRemove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener121GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener124GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener124GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener124GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener1::GeoCacheSurfaceGeoUpdate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1af4660129c8c59480a877477fb5e1d27b"></span>void <code class="sig-name descname">GeoCacheSurfaceGeoUpdate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener124GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener126GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener126GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener126GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener1::GeoCacheSurfaceXformUpdate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1a6a28cb282843791484ca4f2d84810e17"></span>void <code class="sig-name descname">GeoCacheSurfaceXformUpdate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener126GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxRenderCacheListener127GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxRenderCacheListener127GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxRenderCacheListener127GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener1::GeoCacheSurfaceShaderUpdate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener1_1a8244f62e1389c38e5ef421f4243db38f"></span>void <code class="sig-name descname">GeoCacheSurfaceShaderUpdate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxRenderCacheListener127GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxrendercachelistener">
+<h2><a class="toc-backref" href="#id4">ILxRenderCacheListener</a><a class="headerlink" href="#ilxrendercachelistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxRenderCacheListener">
+<span id="_CPPv322ILxRenderCacheListener"></span><span id="_CPPv222ILxRenderCacheListener"></span><span id="ILxRenderCacheListener"></span><span class="target" id="class_i_lx_render_cache_listener"></span><em class="property">class </em><code class="sig-name descname">ILxRenderCacheListener</code><a class="headerlink" href="#_CPPv422ILxRenderCacheListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener18RenderCacheDestroyE11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener18RenderCacheDestroyE11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener18RenderCacheDestroyE11LXtObjectID"></span><span id="ILxRenderCacheListener::RenderCacheDestroy__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a096ed79ce22c98ee3e1305d498bbb46f"></span>void <code class="sig-name descname">RenderCacheDestroy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener18RenderCacheDestroyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when render cache is being destroyed. This happens when user changes the current scene (if LXfRENDERCACHE_TRACK_CURRENT_SCENE was specified). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener11UpdateBeginE11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener11UpdateBeginE11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener11UpdateBeginE11LXtObjectID"></span><span id="ILxRenderCacheListener::UpdateBegin__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a409f5885fb96d3b218a8dfc16b089a06"></span>void <code class="sig-name descname">UpdateBegin</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener11UpdateBeginE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener9UpdateEndE11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener9UpdateEndE11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener9UpdateEndE11LXtObjectID"></span><span id="ILxRenderCacheListener::UpdateEnd__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a25d1e5aa206d9de81eb2e5e7952a50cc"></span>void <code class="sig-name descname">UpdateEnd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener9UpdateEndE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener18GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener18GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener18GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener::GeoCacheSurfaceAdd__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1ac2c76314ae158ea08100f9219da62e9d"></span>void <code class="sig-name descname">GeoCacheSurfaceAdd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener18GeoCacheSurfaceAddE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called after the geo surface has been added to cache. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener21GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener21GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener21GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener::GeoCacheSurfaceRemove__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a045ab48903b15a5108dd1e0890dd56e2"></span>void <code class="sig-name descname">GeoCacheSurfaceRemove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener21GeoCacheSurfaceRemoveE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called before the geo surface has been removed from cache. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener24GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener24GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener24GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener::GeoCacheSurfaceGeoUpdate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a56b4458e52d29656c23af6e396e353fb"></span>void <code class="sig-name descname">GeoCacheSurfaceGeoUpdate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener24GeoCacheSurfaceGeoUpdateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when the geo surface data has been changed (this method is called only for non-instanced surfaces). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener26GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener26GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener26GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener::GeoCacheSurfaceXformUpdate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1ad5f32d5699712123e62eafc0111c5e19"></span>void <code class="sig-name descname">GeoCacheSurfaceXformUpdate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener26GeoCacheSurfaceXformUpdateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when the xform data has been changed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener27GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener27GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener27GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID"></span><span id="ILxRenderCacheListener::GeoCacheSurfaceShaderUpdate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a2478233bdc71896dfc3c20a69298cf3c"></span>void <code class="sig-name descname">GeoCacheSurfaceShaderUpdate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>geoSrf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener27GeoCacheSurfaceShaderUpdateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when the shading data has been changed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxRenderCacheListener16RenderCacheClearE11LXtObjectID">
+<span id="_CPPv3N22ILxRenderCacheListener16RenderCacheClearE11LXtObjectID"></span><span id="_CPPv2N22ILxRenderCacheListener16RenderCacheClearE11LXtObjectID"></span><span id="ILxRenderCacheListener::RenderCacheClear__LXtObjectID"></span><span class="target" id="class_i_lx_render_cache_listener_1a8576b97706ca557ff36eaaa0e65366b5"></span>void <code class="sig-name descname">RenderCacheClear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxRenderCacheListener16RenderCacheClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when render cache is cleared. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxgeocachesegment">
+<h2><a class="toc-backref" href="#id5">ILxGeoCacheSegment</a><a class="headerlink" href="#ilxgeocachesegment" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxGeoCacheSegment">
+<span id="_CPPv318ILxGeoCacheSegment"></span><span id="_CPPv218ILxGeoCacheSegment"></span><span id="ILxGeoCacheSegment"></span><span class="target" id="class_i_lx_geo_cache_segment"></span><em class="property">class </em><code class="sig-name descname">ILxGeoCacheSegment</code><a class="headerlink" href="#_CPPv418ILxGeoCacheSegment" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment7GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N18ILxGeoCacheSegment7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N18ILxGeoCacheSegment7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxGeoCacheSegment::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_geo_cache_segment_1aa5848557e33f48baeaf9f37d01ee99e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment7GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the segment’s bounding box in the world-space. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment12PolygonCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxGeoCacheSegment12PolygonCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxGeoCacheSegment12PolygonCountE11LXtObjectIDPi"></span><span id="ILxGeoCacheSegment::PolygonCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_geo_cache_segment_1ac5224306c0414d813834a9c10d44fad2"></span>void <code class="sig-name descname">PolygonCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment12PolygonCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment11VertexCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxGeoCacheSegment11VertexCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxGeoCacheSegment11VertexCountE11LXtObjectIDPi"></span><span id="ILxGeoCacheSegment::VertexCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_geo_cache_segment_1aefdc9e3791864cdf0af924cd6017466a"></span>void <code class="sig-name descname">VertexCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment11VertexCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment12VertsPerPolyE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxGeoCacheSegment12VertsPerPolyE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxGeoCacheSegment12VertsPerPolyE11LXtObjectIDPi"></span><span id="ILxGeoCacheSegment::VertsPerPoly__LXtObjectID.iP"></span><span class="target" id="class_i_lx_geo_cache_segment_1a95b1407cfb4b6a945a5ef96df84f80ae"></span>void <code class="sig-name descname">VertsPerPoly</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment12VertsPerPolyE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>All polygons in the segments have same number of vertices in the polygon. It can be 3 for triangles, 2 for curves and (hair &amp; fur) and 1 for particles. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment18VertexFeatureCountE11LXtObjectIDiPi">
+<span id="_CPPv3N18ILxGeoCacheSegment18VertexFeatureCountE11LXtObjectIDiPi"></span><span id="_CPPv2N18ILxGeoCacheSegment18VertexFeatureCountE11LXtObjectIDiPi"></span><span id="ILxGeoCacheSegment::VertexFeatureCount__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_geo_cache_segment_1a398fdbc0e0a6030317fe38897d1fa621"></span>void <code class="sig-name descname">VertexFeatureCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>feature</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment18VertexFeatureCountE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return if the vertex feature is stored in the segment. OPOS and ONRM are always stored. The count for WVEL, RAD and FUR will be either 0 or 1. For UV, DPDU and DPDV the count will return how many UV vmaps are stored in the segment. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment23GetPolygonVertexFeatureE11LXtObjectIDiPvii">
+<span id="_CPPv3N18ILxGeoCacheSegment23GetPolygonVertexFeatureE11LXtObjectIDiPvii"></span><span id="_CPPv2N18ILxGeoCacheSegment23GetPolygonVertexFeatureE11LXtObjectIDiPvii"></span><span id="ILxGeoCacheSegment::GetPolygonVertexFeature__LXtObjectID.i.voidP.i.i"></span><span class="target" id="class_i_lx_geo_cache_segment_1a3d38a0140ffb85ee3fc354024a9370bd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetPolygonVertexFeature</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>feature</em>, void *<em>featureData</em>, int <em>count</em>, int <em>start</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment23GetPolygonVertexFeatureE11LXtObjectIDiPvii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Segment vertex feature is copied per-polygon-per-vertex into client’s memory (like a triangle soup). Caller can specify the start offset into the segment’s data. The start and count are in number of elements which are from 0 to VertsPerPoly * PolygonCount (not in byte size). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment16GetVertexFeatureE11LXtObjectIDiPvii">
+<span id="_CPPv3N18ILxGeoCacheSegment16GetVertexFeatureE11LXtObjectIDiPvii"></span><span id="_CPPv2N18ILxGeoCacheSegment16GetVertexFeatureE11LXtObjectIDiPvii"></span><span id="ILxGeoCacheSegment::GetVertexFeature__LXtObjectID.i.voidP.i.i"></span><span class="target" id="class_i_lx_geo_cache_segment_1a1b3d331be1c307bf67caecf29d8295b3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetVertexFeature</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>feature</em>, void *<em>featureData</em>, int <em>count</em>, int <em>start</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment16GetVertexFeatureE11LXtObjectIDiPvii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Segment vertex feature is copied per-vertex into client’s memory. Caller can specify the start offset into the segment’s data. The start and count are in number of elements which are from 0 to VertexCount (not in byte size). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSegment20GetPolygonVertexIndsE11LXtObjectIDPiii">
+<span id="_CPPv3N18ILxGeoCacheSegment20GetPolygonVertexIndsE11LXtObjectIDPiii"></span><span id="_CPPv2N18ILxGeoCacheSegment20GetPolygonVertexIndsE11LXtObjectIDPiii"></span><span id="ILxGeoCacheSegment::GetPolygonVertexInds__LXtObjectID.iP.i.i"></span><span class="target" id="class_i_lx_geo_cache_segment_1a9f040c497070641e33822a40862b7147"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetPolygonVertexInds</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>polyVertexInds</em>, int <em>count</em>, int <em>start</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSegment20GetPolygonVertexIndsE11LXtObjectIDPiii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy polygon vertex indices into client’s memory. Caller can specify the start offset into the segment’s data. The start and count are in number of elements which are from 0 to VertsPerPoly * PolygonVertexCount (not in byte size). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiRENDERCACHE_GEOVERT_OPOS</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_ONRM</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_OVEL</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_RAD</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_FUR</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_UV</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_DPDU</p></li>
+<li><p>LXiRENDERCACHE_GEOVERT_DPDV</p></li>
+</ul>
+</div>
+<div class="section" id="lxtgeocachesrfvisibility">
+<h2><a class="toc-backref" href="#id6">LXtGeoCacheSrfVisibility</a><a class="headerlink" href="#lxtgeocachesrfvisibility" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv427st_LXtGeoCacheSrfVisibility">
+<span id="_CPPv327st_LXtGeoCacheSrfVisibility"></span><span id="_CPPv227st_LXtGeoCacheSrfVisibility"></span><span id="st_LXtGeoCacheSrfVisibility"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility"></span><em class="property">struct </em><code class="sig-name descname">st_LXtGeoCacheSrfVisibility</code><a class="headerlink" href="#_CPPv427st_LXtGeoCacheSrfVisibility" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Surface visibility flags </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N27st_LXtGeoCacheSrfVisibility6cameraE">
+<span id="_CPPv3N27st_LXtGeoCacheSrfVisibility6cameraE"></span><span id="_CPPv2N27st_LXtGeoCacheSrfVisibility6cameraE"></span><span id="st_LXtGeoCacheSrfVisibility::camera__unsigned"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility_1afeb05116253ae7a20d57d6f0e7fe71eb"></span>unsigned <code class="sig-name descname">camera</code> : 1<a class="headerlink" href="#_CPPv4N27st_LXtGeoCacheSrfVisibility6cameraE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N27st_LXtGeoCacheSrfVisibility8indirectE">
+<span id="_CPPv3N27st_LXtGeoCacheSrfVisibility8indirectE"></span><span id="_CPPv2N27st_LXtGeoCacheSrfVisibility8indirectE"></span><span id="st_LXtGeoCacheSrfVisibility::indirect__unsigned"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility_1a93bb87ddce9b18e34bc1056d185ff672"></span>unsigned <code class="sig-name descname">indirect</code> : 1<a class="headerlink" href="#_CPPv4N27st_LXtGeoCacheSrfVisibility8indirectE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N27st_LXtGeoCacheSrfVisibility10reflectionE">
+<span id="_CPPv3N27st_LXtGeoCacheSrfVisibility10reflectionE"></span><span id="_CPPv2N27st_LXtGeoCacheSrfVisibility10reflectionE"></span><span id="st_LXtGeoCacheSrfVisibility::reflection__unsigned"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility_1ad323811f29c7079c70f7ee801d9d581e"></span>unsigned <code class="sig-name descname">reflection</code> : 1<a class="headerlink" href="#_CPPv4N27st_LXtGeoCacheSrfVisibility10reflectionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N27st_LXtGeoCacheSrfVisibility10refractionE">
+<span id="_CPPv3N27st_LXtGeoCacheSrfVisibility10refractionE"></span><span id="_CPPv2N27st_LXtGeoCacheSrfVisibility10refractionE"></span><span id="st_LXtGeoCacheSrfVisibility::refraction__unsigned"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility_1a91444b5334876f26d3a199a8372cca18"></span>unsigned <code class="sig-name descname">refraction</code> : 1<a class="headerlink" href="#_CPPv4N27st_LXtGeoCacheSrfVisibility10refractionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N27st_LXtGeoCacheSrfVisibility10subscatterE">
+<span id="_CPPv3N27st_LXtGeoCacheSrfVisibility10subscatterE"></span><span id="_CPPv2N27st_LXtGeoCacheSrfVisibility10subscatterE"></span><span id="st_LXtGeoCacheSrfVisibility::subscatter__unsigned"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility_1aba05c1770d08120d860bbc77ddf5d8e1"></span>unsigned <code class="sig-name descname">subscatter</code> : 1<a class="headerlink" href="#_CPPv4N27st_LXtGeoCacheSrfVisibility10subscatterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N27st_LXtGeoCacheSrfVisibility9occlusionE">
+<span id="_CPPv3N27st_LXtGeoCacheSrfVisibility9occlusionE"></span><span id="_CPPv2N27st_LXtGeoCacheSrfVisibility9occlusionE"></span><span id="st_LXtGeoCacheSrfVisibility::occlusion__unsigned"></span><span class="target" id="structst___l_xt_geo_cache_srf_visibility_1ae85dc0e5e46f219704d62591952d64ba"></span>unsigned <code class="sig-name descname">occlusion</code> : 1<a class="headerlink" href="#_CPPv4N27st_LXtGeoCacheSrfVisibility9occlusionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxgeocachesurface">
+<h2><a class="toc-backref" href="#id7">ILxGeoCacheSurface</a><a class="headerlink" href="#ilxgeocachesurface" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxGeoCacheSurface">
+<span id="_CPPv318ILxGeoCacheSurface"></span><span id="_CPPv218ILxGeoCacheSurface"></span><span id="ILxGeoCacheSurface"></span><span class="target" id="class_i_lx_geo_cache_surface"></span><em class="property">class </em><code class="sig-name descname">ILxGeoCacheSurface</code><a class="headerlink" href="#_CPPv418ILxGeoCacheSurface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface14ShaderMaskNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxGeoCacheSurface14ShaderMaskNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxGeoCacheSurface14ShaderMaskNameE11LXtObjectIDPPKc"></span><span id="ILxGeoCacheSurface::ShaderMaskName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_geo_cache_surface_1af8932a6ab47270875918db5994ab80ff"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShaderMaskName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface14ShaderMaskNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Obtain geo surface shader mask name (for example Surf(ShaderMaskName)). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface14ShaderMaskTypeE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface14ShaderMaskTypeE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface14ShaderMaskTypeE11LXtObjectID"></span><span id="ILxGeoCacheSurface::ShaderMaskType__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1afc77af043b4c7b1eea6080717126a29c"></span>int <code class="sig-name descname">ShaderMaskType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface14ShaderMaskTypeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns one of LXi_SURF_XXX flags. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface10SourceItemE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxGeoCacheSurface10SourceItemE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxGeoCacheSurface10SourceItemE11LXtObjectIDPPv"></span><span id="ILxGeoCacheSurface::SourceItem__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_geo_cache_surface_1aefa950c8193b676f547b097771d3cd22"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SourceItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface10SourceItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Every surface has a source item. For replicated and instanced surfaces this method will return the source mesh. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface11IsInstancedE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface11IsInstancedE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface11IsInstancedE11LXtObjectID"></span><span id="ILxGeoCacheSurface::IsInstanced__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a09f41b894f4aab5000f786fccd3529f9"></span>int <code class="sig-name descname">IsInstanced</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface11IsInstancedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns 1 if surface is instanced. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface13InstanceIndexE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface13InstanceIndexE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface13InstanceIndexE11LXtObjectID"></span><span id="ILxGeoCacheSurface::InstanceIndex__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a5063f503e12067ed3ae240f3ac92b586"></span>int <code class="sig-name descname">InstanceIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface13InstanceIndexE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns surface instance index, if surface is not instanced the returned value is -1. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface13SourceSurfaceE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxGeoCacheSurface13SourceSurfaceE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxGeoCacheSurface13SourceSurfaceE11LXtObjectIDPPv"></span><span id="ILxGeoCacheSurface::SourceSurface__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_geo_cache_surface_1abf145da098a8845ddaee3ad4ceeb2512"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SourceSurface</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface13SourceSurfaceE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If geo surface is instanced then it doesn’t contain any geometry segments. This mehtod returns the source geo cache surface which contains the segment data. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface7GetBBoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N18ILxGeoCacheSurface7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N18ILxGeoCacheSurface7GetBBoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxGeoCacheSurface::GetBBox__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a3872fec2024b8b1683c81360b1540e92"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBBox</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>bbox</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface7GetBBoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Obtain surface’s bounding box. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface7GetXfrmE11LXtObjectID9LXtVector9LXtMatrix9LXtVectori">
+<span id="_CPPv3N18ILxGeoCacheSurface7GetXfrmE11LXtObjectID9LXtVector9LXtMatrix9LXtVectori"></span><span id="_CPPv2N18ILxGeoCacheSurface7GetXfrmE11LXtObjectID9LXtVector9LXtMatrix9LXtVectori"></span><span id="ILxGeoCacheSurface::GetXfrm__LXtObjectID.LXtVector.LXtMatrix.LXtVector.i"></span><span class="target" id="class_i_lx_geo_cache_surface_1acd69451edf4b4068ea878d2e2dbb0f6d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetXfrm</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>rot</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>scl</em>, int <em>endpoint</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface7GetXfrmE11LXtObjectID9LXtVector9LXtMatrix9LXtVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return surface’s xform information at given time endpoint (T0 or T1). T0 (=0) is time for shutter open, T1 (=1) is time for shutter close. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface12SegmentCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxGeoCacheSurface12SegmentCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxGeoCacheSurface12SegmentCountE11LXtObjectIDPi"></span><span id="ILxGeoCacheSurface::SegmentCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a254e33a4e53d2bfcf26c77b60b58df75"></span>void <code class="sig-name descname">SegmentCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface12SegmentCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return how many segments are in this surface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface12PolygonCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxGeoCacheSurface12PolygonCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxGeoCacheSurface12PolygonCountE11LXtObjectIDPi"></span><span id="ILxGeoCacheSurface::PolygonCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a25ccb24d1df6c117b23f8fca4a1534ab"></span>void <code class="sig-name descname">PolygonCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface12PolygonCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return how many polygons are in this surface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface11VertexCountE11LXtObjectIDPi">
+<span id="_CPPv3N18ILxGeoCacheSurface11VertexCountE11LXtObjectIDPi"></span><span id="_CPPv2N18ILxGeoCacheSurface11VertexCountE11LXtObjectIDPi"></span><span id="ILxGeoCacheSurface::VertexCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a9e672b3d08e92690811000b47e213ce7"></span>void <code class="sig-name descname">VertexCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface11VertexCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return how many vertices are in this surface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface9SegmentAtE11LXtObjectIDiPPv">
+<span id="_CPPv3N18ILxGeoCacheSurface9SegmentAtE11LXtObjectIDiPPv"></span><span id="_CPPv2N18ILxGeoCacheSurface9SegmentAtE11LXtObjectIDiPPv"></span><span id="ILxGeoCacheSurface::SegmentAt__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a3aa9d23d74cf23f732196f76f4d2dc8f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SegmentAt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>segment</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface9SegmentAtE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get segment by index </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface15VisibilityFlagsE11LXtObjectIDP24LXtGeoCacheSrfVisibility">
+<span id="_CPPv3N18ILxGeoCacheSurface15VisibilityFlagsE11LXtObjectIDP24LXtGeoCacheSrfVisibility"></span><span id="_CPPv2N18ILxGeoCacheSurface15VisibilityFlagsE11LXtObjectIDP24LXtGeoCacheSrfVisibility"></span><span id="ILxGeoCacheSurface::VisibilityFlags__LXtObjectID.LXtGeoCacheSrfVisibilityP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a03678a92da0f3d5758357cce0374ec98"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">VisibilityFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtGeoCacheSrfVisibility *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface15VisibilityFlagsE11LXtObjectIDP24LXtGeoCacheSrfVisibility" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return surface visibility flags (visible in camera, etc.) </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface2IDE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface2IDE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface2IDE11LXtObjectID"></span><span id="ILxGeoCacheSurface::ID__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a3846d119bcb3eb1d6ad83be8b1b504c5"></span>int <code class="sig-name descname">ID</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface2IDE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return surface unique id. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface7IsValidE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface7IsValidE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface7IsValidE11LXtObjectID"></span><span id="ILxGeoCacheSurface::IsValid__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a00da95ab670010348836f7c39964f76c"></span>int <code class="sig-name descname">IsValid</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface7IsValidE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return if surface is valid, i.e. not deleted. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface12LoadSegmentsE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface12LoadSegmentsE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface12LoadSegmentsE11LXtObjectID"></span><span id="ILxGeoCacheSurface::LoadSegments__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1ae7aa34ed12d8e6afeb0e15cb2412f38e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LoadSegments</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface12LoadSegmentsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Populate geometry segments with vertices and polygons. If surface is already populated this method will do nothing. Use this method when you want to populate geometry cache on-demand. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface14UnloadSegmentsE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface14UnloadSegmentsE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface14UnloadSegmentsE11LXtObjectID"></span><span id="ILxGeoCacheSurface::UnloadSegments__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a781ff5986af1ea27855bec528cb9b9ff"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UnloadSegments</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface14UnloadSegmentsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface13GetVertexDescE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface13GetVertexDescE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface13GetVertexDescE11LXtObjectID"></span><span id="ILxGeoCacheSurface::GetVertexDesc__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1aeff6816303345630849ec1a3d3f157c5"></span>ILxTableauVertexID <code class="sig-name descname">GetVertexDesc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface13GetVertexDescE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return ILxTableauVertexID which can be used to query vertex information. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface12MaterialPTagE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface12MaterialPTagE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface12MaterialPTagE11LXtObjectID"></span><span id="ILxGeoCacheSurface::MaterialPTag__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1ad031381a17357bd26240bec86bd61b0d"></span><em class="property">const</em> char *<code class="sig-name descname">MaterialPTag</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface12MaterialPTagE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface8PartPTagE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface8PartPTagE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface8PartPTagE11LXtObjectID"></span><span id="ILxGeoCacheSurface::PartPTag__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a1a914b38fafe1718f6823f986160b023"></span><em class="property">const</em> char *<code class="sig-name descname">PartPTag</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface8PartPTagE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface8PickPTagE11LXtObjectID">
+<span id="_CPPv3N18ILxGeoCacheSurface8PickPTagE11LXtObjectID"></span><span id="_CPPv2N18ILxGeoCacheSurface8PickPTagE11LXtObjectID"></span><span id="ILxGeoCacheSurface::PickPTag__LXtObjectID"></span><span class="target" id="class_i_lx_geo_cache_surface_1a6c1ba60f2bf3142e5d8d77f84e52df73"></span><em class="property">const</em> char *<code class="sig-name descname">PickPTag</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface8PickPTagE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface16ShaderLayerCountE11LXtObjectIDPj">
+<span id="_CPPv3N18ILxGeoCacheSurface16ShaderLayerCountE11LXtObjectIDPj"></span><span id="_CPPv2N18ILxGeoCacheSurface16ShaderLayerCountE11LXtObjectIDPj"></span><span id="ILxGeoCacheSurface::ShaderLayerCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a2b0b7d0a77c656bd006d22892394e027"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShaderLayerCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface16ShaderLayerCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the number of shader tree layers applicable to this surface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface13ShaderLayerAtE11LXtObjectIDjPPv">
+<span id="_CPPv3N18ILxGeoCacheSurface13ShaderLayerAtE11LXtObjectIDjPPv"></span><span id="_CPPv2N18ILxGeoCacheSurface13ShaderLayerAtE11LXtObjectIDjPPv"></span><span id="ILxGeoCacheSurface::ShaderLayerAt__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_geo_cache_surface_1a5e2e2213ccbbc65a452ffd8e4810ce35"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShaderLayerAt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>shaderLayer</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface13ShaderLayerAtE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Extract the shader tree layer item at the specified index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface13GetSourceItemER11CLxLoc_Item">
+<span id="_CPPv3N18ILxGeoCacheSurface13GetSourceItemER11CLxLoc_Item"></span><span id="_CPPv2N18ILxGeoCacheSurface13GetSourceItemER11CLxLoc_Item"></span><span id="ILxGeoCacheSurface::GetSourceItem__CLxLoc_ItemR"></span><span class="target" id="class_i_lx_geo_cache_surface_1ad610cba0b007478e2ea5b4eb347ea584"></span>bool <code class="sig-name descname">GetSourceItem</code><span class="sig-paren">(</span>CLxLoc_Item &amp;<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface13GetSourceItemER11CLxLoc_Item" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface16GetSourceSurfaceER22CLxLoc_GeoCacheSurface">
+<span id="_CPPv3N18ILxGeoCacheSurface16GetSourceSurfaceER22CLxLoc_GeoCacheSurface"></span><span id="_CPPv2N18ILxGeoCacheSurface16GetSourceSurfaceER22CLxLoc_GeoCacheSurface"></span><span id="ILxGeoCacheSurface::GetSourceSurface__CLxLoc_GeoCacheSurfaceR"></span><span class="target" id="class_i_lx_geo_cache_surface_1a843587a9240f6665d92d60fbf122e2b2"></span>bool <code class="sig-name descname">GetSourceSurface</code><span class="sig-paren">(</span>CLxLoc_GeoCacheSurface &amp;<em>srf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface16GetSourceSurfaceER22CLxLoc_GeoCacheSurface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface10GetSegmentEiR22CLxLoc_GeoCacheSegment">
+<span id="_CPPv3N18ILxGeoCacheSurface10GetSegmentEiR22CLxLoc_GeoCacheSegment"></span><span id="_CPPv2N18ILxGeoCacheSurface10GetSegmentEiR22CLxLoc_GeoCacheSegment"></span><span id="ILxGeoCacheSurface::GetSegment__i.CLxLoc_GeoCacheSegmentR"></span><span class="target" id="class_i_lx_geo_cache_surface_1a270d15d157e4af209b2bec343e0dc70e"></span>bool <code class="sig-name descname">GetSegment</code><span class="sig-paren">(</span>int <em>index</em>, CLxLoc_GeoCacheSegment &amp;<em>seg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface10GetSegmentEiR22CLxLoc_GeoCacheSegment" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGeoCacheSurface14GetShaderLayerEjR11CLxLoc_Item">
+<span id="_CPPv3N18ILxGeoCacheSurface14GetShaderLayerEjR11CLxLoc_Item"></span><span id="_CPPv2N18ILxGeoCacheSurface14GetShaderLayerEjR11CLxLoc_Item"></span><span id="ILxGeoCacheSurface::GetShaderLayer__unsigned-i.CLxLoc_ItemR"></span><span class="target" id="class_i_lx_geo_cache_surface_1aa74dc738e3b171f68ea8d182b37a2348"></span>bool <code class="sig-name descname">GetShaderLayer</code><span class="sig-paren">(</span>unsigned int <em>index</em>, CLxLoc_Item &amp;<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGeoCacheSurface14GetShaderLayerEjR11CLxLoc_Item" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_result.html" class="btn btn-neutral float-right" title="Result" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_render.html" class="btn btn-neutral float-left" title="Render" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_rendercache.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

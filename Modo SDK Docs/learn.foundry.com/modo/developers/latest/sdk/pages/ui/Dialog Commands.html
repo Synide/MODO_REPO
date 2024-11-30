@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Dialog Commands.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:58 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dialog Commands &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Event Log Viewport" href="Event%20Log%20Viewport.html" />
+    <link rel="prev" title="Defining Item Categories" href="Defining%20Item%20Categories.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ui.html">User Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="App.undoSuspend.html">App.undoSuspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Argument%20Types.html">Argument Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Collapsable%20and%20Hideable%20Viewports.html">Collapsable and Hideable Viewports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Dialog%20Formatting.html">Command Dialog Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Help.html">Command Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20History%20Viewport.html">Command History Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20A%20Custom%20Form.html">Create A Custom Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20Layouts.html">Creating Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Defining%20Item%20Categories.html">Defining Item Categories</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dialog Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-yes-no-dialog-dialog-setup">Creating a <em>Yes/No</em> Dialog: dialog.setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#title">Title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#body-text">Body Text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#message-tables-and-substitutions">Message Tables and Substitutions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#help-urls">Help URLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-result">Default Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dialog-result-codes-table">Dialog Result Codes Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-the-dialog">Displaying the Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yes-no-dialog-perl-script-example">Yes/No Dialog Perl Script Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yes-no-dialog-python-script-example">Yes/No Dialog Python Script Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yes-no-cancel-dialog-python-script-example">Yes/No/Cancel Dialog Python Script Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-dialogs">File Dialogs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#open-file-dialogs">Open File Dialogs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-select-file-dialog-perl-script-example">Multi-Select File Dialog Perl Script Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#save-dialog">Save Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-file-type-dialog-wrapper-function-in-python">Custom File Type Dialog wrapper function in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Event%20Log%20Viewport.html">Event Log Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Categories%20and%20Groups.html">Form Categories and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Editor.html">Form Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Filtering.html">Form Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20System.html">Form System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help%20URLs.html">Help URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icon%20Resources.html">Icon Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layout%20Windows.html">Layout Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MODO%20Projects.html">MODO Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageService%20Reference.html">MessageService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Markup.html">Modo Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface%20and%20Plug-Ins.html">User Interface and Plug-Ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Values.html">User Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ui.html">User Interface</a> &raquo;</li>
+        
+      <li>Dialog Commands</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dialog-commands">
+<h1>Dialog Commands<a class="headerlink" href="#dialog-commands" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-yes-no-dialog-dialog-setup" id="id2">Creating a <em>Yes/No</em> Dialog: dialog.setup</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#title" id="id3">Title</a></p></li>
+<li><p><a class="reference internal" href="#body-text" id="id4">Body Text</a></p>
+<ul>
+<li><p><a class="reference internal" href="#message-tables-and-substitutions" id="id5">Message Tables and Substitutions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#help-urls" id="id6">Help URLs</a></p></li>
+<li><p><a class="reference internal" href="#default-result" id="id7">Default Result</a></p></li>
+<li><p><a class="reference internal" href="#dialog-result-codes-table" id="id8">Dialog Result Codes Table</a></p></li>
+<li><p><a class="reference internal" href="#displaying-the-dialog" id="id9">Displaying the Dialog</a></p></li>
+<li><p><a class="reference internal" href="#results" id="id10">Results</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id11">Examples</a></p>
+<ul>
+<li><p><a class="reference internal" href="#yes-no-dialog-perl-script-example" id="id12">Yes/No Dialog Perl Script Example</a></p></li>
+<li><p><a class="reference internal" href="#yes-no-dialog-python-script-example" id="id13">Yes/No Dialog Python Script Example</a></p></li>
+<li><p><a class="reference internal" href="#yes-no-cancel-dialog-python-script-example" id="id14">Yes/No/Cancel Dialog Python Script Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#file-dialogs" id="id15">File Dialogs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#open-file-dialogs" id="id16">Open File Dialogs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#setting-the-filetype" id="id17">Setting the Filetype</a></p></li>
+<li><p><a class="reference internal" href="#default-paths" id="id18">Default Paths</a></p></li>
+<li><p><a class="reference internal" href="#default-filename" id="id19">Default Filename</a></p></li>
+<li><p><a class="reference internal" href="#displaying-a-file-dialog-and-obtaining-the-result" id="id20">Displaying a File Dialog and Obtaining the Result</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#multi-select-file-dialog-perl-script-example" id="id21">Multi-Select File Dialog Perl Script Example</a></p></li>
+<li><p><a class="reference internal" href="#save-dialog" id="id22">Save Dialog</a></p>
+<ul>
+<li><p><a class="reference internal" href="#custom-file-types" id="id23">Custom File Types</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#custom-file-type-dialog-wrapper-function-in-python" id="id24">Custom File Type Dialog wrapper function in Python</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#more-information" id="id25">More Information</a></p></li>
+</ul>
+</div>
+<p><a class="reference internal" href="../scripting/Scripting.html"><span class="doc">Scripting</span></a> can present various dialogs to request user input, including information, warning, confirmation, yes/no/all/ cancel, file open, file save and directory dialogs. These are all handled through the <em>dialog</em> series of commands.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The <em>dialog</em> commands are executed in the following order to create, present and obtain the result of a dialog.</p>
+<ul class="simple">
+<li><p><strong>dialog.setup</strong> defines the kind of dialog you want to create</p></li>
+<li><p>Other dialog commands are executed to set the title, file format, help URL, etc.</p></li>
+<li><p><strong>dialog.open</strong> opens the dialog and presents it to the user.  The command blocks until the user dismisses the dialog.</p></li>
+<li><p><strong>dialog.result</strong> returns the user’s choice.</p></li>
+</ul>
+<p>The first step to creating any dialog is to call ‘’’dialog.setup’’’.  This determines the dialog type.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">setup</span> <span class="n">style</span><span class="p">:{</span><span class="n">info</span><span class="o">|</span><span class="n">warning</span><span class="o">|</span><span class="n">error</span><span class="o">|</span><span class="n">okCancel</span><span class="o">|</span><span class="n">yesNo</span><span class="o">|</span>
+                     <span class="n">yesNoCancel</span><span class="o">|</span><span class="n">yesNoAll</span><span class="o">|</span><span class="n">yesNoToAll</span><span class="o">|</span><span class="n">saveOK</span><span class="o">|</span>
+                     <span class="n">fileOpen</span><span class="o">|</span><span class="n">fileOpenMulti</span><span class="o">|</span><span class="n">fileSave</span><span class="o">|</span><span class="nb">dir</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ul class="simple">
+<li><p>‘’’info’’, <em>warning’</em> and <strong>error</strong> styles display notification dialogs with a single <em>OK</em> button.</p></li>
+<li><p><strong>okCancel</strong> and <strong>yesNo</strong> style dialogs have two buttons, and are used for simple confirmations.</p></li>
+<li><p>‘’’yesNoCancel’’’, ‘’’yesNoAll’’’, and <strong>yesNoToAll</strong> dialogs provide confirm/abort capability for loops.</p></li>
+<li><p><strong>saveOK</strong> dialogs are used to confirm that a save should be performed, such as when saving over a file or quitting without saving.</p></li>
+<li><p><strong>fileOpen</strong> dialogs are used to choose a single file from a system file dialog .</p></li>
+<li><p><strong>fileOpenMulti</strong> dialogs are used to choose one or more files from a system file dialog.</p></li>
+<li><p><strong>fileSave</strong> dialogs are used to choose a location to save a file from a system file dialog .</p></li>
+<li><p><strong>dir</strong> dialogs are used to choose a directory from a system directory dialog .</p></li>
+</ul>
+<div class="section" id="creating-a-yes-no-dialog-dialog-setup">
+<h3><a class="toc-backref" href="#id2">Creating a <em>Yes/No</em> Dialog: dialog.setup</a><a class="headerlink" href="#creating-a-yes-no-dialog-dialog-setup" title="Permalink to this headline">¶</a></h3>
+<p>A <em>yesNo</em> dialog has two buttons labeled <em>Yes</em> and ‘’No’’. To create a one, we might use this command:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">setup</span> <span class="n">yesNo</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="title">
+<h2><a class="toc-backref" href="#id3">Title</a><a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>dialog.title</strong> command lets you set the string that appears in the dialog’s title bar.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">title</span> <span class="s2">&quot;Confirm Operation&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The title can be a simple static string, or it can be obtained from a Message Tables stored in a config. Message table lookups use the format <em>&#64;table&#64;msg&#64;</em> for a dictionary lookup, or <em>&#64;table&#64;&#64;id&#64;</em> for an integer ID lookup. Using message tables allows the interface to be translated for different languages without editing the script or plug-in itself.</p>
+</div>
+<div class="section" id="body-text">
+<h2><a class="toc-backref" href="#id4">Body Text</a><a class="headerlink" href="#body-text" title="Permalink to this headline">¶</a></h2>
+<p>To set the body of the dialog, we use ‘’dialog.msg’’. Again, the message can be either a static string or a message table lookup as described above.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">msg</span> <span class="s2">&quot;Perform the operation?&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="message-tables-and-substitutions">
+<h3><a class="toc-backref" href="#id5">Message Tables and Substitutions</a><a class="headerlink" href="#message-tables-and-substitutions" title="Permalink to this headline">¶</a></h3>
+<p>Message table strings may have arguments in the form of ‘’%1’’, ‘’%2’’, etc. These can be set with ‘’’dialog.msgArg’’’, which takes the argument number, the datatype and the value to set it to.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">msg</span> <span class="s2">&quot;@table@msg@&quot;</span>
+ <span class="n">dialog</span><span class="o">.</span><span class="n">msgArg</span> <span class="mi">1</span> <span class="n">string</span> <span class="s2">&quot;test&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="help-urls">
+<h2><a class="toc-backref" href="#id6">Help URLs</a><a class="headerlink" href="#help-urls" title="Permalink to this headline">¶</a></h2>
+<p>A help URL can also be included in the dialog through ‘’’dialog.helpURL’’’. This normal points to a help file on the local system, but can be any valid URL. When set, a ? button will appear in the dialog, and clicking it will go to that URL.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="o">&lt;</span><span class="n">nowiki</span><span class="o">&gt;</span><span class="n">dialog</span><span class="o">.</span><span class="n">helpURL</span> <span class="s2">&quot;http://www.google.com&quot;</span><span class="o">&lt;/</span><span class="n">nowiki</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="default-result">
+<h2><a class="toc-backref" href="#id7">Default Result</a><a class="headerlink" href="#default-result" title="Permalink to this headline">¶</a></h2>
+<p>As with any dialog, these dialogs can be suppressed by the caller of your script or plug-in.  A default result can be set for the dialog in case that happens. For files and directories, this will also be displayed as the path when dialog is displayed. The <em>‘dialog.result</em> command is used to both set the default value and to read out a new value. This does not need to be called for information dialogs, as they have only one button and thus always return ok.</p>
+<p>Text hints can be used when setting or reading ‘’’dialog.result’’’’s value. This can be one of ‘’cancel’’, ‘’no’’, ‘’ok’’, ‘’yesToAll’’, or ‘’noToAll’’. The hint <em>yes</em> can be used as a synonym for <em>ok</em> when setting the default value, but <em>ok</em> will always be returned as both resolve to the same integer. Be careful when working with <em>yesNo</em> and <em>okCancel</em> dialogs, as while <em>yes</em> and <em>ok</em> are both the same value, <em>no</em> and <em>cancel</em> are not.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">result</span> <span class="n">ok</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="dialog-result-codes-table">
+<h2><a class="toc-backref" href="#id8">Dialog Result Codes Table</a><a class="headerlink" href="#dialog-result-codes-table" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a table of the possible dialog result codes from the informational dialogs.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dialog Type</p></th>
+<th class="head"><p>Dialog Name/Buttons</p></th>
+<th class="head"><p>Result = “cancel”</p></th>
+<th class="head"><p>Result = “no”</p></th>
+<th class="head"><p>Result = “ok”</p></th>
+<th class="head"><p>Result = “yesToAll”</p></th>
+<th class="head"><p>Result = “noToAll”</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>info</p></td>
+<td><p>Info (OK only)</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+<td><p>OK</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-odd"><td><p>warning</p></td>
+<td><p>Warning (OK only)</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+<td><p>OK</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-even"><td><p>error</p></td>
+<td><p>Error (OK only)</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+<td><p>OK</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-odd"><td><p>okCancel</p></td>
+<td><p>OK/Cancel</p></td>
+<td><p>Cancel</p></td>
+<td><p>(none)</p></td>
+<td><p>OK</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-even"><td><p>yesCancel</p></td>
+<td><p>Yes/No</p></td>
+<td><p>(none)</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-odd"><td><p>saveOK</p></td>
+<td><p>Save/Don’t Save/Cancel</p></td>
+<td><p>Cancel</p></td>
+<td><p>Don’t Save</p></td>
+<td><p>Save</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-even"><td><p>yesCancel</p></td>
+<td><p>Yes/No</p></td>
+<td><p>Cancel</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>(none)</p></td>
+<td><p>(none)</p></td>
+</tr>
+<tr class="row-odd"><td><p>yesNoAll</p></td>
+<td><p>Yes/No/Yes To All/No To All</p></td>
+<td><p>(none)</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes To All</p></td>
+<td><p>No To All</p></td>
+</tr>
+<tr class="row-even"><td><p>yesNoToAll</p></td>
+<td><p>Yes/No/Yes To All/No To All</p></td>
+<td><p>Cancel</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>(none)</p></td>
+<td><p>No To All</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="displaying-the-dialog">
+<h2><a class="toc-backref" href="#id9">Displaying the Dialog</a><a class="headerlink" href="#displaying-the-dialog" title="Permalink to this headline">¶</a></h2>
+<p>Now that all the dialog information is set, it can be presented with a call to ‘’’dialog.open’’’.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">open</span>
+</pre></div>
+</td></tr></table></div>
+<p>‘’dialog.open’’ will block until the user has made a choice.</p>
+<p>Note that the <em>dailog.open</em> command fails with an abort code if the user hits a <em>no</em> or <em>cancel</em> style button. In Perl]] and [[Lua]] you can simply ignore the error code, but in [[Python this will throw an exception, which you will need to catch and optionally ignore, This behavior allows the command to be more generally tested for success or failure without using ‘’dialog.result’’.</p>
+</div>
+<div class="section" id="results">
+<h2><a class="toc-backref" href="#id10">Results</a><a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>Once the dialog has been dismissed, <strong>dialog.result</strong> can be queried to see which button was pressed.  For a file dialog, the return value will be one or more paths to the selected file(s), while for the other dialogs it will be one of the result codes from the table above.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> dialog.result ?
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="examples">
+<h2><a class="toc-backref" href="#id11">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="yes-no-dialog-perl-script-example">
+<h3><a class="toc-backref" href="#id12">Yes/No Dialog Perl Script Example</a><a class="headerlink" href="#yes-no-dialog-perl-script-example" title="Permalink to this headline">¶</a></h3>
+<p>This simple <a class="reference internal" href="../scripting/Perl.html"><span class="doc">Perl</span></a> script demonstrates opening a <em>yesNo</em> dialog and testing which button was pressed.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! perl</span>
+
+<span class="c1"># Setup the dialog</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.setup yesNo&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.title &quot;</span><span class="n">Confirm</span> <span class="n">Operation</span><span class="s">&quot;&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.msg &quot;</span><span class="n">Perform</span> <span class="n">the</span> <span class="n">operation</span><span class="p">?</span><span class="s">&quot;&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.result ok&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Open the dialog and see what button was pressed 10)</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.open&quot;</span> <span class="p">);</span>
+<span class="k">my</span> <span class="nv">$result</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;dialog.result ?&quot;</span> <span class="p">);</span>
+<span class="k">if</span><span class="p">(</span> <span class="nv">$result</span> <span class="ow">eq</span> <span class="s">&quot;no&quot;</span> <span class="p">)</span> <span class="p">{</span>
+     <span class="c1"># User hit cancel</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="yes-no-dialog-python-script-example">
+<h3><a class="toc-backref" href="#id13">Yes/No Dialog Python Script Example</a><a class="headerlink" href="#yes-no-dialog-python-script-example" title="Permalink to this headline">¶</a></h3>
+<p>This is simple Python example opens a similar <em>yesNo</em> dialog.  It uses an exception handler to handle the “no” case that is thrown when the user cancels the dialog.  If no exception was thrown, we can assume the user clicked “Yes”.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="c1"># Written by Stuart Hall</span>
+
+<span class="kn">import</span> <span class="nn">lx</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># set up the dialog</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.setup yesNo&#39;</span><span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.title {Confirm Operation}&#39;</span><span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.msg {Perform the operation?}&#39;</span><span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.result ok&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Open the dialog and see which button was pressed</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.open&#39;</span><span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.result ?&quot;</span><span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="s2">&quot;Yes&quot;</span><span class="p">)</span>
+
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="s2">&quot;No&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="yes-no-cancel-dialog-python-script-example">
+<h3><a class="toc-backref" href="#id14">Yes/No/Cancel Dialog Python Script Example</a><a class="headerlink" href="#yes-no-cancel-dialog-python-script-example" title="Permalink to this headline">¶</a></h3>
+<p>This simple Python example opens a <em>yesNoCancel</em> dialog and retrieves the result.  It uses an exception handler to handle the “no” and “cancel” cases that are thrown when the user cancels or presses no, and queries for the result directly to differentiate between no and cancel.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="c1"># Written by Chris Hague</span>
+
+<span class="kn">import</span> <span class="nn">lx</span>
+
+<span class="c1"># set up the dialog</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.setup yesNoCancel&#39;</span><span class="p">)</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.title {Really?}&#39;</span><span class="p">)</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.msg {Are You Sure?}&#39;</span><span class="p">)</span>
+
+<span class="c1"># Open the dialog and see which button was pressed</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.open&#39;</span><span class="p">)</span>
+    <span class="n">userResponse</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.result ?&quot;</span><span class="p">)</span>
+
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">userResponse</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.result ?&quot;</span><span class="p">)</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="s2">&quot;Thank you for pressing </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">userResponse</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="file-dialogs">
+<h2><a class="toc-backref" href="#id15">File Dialogs</a><a class="headerlink" href="#file-dialogs" title="Permalink to this headline">¶</a></h2>
+<p>Creating a file or directory dialog is very similar to creating an information dialog. The <strong>fileOpen</strong> type opens a dialog asking for a single file, while <strong>fileOpenMulti</strong> allows for multiple selection within the file dialog. The <strong>fileSave</strong> type is similar to ‘’fileOpen’’, but warns if the selected file already exists. The <em>dir</em> type opens a dialog for selecting a directory.</p>
+<p>In all cases, the <em>dialog.result</em> command can be used to set the initial path for the dialog. After the dialog is dismissed, <em>dialog.result</em> can be queried for the chosen path. In the case of ‘’fileOpenMulti’’, this will return an array of paths.</p>
+<div class="section" id="open-file-dialogs">
+<h3><a class="toc-backref" href="#id16">Open File Dialogs</a><a class="headerlink" href="#open-file-dialogs" title="Permalink to this headline">¶</a></h3>
+<p>The basic setup for a file dialog is just like that of an information dialog.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">setup</span> <span class="n">fileOpen</span>
+ <span class="n">dialog</span><span class="o">.</span><span class="n">title</span> <span class="s2">&quot;Select a file to open&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="setting-the-filetype">
+<h4><a class="toc-backref" href="#id17">Setting the Filetype</a><a class="headerlink" href="#setting-the-filetype" title="Permalink to this headline">¶</a></h4>
+<p>Open dialogs support filtering the load dialog by file type. A ‘’’file type’’’ is the class of data to be loaded or saved, such as an image or a scene. Save dialogs use the file type to provide a list of accepted file formats, plus the default file format displayed in the dialog. A ‘’’file format’’’ is a specific format within that file type, such as a <em>Targa</em> or <em>JPEG</em> image, or an <em>LXO</em> or <em>LWO</em> object.</p>
+<p>The file type is set with ‘’’dialog.fileType’’’, where the argument is one of the known file types, such as ‘’text’’, ‘’script’’, ‘’config’’, ‘’macro’’, ‘’image’’, and so on. Alternatively, the name of any specific loader plug-in can also be used, such as ‘’$LWO’’. A list of loaders can be obtained with the HostService (ScriptQuery) interface. Furthermore, there is a special <em>$temp</em> file type, which can be filled in with ‘’dialog.fileTypeCustom’’. If no filetype is set, all files will be shown.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">fileType</span> <span class="n">text</span>
+</pre></div>
+</td></tr></table></div>
+<p>The file type of a specific loader can be found by querying its <em>loader.classList</em> tag from the <em>hostservice</em> ‘’ScriptQuery’’ interface. You must first ScriptQuery Overview#Selectors the loader before you can query it with ‘’server.infoTag’’. This example queries the <em>LWO2</em> loader for its class.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query hostservice server.name ? loader/$LWO2
+ query hostservice server.infoTag ? loader.classList
+</pre></div>
+</td></tr></table></div>
+<p>Note that this returns a space-delimited list of classes. Only one class should be passed to dialog.fileType, so you’ll need to extract the first one. In <a class="reference internal" href="../scripting/Perl.html"><span class="doc">Perl</span></a>, this can be done using ‘’split()’’.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># &quot;Select&quot; the loader we want to query the tags of</span>
+<span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query hostservice server.name ? loader/$LWO2&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Query the loader.classList tag</span>
+<span class="k">my</span> <span class="nv">$classList</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query hostservice server.infoTag ? loader.classList&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Split the list at spaces</span>
+<span class="k">my</span> <span class="nv">@classes</span> <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="nv">$classList</span><span class="p">);</span>
+
+<span class="c1"># Setup the dialog with the first file type in the list 11) lx( &quot;dialog.setup fileOpen&quot; );</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.fileType @classes[0]&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.open&quot;</span> <span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="default-paths">
+<h4><a class="toc-backref" href="#id18">Default Paths</a><a class="headerlink" href="#default-paths" title="Permalink to this headline">¶</a></h4>
+<p>When the user chooses a file, the new location is stored in the config so that the next time the dialog is opened the file requester will point to that location. By default, all file dialogs point to the same place for a given file type, but it is often useful to be able to start at different locations depending on how the file will be used. For example, you generally don’t store your texture images with your final render images.</p>
+<p>You can tell modo to separately remember a separate default file dialog path for your script for a particular file type by appending an <em>&#64;</em> and a name to the end of the file type passed to ‘’dialog.fileType’’. The tag can be any internal (ie: alphabetical characters only) string you like, and you may reuse tags defined by other systems. For example, the <em>image</em> file type could default to directories that the user previously navigated to for clips (textures) or renders by specifying <em>item&#64;clip</em> or <em>item&#64;render</em> as the file type.</p>
+<p>The following example uses the <em>text</em> file type, storing and pulling the default path from the <em>ForMyScript</em> tag in the configs.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">fileType</span> <span class="n">text</span><span class="nd">@ForMyScript</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="default-filename">
+<h4><a class="toc-backref" href="#id19">Default Filename</a><a class="headerlink" href="#default-filename" title="Permalink to this headline">¶</a></h4>
+<p>The path the user has chosen is returned by ‘’dialog.result’’, but this can also be used to set a default open or save path (full path with filename), or just a default filename relative to the current path.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">result</span> <span class="s2">&quot;MyFile.txt&quot;</span>
+ <span class="n">dialog</span><span class="o">.</span><span class="n">result</span> <span class="s2">&quot;c:MyPathMyFile.txt&quot;</span>
+ <span class="n">dialog</span><span class="o">.</span><span class="n">result</span> <span class="s2">&quot;c:MyPath&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>If you pass in just the filename, as in the first example, then the file requester will start in the directory last used for that file type, as described above. If a fully qualified path is used, then any previously stored paths are ignored. This can become important when want to create an “export” or “save as” dialog where the user may commonly want to write to an alternate directory than the one the file originally existed in.</p>
+</div>
+<div class="section" id="displaying-a-file-dialog-and-obtaining-the-result">
+<h4><a class="toc-backref" href="#id20">Displaying a File Dialog and Obtaining the Result</a><a class="headerlink" href="#displaying-a-file-dialog-and-obtaining-the-result" title="Permalink to this headline">¶</a></h4>
+<p>File dialogs are opened in the same manner as other dialogs, through the <em>dialog.open</em> command.  The chosen path is read out by querying ‘’dialog.result’’. The latter will fail if the user canceled the dialog. For more information on handling command execution failures, see the specific Scripting Languages for how to handle command failure.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> dialog.open
+ dialog.result ?
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="multi-select-file-dialog-perl-script-example">
+<h3><a class="toc-backref" href="#id21">Multi-Select File Dialog Perl Script Example</a><a class="headerlink" href="#multi-select-file-dialog-perl-script-example" title="Permalink to this headline">¶</a></h3>
+<p>This <a class="reference internal" href="../scripting/Perl.html"><span class="doc">Perl</span></a> script demonstrates the use of a multi-select file dialog.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! perl</span>
+
+<span class="c1"># Setup the dialog</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.setup fileOpenMulti&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.title &quot;</span><span class="n">Select</span> <span class="n">Text</span> <span class="n">Files</span><span class="s">&quot;&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.fileType text@ForMyScript&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.result &quot;</span><span class="n">c:</span><span class="o">\</span><span class="n">InitialPath</span><span class="s">&quot;&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Open the dialog and get the list of files the user selected</span>
+ <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.open&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="c1"># User canceled the dialog</span>
+ <span class="p">}</span>
+
+ <span class="k">my</span> <span class="nv">@files</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;dialog.result ?&quot;</span> <span class="p">);</span>
+ <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$f</span> <span class="p">(</span><span class="nv">@files</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1"># Process each filename</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="save-dialog">
+<h3><a class="toc-backref" href="#id22">Save Dialog</a><a class="headerlink" href="#save-dialog" title="Permalink to this headline">¶</a></h3>
+<p>A save dialog is identical to an open dialog, but adds <strong>dialog.fileSaveFormat</strong> to select a specific default file format within the file type set by ‘’dialog.fileType’’. This format will be selected by default when the dialog opens, and the one chosen by the user can be read by querying ‘’dialog.fileSaveFormat’’.</p>
+<p>The file format can be set either by its default extension, which is the default behavior, or by the file format’s internal name. The list of available formats can be found using the <em>hostservice</em> ‘’ScriptQuery’’ interface. Which method is used is determined by the command’s ‘’second argument’’. Either way, both the extension and format can be read out by querying ‘’dialog.fileSaveFormat’’.</p>
+<p>In this example, a save dialog is set up to use the <em>image</em> file type, and a default path is chosen.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">setup</span> <span class="n">fileSave</span>
+ <span class="n">dailog</span><span class="o">.</span><span class="n">result</span> <span class="s2">&quot;c:InitialPath&quot;</span>
+ <span class="n">dialog</span><span class="o">.</span><span class="n">fileType</span> <span class="n">image</span><span class="nd">@ForMyScript</span>
+</pre></div>
+</td></tr></table></div>
+<p>A list of file types for a particular format can be obtained by querying the <em>hostservice</em> ‘’server.infoTag’’ attribute with the <em>saver.outClass</em> selector, similar to how loader file types are queried.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query hostservice server.name ? saver/$Targa
+ query hostservice server.infoTag ? saver.outClass
+</pre></div>
+</td></tr></table></div>
+<p>The <em>Targa</em> image file format is then chosen as the default save format. This can be done either by file extension:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">fileSaveFormat</span> <span class="n">tga</span> <span class="n">extension</span>
+</pre></div>
+</td></tr></table></div>
+<p>Or it can be done by the format’s name:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> dialog.fileSaveFormat $Targa format
+</pre></div>
+</td></tr></table></div>
+<p>Next the file dialog is opened. This will fail if the user hit canceled, at which point a script could abort the operation.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">dialog</span><span class="o">.</span><span class="n">open</span>
+</pre></div>
+</td></tr></table></div>
+<p>Finally, the path the user entered and the format and extension the user chose are ead.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> dialog.result ?
+ dialog.fileSaveFormat ? format
+ dialog.fileSaveFormat ? extension
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="custom-file-types">
+<h4><a class="toc-backref" href="#id23">Custom File Types</a><a class="headerlink" href="#custom-file-types" title="Permalink to this headline">¶</a></h4>
+<p>It is also possible to define a custom file type through ‘’’$temp’’’, which can represent any file formats you like through the <strong>dialog.fileTypeCustom</strong> command. Initially, this file type contains no formats, and is reset by ‘’dialog.setup’’. You can call <em>dialog.fileTypeCustom</em> multiple times to add any number of formats to the type. The first format added is automatically selected as the default file format.</p>
+<p>‘’dialog.fileTypeCustom’’ takes four arguments. The first is a <em>name</em> for the format, such as <em>targa</em> or ‘’lwo’’. This is an arbitrary internal name for use by the script, and can be read out after the dialog is dismissed by querying ‘’dialog.fileSaveFormat’’. The second argument is the <em>username</em> for the format, which will be displayed in the dialog and may contain spaces, mixed case, and so on.</p>
+<p>The final two arguments are the ‘’load pattern’’ and the ‘’save extension’’. The pattern is a semicolon-delimited list of file extensions that the particular file format supports. These are used to filter the load dialog. Each extension must include a leading asterisk and period for the filtering to work properly, such as ‘’<em>.jpg;</em>.jpeg’’.</p>
+<p>The save extension is a single extension that will automatically be appended to the end of the filename selected in a save dialog. The period should not be entered, just the extension like ‘’lwo’’, <em>tga</em> or ‘’txt’’. You only need to specify the load pattern or save format as appropriate to the kind of dialog you’re opening.</p>
+<p>Here is a simple <a class="reference internal" href="../scripting/Perl.html"><span class="doc">Perl</span></a> script example that lets the user decide if it should save some information as an XML file or an ASCII text file. The script adds two file formats, <em>xml</em> and ‘’text’’, as a custom file type, and after the dialog closes it retrieves the file name, format and extension of the format the user chose.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! perl</span>
+
+<span class="c1"># Setup the save dialog</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.setup fileSave&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.title &quot;</span><span class="n">Save</span> <span class="n">Data</span><span class="s">&quot;&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.result &quot;</span><span class="n">c:</span><span class="o">\</span><span class="n">InitialPath</span><span class="s">&quot;&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Add two file formats, xml and text</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.fileTypeCustom xml &quot;</span><span class="n">XML</span><span class="s">&quot; &quot;</span><span class="o">*.</span><span class="n">xml</span><span class="s">&quot; xml&quot;</span> <span class="p">);</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.fileTypeCustom text &quot;</span><span class="n">ASCII</span> <span class="n">Text</span><span class="s">&quot; &quot;</span><span class="o">*.</span><span class="n">txt</span><span class="p">;</span><span class="o">*.</span><span class="n">text</span><span class="s">&quot; txt&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Open the dialog</span>
+<span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">lx</span><span class="p">(</span> <span class="s">&quot;dialog.open&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># User canceled the dialog; abort</span>
+<span class="p">}</span>
+
+<span class="c1"># Get the filename from the dialog</span>
+<span class="k">my</span> <span class="nv">$filename</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;dialog.result ?&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Get the file format, which will be xml or text</span>
+<span class="c1"># (the first argument passed to dialog.fileTypeCustom)</span>
+<span class="k">my</span> <span class="nv">$format</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;dialog.fileSaveFormat ? format&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Get the format&#39;s extension, which will be xml or txt</span>
+<span class="c1"># (the last argument passed to dialog.fileTypeCustom)</span>
+<span class="k">my</span> <span class="nv">$ext</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;dialog.fileSaveFormat ? extension&quot;</span> <span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="custom-file-type-dialog-wrapper-function-in-python">
+<h3><a class="toc-backref" href="#id24">Custom File Type Dialog wrapper function in Python</a><a class="headerlink" href="#custom-file-type-dialog-wrapper-function-in-python" title="Permalink to this headline">¶</a></h3>
+<p>A convenient Python wrapper function  that can be used for both saving and loading custom file types:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">customfile</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">uname</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">save_ext</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Custom file dialog wrapper function</span>
+
+<span class="sd">        type  :   Type of dialog, string value, options are &#39;fileOpen&#39; or &#39;fileSave&#39;</span>
+<span class="sd">        title :   Dialog title, string value.</span>
+<span class="sd">        format:   file format, tuple of string values</span>
+<span class="sd">        uname :   internal name</span>
+<span class="sd">        ext   :   tuple of file extension filter strings</span>
+<span class="sd">        save_ext: output file extension for fileSave dialog</span>
+<span class="sd">        path  :   optional default loacation to open dialog</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.setup </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.title {</span><span class="si">%s</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">))</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.fileTypeCustom {</span><span class="si">%s</span><span class="s2">} {</span><span class="si">%s</span><span class="s2">} {</span><span class="si">%s</span><span class="s2">} {</span><span class="si">%s</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="n">uname</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">save_ext</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;fileSave&#39;</span> <span class="ow">and</span> <span class="n">save_ext</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.fileSaveFormat </span><span class="si">%s</span><span class="s2"> extension&quot;</span> <span class="o">%</span> <span class="n">save_ext</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;dialog.result {</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.open&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;dialog.result ?&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</td></tr></table></div>
+<p>Example usage:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">swfile</span> <span class="o">=</span> <span class="n">customfile</span><span class="p">(</span><span class="s1">&#39;fileOpen&#39;</span><span class="p">,</span> <span class="s1">&#39;Open Solidworks file&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;SWO&#39;</span><span class="p">,),</span> <span class="s1">&#39;Solidworks file&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;*.SLDASM;*.SLDPRT&#39;</span><span class="p">,),</span><span class="s1">&#39;SLDASM&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id25">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../scripting/Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../scripting/ScriptQuery%20Overview.html"><span class="doc">ScriptQuery Overview</span></a></p></li>
+<li><p>HostService (ScriptQuery)</p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p>User Interface</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Event%20Log%20Viewport.html" class="btn btn-neutral float-right" title="Event Log Viewport" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Defining%20Item%20Categories.html" class="btn btn-neutral float-left" title="Defining Item Categories" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Dialog Commands.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:58 GMT -->
+</html>

@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Spherize example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:12 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Spherize example &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Wav Dump example" href="Wav%20Dump%20example.html" />
+    <link rel="prev" title="Shader Tree Navigation" href="Shader%20Tree%20Navigation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20Vertex%20Mesh%20Operation.html">CreateVertex Mesh Operation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example%20cmd%20sy%20partifymesh.html">Example cmd sy partifymesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Socket%20comms%20wrapper.html">Modo Socket comms wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlaneTool%20example.html">PlaneTool example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read%20a%20Driven%20Channel.html">Read a Driven Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rebuild%20Curve.html">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>Spherize example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spherize-example">
+<h1>Spherize example<a class="headerlink" href="#spherize-example" title="Permalink to this headline">¶</a></h1>
+<p>The code below implements a simple command plugin, demonstrating how to edit geometry using Python. It essentially takes all the points on the active layer and pushes them out to “spherize” the mesh.</p>
+<p>To run the command, select at least one mesh layer and type “layer.spherize” into the command history.</p>
+<p>‘’’Note’’’: As a custom command, the python source file needs to be placed in an ‘lxserv’ folder.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    A simple command plugin to demonstrate performing a spherize</span>
+<span class="sd">    operation on all points in the selected layer.</span>
+
+<span class="sd">    Author: Matt Cox</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+<span class="kn">import</span> <span class="nn">lxu.command</span>
+<span class="kn">import</span> <span class="nn">lxu.select</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">Spherize_Cmd</span><span class="p">(</span><span class="n">lxu</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">BasicCommand</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">lxu</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">BasicCommand</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We want to have a single argument for this command. It will</span>
+<span class="sd">            define the distance to push the geometry out by. This is an</span>
+<span class="sd">            optional command and if it is undefined, we&#39;ll use a set distance</span>
+<span class="sd">            of 1.0.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna_Add</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sTYPE_FLOAT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basic_SetFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMDARG_OPTIONAL</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cmd_Flags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We also want to define some other flags for the command. Namely,</span>
+<span class="sd">            fCMD_MODEL and fCMD_UNDO. This basically tells modo that we are</span>
+<span class="sd">            performing an action that changes the internal state of the program,</span>
+<span class="sd">            and the command should undoable/redoable.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMD_MODEL</span> <span class="o">|</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMD_UNDO</span>
+
+    <span class="k">def</span> <span class="nf">basic_Enable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We only want the command to be enabled if there is at least one mesh</span>
+<span class="sd">            item selected. This is quite an easy test, we simply get a list</span>
+<span class="sd">            of the current selected items and loop through them checking if they</span>
+<span class="sd">            are a mesh item. As soon as we find a mesh, we return True. If we</span>
+<span class="sd">            don&#39;t find a mesh, we return False.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">item_sel</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">select</span><span class="o">.</span><span class="n">ItemSelection</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">item_sel</span><span class="o">.</span><span class="n">current</span><span class="p">())):</span>
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Localize the current selected item.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">item_loc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Item</span><span class="p">(</span><span class="n">item_sel</span><span class="o">.</span><span class="n">current</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Check that we actually have a localized item to work with.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">item_loc</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Now we simply check if the item is a mesh or not, to do this,</span>
+<span class="sd">                we need to query the SceneService for the Mesh item type and</span>
+<span class="sd">                then check whether the current selection matches that type.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">scn_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+            <span class="n">mesh_type</span> <span class="o">=</span> <span class="n">scn_svc</span><span class="o">.</span><span class="n">ItemTypeLookup</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sITYPE_MESH</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">item_loc</span><span class="o">.</span><span class="n">TestType</span><span class="p">(</span><span class="n">mesh_type</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We have been unable to find a mesh item, so we&#39;ll return False and</span>
+<span class="sd">            disable the command. Ideally, we&#39;d set a message for the user to</span>
+<span class="sd">            tell them why the command is disabled.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+    <span class="k">def</span> <span class="nf">basic_Execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Here is where the &quot;meat&quot; of our command will go. Assuming that our</span>
+<span class="sd">            command has passed the basic_Enable method, this function will be</span>
+<span class="sd">            called to Execute our command.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We want to get any arguments for the command, these are simply read</span>
+<span class="sd">            by their index, in the order they are added to the constructor.</span>
+<span class="sd">            As the only argument for this command is optional, we&#39;ll query</span>
+<span class="sd">            whether it&#39;s Set, or whether we need to assume a default value.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dyna_IsSet</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">target_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">target_dist</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We&#39;ll be using the LayerService to interact with meshes in the</span>
+<span class="sd">            scene. So the first step is to get a LayerService interface.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">layer_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Now we want to iterate through the active layers. We do this</span>
+<span class="sd">            using the LayerScan interface. We have to localize a LayerScan</span>
+<span class="sd">            interface using the LayerService ScanAllocate method.</span>
+<span class="sd">            The symbol &quot;f_LAYERSCAN_EDIT_VERTS&quot;, tells modo that we want</span>
+<span class="sd">            to scan active layers and edit the mesh. See the sdk wiki</span>
+<span class="sd">            for the declaration of this symbol.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">layer_scan</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">LayerScan</span><span class="p">(</span><span class="n">layer_svc</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_EDIT_VERTS</span><span class="p">))</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            We&#39;ll just check that the LayerScan item localized correctly.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">layer_scan</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Now we simply want to iterrate through all the active layers and</span>
+<span class="sd">            perform an operation on each of them. So we count the number of</span>
+<span class="sd">            layers using the LayerScan interface and then loop through them.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">layer_scan</span><span class="o">.</span><span class="n">Count</span><span class="p">()):</span>
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Now we are on the current layer, we want to grab the mesh</span>
+<span class="sd">                for the current layer. Then we can perform operations on it.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">mesh_loc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">layer_scan</span><span class="o">.</span><span class="n">MeshEdit</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                As always, just confirm that we have correctly localized</span>
+<span class="sd">                the mesh.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">mesh_loc</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                We also want to check that the point count is greater than</span>
+<span class="sd">                zero. There&#39;s no real requirement to do this, but it makes</span>
+<span class="sd">                things a little cleaner.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">mesh_loc</span><span class="o">.</span><span class="n">PointCount</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                So that we can find the center of all the vertices, we&#39;ll simply</span>
+<span class="sd">                get the bounding box of the mesh layer. The bounding box is defined</span>
+<span class="sd">                by two vectors representing opposite corners of the bounding box.</span>
+<span class="sd">                Once we have the bounding box, we calculate it&#39;s center.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">mesh_bounds</span> <span class="o">=</span> <span class="n">mesh_loc</span><span class="o">.</span><span class="n">BoundingBox</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iMARK_ANY</span><span class="p">)</span>
+            <span class="n">mesh_center</span> <span class="o">=</span> <span class="p">((</span><span class="n">mesh_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">mesh_bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,(</span><span class="n">mesh_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">mesh_bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,(</span><span class="n">mesh_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">mesh_bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Here we want to iterate through all the points on the</span>
+<span class="sd">                current mesh. Ideally, this would be done using a Visitor,</span>
+<span class="sd">                but for simplicity sake in this example, we&#39;ll use a for loop.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_loc</span><span class="o">.</span><span class="n">PointCount</span><span class="p">()):</span>
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    Before we operate on the point, we need to localize the</span>
+<span class="sd">                    point we want to work with.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">point_loc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">mesh_loc</span><span class="o">.</span><span class="n">PointAccessor</span><span class="p">())</span>
+
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    Yet again, we just double check that we have correctly</span>
+<span class="sd">                    localized the point object, if we have then we select the</span>
+<span class="sd">                    point we want to work with from its index.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="k">if</span> <span class="n">point_loc</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">point_loc</span><span class="o">.</span><span class="n">SelectByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    We&#39;ll simply get the point position and measure the distance</span>
+<span class="sd">                    from the point to the mesh_center. We&#39;ll then divide the</span>
+<span class="sd">                    target distance by the distance and then multiply the position</span>
+<span class="sd">                    vector by the resulting calculation. This should move the point</span>
+<span class="sd">                    to the desired distance along it&#39;s current vector.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">point_pos</span> <span class="o">=</span> <span class="n">point_loc</span><span class="o">.</span><span class="n">Pos</span><span class="p">()</span>
+                <span class="n">point_dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="n">point_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">mesh_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="n">point_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">mesh_center</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="n">point_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">mesh_center</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="mi">2</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="n">point_dist</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">scale</span> <span class="o">=</span> <span class="n">target_dist</span> <span class="o">/</span> <span class="n">point_dist</span>
+                <span class="n">point_newPos</span> <span class="o">=</span> <span class="p">((</span><span class="n">point_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">),(</span><span class="n">point_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">),(</span><span class="n">point_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">))</span>
+
+                <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                    Now that we have calculated the new position, we want to set</span>
+<span class="sd">                    the point position on the mesh.</span>
+<span class="sd">                &#39;&#39;&#39;</span>
+                <span class="n">point_loc</span><span class="o">.</span><span class="n">SetPos</span><span class="p">(</span><span class="n">point_newPos</span><span class="p">)</span>
+
+            <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                Before we move on to the next layer, we need to tell modo that we</span>
+<span class="sd">                have made edits to this mesh.</span>
+<span class="sd">            &#39;&#39;&#39;</span>
+            <span class="n">layer_scan</span><span class="o">.</span><span class="n">SetMeshChange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_MESHEDIT_POINTS</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Finally, we need to call apply on the LayerScan interface. This tells</span>
+<span class="sd">            modo to perform all the mesh edits.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">layer_scan</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    &quot;Blessing&quot; the class promotes it to a fist class server. This basically</span>
+<span class="sd">    means that modo will now recognize this plugin script as a command plugin.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">Spherize_Cmd</span><span class="p">,</span> <span class="s2">&quot;layer.spherize&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Wav%20Dump%20example.html" class="btn btn-neutral float-right" title="Wav Dump example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Shader%20Tree%20Navigation.html" class="btn btn-neutral float-left" title="Shader Tree Navigation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Spherize example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:12 GMT -->
+</html>

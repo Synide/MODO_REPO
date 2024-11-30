@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Plug-ins vs. Scripts.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:08 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Plug-ins vs. Scripts &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Pop-up List Choice" href="Pop-up%20List%20Choice.html" />
+    <link rel="prev" title="PlatformService Reference" href="PlatformService%20Reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plug-ins vs. Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scripting"><span class="xref std std-doc">./Scripting</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk"><span class="xref std std-doc">./SDK</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fire-and-forget-scripts-vs-plug-in-commands">Fire-And-Forget Scripts vs. Plug-In Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Plug-ins vs. Scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="plug-ins-vs-scripts">
+<h1>Plug-ins vs. Scripts<a class="headerlink" href="#plug-ins-vs-scripts" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#scripting" id="id1"><span class="xref std std-doc">./Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="#sdk" id="id2"><span class="xref std std-doc">./SDK</span></a></p></li>
+<li><p><a class="reference internal" href="#fire-and-forget-scripts-vs-plug-in-commands" id="id3">Fire-And-Forget Scripts vs. Plug-In Commands</a></p></li>
+</ul>
+</div>
+<p>There are two main methods for controlling and extending modo:  plug-ins and scripts.  Each have their place, and are generally complementary.  Which one is right for your project depends on what you intend to do.</p>
+<div class="section" id="scripting">
+<h2><a class="toc-backref" href="#id1"><span class="xref std std-doc">./Scripting</span></a><a class="headerlink" href="#scripting" title="Permalink to this headline">¶</a></h2>
+<p>Macros and simple scripts allow you to automate operations in modo by executing and querying commands.  Macros]] are the simplest form of script, containing a series of commands that are executed in order.  [[Scripting.</p>
+<p>Prior to 701, all scripts and macros are essentially fire-and-forget entities.  A script executes, runs to completion, and quits.  Such scripts do not persist, and cannot currently be used to create complex constructs like items or tools.  It’s best to think of scripts as macros with flow control and the ability to query scene state.  Scripts can support User Interface.  User Values can also be used to store state in the configs.  Since they are effectively simple commands, they obey the same limitations as commands regarding how and when they can be used.</p>
+<p>Starting with 701, the new Python API allows true plug-ins to be created with the Python scripting language.  The non-plug-in portions of this API can also be used from within fire-and-forget scripts, provided lower-level access and improved performance.</p>
+</div>
+<div class="section" id="sdk">
+<h2><a class="toc-backref" href="#id2"><span class="xref std std-doc">./SDK</span></a><a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h2>
+<p>Plug-ins are written in C++ using the Luxology SDK]], or the Python API introduced in 701.  They are much more versatile than fire-and-forget scripts and more suited to performance-critical code, especially when using C++.  Plug-in can define new [[Package: Server basics, and a number of other constructs.  They can also listen for and react to events, store state in the config system, and perform other more persistent task that are outside of the bounds of the scripting system.</p>
+<p>Both the C++ SDK and the Python API wrap COM interfaces defined in C.  For this reason, a basic understand of COM and reference counting is useful.  While it is theoretically possible to write plug-ins in any language that supports COM, can use the Luxology SDK header files, and can be built into a compatible run-time library, in practice the Luxology-provided C++ classes and the Python API hide a lot of the underlying complexity and simplify development.</p>
+</div>
+<div class="section" id="fire-and-forget-scripts-vs-plug-in-commands">
+<h2><a class="toc-backref" href="#id3">Fire-And-Forget Scripts vs. Plug-In Commands</a><a class="headerlink" href="#fire-and-forget-scripts-vs-plug-in-commands" title="Permalink to this headline">¶</a></h2>
+<p>Fire-and-forget scripts can be thought of as simple commands.  Plug-ins, either through the C++ SDK or the Python API, can be used to create full-fledged commands.  For this reason there is a lot of overlap between the two.</p>
+<p>A fire-and-forget script can be easier to write, but will need to rely on other commands like User Values to store state and present UI.  They also do not support being disabled in the UI, querying for a value, or notifying a Form View when it needs to update to show a new value or enable state (since they have no values to query and cannot be disabled).  A script placed directly in a form appears as an always-enabled button.  User Values can provide the ability to show and change values in the UI, and since changes to User Values can themselves launch scripts, scripts can be made reasonably interactive.  You will often write scripts for relatively simple projects, want to write something quickly, want to easily create cross-platform kits (plug-ins need to be complied specifically for each platform), don’t want to delve into the complexities of the SDK or simply prefer scripting over C++, and can work within the limitations of the scripting mechanism.</p>
+<p>Commands provide the ability to be queried for a value, and can be put directly into the user interface to represent a variety of controls without requiring a User Value proxy.  It also has full access to all of the COM interfaces as well as the ScriptQuery interfaces available to scripts.  Being compiled, they run much faster than scripts, but you will need to compile a new plug-in for each platform you want to support.  You would write a custom command if you want speed, want access to other parts of the application that aren’t available through the existing ScriptQuery interfaces, need to be able to query the command, need to do some other behavior that isn’t possible through scripts, or simply prefer to write in C++.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Pop-up%20List%20Choice.html" class="btn btn-neutral float-right" title="Pop-up List Choice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PlatformService%20Reference.html" class="btn btn-neutral float-left" title="PlatformService Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Plug-ins vs. Scripts.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:08 GMT -->
+</html>

@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Scene Query.cpp.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:10 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scene Query.cpp &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Select.typeFrom" href="Select.typeFrom.html" />
+    <link rel="prev" title="Render Frame Size" href="Render%20Frame%20Size.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scene Query.cpp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select-scene-class-declaration">Select_Scene class declaration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-index"><span class="xref std std-doc">./Initialize_(index)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select-scene-constructor">Select_Scene constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmdflags-function">CmdFlags function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-enable-function">basic_Enable function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-lx-command-hpp-2819-29-sdk-ilxcommand-interface"><span class="xref std std-doc">./Command_(lx-command.hpp)#.2819.29_SDK:_ILxCommand_interface</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-lx-command-hpp-2828-29-sdk-ilxcommand-interface"><span class="xref std std-doc">./Command_(lx-command.hpp)#.2828.29_SDK:_ILxCommand_interface</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-action">Load_Action</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Scene Query.cpp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scene-query-cpp">
+<h1>Scene Query.cpp<a class="headerlink" href="#scene-query-cpp" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-walkthrough" id="id1">Code Walkthrough</a></p>
+<ul>
+<li><p><a class="reference internal" href="#definitions" id="id2">Definitions</a></p></li>
+<li><p><a class="reference internal" href="#select-scene-class-declaration" id="id3">Select_Scene class declaration</a></p></li>
+<li><p><a class="reference internal" href="#initialize-index" id="id4"><span class="xref std std-doc">./Initialize_(index)</span></a></p></li>
+<li><p><a class="reference internal" href="#select-scene-constructor" id="id5">Select_Scene constructor</a></p></li>
+<li><p><a class="reference internal" href="#cmdflags-function" id="id6">CmdFlags function</a></p></li>
+<li><p><a class="reference internal" href="#basic-enable-function" id="id7">basic_Enable function</a></p></li>
+<li><p><a class="reference internal" href="#command-lx-command-hpp-2819-29-sdk-ilxcommand-interface" id="id8"><span class="xref std std-doc">./Command_(lx-command.hpp)#.2819.29_SDK:_ILxCommand_interface</span></a></p></li>
+<li><p><a class="reference internal" href="#command-lx-command-hpp-2828-29-sdk-ilxcommand-interface" id="id9"><span class="xref std std-doc">./Command_(lx-command.hpp)#.2828.29_SDK:_ILxCommand_interface</span></a></p></li>
+<li><p><a class="reference internal" href="#load-action" id="id10">Load_Action</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>ATTENTION: THIS PAGE REFERS TO AN INTERNAL LUXOLOGY FILE THAT HAS NOT YET BEEN RELEASED TO THE SDK. THIS PAGE WILL PROBABLY BE HELPFUL IN UNDERSTANDING THE SDK REGARDLESS BUT YMMV.</p>
+<p>Scene_Query.cpp is a basic example plugin. This wiki page is intended as a walkthrough of the code in order to help you better understand the SDK.</p>
+<p>When installed, Scene_Query adds two plugins to modo:ResetScene and HardReset. ResetScene opens a file dialog from which you will choose a file; the current scene will then be closed and the chosen file loaded. HardReset will close the current scene then take the last selected file and load it. To change the file HardReset loads, run ResetScene and choose a different file.</p>
+<p>__TOC__</p>
+<div class="section" id="code-walkthrough">
+<h2><a class="toc-backref" href="#id1">Code Walkthrough</a><a class="headerlink" href="#code-walkthrough" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definitions">
+<h3><a class="toc-backref" href="#id2">Definitions</a><a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h3>
+<p>To begin, we define an argument of the form ARGi_FILEPATH to have the index value of 0. So when 0 is being passed as an argument to functions later on, it is really referring to this variable. We also define a const int that forms the upper limit for the number of characters in the file path that we will be retrieving and the character array that will hold that file path.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        #define ARGi_FILEPATH   0
+        using namespace std;
+        const int MAXFILELENGTH = 1000;
+char FILEPATH[MAXFILELENGTH];
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-scene-class-declaration">
+<h3><a class="toc-backref" href="#id3">Select_Scene class declaration</a><a class="headerlink" href="#select-scene-class-declaration" title="Permalink to this headline">¶</a></h3>
+<p>Here, Select_Scene is declared as a Command:_Server_basics#Helper_Classes with most of the basic methods associated with it. We are inheriting from basic commands because we want this plugin to perform state changes on modo.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class Select_Scene : public CLxBasicCommand     //Select_Scene will open a file dialog and load the chosen scene
+        {
+            public:
+                Select_Scene();
+                int basic_CmdFlags()         LXx_OVERRIDE;
+
+                bool basic_Enable      (CLxUser_Message &amp;msg) LXx_OVERRIDE;
+
+                void cmd_Interact() LXx_OVERRIDE;
+
+                void cmd_Execute(unsigned int flags);
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-index">
+<h3><a class="toc-backref" href="#id4"><span class="xref std std-doc">./Initialize_(index)</span></a><a class="headerlink" href="#initialize-index" title="Permalink to this headline">¶</a></h3>
+<p>Here we set up the framework for the two commands. We indicate which interfaces both use, what type of server it is, and what the name will be.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        void initialize()
+        {
+            CLxGenericPolymorph     *srv;
+
+            srv = new CLxPolymorph&lt;X::Select_Scene&gt;;
+            srv-&gt;AddInterface (new CLxIfc_Command     &lt;X::Select_Scene&gt;);
+            srv-&gt;AddInterface (new CLxIfc_Attributes  &lt;X::Select_Scene&gt;);
+            srv-&gt;AddInterface (new CLxIfc_AttributesUI&lt;X::Select_Scene&gt;);
+            lx::AddServer (&quot;resetscene&quot;, srv);
+
+            srv = new CLxPolymorph&lt;X::Load_Action&gt;;
+            srv-&gt;AddInterface (new CLxIfc_Command     &lt;X::Load_Action&gt;);
+            srv-&gt;AddInterface (new CLxIfc_Attributes  &lt;X::Load_Action&gt;);
+            srv-&gt;AddInterface (new CLxIfc_AttributesUI&lt;X::Load_Action&gt;);
+            lx::AddServer (&quot;HardReset&quot;, srv);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-scene-constructor">
+<h3><a class="toc-backref" href="#id5">Select_Scene constructor</a><a class="headerlink" href="#select-scene-constructor" title="Permalink to this headline">¶</a></h3>
+<p>The constructor adds an attribute to the command of type FILEPATH with the name FilePath. Next, its setFlags function set the index object in slot 0 equal to this attribute and allows the attribute to be queried. What adding an attribute ultimately does is create and argument that the user is queried for whenever the command is run.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        Select_Scene::Select_Scene()
+        {
+            dyna_Add(&quot;FilePath&quot;, LXsTYPE_FILEPATH); //queries the user for a FILEPATH object at startup-not same as above string
+
+            basic_SetFlags( 0, LXfCMDARG_QUERY);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="cmdflags-function">
+<h3><a class="toc-backref" href="#id6">CmdFlags function</a><a class="headerlink" href="#cmdflags-function" title="Permalink to this headline">¶</a></h3>
+<p>Next, we set the Command_(lx-command.hpp)#.287.29_SDK:_ILxCommand_interface flag.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        int
+        Select_Scene::basic_CmdFlags()
+        {
+            return LXfCMD_MODEL;    //We&#39;ll be altering the internal state of modo, so we set the MODEL flag
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-enable-function">
+<h3><a class="toc-backref" href="#id7">basic_Enable function</a><a class="headerlink" href="#basic-enable-function" title="Permalink to this headline">¶</a></h3>
+<p>Here we check for if the FILEPATH type argument has been set; if not, the user likely hit cancel, so we exit. If it has, we continue as normal</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        bool
+        Select_Scene::basic_Enable(CLxUser_Message &amp;msg) LXx_OVERRIDE
+        {
+            if (!dyna_IsSet(ARGi_FILEPATH))
+                return true;
+
+            else
+                return false;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-lx-command-hpp-2819-29-sdk-ilxcommand-interface">
+<h3><a class="toc-backref" href="#id8"><span class="xref std std-doc">./Command_(lx-command.hpp)#.2819.29_SDK:_ILxCommand_interface</span></a><a class="headerlink" href="#command-lx-command-hpp-2819-29-sdk-ilxcommand-interface" title="Permalink to this headline">¶</a></h3>
+<p>Here, we set certain dialog values using the Command_(lx-command.hpp)#.28102.29_SDK:_ILxCommandService_interface command so that a file dialog is opened. We then perform a little housework that results in string with the value of the path to the file that was selected being put into the index 0.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        void
+            Select_Scene::cmd_Interact()//Interact opens a file dialog and stores the given value in FILEPATH
+        {
+            CLxUser_CommandService  srv_cmd;
+            srv_cmd.ExecuteArgString (-1, LXiCTAG_NULL,&quot;dialog.setup fileOpen&quot;);    //-1 = LXiCMD_EXEC_WITH_PARENTS_FLAGS
+            srv_cmd.ExecuteArgString (-1, LXiCTAG_NULL,&quot;dialog.title {Load Scene}&quot;);
+            srv_cmd.ExecuteArgString (-1, LXiCTAG_NULL,&quot;dialog.fileType scene&quot;);
+            srv_cmd.ExecuteArgString (-1, LXiCTAG_NULL,&quot;dialog.open&quot;);
+
+            CLxUser_Command             resCmd;
+            CLxUser_ValueArray  va;
+            LXtObjectID                       obj;
+            unsigned int                n;
+
+            srv_cmd.NewCommand (resCmd, &quot;dialog.result&quot;);
+            srv_cmd.QueryIndex (resCmd, 0, va);
+
+            n = va.Count ();
+               if (!n)
+                     return;
+
+             std::string                filename;
+
+             va.String (0, filename);
+             attr_SetString (0, filename.c_str ());
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-lx-command-hpp-2828-29-sdk-ilxcommand-interface">
+<h3><a class="toc-backref" href="#id9"><span class="xref std std-doc">./Command_(lx-command.hpp)#.2828.29_SDK:_ILxCommand_interface</span></a><a class="headerlink" href="#command-lx-command-hpp-2828-29-sdk-ilxcommand-interface" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we use the Command_(lx-command.hpp)#.28102.29_SDK:_ILxCommandService_interface command to close the scene(using the ! before the command so that it will ignore pop-ups). We then put the value of the string in index 0 into the global character array FILEPATH. We then open a scene using the value of FILEPATH.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>            void
+        Select_Scene::cmd_Execute(unsigned int flags)//Execute takes FILEPATH and loads it
+        {
+            CLxUser_CommandService  cmd_srv;
+            unsigned int execFlagsA = -1;
+            string command = &quot;!scene.close&quot;;
+
+            cmd_srv.ExecuteArgString(execFlagsA, LXiCTAG_NULL, command.c_str());
+            attr_GetString(0, FILEPATH, MAXFILELENGTH);
+            command = &quot;scene.open &quot;;
+            command = command+FILEPATH;
+            cmd_srv.ExecuteArgString(execFlagsA, LXiCTAG_NULL, command.c_str());
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-action">
+<h3><a class="toc-backref" href="#id10">Load_Action</a><a class="headerlink" href="#load-action" title="Permalink to this headline">¶</a></h3>
+<p>This class is Select_Scene without a file dialog; the code is otherwise the same.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Select.typeFrom.html" class="btn btn-neutral float-right" title="Select.typeFrom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Render%20Frame%20Size.html" class="btn btn-neutral float-left" title="Render Frame Size" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Scene Query.cpp.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:10 GMT -->
+</html>

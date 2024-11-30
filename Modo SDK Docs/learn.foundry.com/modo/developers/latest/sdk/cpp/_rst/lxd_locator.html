@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_locator.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Locator &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Log" href="lxd_log.html" />
+    <link rel="prev" title="Listener" href="lxd_listener.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Locator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlocator">ILxLocator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Locator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="locator">
+<h1>Locator<a class="headerlink" href="#locator" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxlocator" id="id1">ILxLocator</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsITYPE_LOCATOR">
+<span class="target" id="lxd__locator_8hpp_1a197f580362aa5e29fc43631858014d3e"></span><code class="sig-name descname">LXsITYPE_LOCATOR</code><a class="headerlink" href="#c.LXsITYPE_LOCATOR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Startup initializes all the packages and then promotes some of them to item status. This basically just means creating the package, assigning the local data and callbacks, and setting up the channels. This module depends on cinemas and meshes. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsICHAN_LOCATOR_VISIBLE</p></li>
+<li><p>LXsICHAN_LOCATOR_RENDER</p></li>
+<li><p>LXsICHAN_LOCATOR_SELECT</p></li>
+<li><p>LXsICHAN_LOCATOR_LOCK</p></li>
+<li><p>LXsICHAN_LOCATOR_SIZE</p></li>
+<li><p>LXsICHAN_LOCATOR_DRAWSHAPE</p></li>
+<li><p>LXsICHAN_LOCATOR_CENTER</p></li>
+<li><p>LXsICHAN_LOCATOR_PIVOT</p></li>
+<li><p>LXsICHAN_LOCATOR_LINK</p></li>
+<li><p>LXsICHAN_LOCATOR_GLSTATE</p></li>
+<li><p>LXsICHAN_LOCATOR_HVISIBLE</p></li>
+<li><p>LXsICHAN_LOCATOR_GLSURF</p></li>
+<li><p>LXsICHAN_LOCATOR_SILHOUETTE</p></li>
+<li><p>LXsICVAL_LOCATOR_DRAWSHAPE_DEFAULT</p></li>
+<li><p>LXsICVAL_LOCATOR_DRAWSHAPE_CUSTOM</p></li>
+<li><p>LXsICVAL_LOCATOR_LINK_DEFAULT</p></li>
+<li><p>LXsICVAL_LOCATOR_LINK_CUSTOM</p></li>
+<li><p>LXsICVAL_LOCATOR_STATE_DEFAULT</p></li>
+<li><p>LXsICVAL_LOCATOR_STATE_ON</p></li>
+<li><p>LXsICVAL_LOCATOR_STATE_OFF</p></li>
+<li><p>LXsITYPE_LIGHT</p></li>
+<li><p>LXsICHAN_LIGHT_RADIANCE</p></li>
+<li><p>LXsICHAN_LIGHT_FALLTYPE</p></li>
+<li><p>LXsICHAN_LIGHT_RANGE</p></li>
+<li><p>LXsICHAN_LIGHT_SHADTYPE</p></li>
+<li><p>LXsICHAN_LIGHT_SHADRES</p></li>
+<li><p>LXsICHAN_LIGHT_SHADSPOT</p></li>
+<li><p>LXsICHAN_LIGHT_SAMPLES</p></li>
+<li><p>LXsICHAN_LIGHT_IMPORTANCE</p></li>
+<li><p>LXsICHAN_LIGHT_VISCAM</p></li>
+<li><p>LXsICHAN_LIGHT_VISREFL</p></li>
+<li><p>LXsICHAN_LIGHT_VISREFR</p></li>
+<li><p>LXsICHAN_LIGHT_STACK</p></li>
+<li><p>LXsICHAN_LIGHT_TARGET</p></li>
+<li><p>LXsICHAN_SUNLIGHT_GAMMA</p></li>
+<li><p>LXsICHAN_SUNLIGHT_DISTANCE</p></li>
+<li><p>LXsICHAN_SUNLIGHT_THINNING</p></li>
+<li><p>LXsICHAN_SUNLIGHT_SUMMERTIME</p></li>
+<li><p>LXsICHAN_SUNLIGHT_USEWORLDXFORM</p></li>
+<li><p>LXsICVAL_LIGHT_FALLTYPE_NONE</p></li>
+<li><p>LXsICVAL_LIGHT_FALLTYPE_INVDIST</p></li>
+<li><p>LXsICVAL_LIGHT_FALLTYPE_INVDIST2</p></li>
+<li><p>LXsICVAL_LIGHT_SHADTYPE_NONE</p></li>
+<li><p>LXsICVAL_LIGHT_SHADTYPE_RAYTRACE</p></li>
+<li><p>LXsICVAL_LIGHT_SHADTYPE_SHADOWMAP</p></li>
+<li><p>LXsITYPE_CAMERA</p></li>
+<li><p>LXsICHAN_CAMERA_FOCALLEN</p></li>
+<li><p>LXsICHAN_CAMERA_APERTUREX</p></li>
+<li><p>LXsICHAN_CAMERA_APERTUREY</p></li>
+<li><p>LXsICHAN_CAMERA_OFFSETX</p></li>
+<li><p>LXsICHAN_CAMERA_OFFSETY</p></li>
+<li><p>LXsICHAN_CAMERA_SQUEEZE</p></li>
+<li><p>LXsICHAN_CAMERA_FILMROLL</p></li>
+<li><p>LXsICHAN_CAMERA_FILMFIT</p></li>
+<li><p>LXsICHAN_CAMERA_DOF</p></li>
+<li><p>LXsICHAN_CAMERA_FOCUSDIST</p></li>
+<li><p>LXsICHAN_CAMERA_FSTOP</p></li>
+<li><p>LXsICHAN_CAMERA_IRISBLADES</p></li>
+<li><p>LXsICHAN_CAMERA_IRISROT</p></li>
+<li><p>LXsICHAN_CAMERA_IRISBIAS</p></li>
+<li><p>LXsICHAN_CAMERA_DISTORT</p></li>
+<li><p>LXsICHAN_CAMERA_MOTIONBLUR</p></li>
+<li><p>LXsICHAN_CAMERA_BLURLEN</p></li>
+<li><p>LXsICHAN_CAMERA_BLUROFF</p></li>
+<li><p>LXsICHAN_CAMERA_STEREO</p></li>
+<li><p>LXsICHAN_CAMERA_STEREOEYE</p></li>
+<li><p>LXsICHAN_CAMERA_STEREOCOMP</p></li>
+<li><p>LXsICHAN_CAMERA_IODIST</p></li>
+<li><p>LXsICHAN_CAMERA_CONVDIST</p></li>
+<li><p>LXsICHAN_CAMERA_PROJTYPE</p></li>
+<li><p>LXsICHAN_CAMERA_TARGET</p></li>
+<li><p>LXsICHAN_CAMERA_CLIPDIST</p></li>
+<li><p>LXsICHAN_CAMERA_CLIPPING</p></li>
+<li><p>LXsICHAN_CAMERA_RESOVERRIDE</p></li>
+<li><p>LXsICHAN_CAMERA_RESX</p></li>
+<li><p>LXsICHAN_CAMERA_RESY</p></li>
+<li><p>LXsICHAN_CAMERA_OVERSCAN</p></li>
+<li><p>LXsICHAN_CAMERA_USEMASK</p></li>
+<li><p>LXsICHAN_CAMERA_USEIMAGES</p></li>
+<li><p>LXsICHAN_CAMERA_USEBGIMAGE</p></li>
+<li><p>LXsICHAN_CAMERA_USEFGIMAGE</p></li>
+<li><p>LXsICVAL_CAMERA_FILMFIT_FILL</p></li>
+<li><p>LXsICVAL_CAMERA_FILMFIT_HORIZONTAL</p></li>
+<li><p>LXsICVAL_CAMERA_FILMFIT_VERTICAL</p></li>
+<li><p>LXsICVAL_CAMERA_FILMFIT_OVERSCAN</p></li>
+<li><p>LXsICVAL_CAMERA_PROJTYPE_PERSP</p></li>
+<li><p>LXsICVAL_CAMERA_PROJTYPE_ORTHO</p></li>
+<li><p>LXsICVAL_CAMERA_PROJTYPE_CYLINDRICAL</p></li>
+<li><p>LXsICVAL_CAMERA_PROJTYPE_CYLINDRICAL_VR</p></li>
+<li><p>LXsICVAL_CAMERA_PROJTYPE_SPHERICAL</p></li>
+<li><p>LXsICVAL_CAMERA_PROJTYPE_SPHERICAL_VR</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOEYE_LEFT</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOEYE_RIGHT</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOEYE_BOTH</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_NONE</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_ANAGLYPH_RED_CYAN</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_ANAGLYPH_GRAYSCALE</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_ANAGLYPH_RED_CYAN_HALF</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_ANAGLYPH_RED_CYAN_OPT</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_ANAGLYPH_RED_BLUE_LS</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_SIDE_BY_SIDE</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_SIDE_BY_SIDE_FULL</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_SIDE_BY_SIDE_CROSS</p></li>
+<li><p>LXsICVAL_CAMERA_STEREOCOMP_SIDE_BY_SIDE_CROSSFULL</p></li>
+<li><p>LXsITYPE_GROUPLOCATOR</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiICVAL_LIGHT_SHADTYPE_NONE">
+<span class="target" id="lxd__locator_8hpp_1ae914caa5c543b30e02409b11ee468d75"></span><code class="sig-name descname">LXiICVAL_LIGHT_SHADTYPE_NONE</code><a class="headerlink" href="#c.LXiICVAL_LIGHT_SHADTYPE_NONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These declarations are used to test light shadow types. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiICVAL_LIGHT_SHADTYPE_RAYTRACE</p></li>
+<li><p>LXiICVAL_LIGHT_SHADTYPE_SHADOWMAP</p></li>
+<li><p>LXiICVAL_LIGHT_SHADTYPE_PORTAL</p></li>
+</ul>
+<dl class="type">
+<dt id="_CPPv416LXtTransformType">
+<span id="_CPPv316LXtTransformType"></span><span id="_CPPv216LXtTransformType"></span><span id="LXtTransformType"></span><span class="target" id="lxd__locator_8hpp_1a6ee7d2f86051e0ec936793e7558395fc"></span><em class="property">typedef </em>unsigned <code class="sig-name descname">LXtTransformType</code><a class="headerlink" href="#_CPPv416LXtTransformType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Transforms applied to locators have a fixed set of types. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiXFRM_SCALE</p></li>
+<li><p>LXiXFRM_ROTATION</p></li>
+<li><p>LXiXFRM_POSITION</p></li>
+<li><p>LXiXFRM_PIVOT</p></li>
+<li><p>LXiXFRM_PIVOT_C</p></li>
+<li><p>LXiXFRM_SHEAR</p></li>
+<li><p>LXiXFRM_PIVOT_ROT</p></li>
+<li><p>LXiXFRM_PIVOT_ROT_C</p></li>
+</ul>
+<div class="section" id="ilxlocator">
+<h2><a class="toc-backref" href="#id1">ILxLocator</a><a class="headerlink" href="#ilxlocator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxLocator">
+<span id="_CPPv310ILxLocator"></span><span id="_CPPv210ILxLocator"></span><span id="ILxLocator"></span><span class="target" id="class_i_lx_locator"></span><em class="property">class </em><code class="sig-name descname">ILxLocator</code><a class="headerlink" href="#_CPPv410ILxLocator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A locator is a basic item type that has a transform. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator7VisibleE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxLocator7VisibleE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxLocator7VisibleE11LXtObjectID11LXtObjectID"></span><span id="ILxLocator::Visible__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_locator_1a44dcbb699fdea1a207c39d314b37b46c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Visible</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator7VisibleE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Locator-type item visibility is controlled both locally and by parent items. If an item evaluates as visible, the return value is LXe_TRUE, otherwise the return value is LXe_FALSE. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator14WorldTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector">
+<span id="_CPPv3N10ILxLocator14WorldTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector"></span><span id="_CPPv2N10ILxLocator14WorldTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector"></span><span id="ILxLocator::WorldTransform__LXtObjectID.LXtObjectID.LXtMatrix.LXtVector"></span><span class="target" id="class_i_lx_locator_1a55399386e3f080de9b641b1a76b8812c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WorldTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator14WorldTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Locator-type items have support methods for getting and setting their transforms. This gets the evaluated world transform (position offset and 3x3 matrix) for a given item at a given time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator16GetTransformItemE11LXtObjectID16LXtTransformTypePPv">
+<span id="_CPPv3N10ILxLocator16GetTransformItemE11LXtObjectID16LXtTransformTypePPv"></span><span id="_CPPv2N10ILxLocator16GetTransformItemE11LXtObjectID16LXtTransformTypePPv"></span><span id="ILxLocator::GetTransformItem__LXtObjectID.LXtTransformType.voidPP"></span><span class="target" id="class_i_lx_locator_1ad1c316e12642e1a72aa8f46b20ca091e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTransformItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator16GetTransformItemE11LXtObjectID16LXtTransformTypePPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the transform item of the given type for the locator item. If no item exists this method returns LXe_NOTFOUND. Otherwise the item is returned. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator16AddTransformItemE11LXtObjectID16LXtTransformTypePPvPj">
+<span id="_CPPv3N10ILxLocator16AddTransformItemE11LXtObjectID16LXtTransformTypePPvPj"></span><span id="_CPPv2N10ILxLocator16AddTransformItemE11LXtObjectID16LXtTransformTypePPvPj"></span><span id="ILxLocator::AddTransformItem__LXtObjectID.LXtTransformType.voidPP.unsignedP"></span><span class="target" id="class_i_lx_locator_1a9b39cf2c21a029eca83c779d40991e4a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddTransformItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, void **<em>ppvObj</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator16AddTransformItemE11LXtObjectID16LXtTransformTypePPvPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method adds a given transform or returns the existing one. It can optionally return the index of the first value channel of the xfrm as well. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator18SetTransformVectorE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVector">
+<span id="_CPPv3N10ILxLocator18SetTransformVectorE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVector"></span><span id="_CPPv2N10ILxLocator18SetTransformVectorE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVector"></span><span id="ILxLocator::SetTransformVector__LXtObjectID.LXtObjectID.LXtTransformType.LXtVectorC"></span><span class="target" id="class_i_lx_locator_1a53fb0d4966b18376daa8153bcc5abd68"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTransformVector</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator18SetTransformVectorE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method sets the value of one of the transforms for the given locator item. The chanWrite object can be an object presenting an <a class="reference internal" href="lxd_action.html#class_i_lx_channel_write"><span class="std std-ref">ILxChannelWrite</span></a> interface for one of the scene’s actions. If this is null the vector is written as constant channel values in some appropriate action. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator19AddPreTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj">
+<span id="_CPPv3N10ILxLocator19AddPreTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="_CPPv2N10ILxLocator19AddPreTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="ILxLocator::AddPreTransformItem__LXtObjectID.LXtObjectID.LXtTransformType.LXtVectorC.voidPP.unsignedP"></span><span class="target" id="class_i_lx_locator_1a99967f2d3020ce18914eaaab9d1ff10a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddPreTransformItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>value</em>, void **<em>ppvObj</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator19AddPreTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method creates a new transform of the requested type and inserts into the transform chain before the standard transform. It returns the new object, optionally the first value channel of the xfrm as well. If ‘value’ is not NULL, it sets the value of one of the transforms. The chanWrite object can be an object presenting an <a class="reference internal" href="lxd_action.html#class_i_lx_channel_write"><span class="std std-ref">ILxChannelWrite</span></a> interface for one of the scene’s actions. If this is null the vector is written as constant channel values in some appropriate action. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator20AddPostTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj">
+<span id="_CPPv3N10ILxLocator20AddPostTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="_CPPv2N10ILxLocator20AddPostTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="ILxLocator::AddPostTransformItem__LXtObjectID.LXtObjectID.LXtTransformType.LXtVectorC.voidPP.unsignedP"></span><span class="target" id="class_i_lx_locator_1adadb34b67c811f487f367000814c0f38"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddPostTransformItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>value</em>, void **<em>ppvObj</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator20AddPostTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is like the above, but it inserts the transform AFTER the standard transforms. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator9SetTargetE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N10ILxLocator9SetTargetE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N10ILxLocator9SetTargetE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxLocator::SetTarget__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_locator_1ab7b6f3055cdd476a2e3241b648212474"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTarget</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>target</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator9SetTargetE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator20PrependTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj">
+<span id="_CPPv3N10ILxLocator20PrependTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="_CPPv2N10ILxLocator20PrependTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="ILxLocator::PrependTransformItem__LXtObjectID.LXtObjectID.LXtTransformType.LXtVectorC.voidPP.unsignedP"></span><span class="target" id="class_i_lx_locator_1a205cf12629ef4da92c1c1cf55a422eb2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PrependTransformItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>value</em>, void **<em>ppvObj</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator20PrependTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inserts the transform BEFORE the very first transform. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator19AppendTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj">
+<span id="_CPPv3N10ILxLocator19AppendTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="_CPPv2N10ILxLocator19AppendTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj"></span><span id="ILxLocator::AppendTransformItem__LXtObjectID.LXtObjectID.LXtTransformType.LXtVectorC.voidPP.unsignedP"></span><span class="target" id="class_i_lx_locator_1a03981f921d54bbcfa268f895e2473690"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AppendTransformItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>value</em>, void **<em>ppvObj</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator19AppendTransformItemE11LXtObjectID11LXtObjectID16LXtTransformTypeK9LXtVectorPPvPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inserts the transform AFTER the very last transform. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator11SetPositionE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtVectorjj">
+<span id="_CPPv3N10ILxLocator11SetPositionE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtVectorjj"></span><span id="_CPPv2N10ILxLocator11SetPositionE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtVectorjj"></span><span id="ILxLocator::SetPosition__LXtObjectID.LXtObjectID.LXtObjectID.LXtVectorC.unsigned.unsigned"></span><span class="target" id="class_i_lx_locator_1ac8aeaec0f6309c2a6ee1b6e441d4be0d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPosition</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, unsigned <em>type</em>, unsigned <em>comp</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator11SetPositionE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtVectorjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator11SetRotationE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtMatrixjj">
+<span id="_CPPv3N10ILxLocator11SetRotationE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtMatrixjj"></span><span id="_CPPv2N10ILxLocator11SetRotationE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtMatrixjj"></span><span id="ILxLocator::SetRotation__LXtObjectID.LXtObjectID.LXtObjectID.LXtMatrixC.unsigned.unsigned"></span><span class="target" id="class_i_lx_locator_1a14153dbf7a4c4d8b063ab8c1511dfe08"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetRotation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>m3</em>, unsigned <em>type</em>, unsigned <em>comp</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator11SetRotationE11LXtObjectID11LXtObjectID11LXtObjectIDK9LXtMatrixjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator8SetScaleE11LXtObjectID11LXtObjectID11LXtObjectIDK10LXtMatrix4jj">
+<span id="_CPPv3N10ILxLocator8SetScaleE11LXtObjectID11LXtObjectID11LXtObjectIDK10LXtMatrix4jj"></span><span id="_CPPv2N10ILxLocator8SetScaleE11LXtObjectID11LXtObjectID11LXtObjectIDK10LXtMatrix4jj"></span><span id="ILxLocator::SetScale__LXtObjectID.LXtObjectID.LXtObjectID.LXtMatrix4C.unsigned.unsigned"></span><span class="target" id="class_i_lx_locator_1a987b4defd61492a929079725f3638360"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetScale</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>m4</em>, unsigned <em>type</em>, unsigned <em>comp</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator8SetScaleE11LXtObjectID11LXtObjectID11LXtObjectIDK10LXtMatrix4jj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator20ExtractLocalPositionE11LXtObjectID11LXtObjectID9LXtVector">
+<span id="_CPPv3N10ILxLocator20ExtractLocalPositionE11LXtObjectID11LXtObjectID9LXtVector"></span><span id="_CPPv2N10ILxLocator20ExtractLocalPositionE11LXtObjectID11LXtObjectID9LXtVector"></span><span id="ILxLocator::ExtractLocalPosition__LXtObjectID.LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_locator_1a6e850b839761d78caa084d5ff65f2c51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ExtractLocalPosition</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator20ExtractLocalPositionE11LXtObjectID11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Items may have several position transforms (zeroed, pivot etc) making it difficult to set a local position directly. This function takes the desired local position values for an item and updates them to the values that need to be set on the standard position transform item to give the desired position after taking all other transforms into account. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator20ExtractLocalRotationE11LXtObjectID11LXtObjectID9LXtMatrix">
+<span id="_CPPv3N10ILxLocator20ExtractLocalRotationE11LXtObjectID11LXtObjectID9LXtMatrix"></span><span id="_CPPv2N10ILxLocator20ExtractLocalRotationE11LXtObjectID11LXtObjectID9LXtMatrix"></span><span id="ILxLocator::ExtractLocalRotation__LXtObjectID.LXtObjectID.LXtMatrix"></span><span class="target" id="class_i_lx_locator_1af889a1601c25df025d47fbbceaf4bdbb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ExtractLocalRotation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>m3</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator20ExtractLocalRotationE11LXtObjectID11LXtObjectID9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As above above but for the local rotation matrix. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator13ZeroTransformE11LXtObjectID11LXtObjectID11LXtObjectID16LXtTransformType">
+<span id="_CPPv3N10ILxLocator13ZeroTransformE11LXtObjectID11LXtObjectID11LXtObjectID16LXtTransformType"></span><span id="_CPPv2N10ILxLocator13ZeroTransformE11LXtObjectID11LXtObjectID11LXtObjectID16LXtTransformType"></span><span id="ILxLocator::ZeroTransform__LXtObjectID.LXtObjectID.LXtObjectID.LXtTransformType"></span><span class="target" id="class_i_lx_locator_1a9e902ebfffb9a00ba9a07eb38fb6f7be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ZeroTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanWrite</em>, <a class="reference internal" href="#_CPPv416LXtTransformType" title="LXtTransformType">LXtTransformType</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator13ZeroTransformE11LXtObjectID11LXtObjectID11LXtObjectID16LXtTransformType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator15WorldTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4">
+<span id="_CPPv3N10ILxLocator15WorldTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4"></span><span id="_CPPv2N10ILxLocator15WorldTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4"></span><span id="ILxLocator::WorldTransform4__LXtObjectID.LXtObjectID.LXtMatrix4"></span><span class="target" id="class_i_lx_locator_1a4bf4e505d5b3a8c9627e8f4a213fa7e6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WorldTransform4</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>xfrm4</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator15WorldTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is similar to WorldTransform, except the evaluated world transform is returned in a full 4x4 matrix. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator20WorldInvertTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector">
+<span id="_CPPv3N10ILxLocator20WorldInvertTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector"></span><span id="_CPPv2N10ILxLocator20WorldInvertTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector"></span><span id="ILxLocator::WorldInvertTransform__LXtObjectID.LXtObjectID.LXtMatrix.LXtVector"></span><span class="target" id="class_i_lx_locator_1ab2a180e97349eafce311b28766d94b80"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WorldInvertTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator20WorldInvertTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This gets the invert transformation matrix and offset </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator14LocalTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector">
+<span id="_CPPv3N10ILxLocator14LocalTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector"></span><span id="_CPPv2N10ILxLocator14LocalTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector"></span><span id="ILxLocator::LocalTransform__LXtObjectID.LXtObjectID.LXtMatrix.LXtVector"></span><span class="target" id="class_i_lx_locator_1af241e631cce6fa33264e891e33e332ad"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LocalTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator14LocalTransformE11LXtObjectID11LXtObjectID9LXtMatrix9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This gets the evaluated local transform (position offset and 3x3 matrix - relative to its parent) for a given item at a given time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLocator15LocalTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4">
+<span id="_CPPv3N10ILxLocator15LocalTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4"></span><span id="_CPPv2N10ILxLocator15LocalTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4"></span><span id="ILxLocator::LocalTransform4__LXtObjectID.LXtObjectID.LXtMatrix4"></span><span class="target" id="class_i_lx_locator_1aad3b7fd942172ce4133a11329e5e9062"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LocalTransform4</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>xfrm4</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLocator15LocalTransform4E11LXtObjectID11LXtObjectID10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is similar to LocalTransform, except the evaluated local transform is returned in a full 4x4 matrix. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiLOCATOR_LOCAL</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_log.html" class="btn btn-neutral float-right" title="Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_listener.html" class="btn btn-neutral float-left" title="Listener" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_locator.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

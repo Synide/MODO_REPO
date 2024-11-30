@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_stddialog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stddialog &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Surface" href="lxd_surface.html" />
+    <link rel="prev" title="Shdr" href="lxd_shdr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Stddialog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxasyncmonitorinfo">ILxAsyncMonitorInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxasyncmonitorinfo1">ILxAsyncMonitorInfo1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxasyncmonitorsystem">ILxAsyncMonitorSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolordialog">ILxColorDialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxstddialogservice">ILxStdDialogService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfiledialogclient">ILxFileDialogClient</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Stddialog</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stddialog">
+<h1>Stddialog<a class="headerlink" href="#stddialog" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxasyncmonitorinfo" id="id1">ILxAsyncMonitorInfo</a></p></li>
+<li><p><a class="reference internal" href="#ilxasyncmonitorinfo1" id="id2">ILxAsyncMonitorInfo1</a></p></li>
+<li><p><a class="reference internal" href="#ilxasyncmonitorsystem" id="id3">ILxAsyncMonitorSystem</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolordialog" id="id4">ILxColorDialog</a></p></li>
+<li><p><a class="reference internal" href="#ilxstddialogservice" id="id5">ILxStdDialogService</a></p></li>
+<li><p><a class="reference internal" href="#ilxfiledialogclient" id="id6">ILxFileDialogClient</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxasyncmonitorinfo">
+<h2><a class="toc-backref" href="#id1">ILxAsyncMonitorInfo</a><a class="headerlink" href="#ilxasyncmonitorinfo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxAsyncMonitorInfo">
+<span id="_CPPv319ILxAsyncMonitorInfo"></span><span id="_CPPv219ILxAsyncMonitorInfo"></span><span id="ILxAsyncMonitorInfo"></span><span class="target" id="class_i_lx_async_monitor_info"></span><em class="property">class </em><code class="sig-name descname">ILxAsyncMonitorInfo</code><a class="headerlink" href="#_CPPv419ILxAsyncMonitorInfo" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asynchronous monitors provide can provide information about their current state. In fact, you can tell the difference between a standard monitor and an async monitor based on either it exposes this interface. This is primarily used to implement the Activity View. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo6SystemE11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxAsyncMonitorInfo6SystemE11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxAsyncMonitorInfo6SystemE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorInfo::System__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_info_1a248d71d2cf4a15c801ce86696ca50b51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">System</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>system</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo6SystemE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the system and title of the monitor. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo5TitleE11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxAsyncMonitorInfo5TitleE11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxAsyncMonitorInfo5TitleE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorInfo::Title__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_info_1a6485551021e99e88d766b51ed8b1e8a1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Title</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo5TitleE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo8ProgressE11LXtObjectIDPd">
+<span id="_CPPv3N19ILxAsyncMonitorInfo8ProgressE11LXtObjectIDPd"></span><span id="_CPPv2N19ILxAsyncMonitorInfo8ProgressE11LXtObjectIDPd"></span><span id="ILxAsyncMonitorInfo::Progress__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_async_monitor_info_1a93ace0f1fb9a6be60265d998a7535a42"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Progress</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>progress</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo8ProgressE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the current progress of this single monitor, ignoring child monitors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo15OverallProgressE11LXtObjectIDPd">
+<span id="_CPPv3N19ILxAsyncMonitorInfo15OverallProgressE11LXtObjectIDPd"></span><span id="_CPPv2N19ILxAsyncMonitorInfo15OverallProgressE11LXtObjectIDPd"></span><span id="ILxAsyncMonitorInfo::OverallProgress__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_async_monitor_info_1aff8f796965c119aad82d943a67b3fa09"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OverallProgress</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>progress</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo15OverallProgressE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is similar, but takes into account sub-monitors to provide an overall progress value. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo6ParentE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxAsyncMonitorInfo6ParentE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxAsyncMonitorInfo6ParentE11LXtObjectIDPPv"></span><span id="ILxAsyncMonitorInfo::Parent__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_async_monitor_info_1ac9249b772dfece057ac229ed1163fcf6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Parent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo6ParentE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the parent and child of the monitor. This fails with NOTAVAILABLE if there is no parent or child. These objects must be released when no longer needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo5ChildE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxAsyncMonitorInfo5ChildE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxAsyncMonitorInfo5ChildE11LXtObjectIDPPv"></span><span id="ILxAsyncMonitorInfo::Child__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_async_monitor_info_1ab2cf68fd41ff5f5bc9dd9d50deb64e01"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Child</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo5ChildE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo10IdentifierE11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxAsyncMonitorInfo10IdentifierE11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxAsyncMonitorInfo10IdentifierE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorInfo::Identifier__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_info_1aac517549661f1cfc2acef7491ef86003"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Identifier</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo10IdentifierE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns a unique identifier string for the monitor, mostly to make it easier to address from things like the Activity View commands. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo8CanAbortE11LXtObjectID">
+<span id="_CPPv3N19ILxAsyncMonitorInfo8CanAbortE11LXtObjectID"></span><span id="_CPPv2N19ILxAsyncMonitorInfo8CanAbortE11LXtObjectID"></span><span id="ILxAsyncMonitorInfo::CanAbort__LXtObjectID"></span><span class="target" id="class_i_lx_async_monitor_info_1a100c17aa150bcdc6ee59ad0d5a0eb839"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CanAbort</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo8CanAbortE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns LXe_TRUE if the monitor can be aborted. This is purely a UI construct, and determiens if a root-level monitor should draw the abort widget. It is always false on sub-monitors, and <a class="reference internal" href="#class_i_lx_async_monitor_info_1a7f0fc67c1ff6c9c0c319f014a64fca78"><span class="std std-ref">Abort()</span></a> can still be called, in which case <a class="reference internal" href="#class_i_lx_async_monitor_info_1ab65b76036d159b1e6ffefabc62514caf"><span class="std std-ref">IsAborted()</span></a> will return true. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo5AbortE11LXtObjectID">
+<span id="_CPPv3N19ILxAsyncMonitorInfo5AbortE11LXtObjectID"></span><span id="_CPPv2N19ILxAsyncMonitorInfo5AbortE11LXtObjectID"></span><span id="ILxAsyncMonitorInfo::Abort__LXtObjectID"></span><span class="target" id="class_i_lx_async_monitor_info_1a7f0fc67c1ff6c9c0c319f014a64fca78"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Abort</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo5AbortE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tell the monitor to abort. This simply sets the abort flag, which is returned by <a class="reference internal" href="#class_i_lx_async_monitor_info_1ab65b76036d159b1e6ffefabc62514caf"><span class="std std-ref">IsAborted()</span></a> and <a class="reference internal" href="lxd_io.html#class_i_lx_monitor_1a5761f2d580318f5c548455c38e343629"><span class="std std-ref">ILxMonitor::Step()</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAsyncMonitorInfo9IsAbortedE11LXtObjectID">
+<span id="_CPPv3N19ILxAsyncMonitorInfo9IsAbortedE11LXtObjectID"></span><span id="_CPPv2N19ILxAsyncMonitorInfo9IsAbortedE11LXtObjectID"></span><span id="ILxAsyncMonitorInfo::IsAborted__LXtObjectID"></span><span class="target" id="class_i_lx_async_monitor_info_1ab65b76036d159b1e6ffefabc62514caf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsAborted</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAsyncMonitorInfo9IsAbortedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if aborted, and LXe_FALSE if it is still running. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxasyncmonitorinfo1">
+<h2><a class="toc-backref" href="#id2">ILxAsyncMonitorInfo1</a><a class="headerlink" href="#ilxasyncmonitorinfo1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxAsyncMonitorInfo1">
+<span id="_CPPv320ILxAsyncMonitorInfo1"></span><span id="_CPPv220ILxAsyncMonitorInfo1"></span><span id="ILxAsyncMonitorInfo1"></span><span class="target" id="class_i_lx_async_monitor_info1"></span><em class="property">class </em><code class="sig-name descname">ILxAsyncMonitorInfo1</code><a class="headerlink" href="#_CPPv420ILxAsyncMonitorInfo1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 11.1, and was replaced with an updated one that adds the CanAbort() method. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo16SystemE11LXtObjectIDPPKc">
+<span id="_CPPv3N20ILxAsyncMonitorInfo16SystemE11LXtObjectIDPPKc"></span><span id="_CPPv2N20ILxAsyncMonitorInfo16SystemE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorInfo1::System__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_info1_1a743e8ca900f5cdde360b8217ca92a848"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">System</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>system</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo16SystemE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo15TitleE11LXtObjectIDPPKc">
+<span id="_CPPv3N20ILxAsyncMonitorInfo15TitleE11LXtObjectIDPPKc"></span><span id="_CPPv2N20ILxAsyncMonitorInfo15TitleE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorInfo1::Title__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_info1_1adc09f83a68d9d26605af99082ebe2938"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Title</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo15TitleE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo18ProgressE11LXtObjectIDPd">
+<span id="_CPPv3N20ILxAsyncMonitorInfo18ProgressE11LXtObjectIDPd"></span><span id="_CPPv2N20ILxAsyncMonitorInfo18ProgressE11LXtObjectIDPd"></span><span id="ILxAsyncMonitorInfo1::Progress__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_async_monitor_info1_1adf4716e6cdeffcfdceb088d321498023"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Progress</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>progress</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo18ProgressE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo115OverallProgressE11LXtObjectIDPd">
+<span id="_CPPv3N20ILxAsyncMonitorInfo115OverallProgressE11LXtObjectIDPd"></span><span id="_CPPv2N20ILxAsyncMonitorInfo115OverallProgressE11LXtObjectIDPd"></span><span id="ILxAsyncMonitorInfo1::OverallProgress__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_async_monitor_info1_1a08e3d89b1aeb55a69744fd6ccc110cd2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OverallProgress</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>progress</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo115OverallProgressE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo16ParentE11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxAsyncMonitorInfo16ParentE11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxAsyncMonitorInfo16ParentE11LXtObjectIDPPv"></span><span id="ILxAsyncMonitorInfo1::Parent__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_async_monitor_info1_1aedf901b002de1dfffb915c2a887229cc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Parent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo16ParentE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo15ChildE11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxAsyncMonitorInfo15ChildE11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxAsyncMonitorInfo15ChildE11LXtObjectIDPPv"></span><span id="ILxAsyncMonitorInfo1::Child__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_async_monitor_info1_1ab953d0493f5199621eae4c872d39d9d5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Child</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo15ChildE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo110IdentifierE11LXtObjectIDPPKc">
+<span id="_CPPv3N20ILxAsyncMonitorInfo110IdentifierE11LXtObjectIDPPKc"></span><span id="_CPPv2N20ILxAsyncMonitorInfo110IdentifierE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorInfo1::Identifier__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_info1_1af4620d9390b5e1dc4f63b68cfe32df6b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Identifier</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo110IdentifierE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo15AbortE11LXtObjectID">
+<span id="_CPPv3N20ILxAsyncMonitorInfo15AbortE11LXtObjectID"></span><span id="_CPPv2N20ILxAsyncMonitorInfo15AbortE11LXtObjectID"></span><span id="ILxAsyncMonitorInfo1::Abort__LXtObjectID"></span><span class="target" id="class_i_lx_async_monitor_info1_1a35d4392723555a4b0ccb441ede3edeb1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Abort</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo15AbortE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxAsyncMonitorInfo19IsAbortedE11LXtObjectID">
+<span id="_CPPv3N20ILxAsyncMonitorInfo19IsAbortedE11LXtObjectID"></span><span id="_CPPv2N20ILxAsyncMonitorInfo19IsAbortedE11LXtObjectID"></span><span id="ILxAsyncMonitorInfo1::IsAborted__LXtObjectID"></span><span class="target" id="class_i_lx_async_monitor_info1_1a535e69a278db82fc24c262aa793c1bb8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsAborted</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxAsyncMonitorInfo19IsAbortedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxasyncmonitorsystem">
+<h2><a class="toc-backref" href="#id3">ILxAsyncMonitorSystem</a><a class="headerlink" href="#ilxasyncmonitorsystem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxAsyncMonitorSystem">
+<span id="_CPPv321ILxAsyncMonitorSystem"></span><span id="_CPPv221ILxAsyncMonitorSystem"></span><span id="ILxAsyncMonitorSystem"></span><span class="target" id="class_i_lx_async_monitor_system"></span><em class="property">class </em><code class="sig-name descname">ILxAsyncMonitorSystem</code><a class="headerlink" href="#_CPPv421ILxAsyncMonitorSystem" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Async monitors are organized by the system they belong to. An object representing this list provides this simple interface. Note that the methods in this interface should only be used from the main thread. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxAsyncMonitorSystem4NameE11LXtObjectIDPPKc">
+<span id="_CPPv3N21ILxAsyncMonitorSystem4NameE11LXtObjectIDPPKc"></span><span id="_CPPv2N21ILxAsyncMonitorSystem4NameE11LXtObjectIDPPKc"></span><span id="ILxAsyncMonitorSystem::Name__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_async_monitor_system_1ae4115f2e333058208a7edee7601c7ad6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxAsyncMonitorSystem4NameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the name of the system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxAsyncMonitorSystem5CountE11LXtObjectIDPi">
+<span id="_CPPv3N21ILxAsyncMonitorSystem5CountE11LXtObjectIDPi"></span><span id="_CPPv2N21ILxAsyncMonitorSystem5CountE11LXtObjectIDPi"></span><span id="ILxAsyncMonitorSystem::Count__LXtObjectID.iP"></span><span class="target" id="class_i_lx_async_monitor_system_1a058732d0a86cd44e3820fed7b2b274fc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxAsyncMonitorSystem5CountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Walk the list of monitors in the system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxAsyncMonitorSystem7ByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N21ILxAsyncMonitorSystem7ByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N21ILxAsyncMonitorSystem7ByIndexE11LXtObjectIDiPPv"></span><span id="ILxAsyncMonitorSystem::ByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_async_monitor_system_1a584fe2ec56233e8a505f5c4adfbb6d0e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxAsyncMonitorSystem7ByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcolordialog">
+<h2><a class="toc-backref" href="#id4">ILxColorDialog</a><a class="headerlink" href="#ilxcolordialog" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxColorDialog">
+<span id="_CPPv314ILxColorDialog"></span><span id="_CPPv214ILxColorDialog"></span><span id="ILxColorDialog"></span><span class="target" id="class_i_lx_color_dialog"></span><em class="property">class </em><code class="sig-name descname">ILxColorDialog</code><a class="headerlink" href="#_CPPv414ILxColorDialog" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The color dialog can be replaced with an arbitrary one defined by a plug-in. <a class="reference internal" href="#class_i_lx_color_dialog"><span class="std std-ref">ILxColorDialog</span></a> is very simple, and includes a single method, <a class="reference internal" href="#class_i_lx_color_dialog_1a0c005551d1f0dd0754be6c7e092f2e52"><span class="std std-ref">DoDialog()</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxColorDialog8DoDialogE11LXtObjectIDPKcddPd">
+<span id="_CPPv3N14ILxColorDialog8DoDialogE11LXtObjectIDPKcddPd"></span><span id="_CPPv2N14ILxColorDialog8DoDialogE11LXtObjectIDPKcddPd"></span><span id="ILxColorDialog::DoDialog__LXtObjectID.cCP.double.double.doubleP"></span><span class="target" id="class_i_lx_color_dialog_1a0c005551d1f0dd0754be6c7e092f2e52"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DoDialog</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>title</em>, double <em>stops</em>, double <em>gamma</em>, double *<em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxColorDialog8DoDialogE11LXtObjectIDPKcddPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>DoDialog is responsible for opening a color dialog. All dialog handling is up to the server. This includes whatever methods it chooses to create and display the dialog, handling windowing and event loops, etc. The rgb[] argument is initialized to the original color, and is also used to return any color the user may have chosen. This color may be HDR (i.e., outside the range of 0-1). The title string is a pre-translated string to be displayed in the dialog’s title bar. The method should return an <a class="reference internal" href="lxd_result.html#lxd__result_8hpp_1a17bd46d16495b6b3f1adea23a0dfdd06"><span class="std std-ref">LXe_OK()</span></a> code if the user choose a color, an LXe_FAIL() code on an error, or LXe_ABORT if the user canceled the dialog. The current stops are also provided for displaying HDR colors, and are applied by multiplying or dividing by two to the power of the stops (i.e., pow(2,stops)) to convert between HDR and LDR. Stops should always be applied before gamma. The gamma value is used to gamma correct the colors shown in the color dialog to match those in modo. This may be 1.0 if no correction should be applied. Gamma can be applied by raising a color’s RGB values to the gamma value (i.e., pow(rgb[x],gamma)). Gamma should always be applied after stops. The returned RGB value should not be gamma corrected, but can be HDR. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxstddialogservice">
+<h2><a class="toc-backref" href="#id5">ILxStdDialogService</a><a class="headerlink" href="#ilxstddialogservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxStdDialogService">
+<span id="_CPPv319ILxStdDialogService"></span><span id="_CPPv219ILxStdDialogService"></span><span id="ILxStdDialogService"></span><span class="target" id="class_i_lx_std_dialog_service"></span><em class="property">class </em><code class="sig-name descname">ILxStdDialogService</code><a class="headerlink" href="#_CPPv419ILxStdDialogService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The standard dialog service provides access to a standardize dialogs useful to plug-ins. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxStdDialogService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxStdDialogService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxStdDialogService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1a8801dc9d84e9ec53af6495592e7ad798"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService15MonitorAllocateE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxStdDialogService15MonitorAllocateE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxStdDialogService15MonitorAllocateE11LXtObjectIDPKcPPv"></span><span id="ILxStdDialogService::MonitorAllocate__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1ae521b4ac5d686b7e130b3bf4ed033ec5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MonitorAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>title</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService15MonitorAllocateE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients can request an <a class="reference internal" href="lxd_io.html#class_i_lx_monitor"><span class="std std-ref">ILxMonitor</span></a>, which can be used to create/open progress bar dialogs. Prior to 701, only the first client to request a monitor will succeed, with the rest getting back LXe_NOTAVAILABLE. However, the system maintains a count of allocate/release calls, meaning that it is pivital that <a class="reference internal" href="#class_i_lx_std_dialog_service_1a0a55d302e3a8580bf029eddb89d9c77f"><span class="std std-ref">MonitorRelease()</span></a> is called to release the monitor, rather than the client calling the monitor object’s Release() method directly. 801 introduces support for sub-monitors. This means that allocating a monitor while another monitor is already running will now return a new monitor. Functionally, the two monitors are independent, but the sub-monitor can be considered to fill the current step in the parent monitor, although the sub-monitor will not affect the parent monitor in any way (meaning, you should still step the parent monitor even if the sub-monitor appears to fill that step in the UI). Note that it is still critical that the monitors be released with <a class="reference internal" href="#class_i_lx_std_dialog_service_1a0a55d302e3a8580bf029eddb89d9c77f"><span class="std std-ref">MonitorRelease()</span></a> instead of calling the monitor object’s Release() method directly. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService14MonitorReleaseE11LXtObjectID">
+<span id="_CPPv3N19ILxStdDialogService14MonitorReleaseE11LXtObjectID"></span><span id="_CPPv2N19ILxStdDialogService14MonitorReleaseE11LXtObjectID"></span><span id="ILxStdDialogService::MonitorRelease__LXtObjectID"></span><span class="target" id="class_i_lx_std_dialog_service_1a0a55d302e3a8580bf029eddb89d9c77f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MonitorRelease</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService14MonitorReleaseE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService15MessageAllocateE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxStdDialogService15MessageAllocateE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxStdDialogService15MessageAllocateE11LXtObjectIDPPv"></span><span id="ILxStdDialogService::MessageAllocate__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1a77b7af669b86759c79a34865a5fdefda"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MessageAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService15MessageAllocateE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients can request an <a class="reference internal" href="lxd_value.html#class_i_lx_message"><span class="std std-ref">ILxMessage</span></a>. This can be used to open dialogs for user input, or pased to other clients that require them. These objects should be released as normal, via their Release() methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService11MessageOpenE11LXtObjectID11LXtObjectIDPKcPKcPKc">
+<span id="_CPPv3N19ILxStdDialogService11MessageOpenE11LXtObjectID11LXtObjectIDPKcPKcPKc"></span><span id="_CPPv2N19ILxStdDialogService11MessageOpenE11LXtObjectID11LXtObjectIDPKcPKcPKc"></span><span id="ILxStdDialogService::MessageOpen__LXtObjectID.LXtObjectID.cCP.cCP.cCP"></span><span class="target" id="class_i_lx_std_dialog_service_1a2a17762e468498c41d8989602b2a11a0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MessageOpen</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>message</em>, <em class="property">const</em> char *<em>title</em>, <em class="property">const</em> char *<em>helpURL</em>, <em class="property">const</em> char *<em>cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService11MessageOpenE11LXtObjectID11LXtObjectIDPKcPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService20AsyncMonitorAllocateE11LXtObjectIDPKcPKcPPv">
+<span id="_CPPv3N19ILxStdDialogService20AsyncMonitorAllocateE11LXtObjectIDPKcPKcPPv"></span><span id="_CPPv2N19ILxStdDialogService20AsyncMonitorAllocateE11LXtObjectIDPKcPKcPPv"></span><span id="ILxStdDialogService::AsyncMonitorAllocate__LXtObjectID.cCP.cCP.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1acf7b2a3832833d40b4fb23070d11c213"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>system</em>, <em class="property">const</em> char *<em>title</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService20AsyncMonitorAllocateE11LXtObjectIDPKcPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calling the <a class="reference internal" href="#class_i_lx_std_dialog_service_1ae521b4ac5d686b7e130b3bf4ed033ec5"><span class="std std-ref">MonitorAllocate()</span></a> from a thread will implicitly create an async monitor with an empty system string for that thread. Such monitors should be released with <a class="reference internal" href="#class_i_lx_std_dialog_service_1a0a55d302e3a8580bf029eddb89d9c77f"><span class="std std-ref">MonitorRelease()</span></a> as normal, although they are considered to be async monitors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectID11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectID11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectID11LXtObjectIDPKcPPv"></span><span id="ILxStdDialogService::AsyncMonitorSubAllocate__LXtObjectID.LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1a4acc3b05f4a897d32a11f1147143ad86"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorSubAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>parent</em>, <em class="property">const</em> char *<em>title</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectID11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService19AsyncMonitorReleaseE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N19ILxStdDialogService19AsyncMonitorReleaseE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N19ILxStdDialogService19AsyncMonitorReleaseE11LXtObjectID11LXtObjectID"></span><span id="ILxStdDialogService::AsyncMonitorRelease__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_std_dialog_service_1ab92f351c970971774da787181a58c24c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorRelease</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService19AsyncMonitorReleaseE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService23AsyncMonitorSystemCountE11LXtObjectIDPi">
+<span id="_CPPv3N19ILxStdDialogService23AsyncMonitorSystemCountE11LXtObjectIDPi"></span><span id="_CPPv2N19ILxStdDialogService23AsyncMonitorSystemCountE11LXtObjectIDPi"></span><span id="ILxStdDialogService::AsyncMonitorSystemCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_std_dialog_service_1af4d28cecbf420b5c3a8f65a3b1ede838"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorSystemCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService23AsyncMonitorSystemCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These can be used to walk the list of async monitor systems or look them up by name. Objects returned by these methods sport an <a class="reference internal" href="#class_i_lx_async_monitor_system"><span class="std std-ref">ILxAsyncMonitorSystem</span></a> interface, and must be released as normal when no longer needed. These methods should only be called from the main thread. Lookup a system by its name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService25AsyncMonitorSystemByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N19ILxStdDialogService25AsyncMonitorSystemByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N19ILxStdDialogService25AsyncMonitorSystemByIndexE11LXtObjectIDiPPv"></span><span id="ILxStdDialogService::AsyncMonitorSystemByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1aa2587cfff014cb51efb56cb489f92dce"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorSystemByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService25AsyncMonitorSystemByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService24AsyncMonitorSystemLookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxStdDialogService24AsyncMonitorSystemLookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxStdDialogService24AsyncMonitorSystemLookupE11LXtObjectIDPKcPPv"></span><span id="ILxStdDialogService::AsyncMonitorSystemLookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1aadc31ee216800c500e3dd6b62c6d49d8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorSystemLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService24AsyncMonitorSystemLookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService18AsyncMonitorLookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N19ILxStdDialogService18AsyncMonitorLookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N19ILxStdDialogService18AsyncMonitorLookupE11LXtObjectIDPKcPPv"></span><span id="ILxStdDialogService::AsyncMonitorLookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1a5069b547b68ca39ab4bff9bcee826f3f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>ident</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService18AsyncMonitorLookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This can be used to look up an async monitor by its unique identifier string. As always, the returned object must be released when no longer needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService10FileDialogE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N19ILxStdDialogService10FileDialogE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N19ILxStdDialogService10FileDialogE11LXtObjectID11LXtObjectID"></span><span id="ILxStdDialogService::FileDialog__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_std_dialog_service_1a096ad14a95eb192e1cc58e559e1ea5cd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileDialog</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dlgObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService10FileDialogE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This service method will display any of several types of file dialogs to allow the user to browse to a location, file or list of files. The configuration of the dilaog is defined by the client’s dialog object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortE11LXtObjectIDPKcPKcPPv">
+<span id="_CPPv3N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortE11LXtObjectIDPKcPKcPPv"></span><span id="_CPPv2N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortE11LXtObjectIDPKcPKcPPv"></span><span id="ILxStdDialogService::AsyncMonitorAllocateWithoutAbort__LXtObjectID.cCP.cCP.voidPP"></span><span class="target" id="class_i_lx_std_dialog_service_1adcfb58bc8265709f361b95ee10f49796"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AsyncMonitorAllocateWithoutAbort</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>system</em>, <em class="property">const</em> char *<em>title</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortE11LXtObjectIDPKcPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>In some cases async monitors are not abortable, and should not draw an abort widget in the activity view. This is purely cosmetic, and does not affect the operation of the moonitor, and thus is only available for root-level monitors, which are the ones that determine how the montior is displayed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService17MonitorReleaseObjE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N19ILxStdDialogService17MonitorReleaseObjE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N19ILxStdDialogService17MonitorReleaseObjE11LXtObjectID11LXtObjectID"></span><span id="ILxStdDialogService::MonitorReleaseObj__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_std_dialog_service_1ab60767a2d02d6dfda13df577b082cd1d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MonitorReleaseObj</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService17MonitorReleaseObjE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients are supposed to call AllocateMonitor() / <a class="reference internal" href="#class_i_lx_std_dialog_service_1a0a55d302e3a8580bf029eddb89d9c77f"><span class="std std-ref">MonitorRelease()</span></a> in nested pairs to bracket regions of code being monitored. In cases where that’s not always possible (such as with the Python Monitor object implementation) this version takes the actual object being released and removes it from the stack or is harmless if it’s already been removed indirectly. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService15MonitorAllocateERKNSt6stringER14CLxLoc_Monitor">
+<span id="_CPPv3N19ILxStdDialogService15MonitorAllocateERKNSt6stringER14CLxLoc_Monitor"></span><span id="_CPPv2N19ILxStdDialogService15MonitorAllocateERKNSt6stringER14CLxLoc_Monitor"></span><span id="ILxStdDialogService::MonitorAllocate__ssCR.CLxLoc_MonitorR"></span><span class="target" id="class_i_lx_std_dialog_service_1a81d979904b52bec36dded17dfd3bf595"></span>bool <code class="sig-name descname">MonitorAllocate</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>title</em>, CLxLoc_Monitor &amp;<em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService15MonitorAllocateERKNSt6stringER14CLxLoc_Monitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService15MessageAllocateER14CLxLoc_Message">
+<span id="_CPPv3N19ILxStdDialogService15MessageAllocateER14CLxLoc_Message"></span><span id="_CPPv2N19ILxStdDialogService15MessageAllocateER14CLxLoc_Message"></span><span id="ILxStdDialogService::MessageAllocate__CLxLoc_MessageR"></span><span class="target" id="class_i_lx_std_dialog_service_1af884726e7af4391bbff0ecbc46d0e165"></span>bool <code class="sig-name descname">MessageAllocate</code><span class="sig-paren">(</span>CLxLoc_Message &amp;<em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService15MessageAllocateER14CLxLoc_Message" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService20AsyncMonitorAllocateERKNSt6stringERKNSt6stringER14CLxLoc_Monitor">
+<span id="_CPPv3N19ILxStdDialogService20AsyncMonitorAllocateERKNSt6stringERKNSt6stringER14CLxLoc_Monitor"></span><span id="_CPPv2N19ILxStdDialogService20AsyncMonitorAllocateERKNSt6stringERKNSt6stringER14CLxLoc_Monitor"></span><span id="ILxStdDialogService::AsyncMonitorAllocate__ssCR.ssCR.CLxLoc_MonitorR"></span><span class="target" id="class_i_lx_std_dialog_service_1a31cd3807c0c5a43a2e40e68322db5739"></span>bool <code class="sig-name descname">AsyncMonitorAllocate</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>system</em>, <em class="property">const</em> std::string &amp;<em>title</em>, CLxLoc_Monitor &amp;<em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService20AsyncMonitorAllocateERKNSt6stringERKNSt6stringER14CLxLoc_Monitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectIDRKNSt6stringER14CLxLoc_Monitor">
+<span id="_CPPv3N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectIDRKNSt6stringER14CLxLoc_Monitor"></span><span id="_CPPv2N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectIDRKNSt6stringER14CLxLoc_Monitor"></span><span id="ILxStdDialogService::AsyncMonitorSubAllocate__LXtObjectID.ssCR.CLxLoc_MonitorR"></span><span class="target" id="class_i_lx_std_dialog_service_1a086e9e8d1407efd42e1ae0c29463ab4c"></span>bool <code class="sig-name descname">AsyncMonitorSubAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>parent</em>, <em class="property">const</em> std::string &amp;<em>title</em>, CLxLoc_Monitor &amp;<em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService23AsyncMonitorSubAllocateE11LXtObjectIDRKNSt6stringER14CLxLoc_Monitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortERKNSt6stringERKNSt6stringER14CLxLoc_Monitor">
+<span id="_CPPv3N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortERKNSt6stringERKNSt6stringER14CLxLoc_Monitor"></span><span id="_CPPv2N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortERKNSt6stringERKNSt6stringER14CLxLoc_Monitor"></span><span id="ILxStdDialogService::AsyncMonitorAllocateWithoutAbort__ssCR.ssCR.CLxLoc_MonitorR"></span><span class="target" id="class_i_lx_std_dialog_service_1aad2f175cc8c3f8159b9c07c16a52ecdd"></span>bool <code class="sig-name descname">AsyncMonitorAllocateWithoutAbort</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>system</em>, <em class="property">const</em> std::string &amp;<em>title</em>, CLxLoc_Monitor &amp;<em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxStdDialogService32AsyncMonitorAllocateWithoutAbortERKNSt6stringERKNSt6stringER14CLxLoc_Monitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXeMSGDIALOG_AS_OKCANCEL">
+<span class="target" id="lxd__stddialog_8hpp_1a8f1f018e6a0db10c3c28bb8e1462a493"></span><code class="sig-name descname">LXeMSGDIALOG_AS_OKCANCEL</code><a class="headerlink" href="#c.LXeMSGDIALOG_AS_OKCANCEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <a class="reference internal" href="lxd_value.html#class_i_lx_message"><span class="std std-ref">ILxMessage</span></a> object can be displayed in a standard dialog. This dialog also features a help button if a help URL is provided. Lastly, a popup is available to the user that lets them decide how to handle the message in the future. Currently, the options are DIALOG and HIDDEN. If HIDDEN, the dialog will not be displayed at all. A title string is optional; it can contain a valid message string in the form “&#64;table&#64;message&#64;”, where message is either a dictionary lookup string or an integer ID code, or it can just be a simple string. The simple string method is not recommended unless it has already been translated. If the title is NULL, one will be generated based on the ILxMessageID’s code. The service can also be used to present the user with choice dialogs, such as OK/Cancel or Yes/No/Yes All/No All/Cancel. This kind of dialog is opened simply by using one of the following as the LxResult message code in place of a real info/warning/error code. Any other message code will result in a dialog with “OK” as the only button.<ul class="simple">
+<li><p>OKCANCEL This is a typical binary dialog with OK and Cancel.</p></li>
+<li><p>YESNO This is a slight variant of the binary dialog for answering questions: Yes, and No.</p></li>
+<li><p>YESNOCAN This is a standard trinary dialog, which is like a binary dialog but with an extra “none of the above” option. The dismissal buttons are: Yes, No, and Cancel.</p></li>
+<li><p>SAVEOK This trinary variant is intended for asking the user if they want to save an object which has been changed. It has three states: Save, Don’t Save, and Cancel.</p></li>
+<li><p>YESNOALL This dialog type has five states which are really just a two-by-two matrix of choices plus cancel. Intended for asking a question for a series of like questions, the buttons are: Yes, Yes to All, No, No to All, and Cancel.</p></li>
+<li><p>YESNOTOALL This dialog type is similar to YESNOALL, but is missing the “Yes To All” option. The buttons are: Yes, No, No to All, and Cancel.</p></li>
+<li><p>YESTOALLCANCEL Again similar to YESNOALL, but missing the No and No To All options. The buttons are: Yes, Yes to All, and Cancel. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXeMSGDIALOG_AS_YESNO</p></li>
+<li><p>LXeMSGDIALOG_AS_YESNOCANCEL</p></li>
+<li><p>LXeMSGDIALOG_AS_SAVEOK</p></li>
+<li><p>LXeMSGDIALOG_AS_YESNOALL</p></li>
+<li><p>LXeMSGDIALOG_AS_YESNOTOALL</p></li>
+<li><p>LXeMSGDIALOG_AS_YESTOALLCANCEL</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXeMSGDIALOG_EMPTY">
+<span class="target" id="lxd__stddialog_8hpp_1a6f0d12a31e150e1bbc20aed5d9e981e1"></span><code class="sig-name descname">LXeMSGDIALOG_EMPTY</code><a class="headerlink" href="#c.LXeMSGDIALOG_EMPTY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>LXiMSGDIALOG_EMPTY is retruned if a string is present, but it contains only white space. LXiMSGDIALOG_INVALID is returned if there is a problem with the message object (e.g., it’s NULL). </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXeMSGDIALOG_INVALID</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXeMSGDIALOG_OK">
+<span class="target" id="lxd__stddialog_8hpp_1abaeea2c67555484502adb113e250b426"></span><code class="sig-name descname">LXeMSGDIALOG_OK</code><a class="headerlink" href="#c.LXeMSGDIALOG_OK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If opened successfully as a question dialog, one of the following will be returned. If opened as an OK Only dialog (as in, not one of the LXeMSGDIALOG_AS codes), OK is always returned. No and Cancel are fail codes, while Yes, OK and Yes To All are good codes, which allows for some quick generalized checking with LXx_FAIL() and LXx_OK(). </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXeMSGDIALOG_YES</p></li>
+<li><p>LXeMSGDIALOG_YESTOALL</p></li>
+<li><p>LXeMSGDIALOG_NO</p></li>
+<li><p>LXeMSGDIALOG_NOTOALL</p></li>
+<li><p>LXeMSGDIALOG_CANCEL</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXeFILEDIALOG_BADCLASS">
+<span class="target" id="lxd__stddialog_8hpp_1ad69bf4f15392e3f923b81f8158b26ec8"></span><code class="sig-name descname">LXeFILEDIALOG_BADCLASS</code><a class="headerlink" href="#c.LXeFILEDIALOG_BADCLASS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXeMSGDIALOG_OK or CANCEL for normal operation, or some special error code for other problems. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXeFILEDIALOG_BADFORMAT</p></li>
+</ul>
+</div>
+<div class="section" id="ilxfiledialogclient">
+<h2><a class="toc-backref" href="#id6">ILxFileDialogClient</a><a class="headerlink" href="#ilxfiledialogclient" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxFileDialogClient">
+<span id="_CPPv319ILxFileDialogClient"></span><span id="_CPPv219ILxFileDialogClient"></span><span id="ILxFileDialogClient"></span><span class="target" id="class_i_lx_file_dialog_client"></span><em class="property">class </em><code class="sig-name descname">ILxFileDialogClient</code><a class="headerlink" href="#_CPPv419ILxFileDialogClient" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient5FlagsE11LXtObjectID">
+<span id="_CPPv3N19ILxFileDialogClient5FlagsE11LXtObjectID"></span><span id="_CPPv2N19ILxFileDialogClient5FlagsE11LXtObjectID"></span><span id="ILxFileDialogClient::Flags__LXtObjectID"></span><span class="target" id="class_i_lx_file_dialog_client_1a8ff2450a3e302cfc737665d81dc1e742"></span>unsigned <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient5FlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_file_dialog_client_1a8ff2450a3e302cfc737665d81dc1e742"><span class="std std-ref">Flags()</span></a> method returns flag bits to determine the behavior of the dialog.<ul class="simple">
+<li><p>LOAD By default the dialog will be for loading exising files.</p></li>
+<li><p>SAVE This flag changes the dialog to allow it to create new files. This makes the format important.</p></li>
+<li><p>DIRECTORY This flag changes the dialog to browse for a directory. It’s mutually exclusive with the SAVE flag.</p></li>
+<li><p>MULTIPLE For load dialogs this allows the user to pick more than one file.</p></li>
+<li><p>OVERWRITE Allow overwrite for save dialogs.</p></li>
+<li><p>NOFORMATS Suppress the format choice. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient5TitleE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N19ILxFileDialogClient5TitleE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N19ILxFileDialogClient5TitleE11LXtObjectID11LXtObjectID"></span><span id="ILxFileDialogClient::Title__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_file_dialog_client_1a3483243c1862a52e3c52f32fd0ae14aa"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Title</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient5TitleE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The client provides the title of the dialog through a message object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient9FileClassE11LXtObjectID">
+<span id="_CPPv3N19ILxFileDialogClient9FileClassE11LXtObjectID"></span><span id="_CPPv2N19ILxFileDialogClient9FileClassE11LXtObjectID"></span><span id="ILxFileDialogClient::FileClass__LXtObjectID"></span><span class="target" id="class_i_lx_file_dialog_client_1a7edea7bac9b4a094b930cc98a4701763"></span><em class="property">const</em> char *<code class="sig-name descname">FileClass</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient9FileClassE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The class is the type of file object that you want to load or save, and is required for all file dialogs. Common choices are LXa_SCENE and LXa_IMAGE. If you have defined a custom type through the config you can also give that here. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient13ContextStringE11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxFileDialogClient13ContextStringE11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxFileDialogClient13ContextStringE11LXtObjectIDPPKc"></span><span id="ILxFileDialogClient::ContextString__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_file_dialog_client_1acc7d05f4aaa6f97e6c8848aac9235ecd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ContextString</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient13ContextStringE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The context string is an optional string which just provides a way for the system to remember the path for this dialog. By providing a unique context string the same dialog opened again will go back to the last place the user was looking. This is useful for common types like images because you don’t want to override all stored image paths, but not so important for custom types. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient10FileFormatE11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxFileDialogClient10FileFormatE11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxFileDialogClient10FileFormatE11LXtObjectIDPPKc"></span><span id="ILxFileDialogClient::FileFormat__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_file_dialog_client_1a3111053fb3278662a3c2d133dfb7737a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileFormat</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient10FileFormatE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the initial format for the dialog. The format must match the object class, so it has to be an image format for images or a scene format for scenes, etc. If missing the format will default to the first one for this class, and is only needed if there is more than one. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient9StartPathE11LXtObjectIDPPKc">
+<span id="_CPPv3N19ILxFileDialogClient9StartPathE11LXtObjectIDPPKc"></span><span id="_CPPv2N19ILxFileDialogClient9StartPathE11LXtObjectIDPPKc"></span><span id="ILxFileDialogClient::StartPath__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_file_dialog_client_1a74dc70538566c1422af4d9e3a072021b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StartPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient9StartPathE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the initial path for the dialog. A full path can be returned for load and directory dialogs, or just a base name for loading and saving. If missing the file name field will be empty. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient10ResultPathE11LXtObjectIDPKc">
+<span id="_CPPv3N19ILxFileDialogClient10ResultPathE11LXtObjectIDPKc"></span><span id="_CPPv2N19ILxFileDialogClient10ResultPathE11LXtObjectIDPKc"></span><span id="ILxFileDialogClient::ResultPath__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_dialog_client_1adc2c4545ad18f9026a46146b6516f034"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ResultPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient10ResultPathE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Results are returned by calling methods on the client object. This is called for each file or path chosen by the user. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxFileDialogClient12ResultFormatE11LXtObjectIDPKc">
+<span id="_CPPv3N19ILxFileDialogClient12ResultFormatE11LXtObjectIDPKc"></span><span id="_CPPv2N19ILxFileDialogClient12ResultFormatE11LXtObjectIDPKc"></span><span id="ILxFileDialogClient::ResultFormat__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_dialog_client_1a503aeec53fcf18b7a9155ac18bdd47e2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ResultFormat</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxFileDialogClient12ResultFormatE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For save dialogs this method is called to indicate the format that was chosen. For object classes with multiple formats this should be stored and passed back as the starting format if the dialog is opened again. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfFILEDIALOG_LOAD</p></li>
+<li><p>LXfFILEDIALOG_SAVE</p></li>
+<li><p>LXfFILEDIALOG_DIRECTORY</p></li>
+<li><p>LXfFILEDIALOG_MULTIPLE</p></li>
+<li><p>LXfFILEDIALOG_OVERWRITE</p></li>
+<li><p>LXfFILEDIALOG_NOFORMATS</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_surface.html" class="btn btn-neutral float-right" title="Surface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_shdr.html" class="btn btn-neutral float-left" title="Shdr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_stddialog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

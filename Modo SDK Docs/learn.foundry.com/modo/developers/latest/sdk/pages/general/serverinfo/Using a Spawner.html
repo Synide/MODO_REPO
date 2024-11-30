@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/serverinfo/Using a Spawner.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:53 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using a Spawner &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Visitors in Action" href="Visitors%20in%20Action.html" />
+    <link rel="prev" title="Treeview" href="Treeview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#general-info">General Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CLxImpl%20Tool.html">CLxImpl Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Channel%20Modifier.html">Channel Modifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Global%20Listener%20Object.html">Global Listener Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mesh%20Operation%20-%20Overview.html">Mesh Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Selection%20Operation%20-%20Overview.html">Selection Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tool%20Operation%20-%20Overview.html">Tool Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Treeview.html">Treeview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using a Spawner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Visitors%20in%20Action.html">Visitors in Action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Using a Spawner</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-a-spawner">
+<h1>Using a Spawner<a class="headerlink" href="#using-a-spawner" title="Permalink to this headline">¶</a></h1>
+<p>Spawners are used to create COM objects that are not servers. Often servers will need to create sub-objects of various types. Each of these sub-objects has two aspects, the ILxUnknownID interface handle that represents the COM object, and the internal C++ class pointer. For example suppose you want to implement a custom item type. For each item of your type that is created you’ll need to allocate an instance object with a PackageInstance interface.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMyInstance</span> <span class="p">:</span> <span class="n">public</span> <span class="n">CLxImpl_</span><span class="p">[[</span><span class="n">PackageInstance</span> <span class="n">Interface</span><span class="o">|</span><span class="n">PackageInstance</span><span class="p">]]</span>
+ <span class="p">{</span>
+    <span class="n">public</span><span class="p">:</span>
+        <span class="n">LxResult</span>         <span class="n">pins_Initialize</span> <span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">item</span><span class="p">,</span> <span class="n">ILxUnknownID</span> <span class="nb">super</span><span class="p">)</span> <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+        <span class="n">void</span>             <span class="n">pins_Cleanup</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>                                     <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Like servers, spawners for sub-objects can be declared in the initialize() function. The process is quite similar. The spawner is created by allocating a polymorph template object for the class, and adding the supported interfaces, and registering the spawner under a name that must be unique only within this plug-in.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">void</span>
+ <span class="n">initialize</span> <span class="p">()</span>
+ <span class="p">{</span>
+        <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CMyInstance</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_</span><span class="p">[[</span><span class="n">PackageInstance</span> <span class="n">Interface</span><span class="o">|</span><span class="n">PackageInstance</span><span class="p">]]</span><span class="o">&lt;</span><span class="n">CInstance</span><span class="o">&gt;</span><span class="p">);</span>
+        <span class="n">lx</span><span class="p">::</span><span class="n">AddSpawner</span> <span class="p">(</span><span class="s2">&quot;myInstance&quot;</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The spawner can be used by declaring a spawner object with the same type and name. The Alloc() method then creates a new sub-object, returning the C++ object directly and the COM object indirectly (in this case through the ppvObj pointer to the client).</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">CPackage</span><span class="p">::</span><span class="n">pkg_Attach</span> <span class="p">(</span>
+         <span class="n">void</span>                  <span class="o">**</span><span class="n">ppvObj</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxSpawner</span><span class="o">&lt;</span><span class="n">CMyInstance</span><span class="o">&gt;</span>  <span class="n">spawn</span> <span class="p">(</span><span class="s2">&quot;myInstance&quot;</span><span class="p">);</span>
+         <span class="n">CMyInstance</span>            <span class="o">*</span><span class="n">inst</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">inst</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">.</span><span class="n">Alloc</span> <span class="p">(</span><span class="n">ppvObj</span><span class="p">);</span>
+         <span class="n">inst</span><span class="o">-&gt;...</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>             <span class="o">//</span> <span class="n">init</span> <span class="n">C</span><span class="o">++</span> <span class="nb">object</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Spawners can also be used to get the internal C++ object from a COM object pointer. This does no checking so make sure that the object you pass is one of yours!</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CLxSpawner</span><span class="o">&lt;</span><span class="n">CMyInstance</span><span class="o">&gt;</span>  <span class="n">spawn</span> <span class="p">(</span><span class="s2">&quot;myInstance&quot;</span><span class="p">);</span>
+         <span class="n">CMyInstance</span>            <span class="o">*</span><span class="n">inst</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">inst</span> <span class="o">=</span> <span class="n">spawn</span><span class="o">.</span><span class="n">Cast</span> <span class="p">(</span><span class="n">externalObject</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>It’s also possible to create spawners on the fly, allowing for functions that don’t require any initialization. The CLxSpawnerCreate class will find an existing spawner or create one. If it’s created then the interfaces can be initialized. If not it can just be used to allocate a new sub-object.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CMyFoo</span> <span class="o">*</span>
+ <span class="n">NewFooObject</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>           <span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="n">CLxSpawnerCreate</span><span class="o">&lt;</span><span class="n">CMyFoo</span><span class="o">&gt;</span> <span class="n">sp</span> <span class="p">(</span><span class="s2">&quot;myFoo&quot;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="k">if</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">created</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_Foo</span><span class="o">&lt;</span><span class="n">CMyFoo</span><span class="o">&gt;</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">Alloc</span> <span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Visitors%20in%20Action.html" class="btn btn-neutral float-right" title="Visitors in Action" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Treeview.html" class="btn btn-neutral float-left" title="Treeview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/serverinfo/Using a Spawner.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:53 GMT -->
+</html>

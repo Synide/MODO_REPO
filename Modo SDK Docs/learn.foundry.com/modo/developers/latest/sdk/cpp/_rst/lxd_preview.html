@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_preview.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preview &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Previewsocket" href="lxd_previewsocket.html" />
+    <link rel="prev" title="Pretype" href="lxd_pretype.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpreviewservice">ILxPreviewService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpreview">ILxPreview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpreviewnotifier">ILxPreviewNotifier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Preview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preview">
+<h1>Preview<a class="headerlink" href="#preview" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxpreviewservice" id="id1">ILxPreviewService</a></p></li>
+<li><p><a class="reference internal" href="#ilxpreview" id="id2">ILxPreview</a></p></li>
+<li><p><a class="reference internal" href="#ilxpreviewnotifier" id="id3">ILxPreviewNotifier</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxpreviewservice">
+<h2><a class="toc-backref" href="#id1">ILxPreviewService</a><a class="headerlink" href="#ilxpreviewservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxPreviewService">
+<span id="_CPPv317ILxPreviewService"></span><span id="_CPPv217ILxPreviewService"></span><span id="ILxPreviewService"></span><span class="target" id="class_i_lx_preview_service"></span><em class="property">class </em><code class="sig-name descname">ILxPreviewService</code><a class="headerlink" href="#_CPPv417ILxPreviewService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Preview SDK API allows a plug-in to create and perform headless, interactive Preview renders. The Preview service is solely for the purpose of creating a preview object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxPreviewService13CreatePreviewE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxPreviewService13CreatePreviewE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxPreviewService13CreatePreviewE11LXtObjectIDPPv"></span><span id="ILxPreviewService::CreatePreview__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preview_service_1a58598a16e6ae0ca7bfe34a594e7e3385"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreatePreview</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPreviewService13CreatePreviewE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPreviewService14GetMeshPreviewE11LXtObjectID11LXtObjectIDiiPPv">
+<span id="_CPPv3N17ILxPreviewService14GetMeshPreviewE11LXtObjectID11LXtObjectIDiiPPv"></span><span id="_CPPv2N17ILxPreviewService14GetMeshPreviewE11LXtObjectID11LXtObjectIDiiPPv"></span><span id="ILxPreviewService::GetMeshPreview__LXtObjectID.LXtObjectID.i.i.voidPP"></span><span class="target" id="class_i_lx_preview_service_1a28139ae42c7c47b994108bb479d7662e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetMeshPreview</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, int <em>width</em>, int <em>height</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPreviewService14GetMeshPreviewE11LXtObjectID11LXtObjectIDiiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPreviewService10NewPreviewER14CLxLoc_Preview">
+<span id="_CPPv3N17ILxPreviewService10NewPreviewER14CLxLoc_Preview"></span><span id="_CPPv2N17ILxPreviewService10NewPreviewER14CLxLoc_Preview"></span><span id="ILxPreviewService::NewPreview__CLxLoc_PreviewR"></span><span class="target" id="class_i_lx_preview_service_1a92d016515f359af6fbf3781eb2841f4a"></span>bool <code class="sig-name descname">NewPreview</code><span class="sig-paren">(</span>CLxLoc_Preview &amp;<em>preview</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPreviewService10NewPreviewER14CLxLoc_Preview" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpreview">
+<h2><a class="toc-backref" href="#id2">ILxPreview</a><a class="headerlink" href="#ilxpreview" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxPreview">
+<span id="_CPPv310ILxPreview"></span><span id="_CPPv210ILxPreview"></span><span id="ILxPreview"></span><span class="target" id="class_i_lx_preview"></span><em class="property">class </em><code class="sig-name descname">ILxPreview</code><a class="headerlink" href="#_CPPv410ILxPreview" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Preview SDK API allows a plug-in to create and perform headless, interactive Preview renders. The Preview service is solely for the purpose of creating a preview object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview5StartE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview5StartE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview5StartE11LXtObjectID"></span><span id="ILxPreview::Start__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1ab45bc3b4dfffedc334467784948757ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Start</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview5StartE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The first method will start a Preview rendering. The Preview could either be stopped or paused. If it’s neither, this will have no effect. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview4StopE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview4StopE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview4StopE11LXtObjectID"></span><span id="ILxPreview::Stop__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1a49dee87544780e0683c9d9cbded43f39"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Stop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview4StopE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>And this method will stop it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview5PauseE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview5PauseE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview5PauseE11LXtObjectID"></span><span id="ILxPreview::Pause__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1ad00e9960ad313ce9547b3ab8de667d14"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Pause</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview5PauseE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Alternatively, we can pause the Preview. This stops rendering, but a future start will not clear the image and will resume where it left off, unless the scene has been updated. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview5ResetE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview5ResetE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview5ResetE11LXtObjectID"></span><span id="ILxPreview::Reset__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1a6a547229ff2da30de71e2a42bf6d528a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Reset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview5ResetE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function will both set Preview such that the next time it starts, it will do a full update, completely rebuilding all the render data and tableau from scratch. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview6SetResE11LXtObjectIDii">
+<span id="_CPPv3N10ILxPreview6SetResE11LXtObjectIDii"></span><span id="_CPPv2N10ILxPreview6SetResE11LXtObjectIDii"></span><span id="ILxPreview::SetRes__LXtObjectID.i.i"></span><span class="target" id="class_i_lx_preview_1a1f8840b8ad08ccaef571d230d8f6f296"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetRes</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>width</em>, int <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview6SetResE11LXtObjectIDii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to set the resolution of a Preview render. If Preview is currently rendering, it will stop and restart Preview once it has updated the resolution. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview13SetRenderTimeE11LXtObjectIDd">
+<span id="_CPPv3N10ILxPreview13SetRenderTimeE11LXtObjectIDd"></span><span id="_CPPv2N10ILxPreview13SetRenderTimeE11LXtObjectIDd"></span><span id="ILxPreview::SetRenderTime__LXtObjectID.double"></span><span class="target" id="class_i_lx_preview_1aba02f29a76c4add194d5f5b099647d1c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetRenderTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview13SetRenderTimeE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets what time to render at. Currently this calls select.time but might change in future to render at a different time </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview10SetQualityE11LXtObjectIDii">
+<span id="_CPPv3N10ILxPreview10SetQualityE11LXtObjectIDii"></span><span id="_CPPv2N10ILxPreview10SetQualityE11LXtObjectIDii"></span><span id="ILxPreview::SetQuality__LXtObjectID.i.i"></span><span class="target" id="class_i_lx_preview_1a6c3c98c7b0891f2c5a40258f68bf6c7b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetQuality</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>quality</em>, int <em>samples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview10SetQualityE11LXtObjectIDii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to set the quality of a Preview render. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview13SetMotionBlurE11LXtObjectIDi">
+<span id="_CPPv3N10ILxPreview13SetMotionBlurE11LXtObjectIDi"></span><span id="_CPPv2N10ILxPreview13SetMotionBlurE11LXtObjectIDi"></span><span id="ILxPreview::SetMotionBlur__LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_1aeaa02f176bfdeebfda83531034ab5e66"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMotionBlur</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview13SetMotionBlurE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets whether to render motion blur or not </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview19SetRenderAllOutputsE11LXtObjectIDi">
+<span id="_CPPv3N10ILxPreview19SetRenderAllOutputsE11LXtObjectIDi"></span><span id="_CPPv2N10ILxPreview19SetRenderAllOutputsE11LXtObjectIDi"></span><span id="ILxPreview::SetRenderAllOutputs__LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_1a37084686faafa8f7972632ae1db396e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetRenderAllOutputs</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview19SetRenderAllOutputsE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets whether to render all outputs or just do a final color output </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview16SetUseAllThreadsE11LXtObjectIDi">
+<span id="_CPPv3N10ILxPreview16SetUseAllThreadsE11LXtObjectIDi"></span><span id="_CPPv2N10ILxPreview16SetUseAllThreadsE11LXtObjectIDi"></span><span id="ILxPreview::SetUseAllThreads__LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_1afcbc322d027a03721994c76adee5766f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetUseAllThreads</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview16SetUseAllThreadsE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets whether to use all threads or not. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview9SetStereoE11LXtObjectIDii">
+<span id="_CPPv3N10ILxPreview9SetStereoE11LXtObjectIDii"></span><span id="_CPPv2N10ILxPreview9SetStereoE11LXtObjectIDii"></span><span id="ILxPreview::SetStereo__LXtObjectID.i.i"></span><span class="target" id="class_i_lx_preview_1aa35bd7f34ea99ea7569e70ea1a09d3df"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetStereo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>enable</em>, int <em>eye</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview9SetStereoE11LXtObjectIDii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set whether the Preview should render in stereo or not. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview11SetNotifierE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxPreview11SetNotifierE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxPreview11SetNotifierE11LXtObjectID11LXtObjectID"></span><span id="ILxPreview::SetNotifier__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_preview_1a746e3c1d1ba39ca68fc6ba1262f91556"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetNotifier</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>notifier</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview11SetNotifierE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function takes a <a class="reference internal" href="#class_i_lx_preview_notifier"><span class="std std-ref">ILxPreviewNotifier</span></a> object, which will get notified when a new image is available. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview8SetAlphaE11LXtObjectIDi">
+<span id="_CPPv3N10ILxPreview8SetAlphaE11LXtObjectIDi"></span><span id="_CPPv2N10ILxPreview8SetAlphaE11LXtObjectIDi"></span><span id="ILxPreview::SetAlpha__LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_1a5b6793de79c190540f122e0ddee862a4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetAlpha</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview8SetAlphaE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets if Preview should set the alpha channel </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview17UseCameraOverrideE11LXtObjectIDi">
+<span id="_CPPv3N10ILxPreview17UseCameraOverrideE11LXtObjectIDi"></span><span id="_CPPv2N10ILxPreview17UseCameraOverrideE11LXtObjectIDi"></span><span id="ILxPreview::UseCameraOverride__LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_1aab9ea2997efc8452aabe70399f4fb88d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UseCameraOverride</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>useCameraOverride</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview17UseCameraOverrideE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is used to enable/disable per preview camera overrides. If enabled, preview specific camera attributes will be used in place of attributes specific by a camera item in the scene. If disabled then the camera attributes are got from a camera item. Camera overrides allow us to change the camera settings without changing the scene itself. The settings are per preview and so do not affect any other views of the Cinema. The SetCameraOverride set of preview methods are used for setting these preview specific fields. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview26SetCameraOverrideTransformE11LXtObjectIDK10LXtMatrix4">
+<span id="_CPPv3N10ILxPreview26SetCameraOverrideTransformE11LXtObjectIDK10LXtMatrix4"></span><span id="_CPPv2N10ILxPreview26SetCameraOverrideTransformE11LXtObjectIDK10LXtMatrix4"></span><span id="ILxPreview::SetCameraOverrideTransform__LXtObjectID.LXtMatrix4C"></span><span class="target" id="class_i_lx_preview_1ab7daff31e3e150f084d703c82fe73039"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCameraOverrideTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>transform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview26SetCameraOverrideTransformE11LXtObjectIDK10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the camera matrix. This will only be used when ‘UseCameraOverride’ is enabled. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview28SetCameraOverrideFocalLengthE11LXtObjectIDf">
+<span id="_CPPv3N10ILxPreview28SetCameraOverrideFocalLengthE11LXtObjectIDf"></span><span id="_CPPv2N10ILxPreview28SetCameraOverrideFocalLengthE11LXtObjectIDf"></span><span id="ILxPreview::SetCameraOverrideFocalLength__LXtObjectID.float"></span><span class="target" id="class_i_lx_preview_1a477fcdd664d9739eae844270470b68e9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCameraOverrideFocalLength</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>focalLength</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview28SetCameraOverrideFocalLengthE11LXtObjectIDf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the field of view for a camera that is tied only to the preview. Setting this will not change the state of any camera items. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview26SetCameraOverrideApertureXE11LXtObjectIDf">
+<span id="_CPPv3N10ILxPreview26SetCameraOverrideApertureXE11LXtObjectIDf"></span><span id="_CPPv2N10ILxPreview26SetCameraOverrideApertureXE11LXtObjectIDf"></span><span id="ILxPreview::SetCameraOverrideApertureX__LXtObjectID.float"></span><span class="target" id="class_i_lx_preview_1af0c63c1440d7ff0dc817d4238767ab5e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCameraOverrideApertureX</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>apertureX</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview26SetCameraOverrideApertureXE11LXtObjectIDf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the horizontal aperture for a camera that is tied only to the preview. Setting this will not change the state of any camera items. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview26SetCameraOverrideApertureYE11LXtObjectIDf">
+<span id="_CPPv3N10ILxPreview26SetCameraOverrideApertureYE11LXtObjectIDf"></span><span id="_CPPv2N10ILxPreview26SetCameraOverrideApertureYE11LXtObjectIDf"></span><span id="ILxPreview::SetCameraOverrideApertureY__LXtObjectID.float"></span><span class="target" id="class_i_lx_preview_1abce3d5ad0fff12dac8aa23b42f85619d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCameraOverrideApertureY</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>apertureY</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview26SetCameraOverrideApertureYE11LXtObjectIDf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the vertical aperture for a camera that is tied only to the preview. Setting this will not change the state of any camera items. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview31SetCameraOverrideProjectionTypeE11LXtObjectIDi">
+<span id="_CPPv3N10ILxPreview31SetCameraOverrideProjectionTypeE11LXtObjectIDi"></span><span id="_CPPv2N10ILxPreview31SetCameraOverrideProjectionTypeE11LXtObjectIDi"></span><span id="ILxPreview::SetCameraOverrideProjectionType__LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_1a15c179d964f5db54b9bdcc43bd159604"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCameraOverrideProjectionType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>projectionType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview31SetCameraOverrideProjectionTypeE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the projection type of a camera that is tied only to the preview. Setting this will not change the state of any camera items. The projection type can be set to one of the following integers: PERSP 0 ORTHO 1 CYLINDRICAL 2 SPHERICAL 3 </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview11GetResWidthE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview11GetResWidthE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview11GetResWidthE11LXtObjectID"></span><span id="ILxPreview::GetResWidth__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1a12be281b5240e99435ef79da07d35e40"></span>int <code class="sig-name descname">GetResWidth</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview11GetResWidthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the current resolution width of a Preview render. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview12GetResHeightE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview12GetResHeightE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview12GetResHeightE11LXtObjectID"></span><span id="ILxPreview::GetResHeight__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1af8f081c028644dcb7334572755a61e78"></span>int <code class="sig-name descname">GetResHeight</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview12GetResHeightE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the current resolution height of a Preview render. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview14GetCurrentTimeE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview14GetCurrentTimeE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview14GetCurrentTimeE11LXtObjectID"></span><span id="ILxPreview::GetCurrentTime__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1a7553049c000f1613214e4def9bd881a8"></span>double <code class="sig-name descname">GetCurrentTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview14GetCurrentTimeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns what frame preview is currently being rendered. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview10IsCompleteE11LXtObjectID">
+<span id="_CPPv3N10ILxPreview10IsCompleteE11LXtObjectID"></span><span id="_CPPv2N10ILxPreview10IsCompleteE11LXtObjectID"></span><span id="ILxPreview::IsComplete__LXtObjectID"></span><span class="target" id="class_i_lx_preview_1af52d3aefe8e3c7c79d0a410beb6293dc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsComplete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview10IsCompleteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query whether the render is complete. It returns LXe_TRUE or LXe_FALSE; </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview9GetBufferE11LXtObjectIDPPv">
+<span id="_CPPv3N10ILxPreview9GetBufferE11LXtObjectIDPPv"></span><span id="_CPPv2N10ILxPreview9GetBufferE11LXtObjectIDPPv"></span><span id="ILxPreview::GetBuffer__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preview_1a2f1eb6b95c074086b9fe3ee30b37f28e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview9GetBufferE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>And finally, we can get the current state of the rendering image. The client must release this object once it’s done. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxPreview8GetImageER12CLxLoc_Image">
+<span id="_CPPv3N10ILxPreview8GetImageER12CLxLoc_Image"></span><span id="_CPPv2N10ILxPreview8GetImageER12CLxLoc_Image"></span><span id="ILxPreview::GetImage__CLxLoc_ImageR"></span><span class="target" id="class_i_lx_preview_1a487aa874d6cabb9448ba3d8702c92c69"></span>bool <code class="sig-name descname">GetImage</code><span class="sig-paren">(</span>CLxLoc_Image &amp;<em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxPreview8GetImageER12CLxLoc_Image" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiPREVIEW_DRAFT_QUALITY">
+<span class="target" id="lxd__preview_8hpp_1a9118c9ad57a05092d19ee6e69970dfb2"></span><code class="sig-name descname">LXiPREVIEW_DRAFT_QUALITY</code><a class="headerlink" href="#c.LXiPREVIEW_DRAFT_QUALITY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It also takes in the number of average AA samples to be fired per pixel. If the value is zero or negative, it will use the default values. Typically this is something like MAX (64, renderSettings) for draft mode, renderSettings for final mode, and some really high number (currently 16384) for extended mode. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiPREVIEW_FINAL_QUALITY</p></li>
+<li><p>LXiPREVIEW_EXTENDED_QUALITY</p></li>
+</ul>
+</div>
+<div class="section" id="ilxpreviewnotifier">
+<h2><a class="toc-backref" href="#id3">ILxPreviewNotifier</a><a class="headerlink" href="#ilxpreviewnotifier" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxPreviewNotifier">
+<span id="_CPPv318ILxPreviewNotifier"></span><span id="_CPPv218ILxPreviewNotifier"></span><span id="ILxPreviewNotifier"></span><span class="target" id="class_i_lx_preview_notifier"></span><em class="property">class </em><code class="sig-name descname">ILxPreviewNotifier</code><a class="headerlink" href="#_CPPv418ILxPreviewNotifier" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is the PreviewNotifier interface class that users can implement to get notified when a preview image is availble. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxPreviewNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi">
+<span id="_CPPv3N18ILxPreviewNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi"></span><span id="_CPPv2N18ILxPreviewNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi"></span><span id="ILxPreviewNotifier::Notify__LXtObjectID.LXtRenderOutputProcessCP.LXtObjectID.i"></span><span class="target" id="class_i_lx_preview_notifier_1a68d0136186eb251d840d76bded1b6fcf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Notify</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtRenderOutputProcess *<em>rndrProcess</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, int <em>completed</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPreviewNotifier6NotifyE11LXtObjectIDPK22LXtRenderOutputProcess11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_previewsocket.html" class="btn btn-neutral float-right" title="Previewsocket" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_pretype.html" class="btn btn-neutral float-left" title="Pretype" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_preview.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

@@ -1,0 +1,842 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_log.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Log &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Media" href="lxd_media.html" />
+    <link rel="prev" title="Locator" href="lxd_locator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Log</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlogservice">ILxLogService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxloginfoblock">ILxLogInfoBlock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlog">ILxLog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlogentry">ILxLogEntry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxloglistener">ILxLogListener</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Log</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="log">
+<h1>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxlogservice" id="id1">ILxLogService</a></p></li>
+<li><p><a class="reference internal" href="#ilxloginfoblock" id="id2">ILxLogInfoBlock</a></p></li>
+<li><p><a class="reference internal" href="#ilxlog" id="id3">ILxLog</a></p></li>
+<li><p><a class="reference internal" href="#ilxlogentry" id="id4">ILxLogEntry</a></p></li>
+<li><p><a class="reference internal" href="#ilxloglistener" id="id5">ILxLogListener</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxlogservice">
+<h2><a class="toc-backref" href="#id1">ILxLogService</a><a class="headerlink" href="#ilxlogservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxLogService">
+<span id="_CPPv313ILxLogService"></span><span id="_CPPv213ILxLogService"></span><span id="ILxLogService"></span><span class="target" id="class_i_lx_log_service"></span><em class="property">class </em><code class="sig-name descname">ILxLogService</code><a class="headerlink" href="#_CPPv413ILxLogService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The log service allows subsystems to be registered and walked. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxLogService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxLogService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxLogService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_service_1ac3068f5def887983788de6db3ab888ef"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As with all globals, the first method gets the ILxScriptQueryID interface for the system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService14SubSystemCountE11LXtObjectIDPj">
+<span id="_CPPv3N13ILxLogService14SubSystemCountE11LXtObjectIDPj"></span><span id="_CPPv2N13ILxLogService14SubSystemCountE11LXtObjectIDPj"></span><span id="ILxLogService::SubSystemCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_service_1ae21ab72d2da6cc148245e37ff02c40f2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubSystemCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService14SubSystemCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The list of subsystems can be walked with these functions. As of 901, an entry can only belong to one subsystem, or zero if it hasn’t been added to any yet. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService16SubSystemByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N13ILxLogService16SubSystemByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N13ILxLogService16SubSystemByIndexE11LXtObjectIDjPPv"></span><span id="ILxLogService::SubSystemByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_log_service_1a423a8cf0c26f6bacda8cf6eeca0d7c54"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubSystemByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService16SubSystemByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService15SubSystemLookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N13ILxLogService15SubSystemLookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N13ILxLogService15SubSystemLookupE11LXtObjectIDPKcPPv"></span><span id="ILxLogService::SubSystemLookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_log_service_1aebe2ea6ffb08023a2f4e80cde2bb495f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubSystemLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService15SubSystemLookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This looks up a subsystem by name or, if NULL, by ID. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService15MasterSubSystemE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxLogService15MasterSubSystemE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxLogService15MasterSubSystemE11LXtObjectIDPPv"></span><span id="ILxLogService::MasterSubSystem__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_service_1a333186a2d21f4d8590e644cf910ec80d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MasterSubSystem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService15MasterSubSystemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService14InfoBlockCountE11LXtObjectIDPj">
+<span id="_CPPv3N13ILxLogService14InfoBlockCountE11LXtObjectIDPj"></span><span id="_CPPv2N13ILxLogService14InfoBlockCountE11LXtObjectIDPj"></span><span id="ILxLogService::InfoBlockCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_service_1a9a6e2cc86582d85df58372559679e625"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlockCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService14InfoBlockCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Like subsystems, the list of info blocks can be walked and looked up by name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService16InfoBlockByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N13ILxLogService16InfoBlockByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N13ILxLogService16InfoBlockByIndexE11LXtObjectIDjPPv"></span><span id="ILxLogService::InfoBlockByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_log_service_1ad7a6f6e65e0608ce3002f38e20da7b20"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlockByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService16InfoBlockByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService15InfoBlockLookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N13ILxLogService15InfoBlockLookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N13ILxLogService15InfoBlockLookupE11LXtObjectIDPKcPPv"></span><span id="ILxLogService::InfoBlockLookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_log_service_1ab950e7d506ddde923571c4ec8134f65b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlockLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService15InfoBlockLookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This looks up a subsystem by name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService27InfoBlockFieldsAreSameGroupE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N13ILxLogService27InfoBlockFieldsAreSameGroupE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N13ILxLogService27InfoBlockFieldsAreSameGroupE11LXtObjectIDPKcPKc"></span><span id="ILxLogService::InfoBlockFieldsAreSameGroup__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_log_service_1af77177e09b4dcc10af9068b06a3c1bc6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlockFieldsAreSameGroup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name1</em>, <em class="property">const</em> char *<em>name2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService27InfoBlockFieldsAreSameGroupE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These helpers check to see if two field names are in the same group (i.e., have the same name up to the first period), and return the names of the group and sub. The group test returns LXe_TRUE if the two field names are in the same group and LXe_FALSE if not. Any other code is an error. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService22InfoBlockFieldGetPartsE11LXtObjectIDPKcPPKcPPKc">
+<span id="_CPPv3N13ILxLogService22InfoBlockFieldGetPartsE11LXtObjectIDPKcPPKcPPKc"></span><span id="_CPPv2N13ILxLogService22InfoBlockFieldGetPartsE11LXtObjectIDPKcPPKcPPKc"></span><span id="ILxLogService::InfoBlockFieldGetParts__LXtObjectID.cCP.cCPP.cCPP"></span><span class="target" id="class_i_lx_log_service_1a19cc39f50502b431e86832275dc9f967"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlockFieldGetParts</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char **<em>group</em>, <em class="property">const</em> char **<em>sub</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService22InfoBlockFieldGetPartsE11LXtObjectIDPKcPPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the group and/or sub parts of the field name. Either can be NULL if you only want the one. Note that *sub may be NULL if there is no sub. Also note that this function is NOT thread safe, and that the strings returned are only good until the next call to this function. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService18CreateEntryMessageE11LXtObjectID8LxResultPKcPPv">
+<span id="_CPPv3N13ILxLogService18CreateEntryMessageE11LXtObjectID8LxResultPKcPPv"></span><span id="_CPPv2N13ILxLogService18CreateEntryMessageE11LXtObjectID8LxResultPKcPPv"></span><span id="ILxLogService::CreateEntryMessage__LXtObjectID.LxResult.cCP.voidPP"></span><span class="target" id="class_i_lx_log_service_1ab24c2f2cd32ab02c115f0e145fabace4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateEntryMessage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>type</em>, <em class="property">const</em> char *<em>message</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService18CreateEntryMessageE11LXtObjectID8LxResultPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Debug messages are used only for internal purposes, and follow the same visibility rules as DBprintf(), as well as being output to the console through DBprintf() when added. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService20CreateEntryInfoBlockE11LXtObjectID8LxResultPKcPPv">
+<span id="_CPPv3N13ILxLogService20CreateEntryInfoBlockE11LXtObjectID8LxResultPKcPPv"></span><span id="_CPPv2N13ILxLogService20CreateEntryInfoBlockE11LXtObjectID8LxResultPKcPPv"></span><span id="ILxLogService::CreateEntryInfoBlock__LXtObjectID.LxResult.cCP.voidPP"></span><span class="target" id="class_i_lx_log_service_1a5bfb64d5078e1772944e0b873a42e4b1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateEntryInfoBlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>type</em>, <em class="property">const</em> char *<em>blockName</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService20CreateEntryInfoBlockE11LXtObjectID8LxResultPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Info blocks can be used to provide formatted messages. The first step is to get a new ILxLogEntryID with this method. The block arguments are the name of a previously registered info block. Once created, the ILxLogEntryID can be filled in with the the appropriate methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService17CreateEntryPairedE11LXtObjectID8LxResultPPv">
+<span id="_CPPv3N13ILxLogService17CreateEntryPairedE11LXtObjectID8LxResultPPv"></span><span id="_CPPv2N13ILxLogService17CreateEntryPairedE11LXtObjectID8LxResultPPv"></span><span id="ILxLogService::CreateEntryPaired__LXtObjectID.LxResult.voidPP"></span><span class="target" id="class_i_lx_log_service_1a882202dbb0edbfd690d171105c8f20ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateEntryPaired</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>type</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService17CreateEntryPairedE11LXtObjectID8LxResultPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A second way to add complex formatted messages is through name/value pairs. The returned ILxLogEntryID will need to be populated with the appropriate methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService10SetMonitorE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N13ILxLogService10SetMonitorE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N13ILxLogService10SetMonitorE11LXtObjectID11LXtObjectID"></span><span id="ILxLogService::SetMonitor__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_service_1a801fb6464afdd458008b4ca3487054af"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMonitor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService10SetMonitorE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There are times when high-level operations trigger low-level operations that may take a while. In that case we should have a monitor, but there is no way to pass the monitor down from the UI command to the actual code that needs it. The log service allows us to prepare a monitor and deliver it to a lower-level function. This method sets the global monitor. If called with null the monitor is cleared. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService14AcquireMonitorE11LXtObjectID">
+<span id="_CPPv3N13ILxLogService14AcquireMonitorE11LXtObjectID"></span><span id="_CPPv2N13ILxLogService14AcquireMonitorE11LXtObjectID"></span><span id="ILxLogService::AcquireMonitor__LXtObjectID"></span><span class="target" id="class_i_lx_log_service_1a98e6499b815e70390ab56563531fd7b3"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">AcquireMonitor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService14AcquireMonitorE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method can be used by any low-level client to acquire the global monitor for use. The acquire method returns a “peek” of the global monitor, so it is not add-refed, and the method may return null if there is none or it has already been acquired previously. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService13EnableLoggingE11LXtObjectIDPKcj">
+<span id="_CPPv3N13ILxLogService13EnableLoggingE11LXtObjectIDPKcj"></span><span id="_CPPv2N13ILxLogService13EnableLoggingE11LXtObjectIDPKcj"></span><span id="ILxLogService::EnableLogging__LXtObjectID.cCP.unsigned-i"></span><span class="target" id="class_i_lx_log_service_1a9e4770e0e00bbaed1f5baa26de59aa01"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnableLogging</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>systemName</em>, unsigned int <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService13EnableLoggingE11LXtObjectIDPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Logging can be enabled and disabled on a per-subsystem basis. When disabled, logged events will still go to that subsystem, but they will not show up in the master log or the console output. This does not affect rolling log entries. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService16IsLoggingEnabledE11LXtObjectIDPKc">
+<span id="_CPPv3N13ILxLogService16IsLoggingEnabledE11LXtObjectIDPKc"></span><span id="_CPPv2N13ILxLogService16IsLoggingEnabledE11LXtObjectIDPKc"></span><span id="ILxLogService::IsLoggingEnabled__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_log_service_1a4683aa36a12f1a29628c723f0e93c454"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsLoggingEnabled</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>systemName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService16IsLoggingEnabledE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if loggin is enabled for a system, and LXe_FALSE if it is disabled. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService28CreateEntryMessageFromMsgObjE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxLogService28CreateEntryMessageFromMsgObjE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxLogService28CreateEntryMessageFromMsgObjE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxLogService::CreateEntryMessageFromMsgObj__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_service_1aad195547a9de549b899e31b71a55017d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateEntryMessageFromMsgObj</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msgObj</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService28CreateEntryMessageFromMsgObjE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allows yout create a new entry from an ILxMessageID. The message itself and the type code are read from the ILxMessageID </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService14DebugLogOutputE11LXtObjectIDjPKc">
+<span id="_CPPv3N13ILxLogService14DebugLogOutputE11LXtObjectIDjPKc"></span><span id="_CPPv2N13ILxLogService14DebugLogOutputE11LXtObjectIDjPKc"></span><span id="ILxLogService::DebugLogOutput__LXtObjectID.unsigned-i.cCP"></span><span class="target" id="class_i_lx_log_service_1a0b987fbf8fd642061f8066ba54a1a81d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DebugLogOutput</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, <em class="property">const</em> char *<em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService14DebugLogOutputE11LXtObjectIDjPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function lets plug-ins dump data to the normal debug log. The level indicates the severity of the information, allowing debug trace output to be hidden during normal usage. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService17DebugLogOutputSysE11LXtObjectIDjPKcPKc">
+<span id="_CPPv3N13ILxLogService17DebugLogOutputSysE11LXtObjectIDjPKcPKc"></span><span id="_CPPv2N13ILxLogService17DebugLogOutputSysE11LXtObjectIDjPKcPKc"></span><span id="ILxLogService::DebugLogOutputSys__LXtObjectID.unsigned-i.cCP.cCP"></span><span class="target" id="class_i_lx_log_service_1a32c5d3ea37bae6c3c2dcbc6d935c2e6b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DebugLogOutputSys</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, <em class="property">const</em> char *<em>logSystem</em>, <em class="property">const</em> char *<em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService17DebugLogOutputSysE11LXtObjectIDjPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService16ExceptionMessageE11LXtObjectID8LxResultj">
+<span id="_CPPv3N13ILxLogService16ExceptionMessageE11LXtObjectID8LxResultj"></span><span id="_CPPv2N13ILxLogService16ExceptionMessageE11LXtObjectID8LxResultj"></span><span id="ILxLogService::ExceptionMessage__LXtObjectID.LxResult.unsigned"></span><span class="target" id="class_i_lx_log_service_1a741f10d8a976d876ea1ba7fc3c457cca"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">ExceptionMessage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>error</em>, unsigned <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService16ExceptionMessageE11LXtObjectID8LxResultj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The exception message is a single, global message object that holds a description of the cause of an unexpected failure. This can be set at the site of an initial error with a description of the cause of the error, and it will be displayed to the user by the controlling code higher up the stack. <a class="reference internal" href="#class_i_lx_log_service_1a741f10d8a976d876ea1ba7fc3c457cca"><span class="std std-ref">ExceptionMessage()</span></a> grabs the exception message for this caller and returns it to allow it to be changed. Flags control the action to perform. Even if this exception isn’t the primary one it still gets captured for informational purposes. Since an exception mechanism that itself generates errors would be weird, this function will return null on errors which the client should check and do nothing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService19ExceptionBlockStartE11LXtObjectID">
+<span id="_CPPv3N13ILxLogService19ExceptionBlockStartE11LXtObjectID"></span><span id="_CPPv2N13ILxLogService19ExceptionBlockStartE11LXtObjectID"></span><span id="ILxLogService::ExceptionBlockStart__LXtObjectID"></span><span class="target" id="class_i_lx_log_service_1a5f7f7201394b3a53acfba78c00d90781"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ExceptionBlockStart</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService19ExceptionBlockStartE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Exception messages are handled by a client system high enough to be able to display an error message, but general enough that any type of exception might be possible. The start method assures that past exceptions have been handled and clears the state. The collect method reads out any exception message. This generally only needs to be called when an error has happened, and if there is no error it will return NOTFOUND. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService21ExceptionBlockCollectE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxLogService21ExceptionBlockCollectE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxLogService21ExceptionBlockCollectE11LXtObjectIDPPv"></span><span id="ILxLogService::ExceptionBlockCollect__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_service_1a4aa3682ac2ed88f91ddd66d6b1350204"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ExceptionBlockCollect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService21ExceptionBlockCollectE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLogService19ReplaceEntryMessageE11LXtObjectID11LXtObjectID8LxResultPKc">
+<span id="_CPPv3N13ILxLogService19ReplaceEntryMessageE11LXtObjectID11LXtObjectID8LxResultPKc"></span><span id="_CPPv2N13ILxLogService19ReplaceEntryMessageE11LXtObjectID11LXtObjectID8LxResultPKc"></span><span id="ILxLogService::ReplaceEntryMessage__LXtObjectID.LXtObjectID.LxResult.cCP"></span><span class="target" id="class_i_lx_log_service_1a3509d3e40759b7e5a14d80d502839d4c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReplaceEntryMessage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>logEntry</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>type</em>, <em class="property">const</em> char *<em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLogService19ReplaceEntryMessageE11LXtObjectID11LXtObjectID8LxResultPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This low-level utility provides a way to change the string and type code associated with a message-class log entry. This is rarely used, but can be useful when you need to add some summary information to a parent entry. This only works on log entries created with <a class="reference internal" href="#class_i_lx_log_service_1ab24c2f2cd32ab02c115f0e145fabace4"><span class="std std-ref">CreateEntryMessage()</span></a>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsLOG_LOGSYS">
+<span class="target" id="lxd__log_8hpp_1aa98b6cf3bc3901f2bf32f005bfa36452"></span><code class="sig-name descname">LXsLOG_LOGSYS</code><a class="headerlink" href="#c.LXsLOG_LOGSYS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Any client can choose to log events with the log manager. Each client should register one subsystem name for each set of logged entry types it wants to have. You can register as many subsystems as you like, using each for different types of logging events. Any client can use any defined subsystem. Each registration is defined as an ILxLogID. The log system itself registers its own subsystem. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSRV_LOGSUBSYSTEM">
+<span class="target" id="lxd__log_8hpp_1a9cc177f3eb8bd322bec22d70c3d46efe"></span><code class="sig-name descname">LXsSRV_LOGSUBSYSTEM</code><a class="headerlink" href="#c.LXsSRV_LOGSUBSYSTEM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subsystems are registered automatically simply by adding a tag to any server. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsLOG_MASTERSYS">
+<span class="target" id="lxd__log_8hpp_1ab8973b7cdc39176b13cc0e77c1b44fd8"></span><code class="sig-name descname">LXsLOG_MASTERSYS</code><a class="headerlink" href="#c.LXsLOG_MASTERSYS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There is also a special master subsystem. This is a combination of all logged entries, plus the most recently logged rolling entry. Entries cannot be directly added to this, but the ones that are there can be read in the normal manner. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXe_LOG_DEBUG">
+<span class="target" id="lxd__log_8hpp_1a79afda21a18e8749b7bbc9b4b10adb7f"></span><code class="sig-name descname">LXe_LOG_DEBUG</code><a class="headerlink" href="#c.LXe_LOG_DEBUG" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Once registered, messages can be added to the log using simple strings. Each message will be added to both the master log and to the subsystem’s own internal log. These logs are stored as lists, with each new messages being added to the end of the list, and with old entries purged as needed. The type can be any LxResult code. LXe_INFO messages are relatively generic system states, such as a tooltip or confirmation that an operation has completed. LXe_WARNING and any LXx_FAIL() code designate non-fatal and fatal messages respectively. LXe_ABORT should be sent when an operation is aborted through a user action. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_DBLOG_ERROR</p></li>
+<li><p>LXi_DBLOG_NORMAL</p></li>
+<li><p>LXi_DBLOG_TRACE</p></li>
+<li><p>LXi_DBLOG_VERBOSE</p></li>
+<li><p>LXfEXMSG_LOWLEVEL</p></li>
+<li><p>LXfEXMSG_OVERRIDE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxloginfoblock">
+<h2><a class="toc-backref" href="#id2">ILxLogInfoBlock</a><a class="headerlink" href="#ilxloginfoblock" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxLogInfoBlock">
+<span id="_CPPv315ILxLogInfoBlock"></span><span id="_CPPv215ILxLogInfoBlock"></span><span id="ILxLogInfoBlock"></span><span class="target" id="class_i_lx_log_info_block"></span><em class="property">class </em><code class="sig-name descname">ILxLogInfoBlock</code><a class="headerlink" href="#_CPPv415ILxLogInfoBlock" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Registering an info block requires an <a class="reference internal" href="#class_i_lx_log_info_block"><span class="std std-ref">ILxLogInfoBlock</span></a> object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxLogInfoBlock4NameE11LXtObjectIDPPKc">
+<span id="_CPPv3N15ILxLogInfoBlock4NameE11LXtObjectIDPPKc"></span><span id="_CPPv2N15ILxLogInfoBlock4NameE11LXtObjectIDPPKc"></span><span id="ILxLogInfoBlock::Name__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_log_info_block_1ac9880168948dcc4727d7df15a8de98f3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLogInfoBlock4NameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These return the name of the block. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLogInfoBlock10FieldCountE11LXtObjectIDPj">
+<span id="_CPPv3N15ILxLogInfoBlock10FieldCountE11LXtObjectIDPj"></span><span id="_CPPv2N15ILxLogInfoBlock10FieldCountE11LXtObjectIDPj"></span><span id="ILxLogInfoBlock::FieldCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_info_block_1ae4b96a194159f12ace876444f206a132"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FieldCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLogInfoBlock10FieldCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This walks the list of fields, returning the total count and the name and datatype of each field. Note that <a class="reference internal" href="#class_i_lx_log_info_block_1ae8fb0357484448fb0a1ac95bc41acf1c"><span class="std std-ref">FieldName()</span></a> is NOT thread safe, and the returned string is only valid until the next call to this method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLogInfoBlock9FieldNameE11LXtObjectIDjPPKc">
+<span id="_CPPv3N15ILxLogInfoBlock9FieldNameE11LXtObjectIDjPPKc"></span><span id="_CPPv2N15ILxLogInfoBlock9FieldNameE11LXtObjectIDjPPKc"></span><span id="ILxLogInfoBlock::FieldName__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_log_info_block_1ae8fb0357484448fb0a1ac95bc41acf1c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FieldName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLogInfoBlock9FieldNameE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLogInfoBlock9FieldTypeE11LXtObjectIDjPPKc">
+<span id="_CPPv3N15ILxLogInfoBlock9FieldTypeE11LXtObjectIDjPPKc"></span><span id="_CPPv2N15ILxLogInfoBlock9FieldTypeE11LXtObjectIDjPPKc"></span><span id="ILxLogInfoBlock::FieldType__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_log_info_block_1a3775f783c4f87de6f7f8539488d527a6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FieldType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLogInfoBlock9FieldTypeE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxlog">
+<h2><a class="toc-backref" href="#id3">ILxLog</a><a class="headerlink" href="#ilxlog" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv46ILxLog">
+<span id="_CPPv36ILxLog"></span><span id="_CPPv26ILxLog"></span><span id="ILxLog"></span><span class="target" id="class_i_lx_log"></span><em class="property">class </em><code class="sig-name descname">ILxLog</code><a class="headerlink" href="#_CPPv46ILxLog" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The log service allows subsystems to be registered and walked. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N6ILxLog8AddEntryE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N6ILxLog8AddEntryE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N6ILxLog8AddEntryE11LXtObjectID11LXtObjectID"></span><span id="ILxLog::AddEntry__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_1a0ebc3567bb84a895b08f90fdb1dee68d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddEntry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog8AddEntryE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This adds an entry to a subsystem. Old entries will be dropped if needed. This does an AddRef() on the object, meaning you’ll still need to do your own release on it after it has been added. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog9RollEntryE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N6ILxLog9RollEntryE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N6ILxLog9RollEntryE11LXtObjectID11LXtObjectID"></span><span id="ILxLog::RollEntry__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_1a3d3b8876d5381972848e49e125e3b214"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RollEntry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog9RollEntryE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It is also possible to create rolling messages. For example, it is not useful to log all of the Box Tool Info messages as described above; you really only want to see the current state of the Box Info Tool at any given time. A rolling message can be used to accomplish this. Another example is a context-sensitive status bar that provides specific information based on what the mouse is hovering over. This changes the rolling message. A separate rolling message is stored for each subsystem, with the one most recently changed being used as the master message. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog9RollClearE11LXtObjectID">
+<span id="_CPPv3N6ILxLog9RollClearE11LXtObjectID"></span><span id="_CPPv2N6ILxLog9RollClearE11LXtObjectID"></span><span id="ILxLog::RollClear__LXtObjectID"></span><span class="target" id="class_i_lx_log_1a627d203f809c645d2149bf00668ca5ea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RollClear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog9RollClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The rolling message can also be cleared when it is no longer needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog10EntryCountE11LXtObjectIDPj">
+<span id="_CPPv3N6ILxLog10EntryCountE11LXtObjectIDPj"></span><span id="_CPPv2N6ILxLog10EntryCountE11LXtObjectIDPj"></span><span id="ILxLog::EntryCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_1a9d57bab0dbfe1044a6be7aaff9ed741d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EntryCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog10EntryCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Logged events specific to a particular subsystem can be scanned with these methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog12EntryByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N6ILxLog12EntryByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N6ILxLog12EntryByIndexE11LXtObjectIDjPPv"></span><span id="ILxLog::EntryByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_log_1a6e017d47a5d3d84b2cf159ab699d2549"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EntryByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog12EntryByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog16PeekEntryByIndexE11LXtObjectIDj">
+<span id="_CPPv3N6ILxLog16PeekEntryByIndexE11LXtObjectIDj"></span><span id="_CPPv2N6ILxLog16PeekEntryByIndexE11LXtObjectIDj"></span><span id="ILxLog::PeekEntryByIndex__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_log_1a1aa5d47282937c6d916d232e2efb7781"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">PeekEntryByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog16PeekEntryByIndexE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If you don’t want to or can’t release an entry, you can “peek” at the entry with this method. These entries should be considered volatile and should not be held onto for very long unless you AddRef them yourself. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog15GetCurrentEntryE11LXtObjectIDPPv">
+<span id="_CPPv3N6ILxLog15GetCurrentEntryE11LXtObjectIDPPv"></span><span id="_CPPv2N6ILxLog15GetCurrentEntryE11LXtObjectIDPPv"></span><span id="ILxLog::GetCurrentEntry__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_1aa9f3c88570052587d69758ddd44580e0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetCurrentEntry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog15GetCurrentEntryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The most recently added entry can be fetched with this function. This may be NULL if there is no recent entry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog13SetMaxEntriesE11LXtObjectIDj">
+<span id="_CPPv3N6ILxLog13SetMaxEntriesE11LXtObjectIDj"></span><span id="_CPPv2N6ILxLog13SetMaxEntriesE11LXtObjectIDj"></span><span id="ILxLog::SetMaxEntries__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_log_1aa953befb7a83bb7e6989eb9050d82be5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMaxEntries</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog13SetMaxEntriesE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The maximum number of entries that a particular subsystem can store can be set and read with these functions. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog13GetMaxEntriesE11LXtObjectIDPj">
+<span id="_CPPv3N6ILxLog13GetMaxEntriesE11LXtObjectIDPj"></span><span id="_CPPv2N6ILxLog13GetMaxEntriesE11LXtObjectIDPj"></span><span id="ILxLog::GetMaxEntries__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_1a16e827d303c02b81e38ec0eb1ad443f8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetMaxEntries</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog13GetMaxEntriesE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog10GetRollingE11LXtObjectIDPPv">
+<span id="_CPPv3N6ILxLog10GetRollingE11LXtObjectIDPPv"></span><span id="_CPPv2N6ILxLog10GetRollingE11LXtObjectIDPPv"></span><span id="ILxLog::GetRolling__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_1af5f34dfe70d304e13ba6f8c66fac1c51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetRolling</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog10GetRollingE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The current rolling message can also be read. This returns LXe_NOTFOUND if there is currently no rolling entry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog8ClearAllE11LXtObjectID">
+<span id="_CPPv3N6ILxLog8ClearAllE11LXtObjectID"></span><span id="_CPPv2N6ILxLog8ClearAllE11LXtObjectID"></span><span id="ILxLog::ClearAll__LXtObjectID"></span><span class="target" id="class_i_lx_log_1a573fcf1165a8d0525cea8e04efe015b2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ClearAll</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog8ClearAllE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This clears all entries from the subsystem. If called on the master subsystem, all subsystems are cleared. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6ILxLog4NameE11LXtObjectIDPPKc">
+<span id="_CPPv3N6ILxLog4NameE11LXtObjectIDPPKc"></span><span id="_CPPv2N6ILxLog4NameE11LXtObjectIDPPKc"></span><span id="ILxLog::Name__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_log_1aa4ab5c9017ebed04ffe8013be3085b06"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6ILxLog4NameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The name of a subsystem can be returned at any time. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxlogentry">
+<h2><a class="toc-backref" href="#id4">ILxLogEntry</a><a class="headerlink" href="#ilxlogentry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxLogEntry">
+<span id="_CPPv311ILxLogEntry"></span><span id="_CPPv211ILxLogEntry"></span><span id="ILxLogEntry"></span><span class="target" id="class_i_lx_log_entry"></span><em class="property">class </em><code class="sig-name descname">ILxLogEntry</code><a class="headerlink" href="#_CPPv411ILxLogEntry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A log entry contains a timestamp, an LxResult code and a message string. Log entries are owned by the subsystem and should not be released by the client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry8AddEntryE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxLogEntry8AddEntryE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxLogEntry8AddEntryE11LXtObjectID11LXtObjectID"></span><span id="ILxLogEntry::AddEntry__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_entry_1a415effb930eb3573d7d1b9de55810af2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddEntry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry8AddEntryE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Log entries can have child entries. A common child event is simply another message that provides more detail for the first, such as why an event failed. Normally the root event is a warning or error, with one or more child messages describing exactly why this occured. Info messages may also have children, providing more details on what might be an otherwise simple statement. Note that this only applies to simple messages, and not to complex data such as info blocks and name/value pairs. This does an AddRef() on the object, meaning you’ll still need to do your own release on it after it has been added. A log entry can have multiple parents, and will thus appear as a child of each parent. Care should be taken to avoid loops. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry8SetTitleE11LXtObjectIDPKc">
+<span id="_CPPv3N11ILxLogEntry8SetTitleE11LXtObjectIDPKc"></span><span id="_CPPv2N11ILxLogEntry8SetTitleE11LXtObjectIDPKc"></span><span id="ILxLogEntry::SetTitle__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_log_entry_1aa2a6f8b435190feb43cdfb56968ecac5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTitle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry8SetTitleE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This sets a title that can appear at the top of the block, which in this case is “Box (Squared)”. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry7SetDescE11LXtObjectIDPKc">
+<span id="_CPPv3N11ILxLogEntry7SetDescE11LXtObjectIDPKc"></span><span id="_CPPv2N11ILxLogEntry7SetDescE11LXtObjectIDPKc"></span><span id="ILxLogEntry::SetDesc__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_log_entry_1ac810586ca960c7fe0608fa964b09198e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetDesc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry7SetDescE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This sets a description, which here is the three lines of text at the bottom of the block. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry8SetValueE11LXtObjectIDPKcj11LXtObjectID">
+<span id="_CPPv3N11ILxLogEntry8SetValueE11LXtObjectIDPKcj11LXtObjectID"></span><span id="_CPPv2N11ILxLogEntry8SetValueE11LXtObjectIDPKcj11LXtObjectID"></span><span id="ILxLogEntry::SetValue__LXtObjectID.cCP.unsigned-i.LXtObjectID"></span><span class="target" id="class_i_lx_log_entry_1aca9443f3dd3e3a011c9891164d436ed3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, unsigned int <em>index</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry8SetValueE11LXtObjectIDPKcj11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This sets the value of one of the fields in the info block. The specific field can be specified by either it’s name or it’s index, if the name is NULL. A matching ILxValueID must be provided for the field. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry7AddPairE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N11ILxLogEntry7AddPairE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N11ILxLogEntry7AddPairE11LXtObjectIDPKcPKc"></span><span id="ILxLogEntry::AddPair__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_log_entry_1a707549412ddf51e90f3d8b2fe495aca4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddPair</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry7AddPairE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_log_entry_1ac810586ca960c7fe0608fa964b09198e"><span class="std std-ref">SetDesc()</span></a> can again be used to add a description after the pairs. This function can be used to add a pair of strings to the message. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry5ClassE11LXtObjectIDPj">
+<span id="_CPPv3N11ILxLogEntry5ClassE11LXtObjectIDPj"></span><span id="_CPPv2N11ILxLogEntry5ClassE11LXtObjectIDPj"></span><span id="ILxLogEntry::Class__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_entry_1ac7e395672a9b99a37b4e0e867987201b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Class</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>classType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry5ClassE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry4TypeE11LXtObjectIDP8LxResult">
+<span id="_CPPv3N11ILxLogEntry4TypeE11LXtObjectIDP8LxResult"></span><span id="_CPPv2N11ILxLogEntry4TypeE11LXtObjectIDP8LxResult"></span><span id="ILxLogEntry::Type__LXtObjectID.LxResultP"></span><span class="target" id="class_i_lx_log_entry_1a5cd04966932033a54ee95025c1327492"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry4TypeE11LXtObjectIDP8LxResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The type can be returned as an LxResult code. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry4TimeE11LXtObjectIDP6time_t">
+<span id="_CPPv3N11ILxLogEntry4TimeE11LXtObjectIDP6time_t"></span><span id="_CPPv2N11ILxLogEntry4TimeE11LXtObjectIDP6time_t"></span><span id="ILxLogEntry::Time__LXtObjectID.time_tP"></span><span class="target" id="class_i_lx_log_entry_1ab671d90c65d14fa4f8c1b37db8103f04"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Time</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, time_t *<em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry4TimeE11LXtObjectIDP6time_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The time at which the entry was logged can be read either as a C-style time_t or as a string via asctime(). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry10TimeStringE11LXtObjectIDPPKc">
+<span id="_CPPv3N11ILxLogEntry10TimeStringE11LXtObjectIDPPKc"></span><span id="_CPPv2N11ILxLogEntry10TimeStringE11LXtObjectIDPPKc"></span><span id="ILxLogEntry::TimeString__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_log_entry_1ad330a28b593bde818578c8fc52344dab"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TimeString</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry10TimeStringE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry10ChildCountE11LXtObjectIDPj">
+<span id="_CPPv3N11ILxLogEntry10ChildCountE11LXtObjectIDPj"></span><span id="_CPPv2N11ILxLogEntry10ChildCountE11LXtObjectIDPj"></span><span id="ILxLogEntry::ChildCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_entry_1aaac4044712e26298e47bcff0cfbcd54c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry10ChildCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The list of child entries for MESSAGE class entries can be enumerated with these methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry12ChildByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N11ILxLogEntry12ChildByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N11ILxLogEntry12ChildByIndexE11LXtObjectIDjPPv"></span><span id="ILxLogEntry::ChildByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_log_entry_1a7b4a0c76b23b7288f205d516dfff0b65"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry12ChildByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry16PeekChildByIndexE11LXtObjectIDj">
+<span id="_CPPv3N11ILxLogEntry16PeekChildByIndexE11LXtObjectIDj"></span><span id="_CPPv2N11ILxLogEntry16PeekChildByIndexE11LXtObjectIDj"></span><span id="ILxLogEntry::PeekChildByIndex__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_log_entry_1a154cd02db15af28c05f176c3bbef9273"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">PeekChildByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry16PeekChildByIndexE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A peek method is also available. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry14SubSystemCountE11LXtObjectIDPj">
+<span id="_CPPv3N11ILxLogEntry14SubSystemCountE11LXtObjectIDPj"></span><span id="_CPPv2N11ILxLogEntry14SubSystemCountE11LXtObjectIDPj"></span><span id="ILxLogEntry::SubSystemCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_entry_1afa332154b3f75de78106694f2ba67fb8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubSystemCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry14SubSystemCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each root-level entry knows what subsystems it has been added to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry16SubSystemByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N11ILxLogEntry16SubSystemByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N11ILxLogEntry16SubSystemByIndexE11LXtObjectIDjPPv"></span><span id="ILxLogEntry::SubSystemByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_log_entry_1a80cdb2c01abaab8c0f35c972419d6477"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubSystemByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry16SubSystemByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry7MessageE11LXtObjectIDPPKc">
+<span id="_CPPv3N11ILxLogEntry7MessageE11LXtObjectIDPPKc"></span><span id="_CPPv2N11ILxLogEntry7MessageE11LXtObjectIDPPKc"></span><span id="ILxLogEntry::Message__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_log_entry_1a0c44ab9458581961d6381de09b56b860"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Message</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry7MessageE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The message stored in a MESSAGE-type log entry can be read out with this function. This fails if used on a non-MESSAGE type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry5TitleE11LXtObjectIDPPKc">
+<span id="_CPPv3N11ILxLogEntry5TitleE11LXtObjectIDPPKc"></span><span id="_CPPv2N11ILxLogEntry5TitleE11LXtObjectIDPPKc"></span><span id="ILxLogEntry::Title__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_log_entry_1a6f719b1940adc8cf8f2d87236b5b5a31"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Title</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry5TitleE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The title and description stored in a block-type log entry can be read out with these functions. These fail if used on a MESSAGE entry. <a class="reference internal" href="#class_i_lx_log_entry_1a874e0eec7402939b100a7d44dd0adbd9"><span class="std std-ref">Desc()</span></a> can also be used on pairs, but not on MESSAGEs. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry4DescE11LXtObjectIDPPKc">
+<span id="_CPPv3N11ILxLogEntry4DescE11LXtObjectIDPPKc"></span><span id="_CPPv2N11ILxLogEntry4DescE11LXtObjectIDPPKc"></span><span id="ILxLogEntry::Desc__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_log_entry_1a874e0eec7402939b100a7d44dd0adbd9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Desc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry4DescE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry9InfoBlockE11LXtObjectIDPPv">
+<span id="_CPPv3N11ILxLogEntry9InfoBlockE11LXtObjectIDPPv"></span><span id="_CPPv2N11ILxLogEntry9InfoBlockE11LXtObjectIDPPv"></span><span id="ILxLogEntry::InfoBlock__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_log_entry_1a6b9f43585cc7091d94f67fa27b0c9ece"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry9InfoBlockE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the info block definition. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry14InfoBlockValueE11LXtObjectIDPKcjPPv">
+<span id="_CPPv3N11ILxLogEntry14InfoBlockValueE11LXtObjectIDPKcjPPv"></span><span id="_CPPv2N11ILxLogEntry14InfoBlockValueE11LXtObjectIDPKcjPPv"></span><span id="ILxLogEntry::InfoBlockValue__LXtObjectID.cCP.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_log_entry_1ac7f184c9238ac377bfaf1c3bbe80fd1d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoBlockValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry14InfoBlockValueE11LXtObjectIDPKcjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ILxValueID for a particular field in the block can be extracted with this method. The value should be freed by the client when no longer needed. The field can be referenced by index or by name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry9PairCountE11LXtObjectIDPj">
+<span id="_CPPv3N11ILxLogEntry9PairCountE11LXtObjectIDPj"></span><span id="_CPPv2N11ILxLogEntry9PairCountE11LXtObjectIDPj"></span><span id="ILxLogEntry::PairCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_log_entry_1a97f2559a67bb8086e8800a4e7bbc6a62"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PairCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry9PairCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These mehtods return the number of pairs, and the name and value strings by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry8PairNameE11LXtObjectIDjPPKc">
+<span id="_CPPv3N11ILxLogEntry8PairNameE11LXtObjectIDjPPKc"></span><span id="_CPPv2N11ILxLogEntry8PairNameE11LXtObjectIDjPPKc"></span><span id="ILxLogEntry::PairName__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_log_entry_1a6d6d2f09139878828b7938b7f5e5cd32"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PairName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry8PairNameE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxLogEntry9PairValueE11LXtObjectIDjPPKc">
+<span id="_CPPv3N11ILxLogEntry9PairValueE11LXtObjectIDjPPKc"></span><span id="_CPPv2N11ILxLogEntry9PairValueE11LXtObjectIDjPPKc"></span><span id="ILxLogEntry::PairValue__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_log_entry_1a5d3e1557db48623953e365e10f55a352"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PairValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxLogEntry9PairValueE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiLOGCLASS_MESSAGE">
+<span class="target" id="lxd__log_8hpp_1acd45ce9578480f04bfa1676ee7239558"></span><code class="sig-name descname">LXiLOGCLASS_MESSAGE</code><a class="headerlink" href="#c.LXiLOGCLASS_MESSAGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The various properties of an entry can be read with these functions. The class of the entry wuill be one of the following, depending on how the entry was created: </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiLOGCLASS_BLOCK</p></li>
+<li><p>LXiLOGCLASS_PAIRS</p></li>
+</ul>
+</div>
+<div class="section" id="ilxloglistener">
+<h2><a class="toc-backref" href="#id5">ILxLogListener</a><a class="headerlink" href="#ilxloglistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxLogListener">
+<span id="_CPPv314ILxLogListener"></span><span id="_CPPv214ILxLogListener"></span><span id="ILxLogListener"></span><span class="target" id="class_i_lx_log_listener"></span><em class="property">class </em><code class="sig-name descname">ILxLogListener</code><a class="headerlink" href="#_CPPv414ILxLogListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The log listener can be used to listen for newly added log entries. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener11SystemAddedE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener11SystemAddedE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener11SystemAddedE11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::SystemAdded__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1a41305448f8fe29c41596b3216b83596b"></span>void <code class="sig-name descname">SystemAdded</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>system</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener11SystemAddedE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is called when a new log subsystem (ILxLogID) has been added to the application. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener10EntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener10EntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener10EntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::EntryAdded__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1a1b0bc4ddd0ca2c33248f6c6dae893f95"></span>void <code class="sig-name descname">EntryAdded</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>system</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener10EntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when a new log entry is added to a subsystem. Note that a single log entry many belong to multiple subsystems. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener15ChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener15ChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener15ChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::ChildEntryAdded__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1a5bddcd83f4a08a82359fc69638836546"></span>void <code class="sig-name descname">ChildEntryAdded</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>parentEntry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener15ChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when a new entry was added as a child of anohter log entry. This is only sent for root entries. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener12EntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener12EntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener12EntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::EntryDropped__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1a9345a74bafdd59588f36e4933bbd92e2"></span>void <code class="sig-name descname">EntryDropped</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>system</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener12EntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when an entry has been dropped from the log, usually because the number of entries exceeds te maximum number allowed, and thus the oldest entry is removed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener17RollingEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener17RollingEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener17RollingEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::RollingEntryAdded__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1af60096059040e50efbb38ba0e622d91f"></span>void <code class="sig-name descname">RollingEntryAdded</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>system</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener17RollingEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Rolling log entries are much the same as normal logged entries. Since rolling logs only contain a single entry, <a class="reference internal" href="#class_i_lx_log_listener_1af60096059040e50efbb38ba0e622d91f"><span class="std std-ref">RollingEntryAdded()</span></a> implies RollingEntryDrop(). RollingEntryDrop() will still be called when the rolling log is cleared. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener22RollingChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener22RollingChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener22RollingChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::RollingChildEntryAdded__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1a60303ef8fe53e4571d9987ef613bfe0c"></span>void <code class="sig-name descname">RollingChildEntryAdded</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>parentEntry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener22RollingChildEntryAddedE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxLogListener19RollingEntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxLogListener19RollingEntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxLogListener19RollingEntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLogListener::RollingEntryDropped__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_log_listener_1a1263b2a563effc6dd91f5661e259090f"></span>void <code class="sig-name descname">RollingEntryDropped</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>system</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxLogListener19RollingEntryDroppedE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_media.html" class="btn btn-neutral float-right" title="Media" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_locator.html" class="btn btn-neutral float-left" title="Locator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_log.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

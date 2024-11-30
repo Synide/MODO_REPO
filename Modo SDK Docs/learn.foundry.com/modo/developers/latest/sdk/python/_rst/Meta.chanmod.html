@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.chanmod.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Meta.chanmod &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Meta.channel" href="Meta.channel.html" />
+    <link rel="prev" title="Command" href="Command.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Python Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Attrdesc.html">Attrdesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command.html">Command</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta.chanmod</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#channelmodifier">ChannelModifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#channels">Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metainterface">MetaInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metaserver">MetaServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-channelmodifier">Meta_ChannelModifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-channels">Meta_Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-package">Meta_Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package">Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-channelmodmanager">impl_ChannelModManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-channelmodoperator">impl_ChannelModOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-channelmodmanager">meta_ChannelModManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.channel.html">Meta.channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.command.html">Meta.command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.drop.html">Meta.drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.falloff.html">Meta.falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.modifier.html">Meta.modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.package.html">Meta.package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.schematic.html">Meta.schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.select.html">Meta.select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vector.html">Vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../python.html">Python Reference</a> &raquo;</li>
+        
+      <li>Meta.chanmod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meta-chanmod">
+<h1>Meta.chanmod<a class="headerlink" href="#meta-chanmod" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#channelmodifier" id="id6">ChannelModifier</a></p></li>
+<li><p><a class="reference internal" href="#channels" id="id7">Channels</a></p></li>
+<li><p><a class="reference internal" href="#metainterface" id="id8">MetaInterface</a></p></li>
+<li><p><a class="reference internal" href="#types" id="id9">Types</a></p></li>
+<li><p><a class="reference internal" href="#metaserver" id="id10">MetaServer</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id11">Types</a></p></li>
+<li><p><a class="reference internal" href="#meta-channelmodifier" id="id12">Meta_ChannelModifier</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id13">Types</a></p></li>
+<li><p><a class="reference internal" href="#meta-channels" id="id14">Meta_Channels</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id15">Types</a></p></li>
+<li><p><a class="reference internal" href="#meta-package" id="id16">Meta_Package</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id17">Types</a></p></li>
+<li><p><a class="reference internal" href="#package" id="id18">Package</a></p></li>
+<li><p><a class="reference internal" href="#impl-channelmodmanager" id="id19">impl_ChannelModManager</a></p></li>
+<li><p><a class="reference internal" href="#impl-channelmodoperator" id="id20">impl_ChannelModOperator</a></p></li>
+<li><p><a class="reference internal" href="#meta-channelmodmanager" id="id21">meta_ChannelModManager</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id22">Types</a></p></li>
+</ul>
+</div>
+<div class="section" id="channelmodifier">
+<h2><a class="toc-backref" href="#id6">ChannelModifier</a><a class="headerlink" href="#channelmodifier" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.ChannelModifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">ChannelModifier</code><a class="headerlink" href="#lxu.meta.chanmod.ChannelModifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining ChannelModifier servers. The client will
+subclass this base class, filling in the methods that they require.
+It’s then instantiated as a metaclass to be promoted to server. This
+derives from the Channels base class so needs an init_chan() method.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.ChannelModifier.eval">
+<code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.ChannelModifier.eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.ChannelModifier.init_chan">
+<code class="sig-name descname">init_chan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.ChannelModifier.init_chan" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is passed an AttributeDesc object which is used to init the
+channels.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.ChannelModifier.post_alloc">
+<code class="sig-name descname">post_alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.ChannelModifier.post_alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="channels">
+<h2><a class="toc-backref" href="#id7">Channels</a><a class="headerlink" href="#channels" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.Channels">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">Channels</code><a class="headerlink" href="#lxu.meta.chanmod.Channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining Channels. The client will subclass this base
+class, filling in the methods that they require. It’s then instantiated
+as a metaclass to be used by servers.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Channels.init_chan">
+<code class="sig-name descname">init_chan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Channels.init_chan" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is passed an AttributeDesc object which is used to init the
+channels.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="metainterface">
+<h2><a class="toc-backref" href="#id8">MetaInterface</a><a class="headerlink" href="#metainterface" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.MetaInterface">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">MetaInterface</code><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>The interface meta node is a sub-interface for an object or server
+of the same guid.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaInterface.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaInterface.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="types">
+<h2><a class="toc-backref" href="#id9">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="metaserver">
+<h2><a class="toc-backref" href="#id10">MetaServer</a><a class="headerlink" href="#metaserver" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.MetaServer">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">MetaServer</code><a class="headerlink" href="#lxu.meta.chanmod.MetaServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server meta node defines a plug-in server. The name and class guid
+must be specified, and the alloc() method (defined by the client, returns
+the server class. There is also a dictionary of server tags.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.MetaServer.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.MetaServer.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id11">Types</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="meta-channelmodifier">
+<h2><a class="toc-backref" href="#id12">Meta_ChannelModifier</a><a class="headerlink" href="#meta-channelmodifier" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">Meta_ChannelModifier</code><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for the ChannelModifier server type. This is
+actually a Package server metaclass, which does most of the work
+for us. We just need to add the channels metaclass, and the
+manager inerface metaclass.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.add_channelui">
+<code class="sig-name descname">add_channelui</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.add_channelui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a ChannelIU class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.set_supertype">
+<code class="sig-name descname">set_supertype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.set_supertype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the supertype for this package, making it an item type. If the
+typename is omitted then this is a root type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_ChannelModifier.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_ChannelModifier.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id13">Types</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="meta-channels">
+<h2><a class="toc-backref" href="#id14">Meta_Channels</a><a class="headerlink" href="#meta-channels" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.Meta_Channels">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">Meta_Channels</code><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for Channels.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Channels.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Channels.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id15">Types</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="meta-package">
+<h2><a class="toc-backref" href="#id16">Meta_Package</a><a class="headerlink" href="#meta-package" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.Meta_Package">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">Meta_Package</code><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for Packages. You allocate it with the server
+name and optional Package sub-class.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.add_channelui">
+<code class="sig-name descname">add_channelui</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.add_channelui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a ChannelIU class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.set_supertype">
+<code class="sig-name descname">set_supertype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.set_supertype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the supertype for this package, making it an item type. If the
+typename is omitted then this is a root type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Meta_Package.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Meta_Package.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id17">Types</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="package">
+<h2><a class="toc-backref" href="#id18">Package</a><a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.Package">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">Package</code><a class="headerlink" href="#lxu.meta.chanmod.Package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining Packages. The client will subclass this base
+class, filling in the methods that they require. It’s then instantiated
+as a metaclass to be promoted to a server.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Item added to scene – either on create or on delete undo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.after_load">
+<code class="sig-name descname">after_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.after_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Item finished loading.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.doomed">
+<code class="sig-name descname">doomed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.doomed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Item final destroy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.initialize">
+<code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">super</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial package creation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.loading">
+<code class="sig-name descname">loading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.loading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Item create on load.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.newborn">
+<code class="sig-name descname">newborn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.newborn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Item initial creation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.parent_ok">
+<code class="sig-name descname">parent_ok</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.parent_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the parent is valid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Item removed from scene – either on delete or on create undo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.Package.synth_name">
+<code class="sig-name descname">synth_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.Package.synth_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a synthetic name for the item when it has no other name.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-channelmodmanager">
+<h2><a class="toc-backref" href="#id19">impl_ChannelModManager</a><a class="headerlink" href="#impl-channelmodmanager" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.impl_ChannelModManager">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">impl_ChannelModManager</code><a class="headerlink" href="#lxu.meta.chanmod.impl_ChannelModManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal class implementing ChannelModManager interface on package.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.impl_ChannelModManager.cman_Allocate">
+<code class="sig-name descname">cman_Allocate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.impl_ChannelModManager.cman_Allocate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.impl_ChannelModManager.cman_Define">
+<code class="sig-name descname">cman_Define</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.impl_ChannelModManager.cman_Define" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-channelmodoperator">
+<h2><a class="toc-backref" href="#id20">impl_ChannelModOperator</a><a class="headerlink" href="#impl-channelmodoperator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.impl_ChannelModOperator">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">impl_ChannelModOperator</code><a class="headerlink" href="#lxu.meta.chanmod.impl_ChannelModOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal ChannelModOperator implementation does the actual work of
+binding and evaluating. The metaclass is meta_ChannelModManager.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.impl_ChannelModOperator.cmop_Evaluate">
+<code class="sig-name descname">cmop_Evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.impl_ChannelModOperator.cmop_Evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="meta-channelmodmanager">
+<h2><a class="toc-backref" href="#id21">meta_ChannelModManager</a><a class="headerlink" href="#meta-channelmodmanager" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.chanmod.</code><code class="sig-name descname">meta_ChannelModManager</code><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metaclass for the ChannelModManager defines an interface for a package.</p>
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal metaclass method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.chanmod.meta_ChannelModManager.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.chanmod.meta_ChannelModManager.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id22">Types</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Meta.channel.html" class="btn btn-neutral float-right" title="Meta.channel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Command.html" class="btn btn-neutral float-left" title="Command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.chanmod.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+</html>

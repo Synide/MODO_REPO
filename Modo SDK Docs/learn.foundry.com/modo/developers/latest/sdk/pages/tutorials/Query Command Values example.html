@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Query Command Values example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Query Command Values example &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="RandomSel Script" href="RandomSel%20Script.html" />
+    <link rel="prev" title="Python in Modo" href="Python%20in%20Modo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Command Values example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#querying-the-item-name-command">Querying the item.name command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#querying-the-pref-value-for-a-color">Querying the pref.value for a color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Query Command Values example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="query-command-values-example">
+<h1>Query Command Values example<a class="headerlink" href="#query-command-values-example" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#querying-the-item-name-command" id="id1">Querying the item.name command</a></p></li>
+<li><p><a class="reference internal" href="#querying-the-pref-value-for-a-color" id="id2">Querying the pref.value for a color</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id3">See Also</a></p></li>
+</ul>
+</div>
+<div class="section" id="querying-the-item-name-command">
+<h2><a class="toc-backref" href="#id1">Querying the item.name command</a><a class="headerlink" href="#querying-the-item-name-command" title="Permalink to this headline">¶</a></h2>
+<p>item.name’s <em>name</em> argument can be queried to get the names of the currently selected items.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># by Gwynne Reddck</span>
+<span class="c1"># Need a command service object</span>
+<span class="n">cmd_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Command</span><span class="p">()</span>
+
+<span class="c1"># With that we can spawn an instance of the command we&#39;re interested in.</span>
+<span class="c1">#  The first argument is pretty much always CTAG_NULL; the second is the</span>
+<span class="c1">#  name of the command.</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd_svc</span><span class="o">.</span><span class="n">Spawn</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iCTAG_NULL</span><span class="p">,</span> <span class="s1">&#39;item.name&#39;</span><span class="p">)</span>
+
+<span class="c1"># We then pass the arguments for the command to &#39;QueryArgString()&#39;.</span>
+<span class="c1"># The second argument is the alert flags, which are usually 0 since you</span>
+<span class="c1">#  rarely want alert dialogs opening when you query.</span>
+<span class="c1"># The third argument is the argument string to be parsed.  The argument</span>
+<span class="c1">#  marked with a &#39;?&#39; (in this case, &quot;name&#39;) is the one that will be queried.</span>
+<span class="c1">#  Since this is parsing an argument string, standard command string</span>
+<span class="c1">#  parsing behaviors apply.</span>
+<span class="c1"># The final argument is indicates if the string includes the command&#39;s</span>
+<span class="c1">#  name or not; ours doesn&#39;t so we set it to 0 (false).</span>
+<span class="n">va</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">cmd_svc</span><span class="o">.</span><span class="n">QueryArgString</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;name:?&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># The above gives us a value array object containing the queried value,</span>
+<span class="c1">#  from which we can extract using the correct method for the argument</span>
+<span class="c1">#  type as &#39;va&#39; It also gives us the argument index (as &#39;idx&#39;) that was</span>
+<span class="c1">#  queried (meaning, the one marked with the &#39;?&#39;), which is useful if we</span>
+<span class="c1">#  want to execute the command with the queried value.  Furthermore,</span>
+<span class="c1">#  any other arguments passed to QueryArgString() as the command</span>
+<span class="c1">#  string will now be set as though you had called one of the Set...()</span>
+<span class="c1">#  methods for it.</span>
+<span class="c1"># Here we use GetString(), but you&#39;ll generally want to use whatever is</span>
+<span class="c1">#  appropriate for this argument&#39;s datatype.  The 0 indicates that we&#39;re</span>
+<span class="c1">#  getting the first value in the array.  item.name will return an array</span>
+<span class="c1">#  with the names of all of the currently selected items, so we have to</span>
+<span class="c1">#  tell it which one we want.</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">GetString</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="querying-the-pref-value-for-a-color">
+<h2><a class="toc-backref" href="#id2">Querying the pref.value for a color</a><a class="headerlink" href="#querying-the-pref-value-for-a-color" title="Permalink to this headline">¶</a></h2>
+<p>The pref.value command is used to set and get the values of many preferences in the application.  Not all prefs use pref.value; some use custom command instead, but all are displayed in the Preferences forms and represent some global option.</p>
+<p>pref.value’s first argument is the preference we want to query or set, and the second argument is the value of the preference.  The datatype of the second argument is defined by the preferences specified in the first.  In this example, the color.wireframe preference is queried, which is defined as a <em>color</em> datatype.  We choose to parse the value as a string, which is in the form of ‘’&lt;nowiki&gt;[R G B]&lt;/nowiki&gt;’’, where the color components are floating point numbers.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Pick the colors from the preferences</span>
+<span class="c1"># by David Ballesteros</span>
+
+<span class="c1"># The command string that would be typed into the command history is &quot;pref.value color.wireframe ?&quot;.</span>
+<span class="c1">#   We&#39;re going to be a bit more verbose and use &quot;pref.value name:color.wireframe value:?&quot;.</span>
+
+<span class="c1"># First we need to get the command service</span>
+<span class="n">cmd_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Command</span><span class="p">()</span>
+
+<span class="c1"># Next we spawn the pref.value command.</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd_svc</span><span class="o">.</span><span class="n">Spawn</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iCTAG_NULL</span><span class="p">,</span> <span class="s1">&#39;pref.value&#39;</span><span class="p">)</span>
+
+<span class="c1"># We pass the arguments without the command name, marking the argument we want to query the</span>
+<span class="c1">#  value of with a question mark.  As with the other example the second argument (flags) is 0 so</span>
+<span class="c1">#  that no dialogs will open on failure, and the last argument is 0 (includCmd) indicating that the</span>
+<span class="c1">#  argument string does not include the command&#39;s name.</span>
+<span class="c1"># The returned values are a value array containing all of the queried values, which in this case</span>
+<span class="c1">#  will only be a single value, and the index of the argument that was queried.</span>
+<span class="n">va</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">cmd_svc</span><span class="o">.</span><span class="n">QueryArgString</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;name:color.wireframe value:?&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># We then get the value from the array as a string, and split it using the Python string split() method.</span>
+<span class="c1">#  This just separates the string at the spaces, returning the components as an array.  Since we want</span>
+<span class="c1">#  it as floats, we use map() to convert the result of split() to a float array,</span>
+<span class="n">rgblist</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">va</span><span class="o">.</span><span class="n">GetString</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="see-also">
+<h2><a class="toc-backref" href="#id3">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Command System: Querying explains how to query commands from the Command History.  The same basic syntax applies for any command string parsing, such as the string passed to QueryArgString().</p></li>
+<li><p>ILxCommandService (index)#(143) SDK: ILxCommandService interface</p></li>
+<li><p>ILxCommandService (index)#(21) SDK: Declarations</p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="RandomSel%20Script.html" class="btn btn-neutral float-right" title="RandomSel Script" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Python%20in%20Modo.html" class="btn btn-neutral float-left" title="Python in Modo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Query Command Values example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+</html>

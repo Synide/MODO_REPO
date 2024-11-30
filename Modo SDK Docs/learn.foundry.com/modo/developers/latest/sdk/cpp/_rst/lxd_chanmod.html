@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_chanmod.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chanmod &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Channelui" href="lxd_channelui.html" />
+    <link rel="prev" title="Canvasitem" href="lxd_canvasitem.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chanmod</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelmoditem">ILxChannelModItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelmodifier">ILxChannelModifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelmodmanager">ILxChannelModManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelmodoperator">ILxChannelModOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelmodsetup">ILxChannelModSetup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Chanmod</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chanmod">
+<h1>Chanmod<a class="headerlink" href="#chanmod" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxchannelmoditem" id="id1">ILxChannelModItem</a></p></li>
+<li><p><a class="reference internal" href="#ilxchannelmodifier" id="id2">ILxChannelModifier</a></p></li>
+<li><p><a class="reference internal" href="#ilxchannelmodmanager" id="id3">ILxChannelModManager</a></p></li>
+<li><p><a class="reference internal" href="#ilxchannelmodoperator" id="id4">ILxChannelModOperator</a></p></li>
+<li><p><a class="reference internal" href="#ilxchannelmodsetup" id="id5">ILxChannelModSetup</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxchannelmoditem">
+<h2><a class="toc-backref" href="#id1">ILxChannelModItem</a><a class="headerlink" href="#ilxchannelmoditem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxChannelModItem">
+<span id="_CPPv317ILxChannelModItem"></span><span id="_CPPv217ILxChannelModItem"></span><span id="ILxChannelModItem"></span><span class="target" id="class_i_lx_channel_mod_item"></span><em class="property">class </em><code class="sig-name descname">ILxChannelModItem</code><a class="headerlink" href="#_CPPv417ILxChannelModItem" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxChannelModItem8AllocateE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxChannelModItem8AllocateE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxChannelModItem8AllocateE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxChannelModItem::Allocate__LXtObjectID.LXtObjectID.LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_channel_mod_item_1a1178a8067dd46cf13d262e2698c3c4c9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Allocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>cmod</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>eval</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, void **<em>ppvData</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxChannelModItem8AllocateE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxChannelModItem5FlagsE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N17ILxChannelModItem5FlagsE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N17ILxChannelModItem5FlagsE11LXtObjectID11LXtObjectIDj"></span><span id="ILxChannelModItem::Flags__LXtObjectID.LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_channel_mod_item_1a299ac5585679e7a533de64703be9111a"></span>unsigned int <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxChannelModItem5FlagsE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxChannelModItem8EvaluateE11LXtObjectID11LXtObjectID11LXtObjectIDPv">
+<span id="_CPPv3N17ILxChannelModItem8EvaluateE11LXtObjectID11LXtObjectID11LXtObjectIDPv"></span><span id="_CPPv2N17ILxChannelModItem8EvaluateE11LXtObjectID11LXtObjectID11LXtObjectIDPv"></span><span id="ILxChannelModItem::Evaluate__LXtObjectID.LXtObjectID.LXtObjectID.voidP"></span><span class="target" id="class_i_lx_channel_mod_item_1a8aaf7daf045291b9a58589490f933599"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>cmod</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxChannelModItem8EvaluateE11LXtObjectID11LXtObjectID11LXtObjectIDPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxChannelModItem7CleanupE11LXtObjectIDPv">
+<span id="_CPPv3N17ILxChannelModItem7CleanupE11LXtObjectIDPv"></span><span id="_CPPv2N17ILxChannelModItem7CleanupE11LXtObjectIDPv"></span><span id="ILxChannelModItem::Cleanup__LXtObjectID.voidP"></span><span class="target" id="class_i_lx_channel_mod_item_1a32892239f777fad5bd0e0093fbb4e908"></span>void <code class="sig-name descname">Cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxChannelModItem7CleanupE11LXtObjectIDPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxchannelmodifier">
+<h2><a class="toc-backref" href="#id2">ILxChannelModifier</a><a class="headerlink" href="#ilxchannelmodifier" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxChannelModifier">
+<span id="_CPPv318ILxChannelModifier"></span><span id="_CPPv218ILxChannelModifier"></span><span id="ILxChannelModifier"></span><span class="target" id="class_i_lx_channel_modifier"></span><em class="property">class </em><code class="sig-name descname">ILxChannelModifier</code><a class="headerlink" href="#_CPPv418ILxChannelModifier" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier8AddInputE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N18ILxChannelModifier8AddInputE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N18ILxChannelModifier8AddInputE11LXtObjectID11LXtObjectIDj"></span><span id="ILxChannelModifier::AddInput__LXtObjectID.LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_channel_modifier_1a5ce0f45fa8fc0e43ce539ed0b1b95dc5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddInput</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier8AddInputE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier9AddOutputE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N18ILxChannelModifier9AddOutputE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N18ILxChannelModifier9AddOutputE11LXtObjectID11LXtObjectIDj"></span><span id="ILxChannelModifier::AddOutput__LXtObjectID.LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_channel_modifier_1ad01d4f8dd7d19f90852dd80c45f6e593"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddOutput</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier9AddOutputE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier7AddTimeE11LXtObjectID">
+<span id="_CPPv3N18ILxChannelModifier7AddTimeE11LXtObjectID"></span><span id="_CPPv2N18ILxChannelModifier7AddTimeE11LXtObjectID"></span><span id="ILxChannelModifier::AddTime__LXtObjectID"></span><span class="target" id="class_i_lx_channel_modifier_1a74be47ea1e5cbffd0f9995b677b216fb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier7AddTimeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier10InputCountE11LXtObjectIDjPj">
+<span id="_CPPv3N18ILxChannelModifier10InputCountE11LXtObjectIDjPj"></span><span id="_CPPv2N18ILxChannelModifier10InputCountE11LXtObjectIDjPj"></span><span id="ILxChannelModifier::InputCount__LXtObjectID.unsigned-i.unsigned-iP"></span><span class="target" id="class_i_lx_channel_modifier_1ad43720d5ebbd192f6b3a47849883934d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InputCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, unsigned int *<em>nInputs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier10InputCountE11LXtObjectIDjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier11OutputCountE11LXtObjectIDjPj">
+<span id="_CPPv3N18ILxChannelModifier11OutputCountE11LXtObjectIDjPj"></span><span id="_CPPv2N18ILxChannelModifier11OutputCountE11LXtObjectIDjPj"></span><span id="ILxChannelModifier::OutputCount__LXtObjectID.unsigned-i.unsigned-iP"></span><span class="target" id="class_i_lx_channel_modifier_1aff165531d37799d40c24be42b74f0d6e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OutputCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, unsigned int *<em>nOutputs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier11OutputCountE11LXtObjectIDjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier14ReadInputFloatE11LXtObjectID11LXtObjectIDjPd">
+<span id="_CPPv3N18ILxChannelModifier14ReadInputFloatE11LXtObjectID11LXtObjectIDjPd"></span><span id="_CPPv2N18ILxChannelModifier14ReadInputFloatE11LXtObjectID11LXtObjectIDjPd"></span><span id="ILxChannelModifier::ReadInputFloat__LXtObjectID.LXtObjectID.unsigned-i.doubleP"></span><span class="target" id="class_i_lx_channel_modifier_1a33ff3f074ebf5736d81d93ab1516c49e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputFloat</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, double *<em>dVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier14ReadInputFloatE11LXtObjectID11LXtObjectIDjPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier21ReadInputFloatByIndexE11LXtObjectID11LXtObjectIDjjPd">
+<span id="_CPPv3N18ILxChannelModifier21ReadInputFloatByIndexE11LXtObjectID11LXtObjectIDjjPd"></span><span id="_CPPv2N18ILxChannelModifier21ReadInputFloatByIndexE11LXtObjectID11LXtObjectIDjjPd"></span><span id="ILxChannelModifier::ReadInputFloatByIndex__LXtObjectID.LXtObjectID.unsigned-i.unsigned-i.doubleP"></span><span class="target" id="class_i_lx_channel_modifier_1aec325d3d81d3736c3108ab81525e2e3d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputFloatByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, unsigned int <em>linkIndex</em>, double *<em>dVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier21ReadInputFloatByIndexE11LXtObjectID11LXtObjectIDjjPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier14ReadInputAngleE11LXtObjectID11LXtObjectIDjPd">
+<span id="_CPPv3N18ILxChannelModifier14ReadInputAngleE11LXtObjectID11LXtObjectIDjPd"></span><span id="_CPPv2N18ILxChannelModifier14ReadInputAngleE11LXtObjectID11LXtObjectIDjPd"></span><span id="ILxChannelModifier::ReadInputAngle__LXtObjectID.LXtObjectID.unsigned-i.doubleP"></span><span class="target" id="class_i_lx_channel_modifier_1a0a863549da00e1ed5ef3ab938466f5da"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputAngle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, double *<em>dVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier14ReadInputAngleE11LXtObjectID11LXtObjectIDjPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier12ReadInputIntE11LXtObjectID11LXtObjectIDjPi">
+<span id="_CPPv3N18ILxChannelModifier12ReadInputIntE11LXtObjectID11LXtObjectIDjPi"></span><span id="_CPPv2N18ILxChannelModifier12ReadInputIntE11LXtObjectID11LXtObjectIDjPi"></span><span id="ILxChannelModifier::ReadInputInt__LXtObjectID.LXtObjectID.unsigned-i.iP"></span><span class="target" id="class_i_lx_channel_modifier_1a8d8cee818cf83b113e96f24ceecaaed4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputInt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, int *<em>iVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier12ReadInputIntE11LXtObjectID11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier19ReadInputIntByIndexE11LXtObjectID11LXtObjectIDjjPi">
+<span id="_CPPv3N18ILxChannelModifier19ReadInputIntByIndexE11LXtObjectID11LXtObjectIDjjPi"></span><span id="_CPPv2N18ILxChannelModifier19ReadInputIntByIndexE11LXtObjectID11LXtObjectIDjjPi"></span><span id="ILxChannelModifier::ReadInputIntByIndex__LXtObjectID.LXtObjectID.unsigned-i.unsigned-i.iP"></span><span class="target" id="class_i_lx_channel_modifier_1ab9d4c9bd413f131a2b01fffe01b22b53"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputIntByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, unsigned int <em>linkIndex</em>, int *<em>iVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier19ReadInputIntByIndexE11LXtObjectID11LXtObjectIDjjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier12ReadInputValE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N18ILxChannelModifier12ReadInputValE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N18ILxChannelModifier12ReadInputValE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxChannelModifier::ReadInputVal__LXtObjectID.LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_channel_modifier_1ab1ae456c59343495153a41cd49b94527"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputVal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, void **<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier12ReadInputValE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier19ReadInputValByIndexE11LXtObjectID11LXtObjectIDjjPPv">
+<span id="_CPPv3N18ILxChannelModifier19ReadInputValByIndexE11LXtObjectID11LXtObjectIDjjPPv"></span><span id="_CPPv2N18ILxChannelModifier19ReadInputValByIndexE11LXtObjectID11LXtObjectIDjjPPv"></span><span id="ILxChannelModifier::ReadInputValByIndex__LXtObjectID.LXtObjectID.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_channel_modifier_1a5d5568d18ea3c959267e7c4a27c4def2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadInputValByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>inputIndex</em>, unsigned int <em>linkIndex</em>, void **<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier19ReadInputValByIndexE11LXtObjectID11LXtObjectIDjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier16WriteOutputFloatE11LXtObjectID11LXtObjectIDjd">
+<span id="_CPPv3N18ILxChannelModifier16WriteOutputFloatE11LXtObjectID11LXtObjectIDjd"></span><span id="_CPPv2N18ILxChannelModifier16WriteOutputFloatE11LXtObjectID11LXtObjectIDjd"></span><span id="ILxChannelModifier::WriteOutputFloat__LXtObjectID.LXtObjectID.unsigned-i.double"></span><span class="target" id="class_i_lx_channel_modifier_1ac5cccbe7c4ad8c6580bf17ed597361e6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteOutputFloat</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>outputIndex</em>, double <em>dVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier16WriteOutputFloatE11LXtObjectID11LXtObjectIDjd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier14WriteOutputIntE11LXtObjectID11LXtObjectIDji">
+<span id="_CPPv3N18ILxChannelModifier14WriteOutputIntE11LXtObjectID11LXtObjectIDji"></span><span id="_CPPv2N18ILxChannelModifier14WriteOutputIntE11LXtObjectID11LXtObjectIDji"></span><span id="ILxChannelModifier::WriteOutputInt__LXtObjectID.LXtObjectID.unsigned-i.i"></span><span class="target" id="class_i_lx_channel_modifier_1aec255bdeeb2032ac4285ecfa12b3fe59"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteOutputInt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>outputIndex</em>, int <em>iVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier14WriteOutputIntE11LXtObjectID11LXtObjectIDji" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier14WriteOutputValE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N18ILxChannelModifier14WriteOutputValE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N18ILxChannelModifier14WriteOutputValE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxChannelModifier::WriteOutputVal__LXtObjectID.LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_channel_modifier_1a991eb55a2f2a730d1b8596f85ac5a7a3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteOutputVal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>outputIndex</em>, void **<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier14WriteOutputValE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModifier21WriteOutputValByIndexE11LXtObjectID11LXtObjectIDjjPPv">
+<span id="_CPPv3N18ILxChannelModifier21WriteOutputValByIndexE11LXtObjectID11LXtObjectIDjjPPv"></span><span id="_CPPv2N18ILxChannelModifier21WriteOutputValByIndexE11LXtObjectID11LXtObjectIDjjPPv"></span><span id="ILxChannelModifier::WriteOutputValByIndex__LXtObjectID.LXtObjectID.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_channel_modifier_1ad1cb05ab3ff6e77a7c3076171088ee49"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteOutputValByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned int <em>outputIndex</em>, unsigned int <em>linkIndex</em>, void **<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModifier21WriteOutputValByIndexE11LXtObjectID11LXtObjectIDjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxchannelmodmanager">
+<h2><a class="toc-backref" href="#id3">ILxChannelModManager</a><a class="headerlink" href="#ilxchannelmodmanager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxChannelModManager">
+<span id="_CPPv320ILxChannelModManager"></span><span id="_CPPv220ILxChannelModManager"></span><span id="ILxChannelModManager"></span><span class="target" id="class_i_lx_channel_mod_manager"></span><em class="property">class </em><code class="sig-name descname">ILxChannelModManager</code><a class="headerlink" href="#_CPPv420ILxChannelModManager" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxChannelModManager6DefineE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N20ILxChannelModManager6DefineE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N20ILxChannelModManager6DefineE11LXtObjectID11LXtObjectID"></span><span id="ILxChannelModManager::Define__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_channel_mod_manager_1a7de1539afb5a8762f641332606ff0e0b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Define</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>cmod</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxChannelModManager6DefineE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The channel modifier manager is defined as an interface on the package implementing the item type. The manager provides methods to describe the channels it wants to use, and to allocate the actual operator object that performs the evaluation. The <a class="reference internal" href="#class_i_lx_channel_mod_manager_1a7de1539afb5a8762f641332606ff0e0b"><span class="std std-ref">Define()</span></a> method is passed a ChannelModSetup interface and is expected to call AddChannel() or AddTime() methods on that object to add the channels it wants for reading and writing. The names are all for channels on items of this type, and may be set as inputs or outputs. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxChannelModManager8AllocateE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N20ILxChannelModManager8AllocateE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N20ILxChannelModManager8AllocateE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxChannelModManager::Allocate__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_channel_mod_manager_1a37dfb80c3aa4e045a6b7f466c462ed80"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Allocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>cmod</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxChannelModManager8AllocateE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_channel_mod_manager_1a37dfb80c3aa4e045a6b7f466c462ed80"><span class="std std-ref">Allocate()</span></a> method is also passed the setup object and will allocate the operator for this channel modifier. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfCHMOD_INPUT">
+<span class="target" id="lxd__chanmod_8hpp_1a3813cdf33ba5fa202d73b6343954f5c0"></span><code class="sig-name descname">LXfCHMOD_INPUT</code><a class="headerlink" href="#c.LXfCHMOD_INPUT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Channel Modifiers are represented graphically in the Schematic viewport as nodes with input and output connectors for linking the channels with items and other Channel Modifiers via Channel Links. The flags passed with each channel provide information to the Schematic as to the role of the channels belonging to the modifier. For any given channel on the item the function can return some combination of the following flags. Note that zero is also a valid flag value and indicates a channel that’s used as input but doesn’t need to be added to schematic by default.<ul class="simple">
+<li><p>LXfCHMOD_OUTPUT This flag is used to inform the Schematic that a channel is to be represented as an output from the modifier and will be drawn with a Channel Link connector on the righthand side of the node. Channels specified as outputs will be automatically added to the node when the modifier is added to the Schematic view.</p></li>
+<li><p>LXfCHMOD_INPUT Since all channels are treated as inputs by default this flag is used by the Schematic to identify ‘primary’ inputs that will be automatically added to a Channel Modifier node when it is first added to the Schematic.</p></li>
+<li><p>LXfCHMOD_MULTILINK This flag is used in combination with the input flag to specify that an input channel can accept multiple Channel Links connected to it. If this flag is not set then the Schematic will prevent more than one link being made to the channel. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfCHMOD_OUTPUT</p></li>
+<li><p>LXfCHMOD_MULTILINK</p></li>
+</ul>
+</div>
+<div class="section" id="ilxchannelmodoperator">
+<h2><a class="toc-backref" href="#id4">ILxChannelModOperator</a><a class="headerlink" href="#ilxchannelmodoperator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxChannelModOperator">
+<span id="_CPPv321ILxChannelModOperator"></span><span id="_CPPv221ILxChannelModOperator"></span><span id="ILxChannelModOperator"></span><span class="target" id="class_i_lx_channel_mod_operator"></span><em class="property">class </em><code class="sig-name descname">ILxChannelModOperator</code><a class="headerlink" href="#_CPPv421ILxChannelModOperator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxChannelModOperator8EvaluateE11LXtObjectID">
+<span id="_CPPv3N21ILxChannelModOperator8EvaluateE11LXtObjectID"></span><span id="_CPPv2N21ILxChannelModOperator8EvaluateE11LXtObjectID"></span><span id="ILxChannelModOperator::Evaluate__LXtObjectID"></span><span class="target" id="class_i_lx_channel_mod_operator_1afe074973bef33c215c885eab72772423"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxChannelModOperator8EvaluateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Once set up, the operator will be called to read inputs and set outputs. Ideally there will be no reason to do any queries during the evaluation. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxchannelmodsetup">
+<h2><a class="toc-backref" href="#id5">ILxChannelModSetup</a><a class="headerlink" href="#ilxchannelmodsetup" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxChannelModSetup">
+<span id="_CPPv318ILxChannelModSetup"></span><span id="_CPPv218ILxChannelModSetup"></span><span id="ILxChannelModSetup"></span><span class="target" id="class_i_lx_channel_mod_setup"></span><em class="property">class </em><code class="sig-name descname">ILxChannelModSetup</code><a class="headerlink" href="#_CPPv418ILxChannelModSetup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup10AddChannelE11LXtObjectIDPKcj">
+<span id="_CPPv3N18ILxChannelModSetup10AddChannelE11LXtObjectIDPKcj"></span><span id="_CPPv2N18ILxChannelModSetup10AddChannelE11LXtObjectIDPKcj"></span><span id="ILxChannelModSetup::AddChannel__LXtObjectID.cCP.unsigned-i"></span><span class="target" id="class_i_lx_channel_mod_setup_1ae0900f750fc1224d03d15915cebcd064"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddChannel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup10AddChannelE11LXtObjectIDPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface provides methods for setting up the desired modifier channels and linking to their values. This function is used to assign a channel as part of the modifier operation, and can only be used from the Define() method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup7AddTimeE11LXtObjectID">
+<span id="_CPPv3N18ILxChannelModSetup7AddTimeE11LXtObjectID"></span><span id="_CPPv2N18ILxChannelModSetup7AddTimeE11LXtObjectID"></span><span id="ILxChannelModSetup::AddTime__LXtObjectID"></span><span class="target" id="class_i_lx_channel_mod_setup_1af425962d54369bc9bd1347bcc398fa4f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup7AddTimeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Channel modifiers that need to know the current evaluation time can use the following function to add time as an input to the modifier. This can be read back in the Evaluate function as a floating point value. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup9ReadValueE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N18ILxChannelModSetup9ReadValueE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N18ILxChannelModSetup9ReadValueE11LXtObjectIDPKcPPv"></span><span id="ILxChannelModSetup::ReadValue__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_channel_mod_setup_1aa8866d7e165ebca1cbb02d625733dc4c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup9ReadValueE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reading and writing is done by allocating Value and ValueArray interfaces from the setup object. These functions are called duirng the allocation stage for the operator, and return persistent objects for use in evaluation. This returns a single Value for a given input index. If there are multiple inputs linked to this channel only the first is returned. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup9ReadArrayE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N18ILxChannelModSetup9ReadArrayE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N18ILxChannelModSetup9ReadArrayE11LXtObjectIDPKcPPv"></span><span id="ILxChannelModSetup::ReadArray__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_channel_mod_setup_1ae12921b6642f2876f2a26560d018446e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadArray</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup9ReadArrayE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns multiple values for an input index as a ValueArray object. The individual input links can be examined and processed separately. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup13ReadTimeValueE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxChannelModSetup13ReadTimeValueE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxChannelModSetup13ReadTimeValueE11LXtObjectIDPPv"></span><span id="ILxChannelModSetup::ReadTimeValue__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_channel_mod_setup_1ad2e22f32a625609f7db65535b0ac546b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadTimeValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup13ReadTimeValueE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Time is read as a value as well. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup10WriteValueE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N18ILxChannelModSetup10WriteValueE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N18ILxChannelModSetup10WriteValueE11LXtObjectIDPKcPPv"></span><span id="ILxChannelModSetup::WriteValue__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_channel_mod_setup_1a9ab72c7a8cae69b32bba89b9b3437b27"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup10WriteValueE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns a single Value object for a given output index. There is no ability to individually address multiple outputs. If this is a matrix channel, then the value object can be queried for a Matrix interface and the output set using those methods. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxChannelModSetup13GetEvaluationE11LXtObjectID">
+<span id="_CPPv3N18ILxChannelModSetup13GetEvaluationE11LXtObjectID"></span><span id="_CPPv2N18ILxChannelModSetup13GetEvaluationE11LXtObjectID"></span><span id="ILxChannelModSetup::GetEvaluation__LXtObjectID"></span><span class="target" id="class_i_lx_channel_mod_setup_1a0579239877288a57985916614bd3d92e"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">GetEvaluation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxChannelModSetup13GetEvaluationE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>During channel binding the operator can also get a peek at the ILxEvalautionID for the modifier. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_channelui.html" class="btn btn-neutral float-right" title="Channelui" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_canvasitem.html" class="btn btn-neutral float-left" title="Canvasitem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_chanmod.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

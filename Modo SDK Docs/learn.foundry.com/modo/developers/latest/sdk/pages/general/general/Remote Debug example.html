@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/general/Remote Debug example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:51 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Remote Debug example &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Remote Debugging" href="Remote%20Debugging.html" />
+    <link rel="prev" title="Overview" href="Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#general-info">General Info</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Common%20Datatypes.html">Common Datatypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="File%20Formats.html">File Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="File%20Types.html">File Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Kits.html">Kits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Remote Debug example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Remote%20Debugging.html">Remote Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Using%20External%20Python%20Modules%20and%20the%20site-packages%20D">Using External Python Modules and the site-packages Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Remote Debug example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="remote-debug-example">
+<h1>Remote Debug example<a class="headerlink" href="#remote-debug-example" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># STL saver plug-in, written in Python</span>
+
+<span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+
+
+<span class="c1"># We&#39;re going to use a visitor to examine the polygons in the meshes. The Evaluate()</span>
+<span class="c1"># method is called for each polygon, and we read the vertex count from the accessor.</span>
+<span class="c1"># The result is just a count of triangles and non-triangles.</span>
+<span class="c1">#</span>
+<span class="k">class</span> <span class="nc">TriangleVisitor</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Visitor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_tri</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_not</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">set_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesh</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">vis_Evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_tri</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_not</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="c1"># Another visitor does the actual output. We need a point accessor to read out the</span>
+<span class="c1"># point positions for the polygon vertices. The lines will contain the output lines</span>
+<span class="c1"># if all is successful.</span>
+<span class="c1">#</span>
+<span class="k">class</span> <span class="nc">OutputVisitor</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Visitor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mon</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mon</span>   <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Monitor</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mon</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesh</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span>  <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">PointAccessor</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">vis_Evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="n">norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">Normal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;facet </span><span class="si">{0:.8f}</span><span class="s2"> </span><span class="si">{1:.8f}</span><span class="s2"> </span><span class="si">{2:.8f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">-</span><span class="n">norm</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">norm</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">norm</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  outer loop&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">Pos</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;    vertex </span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span> <span class="p">(</span><span class="o">-</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  end loop&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;end facet&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Our STL saver class, with verify and save methods.</span>
+<span class="c1">#</span>
+<span class="k">class</span> <span class="nc">STLSaver</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Saver</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene_svc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+
+        <span class="c1"># Mesh item type. We could look it up but don&#39;t have a symbol for that at the mo</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mesh_type</span> <span class="o">=</span> <span class="mi">4</span>      <span class="c1"># shoud be: scene_svc.LookupType(lx.symbol.sITYPE_MESH)</span>
+
+    <span class="c1"># Enumeration scans the mesh items and enumerates the polygons for each.</span>
+    <span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">enum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">vis</span><span class="p">):</span>
+        <span class="n">cread</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">s_ACTIONLAYER_SETUP</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">ItemCount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_type</span><span class="p">)):</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">ItemByIndex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mesh_type</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="s1">&#39;mesh&#39;</span><span class="p">)</span>      <span class="c1"># should be: lx.symbol.sICHAN_MESH_MESH</span>
+            <span class="n">mesh</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">cread</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+            <span class="n">vis</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+            <span class="n">vis</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">Enumerate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iMARK_ANY</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Verify presents errors for no triangles and warnings for a mix of triangles and not.</span>
+    <span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">sav_Verify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">msg</span>   <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Message</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="n">vis</span>   <span class="o">=</span> <span class="n">TriangleVisitor</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">enum</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">vis</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_tri</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">n_tri</span>
+
+        <span class="k">if</span> <span class="n">vis</span><span class="o">.</span><span class="n">n_tri</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">msg</span><span class="o">.</span><span class="n">SetCode</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">NOTFOUND</span><span class="p">)</span>
+            <span class="n">msg</span><span class="o">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="s1">&#39;common&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+            <span class="n">msg</span><span class="o">.</span><span class="n">SetArgumentString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Scene contains no triangles.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">vis</span><span class="o">.</span><span class="n">n_not</span><span class="p">:</span>
+            <span class="n">msg</span><span class="o">.</span><span class="n">SetCode</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="n">msg</span><span class="o">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="s1">&#39;common&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+            <span class="n">msg</span><span class="o">.</span><span class="n">SetArgumentString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Faces with more than 3 sides will be skipped.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Saving counts the triangles, and then scans them a second time to write</span>
+    <span class="c1"># them to the line buffer. Finally that&#39;s output to the STL text file.</span>
+    <span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">sav_Save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">monitor</span><span class="p">):</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">cread</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">s_ACTIONLAYER_SETUP</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="n">vis</span> <span class="o">=</span> <span class="n">TriangleVisitor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enum</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">vis</span><span class="p">)</span>
+
+        <span class="n">vis</span> <span class="o">=</span> <span class="n">OutputVisitor</span><span class="p">(</span><span class="n">monitor</span><span class="p">,</span> <span class="n">vis</span><span class="o">.</span><span class="n">n_tri</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enum</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">vis</span><span class="p">)</span>
+
+        <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vis</span><span class="o">.</span><span class="n">lines</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="c1"># Bless the class to make it a first-class saver.</span>
+<span class="c1">#</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sSRV_USERNAME</span><span class="p">:</span> <span class="s2">&quot;Stereolithograhpy STL&quot;</span><span class="p">,</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sSAV_OUTCLASS</span><span class="p">:</span>  <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">a_SCENE</span><span class="p">,</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sSAV_DOSTYPE</span> <span class="p">:</span> <span class="s2">&quot;STL&quot;</span>
+<span class="p">}</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">STLSaver</span><span class="p">,</span> <span class="s2">&quot;pySTLScene&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Remote%20Debugging.html" class="btn btn-neutral float-right" title="Remote Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/general/Remote Debug example.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:51 GMT -->
+</html>

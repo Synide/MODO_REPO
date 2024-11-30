@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Form Filtering.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:59 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Form Filtering &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Form System" href="Form%20System.html" />
+    <link rel="prev" title="Form Editor" href="Form%20Editor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ui.html">User Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="App.undoSuspend.html">App.undoSuspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Argument%20Types.html">Argument Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Collapsable%20and%20Hideable%20Viewports.html">Collapsable and Hideable Viewports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Dialog%20Formatting.html">Command Dialog Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Help.html">Command Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20History%20Viewport.html">Command History Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20A%20Custom%20Form.html">Create A Custom Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20Layouts.html">Creating Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Defining%20Item%20Categories.html">Defining Item Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dialog%20Commands.html">Dialog Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Event%20Log%20Viewport.html">Event Log Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Categories%20and%20Groups.html">Form Categories and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Editor.html">Form Editor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Form Filtering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filter-presets">Filter Presets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-use">Basic Use</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boolean-query-arguments">Boolean Query Arguments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20System.html">Form System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help%20URLs.html">Help URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icon%20Resources.html">Icon Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layout%20Windows.html">Layout Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MODO%20Projects.html">MODO Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageService%20Reference.html">MessageService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Markup.html">Modo Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface%20and%20Plug-Ins.html">User Interface and Plug-Ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Values.html">User Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ui.html">User Interface</a> &raquo;</li>
+        
+      <li>Form Filtering</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="form-filtering">
+<h1>Form Filtering<a class="headerlink" href="#form-filtering" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#filter-presets" id="id1">Filter Presets</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-use" id="id2">Basic Use</a></p></li>
+<li><p><a class="reference internal" href="#boolean-query-arguments" id="id3">Boolean Query Arguments</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Filters make sure that our form is visible only when a specific action occurs, such as an item type being selected, a tool being active, or a command being enabled.  For instance, selecting a specific item type can allow a form of properties for that item type to show as a sub-form in the standard “Item Properties” form, but be hidden anytime an item of that type is not selected.</p>
+<div class="section" id="filter-presets">
+<h2><a class="toc-backref" href="#id1">Filter Presets</a><a class="headerlink" href="#filter-presets" title="Permalink to this headline">¶</a></h2>
+<p>Filter presets can simply be a copy of the following, replacing the <em>prefs/fileio/wavefrontio</em> strings with your own filter category’s strings.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Filters&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Preset&quot;</span> <span class="na">key=</span><span class="s">&quot;prefs/fileio/wavefrontio:filterPreset&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Wavefront I/O<span class="nt">&lt;/atom&gt;</span>
+                        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Category&quot;</span><span class="nt">&gt;</span>20385740002:filterCat<span class="nt">&lt;/atom&gt;</span>
+                        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Enable&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/atom&gt;</span>
+                        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Node&quot;</span><span class="nt">&gt;</span>1 .group 0 <span class="ni">&amp;quot;&amp;quot;</span><span class="nt">&lt;/list&gt;</span>
+                        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Node&quot;</span><span class="nt">&gt;</span>1 prefType fileio/wavefrontio<span class="nt">&lt;/list&gt;</span>
+                        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Node&quot;</span><span class="nt">&gt;</span>-1 .endgroup <span class="nt">&lt;/list&gt;</span>
+                <span class="nt">&lt;/hash&gt;</span>
+        <span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Most of this is fairly esoteric; the filter system is an older, limited mechanism that is not well documented and is only used in special circumstances.   It’s primary use is to limit which forms are visible in Preferences, Item Properties, Tool Properties and similar Form Views.</p>
+<ul class="simple">
+<li><p><strong>Preset</strong> is your preset’s hash.  This can be anything you want, as long as it is unique and matches that of the <em>Filter</em> atom in your form.</p></li>
+<li><p><strong>Name</strong> is the name of the preset.  Although this isn’t generally shown, it’s good to have.</p></li>
+<li><p><strong>Category</strong> is used to group forms in the legacy Filter Editor.  The hash <em>0385740002:filterCat</em> represents the Preferences group, so you can just use that.</p></li>
+<li><p><strong>Enable</strong> is set to 1 if the filter is enabled, which it should be.</p></li>
+<li><p><strong>Node</strong> entries are used to build a hierarchy of filter criteria.  The important part here is to change the “fileio/wavefrontio” bit to match the Preference Category you created earlier, which will cause the <em>prefType</em> filter to test true when that Preference Category is selected.  Everything else should remain the same.</p></li>
+</ul>
+<p>In addition to using filter presets, a form’s visibility can be determined by a command’s enable state.  Commands-as-filters provide much more flexibility, as the ancient filter preset system isn’t (and won’t be) exposed through the SDK, and often commands already exist for toggling a set of controls on and off.</p>
+<div class="section" id="basic-use">
+<h3><a class="toc-backref" href="#id2">Basic Use</a><a class="headerlink" href="#basic-use" title="Permalink to this headline">¶</a></h3>
+<p>Commands-as-filters are set up from the ‘’Filter Command’’ on the form in Form Ed.  It is stored in the form’s config state as a <em>FilterCommand</em> atom.</p>
+<p>If the command is enabled, the form is visible; otherwise, it is hidden.  Any command can be used as the filter, but if the command has a notifier then the form will automatically show and hide as the command’s state changes.</p>
+</div>
+<div class="section" id="boolean-query-arguments">
+<h3><a class="toc-backref" href="#id3">Boolean Query Arguments</a><a class="headerlink" href="#boolean-query-arguments" title="Permalink to this headline">¶</a></h3>
+<p>The command can also have a boolean argument marked for query.  In that case, both:</p>
+<ul class="simple">
+<li><p>The command must both be enabled, and</p></li>
+<li><p>One of the queried values returned must be true</p></li>
+</ul>
+<p>If the command is disabled or all of the queried values are false, the form is hidden.  This only works with boolean-style arguments; if any other kind of argument is marked then only the enable state will be used.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Form%20System.html" class="btn btn-neutral float-right" title="Form System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Form%20Editor.html" class="btn btn-neutral float-left" title="Form Editor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Form Filtering.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:59 GMT -->
+</html>

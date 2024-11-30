@@ -1,0 +1,762 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_draw.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Draw &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Drawover" href="lxd_drawover.html" />
+    <link rel="prev" title="Dirbrowse" href="lxd_dirbrowse.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Draw</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxview">ILxView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxstrokedraw">ILxStrokeDraw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxglmaterial">ILxGLMaterial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxglimage">ILxGLImage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Draw</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="draw">
+<h1>Draw<a class="headerlink" href="#draw" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxview" id="id1">ILxView</a></p></li>
+<li><p><a class="reference internal" href="#ilxstrokedraw" id="id2">ILxStrokeDraw</a></p></li>
+<li><p><a class="reference internal" href="#ilxglmaterial" id="id3">ILxGLMaterial</a></p></li>
+<li><p><a class="reference internal" href="#ilxglimage" id="id4">ILxGLImage</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiVIEWv_PIXEL">
+<span class="target" id="lxd__draw_8hpp_1ac031a4a424a905956e18fcaf7c6f8389"></span><code class="sig-name descname">LXiVIEWv_PIXEL</code><a class="headerlink" href="#c.LXiVIEWv_PIXEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The view type is the basic kind of projection to be used, and determines which attributes are available.<ul class="simple">
+<li><p>PIXEL simply maps 2D model coordinates as if they were pixels in the pane. The upper-left is the origin and values increase downward and to the right, just like in windows.</p></li>
+<li><p>SCREEN maps 2D coordinates to the screen using a simple -1 to 1 mapping in X and Y. If the ABSOLUTE flag is set, then the mapping goes from -1 to 1 in whichever axis is smaller, and distances in X and Y are undistorted. The mapping can be altered by changing the center or the scale.</p></li>
+<li><p>ORTHOGONAL maps 3D coordinates by projecting along one of the cardinal axes. The center and scale affect the transform, and model space distances are always undistorted. If the ABSOLUTE flag is set, then the scale will be an absolute conversion factor from model space to screen space (e.g. meters per pixel) rather than being relative to the viewport size.</p></li>
+<li><p>PERSPECTIVE maps 3D coordinates using a perspective transformation. The projection gets its rotation from the view matrix, but other than that this is identical to the ORTHOGONAL view type.</p></li>
+<li><p>CAMERA maps 3D coordinates as if they were viewed using a camera. The center and matrix set the camera’s location and view direction, and the scale sets the zoom factor. The ABSOLUTE flag has no effect.</p></li>
+<li><p>GRAPH maps 2D coordinates to an ordinate and abscissa. This is the only view which is non-uniform and has types and scaling that can be different for the two axes.</p></li>
+<li><p>MASTER is a special type that is just a collection of view parameters. Other real views can be slaved to a master view to force multiple views to alter their state synchronously. Masters can be created without an associated pane. The ABSOLUTE flag has no effect. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiVIEWv_SCREEN</p></li>
+<li><p>LXiVIEWv_ORTHOGONAL</p></li>
+<li><p>LXiVIEWv_PERSPECTIVE</p></li>
+<li><p>LXiVIEWv_CAMERA</p></li>
+<li><p>LXiVIEWv_GRAPH</p></li>
+<li><p>LXiVIEWv_MASTER</p></li>
+<li><p>LXiVIEWf_ABSOLUTE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiORTHOv_TOP">
+<span class="target" id="lxd__draw_8hpp_1af40df0f07d3367431a1a4337e1fe4cec"></span><code class="sig-name descname">LXiORTHOv_TOP</code><a class="headerlink" href="#c.LXiORTHOv_TOP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The index of the view orientation is one of the six values defined here. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiORTHOv_BOTTOM</p></li>
+<li><p>LXiORTHOv_BACK</p></li>
+<li><p>LXiORTHOv_FRONT</p></li>
+<li><p>LXiORTHOv_RIGHT</p></li>
+<li><p>LXiORTHOv_LEFT</p></li>
+</ul>
+<div class="section" id="ilxview">
+<h2><a class="toc-backref" href="#id1">ILxView</a><a class="headerlink" href="#ilxview" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv47ILxView">
+<span id="_CPPv37ILxView"></span><span id="_CPPv27ILxView"></span><span id="ILxView"></span><span class="target" id="class_i_lx_view"></span><em class="property">class </em><code class="sig-name descname">ILxView</code><a class="headerlink" href="#_CPPv47ILxView" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The attributes of the view affect the transform. Attributes can be read or set in variety of ways, and altering view attributes will cause the pane to redraw. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N7ILxView4TypeE11LXtObjectID">
+<span id="_CPPv3N7ILxView4TypeE11LXtObjectID"></span><span id="_CPPv2N7ILxView4TypeE11LXtObjectID"></span><span id="ILxView::Type__LXtObjectID"></span><span class="target" id="class_i_lx_view_1a95b8f3677785ee7e04178f437d09663f"></span>int <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView4TypeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>Type This method returns the type of the view.</p></li>
+<li><p>Center This method returns the center vector of the view.</p></li>
+<li><p>Scale This method returns the scale of the view.</p></li>
+<li><p>PixelScale The view can also be queried for the approximate mapping to the screen. This returns the distance in model space that corresponds to one pixel of screen space.</p></li>
+<li><p>Aspect Aspect affects only the absolute SCREEN view type and it returns the width of the mapped port relative to the height.</p></li>
+<li><p>Matrix</p></li>
+<li><p>InvMatrix The matrix is used to rotate perspective and camera views, and it reads the matrix. The inverse matrix can also be read.</p></li>
+<li><p>Ortho Orthogonal views are defined by a view direction and spin, which is 0 to 3 90-degree turns around the center point to orient the view on screen. This method reads the current index and spin.</p></li>
+<li><p>Axis The orthogonal views all have an axis perpendicular to the screen which can be derived from the view indices defined above. For convenience, this function returns that axis (0==X, 1==Y, 2==Z) if possible, or returns -1 for non-orthogonal views.</p></li>
+<li><p>Zoom Camera views have a zoom factor which is separate from the view scale. It is equivalent to the focal length divided by half the aperture width. In non-oriented perspective views the zoom is used to control the perspective distortion.</p></li>
+<li><p>Focal This function returns the focal length and focal distance for camera views.</p></li>
+<li><p>ToScreen This method takes a 3D model coordinate as input and returns the X and Y screen position relative to the pane. The first top-left pixel on the GL pane is (0, 0). It returns false if the point is not visible in the viewport.</p></li>
+<li><p>ToScreen3 Another form can compute 3D screen coordinates, where Z is the view-depth which increases as the point moves behind other points.</p></li>
+<li><p>ToModel This method does the reverse, taking a screen position and returning the 3D model coordinate under it. Since the model vector is underdetermined, the vector returned is the one model-space position at that point on the screen that is closest to the initial value of the vector. If ‘snap’ is true, then the return value will be snapped to the nearest nice location given by the grid snap for the view.</p></li>
+<li><p>ScreenNormals This returns the three axes normal to the given model position in screen space. The axes are unit vectors that point right, up, and out, respectively. The function raises an assertion if the transformation is singular for any reason.</p></li>
+<li><p>EyeVector This returns a unit eye vector for the given point. This is the direction of gaze in model coordinates from the virtual eye point to the given model position. For perspective views this will focus at a specific point in space, but for orthogonal view it’ll be a uniform direction for all target points. The function return value is the magnitude of the eye vector (before normalization, naturally).</p></li>
+<li><p>WorkPlane Returns the axis of the workplane and sets the center.</p></li>
+<li><p>GridSize Returns the size of the grid in meters for this view.</p></li>
+<li><p>GridSnap Returns the size of the grid snap for this view, or 0.0 for NONE. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView6CenterE11LXtObjectID9LXtVector">
+<span id="_CPPv3N7ILxView6CenterE11LXtObjectID9LXtVector"></span><span id="_CPPv2N7ILxView6CenterE11LXtObjectID9LXtVector"></span><span id="ILxView::Center__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_view_1aaaca2264c1bd051c5e3320a64ddc8be9"></span>void <code class="sig-name descname">Center</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>center</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView6CenterE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView5ScaleE11LXtObjectID">
+<span id="_CPPv3N7ILxView5ScaleE11LXtObjectID"></span><span id="_CPPv2N7ILxView5ScaleE11LXtObjectID"></span><span id="ILxView::Scale__LXtObjectID"></span><span class="target" id="class_i_lx_view_1ab8dcde97a442b5c45f7c799b6ca204fc"></span>double <code class="sig-name descname">Scale</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView5ScaleE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView10PixelScaleE11LXtObjectID">
+<span id="_CPPv3N7ILxView10PixelScaleE11LXtObjectID"></span><span id="_CPPv2N7ILxView10PixelScaleE11LXtObjectID"></span><span id="ILxView::PixelScale__LXtObjectID"></span><span class="target" id="class_i_lx_view_1a3bbb19270e59404003fc38202dc8cbb9"></span>double <code class="sig-name descname">PixelScale</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView10PixelScaleE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView6AspectE11LXtObjectID">
+<span id="_CPPv3N7ILxView6AspectE11LXtObjectID"></span><span id="_CPPv2N7ILxView6AspectE11LXtObjectID"></span><span id="ILxView::Aspect__LXtObjectID"></span><span class="target" id="class_i_lx_view_1a9da81dc13ffb9303deba7ea8cb9f50a5"></span>double <code class="sig-name descname">Aspect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView6AspectE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView6MatrixE11LXtObjectID9LXtMatrix">
+<span id="_CPPv3N7ILxView6MatrixE11LXtObjectID9LXtMatrix"></span><span id="_CPPv2N7ILxView6MatrixE11LXtObjectID9LXtMatrix"></span><span id="ILxView::Matrix__LXtObjectID.LXtMatrix"></span><span class="target" id="class_i_lx_view_1ad11ee3a38bcc59e050bdffd33aeb7173"></span>void <code class="sig-name descname">Matrix</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView6MatrixE11LXtObjectID9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView9InvMatrixE11LXtObjectID9LXtMatrix">
+<span id="_CPPv3N7ILxView9InvMatrixE11LXtObjectID9LXtMatrix"></span><span id="_CPPv2N7ILxView9InvMatrixE11LXtObjectID9LXtMatrix"></span><span id="ILxView::InvMatrix__LXtObjectID.LXtMatrix"></span><span class="target" id="class_i_lx_view_1a75e003e66dc1fe589e224bc796a51c0b"></span>void <code class="sig-name descname">InvMatrix</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView9InvMatrixE11LXtObjectID9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView5OrthoE11LXtObjectIDPiPi">
+<span id="_CPPv3N7ILxView5OrthoE11LXtObjectIDPiPi"></span><span id="_CPPv2N7ILxView5OrthoE11LXtObjectIDPiPi"></span><span id="ILxView::Ortho__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_view_1aa77677b9540268ffc14b7d352f73ed6e"></span>void <code class="sig-name descname">Ortho</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>index</em>, int *<em>spin</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView5OrthoE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView4AxisE11LXtObjectID">
+<span id="_CPPv3N7ILxView4AxisE11LXtObjectID"></span><span id="_CPPv2N7ILxView4AxisE11LXtObjectID"></span><span id="ILxView::Axis__LXtObjectID"></span><span class="target" id="class_i_lx_view_1ac9d5aec057fdeedc8836bf8a86f7b721"></span>int <code class="sig-name descname">Axis</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView4AxisE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView4ZoomE11LXtObjectID">
+<span id="_CPPv3N7ILxView4ZoomE11LXtObjectID"></span><span id="_CPPv2N7ILxView4ZoomE11LXtObjectID"></span><span id="ILxView::Zoom__LXtObjectID"></span><span class="target" id="class_i_lx_view_1aa926c8ab14d70d7b9004ac8582cfc937"></span>double <code class="sig-name descname">Zoom</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView4ZoomE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView5FocalE11LXtObjectIDPdPd">
+<span id="_CPPv3N7ILxView5FocalE11LXtObjectIDPdPd"></span><span id="_CPPv2N7ILxView5FocalE11LXtObjectIDPdPd"></span><span id="ILxView::Focal__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_view_1ab3960da336a488689ab6a914d3832c58"></span>void <code class="sig-name descname">Focal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>flen</em>, double *<em>fdist</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView5FocalE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView8ToScreenE11LXtObjectIDK9LXtVectorPdPd">
+<span id="_CPPv3N7ILxView8ToScreenE11LXtObjectIDK9LXtVectorPdPd"></span><span id="_CPPv2N7ILxView8ToScreenE11LXtObjectIDK9LXtVectorPdPd"></span><span id="ILxView::ToScreen__LXtObjectID.LXtVectorC.doubleP.doubleP"></span><span class="target" id="class_i_lx_view_1ae49843d827aeda54e07aaacc3e3fa55f"></span>int <code class="sig-name descname">ToScreen</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, double *<em>x</em>, double *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView8ToScreenE11LXtObjectIDK9LXtVectorPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView9ToScreen3E11LXtObjectIDK9LXtVector9LXtVector">
+<span id="_CPPv3N7ILxView9ToScreen3E11LXtObjectIDK9LXtVector9LXtVector"></span><span id="_CPPv2N7ILxView9ToScreen3E11LXtObjectIDK9LXtVector9LXtVector"></span><span id="ILxView::ToScreen3__LXtObjectID.LXtVectorC.LXtVector"></span><span class="target" id="class_i_lx_view_1a5ed7b328d5263fe1368742eda113067b"></span>int <code class="sig-name descname">ToScreen3</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>vp</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView9ToScreen3E11LXtObjectIDK9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView7ToModelE11LXtObjectIDii9LXtVectori">
+<span id="_CPPv3N7ILxView7ToModelE11LXtObjectIDii9LXtVectori"></span><span id="_CPPv2N7ILxView7ToModelE11LXtObjectIDii9LXtVectori"></span><span id="ILxView::ToModel__LXtObjectID.i.i.LXtVector.i"></span><span class="target" id="class_i_lx_view_1a958ff41e18dbceb2de245b406c781e5a"></span>void <code class="sig-name descname">ToModel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>x</em>, int <em>y</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, int <em>snap</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView7ToModelE11LXtObjectIDii9LXtVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView13ScreenNormalsE11LXtObjectIDK9LXtVector9LXtVector9LXtVector9LXtVector">
+<span id="_CPPv3N7ILxView13ScreenNormalsE11LXtObjectIDK9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="_CPPv2N7ILxView13ScreenNormalsE11LXtObjectIDK9LXtVector9LXtVector9LXtVector9LXtVector"></span><span id="ILxView::ScreenNormals__LXtObjectID.LXtVectorC.LXtVector.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_view_1a0042883a827bc6bd5cd6ae4e92610684"></span>void <code class="sig-name descname">ScreenNormals</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>ax</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>ay</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>az</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView13ScreenNormalsE11LXtObjectIDK9LXtVector9LXtVector9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView9EyeVectorE11LXtObjectIDK9LXtVector9LXtVector">
+<span id="_CPPv3N7ILxView9EyeVectorE11LXtObjectIDK9LXtVector9LXtVector"></span><span id="_CPPv2N7ILxView9EyeVectorE11LXtObjectIDK9LXtVector9LXtVector"></span><span id="ILxView::EyeVector__LXtObjectID.LXtVectorC.LXtVector"></span><span class="target" id="class_i_lx_view_1acf8e33f34515364cabf7981f8aa125c1"></span>double <code class="sig-name descname">EyeVector</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>eye</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView9EyeVectorE11LXtObjectIDK9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView10DimensionsE11LXtObjectIDPiPi">
+<span id="_CPPv3N7ILxView10DimensionsE11LXtObjectIDPiPi"></span><span id="_CPPv2N7ILxView10DimensionsE11LXtObjectIDPiPi"></span><span id="ILxView::Dimensions__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_view_1a07bc88525c427a81829f29146e3dead1"></span>void <code class="sig-name descname">Dimensions</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>w</em>, int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView10DimensionsE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView9WorkPlaneE11LXtObjectID9LXtVector">
+<span id="_CPPv3N7ILxView9WorkPlaneE11LXtObjectID9LXtVector"></span><span id="_CPPv2N7ILxView9WorkPlaneE11LXtObjectID9LXtVector"></span><span id="ILxView::WorkPlane__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_view_1a749c3b0999ed4e1d9dc3c54944a4f646"></span>int <code class="sig-name descname">WorkPlane</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>center</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView9WorkPlaneE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView8GridSizeE11LXtObjectID">
+<span id="_CPPv3N7ILxView8GridSizeE11LXtObjectID"></span><span id="_CPPv2N7ILxView8GridSizeE11LXtObjectID"></span><span id="ILxView::GridSize__LXtObjectID"></span><span class="target" id="class_i_lx_view_1a9c4b0728564e25de7cec40d9a542ec6a"></span>double <code class="sig-name descname">GridSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView8GridSizeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxView8GridSnapE11LXtObjectID">
+<span id="_CPPv3N7ILxView8GridSnapE11LXtObjectID"></span><span id="_CPPv2N7ILxView8GridSnapE11LXtObjectID"></span><span id="ILxView::GridSnap__LXtObjectID"></span><span class="target" id="class_i_lx_view_1a82c1d5831f225fe5e196ed48ccf8da9a"></span>double <code class="sig-name descname">GridSnap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxView8GridSnapE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiSTROKE_NONE">
+<span class="target" id="lxd__draw_8hpp_1ab482ff690a7a6653cd6c674904713210"></span><code class="sig-name descname">LXiSTROKE_NONE</code><a class="headerlink" href="#c.LXiSTROKE_NONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The stroke modes are similar to OpenGL’s own geometric primitives, with a few differences. They basically determine what kind of shape is drawn from a series of “vertex” calls.<ul class="simple">
+<li><p>NONE This mode allows putting down vertices without drawing anything. Useful for setting anchor points for relative moves.</p></li>
+<li><p>POINTS Same as OpenGL’s GL_POINTS primitive. Each vertex drops a spot on the screen.</p></li>
+<li><p>LINES Same as OpenGL’s GL_LINES primitive. Each pair of vertices makes a separate line segment.</p></li>
+<li><p>LINE_STRIP Same as OpenGL’s GL_LINE_STRIP primitive. Each vertex draws a line from the previous one.</p></li>
+<li><p>LINE_LOOP Same as OpenGL’s GL_LINE_LOOP primitive. Acts the same as LINE_STRIP except that the first and last vertices are joined when the mode is changed.</p></li>
+<li><p>TRIANGLES Same as OpenGL’s GL_TRIANGLES primitive. Draws a series of filled, disconnected triangles from triples of vertices.</p></li>
+<li><p>QUADS Same as OpenGL’s GL_QUADS primitive. Draws a series of filled, disconnected quadrilaterals from groups of four vertices.</p></li>
+<li><p>BEZIERS Draws cubic Bezier spline curves. The first vertex is the start of the curve, and the next three are treated as the control points and the end point, and the end point becomes the start for the next the vertices.</p></li>
+<li><p>ARCS Draws a series of disconnected arcs from triples of vertices. The first vertex is the center of the circle, and the next two vertices define the start and end of the curve. This will actually draw ellipses if necessary to make the endpoints right.</p></li>
+<li><p>CIRCLES Draws a series of disconnected circles from pairs of vertices. The first vertex is the center of the circle, and the second vertex defines the normal axis for the circle, with its length being the radius.</p></li>
+<li><p>BOXES Draws a series of disconnected boxes from pairs of vertices which are its two far corners. The box is a hollow wireframe.</p></li>
+<li><p>FRONT_BOXES Like BOXES except that only the front faces of the box are drawn. This makes for a nicer way to draw a box with an obvious orientation.</p></li>
+<li><p>TEXT Draws the current text string at each vertex location. The text string and justification are set with a special function.</p></li>
+<li><p>FRONT_LINE_LOOP Same as OpenGL’s GL_POLYGON primitive, but with the polygon mode set to GL_LINE, front face vertex order set to GL_CW, and GL_CULL_FACE enabled. Draws a wireframe polygon if its vertices appear in clockwise order in the viewport. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiSTROKE_POINTS</p></li>
+<li><p>LXiSTROKE_LINES</p></li>
+<li><p>LXiSTROKE_LINE_STRIP</p></li>
+<li><p>LXiSTROKE_LINE_LOOP</p></li>
+<li><p>LXiSTROKE_TRIANGLES</p></li>
+<li><p>LXiSTROKE_QUADS</p></li>
+<li><p>LXiSTROKE_BEZIERS</p></li>
+<li><p>LXiSTROKE_ARCS</p></li>
+<li><p>LXiSTROKE_CIRCLES</p></li>
+<li><p>LXiSTROKE_BOXES</p></li>
+<li><p>LXiSTROKE_FRONT_BOXES</p></li>
+<li><p>LXiSTROKE_TEXT</p></li>
+<li><p>LXiSTROKE_FRONT_LINE_LOOP</p></li>
+<li><p>LXiSTROKE_ABSOLUTE</p></li>
+<li><p>LXiSTROKE_RELATIVE</p></li>
+<li><p>LXiSTROKE_SCREEN</p></li>
+<li><p>LXiSTROKE_REL_SCREEN</p></li>
+<li><p>LXiHITPART_INVIS</p></li>
+<li><p>LXiTEXT_LEFT</p></li>
+<li><p>LXiTEXT_CENTER</p></li>
+<li><p>LXiTEXT_RIGHT</p></li>
+<li><p>LXiLPAT_DOTS</p></li>
+<li><p>LXiLPAT_DOTSLONG</p></li>
+<li><p>LXiLPAT_DASH</p></li>
+<li><p>LXiLPAT_DASHLONG</p></li>
+<li><p>LXiLPAT_DASHXLONG</p></li>
+<li><p>LXiLPAT_DOTDASH</p></li>
+<li><p>LXiTEXTURE_CAMERA</p></li>
+<li><p>LXiTEXTURE_NONE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxstrokedraw">
+<h2><a class="toc-backref" href="#id2">ILxStrokeDraw</a><a class="headerlink" href="#ilxstrokedraw" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxStrokeDraw">
+<span id="_CPPv313ILxStrokeDraw"></span><span id="_CPPv213ILxStrokeDraw"></span><span id="ILxStrokeDraw"></span><span class="target" id="class_i_lx_stroke_draw"></span><em class="property">class </em><code class="sig-name descname">ILxStrokeDraw</code><a class="headerlink" href="#_CPPv413ILxStrokeDraw" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw5BeginE11LXtObjectIDiK9LXtVectord">
+<span id="_CPPv3N13ILxStrokeDraw5BeginE11LXtObjectIDiK9LXtVectord"></span><span id="_CPPv2N13ILxStrokeDraw5BeginE11LXtObjectIDiK9LXtVectord"></span><span id="ILxStrokeDraw::Begin__LXtObjectID.i.LXtVectorC.double"></span><span class="target" id="class_i_lx_stroke_draw_1ac22d2d9843711672a90e759585325ae3"></span>void <code class="sig-name descname">Begin</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>color</em>, double <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw5BeginE11LXtObjectIDiK9LXtVectord" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw6BeginWE11LXtObjectIDiK9LXtVectordd">
+<span id="_CPPv3N13ILxStrokeDraw6BeginWE11LXtObjectIDiK9LXtVectordd"></span><span id="_CPPv2N13ILxStrokeDraw6BeginWE11LXtObjectIDiK9LXtVectordd"></span><span id="ILxStrokeDraw::BeginW__LXtObjectID.i.LXtVectorC.double.double"></span><span class="target" id="class_i_lx_stroke_draw_1ab24893b234be94689dc965f8dbd19adb"></span>void <code class="sig-name descname">BeginW</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>color</em>, double <em>alpha</em>, double <em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw6BeginWE11LXtObjectIDiK9LXtVectordd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw7BeginWDE11LXtObjectIDiK9LXtVectorddi">
+<span id="_CPPv3N13ILxStrokeDraw7BeginWDE11LXtObjectIDiK9LXtVectorddi"></span><span id="_CPPv2N13ILxStrokeDraw7BeginWDE11LXtObjectIDiK9LXtVectorddi"></span><span id="ILxStrokeDraw::BeginWD__LXtObjectID.i.LXtVectorC.double.double.i"></span><span class="target" id="class_i_lx_stroke_draw_1a1412ed80a9403731efbf0fe912f55b76"></span>void <code class="sig-name descname">BeginWD</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>color</em>, double <em>alpha</em>, double <em>width</em>, int <em>dashPattern</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw7BeginWDE11LXtObjectIDiK9LXtVectorddi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw6VertexE11LXtObjectIDK9LXtVectori">
+<span id="_CPPv3N13ILxStrokeDraw6VertexE11LXtObjectIDK9LXtVectori"></span><span id="_CPPv2N13ILxStrokeDraw6VertexE11LXtObjectIDK9LXtVectori"></span><span id="ILxStrokeDraw::Vertex__LXtObjectID.LXtVectorC.i"></span><span class="target" id="class_i_lx_stroke_draw_1a98e356279a456a94d76b361300999a68"></span>void <code class="sig-name descname">Vertex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw6VertexE11LXtObjectIDK9LXtVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw7Vertex3E11LXtObjectIDdddi">
+<span id="_CPPv3N13ILxStrokeDraw7Vertex3E11LXtObjectIDdddi"></span><span id="_CPPv2N13ILxStrokeDraw7Vertex3E11LXtObjectIDdddi"></span><span id="ILxStrokeDraw::Vertex3__LXtObjectID.double.double.double.i"></span><span class="target" id="class_i_lx_stroke_draw_1a04f019baf68efad581337480df43adb6"></span>void <code class="sig-name descname">Vertex3</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em>, double <em>z</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw7Vertex3E11LXtObjectIDdddi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw9TextureUVE11LXtObjectIDdd">
+<span id="_CPPv3N13ILxStrokeDraw9TextureUVE11LXtObjectIDdd"></span><span id="_CPPv2N13ILxStrokeDraw9TextureUVE11LXtObjectIDdd"></span><span id="ILxStrokeDraw::TextureUV__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_stroke_draw_1a35ad1b246b333da6125c035ab3634486"></span>void <code class="sig-name descname">TextureUV</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>u</em>, double <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw9TextureUVE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4TextE11LXtObjectIDPKci">
+<span id="_CPPv3N13ILxStrokeDraw4TextE11LXtObjectIDPKci"></span><span id="_CPPv2N13ILxStrokeDraw4TextE11LXtObjectIDPKci"></span><span id="ILxStrokeDraw::Text__LXtObjectID.cCP.i"></span><span class="target" id="class_i_lx_stroke_draw_1acd826c201c50d46632c96457350bb466"></span>void <code class="sig-name descname">Text</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>text</em>, int <em>just</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4TextE11LXtObjectIDPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw13PushTransformE11LXtObjectIDK9LXtVectorK9LXtMatrix">
+<span id="_CPPv3N13ILxStrokeDraw13PushTransformE11LXtObjectIDK9LXtVectorK9LXtMatrix"></span><span id="_CPPv2N13ILxStrokeDraw13PushTransformE11LXtObjectIDK9LXtVectorK9LXtMatrix"></span><span id="ILxStrokeDraw::PushTransform__LXtObjectID.LXtVectorC.LXtMatrixC"></span><span class="target" id="class_i_lx_stroke_draw_1a45d19f5c55a34c49b114e633ccb2fd18"></span>void <code class="sig-name descname">PushTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>v</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>m</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw13PushTransformE11LXtObjectIDK9LXtVectorK9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw12PopTransformE11LXtObjectID">
+<span id="_CPPv3N13ILxStrokeDraw12PopTransformE11LXtObjectID"></span><span id="_CPPv2N13ILxStrokeDraw12PopTransformE11LXtObjectID"></span><span id="ILxStrokeDraw::PopTransform__LXtObjectID"></span><span class="target" id="class_i_lx_stroke_draw_1a30290eab462111daab4bf905a37b17aa"></span>void <code class="sig-name descname">PopTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw12PopTransformE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw7SetPartE11LXtObjectIDi">
+<span id="_CPPv3N13ILxStrokeDraw7SetPartE11LXtObjectIDi"></span><span id="_CPPv2N13ILxStrokeDraw7SetPartE11LXtObjectIDi"></span><span id="ILxStrokeDraw::SetPart__LXtObjectID.i"></span><span class="target" id="class_i_lx_stroke_draw_1a0ef64e7b0007469658188954d8a4fc93"></span>void <code class="sig-name descname">SetPart</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>part</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw7SetPartE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw11BeginPointsE11LXtObjectIDdK9LXtVectord">
+<span id="_CPPv3N13ILxStrokeDraw11BeginPointsE11LXtObjectIDdK9LXtVectord"></span><span id="_CPPv2N13ILxStrokeDraw11BeginPointsE11LXtObjectIDdK9LXtVectord"></span><span id="ILxStrokeDraw::BeginPoints__LXtObjectID.double.LXtVectorC.double"></span><span class="target" id="class_i_lx_stroke_draw_1a1c922e992717320f9b8c5fb08531a6fb"></span>void <code class="sig-name descname">BeginPoints</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>size</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>color</em>, double <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw11BeginPointsE11LXtObjectIDdK9LXtVectord" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw5ImageE11LXtObjectIDii">
+<span id="_CPPv3N13ILxStrokeDraw5ImageE11LXtObjectIDii"></span><span id="_CPPv2N13ILxStrokeDraw5ImageE11LXtObjectIDii"></span><span id="ILxStrokeDraw::Image__LXtObjectID.i.i"></span><span class="target" id="class_i_lx_stroke_draw_1a7c32ff027d897cbe3f17b7df199b515c"></span>void <code class="sig-name descname">Image</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>texID</em>, int <em>just</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw5ImageE11LXtObjectIDii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw13BeginPolygonsE11LXtObjectIDiK9LXtVectorddddii">
+<span id="_CPPv3N13ILxStrokeDraw13BeginPolygonsE11LXtObjectIDiK9LXtVectorddddii"></span><span id="_CPPv2N13ILxStrokeDraw13BeginPolygonsE11LXtObjectIDiK9LXtVectorddddii"></span><span id="ILxStrokeDraw::BeginPolygons__LXtObjectID.i.LXtVectorC.double.double.double.double.i.i"></span><span class="target" id="class_i_lx_stroke_draw_1a6cbcde4d69973056bc8672889d861924"></span>void <code class="sig-name descname">BeginPolygons</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>color</em>, double <em>alpha</em>, double <em>stip</em>, double <em>offsetX</em>, double <em>offsetY</em>, int <em>fill</em>, int <em>cull</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw13BeginPolygonsE11LXtObjectIDiK9LXtVectorddddii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw6BeginIE11LXtObjectID11LXtObjectIDiK9LXtVectord">
+<span id="_CPPv3N13ILxStrokeDraw6BeginIE11LXtObjectID11LXtObjectIDiK9LXtVectord"></span><span id="_CPPv2N13ILxStrokeDraw6BeginIE11LXtObjectID11LXtObjectIDiK9LXtVectord"></span><span id="ILxStrokeDraw::BeginI__LXtObjectID.LXtObjectID.i.LXtVectorC.double"></span><span class="target" id="class_i_lx_stroke_draw_1a5a6ec95597466670fb58db3731c9d021"></span>void <code class="sig-name descname">BeginI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>texture</em>, int <em>type</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>color</em>, double <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw6BeginIE11LXtObjectID11LXtObjectIDiK9LXtVectord" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4VertE9LXtVectori">
+<span id="_CPPv3N13ILxStrokeDraw4VertE9LXtVectori"></span><span id="_CPPv2N13ILxStrokeDraw4VertE9LXtVectori"></span><span id="ILxStrokeDraw::Vert__LXtVector.i"></span><span class="target" id="class_i_lx_stroke_draw_1a21fd523c82d0ba6f1176685e45a78767"></span>void <code class="sig-name descname">Vert</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em>, int <em>flags</em> = LXiSTROKE_ABSOLUTE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4VertE9LXtVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4VertE10LXtFVectori">
+<span id="_CPPv3N13ILxStrokeDraw4VertE10LXtFVectori"></span><span id="_CPPv2N13ILxStrokeDraw4VertE10LXtFVectori"></span><span id="ILxStrokeDraw::Vert__LXtFVector.i"></span><span class="target" id="class_i_lx_stroke_draw_1a636f2ad118f4ed488efd434bde2baf31"></span>void <code class="sig-name descname">Vert</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>pos</em>, int <em>flags</em> = LXiSTROKE_ABSOLUTE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4VertE10LXtFVectori" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4VertEdddi">
+<span id="_CPPv3N13ILxStrokeDraw4VertEdddi"></span><span id="_CPPv2N13ILxStrokeDraw4VertEdddi"></span><span id="ILxStrokeDraw::Vert__double.double.double.i"></span><span class="target" id="class_i_lx_stroke_draw_1a8c63a9b679a749987c46f9dbc665bd3d"></span>void <code class="sig-name descname">Vert</code><span class="sig-paren">(</span>double <em>x</em>, double <em>y</em>, double <em>z</em>, int <em>flags</em> = LXiSTROKE_ABSOLUTE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4VertEdddi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4VertEfffi">
+<span id="_CPPv3N13ILxStrokeDraw4VertEfffi"></span><span id="_CPPv2N13ILxStrokeDraw4VertEfffi"></span><span id="ILxStrokeDraw::Vert__float.float.float.i"></span><span class="target" id="class_i_lx_stroke_draw_1afdde8471367996d94b846983c0e47220"></span>void <code class="sig-name descname">Vert</code><span class="sig-paren">(</span>float <em>x</em>, float <em>y</em>, float <em>z</em>, int <em>flags</em> = LXiSTROKE_ABSOLUTE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4VertEfffi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4VertEddi">
+<span id="_CPPv3N13ILxStrokeDraw4VertEddi"></span><span id="_CPPv2N13ILxStrokeDraw4VertEddi"></span><span id="ILxStrokeDraw::Vert__double.double.i"></span><span class="target" id="class_i_lx_stroke_draw_1a0dd2f54e23d5a18b5cc63b8ab672e52a"></span>void <code class="sig-name descname">Vert</code><span class="sig-paren">(</span>double <em>x</em>, double <em>y</em>, int <em>flags</em> = LXiSTROKE_SCREEN<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4VertEddi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxStrokeDraw4VertEffi">
+<span id="_CPPv3N13ILxStrokeDraw4VertEffi"></span><span id="_CPPv2N13ILxStrokeDraw4VertEffi"></span><span id="ILxStrokeDraw::Vert__float.float.i"></span><span class="target" id="class_i_lx_stroke_draw_1a82ede3ef66f5793c558404486d2b44a2"></span>void <code class="sig-name descname">Vert</code><span class="sig-paren">(</span>float <em>x</em>, float <em>y</em>, int <em>flags</em> = LXiSTROKE_SCREEN<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxStrokeDraw4VertEffi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxglmaterial">
+<h2><a class="toc-backref" href="#id3">ILxGLMaterial</a><a class="headerlink" href="#ilxglmaterial" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxGLMaterial">
+<span id="_CPPv313ILxGLMaterial"></span><span id="_CPPv213ILxGLMaterial"></span><span id="ILxGLMaterial"></span><span class="target" id="class_i_lx_g_l_material"></span><em class="property">class </em><code class="sig-name descname">ILxGLMaterial</code><a class="headerlink" href="#_CPPv413ILxGLMaterial" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function wraps an AGL surface object as a ILxAGLMaterial interface. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial5ColorE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N13ILxGLMaterial5ColorE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N13ILxGLMaterial5ColorE11LXtObjectID10LXtFVector"></span><span id="ILxGLMaterial::Color__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_g_l_material_1a4f7a3543c97a107c1191e7ca6be9d1fc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Color</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial5ColorE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial5AlphaE11LXtObjectIDPf">
+<span id="_CPPv3N13ILxGLMaterial5AlphaE11LXtObjectIDPf"></span><span id="_CPPv2N13ILxGLMaterial5AlphaE11LXtObjectIDPf"></span><span id="ILxGLMaterial::Alpha__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_g_l_material_1ae89daaf7872d0ff1d1fbe768bb563e9e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Alpha</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial5AlphaE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial13DiffuseAmountE11LXtObjectIDPf">
+<span id="_CPPv3N13ILxGLMaterial13DiffuseAmountE11LXtObjectIDPf"></span><span id="_CPPv2N13ILxGLMaterial13DiffuseAmountE11LXtObjectIDPf"></span><span id="ILxGLMaterial::DiffuseAmount__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_g_l_material_1aea1cdf52cf0aadda42d99c4ab54e56b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DiffuseAmount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>amount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial13DiffuseAmountE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial12DiffuseColorE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N13ILxGLMaterial12DiffuseColorE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N13ILxGLMaterial12DiffuseColorE11LXtObjectID10LXtFVector"></span><span id="ILxGLMaterial::DiffuseColor__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_g_l_material_1a96d824bc669305f92dbe23396414c0be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DiffuseColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial12DiffuseColorE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial14SpecularAmountE11LXtObjectIDPf">
+<span id="_CPPv3N13ILxGLMaterial14SpecularAmountE11LXtObjectIDPf"></span><span id="_CPPv2N13ILxGLMaterial14SpecularAmountE11LXtObjectIDPf"></span><span id="ILxGLMaterial::SpecularAmount__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_g_l_material_1a402da5aefa2a30b7b9bd6ad8d460c537"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SpecularAmount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>amount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial14SpecularAmountE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial13SpecularColorE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N13ILxGLMaterial13SpecularColorE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N13ILxGLMaterial13SpecularColorE11LXtObjectID10LXtFVector"></span><span id="ILxGLMaterial::SpecularColor__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_g_l_material_1a764ed3f80668e016384dbfcf8cdb9538"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SpecularColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial13SpecularColorE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial15LuminosityColorE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N13ILxGLMaterial15LuminosityColorE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N13ILxGLMaterial15LuminosityColorE11LXtObjectID10LXtFVector"></span><span id="ILxGLMaterial::LuminosityColor__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_g_l_material_1a4f30a97e21d3e8eabf7b42444f9ea60c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LuminosityColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial15LuminosityColorE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial10GlossinessE11LXtObjectIDPf">
+<span id="_CPPv3N13ILxGLMaterial10GlossinessE11LXtObjectIDPf"></span><span id="_CPPv2N13ILxGLMaterial10GlossinessE11LXtObjectIDPf"></span><span id="ILxGLMaterial::Glossiness__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_g_l_material_1a34d8b4bcd0c0eac4390b6d4c02379746"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Glossiness</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>amount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial10GlossinessE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial15ReflectionColorE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N13ILxGLMaterial15ReflectionColorE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N13ILxGLMaterial15ReflectionColorE11LXtObjectID10LXtFVector"></span><span id="ILxGLMaterial::ReflectionColor__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_g_l_material_1a1791e0c43d6186e877b7afc2674587d7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReflectionColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial15ReflectionColorE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxGLMaterial7TwoSideE11LXtObjectIDPi">
+<span id="_CPPv3N13ILxGLMaterial7TwoSideE11LXtObjectIDPi"></span><span id="_CPPv2N13ILxGLMaterial7TwoSideE11LXtObjectIDPi"></span><span id="ILxGLMaterial::TwoSide__LXtObjectID.iP"></span><span class="target" id="class_i_lx_g_l_material_1a64df304140259937c46732a542601a67"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TwoSide</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxGLMaterial7TwoSideE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxglimage">
+<h2><a class="toc-backref" href="#id4">ILxGLImage</a><a class="headerlink" href="#ilxglimage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxGLImage">
+<span id="_CPPv310ILxGLImage"></span><span id="_CPPv210ILxGLImage"></span><span id="ILxGLImage"></span><span class="target" id="class_i_lx_g_l_image"></span><em class="property">class </em><code class="sig-name descname">ILxGLImage</code><a class="headerlink" href="#_CPPv410ILxGLImage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The GL Image interface provides a way to pass images to OpenGL for drawing. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxGLImage8SetImageE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N10ILxGLImage8SetImageE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N10ILxGLImage8SetImageE11LXtObjectID11LXtObjectID"></span><span id="ILxGLImage::SetImage__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_g_l_image_1a1327a8a028da5a1bf029761b8f82ac27"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxGLImage8SetImageE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Once a GL Image object has been created, the image can be updated by providing it with a new <a class="reference internal" href="lxd_image.html#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxGLImage4SizeE11LXtObjectIDPdPd">
+<span id="_CPPv3N10ILxGLImage4SizeE11LXtObjectIDPdPd"></span><span id="_CPPv2N10ILxGLImage4SizeE11LXtObjectIDPdPd"></span><span id="ILxGLImage::Size__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_g_l_image_1ae712d4bbc037cfc1cd668ab172683411"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>w</em>, double *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxGLImage4SizeE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The dimensions of a GL Image can be queried. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_drawover.html" class="btn btn-neutral float-right" title="Drawover" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_dirbrowse.html" class="btn btn-neutral float-left" title="Dirbrowse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_draw.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

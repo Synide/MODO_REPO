@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Python.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python API Overview" href="Python%20API%20Overview.html" />
+    <link rel="prev" title="Procedural Geometry" href="Procedural%20Geometry.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-api">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-header">Python Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-lx-module">The <em>lx</em> Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lx-trace">lx.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-out">lx.out</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-eval">lx.eval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-eval1-and-lx-evaln">lx.eval1 and lx.evalN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-command">lx.command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-test">lx.test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-option-and-lx-setoption">lx.option() and lx.setOption()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lx-arg-and-lx-args">lx.arg and lx.args</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scriptquery-service">ScriptQuery Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lx-service">lx.Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-name">s.name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-select">s.select</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-query">s.query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#s-query1-and-s-queryn">s.query1 and s.queryN</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#error-handling-with-exceptions">Error Handling with Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitors">Monitors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lx-monitor">lx.Monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#m-init">m.init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#m-step">m.step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitor-example">Monitor Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sys-exit">sys.exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#executing-python-scripts-from-other-python-scripts">Executing Python Scripts from Other Python Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calling-python-scripts-as-a-startup-command">Calling Python Scripts as a startup command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-modules">External Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-traceback-to-override-modo-s-default-error-reporting-for-accurate-line-numbers">Using “traceback” to override modo’s default error reporting for accurate line numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#python-api" id="id1">Python API</a></p></li>
+<li><p><a class="reference internal" href="#python-header" id="id2">Python Header</a></p></li>
+<li><p><a class="reference internal" href="#the-lx-module" id="id3">The <em>lx</em> Module</a></p>
+<ul>
+<li><p><a class="reference internal" href="#lx-trace" id="id4">lx.trace</a></p></li>
+<li><p><a class="reference internal" href="#lx-out" id="id5">lx.out</a></p></li>
+<li><p><a class="reference internal" href="#lx-eval" id="id6">lx.eval</a></p></li>
+<li><p><a class="reference internal" href="#lx-eval1-and-lx-evaln" id="id7">lx.eval1 and lx.evalN</a></p></li>
+<li><p><a class="reference internal" href="#lx-command" id="id8">lx.command</a></p></li>
+<li><p><a class="reference internal" href="#lx-test" id="id9">lx.test</a></p></li>
+<li><p><a class="reference internal" href="#lx-option-and-lx-setoption" id="id10">lx.option() and lx.setOption()</a></p></li>
+<li><p><a class="reference internal" href="#lx-arg-and-lx-args" id="id11">lx.arg and lx.args</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#scriptquery-service" id="id12">ScriptQuery Service</a></p>
+<ul>
+<li><p><a class="reference internal" href="#lx-service" id="id13">lx.Service</a></p></li>
+<li><p><a class="reference internal" href="#s-name" id="id14">s.name</a></p></li>
+<li><p><a class="reference internal" href="#s-select" id="id15">s.select</a></p></li>
+<li><p><a class="reference internal" href="#s-query" id="id16">s.query</a></p></li>
+<li><p><a class="reference internal" href="#s-query1-and-s-queryn" id="id17">s.query1 and s.queryN</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#error-handling-with-exceptions" id="id18">Error Handling with Exceptions</a></p></li>
+<li><p><a class="reference internal" href="#monitors" id="id19">Monitors</a></p>
+<ul>
+<li><p><a class="reference internal" href="#lx-monitor" id="id20">lx.Monitor</a></p></li>
+<li><p><a class="reference internal" href="#m-init" id="id21">m.init</a></p></li>
+<li><p><a class="reference internal" href="#m-step" id="id22">m.step</a></p></li>
+<li><p><a class="reference internal" href="#monitor-example" id="id23">Monitor Example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#sys-exit" id="id24">sys.exit</a></p></li>
+<li><p><a class="reference internal" href="#executing-python-scripts-from-other-python-scripts" id="id25">Executing Python Scripts from Other Python Scripts</a></p></li>
+<li><p><a class="reference internal" href="#calling-python-scripts-as-a-startup-command" id="id26">Calling Python Scripts as a startup command</a></p></li>
+<li><p><a class="reference internal" href="#external-modules" id="id27">External Modules</a></p></li>
+<li><p><a class="reference internal" href="#using-traceback-to-override-modo-s-default-error-reporting-for-accurate-line-numbers" id="id28">Using “traceback” to override modo’s default error reporting for accurate line numbers</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id29">More Information</a></p></li>
+</ul>
+</div>
+<p>Python]] is a powerful object-oriented [[Scripting that is available on every platform and has extensive community support.The official Python documentation can be found at [<a class="reference external" href="http://www.python.org/">http://www.python.org/</a> www.python.org].</p>
+<p>As with <a class="reference internal" href="../scripting/Macros.html"><span class="doc">Macros</span></a> to obtain lower-level information from the various subsystems, including extracting specific mesh information that is not otherwise accessible through commands themselves.</p>
+<p>‘’modo’’ currently uses the Python 2 line.  The Python 3 line is [<a class="reference external" href="http://wiki.python.org/moin/Python2orPython3">http://wiki.python.org/moin/Python2orPython3</a> not compatible] with Python 2.x, and is not currently supported.</p>
+<div class="section" id="python-api">
+<h2><a class="toc-backref" href="#id1">Python API</a><a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h2>
+<p>modo 701 introduces a deeply integrated Python API.  This provides SDK-level access to the modo through Python, allowing full-on plug-ins to be created entirely through scripting, without any knowledge of C++ itself.</p>
+<p>Much of this article concerns the older fire-and-forget approach to Python scripting.  This can be mixed with the new Python API, but it is important to be aware that commands can only be executed at certain times when it is safe, and the Python API is usually much faster than command queries.  For these reasons you will likely find that <em>lx.eval</em> and other functions in this article aren’t used as much anymore.</p>
+</div>
+<div class="section" id="python-header">
+<h2><a class="toc-backref" href="#id2">Python Header</a><a class="headerlink" href="#python-header" title="Permalink to this headline">¶</a></h2>
+<p>All Python scripts start with a simple header so that the interpreter can recognize them.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-lx-module">
+<h2><a class="toc-backref" href="#id3">The <em>lx</em> Module</a><a class="headerlink" href="#the-lx-module" title="Permalink to this headline">¶</a></h2>
+<p>The <em>modo</em> extensions to Python are encapsulated in the <strong>lx</strong> module. In older versions of ‘’modo’’, you first needed to import the <em>lx</em> module like so, but starting with <em>modo</em> 301 both this and <em>sys</em> are now implicitly imported.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">lx</span>
+</pre></div>
+</td></tr></table></div>
+<p>The Python implementation in modo is a bit different than that of Lua]] or [[Perl. As Python is an object oriented language, all of the standard functions are encapsulated as methods in the <em>lx</em> object. Error handling is performed with exceptions instead of result codes. This is explained in detail later on.</p>
+<div class="section" id="lx-trace">
+<h3><a class="toc-backref" href="#id4">lx.trace</a><a class="headerlink" href="#lx-trace" title="Permalink to this headline">¶</a></h3>
+<p>‘’modo’’ 401 introduced <strong>lx.trace</strong> support for Python. The <em>lx.trace</em> method can be used to toggle tracing on and off, causing the results of many of the <em>lx</em> methods to be output to the <em>Scripting</em> sub-system of the <a class="reference internal" href="../ui/Event%20Log%20Viewport.html"><span class="doc">Event Log Viewport</span></a>. Passing <em>True</em> turns tracing on, while <em>False</em> turns it off.  It can also be used to test if tracing is on or not by not passing no arguments. Note that these booleans states are case sensitive Python boolean keywords, and must be properly capitalized to avoid syntax errors.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">tracing</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">trace</span><span class="p">();</span>  <span class="c1"># See if tracing is on</span>
+ <span class="n">lx</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span> <span class="kc">True</span> <span class="p">);</span>      <span class="c1"># Turn on tracing</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lx-out">
+<h3><a class="toc-backref" href="#id5">lx.out</a><a class="headerlink" href="#lx-out" title="Permalink to this headline">¶</a></h3>
+<p>Text can be output to the Event Log with ‘’’lx.out’’. Any arguments passed will be concatenated before being written out. An empty argument list outputs a blank line.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="c1"># Print an blank line</span>
+ <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">()</span>
+
+ <span class="c1"># Print a label followed by the Python version string</span>
+ <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="s2">&quot;Python Version: &quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lx-eval">
+<h3><a class="toc-backref" href="#id6">lx.eval</a><a class="headerlink" href="#lx-eval" title="Permalink to this headline">¶</a></h3>
+<p>‘’’lx.eval’’’ is used to both execute and query commands in Python.  Simply pass in a command string with the appropriate arguments using standard  Command System: Basics, and the command is executed or queried.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Execute</span>
+ <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span> <span class="s2">&quot;layout.togglePalettes&quot;</span> <span class="p">)</span>
+
+ <span class="c1"># Query</span>
+ <span class="n">q</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span> <span class="s2">&quot;layout.togglePalettes ?&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Unlike Lua and Perl, all error reporting is done through exceptions. When executing a command, <em>lx.eval</em> will always return ‘’None’’. When querying a command, this returns either an array of elements or a single value, depending on the number of elements in the query.  To see if the result of <em>lx.eval</em> is an array of values or a single value, you can call the Python <em>type()</em> function on the variable.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">q</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span> <span class="s2">&quot;material.name ?&quot;</span> <span class="p">)</span>
+
+ <span class="k">if</span> <span class="nb">type</span><span class="p">(</span> <span class="n">q</span> <span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">:</span>
+     <span class="c1"># Array of values</span>
+ <span class="k">else</span><span class="p">:</span>
+     <span class="c1"># Single Value</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lx-eval1-and-lx-evaln">
+<h3><a class="toc-backref" href="#id7">lx.eval1 and lx.evalN</a><a class="headerlink" href="#lx-eval1-and-lx-evaln" title="Permalink to this headline">¶</a></h3>
+<p>There are many cases where a query may return one or many elements, often depending on what is currently selected in the application. Since ‘’lx.eval’’’?s return value depends on the number of elements, you would need to handle both cases in a separate branches of code, which can get tedious. To avoid this issue, you can use <strong>lx.eval1</strong> and ‘’’lx.evalN’’’. lx.eval1 always returns <em>None</em> or one element directly, even if the query returned a list of elements (in which case the first element is returned). <em>lx.evalN</em> will always return <em>None</em> or an array, even if there is only one element.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="c1"># Query and get a single value</span>
+ <span class="n">q1</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;material.name ?&quot;</span> <span class="p">)</span>
+
+ <span class="c1"># Query and get an array of values</span>
+ <span class="n">qN</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">evalN</span><span class="p">(</span> <span class="s2">&quot;material.name ?&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Executing a command with <em>lx.eval1</em> or <em>lx.evalN</em> operates identically to ‘’lxeval’’.</p>
+</div>
+<div class="section" id="lx-command">
+<h3><a class="toc-backref" href="#id8">lx.command</a><a class="headerlink" href="#lx-command" title="Permalink to this headline">¶</a></h3>
+<p>Rather than execute a command with a string, you can pass the command name and each of it?s arguments directly through ‘’’lx.command’’’. This is often simpler than having to construct a command string from scratch.</p>
+<p>‘’lx.command’’ makes use of name/value pairs by taking advantage of Python?s ability to specify arguments and their values by name.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;view3d.shadingStyle&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;wire&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lx-test">
+<h3><a class="toc-backref" href="#id9">lx.test</a><a class="headerlink" href="#lx-test" title="Permalink to this headline">¶</a></h3>
+<p>Python allows for easy testing of Command System: Basics#ToggleValue Arguments  commands with ‘’’lx.test’’’. This is used in a similar manner to <em>lxqt</em> in Perl and Lua, returning <em>True</em> if the ToggleValue is on and <em>False</em> if it is off.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">isActive</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">test</span><span class="p">(</span> <span class="s2">&quot;tool.set prim.cube on&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lx-option-and-lx-setoption">
+<h3><a class="toc-backref" href="#id10">lx.option() and lx.setOption()</a><a class="headerlink" href="#lx-option-and-lx-setoption" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>lx.option</strong> and <strong>lx.setOption</strong> methods allow the script to set properties that determine how the other <em>lx</em> methods operate. This operates Perl#lxoption.28.29_and_lxsetOption.28.29, where you pass the property to be modified and the way in which it is to be modified.  The primary difference between Python and Perl is that <em>queryAnglesAs</em> (the only property currently supported) defaults to radians for backwards compatibility with previous versions of modo.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">lx</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span> <span class="s2">&quot;queryAnglesAs&quot;</span><span class="p">,</span> <span class="s2">&quot;radians&quot;</span> <span class="p">)</span>
+ <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="n">lxoption</span><span class="p">(</span> <span class="s2">&quot;queryAnglesAs&quot;</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="lx-arg-and-lx-args">
+<h3><a class="toc-backref" href="#id11">lx.arg and lx.args</a><a class="headerlink" href="#lx-arg-and-lx-args" title="Permalink to this headline">¶</a></h3>
+<p>Argument parsing is available through the <strong>lx.arg</strong> and <strong>lx.args</strong> methods. <em>lx.arg</em> returns the raw argument string that was passed into the script. <em>lx.args</em> parses the argument string and returns an array of arguments for easier processing.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">argsAsString</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">arg</span><span class="p">()</span>
+ <span class="n">argsAsTuple</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">args</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="scriptquery-service">
+<h2><a class="toc-backref" href="#id12">ScriptQuery Service</a><a class="headerlink" href="#scriptquery-service" title="Permalink to this headline">¶</a></h2>
+<p>Accessing <a class="reference internal" href="../scripting/ScriptQuery%20Overview.html"><span class="doc">ScriptQuery Overview</span></a>  as normal. However, Python also provides a lower level system through the <em>lx</em> module?s <strong>lx.Service</strong> method and the associated service object.  This also has less overhead than using the query command.</p>
+<div class="section" id="lx-service">
+<h3><a class="toc-backref" href="#id13">lx.Service</a><a class="headerlink" href="#lx-service" title="Permalink to this headline">¶</a></h3>
+<p>The first step in using a ScriptQuery interface is obtaining a <strong>Service</strong> object with ‘’’lx.service’’’. This takes the service?s name string as it?s only argument.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">s</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span> <span class="s2">&quot;layerservice&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <em>Service</em> object has five methods: ‘’name’’, ‘’select’’, ‘’query’’, <em>query1</em> and ‘’queryN’’. You can have as many service objects as like, each with their own ScriptQuery Overview#Attributes and Selectors. This is in contrast to the <em>query</em> command, which shares its selection as global state among all clients, and thus has but a single selection.</p>
+</div>
+<div class="section" id="s-name">
+<h3><a class="toc-backref" href="#id14">s.name</a><a class="headerlink" href="#s-name" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>name</strong> method returns the name of the ‘’Service’’. This is the same string that was passed into ‘’lx.Service’’.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">s</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span> <span class="s2">&quot;layerservice&quot;</span> <span class="p">)</span>
+ <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="s2">&quot;Service Name: &quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="s-select">
+<h3><a class="toc-backref" href="#id15">s.select</a><a class="headerlink" href="#s-select" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>select</strong> method takes the place of the query command?s <em>select</em> argument, and is used to pass selectors to the ScriptQuery interface. This take two arguments, the ScriptQuery Overview#Attributes and Selectors class name string and the selector string. If the attribute doesn?t require a selector it can be omitted. Both arguments can be omitted to clear the selection.</p>
+<p>The ‘’attribute class name’’ is the part of the attribute before the period. For example, the class of the <em>layer.name</em> attribute is ‘’layer’’. The <em>Service</em> object will also accept the full attribute name and extract the class itself.  This example sets the selectors for the <em>layer</em> class attributes to the foreground layers.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">s</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span> <span class="s2">&quot;layerservice&quot;</span> <span class="p">)</span>
+ <span class="n">s</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="s2">&quot;layer&quot;</span><span class="p">,</span> <span class="s2">&quot;fg&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="s-query">
+<h3><a class="toc-backref" href="#id16">s.query</a><a class="headerlink" href="#s-query" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>query</strong> method queries the <em>Service</em> object for the value of a previously selected attribute. This returns either a single value or an array of values depending on the number of values in the query.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">s</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span> <span class="s2">&quot;layerservice&quot;</span> <span class="p">)</span>
+ <span class="n">s</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="s2">&quot;layers&quot;</span><span class="p">,</span> <span class="s2">&quot;fg&quot;</span> <span class="p">)</span>
+ <span class="n">name</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s2">&quot;layer.name&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="s-query1-and-s-queryn">
+<h3><a class="toc-backref" href="#id17">s.query1 and s.queryN</a><a class="headerlink" href="#s-query1-and-s-queryn" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>query1</strong> method can be used to always get the first element of a query, while <strong>queryN</strong> will always return an array of queries. This allows for consistent handling of attributes that may return a variable numbers of elements.</p>
+</div>
+</div>
+<div class="section" id="error-handling-with-exceptions">
+<h2><a class="toc-backref" href="#id18">Error Handling with Exceptions</a><a class="headerlink" href="#error-handling-with-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Python error handling in <em>modo</em> is done entirely through exceptions. If one of the <em>lx</em> methods fails because of an unknown command or service, a <em>NameError</em> exception is thrown. If a command fails to execute, a <em>RuntimeError</em> exception is throw. These can be handled with standard Python <em>try</em> and <em>except</em> keywords. The LxResult code of the command failure can be read with ‘’sys.exc_info()’’.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="c1"># Set up our try block</span>
+ <span class="k">try</span><span class="p">:</span>
+     <span class="c1"># First execution: user.defNew creates a new user value</span>
+     <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;user.defNew&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyValue&quot;</span> <span class="p">)</span>
+
+     <span class="c1"># Second execution: user.defNew fails because a value with that name already exists</span>
+     <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;user.defNew&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyValue&quot;</span> <span class="p">)</span>
+
+ <span class="c1"># Handle exceptions</span>
+ <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+     <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="s2">&quot;Command failed with &quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="monitors">
+<h2><a class="toc-backref" href="#id19">Monitors</a><a class="headerlink" href="#monitors" title="Permalink to this headline">¶</a></h2>
+<p>Progress bars in Python are handled through the Monitor object. This provides the same progress bar functionality as in Perl and Lua.</p>
+<div class="section" id="lx-monitor">
+<h3><a class="toc-backref" href="#id20">lx.Monitor</a><a class="headerlink" href="#lx-monitor" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>Monitor</strong> object is obtained through a call to ‘’’lx.monitor’’’. The optional argument is the total number of steps in the progress bar.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">m</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">Monitor</span><span class="p">(</span> <span class="mi">42</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <em>Monitor</em> object has two methods, <em>init</em> and ‘’step’’. Although you can create as many monitors as you like, the internal mechanism for progress bars will cause only the first one to do anything. However, this will change in the future to allow multiple monitors to be used simultaneously.</p>
+</div>
+<div class="section" id="m-init">
+<h3><a class="toc-backref" href="#id21">m.init</a><a class="headerlink" href="#m-init" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>init</strong> method sets the total number of steps in the monitor and resets the current position to 0.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">m</span><span class="o">.</span><span class="n">init</span><span class="p">(</span> <span class="mi">100</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="m-step">
+<h3><a class="toc-backref" href="#id22">m.step</a><a class="headerlink" href="#m-step" title="Permalink to this headline">¶</a></h3>
+<p>The step method increments the current monitor position by 1 if the argument is omitted; otherwise, it increments by that number of steps.  It also lets the application check for input, and will thrown an exception if the user clicked the abort button.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">m</span><span class="o">.</span><span class="n">step</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="monitor-example">
+<h3><a class="toc-backref" href="#id23">Monitor Example</a><a class="headerlink" href="#monitor-example" title="Permalink to this headline">¶</a></h3>
+<p>Here we have a simple example of a monitor in Python. The loop is simply to allow enough time to pass for the monitor to appear. (Note: you may need to tweak the range of the inner loop depending on the speed of your system; on very fast systems, the loop may complete before the monitor appears. Or you can be a good programmer and use a proper time delay function instead of a busy loop, but this is sufficient for our example).</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="c1"># Create the monitor. We could pass the total number of steps here, too</span>
+ <span class="n">m</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">Monitor</span><span class="p">()</span>
+
+ <span class="c1"># Set the total number of steps</span>
+ <span class="n">m</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+
+ <span class="c1"># Do a loop, iterating over our 10000 monitor steps</span>
+ <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">):</span>
+
+     <span class="c1"># Step the monitor.  We could omit the argument to step by 1 rather than explicitly specifying it.</span>
+     <span class="n">m</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+     <span class="c1"># Pause briefly via a busy loop, so the monitor will be displayed. Monitors only appear if the</span>
+     <span class="c1"># operation takes a sufficiently long time (a couple of seconds or more).</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">):</span>
+         <span class="n">a</span><span class="o">=</span><span class="mi">6</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="sys-exit">
+<h2><a class="toc-backref" href="#id24">sys.exit</a><a class="headerlink" href="#sys-exit" title="Permalink to this headline">¶</a></h2>
+<p>Python scripts can be exited by using the standard Python <strong>sys.exit()</strong> call. Simply calling sys.exit() with no arguments exits the script with no error.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>Failure can also be reported by passing an argument string in the form of “code:message”, although either the code or message can be omitted. The code is a standard message code used in the SDK, each with a different meaning. This can be passed as an integer, a hexadecimal string, or one of the following common codes.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LXe_OK</p></td>
+<td><p>Success</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXe_FAILED</p></td>
+<td><p>Failure</p></td>
+</tr>
+<tr class="row-even"><td><p>LXe_ABORT</p></td>
+<td><p>User Abort</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXe_DISABLED</p></td>
+<td><p>Script Disabled</p></td>
+</tr>
+<tr class="row-even"><td><p>LXe_NOTFOUND</p></td>
+<td><p>Not Found</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXe_OUTOFBOUNDS</p></td>
+<td><p>Value Out Of Bounds</p></td>
+</tr>
+<tr class="row-even"><td><p>LXe_INVALIDARG</p></td>
+<td><p>Invalid Argument</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here are some examples of the default “ok” code.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>                 <span class="c1"># The default is LXe_OK</span>
+ <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;0&quot;</span> <span class="p">)</span>            <span class="c1"># Equivalent to LXe_OK</span>
+ <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;0x00000000&quot;</span> <span class="p">)</span>   <span class="c1"># Also equivalent to LXe_OK</span>
+ <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;LXe_OK&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>A code can be combined with a message by adding a colon. For failure codes, this results in an error dialog that displays the failure along with the message.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;LXe_FAILED:Script failed&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>A message can also be set without a code, although this isn’t generally useful as the message isn’t currently displayed anywhere.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># python</span>
+
+ <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;:Insert Message Here&quot;</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="executing-python-scripts-from-other-python-scripts">
+<h2><a class="toc-backref" href="#id25">Executing Python Scripts from Other Python Scripts</a><a class="headerlink" href="#executing-python-scripts-from-other-python-scripts" title="Permalink to this headline">¶</a></h2>
+<p>‘’modo’’ supports running one Python script from another Python script by simply using the standard Command System: Executing Scripts with ‘’lx.eval()’’. Since Python normally has a single main interpreter, modo makes use of the Python API?s sub-interpreter mechanism. This allows an almost completely independent state to exist for each executing script. Care should be taken when using functions in low-level modules, such as os.close(), which may affect both the currently running script and the script(s) that executed it. However, for general day-to-day scripting, this is unlikely to be an issue. More information on sub-interpreters can be found at the official Python web site.</p>
+</div>
+<div class="section" id="calling-python-scripts-as-a-startup-command">
+<h2><a class="toc-backref" href="#id26">Calling Python Scripts as a startup command</a><a class="headerlink" href="#calling-python-scripts-as-a-startup-command" title="Permalink to this headline">¶</a></h2>
+<p>When running Modo (CL or GUI) with a script as a startup command argument, paths should be absolute. If relative paths are given, Modo will likely be unable to find the script/command.</p>
+</div>
+<div class="section" id="external-modules">
+<h2><a class="toc-backref" href="#id27">External Modules</a><a class="headerlink" href="#external-modules" title="Permalink to this headline">¶</a></h2>
+<p>Python support in <em>modo</em> includes the ability to load external Python modules. You may include extra modules with your scripts by placing them in any imported resource directory. These are specified using the <em>&lt;import&gt;</em> tag in a Configs. All of these paths are added to the Python <em>sys.path</em> module search path, thus ensuring that your specific modules will be found. The path to the script itself is also added to ‘’sys.path’’.</p>
+<p><span class="xref std std-doc">./Using External Python Modules and the site-packages Directory</span></p>
+</div>
+<div class="section" id="using-traceback-to-override-modo-s-default-error-reporting-for-accurate-line-numbers">
+<h2><a class="toc-backref" href="#id28">Using “traceback” to override modo’s default error reporting for accurate line numbers</a><a class="headerlink" href="#using-traceback-to-override-modo-s-default-error-reporting-for-accurate-line-numbers" title="Permalink to this headline">¶</a></h2>
+<p>Most people find, when they start scripting in modo, that getting the correct line number for where an exception occurs can be a bit “hit &amp; miss”. When an exception occurs inside a function or method modo will most often report the line number where the fuction/method is called, not where the exception occurs. By structuring your scripts as follows it’s possible to get modo to provide the actual line number of the exception consistently:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># python</span>
+
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="c1"># main body of script goes here. Any exceptions raised in classes or functions</span>
+   <span class="c1"># called from here should report the correct line number for the error in</span>
+   <span class="c1"># modo&#39;s even log</span>
+   <span class="k">pass</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+   <span class="k">try</span><span class="p">:</span>
+      <span class="n">main</span><span class="p">()</span>
+   <span class="k">except</span><span class="p">:</span>
+      <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+</pre></div>
+</td></tr></table></div>
+<p>See also the Python API section on <a class="reference internal" href="../general/general/Remote%20Debugging.html"><span class="doc">Remote Debugging</span></a> for how to use a remote debugger to debug python scripts in modo 701+.</p>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id29">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Python API</p></li>
+<li><p><a class="reference internal" href="../scripting/Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p>Script Examples</p></li>
+<li><p>Scripting Languages</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Python%20API%20Overview.html" class="btn btn-neutral float-right" title="Python API Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Procedural%20Geometry.html" class="btn btn-neutral float-left" title="Procedural Geometry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Python.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+</html>

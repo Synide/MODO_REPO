@@ -1,0 +1,905 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/CustomView.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:03 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CustomView &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hello World" href="Hello%20World.html" />
+    <link rel="prev" title="Creating a Selection Set" href="Creating%20a%20Selection%20Set.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CustomView</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-examples">Python Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-my-render-button">Example: My Render Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-embedded-web-browser">Example: Embedded Web browser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-python-preview-window">Example: Python Preview Window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-modo-graph-viewer">Example: Modo Graph Viewer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-c-opengl-viewport">Example: C++ OpenGL Viewport</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-script-editor">Python Script Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-stylesheet">Default Stylesheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#buttons-groups">Buttons Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>CustomView</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="customview">
+<h1>CustomView<a class="headerlink" href="#customview" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#python-examples" id="id1">Python Examples</a></p>
+<ul>
+<li><p><a class="reference internal" href="#example-my-render-button" id="id2">Example: My Render Button</a></p></li>
+<li><p><a class="reference internal" href="#example-embedded-web-browser" id="id3">Example: Embedded Web browser</a></p></li>
+<li><p><a class="reference internal" href="#example-python-preview-window" id="id4">Example: Python Preview Window</a></p></li>
+<li><p><a class="reference internal" href="#example-modo-graph-viewer" id="id5">Example: Modo Graph Viewer</a></p></li>
+<li><p><a class="reference internal" href="#example-c-opengl-viewport" id="id6">Example: C++ OpenGL Viewport</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#python-script-editor" id="id7">Python Script Editor</a></p></li>
+<li><p><a class="reference internal" href="#default-stylesheet" id="id8">Default Stylesheet</a></p></li>
+<li><p><a class="reference internal" href="#buttons-groups" id="id9">Buttons Groups</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id10">More Information</a></p></li>
+</ul>
+</div>
+<p>From MODO 801, there’s a new type of server that can be created called an ILxCustomView, which allows 3rd party developers the ability to create custom UI and have it embed as a viewport into MODO. As with the rest of the SDK, this is also available through python using PySide.</p>
+<p>Note that this is the only way to add pure Qt interfaces to MODO.  Whenever possible, forms, trees, and the existing viewports and layouts should be used to present interfaces to ensure consistent look and feel.  However, this isn’t always possible, which is why the custom viewport mechanism exists.</p>
+<p>‘’NB: this is only available on Linux in MODO 801 but on Linux, OSX and Windows from MODO 901’’</p>
+<img alt="../../_images/600px-Customview_webkit.png" src="../../_images/600px-Customview_webkit.png" />
+<div class="section" id="python-examples">
+<h2><a class="toc-backref" href="#id1">Python Examples</a><a class="headerlink" href="#python-examples" title="Permalink to this headline">¶</a></h2>
+<p>Below are a few simple Python examples, but you can create plugins using C/C++ in the same manner.</p>
+<div class="section" id="example-my-render-button">
+<h3><a class="toc-backref" href="#id2">Example: My Render Button</a><a class="headerlink" href="#example-my-render-button" title="Permalink to this headline">¶</a></h3>
+<p>The first example is a simple button with the text ?Render? and when pressed will, you guessed it, fire off a render command</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+<span class="kn">import</span> <span class="nn">PySide</span>
+<span class="kn">from</span> <span class="nn">PySide.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">onClicked</span><span class="p">():</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;render&quot;</span><span class="p">)</span>
+
+<span class="c1"># MyRenderButton Server</span>
+<span class="k">class</span> <span class="nc">MyRenderButton</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">CustomView</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">customview_Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pane</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pane</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">custPane</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">CustomPane</span><span class="p">(</span><span class="n">pane</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">custPane</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+              <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># get the parent object</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">custPane</span><span class="o">.</span><span class="n">GetParent</span><span class="p">()</span>
+
+        <span class="c1"># convert to PySide QWidget</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">getQWidget</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># Check that it suceeds</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="n">PySide</span><span class="o">.</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+            <span class="n">renderButton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;RENDER!&quot;</span><span class="p">)</span>
+
+            <span class="n">f</span> <span class="o">=</span> <span class="n">renderButton</span><span class="o">.</span><span class="n">font</span><span class="p">()</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">setPointSize</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+            <span class="n">renderButton</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+            <span class="n">renderButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onClicked</span><span class="p">)</span>
+
+            <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">renderButton</span><span class="p">)</span>
+            <span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">MyRenderButton</span><span class="p">,</span> <span class="s2">&quot;My Render Button&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>This looks scary but is actually pretty straight forward. Firstly we create a class that implements a single function: customview_Init(). This has one argument, which is always a CustomPane. We can then extract the parent QWidget by calling GetParent on this object and using the helper ?lx.getQWidget()? function to convert it into a PySide widget. Once we have this, we can simply add our button using PySide. Simple!</p>
+<p>The last line is to register the server with modo. Once this is done, create a ?Custom View? viewport and select the server from the list shown in the settings popover:</p>
+<img alt="../../_images/CustomView_Select.png" src="../../_images/CustomView_Select.png" />
+</div>
+<div class="section" id="example-embedded-web-browser">
+<h3><a class="toc-backref" href="#id3">Example: Embedded Web browser</a><a class="headerlink" href="#example-embedded-web-browser" title="Permalink to this headline">¶</a></h3>
+<p>Here?s another example of creating a web browser that shows The Foundry community webpage:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+<span class="kn">import</span> <span class="nn">PySide</span>
+<span class="kn">from</span> <span class="nn">PySide.QtWebKit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">FoundryCommunityServer</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">CustomView</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">customview_Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pane</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">pane</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">custPane</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">CustomPane</span><span class="p">(</span><span class="n">pane</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">custPane</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># get the parent object</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">custPane</span><span class="o">.</span><span class="n">GetParent</span><span class="p">()</span>
+
+        <span class="c1"># convert to PySide QWidget</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">getQWidget</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># Check that it suceeds</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="n">PySide</span><span class="o">.</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+
+            <span class="n">web</span> <span class="o">=</span> <span class="n">QWebView</span><span class="p">()</span>
+            <span class="n">web</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;http://community.thefoundry.co.uk/discussion/&quot;</span><span class="p">)</span>
+
+            <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">web</span><span class="p">)</span>
+            <span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">if</span><span class="p">(</span> <span class="ow">not</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Platform</span><span class="p">()</span><span class="o">.</span><span class="n">IsHeadless</span><span class="p">()</span> <span class="p">):</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">FoundryCommunityServer</span><span class="p">,</span> <span class="s2">&quot;The Foundry Community&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="pages\tutorials\./../../images/CustomView_Webview.png" src="images/CustomView_Webview.html" />
+</div>
+<div class="section" id="example-python-preview-window">
+<h3><a class="toc-backref" href="#id4">Example: Python Preview Window</a><a class="headerlink" href="#example-python-preview-window" title="Permalink to this headline">¶</a></h3>
+<p>This is a slightly more advanced view, but allows you to create your own Preview window and do pixel processing before showing in UI.
+Probably better suited to a C++ plugin</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+<span class="kn">import</span> <span class="nn">PySide</span>
+<span class="kn">from</span> <span class="nn">PySide.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">PySide.QtCore</span>
+
+<span class="k">class</span> <span class="nc">MyPreview</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">onTimerCallback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">previewImage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">GetBuffer</span><span class="p">()</span>
+
+                <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">previewImage</span><span class="o">.</span><span class="n">Size</span><span class="p">()</span>
+
+                <span class="n">buf</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="n">imgsvc</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Image</span><span class="p">()</span>
+                <span class="n">imgsvc</span><span class="o">.</span><span class="n">ImageGetBuffer</span><span class="p">(</span><span class="n">previewImage</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iIMP_RGB24</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
+
+                <span class="n">data</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+                <span class="n">image</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">QImage</span><span class="o">.</span><span class="n">Format_RGB32</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">width</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
+                                <span class="n">r</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="o">*</span><span class="n">width</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span>
+                                <span class="n">g</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="o">*</span><span class="n">width</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                                <span class="n">b</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="o">*</span><span class="n">width</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+                                <span class="n">image</span><span class="o">.</span><span class="n">setPixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">qRgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="o">.</span><span class="n">fromImage</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">Stop</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+                <span class="c1"># resize the preview and label to show the image</span>
+                <span class="n">previewSize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">previewSize</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="n">previewSize</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">SetRes</span><span class="p">(</span><span class="n">previewSize</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="n">previewSize</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                <span class="nb">super</span><span class="p">(</span><span class="n">MyPreview</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">PySide</span><span class="o">.</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QTimer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preview</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Preview</span><span class="p">()</span><span class="o">.</span><span class="n">CreatePreview</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">SetUseAllThreads</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerCallback</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">onClicked</span><span class="p">():</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;render&quot;</span><span class="p">)</span>
+
+<span class="c1"># MyPreviewCustView Server</span>
+<span class="k">class</span> <span class="nc">MyPreviewCustView</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">CustomView</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">customview_Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pane</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pane</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">custPane</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">CustomPane</span><span class="p">(</span><span class="n">pane</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">custPane</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+              <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># get the parent object</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="n">custPane</span><span class="o">.</span><span class="n">GetParent</span><span class="p">()</span>
+
+        <span class="c1"># convert to PySide QWidget</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">getQWidget</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># Check that it suceeds</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="n">PySide</span><span class="o">.</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+            <span class="n">myPreview</span> <span class="o">=</span> <span class="n">MyPreview</span><span class="p">()</span>
+
+            <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">myPreview</span><span class="p">)</span>
+            <span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">MyPreviewCustView</span><span class="p">,</span> <span class="s2">&quot;My Preview Window&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="../../_images/800px-MyPythonPreview.png" src="../../_images/800px-MyPythonPreview.png" />
+</div>
+<div class="section" id="example-modo-graph-viewer">
+<h3><a class="toc-backref" href="#id5">Example: Modo Graph Viewer</a><a class="headerlink" href="#example-modo-graph-viewer" title="Permalink to this headline">¶</a></h3>
+<p>This is a very simple TreeView showing the current state of all the modo graphs in the open scene.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PySide</span>
+<span class="kn">from</span> <span class="nn">PySide.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="nn">lxu.select</span>
+
+<span class="k">def</span> <span class="nf">addChannels</span><span class="p">(</span><span class="n">graphItem</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">channelCount</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelCount</span><span class="p">()</span>
+        <span class="k">if</span><span class="p">(</span> <span class="n">channelCount</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">channels</span> <span class="o">=</span> <span class="n">QTreeWidgetItem</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span> <span class="s2">&quot;CHANNELS&quot;</span> <span class="p">])</span>
+                <span class="n">graphItem</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">channels</span> <span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">channelCount</span> <span class="p">):</span>
+                        <span class="n">channelType</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelType</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                        <span class="n">childItem</span> <span class="o">=</span> <span class="n">QTreeWidgetItem</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">ChannelName</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">channelType</span><span class="p">)</span> <span class="p">])</span>
+                        <span class="n">channels</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">childItem</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">addSubItems</span><span class="p">(</span><span class="n">graphItem</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">SubCount</span><span class="p">()</span> <span class="p">):</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">SubByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">childItem</span> <span class="o">=</span> <span class="n">QTreeWidgetItem</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="n">child</span><span class="o">.</span><span class="n">Ident</span><span class="p">()])</span>
+                <span class="n">graphItem</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">childItem</span> <span class="p">)</span>
+                <span class="n">addSubItems</span><span class="p">(</span> <span class="n">childItem</span><span class="p">,</span> <span class="n">child</span> <span class="p">)</span>
+                <span class="n">addChannels</span><span class="p">(</span> <span class="n">childItem</span><span class="p">,</span> <span class="n">child</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">addGraphItems</span><span class="p">(</span><span class="n">graphItem</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">graph</span><span class="o">.</span><span class="n">RootCount</span><span class="p">()</span> <span class="p">):</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">RootByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">childItem</span> <span class="o">=</span> <span class="n">QTreeWidgetItem</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="n">child</span><span class="o">.</span><span class="n">Ident</span><span class="p">()])</span>
+                <span class="n">graphItem</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">childItem</span> <span class="p">)</span>
+                <span class="n">addSubItems</span><span class="p">(</span> <span class="n">childItem</span><span class="p">,</span> <span class="n">child</span> <span class="p">)</span>
+                <span class="n">addChannels</span><span class="p">(</span> <span class="n">childItem</span><span class="p">,</span> <span class="n">child</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">makeView</span><span class="p">():</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">select</span><span class="o">.</span><span class="n">SceneSelection</span><span class="p">()</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">QMainWindow</span><span class="p">()</span>
+
+        <span class="n">graphView</span><span class="o">=</span> <span class="n">QTreeWidget</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">graphView</span><span class="o">.</span><span class="n">setColumnCount</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">scene</span><span class="o">.</span><span class="n">GraphCount</span><span class="p">()</span> <span class="p">):</span>
+                <span class="n">graph</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">GraphByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">graphItem</span> <span class="o">=</span> <span class="n">QTreeWidgetItem</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="n">graph</span><span class="o">.</span><span class="n">Name</span><span class="p">()])</span>
+                <span class="n">graphView</span><span class="o">.</span><span class="n">addTopLevelItem</span><span class="p">(</span> <span class="n">graphItem</span> <span class="p">)</span>
+                <span class="n">addGraphItems</span><span class="p">(</span> <span class="n">graphItem</span><span class="p">,</span> <span class="n">graph</span> <span class="p">)</span>
+
+        <span class="n">w</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">graphView</span><span class="p">)</span>
+
+        <span class="n">w</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">w</span>
+
+<span class="n">w</span>  <span class="o">=</span> <span class="n">makeView</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="pages\tutorials\./../../images/PySide_ModoGraphs.jpg" src="images/PySide_ModoGraphs.html" />
+</div>
+<div class="section" id="example-c-opengl-viewport">
+<h3><a class="toc-backref" href="#id6">Example: C++ OpenGL Viewport</a><a class="headerlink" href="#example-c-opengl-viewport" title="Permalink to this headline">¶</a></h3>
+<p>This is a more advanced example written in C++. This creates a simple opengl viewport and renders a rotating cube inside.</p>
+<p>The code is pretty self explanatory, to compile you’ll need to use the LXSDK and Qt 4.8.5.</p>
+<img alt="pages\tutorials\./../../images/MyOpenGLView.zip" src="images/MyOpenGLView.html" />
+<img alt="../../_images/800px-MyOpenGLViewport.png" src="../../_images/800px-MyOpenGLViewport.png" />
+</div>
+</div>
+<div class="section" id="python-script-editor">
+<h2><a class="toc-backref" href="#id7">Python Script Editor</a><a class="headerlink" href="#python-script-editor" title="Permalink to this headline">¶</a></h2>
+<p>We ship a python script editor that is written entirely in Python and using PySide. It?s based off the Nuke and Hiero script editor which has the following features:</p>
+<ul class="simple">
+<li><p>Syntax highlighting</p></li>
+<li><p>auto complete</p></li>
+<li><p>load/save scripts</p></li>
+<li><p>error highlighting</p></li>
+<li><p>auto-indentation</p></li>
+<li><p>line numbering</p></li>
+</ul>
+</div>
+<div class="section" id="default-stylesheet">
+<h2><a class="toc-backref" href="#id8">Default Stylesheet</a><a class="headerlink" href="#default-stylesheet" title="Permalink to this headline">¶</a></h2>
+<p>We’ve also created a default Stylesheet so that widgets are, by default, styled as similar as possible to modo. This can be overwritten in your own UI, but ideally custom viewports should as much as possible use the default stylesheet. Currently this is shipped as a css file in ?&lt;modo&gt;/resrc/stye/style.css?, but is subject to change</p>
+</div>
+<div class="section" id="buttons-groups">
+<h2><a class="toc-backref" href="#id9">Buttons Groups</a><a class="headerlink" href="#buttons-groups" title="Permalink to this headline">¶</a></h2>
+<p>To make buttons group in the same manner as modo, you should tag a QPushButton with “left”, “right” or “center” to ensure correct bevelling.</p>
+<p>Here’s a simple python example in how to do this:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PySide</span>
+<span class="kn">from</span> <span class="nn">PySide.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">onClicked</span><span class="p">():</span>
+        <span class="nb">print</span> <span class="s2">&quot;Hello!&quot;</span>
+
+
+<span class="c1"># Create button group</span>
+<span class="n">buttonLayout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+<span class="n">buttonLayout</span><span class="o">.</span><span class="n">setSpacing</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">leftButton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Left&quot;</span><span class="p">)</span>
+<span class="n">leftButton</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">leftButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onClicked</span><span class="p">)</span>
+
+<span class="n">rightButton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Right&quot;</span><span class="p">)</span>
+<span class="n">rightButton</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">rightButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onClicked</span><span class="p">)</span>
+
+<span class="n">centerButton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Center&quot;</span><span class="p">)</span>
+<span class="n">centerButton</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">centerButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onClicked</span><span class="p">)</span>
+
+<span class="n">centerButton2</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Center&quot;</span><span class="p">)</span>
+<span class="n">centerButton2</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">centerButton2</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onClicked</span><span class="p">)</span>
+
+<span class="n">buttonLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">leftButton</span><span class="p">)</span>
+<span class="n">buttonLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">centerButton</span><span class="p">)</span>
+<span class="n">buttonLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">rightButton</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">buttonLayout</span><span class="p">)</span>
+
+<span class="n">w</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="../../_images/PythonButtonGroups.png" src="../../_images/PythonButtonGroups.png" />
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id10">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref std std-doc">./Customview (lx-customview.hpp)</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Hello%20World.html" class="btn btn-neutral float-right" title="Hello World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Creating%20a%20Selection%20Set.html" class="btn btn-neutral float-left" title="Creating a Selection Set" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/CustomView.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:06 GMT -->
+</html>

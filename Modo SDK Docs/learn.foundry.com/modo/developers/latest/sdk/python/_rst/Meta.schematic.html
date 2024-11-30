@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.schematic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Meta.schematic &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Meta.select" href="Meta.select.html" />
+    <link rel="prev" title="Meta.package" href="Meta.package.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Python Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Attrdesc.html">Attrdesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.chanmod.html">Meta.chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.channel.html">Meta.channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.command.html">Meta.command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.drop.html">Meta.drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.falloff.html">Meta.falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.modifier.html">Meta.modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.package.html">Meta.package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta.schematic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metaserver">MetaServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-schematicconnection">Meta_SchematicConnection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schematicconnection">SchematicConnection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-server">impl_Server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.select.html">Meta.select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vector.html">Vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../python.html">Python Reference</a> &raquo;</li>
+        
+      <li>Meta.schematic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meta-schematic">
+<h1>Meta.schematic<a class="headerlink" href="#meta-schematic" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#metaserver" id="id2">MetaServer</a></p></li>
+<li><p><a class="reference internal" href="#types" id="id3">Types</a></p></li>
+<li><p><a class="reference internal" href="#meta-schematicconnection" id="id4">Meta_SchematicConnection</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id5">Types</a></p></li>
+<li><p><a class="reference internal" href="#schematicconnection" id="id6">SchematicConnection</a></p></li>
+<li><p><a class="reference internal" href="#impl-server" id="id7">impl_Server</a></p></li>
+</ul>
+</div>
+<div class="section" id="metaserver">
+<h2><a class="toc-backref" href="#id2">MetaServer</a><a class="headerlink" href="#metaserver" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.schematic.MetaServer">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.schematic.</code><code class="sig-name descname">MetaServer</code><a class="headerlink" href="#lxu.meta.schematic.MetaServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server meta node defines a plug-in server. The name and class guid
+must be specified, and the alloc() method (defined by the client, returns
+the server class. There is also a dictionary of server tags.</p>
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.MetaServer.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.MetaServer.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="types">
+<h2><a class="toc-backref" href="#id3">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="meta-schematicconnection">
+<h2><a class="toc-backref" href="#id4">Meta_SchematicConnection</a><a class="headerlink" href="#meta-schematicconnection" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.schematic.</code><code class="sig-name descname">Meta_SchematicConnection</code><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for the SchematicConnection server type.</p>
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal metaclass method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.invalidate">
+<code class="sig-name descname">invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalidate the dynamic state of item connections.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.set_dynamic">
+<code class="sig-name descname">set_dynamic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.set_dynamic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the connections to be tested for each individual item.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.set_graph">
+<code class="sig-name descname">set_graph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">reverse</span></em>, <em class="sig-param"><span class="n">manual</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.set_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the graph name for normal, graph-based connections. The graph can
+be set to be reversed. ‘manual’ can be True to use the computed list
+for the contents of the links.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.set_itemtype">
+<code class="sig-name descname">set_itemtype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">multiple</span></em>, <em class="sig-param"><span class="n">ordered</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.set_itemtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an item type to limit connections to exactly items matching this type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.Meta_SchematicConnection.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.Meta_SchematicConnection.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id5">Types</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="schematicconnection">
+<h2><a class="toc-backref" href="#id6">SchematicConnection</a><a class="headerlink" href="#schematicconnection" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.schematic.SchematicConnection">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.schematic.</code><code class="sig-name descname">SchematicConnection</code><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining SchematicConnection servers. The client will
+subclass this base class, filling in the methods that they require.
+It’s then instantiated as a metaclass to be promoted to server.</p>
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.allow">
+<code class="sig-name descname">allow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ifrom</span></em>, <em class="sig-param"><span class="n">ito</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.allow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if a link between these items is legal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ifrom</span></em>, <em class="sig-param"><span class="n">ito</span></em>, <em class="sig-param"><span class="n">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a connection between two items. This is only called if no graph
+is specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.disconnect">
+<code class="sig-name descname">disconnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ifrom</span></em>, <em class="sig-param"><span class="n">ito</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Break a connection between two items. This is only called if no graph
+is specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.get_list">
+<code class="sig-name descname">get_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.get_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of items with incoming connections. This is only called
+if no graph is specified, or if the graph is manual.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.set_multiple">
+<code class="sig-name descname">set_multiple</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ordered</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.set_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.set_single">
+<code class="sig-name descname">set_single</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.set_single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.SchematicConnection.test_item">
+<code class="sig-name descname">test_item</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.SchematicConnection.test_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if an item should have a connection point. If it should then
+call set_single() for a single connection, or set_multiple() for
+multiple (perhaps ordered) connections.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-server">
+<h2><a class="toc-backref" href="#id7">impl_Server</a><a class="headerlink" href="#impl-server" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.schematic.impl_Server">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.schematic.</code><code class="sig-name descname">impl_Server</code><a class="headerlink" href="#lxu.meta.schematic.impl_Server" title="Permalink to this definition">¶</a></dt>
+<dd><p>This internal class implements the actual SchematicConnection server.
+It defers to the metaclass state and the client subclass for specific
+behaviors.</p>
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.item_flags">
+<code class="sig-name descname">item_flags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.item_flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.refresh_list">
+<code class="sig-name descname">refresh_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.refresh_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_AllowConnect">
+<code class="sig-name descname">schm_AllowConnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">to_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_AllowConnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_AllowConnectType">
+<code class="sig-name descname">schm_AllowConnectType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_AllowConnectType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_BaseFlags">
+<code class="sig-name descname">schm_BaseFlags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_BaseFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ByIndex">
+<code class="sig-name descname">schm_ByIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ByIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ChannelAllowConnect">
+<code class="sig-name descname">schm_ChannelAllowConnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">fromIndex</span></em>, <em class="sig-param"><span class="n">to_obj</span></em>, <em class="sig-param"><span class="n">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ChannelAllowConnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ChannelByIndex">
+<code class="sig-name descname">schm_ChannelByIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xItem</span></em>, <em class="sig-param"><span class="n">fromIndex</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ChannelByIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ChannelConnect">
+<code class="sig-name descname">schm_ChannelConnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">fromIndex</span></em>, <em class="sig-param"><span class="n">to_obj</span></em>, <em class="sig-param"><span class="n">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ChannelConnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ChannelCount">
+<code class="sig-name descname">schm_ChannelCount</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xItem</span></em>, <em class="sig-param"><span class="n">fromIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ChannelCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ChannelDisconnect">
+<code class="sig-name descname">schm_ChannelDisconnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">fromIndex</span></em>, <em class="sig-param"><span class="n">to_obj</span></em>, <em class="sig-param"><span class="n">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ChannelDisconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ChannelIOType">
+<code class="sig-name descname">schm_ChannelIOType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ChannelIOType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_Connect">
+<code class="sig-name descname">schm_Connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">to_obj</span></em>, <em class="sig-param"><span class="n">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_Connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_Count">
+<code class="sig-name descname">schm_Count</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_Count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_Disconnect">
+<code class="sig-name descname">schm_Disconnect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_obj</span></em>, <em class="sig-param"><span class="n">to_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_Disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_GraphName">
+<code class="sig-name descname">schm_GraphName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_GraphName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ItemFlags">
+<code class="sig-name descname">schm_ItemFlags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ItemFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_ItemFlagsValid">
+<code class="sig-name descname">schm_ItemFlagsValid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_ItemFlagsValid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.schematic.impl_Server.schm_PerItemFlags">
+<code class="sig-name descname">schm_PerItemFlags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.schematic.impl_Server.schm_PerItemFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Meta.select.html" class="btn btn-neutral float-right" title="Meta.select" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Meta.package.html" class="btn btn-neutral float-left" title="Meta.package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.schematic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

@@ -1,0 +1,836 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_thread.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Thread &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Thumbbrowse" href="lxd_thumbbrowse.html" />
+    <link rel="prev" title="Tableau" href="lxd_tableau.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Thread</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxworklist">ILxWorkList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadmutex">ILxThreadMutex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadservice">ILxThreadService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadjob">ILxThreadJob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadgroup">ILxThreadGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadslot">ILxThreadSlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadslotclient">ILxThreadSlotClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsharedwork">ILxSharedWork</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxthreadrangeworker">ILxThreadRangeWorker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxwaterfall">ILxWaterfall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clxmutexlock">CLxMutexLock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clxcritseclock">CLxCritSecLock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clxarmlockedmutex">CLxArmLockedMutex</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Thread</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="thread">
+<h1>Thread<a class="headerlink" href="#thread" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxworklist" id="id1">ILxWorkList</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadmutex" id="id2">ILxThreadMutex</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadservice" id="id3">ILxThreadService</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadjob" id="id4">ILxThreadJob</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadgroup" id="id5">ILxThreadGroup</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadslot" id="id6">ILxThreadSlot</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadslotclient" id="id7">ILxThreadSlotClient</a></p></li>
+<li><p><a class="reference internal" href="#ilxsharedwork" id="id8">ILxSharedWork</a></p></li>
+<li><p><a class="reference internal" href="#ilxthreadrangeworker" id="id9">ILxThreadRangeWorker</a></p></li>
+<li><p><a class="reference internal" href="#ilxwaterfall" id="id10">ILxWaterfall</a></p></li>
+<li><p><a class="reference internal" href="#clxmutexlock" id="id11">CLxMutexLock</a></p></li>
+<li><p><a class="reference internal" href="#clxcritseclock" id="id12">CLxCritSecLock</a></p></li>
+<li><p><a class="reference internal" href="#clxarmlockedmutex" id="id13">CLxArmLockedMutex</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>LXi_SIMD_MAXRUN</p></li>
+</ul>
+<div class="section" id="ilxworklist">
+<h2><a class="toc-backref" href="#id1">ILxWorkList</a><a class="headerlink" href="#ilxworklist" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxWorkList">
+<span id="_CPPv311ILxWorkList"></span><span id="_CPPv211ILxWorkList"></span><span id="ILxWorkList"></span><span class="target" id="class_i_lx_work_list"></span><em class="property">class </em><code class="sig-name descname">ILxWorkList</code><a class="headerlink" href="#_CPPv411ILxWorkList" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxWorkList7IsEmptyE11LXtObjectID">
+<span id="_CPPv3N11ILxWorkList7IsEmptyE11LXtObjectID"></span><span id="_CPPv2N11ILxWorkList7IsEmptyE11LXtObjectID"></span><span id="ILxWorkList::IsEmpty__LXtObjectID"></span><span class="target" id="class_i_lx_work_list_1a0e5d6104801c8e33f9ef8a2fef428862"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsEmpty</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxWorkList7IsEmptyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A worklist is a opaque container for units of work. Typically elements are processed one at a time, and can be split into new spawned lists. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxWorkList4NextE11LXtObjectID">
+<span id="_CPPv3N11ILxWorkList4NextE11LXtObjectID"></span><span id="_CPPv2N11ILxWorkList4NextE11LXtObjectID"></span><span id="ILxWorkList::Next__LXtObjectID"></span><span class="target" id="class_i_lx_work_list_1a7a4d6397af308be8ffdc4274c7a6f50e"></span>void *<code class="sig-name descname">Next</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxWorkList4NextE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxWorkList5SplitE11LXtObjectIDjPPv">
+<span id="_CPPv3N11ILxWorkList5SplitE11LXtObjectIDjPPv"></span><span id="_CPPv2N11ILxWorkList5SplitE11LXtObjectIDjPPv"></span><span id="ILxWorkList::Split__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_work_list_1a2d407af1487641018478bc0715e18c16"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Split</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>mode</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxWorkList5SplitE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxWorkList5ClearE11LXtObjectID">
+<span id="_CPPv3N11ILxWorkList5ClearE11LXtObjectID"></span><span id="_CPPv2N11ILxWorkList5ClearE11LXtObjectID"></span><span id="ILxWorkList::Clear__LXtObjectID"></span><span class="target" id="class_i_lx_work_list_1ad192a0eea5e748887cbe4903e00e9186"></span>void <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxWorkList5ClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxWorkList5SplitER15CLxLoc_WorkListj">
+<span id="_CPPv3N11ILxWorkList5SplitER15CLxLoc_WorkListj"></span><span id="_CPPv2N11ILxWorkList5SplitER15CLxLoc_WorkListj"></span><span id="ILxWorkList::Split__CLxLoc_WorkListR.unsigned"></span><span class="target" id="class_i_lx_work_list_1a47355f3dfa616ca3073928dc804ed83f"></span>bool <code class="sig-name descname">Split</code><span class="sig-paren">(</span>CLxLoc_WorkList &amp;<em>wlist</em>, unsigned <em>mode</em> = LXiWLSPLIT_NONE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxWorkList5SplitER15CLxLoc_WorkListj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiWLSPLIT_NONE</p></li>
+<li><p>LXiWLSPLIT_ONE</p></li>
+<li><p>LXiWLSPLIT_HALF</p></li>
+</ul>
+</div>
+<div class="section" id="ilxthreadmutex">
+<h2><a class="toc-backref" href="#id2">ILxThreadMutex</a><a class="headerlink" href="#ilxthreadmutex" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxThreadMutex">
+<span id="_CPPv314ILxThreadMutex"></span><span id="_CPPv214ILxThreadMutex"></span><span id="ILxThreadMutex"></span><span class="target" id="class_i_lx_thread_mutex"></span><em class="property">class </em><code class="sig-name descname">ILxThreadMutex</code><a class="headerlink" href="#_CPPv414ILxThreadMutex" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadMutex5EnterE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadMutex5EnterE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadMutex5EnterE11LXtObjectID"></span><span id="ILxThreadMutex::Enter__LXtObjectID"></span><span class="target" id="class_i_lx_thread_mutex_1a54ad5aaafad7bec903fe3cb085adfe47"></span>void <code class="sig-name descname">Enter</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadMutex5EnterE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Mutexes are used for synchronization of threads. Only a single thread may be “in” a mutex at a time. And other thread calling Enter will block until the owning thread has released the mutex with a Leave call. NOTE: Calling Enter from a thread that already has the mutex will result in deadlock. Critical sections are closely related to mutexes with the one (significant) difference that a thread <em>can</em> re-enter a critical section it owns. These are usually not necessary and have a greater performance cost than mutexes. Critical sections share the THREADMUTEX interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadMutex5LeaveE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadMutex5LeaveE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadMutex5LeaveE11LXtObjectID"></span><span id="ILxThreadMutex::Leave__LXtObjectID"></span><span class="target" id="class_i_lx_thread_mutex_1a4ff551921690b4dfbadfb0278c548650"></span>void <code class="sig-name descname">Leave</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadMutex5LeaveE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxthreadservice">
+<h2><a class="toc-backref" href="#id3">ILxThreadService</a><a class="headerlink" href="#ilxthreadservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxThreadService">
+<span id="_CPPv316ILxThreadService"></span><span id="_CPPv216ILxThreadService"></span><span id="ILxThreadService"></span><span class="target" id="class_i_lx_thread_service"></span><em class="property">class </em><code class="sig-name descname">ILxThreadService</code><a class="headerlink" href="#_CPPv416ILxThreadService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService11CreateMutexE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxThreadService11CreateMutexE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxThreadService11CreateMutexE11LXtObjectIDPPv"></span><span id="ILxThreadService::CreateMutex__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_thread_service_1a10c93db9d1e73c0624533206bbc9849c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateMutex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService11CreateMutexE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The thread service allows you to create mutexes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService8CreateCSE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxThreadService8CreateCSE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxThreadService8CreateCSE11LXtObjectIDPPv"></span><span id="ILxThreadService::CreateCS__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_thread_service_1acd865d30b1277c62487485798485fae1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateCS</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService8CreateCSE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>… and critical sections. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService11CreateGroupE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxThreadService11CreateGroupE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxThreadService11CreateGroupE11LXtObjectIDPPv"></span><span id="ILxThreadService::CreateGroup__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_thread_service_1ab4034d5af4e906c0cbe84e7dde8f88cc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateGroup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService11CreateGroupE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The thread service interface allows new groups to be created. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService8NumProcsE11LXtObjectID">
+<span id="_CPPv3N16ILxThreadService8NumProcsE11LXtObjectID"></span><span id="_CPPv2N16ILxThreadService8NumProcsE11LXtObjectID"></span><span id="ILxThreadService::NumProcs__LXtObjectID"></span><span class="target" id="class_i_lx_thread_service_1ae321045b589f946953f61adc2a6d8103"></span>unsigned int <code class="sig-name descname">NumProcs</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService8NumProcsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There are also a couple of simple methods to determine the state of the threading systems. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService12IsMainThreadE11LXtObjectID">
+<span id="_CPPv3N16ILxThreadService12IsMainThreadE11LXtObjectID"></span><span id="_CPPv2N16ILxThreadService12IsMainThreadE11LXtObjectID"></span><span id="ILxThreadService::IsMainThread__LXtObjectID"></span><span class="target" id="class_i_lx_thread_service_1a16dd2c59cc808ef65cc88f234fab8d20"></span>unsigned int <code class="sig-name descname">IsMainThread</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService12IsMainThreadE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService10CreateSlotE11LXtObjectID6size_t11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxThreadService10CreateSlotE11LXtObjectID6size_t11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxThreadService10CreateSlotE11LXtObjectID6size_t11LXtObjectIDPPv"></span><span id="ILxThreadService::CreateSlot__LXtObjectID.s.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_thread_service_1ac76ed1984e85f34cc84c006d3c59726b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateSlot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, size_t <em>size</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>client</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService10CreateSlotE11LXtObjectID6size_t11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Finally this method allows allocating a new thread slot. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService13ProcessSharedE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxThreadService13ProcessSharedE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxThreadService13ProcessSharedE11LXtObjectID11LXtObjectID"></span><span id="ILxThreadService::ProcessShared__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_thread_service_1ad882a1d8b9f4bae0314db7475b2f1426"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ProcessShared</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shared</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService13ProcessSharedE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>You start with a single one of these objects that contains all the work. You then call the ProcesShared() method in the service. This will spawn enough of the shared work objects to populate the available computing resources. Each one will then process all the work it has, getting more from the main shared work object when they are empty. When all the work is done the sub-objects are destroyed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService12ProcessRangeE11LXtObjectIDPvii11LXtObjectID">
+<span id="_CPPv3N16ILxThreadService12ProcessRangeE11LXtObjectIDPvii11LXtObjectID"></span><span id="_CPPv2N16ILxThreadService12ProcessRangeE11LXtObjectIDPvii11LXtObjectID"></span><span id="ILxThreadService::ProcessRange__LXtObjectID.voidP.i.i.LXtObjectID"></span><span class="target" id="class_i_lx_thread_service_1a492513c1686f125894bc7d719c6c3d47"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ProcessRange</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>data</em>, int <em>startIndex</em>, int <em>endIndex</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>rangeWorker</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService12ProcessRangeE11LXtObjectIDPvii11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Multi-processing over a range of indices (such as scanlines in an image). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService10InitThreadE11LXtObjectID">
+<span id="_CPPv3N16ILxThreadService10InitThreadE11LXtObjectID"></span><span id="_CPPv2N16ILxThreadService10InitThreadE11LXtObjectID"></span><span id="ILxThreadService::InitThread__LXtObjectID"></span><span class="target" id="class_i_lx_thread_service_1a7fe0ecbf0bed5e2fcdf6382194bca916"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InitThread</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService10InitThreadE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If a plugin creates its own threads, using some external library (like pthreads or OpenMP), it needs to initialize itself before it can call Nexus functions. This function allows that. If the thread has already initialized itself, this function will do nothing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService13CleanupThreadE11LXtObjectID">
+<span id="_CPPv3N16ILxThreadService13CleanupThreadE11LXtObjectID"></span><span id="_CPPv2N16ILxThreadService13CleanupThreadE11LXtObjectID"></span><span id="ILxThreadService::CleanupThread__LXtObjectID"></span><span class="target" id="class_i_lx_thread_service_1a3d1700c36e22f3128b1b3882031f0ce0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CleanupThread</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService13CleanupThreadE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Once the thread has finished executing Nexus code, it needs to free the Nexus specific thread-data, so it must call CleanupThread, or there will be a memory leak. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService16ProcessWaterfallE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N16ILxThreadService16ProcessWaterfallE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N16ILxThreadService16ProcessWaterfallE11LXtObjectID11LXtObjectIDj"></span><span id="ILxThreadService::ProcessWaterfall__LXtObjectID.LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_thread_service_1a3085a141d6466f83a0d8213c76bb029e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ProcessWaterfall</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>waterfall</em>, unsigned <em>threads</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService16ProcessWaterfallE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method takes a waterfall object and processes all the work it contains. New instances will be spawned to fill out the given number of threads, or one for each processor is the thread count is zero. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService15AtomicIncrementE11LXtObjectIDPVi">
+<span id="_CPPv3N16ILxThreadService15AtomicIncrementE11LXtObjectIDPVi"></span><span id="_CPPv2N16ILxThreadService15AtomicIncrementE11LXtObjectIDPVi"></span><span id="ILxThreadService::AtomicIncrement__LXtObjectID.iVP"></span><span class="target" id="class_i_lx_thread_service_1aa5c32b83ef323b3ad9d4e048ba3b45df"></span>int <code class="sig-name descname">AtomicIncrement</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">volatile</em> int *<em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService15AtomicIncrementE11LXtObjectIDPVi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This section defines functions that are assurably atomic, meaning that there are no possible race conditions if multiple threads call them on the same data at once. All values needs to be aligned to their size (i.e. 32-bit ints needs to be 32-bit aligned, and 64-bit ints need to be 64-bit aligned). If they’re not aligned, the functions do nothing. All functions return the result of the increment or decrement. These functions atomically increment and decrement an address-aligned integer. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService15AtomicDecrementE11LXtObjectIDPVi">
+<span id="_CPPv3N16ILxThreadService15AtomicDecrementE11LXtObjectIDPVi"></span><span id="_CPPv2N16ILxThreadService15AtomicDecrementE11LXtObjectIDPVi"></span><span id="ILxThreadService::AtomicDecrement__LXtObjectID.iVP"></span><span class="target" id="class_i_lx_thread_service_1adbb365fe84f857af80491cb2df6e9002"></span>int <code class="sig-name descname">AtomicDecrement</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">volatile</em> int *<em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService15AtomicDecrementE11LXtObjectIDPVi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService16AtomicIntegerAddE11LXtObjectIDPVii">
+<span id="_CPPv3N16ILxThreadService16AtomicIntegerAddE11LXtObjectIDPVii"></span><span id="_CPPv2N16ILxThreadService16AtomicIntegerAddE11LXtObjectIDPVii"></span><span id="ILxThreadService::AtomicIntegerAdd__LXtObjectID.iVP.i"></span><span class="target" id="class_i_lx_thread_service_1af8c91bb1dd81a57095b5ae185a3ebc03"></span>int <code class="sig-name descname">AtomicIntegerAdd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">volatile</em> int *<em>addr</em>, int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService16AtomicIntegerAddE11LXtObjectIDPVii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These functions are the same but they allow you to add and subtract any number. They return the result of the addition or subtraction. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService21AtomicIntegerSubtractE11LXtObjectIDPVii">
+<span id="_CPPv3N16ILxThreadService21AtomicIntegerSubtractE11LXtObjectIDPVii"></span><span id="_CPPv2N16ILxThreadService21AtomicIntegerSubtractE11LXtObjectIDPVii"></span><span id="ILxThreadService::AtomicIntegerSubtract__LXtObjectID.iVP.i"></span><span class="target" id="class_i_lx_thread_service_1a0c81175c87df1164fa100d4f40aefabe"></span>int <code class="sig-name descname">AtomicIntegerSubtract</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">volatile</em> int *<em>addr</em>, int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService21AtomicIntegerSubtractE11LXtObjectIDPVii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService8NewMutexER18CLxLoc_ThreadMutex">
+<span id="_CPPv3N16ILxThreadService8NewMutexER18CLxLoc_ThreadMutex"></span><span id="_CPPv2N16ILxThreadService8NewMutexER18CLxLoc_ThreadMutex"></span><span id="ILxThreadService::NewMutex__CLxLoc_ThreadMutexR"></span><span class="target" id="class_i_lx_thread_service_1a6fcda09e34adc56d587d71f26321285f"></span>bool <code class="sig-name descname">NewMutex</code><span class="sig-paren">(</span>CLxLoc_ThreadMutex &amp;<em>mux</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService8NewMutexER18CLxLoc_ThreadMutex" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService10NewCritSecER18CLxLoc_ThreadMutex">
+<span id="_CPPv3N16ILxThreadService10NewCritSecER18CLxLoc_ThreadMutex"></span><span id="_CPPv2N16ILxThreadService10NewCritSecER18CLxLoc_ThreadMutex"></span><span id="ILxThreadService::NewCritSec__CLxLoc_ThreadMutexR"></span><span class="target" id="class_i_lx_thread_service_1a368ef91f500aac82c4463ceaa51654ac"></span>bool <code class="sig-name descname">NewCritSec</code><span class="sig-paren">(</span>CLxLoc_ThreadMutex &amp;<em>cs</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService10NewCritSecER18CLxLoc_ThreadMutex" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService8NewGroupER18CLxLoc_ThreadGroup">
+<span id="_CPPv3N16ILxThreadService8NewGroupER18CLxLoc_ThreadGroup"></span><span id="_CPPv2N16ILxThreadService8NewGroupER18CLxLoc_ThreadGroup"></span><span id="ILxThreadService::NewGroup__CLxLoc_ThreadGroupR"></span><span class="target" id="class_i_lx_thread_service_1a38ca7bceda8f2c1ad770bb3231edf4ff"></span>bool <code class="sig-name descname">NewGroup</code><span class="sig-paren">(</span>CLxLoc_ThreadGroup &amp;<em>tg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService8NewGroupER18CLxLoc_ThreadGroup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot6size_t">
+<span id="_CPPv3N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot6size_t"></span><span id="_CPPv2N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot6size_t"></span><span id="ILxThreadService::NewSlot__CLxLoc_ThreadSlotR.s"></span><span class="target" id="class_i_lx_thread_service_1a299baf7bc502d65126c221b47e9f1d8b"></span>bool <code class="sig-name descname">NewSlot</code><span class="sig-paren">(</span>CLxLoc_ThreadSlot &amp;<em>ts</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot12ILxUnknownID">
+<span id="_CPPv3N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot12ILxUnknownID"></span><span id="_CPPv2N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot12ILxUnknownID"></span><span id="ILxThreadService::NewSlot__CLxLoc_ThreadSlotR.ILxUnknownID"></span><span class="target" id="class_i_lx_thread_service_1a1f91c9328ecb5367ff30daadb5a6aeb6"></span>bool <code class="sig-name descname">NewSlot</code><span class="sig-paren">(</span>CLxLoc_ThreadSlot &amp;<em>ts</em>, ILxUnknownID <em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxThreadService7NewSlotER17CLxLoc_ThreadSlot12ILxUnknownID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxthreadjob">
+<h2><a class="toc-backref" href="#id4">ILxThreadJob</a><a class="headerlink" href="#ilxthreadjob" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxThreadJob">
+<span id="_CPPv312ILxThreadJob"></span><span id="_CPPv212ILxThreadJob"></span><span id="ILxThreadJob"></span><span class="target" id="class_i_lx_thread_job"></span><em class="property">class </em><code class="sig-name descname">ILxThreadJob</code><a class="headerlink" href="#_CPPv412ILxThreadJob" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxThreadJob7ExecuteE11LXtObjectID">
+<span id="_CPPv3N12ILxThreadJob7ExecuteE11LXtObjectID"></span><span id="_CPPv2N12ILxThreadJob7ExecuteE11LXtObjectID"></span><span id="ILxThreadJob::Execute__LXtObjectID"></span><span class="target" id="class_i_lx_thread_job_1a7d84a3ab3f70f5fdc77dee20131f88a2"></span>void <code class="sig-name descname">Execute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxThreadJob7ExecuteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients specify the work they wish to perform by creating a Job. The job is a very simple object that has a single method - Execute. Jobs can be added to other ThreadService objects which can in turn control their threaded execution. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxthreadgroup">
+<h2><a class="toc-backref" href="#id5">ILxThreadGroup</a><a class="headerlink" href="#ilxthreadgroup" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxThreadGroup">
+<span id="_CPPv314ILxThreadGroup"></span><span id="_CPPv214ILxThreadGroup"></span><span id="ILxThreadGroup"></span><span class="target" id="class_i_lx_thread_group"></span><em class="property">class </em><code class="sig-name descname">ILxThreadGroup</code><a class="headerlink" href="#_CPPv414ILxThreadGroup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup6AddJobE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup6AddJobE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup6AddJobE11LXtObjectID11LXtObjectID"></span><span id="ILxThreadGroup::AddJob__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1ad9c8c2cad5ce8a2e5202c6e1cae719bd"></span>void <code class="sig-name descname">AddJob</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>job</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup6AddJobE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A more useful higher level construct than the Job is the thread group. Thread Groups allow the client launch several threads at once. Each thread in the group gets its own ThreadFunc and data. Usually, all the threads in the group will have the same ThreadFunc but different pieces of data. They may run either synchronously or asynchronously. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup7NumJobsE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup7NumJobsE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup7NumJobsE11LXtObjectID"></span><span id="ILxThreadGroup::NumJobs__LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1ad6eafacdc26267cf8671f8c5d50c551f"></span>unsigned <code class="sig-name descname">NumJobs</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup7NumJobsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup5ClearE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup5ClearE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup5ClearE11LXtObjectID"></span><span id="ILxThreadGroup::Clear__LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1add12065601a433f098f9aff1788fc36a"></span>void <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup5ClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup7ExecuteE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup7ExecuteE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup7ExecuteE11LXtObjectID"></span><span id="ILxThreadGroup::Execute__LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1a3249d96cf1df8d302b34e81e1de37919"></span>void <code class="sig-name descname">Execute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup7ExecuteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup4WaitE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup4WaitE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup4WaitE11LXtObjectID"></span><span id="ILxThreadGroup::Wait__LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1a8952607b2f648608e196b10b9e6410d3"></span>void <code class="sig-name descname">Wait</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup4WaitE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup7RunningE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup7RunningE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup7RunningE11LXtObjectID"></span><span id="ILxThreadGroup::Running__LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1a1960a1ea1ec9d37d276c96f3fec3bae3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Running</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup7RunningE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxThreadGroup4KillE11LXtObjectID">
+<span id="_CPPv3N14ILxThreadGroup4KillE11LXtObjectID"></span><span id="_CPPv2N14ILxThreadGroup4KillE11LXtObjectID"></span><span id="ILxThreadGroup::Kill__LXtObjectID"></span><span class="target" id="class_i_lx_thread_group_1a3d4eed6d7ba165ea3fb19551e1d3eec0"></span>void <code class="sig-name descname">Kill</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxThreadGroup4KillE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxthreadslot">
+<h2><a class="toc-backref" href="#id6">ILxThreadSlot</a><a class="headerlink" href="#ilxthreadslot" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxThreadSlot">
+<span id="_CPPv313ILxThreadSlot"></span><span id="_CPPv213ILxThreadSlot"></span><span id="ILxThreadSlot"></span><span class="target" id="class_i_lx_thread_slot"></span><em class="property">class </em><code class="sig-name descname">ILxThreadSlot</code><a class="headerlink" href="#_CPPv413ILxThreadSlot" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxThreadSlot3SetE11LXtObjectIDPv">
+<span id="_CPPv3N13ILxThreadSlot3SetE11LXtObjectIDPv"></span><span id="_CPPv2N13ILxThreadSlot3SetE11LXtObjectIDPv"></span><span id="ILxThreadSlot::Set__LXtObjectID.voidP"></span><span class="target" id="class_i_lx_thread_slot_1ab5172b2b6d3c35bb5cb34f5128f40bac"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Set</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxThreadSlot3SetE11LXtObjectIDPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Slots are a way to store data locally for each thread. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxThreadSlot3GetE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxThreadSlot3GetE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxThreadSlot3GetE11LXtObjectIDPPv"></span><span id="ILxThreadSlot::Get__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_thread_slot_1a2f5146fda144930d23ca1f5840b74262"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Get</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxThreadSlot3GetE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxThreadSlot5ClearE11LXtObjectID">
+<span id="_CPPv3N13ILxThreadSlot5ClearE11LXtObjectID"></span><span id="_CPPv2N13ILxThreadSlot5ClearE11LXtObjectID"></span><span id="ILxThreadSlot::Clear__LXtObjectID"></span><span class="target" id="class_i_lx_thread_slot_1a9175526d7c8bd12d8a1aebb6facf8ee6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxThreadSlot5ClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxthreadslotclient">
+<h2><a class="toc-backref" href="#id7">ILxThreadSlotClient</a><a class="headerlink" href="#ilxthreadslotclient" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxThreadSlotClient">
+<span id="_CPPv319ILxThreadSlotClient"></span><span id="_CPPv219ILxThreadSlotClient"></span><span id="ILxThreadSlotClient"></span><span class="target" id="class_i_lx_thread_slot_client"></span><em class="property">class </em><code class="sig-name descname">ILxThreadSlotClient</code><a class="headerlink" href="#_CPPv419ILxThreadSlotClient" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxThreadSlotClient5AllocE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxThreadSlotClient5AllocE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxThreadSlotClient5AllocE11LXtObjectIDPPv"></span><span id="ILxThreadSlotClient::Alloc__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_thread_slot_client_1aa1e15d97fa1fba6d2ecceb28ddcd50ae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Alloc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxThreadSlotClient5AllocE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defining a slot can use a client class for allocating and freeing the data. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxThreadSlotClient4FreeE11LXtObjectIDPv">
+<span id="_CPPv3N19ILxThreadSlotClient4FreeE11LXtObjectIDPv"></span><span id="_CPPv2N19ILxThreadSlotClient4FreeE11LXtObjectIDPv"></span><span id="ILxThreadSlotClient::Free__LXtObjectID.voidP"></span><span class="target" id="class_i_lx_thread_slot_client_1a3fa5ec178c0fcb6252b7a00241cd3e01"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Free</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxThreadSlotClient4FreeE11LXtObjectIDPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxsharedwork">
+<h2><a class="toc-backref" href="#id8">ILxSharedWork</a><a class="headerlink" href="#ilxsharedwork" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxSharedWork">
+<span id="_CPPv313ILxSharedWork"></span><span id="_CPPv213ILxSharedWork"></span><span id="ILxSharedWork"></span><span class="target" id="class_i_lx_shared_work"></span><em class="property">class </em><code class="sig-name descname">ILxSharedWork</code><a class="headerlink" href="#_CPPv413ILxSharedWork" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxSharedWork8EvaluateE11LXtObjectID">
+<span id="_CPPv3N13ILxSharedWork8EvaluateE11LXtObjectID"></span><span id="_CPPv2N13ILxSharedWork8EvaluateE11LXtObjectID"></span><span id="ILxSharedWork::Evaluate__LXtObjectID"></span><span class="target" id="class_i_lx_shared_work_1a8221f0b866d0db45d37c9ccebb44314d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSharedWork8EvaluateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Shared work represents a batch of work that can be done in parallel.<ul class="simple">
+<li><p>Evaluate Process one unit of work and return a result code. An error will terminate the whole process. If there is no more work left to do return LXe_FALSE.</p></li>
+<li><p>Spawn Create a new shared work object of the same type. The new object should have no work.</p></li>
+<li><p>Share Move work from this object to the other. This is typically only one unit of work, but if the work units are especially small, more than one at a time can be moved to reduce contention. When there is no work left return LXe_FALSE. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSharedWork5SpawnE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSharedWork5SpawnE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSharedWork5SpawnE11LXtObjectIDPPv"></span><span id="ILxSharedWork::Spawn__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_shared_work_1a1f7349830c3cf91ba5c080eae7075e33"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Spawn</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSharedWork5SpawnE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSharedWork5ShareE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N13ILxSharedWork5ShareE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N13ILxSharedWork5ShareE11LXtObjectID11LXtObjectIDj"></span><span id="ILxSharedWork::Share__LXtObjectID.LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_shared_work_1ae67569dea0036820be659c4f6f35cd6d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Share</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>other</em>, unsigned int <em>split</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSharedWork5ShareE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxthreadrangeworker">
+<h2><a class="toc-backref" href="#id9">ILxThreadRangeWorker</a><a class="headerlink" href="#ilxthreadrangeworker" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxThreadRangeWorker">
+<span id="_CPPv320ILxThreadRangeWorker"></span><span id="_CPPv220ILxThreadRangeWorker"></span><span id="ILxThreadRangeWorker"></span><span class="target" id="class_i_lx_thread_range_worker"></span><em class="property">class </em><code class="sig-name descname">ILxThreadRangeWorker</code><a class="headerlink" href="#_CPPv420ILxThreadRangeWorker" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_thread_service"><span class="std std-ref">ILxThreadService</span></a> service provides a simple interface into basic threading constructs and, more importantly, a way to synchronize with the host process and other threads. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxThreadRangeWorker7ExecuteE11LXtObjectIDiPv">
+<span id="_CPPv3N20ILxThreadRangeWorker7ExecuteE11LXtObjectIDiPv"></span><span id="_CPPv2N20ILxThreadRangeWorker7ExecuteE11LXtObjectIDiPv"></span><span id="ILxThreadRangeWorker::Execute__LXtObjectID.i.voidP"></span><span class="target" id="class_i_lx_thread_range_worker_1ab780827c229321b37dc265c369585a9d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Execute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void *<em>sharedData</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxThreadRangeWorker7ExecuteE11LXtObjectIDiPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A range worker performs processing over a range of indices (such as scanlines in an image). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiWFALL_DONE</p></li>
+<li><p>LXiWFALL_HASWORK</p></li>
+<li><p>LXiWFALL_NEXT_WORK</p></li>
+<li><p>LXiWFALL_NEXT_STAGE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxwaterfall">
+<h2><a class="toc-backref" href="#id10">ILxWaterfall</a><a class="headerlink" href="#ilxwaterfall" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxWaterfall">
+<span id="_CPPv312ILxWaterfall"></span><span id="_CPPv212ILxWaterfall"></span><span id="ILxWaterfall"></span><span class="target" id="class_i_lx_waterfall"></span><em class="property">class </em><code class="sig-name descname">ILxWaterfall</code><a class="headerlink" href="#_CPPv412ILxWaterfall" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A waterfall is a model of threaded computation that combines parallel and sequential elements. The metaphor is of a waterfall consisting of a set of pools at different levels. Water fills the first set of pools in parallel, but the pools at the next level don’t start to fill until the first level is completely full. Likewise the waterfall object presents a parade of work units in stages. The work at each stage has to be complete before the next stage can begin. The object manages not only the work list but the processing, which it does by allowing multiple copies of itself to work on the same list. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxWaterfall5SpawnE11LXtObjectIDPPv">
+<span id="_CPPv3N12ILxWaterfall5SpawnE11LXtObjectIDPPv"></span><span id="_CPPv2N12ILxWaterfall5SpawnE11LXtObjectIDPPv"></span><span id="ILxWaterfall::Spawn__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_waterfall_1ac8b0fb7ea875af76bbf326ece385fc56"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Spawn</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxWaterfall5SpawnE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_waterfall_1ac8b0fb7ea875af76bbf326ece385fc56"><span class="std std-ref">Spawn()</span></a> creates a new waterfall object taking the first work in the current stage. If there’s no more work in this stage this should fail. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxWaterfall5StateE11LXtObjectID">
+<span id="_CPPv3N12ILxWaterfall5StateE11LXtObjectID"></span><span id="_CPPv2N12ILxWaterfall5StateE11LXtObjectID"></span><span id="ILxWaterfall::State__LXtObjectID"></span><span class="target" id="class_i_lx_waterfall_1a3b8af53940655c33e3d30f6b97f66589"></span>unsigned <code class="sig-name descname">State</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxWaterfall5StateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query the state of the waterfall object. This returns one of the LXiWFALL state values.<ul class="simple">
+<li><p>DONE indicates that the last work in the last stage has been completed.</p></li>
+<li><p>HASWORK means that this waterfall object has work ready to be processed.</p></li>
+<li><p>NEXT_WORK, NEXT_STAGE if the waterfall object has no work it can indicate that there is more work in this stage, or that the current stage is complete but there is more work in the next stage. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxWaterfall11ProcessWorkE11LXtObjectID">
+<span id="_CPPv3N12ILxWaterfall11ProcessWorkE11LXtObjectID"></span><span id="_CPPv2N12ILxWaterfall11ProcessWorkE11LXtObjectID"></span><span id="ILxWaterfall::ProcessWork__LXtObjectID"></span><span class="target" id="class_i_lx_waterfall_1a4933971754de4991cc95445d7b29de12"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ProcessWork</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxWaterfall11ProcessWorkE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If this object has work loaded it can be discharged with this method. This is the only method that will be called concurrently; all other methods will be called in one thread at a time and so don’t need to protect themselves. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxWaterfall7GetWorkE11LXtObjectID">
+<span id="_CPPv3N12ILxWaterfall7GetWorkE11LXtObjectID"></span><span id="_CPPv2N12ILxWaterfall7GetWorkE11LXtObjectID"></span><span id="ILxWaterfall::GetWork__LXtObjectID"></span><span class="target" id="class_i_lx_waterfall_1a29d4c5ca0e13a1b699bc6120c739aba3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetWork</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxWaterfall7GetWorkE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If there is work available in the current stage this is used to take one unit of work and load it into this object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxWaterfall7AdvanceE11LXtObjectID">
+<span id="_CPPv3N12ILxWaterfall7AdvanceE11LXtObjectID"></span><span id="_CPPv2N12ILxWaterfall7AdvanceE11LXtObjectID"></span><span id="ILxWaterfall::Advance__LXtObjectID"></span><span class="target" id="class_i_lx_waterfall_1acebe7f46735dd3a18b35db569a23cfbf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Advance</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxWaterfall7AdvanceE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If there is no work in the current stage this is called to advance the waterfall to the next stage. All the work in the previous stage will have been completely processed. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="clxmutexlock">
+<h2><a class="toc-backref" href="#id11">CLxMutexLock</a><a class="headerlink" href="#clxmutexlock" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412CLxMutexLock">
+<span id="_CPPv312CLxMutexLock"></span><span id="_CPPv212CLxMutexLock"></span><span id="CLxMutexLock"></span><span class="target" id="class_c_lx_mutex_lock"></span><em class="property">class </em><code class="sig-name descname">CLxMutexLock</code> : <em class="property">public</em> CLxUser_ThreadMutex<a class="headerlink" href="#_CPPv412CLxMutexLock" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We also provide a couple of simple classes for self-allocating locks and automatically scoped enter and leave. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12CLxMutexLock12CLxMutexLockEv">
+<span id="_CPPv3N12CLxMutexLock12CLxMutexLockEv"></span><span id="_CPPv2N12CLxMutexLock12CLxMutexLockEv"></span><span id="CLxMutexLock::CLxMutexLock"></span><span class="target" id="class_c_lx_mutex_lock_1a946d3ec6ec6a417a12f79fc269b007fa"></span><code class="sig-name descname">CLxMutexLock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CLxMutexLock12CLxMutexLockEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="clxcritseclock">
+<h2><a class="toc-backref" href="#id12">CLxCritSecLock</a><a class="headerlink" href="#clxcritseclock" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414CLxCritSecLock">
+<span id="_CPPv314CLxCritSecLock"></span><span id="_CPPv214CLxCritSecLock"></span><span id="CLxCritSecLock"></span><span class="target" id="class_c_lx_crit_sec_lock"></span><em class="property">class </em><code class="sig-name descname">CLxCritSecLock</code> : <em class="property">public</em> CLxUser_ThreadMutex<a class="headerlink" href="#_CPPv414CLxCritSecLock" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14CLxCritSecLock14CLxCritSecLockEv">
+<span id="_CPPv3N14CLxCritSecLock14CLxCritSecLockEv"></span><span id="_CPPv2N14CLxCritSecLock14CLxCritSecLockEv"></span><span id="CLxCritSecLock::CLxCritSecLock"></span><span class="target" id="class_c_lx_crit_sec_lock_1ada1a6a443121ae9ad5de4eb44523c1e7"></span><code class="sig-name descname">CLxCritSecLock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14CLxCritSecLock14CLxCritSecLockEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="clxarmlockedmutex">
+<h2><a class="toc-backref" href="#id13">CLxArmLockedMutex</a><a class="headerlink" href="#clxarmlockedmutex" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417CLxArmLockedMutex">
+<span id="_CPPv317CLxArmLockedMutex"></span><span id="_CPPv217CLxArmLockedMutex"></span><span id="CLxArmLockedMutex"></span><span class="target" id="class_c_lx_arm_locked_mutex"></span><em class="property">class </em><code class="sig-name descname">CLxArmLockedMutex</code> : <em class="property">public</em> CLxArm<a class="headerlink" href="#_CPPv417CLxArmLockedMutex" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17CLxArmLockedMutex17CLxArmLockedMutexER19CLxUser_ThreadMutex">
+<span id="_CPPv3N17CLxArmLockedMutex17CLxArmLockedMutexER19CLxUser_ThreadMutex"></span><span id="_CPPv2N17CLxArmLockedMutex17CLxArmLockedMutexER19CLxUser_ThreadMutex"></span><span id="CLxArmLockedMutex::CLxArmLockedMutex__CLxUser_ThreadMutexR"></span><span class="target" id="class_c_lx_arm_locked_mutex_1a18bdf75de98ccc1a8860efa857e33993"></span><code class="sig-name descname">CLxArmLockedMutex</code><span class="sig-paren">(</span>CLxUser_ThreadMutex &amp;<em>mux</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17CLxArmLockedMutex17CLxArmLockedMutexER19CLxUser_ThreadMutex" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17CLxArmLockedMutexD0Ev">
+<span id="_CPPv3N17CLxArmLockedMutexD0Ev"></span><span id="_CPPv2N17CLxArmLockedMutexD0Ev"></span><span id="CLxArmLockedMutex::~CLxArmLockedMutex"></span><span class="target" id="class_c_lx_arm_locked_mutex_1ad0795edd6b1d214120415c2e76721e12"></span><code class="sig-name descname">~CLxArmLockedMutex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17CLxArmLockedMutexD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N17CLxArmLockedMutex4lockE">
+<span id="_CPPv3N17CLxArmLockedMutex4lockE"></span><span id="_CPPv2N17CLxArmLockedMutex4lockE"></span><span id="CLxArmLockedMutex::lock__CLxUser_ThreadMutexR"></span><span class="target" id="class_c_lx_arm_locked_mutex_1aef437b45e14542a5b2efacf5ab64319b"></span>CLxUser_ThreadMutex &amp;<code class="sig-name descname">lock</code><a class="headerlink" href="#_CPPv4N17CLxArmLockedMutex4lockE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_thumbbrowse.html" class="btn btn-neutral float-right" title="Thumbbrowse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_tableau.html" class="btn btn-neutral float-left" title="Tableau" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_thread.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

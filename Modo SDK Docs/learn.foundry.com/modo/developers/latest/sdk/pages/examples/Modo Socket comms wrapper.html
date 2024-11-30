@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Modo Socket comms wrapper.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Modo Socket comms wrapper &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PlaneTool example" href="PlaneTool%20example.html" />
+    <link rel="prev" title="Load Clip example" href="Load%20Clip%20example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20Vertex%20Mesh%20Operation.html">CreateVertex Mesh Operation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example%20cmd%20sy%20partifymesh.html">Example cmd sy partifymesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Modo Socket comms wrapper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modosock-py">ModoSock.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PlaneTool%20example.html">PlaneTool example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read%20a%20Driven%20Channel.html">Read a Driven Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rebuild%20Curve.html">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spherize%20example.html">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>Modo Socket comms wrapper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modo-socket-comms-wrapper">
+<h1>Modo Socket comms wrapper<a class="headerlink" href="#modo-socket-comms-wrapper" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#modosock-py" id="id1">ModoSock.py</a></p></li>
+</ul>
+</div>
+<div class="section" id="modosock-py">
+<h2><a class="toc-backref" href="#id1">ModoSock.py</a><a class="headerlink" href="#modosock-py" title="Permalink to this headline">¶</a></h2>
+<p>A python wrapper for modo’s telnet comms. Uses ‘raw’ socket mode and implements several convenience methods based on the existing modo lx module methods (eval(), eval1() &amp; evaN(). If you import this module like this:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">modosock</span> <span class="k">as</span> <span class="nn">lx</span>
+</pre></div>
+</td></tr></table></div>
+<p>then you can write code in your external script which should, with very little modification, transfer directly into a modo script and run. For example, if you started a regular python shell and imported the modosock module as lx yopu should be able to prototype code live from the shell and copy/paste it into a file to run inside modo.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># python</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># modosock.py</span>
+<span class="c1">#</span>
+<span class="c1"># Version: 1.002</span>
+<span class="c1">#</span>
+<span class="c1"># Author: Gwynne Reddick</span>
+<span class="c1">#</span>
+<span class="c1"># Description: Wrapper for modo socket connection. uses modo&#39;s raw mode</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># Usage: Instantiate ModoSock class with hostname and port number. Use one of</span>
+<span class="c1">#        the three eval commands to send command strings to modo. The eval</span>
+<span class="c1">#        commands operate like their lx.eval counterparts</span>
+<span class="c1">#</span>
+<span class="c1"># Last Update 19:02 06/06/10</span>
+<span class="c1">#</span>
+<span class="c1">################################################################################</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="c1"># defines the end of a transmit from modo, it&#39;s actually the prompt character</span>
+<span class="c1"># sent after the last result</span>
+<span class="n">_END</span> <span class="o">=</span> <span class="s1">&#39;&gt; </span><span class="se">\0</span><span class="s1">&#39;</span>
+
+<span class="c1"># status codes</span>
+<span class="n">_ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">_OK</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">_INFO</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">ModoSockError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">ModoError</span><span class="p">(</span><span class="n">ModoSockError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when an error message is received from modo</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        message  -  the error message sent from modo</span>
+<span class="sd">        command  - the command that was executed</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">command string: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">command string: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">UnrecognisedLineError</span><span class="p">(</span><span class="n">ModoSockError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when an incoming line is found that doesn&#39;t start with one of the</span>
+<span class="sd">    known line start characters. This probably means that the current line is a</span>
+<span class="sd">    continuation of the previous one.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        command   -  command that was sent to modo</span>
+<span class="sd">        prevline  -  text of line that was received before the error line</span>
+<span class="sd">        currline  -  text of line that threw the error</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">prevline</span><span class="p">,</span> <span class="n">currline</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prevline</span> <span class="o">=</span> <span class="n">prevline</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">currline</span> <span class="o">=</span> <span class="n">currline</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;command: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">result: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prevline</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">currline</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;command: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">result: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prevline</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">currline</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ModoSock</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raw socket communication class.</span>
+
+<span class="sd">    Wraps a socket connection for cummunicating with modo in raw mode. Implements</span>
+<span class="sd">    three methods that work/behave like their lx module counterparts.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_con</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">_OK</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># eat the first prompt character</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Close the connection with modo.</span>
+
+<span class="sd">        Be sure to call this at the end of any script</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to modo.</span>
+
+<span class="sd">        Unlike the regular lx.eval command in modo, this implementation does not</span>
+<span class="sd">        return a value. It should therefore be used for executing in &#39;command&#39;</span>
+<span class="sd">        mode, ie for executing commands in modo that do not return a value - so don&#39;t</span>
+<span class="sd">        use for queries!!!</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_result</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">eval1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to modo. Behaves like lx.eval1</span>
+
+<span class="sd">        Return value is always either a singleton or None. If modo returns more</span>
+<span class="sd">        than one result only the first will be returned by this function</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_result</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">_OK</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">evalN</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a command to modo. Behaves like lx.evalN</span>
+
+<span class="sd">        Return value is always either a list or None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_result</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">_OK</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_get_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># send command</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\0</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">command</span><span class="p">)</span>
+        <span class="n">alldata</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1"># collect data</span>
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span> <span class="k">break</span>
+            <span class="k">if</span> <span class="n">_END</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">alldata</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[:</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">_END</span><span class="p">)]</span>
+                <span class="k">break</span>
+            <span class="n">alldata</span> <span class="o">+=</span> <span class="n">data</span>
+        <span class="c1"># process data</span>
+        <span class="n">alldata</span> <span class="o">=</span> <span class="n">alldata</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">alldata</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># remove trailing blank line from alldata</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">alldata</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;- error&#39;</span><span class="p">):</span>
+                <span class="c1"># modo has returned an error, set self.status to error and</span>
+                <span class="c1"># self.message to the result value so they can be retrieved by</span>
+                <span class="c1"># by calling scripts and then raise an error</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">_ERROR</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+                <span class="k">raise</span> <span class="n">ModoError</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+            <span class="k">elif</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;!&#39;</span><span class="p">,</span><span class="s1">&#39;@&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">_INFO</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">item</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;+ ok&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">_OK</span>
+            <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">):</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">UnrecognisedLineError</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">alldata</span><span class="p">[</span><span class="n">alldata</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PlaneTool%20example.html" class="btn btn-neutral float-right" title="PlaneTool example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Load%20Clip%20example.html" class="btn btn-neutral float-left" title="Load Clip example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Modo Socket comms wrapper.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_envelope.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Envelope &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Externalrender" href="lxd_externalrender.html" />
+    <link rel="prev" title="Drop" href="lxd_drop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Envelope</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxenvelope">ILxEnvelope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxkeyframe">ILxKeyframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxgradientfilter">ILxGradientFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxgradientfilter1">ILxGradientFilter1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Envelope</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="envelope">
+<h1>Envelope<a class="headerlink" href="#envelope" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxenvelope" id="id1">ILxEnvelope</a></p></li>
+<li><p><a class="reference internal" href="#ilxkeyframe" id="id2">ILxKeyframe</a></p></li>
+<li><p><a class="reference internal" href="#ilxgradientfilter" id="id3">ILxGradientFilter</a></p></li>
+<li><p><a class="reference internal" href="#ilxgradientfilter1" id="id4">ILxGradientFilter1</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxenvelope">
+<h2><a class="toc-backref" href="#id1">ILxEnvelope</a><a class="headerlink" href="#ilxenvelope" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxEnvelope">
+<span id="_CPPv311ILxEnvelope"></span><span id="_CPPv211ILxEnvelope"></span><span id="ILxEnvelope"></span><span class="target" id="class_i_lx_envelope"></span><em class="property">class </em><code class="sig-name descname">ILxEnvelope</code><a class="headerlink" href="#_CPPv411ILxEnvelope" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The envelope interface provides access to the overall attributes of the envelope shape, evaluation, and a keyframe accessor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope5IsIntE11LXtObjectID">
+<span id="_CPPv3N11ILxEnvelope5IsIntE11LXtObjectID"></span><span id="_CPPv2N11ILxEnvelope5IsIntE11LXtObjectID"></span><span id="ILxEnvelope::IsInt__LXtObjectID"></span><span class="target" id="class_i_lx_envelope_1aec2f58038d89b4062029c89d693d4513"></span>unsigned <code class="sig-name descname">IsInt</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope5IsIntE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_envelope_1aec2f58038d89b4062029c89d693d4513"><span class="std std-ref">IsInt()</span></a> method returns 1 for integer-valued type envelopes, 0 otherwise. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope10EnumeratorE11LXtObjectIDPPv">
+<span id="_CPPv3N11ILxEnvelope10EnumeratorE11LXtObjectIDPPv"></span><span id="_CPPv2N11ILxEnvelope10EnumeratorE11LXtObjectIDPPv"></span><span id="ILxEnvelope::Enumerator__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_envelope_1a2212856319d83ac4d3626011e8571d74"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enumerator</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope10EnumeratorE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method allocates a new keyframe enumerator, allowing multiple clients to query the same envelope. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope9EvaluateFE11LXtObjectIDdPd">
+<span id="_CPPv3N11ILxEnvelope9EvaluateFE11LXtObjectIDdPd"></span><span id="_CPPv2N11ILxEnvelope9EvaluateFE11LXtObjectIDdPd"></span><span id="ILxEnvelope::EvaluateF__LXtObjectID.double.doubleP"></span><span class="target" id="class_i_lx_envelope_1a1a816e07d5c45c90734d39aa702e6a1a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EvaluateF</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, double *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope9EvaluateFE11LXtObjectIDdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These two methods allow the envelope to be evaluated. The input value is given as “time” although it is any independent parameter. the correct method must be called based on the envelopes numeric type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope9EvaluateIE11LXtObjectIDdPi">
+<span id="_CPPv3N11ILxEnvelope9EvaluateIE11LXtObjectIDdPi"></span><span id="_CPPv2N11ILxEnvelope9EvaluateIE11LXtObjectIDdPi"></span><span id="ILxEnvelope::EvaluateI__LXtObjectID.double.iP"></span><span class="target" id="class_i_lx_envelope_1a976e4b221011c4584c81fc6f6ee87d22"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EvaluateI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, int *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope9EvaluateIE11LXtObjectIDdPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope11EndBehaviorE11LXtObjectIDj">
+<span id="_CPPv3N11ILxEnvelope11EndBehaviorE11LXtObjectIDj"></span><span id="_CPPv2N11ILxEnvelope11EndBehaviorE11LXtObjectIDj"></span><span id="ILxEnvelope::EndBehavior__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_envelope_1ae98fe653ccff2f37ee52cc4dfb66a745"></span>unsigned int <code class="sig-name descname">EndBehavior</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope11EndBehaviorE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The envelopes end behavior is read and set with these methods. The side can be IN or OUT to select the behavior for times prior to the first key frame or the behavior after the last keyframe, respectively. The behavior for both can be set by specifying BOTH. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope14SetEndBehaviorE11LXtObjectIDjj">
+<span id="_CPPv3N11ILxEnvelope14SetEndBehaviorE11LXtObjectIDjj"></span><span id="_CPPv2N11ILxEnvelope14SetEndBehaviorE11LXtObjectIDjj"></span><span id="ILxEnvelope::SetEndBehavior__LXtObjectID.unsigned-i.unsigned-i"></span><span class="target" id="class_i_lx_envelope_1a68eb09463ed761159906684e9b48ecc6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetEndBehavior</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>behavior</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope14SetEndBehaviorE11LXtObjectIDjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope5ClearE11LXtObjectID">
+<span id="_CPPv3N11ILxEnvelope5ClearE11LXtObjectID"></span><span id="_CPPv2N11ILxEnvelope5ClearE11LXtObjectID"></span><span id="ILxEnvelope::Clear__LXtObjectID"></span><span class="target" id="class_i_lx_envelope_1a08ce51c45cd22c7226cbe52117e82465"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope5ClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For envelopes which can be edited this removes all the keys. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope13InterpolationE11LXtObjectID">
+<span id="_CPPv3N11ILxEnvelope13InterpolationE11LXtObjectID"></span><span id="_CPPv2N11ILxEnvelope13InterpolationE11LXtObjectID"></span><span id="ILxEnvelope::Interpolation__LXtObjectID"></span><span class="target" id="class_i_lx_envelope_1a4edad0fe7817eeb2614005b7d5b548f3"></span>unsigned int <code class="sig-name descname">Interpolation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope13InterpolationE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope16SetInterpolationE11LXtObjectIDj">
+<span id="_CPPv3N11ILxEnvelope16SetInterpolationE11LXtObjectIDj"></span><span id="_CPPv2N11ILxEnvelope16SetInterpolationE11LXtObjectIDj"></span><span id="ILxEnvelope::SetInterpolation__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_envelope_1adef12f6c9ff9244355b555fe979dac4a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetInterpolation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope16SetInterpolationE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope11GetKeyframeEP15CLxLoc_Keyframe">
+<span id="_CPPv3N11ILxEnvelope11GetKeyframeEP15CLxLoc_Keyframe"></span><span id="_CPPv2N11ILxEnvelope11GetKeyframeEP15CLxLoc_Keyframe"></span><span id="ILxEnvelope::GetKeyframe__CLxLoc_KeyframeP"></span><span class="target" id="class_i_lx_envelope_1ab3ad73a8cf8bb2de23a951dcef848dae"></span>bool <code class="sig-name descname">GetKeyframe</code><span class="sig-paren">(</span>CLxLoc_Keyframe *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope11GetKeyframeEP15CLxLoc_Keyframe" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The user class for envelopes adds a method to spawn an enumerator directly to a keyframe user object. It returns true for success. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope8IntValueEd">
+<span id="_CPPv3N11ILxEnvelope8IntValueEd"></span><span id="_CPPv2N11ILxEnvelope8IntValueEd"></span><span id="ILxEnvelope::IntValue__double"></span><span class="target" id="class_i_lx_envelope_1a12bf77722e6ea499e6cbd3022223a919"></span>int <code class="sig-name descname">IntValue</code><span class="sig-paren">(</span>double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope8IntValueEd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> It also adds alternate methods for evaluating the envelope at a given time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxEnvelope5ValueEd">
+<span id="_CPPv3N11ILxEnvelope5ValueEd"></span><span id="_CPPv2N11ILxEnvelope5ValueEd"></span><span id="ILxEnvelope::Value__double"></span><span class="target" id="class_i_lx_envelope_1a0572eeda709b5bf26706f3419783e490"></span>double <code class="sig-name descname">Value</code><span class="sig-paren">(</span>double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxEnvelope5ValueEd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv414LXtEndBehavior">
+<span id="_CPPv314LXtEndBehavior"></span><span id="_CPPv214LXtEndBehavior"></span><span id="LXtEndBehavior"></span><span class="target" id="lxd__envelope_8hpp_1ace583e0988cc1bf7dcda2e4f0de44dfc"></span><em class="property">typedef </em>unsigned <code class="sig-name descname">LXtEndBehavior</code><a class="headerlink" href="#_CPPv414LXtEndBehavior" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The end behaviors determine what value the envelope takes outside the range of keyframes. See Also: LXtEndBehavior<ul class="simple">
+<li><p>RESET A default value, or may be just zero.</p></li>
+<li><p>CONSTANT The value of the first or last keyframe. For first or last keys set to “Auto” or “Auto Flat” the slopes of the keys will be adjusted to provide a smooth interpolation to or from the behavior.</p></li>
+<li><p>REPEAT The values in the keyframe range repeating continuously.</p></li>
+<li><p>OSCILLATE Like repeat, but the values run forwards and backward alternately. For first or last keys set to “Auto” or “Auto Flat” the slopes of the keys will be adjusted to provide a smooth interpolation to or from the behavior.</p></li>
+<li><p>OFFSETREPEAT Like repeat, but the values are offset in each cycle by the difference between the first and last keyframes. For first or last keys set to “Auto” or “Auto Flat” the slopes of the keys will be adjusted to provide a smooth interpolation to or from the behavior.</p></li>
+<li><p>LINEAR Linear interpolation from the slope at the nearest keyframe.</p></li>
+<li><p>NONE Indicates that the envelope does not exist before or after the explicit keyframe range. This isbe used by motion evaluation code to decide whether to use the envelope for a channel or to look up the parent envelope or default value.</p></li>
+<li><p>CONSTANT_KEEP_SLOPE As for constant except that the slopes of the first or last keys are not changed.</p></li>
+<li><p>OSCILLATE_KEEP_SLOPE As for oscillate except that the slopes of the first or last keys are not changed.</p></li>
+<li><p>OFFSETREPEAT_KEEP_SLOPE As for offset repeat except that the slopes of the first or last keys are not changed. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiENV_RESET</p></li>
+<li><p>LXiENV_CONSTANT</p></li>
+<li><p>LXiENV_REPEAT</p></li>
+<li><p>LXiENV_OSCILLATE</p></li>
+<li><p>LXiENV_OFFSETREPEAT</p></li>
+<li><p>LXiENV_LINEAR</p></li>
+<li><p>LXiENV_NONE</p></li>
+<li><p>LXiENV_CONSTANT_KEEP_SLOPE</p></li>
+<li><p>LXiENV_OSCILLATE_KEEP_SLOPE</p></li>
+<li><p>LXiENV_OFFSETREPEAT_KEEP_SLOPE</p></li>
+<li><p>LXiENVSIDE_IN</p></li>
+<li><p>LXiENVSIDE_OUT</p></li>
+<li><p>LXiENVSIDE_BOTH</p></li>
+<li><p>LXiENVv_INTERP_CURVE</p></li>
+<li><p>LXiENVv_INTERP_LINEAR</p></li>
+<li><p>LXiENVv_INTERP_STEPPED</p></li>
+</ul>
+</div>
+<div class="section" id="ilxkeyframe">
+<h2><a class="toc-backref" href="#id2">ILxKeyframe</a><a class="headerlink" href="#ilxkeyframe" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxKeyframe">
+<span id="_CPPv311ILxKeyframe"></span><span id="_CPPv211ILxKeyframe"></span><span id="ILxKeyframe"></span><span class="target" id="class_i_lx_keyframe"></span><em class="property">class </em><code class="sig-name descname">ILxKeyframe</code><a class="headerlink" href="#_CPPv411ILxKeyframe" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe5FirstE11LXtObjectID">
+<span id="_CPPv3N11ILxKeyframe5FirstE11LXtObjectID"></span><span id="_CPPv2N11ILxKeyframe5FirstE11LXtObjectID"></span><span id="ILxKeyframe::First__LXtObjectID"></span><span class="target" id="class_i_lx_keyframe_1a9eba66932c0e36e95df96cc5adc21d4e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">First</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe5FirstE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The keyframe interface has a state which is a current key, so it acts as an iterator. The next four methods set the current key based on its position in the sequence, or relative to the current key. They return LXe_NOTFOUND on errors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe4LastE11LXtObjectID">
+<span id="_CPPv3N11ILxKeyframe4LastE11LXtObjectID"></span><span id="_CPPv2N11ILxKeyframe4LastE11LXtObjectID"></span><span id="ILxKeyframe::Last__LXtObjectID"></span><span class="target" id="class_i_lx_keyframe_1a1ec5b85fee065c07719dccb0fea21191"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Last</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe4LastE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe4NextE11LXtObjectID">
+<span id="_CPPv3N11ILxKeyframe4NextE11LXtObjectID"></span><span id="_CPPv2N11ILxKeyframe4NextE11LXtObjectID"></span><span id="ILxKeyframe::Next__LXtObjectID"></span><span class="target" id="class_i_lx_keyframe_1abb574d4d1a04592d3564eed2ae6859a0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Next</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe4NextE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe8PreviousE11LXtObjectID">
+<span id="_CPPv3N11ILxKeyframe8PreviousE11LXtObjectID"></span><span id="_CPPv2N11ILxKeyframe8PreviousE11LXtObjectID"></span><span id="ILxKeyframe::Previous__LXtObjectID"></span><span class="target" id="class_i_lx_keyframe_1a47fbc7f4979196ea07da2bacf9819dba"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Previous</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe8PreviousE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe4FindE11LXtObjectIDdj">
+<span id="_CPPv3N11ILxKeyframe4FindE11LXtObjectIDdj"></span><span id="_CPPv2N11ILxKeyframe4FindE11LXtObjectIDdj"></span><span id="ILxKeyframe::Find__LXtObjectID.double.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a00a56cdf660c7cef88bc7c1f6a699865"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Find</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe4FindE11LXtObjectIDdj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_keyframe_1a00a56cdf660c7cef88bc7c1f6a699865"><span class="std std-ref">Find()</span></a> selects a key at or near the current time. If side is IN then the key prior or equal to the time will become current. OUT gets the key after the given time. For BOTH the key must be exactly at the requested time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe7GetTimeE11LXtObjectIDPd">
+<span id="_CPPv3N11ILxKeyframe7GetTimeE11LXtObjectIDPd"></span><span id="_CPPv2N11ILxKeyframe7GetTimeE11LXtObjectIDPd"></span><span id="ILxKeyframe::GetTime__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_keyframe_1aac0b3f6cd50272c2b5a9e864ef6916e1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe7GetTimeE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The time (or other independent parameter) of the key can be read with this method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9GetBrokenE11LXtObjectIDPjPj">
+<span id="_CPPv3N11ILxKeyframe9GetBrokenE11LXtObjectIDPjPj"></span><span id="_CPPv2N11ILxKeyframe9GetBrokenE11LXtObjectIDPjPj"></span><span id="ILxKeyframe::GetBroken__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_keyframe_1abe0ba80e0406d60220ddec72d6b0e404"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetBroken</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>breaks</em>, unsigned int *<em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9GetBrokenE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns flags for which attributes of the key are broken and are different for the incoming and outgoing sides of the key. If the value of the key itself is broken, the side flag indicates which side of the key controls the value exactly at the given time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9GetValueFE11LXtObjectIDPdj">
+<span id="_CPPv3N11ILxKeyframe9GetValueFE11LXtObjectIDPdj"></span><span id="_CPPv2N11ILxKeyframe9GetValueFE11LXtObjectIDPdj"></span><span id="ILxKeyframe::GetValueF__LXtObjectID.doubleP.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a6ede84e09f28a09eca2876decd352fce"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetValueF</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>value</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9GetValueFE11LXtObjectIDPdj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read the value of the key as a float or int for either side of the key. For unbroken keys this will be the same. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9GetValueIE11LXtObjectIDPij">
+<span id="_CPPv3N11ILxKeyframe9GetValueIE11LXtObjectIDPij"></span><span id="_CPPv2N11ILxKeyframe9GetValueIE11LXtObjectIDPij"></span><span id="ILxKeyframe::GetValueI__LXtObjectID.iP.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a2ceff7d3dee8a02782cc3ff56b37adbd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetValueI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>value</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9GetValueIE11LXtObjectIDPij" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe12GetSlopeTypeE11LXtObjectIDP12LXtSlopeTypePjj">
+<span id="_CPPv3N11ILxKeyframe12GetSlopeTypeE11LXtObjectIDP12LXtSlopeTypePjj"></span><span id="_CPPv2N11ILxKeyframe12GetSlopeTypeE11LXtObjectIDP12LXtSlopeTypePjj"></span><span id="ILxKeyframe::GetSlopeType__LXtObjectID.LXtSlopeTypeP.unsigned-iP.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a3baba18cb8eb163e2a36c89966b98c2b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSlopeType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv412LXtSlopeType" title="LXtSlopeType">LXtSlopeType</a> *<em>type</em>, unsigned int *<em>weighted</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe12GetSlopeTypeE11LXtObjectIDP12LXtSlopeTypePjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The slope type, slope and weight may likewise be read for the current key. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe8GetSlopeE11LXtObjectIDPdj">
+<span id="_CPPv3N11ILxKeyframe8GetSlopeE11LXtObjectIDPdj"></span><span id="_CPPv2N11ILxKeyframe8GetSlopeE11LXtObjectIDPdj"></span><span id="ILxKeyframe::GetSlope__LXtObjectID.doubleP.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1ab5ac41476b972936fe2156e0f43a61bd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSlope</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>slope</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe8GetSlopeE11LXtObjectIDPdj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9GetWeightE11LXtObjectIDPdj">
+<span id="_CPPv3N11ILxKeyframe9GetWeightE11LXtObjectIDPdj"></span><span id="_CPPv2N11ILxKeyframe9GetWeightE11LXtObjectIDPdj"></span><span id="ILxKeyframe::GetWeight__LXtObjectID.doubleP.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1afc805f85f2cba95f6fa91934c7970ce7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetWeight</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>weight</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9GetWeightE11LXtObjectIDPdj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe7SetTimeE11LXtObjectIDd">
+<span id="_CPPv3N11ILxKeyframe7SetTimeE11LXtObjectIDd"></span><span id="_CPPv2N11ILxKeyframe7SetTimeE11LXtObjectIDd"></span><span id="ILxKeyframe::SetTime__LXtObjectID.double"></span><span class="target" id="class_i_lx_keyframe_1a3d57e7c8ced9ca3ed0903b24153724cc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTime</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe7SetTimeE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This alters the time (or independent parameter) of the key, potentially changing its relative position in the sequence of keys. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9SetValueFE11LXtObjectIDdj">
+<span id="_CPPv3N11ILxKeyframe9SetValueFE11LXtObjectIDdj"></span><span id="_CPPv2N11ILxKeyframe9SetValueFE11LXtObjectIDdj"></span><span id="ILxKeyframe::SetValueF__LXtObjectID.double.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a5e514f31e00ca43aa163892902454224"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetValueF</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>value</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9SetValueFE11LXtObjectIDdj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods allow the various parameters of the keyframe to be set. Breaking and unbreaking are controlled implicitly with the ‘side’ parameter. Setting the side to IN or OUT will break the parameter and only affect the specified side. Setting the side to BOTH will unbreak the parameter. The last side set when breaking the value will be the controlling side for the key. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9SetValueIE11LXtObjectIDij">
+<span id="_CPPv3N11ILxKeyframe9SetValueIE11LXtObjectIDij"></span><span id="_CPPv2N11ILxKeyframe9SetValueIE11LXtObjectIDij"></span><span id="ILxKeyframe::SetValueI__LXtObjectID.i.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a93549d067b3ef3d20ea8d868e37dfa99"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetValueI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>value</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9SetValueIE11LXtObjectIDij" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe8SetSlopeE11LXtObjectIDdj">
+<span id="_CPPv3N11ILxKeyframe8SetSlopeE11LXtObjectIDdj"></span><span id="_CPPv2N11ILxKeyframe8SetSlopeE11LXtObjectIDdj"></span><span id="ILxKeyframe::SetSlope__LXtObjectID.double.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a5b804675896fd0dcdb54b4adcd15071e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSlope</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>slope</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe8SetSlopeE11LXtObjectIDdj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe12SetSlopeTypeE11LXtObjectID12LXtSlopeTypej">
+<span id="_CPPv3N11ILxKeyframe12SetSlopeTypeE11LXtObjectID12LXtSlopeTypej"></span><span id="_CPPv2N11ILxKeyframe12SetSlopeTypeE11LXtObjectID12LXtSlopeTypej"></span><span id="ILxKeyframe::SetSlopeType__LXtObjectID.LXtSlopeType.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a36aedc69eafc624966cdf294b311664c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSlopeType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv412LXtSlopeType" title="LXtSlopeType">LXtSlopeType</a> <em>type</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe12SetSlopeTypeE11LXtObjectID12LXtSlopeTypej" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9SetWeightE11LXtObjectIDdjj">
+<span id="_CPPv3N11ILxKeyframe9SetWeightE11LXtObjectIDdjj"></span><span id="_CPPv2N11ILxKeyframe9SetWeightE11LXtObjectIDdjj"></span><span id="ILxKeyframe::SetWeight__LXtObjectID.double.unsigned-i.unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a7fe83781ffc0f1b08348ff5bfbaf3be9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetWeight</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>weight</em>, unsigned int <em>reset</em>, unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9SetWeightE11LXtObjectIDdjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This will set the weight for the key unless ‘reset’ is true, in which case the weight will be set back to automatic. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe4AddFE11LXtObjectIDdd">
+<span id="_CPPv3N11ILxKeyframe4AddFE11LXtObjectIDdd"></span><span id="_CPPv2N11ILxKeyframe4AddFE11LXtObjectIDdd"></span><span id="ILxKeyframe::AddF__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_keyframe_1a97e52ceeed87d05b1f6f2afbccab688c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddF</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, double <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe4AddFE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods allow keys to be created at the given time (or other independent parameter) and value. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe4AddIE11LXtObjectIDdi">
+<span id="_CPPv3N11ILxKeyframe4AddIE11LXtObjectIDdi"></span><span id="_CPPv2N11ILxKeyframe4AddIE11LXtObjectIDdi"></span><span id="ILxKeyframe::AddI__LXtObjectID.double.i"></span><span class="target" id="class_i_lx_keyframe_1a50ccd9dfb1b095fea322bc10e67cb41f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddI</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, int <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe4AddIE11LXtObjectIDdi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe6DeleteE11LXtObjectID">
+<span id="_CPPv3N11ILxKeyframe6DeleteE11LXtObjectID"></span><span id="_CPPv2N11ILxKeyframe6DeleteE11LXtObjectID"></span><span id="ILxKeyframe::Delete__LXtObjectID"></span><span class="target" id="class_i_lx_keyframe_1a66b5c70383e1c9965f845a39a04865be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Delete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe6DeleteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This deletes the current key. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe16CLxUser_KeyframeER15CLxLoc_Envelope">
+<span id="_CPPv3N11ILxKeyframe16CLxUser_KeyframeER15CLxLoc_Envelope"></span><span id="_CPPv2N11ILxKeyframe16CLxUser_KeyframeER15CLxLoc_Envelope"></span><span id="ILxKeyframe::CLxUser_Keyframe__CLxLoc_EnvelopeR"></span><span class="target" id="class_i_lx_keyframe_1a386d450572f2d5331575531b48ff4b15"></span><code class="sig-name descname">CLxUser_Keyframe</code><span class="sig-paren">(</span>CLxLoc_Envelope &amp;<em>env</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe16CLxUser_KeyframeER15CLxLoc_Envelope" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The keyframe user class has a special constructor that takes an envelope user object, from which the enumerator is extracted. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe13fromEnvObjectE12ILxUnknownID">
+<span id="_CPPv3N11ILxKeyframe13fromEnvObjectE12ILxUnknownID"></span><span id="_CPPv2N11ILxKeyframe13fromEnvObjectE12ILxUnknownID"></span><span id="ILxKeyframe::fromEnvObject__ILxUnknownID"></span><span class="target" id="class_i_lx_keyframe_1ad4f37fd8fc51d1d3ee43fed49ff4d2ab"></span>bool <code class="sig-name descname">fromEnvObject</code><span class="sig-paren">(</span>ILxUnknownID <em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe13fromEnvObjectE12ILxUnknownID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> There is also a function to set the enumerator given any COM object. The method will clear the enumerator and return false if the object does not present an <a class="reference internal" href="#class_i_lx_envelope"><span class="std std-ref">ILxEnvelope</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe4TimeEv">
+<span id="_CPPv3N11ILxKeyframe4TimeEv"></span><span id="_CPPv2N11ILxKeyframe4TimeEv"></span><span id="ILxKeyframe::Time"></span><span class="target" id="class_i_lx_keyframe_1a536482b94764f8874b909ed4badeb4d6"></span>double <code class="sig-name descname">Time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe4TimeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Easier method for getting the time (or independent parameter) of the key. This should be fine as long as you know there is a valid current key. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe5ValueEPd">
+<span id="_CPPv3N11ILxKeyframe5ValueEPd"></span><span id="_CPPv2N11ILxKeyframe5ValueEPd"></span><span id="ILxKeyframe::Value__doubleP"></span><span class="target" id="class_i_lx_keyframe_1a375d1a4835bccd8e4db45c34deb3b5e9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Value</code><span class="sig-paren">(</span>double *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe5ValueEPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Alternate methods for reading the value in the 90% case of an unbroken key. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe5ValueEv">
+<span id="_CPPv3N11ILxKeyframe5ValueEv"></span><span id="_CPPv2N11ILxKeyframe5ValueEv"></span><span id="ILxKeyframe::Value"></span><span class="target" id="class_i_lx_keyframe_1a0de30ef37440a8e52cccae5db3dbbd9d"></span>double <code class="sig-name descname">Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe5ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe5ValueEPi">
+<span id="_CPPv3N11ILxKeyframe5ValueEPi"></span><span id="_CPPv2N11ILxKeyframe5ValueEPi"></span><span id="ILxKeyframe::Value__iP"></span><span class="target" id="class_i_lx_keyframe_1ac77aeef003374fbb615b200eddb42dd9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Value</code><span class="sig-paren">(</span>int *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe5ValueEPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe8IntValueEv">
+<span id="_CPPv3N11ILxKeyframe8IntValueEv"></span><span id="_CPPv2N11ILxKeyframe8IntValueEv"></span><span id="ILxKeyframe::IntValue"></span><span class="target" id="class_i_lx_keyframe_1a0863adc1b5dff9c827b5f3d8eb5ab38a"></span>int <code class="sig-name descname">IntValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe8IntValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe6BrokenEv">
+<span id="_CPPv3N11ILxKeyframe6BrokenEv"></span><span id="_CPPv2N11ILxKeyframe6BrokenEv"></span><span id="ILxKeyframe::Broken"></span><span class="target" id="class_i_lx_keyframe_1a7c382606c79ffa83740a03e8ee847f16"></span>unsigned int <code class="sig-name descname">Broken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe6BrokenEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The breaking and controlling side can be read independently. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe10ActiveSideEv">
+<span id="_CPPv3N11ILxKeyframe10ActiveSideEv"></span><span id="_CPPv2N11ILxKeyframe10ActiveSideEv"></span><span id="ILxKeyframe::ActiveSide"></span><span class="target" id="class_i_lx_keyframe_1acefc81b05896149f49fd7eaeed6beb74"></span>unsigned int <code class="sig-name descname">ActiveSide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe10ActiveSideEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe5SlopeEj">
+<span id="_CPPv3N11ILxKeyframe5SlopeEj"></span><span id="_CPPv2N11ILxKeyframe5SlopeEj"></span><span id="ILxKeyframe::Slope__unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a9417491f7d98e1ebaf9dd48a2d051412"></span>double <code class="sig-name descname">Slope</code><span class="sig-paren">(</span>unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe5SlopeEj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The other key attributes can be read without error checking, although sidedness tends to be important for these so that is provided. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe9SlopeTypeEj">
+<span id="_CPPv3N11ILxKeyframe9SlopeTypeEj"></span><span id="_CPPv2N11ILxKeyframe9SlopeTypeEj"></span><span id="ILxKeyframe::SlopeType__unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a175a0c0b830085a9325870a31ec8bdbf"></span><a class="reference internal" href="#_CPPv412LXtSlopeType" title="LXtSlopeType">LXtSlopeType</a> <code class="sig-name descname">SlopeType</code><span class="sig-paren">(</span>unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe9SlopeTypeEj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe8WeightedEj">
+<span id="_CPPv3N11ILxKeyframe8WeightedEj"></span><span id="_CPPv2N11ILxKeyframe8WeightedEj"></span><span id="ILxKeyframe::Weighted__unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1a568e810c5476616fc5d47b7aa5eadec7"></span>bool <code class="sig-name descname">Weighted</code><span class="sig-paren">(</span>unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe8WeightedEj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxKeyframe6WeightEj">
+<span id="_CPPv3N11ILxKeyframe6WeightEj"></span><span id="_CPPv2N11ILxKeyframe6WeightEj"></span><span id="ILxKeyframe::Weight__unsigned-i"></span><span class="target" id="class_i_lx_keyframe_1ad53371ce1626537e5bac8702aa5c1360"></span>double <code class="sig-name descname">Weight</code><span class="sig-paren">(</span>unsigned int <em>side</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxKeyframe6WeightEj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfKEYBREAK_VALUE</p></li>
+<li><p>LXfKEYBREAK_SLOPE</p></li>
+<li><p>LXfKEYBREAK_WEIGHT</p></li>
+</ul>
+<dl class="type">
+<dt id="_CPPv412LXtSlopeType">
+<span id="_CPPv312LXtSlopeType"></span><span id="_CPPv212LXtSlopeType"></span><span id="LXtSlopeType"></span><span class="target" id="lxd__envelope_8hpp_1aee95f7b582978567b8f6877197b87671"></span><em class="property">typedef </em>unsigned <code class="sig-name descname">LXtSlopeType</code><a class="headerlink" href="#_CPPv412LXtSlopeType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The slope can have one of the following values.<ul class="simple">
+<li><p>LXiSLOPE_DIRECT the slope of the tangent is set based on the value stored in the key.</p></li>
+<li><p>LXiSLOPE_AUTO the slope of the tangent is calculated automatically with regard to surrounding keys. This is similar to the slope adjustments made by TCB curves.</p></li>
+<li><p>LXiSLOPE_LINEAR_IN the slope of the tangent is calculated to align with the previous key’s value.</p></li>
+<li><p>LXiSLOPE_LINEAR_OUT the slope of the tangent is calculated to align with the next key’s value.</p></li>
+<li><p>LXiSLOPE_FLAT the slope of the tangent is set to zero.</p></li>
+<li><p>LXiSLOPE_AUTOFLAT the same as auto but if a neighboring key has the same value as the key the slope is set to zero.</p></li>
+<li><p>LXiSLOPE_STEPPED Maintains the value of the previous key between pairs of keys. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiSLOPE_DIRECT</p></li>
+<li><p>LXiSLOPE_AUTO</p></li>
+<li><p>LXiSLOPE_LINEAR_IN</p></li>
+<li><p>LXiSLOPE_LINEAR_OUT</p></li>
+<li><p>LXiSLOPE_FLAT</p></li>
+<li><p>LXiSLOPE_AUTOFLAT</p></li>
+<li><p>LXiSLOPE_STEPPED</p></li>
+<li><p>LXiSLOPE_SMOOTHFLAT</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXi_GRADIENTFILTER_GENERATE">
+<span class="target" id="lxd__envelope_8hpp_1a743d16f2f79c890227911e4cec177b66"></span><code class="sig-name descname">LXi_GRADIENTFILTER_GENERATE</code><a class="headerlink" href="#c.LXi_GRADIENTFILTER_GENERATE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gradient filters can have two distinct types; Modify and Generate. Generate type filters are expected to compute a new gradient value, ignoring anything below it in the stack, whereas Modify type filters are provided with the computed value of all filters below it in the stack, and it is expected to modify and return the value. A multi-sample filter is a variant on the Modify filter, but instead of being passed a single evaluated sample from further down the stack, the MultiSample method is passed a GradientFilter from lower in the stack, allowing multiple samples at arbitrary times to be evaluated. Finally, Envelope filters are a special type of Generate filter, that are generated from keyframed envelope data. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_GRADIENTFILTER_MODIFY</p></li>
+<li><p>LXi_GRADIENTFILTER_MULTISAMPLE</p></li>
+<li><p>LXi_GRADIENTFILTER_ENVELOPE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxgradientfilter">
+<h2><a class="toc-backref" href="#id3">ILxGradientFilter</a><a class="headerlink" href="#ilxgradientfilter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxGradientFilter">
+<span id="_CPPv317ILxGradientFilter"></span><span id="_CPPv217ILxGradientFilter"></span><span id="ILxGradientFilter"></span><span class="target" id="class_i_lx_gradient_filter"></span><em class="property">class </em><code class="sig-name descname">ILxGradientFilter</code><a class="headerlink" href="#_CPPv417ILxGradientFilter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A gradient usually contains keyframe data that exists in an envelope that can be directly modified by the user. However gradients can be dynamically generated and modified using Gradient Filters. Gradient Filters are added to a stack, and when evaluated, the stack is recursively evaluated to compute the final value for a specific sample. When reading a Gradient channel in an evaluated context, a Gradient Filter object will be returned. Evaluating this filter for it’s value, will return the final computed state, regardless of whether the gradient is composed from keyframes, filters, or a combination of the two. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxGradientFilter4TypeE11LXtObjectID">
+<span id="_CPPv3N17ILxGradientFilter4TypeE11LXtObjectID"></span><span id="_CPPv2N17ILxGradientFilter4TypeE11LXtObjectID"></span><span id="ILxGradientFilter::Type__LXtObjectID"></span><span class="target" id="class_i_lx_gradient_filter_1ae45b65ed08230cc05f6a87d74eb9957e"></span>unsigned int <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxGradientFilter4TypeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxGradientFilter8GenerateE11LXtObjectIDd">
+<span id="_CPPv3N17ILxGradientFilter8GenerateE11LXtObjectIDd"></span><span id="_CPPv2N17ILxGradientFilter8GenerateE11LXtObjectIDd"></span><span id="ILxGradientFilter::Generate__LXtObjectID.double"></span><span class="target" id="class_i_lx_gradient_filter_1a35fb9f91ad3ca59de1ef129b79682fd7"></span>double <code class="sig-name descname">Generate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxGradientFilter8GenerateE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the Gradient Filter is a GENERATE type filter, the Generate method will be called to create a value for a specific “time” sample. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxGradientFilter8EvaluateE11LXtObjectIDdd">
+<span id="_CPPv3N17ILxGradientFilter8EvaluateE11LXtObjectIDdd"></span><span id="_CPPv2N17ILxGradientFilter8EvaluateE11LXtObjectIDdd"></span><span id="ILxGradientFilter::Evaluate__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_gradient_filter_1a7b6cdf3efca5ddfc7ce1b4cc852c46b2"></span>double <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, double <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxGradientFilter8EvaluateE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the Gradient Filter is a EVALUATE type filter, the Evaluate method will be called to modify an existing value for a specific “time” sample. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxGradientFilter11MultiSampleE11LXtObjectIDd11LXtObjectID">
+<span id="_CPPv3N17ILxGradientFilter11MultiSampleE11LXtObjectIDd11LXtObjectID"></span><span id="_CPPv2N17ILxGradientFilter11MultiSampleE11LXtObjectIDd11LXtObjectID"></span><span id="ILxGradientFilter::MultiSample__LXtObjectID.double.LXtObjectID"></span><span class="target" id="class_i_lx_gradient_filter_1adb336e7f997318a39fdb1ddba6326f62"></span>double <code class="sig-name descname">MultiSample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxGradientFilter11MultiSampleE11LXtObjectIDd11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the Gradient Filter is a MULTISAMPLE type filter, the MultiSample method will be called to modify an existing value at an arbitary time sample. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxgradientfilter1">
+<h2><a class="toc-backref" href="#id4">ILxGradientFilter1</a><a class="headerlink" href="#ilxgradientfilter1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxGradientFilter1">
+<span id="_CPPv318ILxGradientFilter1"></span><span id="_CPPv218ILxGradientFilter1"></span><span id="ILxGradientFilter1"></span><span class="target" id="class_i_lx_gradient_filter1"></span><em class="property">class </em><code class="sig-name descname">ILxGradientFilter1</code><a class="headerlink" href="#_CPPv418ILxGradientFilter1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxGradientFilter18EvaluateE11LXtObjectIDd">
+<span id="_CPPv3N18ILxGradientFilter18EvaluateE11LXtObjectIDd"></span><span id="_CPPv2N18ILxGradientFilter18EvaluateE11LXtObjectIDd"></span><span id="ILxGradientFilter1::Evaluate__LXtObjectID.double"></span><span class="target" id="class_i_lx_gradient_filter1_1a4de7a8c6ab3394c9c40fe3a96f2c78ed"></span>double <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>inVal</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGradientFilter18EvaluateE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGradientFilter16AddRefE11LXtObjectID">
+<span id="_CPPv3N18ILxGradientFilter16AddRefE11LXtObjectID"></span><span id="_CPPv2N18ILxGradientFilter16AddRefE11LXtObjectID"></span><span id="ILxGradientFilter1::AddRef__LXtObjectID"></span><span class="target" id="class_i_lx_gradient_filter1_1a196e92ce410f2035f1fc233c87523bec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddRef</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGradientFilter16AddRefE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxGradientFilter17ReleaseE11LXtObjectID">
+<span id="_CPPv3N18ILxGradientFilter17ReleaseE11LXtObjectID"></span><span id="_CPPv2N18ILxGradientFilter17ReleaseE11LXtObjectID"></span><span id="ILxGradientFilter1::Release__LXtObjectID"></span><span class="target" id="class_i_lx_gradient_filter1_1a54eee1330173f0178aaff8535e89f311"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Release</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxGradientFilter17ReleaseE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsITYPE_GRADIENTLAYER">
+<span class="target" id="lxd__envelope_8hpp_1af4db8d502f00b3bc8caca46bb111bdea"></span><code class="sig-name descname">LXsITYPE_GRADIENTLAYER</code><a class="headerlink" href="#c.LXsITYPE_GRADIENTLAYER" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gradient filters can be applied as non-destructive layers on top of a gradient channel. Gradient Layers are a special item type that are not displayed in the user interface. Gradient layers are automatically generated from any Gradient Filter server that marks itself as a layer, so should not be implemented directly. The filter must present an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface to allow channels on the item to be created. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsICHAN_GRADIENTLAYER_ENABLE</p></li>
+<li><p>LXsICHAN_GRADIENTLAYER_OBJ</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSRV_GRADIENTFILTER_ADDLAYER">
+<span class="target" id="lxd__envelope_8hpp_1a06ece5d6aaae73fb72358483cf0cf7b6"></span><code class="sig-name descname">LXsSRV_GRADIENTFILTER_ADDLAYER</code><a class="headerlink" href="#c.LXsSRV_GRADIENTFILTER_ADDLAYER" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>To mark a gradient filter as a gradient layer, the following server tag must be added to the server. The value of the tag does not matter. </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_externalrender.html" class="btn btn-neutral float-right" title="Externalrender" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_drop.html" class="btn btn-neutral float-left" title="Drop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_envelope.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

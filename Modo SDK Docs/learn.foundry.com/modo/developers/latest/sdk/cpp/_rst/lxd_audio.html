@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_audio.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Audio &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Canvasitem" href="lxd_canvasitem.html" />
+    <link rel="prev" title="Arrayui" href="lxd_arrayui.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Audio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxaudioanimservice">ILxAudioAnimService</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Audio</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="audio">
+<h1>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxaudioanimservice" id="id1">ILxAudioAnimService</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxaudioanimservice">
+<h2><a class="toc-backref" href="#id1">ILxAudioAnimService</a><a class="headerlink" href="#ilxaudioanimservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxAudioAnimService">
+<span id="_CPPv319ILxAudioAnimService"></span><span id="_CPPv219ILxAudioAnimService"></span><span id="ILxAudioAnimService"></span><span class="target" id="class_i_lx_audio_anim_service"></span><em class="property">class </em><code class="sig-name descname">ILxAudioAnimService</code><a class="headerlink" href="#_CPPv419ILxAudioAnimService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService4ItemE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxAudioAnimService4ItemE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxAudioAnimService4ItemE11LXtObjectIDPPv"></span><span id="ILxAudioAnimService::Item__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_audio_anim_service_1a42b22f92cd00bf4e57dfbdc9f92f43cd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService4ItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Audio for animation can be accessed through the SDK using a global service interface. Return the audio clip item for animation. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService6SampleE11LXtObjectIDdjPv">
+<span id="_CPPv3N19ILxAudioAnimService6SampleE11LXtObjectIDdjPv"></span><span id="_CPPv2N19ILxAudioAnimService6SampleE11LXtObjectIDdjPv"></span><span id="ILxAudioAnimService::Sample__LXtObjectID.double.unsigned-i.voidP"></span><span class="target" id="class_i_lx_audio_anim_service_1aa4ddd8774cf6a038c659b0114836aecc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Sample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>time</em>, unsigned int <em>type</em>, void *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService6SampleE11LXtObjectIDdjPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService7PlayingE11LXtObjectID">
+<span id="_CPPv3N19ILxAudioAnimService7PlayingE11LXtObjectID"></span><span id="_CPPv2N19ILxAudioAnimService7PlayingE11LXtObjectID"></span><span id="ILxAudioAnimService::Playing__LXtObjectID"></span><span class="target" id="class_i_lx_audio_anim_service_1a1a5d0d9c9373b671f7567c9a9a7f81d5"></span>int <code class="sig-name descname">Playing</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService7PlayingE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return true if the audio for animation is playing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService4LoopE11LXtObjectID">
+<span id="_CPPv3N19ILxAudioAnimService4LoopE11LXtObjectID"></span><span id="_CPPv2N19ILxAudioAnimService4LoopE11LXtObjectID"></span><span id="ILxAudioAnimService::Loop__LXtObjectID"></span><span class="target" id="class_i_lx_audio_anim_service_1a0a9e4ad2252cc8ae8d000f5f3b45cd0f"></span>int <code class="sig-name descname">Loop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService4LoopE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return true if the audio for animation is loop mode. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService4MuteE11LXtObjectID">
+<span id="_CPPv3N19ILxAudioAnimService4MuteE11LXtObjectID"></span><span id="_CPPv2N19ILxAudioAnimService4MuteE11LXtObjectID"></span><span id="ILxAudioAnimService::Mute__LXtObjectID"></span><span class="target" id="class_i_lx_audio_anim_service_1aa842de67ad08fe87cad47071b229c190"></span>int <code class="sig-name descname">Mute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService4MuteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return true if the audio for animation is in mute. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService5ScrubE11LXtObjectID">
+<span id="_CPPv3N19ILxAudioAnimService5ScrubE11LXtObjectID"></span><span id="_CPPv2N19ILxAudioAnimService5ScrubE11LXtObjectID"></span><span id="ILxAudioAnimService::Scrub__LXtObjectID"></span><span class="target" id="class_i_lx_audio_anim_service_1a17fca7bc23f1d412a788afb0244f1d5c"></span>int <code class="sig-name descname">Scrub</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService5ScrubE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return true if the scurb is enabled. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService5StartE11LXtObjectID">
+<span id="_CPPv3N19ILxAudioAnimService5StartE11LXtObjectID"></span><span id="_CPPv2N19ILxAudioAnimService5StartE11LXtObjectID"></span><span id="ILxAudioAnimService::Start__LXtObjectID"></span><span class="target" id="class_i_lx_audio_anim_service_1af1af0f93e5d779184c127d660c6232b7"></span>double <code class="sig-name descname">Start</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService5StartE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the start time to play audio. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService3EndE11LXtObjectID">
+<span id="_CPPv3N19ILxAudioAnimService3EndE11LXtObjectID"></span><span id="_CPPv2N19ILxAudioAnimService3EndE11LXtObjectID"></span><span id="ILxAudioAnimService::End__LXtObjectID"></span><span class="target" id="class_i_lx_audio_anim_service_1afd17e729bc2e6f71d786bdad6fe25a40"></span>double <code class="sig-name descname">End</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService3EndE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the end time to play audio. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService5AudioE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxAudioAnimService5AudioE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxAudioAnimService5AudioE11LXtObjectIDPPv"></span><span id="ILxAudioAnimService::Audio__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_audio_anim_service_1a55f2cfd506d8b316af003fe7b67f2b69"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Audio</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService5AudioE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the audio object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService7PreviewE11LXtObjectIDddPPv">
+<span id="_CPPv3N19ILxAudioAnimService7PreviewE11LXtObjectIDddPPv"></span><span id="_CPPv2N19ILxAudioAnimService7PreviewE11LXtObjectIDddPPv"></span><span id="ILxAudioAnimService::Preview__LXtObjectID.double.double.voidPP"></span><span class="target" id="class_i_lx_audio_anim_service_1a19599393c9cd7f68396dd0e46348362e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Preview</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>startTime</em>, double <em>endTime</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService7PreviewE11LXtObjectIDddPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This also return the audio object between start and end times, but this is resampled with the current animation settings like Start time and Loop. The audio object must be release on user side. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService10ItemSampleE11LXtObjectID11LXtObjectIDidjPv">
+<span id="_CPPv3N19ILxAudioAnimService10ItemSampleE11LXtObjectID11LXtObjectIDidjPv"></span><span id="_CPPv2N19ILxAudioAnimService10ItemSampleE11LXtObjectID11LXtObjectIDidjPv"></span><span id="ILxAudioAnimService::ItemSample__LXtObjectID.LXtObjectID.i.double.unsigned-i.voidP"></span><span class="target" id="class_i_lx_audio_anim_service_1a94e0b89011f24fc21705bb79642fb258"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemSample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>obj</em>, int <em>loop</em>, double <em>time</em>, unsigned int <em>type</em>, void *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService10ItemSampleE11LXtObjectID11LXtObjectIDidjPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService9ItemAudioE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxAudioAnimService9ItemAudioE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxAudioAnimService9ItemAudioE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxAudioAnimService::ItemAudio__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_audio_anim_service_1a42d68ea790593c876a46041cb26b11ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemAudio</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>obj</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService9ItemAudioE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the audio object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService8GetAudioER13CLxUser_Audio">
+<span id="_CPPv3N19ILxAudioAnimService8GetAudioER13CLxUser_Audio"></span><span id="_CPPv2N19ILxAudioAnimService8GetAudioER13CLxUser_Audio"></span><span id="ILxAudioAnimService::GetAudio__CLxUser_AudioR"></span><span class="target" id="class_i_lx_audio_anim_service_1aa93219feaf0d0a84fcc5e5bfe8e956ee"></span>bool <code class="sig-name descname">GetAudio</code><span class="sig-paren">(</span>CLxUser_Audio &amp;<em>audio</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService8GetAudioER13CLxUser_Audio" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxAudioAnimService12GetItemAudioE12CLxUser_ItemR13CLxUser_Audio">
+<span id="_CPPv3N19ILxAudioAnimService12GetItemAudioE12CLxUser_ItemR13CLxUser_Audio"></span><span id="_CPPv2N19ILxAudioAnimService12GetItemAudioE12CLxUser_ItemR13CLxUser_Audio"></span><span id="ILxAudioAnimService::GetItemAudio__CLxUser_Item.CLxUser_AudioR"></span><span class="target" id="class_i_lx_audio_anim_service_1a5a6d2f1d697f539ecfa5e058832fc9df"></span>bool <code class="sig-name descname">GetItemAudio</code><span class="sig-paren">(</span>CLxUser_Item <em>item</em>, CLxUser_Audio &amp;<em>audio</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAudioAnimService12GetItemAudioE12CLxUser_ItemR13CLxUser_Audio" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_canvasitem.html" class="btn btn-neutral float-right" title="Canvasitem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_arrayui.html" class="btn btn-neutral float-left" title="Arrayui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_audio.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

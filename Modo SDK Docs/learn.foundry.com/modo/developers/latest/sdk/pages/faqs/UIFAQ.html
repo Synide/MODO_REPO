@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/UIFAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Interface &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SDK Tutorials" href="../tutorials/_tutorials.html" />
+    <link rel="prev" title="Dealing with Time" href="TimeFAQs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_faqs.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="COMFAQs.html">About COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChannelFAQs.html">Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CppFAQs.html">C++ Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ItemFAQs.html">Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MeshFAQ.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModifierFAQ.html">Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PythonFAQs.html">Python Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TimeFAQs.html">Dealing with Time</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-use-and-read-selection-choice-from-a-custom-popup">How do use and read selection choice from a custom popup?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-make-my-command-button-update-when-the-enable-state-changes">How do I make my command button update when the enable state changes?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-make-my-command-s-boolean-argument-appear-as-a-toggle-button">How do I make my command’s boolean argument appear as a toggle button?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-open-a-file-dialog-from-my-command">How do I open a file dialog from my command?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_faqs.html">Frequently Asked Questions</a> &raquo;</li>
+        
+      <li>User Interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-interface">
+<h1>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-do-use-and-read-selection-choice-from-a-custom-popup">
+<h2>How do use and read selection choice from a custom popup?<a class="headerlink" href="#how-do-use-and-read-selection-choice-from-a-custom-popup" title="Permalink to this headline">¶</a></h2>
+<p>If you want to create a popup selection choice an argument for a command, the easiest option is to use a LXtTextValueHintcreate and set that hint for an integer argument using dyna_SetHint.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">LXtTextValueHint</span> <span class="n">argChoices</span><span class="p">[]</span> <span class="o">=</span>
+<span class="p">{</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;choiceA&quot;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;choiceB&quot;</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;choiceC&quot;</span><span class="p">,</span>
+        <span class="mi">-1</span><span class="p">,</span> <span class="nb">NULL</span>
+<span class="p">}</span>
+<span class="n">MyCommand</span><span class="o">::</span><span class="n">MyCommand</span> <span class="p">()</span>
+<span class="p">{</span>
+        <span class="n">dyna_Add</span> <span class="p">(</span><span class="s">&quot;choices&quot;</span><span class="p">,</span> <span class="n">LXsTYPE_INTEGER</span><span class="p">);</span>
+        <span class="n">dyna_SetHint</span> <span class="p">(</span><span class="n">argChoices</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you’re list is dynamic, Text Value Hints might not be an option. Instead you can use CLxUIValue or CLxDynamicUIValue inside of a overridden atrui_UIValue function to create your list of choices.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxDynamicUIValue</span> <span class="n">MyCommand</span><span class="o">::</span><span class="n">atrui_UIValue</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">argIdx</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">CLxUIValue</span>              <span class="o">*</span><span class="n">pop</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="n">CLxUser_Scene</span>            <span class="n">scene</span><span class="p">;</span>
+        <span class="n">CLxUser_Item</span>             <span class="n">item</span><span class="p">;</span>
+        <span class="k">const</span> <span class="kt">char</span>              <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+        <span class="n">CLxSceneSelection</span>        <span class="n">scnSel</span><span class="p">;</span>
+        <span class="kt">unsigned</span>                 <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">argIdx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">scnSel</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="n">scene</span><span class="p">);</span>
+                <span class="n">pop</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CLxUIValue</span><span class="p">();</span>
+                <span class="n">pop</span><span class="o">-&gt;</span><span class="n">popup_add</span> <span class="p">(</span><span class="s">&quot;choiceA&quot;</span><span class="p">);</span>
+                <span class="n">pop</span><span class="o">-&gt;</span><span class="n">popup_add</span> <span class="p">(</span><span class="s">&quot;choiceB&quot;</span><span class="p">);</span>
+                <span class="n">scene</span><span class="p">.</span><span class="n">ItemCount</span><span class="p">(</span><span class="n">cit_mesh</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">scene</span><span class="p">.</span><span class="n">ItemByIndex</span><span class="p">(</span><span class="n">cit_mesh</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">);</span>
+                        <span class="n">item</span><span class="p">.</span><span class="n">UniqueName</span><span class="p">(</span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span>
+                        <span class="n">pop</span><span class="o">-&gt;</span><span class="n">popup_add</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">IdentPtr</span><span class="p">(),</span> <span class="n">name</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="n">pop</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It can be tricky to work out how to read these values later on, however.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Read which choice was selected</span>
+<span class="kt">int</span> <span class="n">choiceIdx</span><span class="p">;</span>
+<span class="n">choiceIdx</span> <span class="o">=</span> <span class="n">dyna_Int</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// Create a hint and set it using the UIValueHints method</span>
+<span class="n">CLxLoc_UIValueHints</span> <span class="n">hnts</span><span class="p">;</span>
+<span class="n">LXtObjectID</span> <span class="n">obj</span><span class="p">;</span>
+<span class="n">atrui_UIValueHints</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
+<span class="n">hnts</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+
+<span class="c1">// Read the user name at the chosen index (or any other property)</span>
+<span class="n">stMeshIdent</span> <span class="o">=</span> <span class="n">hnts</span><span class="p">.</span><span class="n">PopUserName</span><span class="p">(</span><span class="n">mIdx</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-make-my-command-button-update-when-the-enable-state-changes">
+<h2>How do I make my command button update when the enable state changes?<a class="headerlink" href="#how-do-i-make-my-command-button-update-when-the-enable-state-changes" title="Permalink to this headline">¶</a></h2>
+<p>You need a notifier. Command notifiers send change flags on specific events to indicate that some aspect of the command’s state may have changed. Flags can indicate the enable/disable state, the label, the value, or the datatype.</p>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Notifiers can be added to a basic command by implementing basic_Notifier() which returns the name and arguments for each notifier by index.
+<a href="#id3"><span class="problematic" id="id4">*</span></a>Common notifiers for selection changes, mesh edits, etc, can be found in the notifier docs.
+<a href="#id5"><span class="problematic" id="id6">*</span></a>Changes to plug-in state can trigger notifications by declaring a notifier server. These are created by inheriting from CLxCommandNotifier.</p>
+</div>
+<div class="section" id="how-do-i-make-my-command-s-boolean-argument-appear-as-a-toggle-button">
+<h2>How do I make my command’s boolean argument appear as a toggle button?<a class="headerlink" href="#how-do-i-make-my-command-s-boolean-argument-appear-as-a-toggle-button" title="Permalink to this headline">¶</a></h2>
+<p>You can set the default style of a command’s boolean argument using UIHints, done by implementing arg_UIHints() in Python.
+By default, boolean type arguments will appear as a checkbox when exposed in the UI, but you can specify the hint for the boolean argument’s index to default to a toggle button like this.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arg_UIHints</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">hints</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">hints</span><span class="o">.</span><span class="n">BooleanStyle</span> <span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iBOOLEANSTYLE_BUTTON</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-open-a-file-dialog-from-my-command">
+<h2>How do I open a file dialog from my command?<a class="headerlink" href="#how-do-i-open-a-file-dialog-from-my-command" title="Permalink to this headline">¶</a></h2>
+<p>Normally this is done in your Interact() method, something like this:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CCommmandUtility</span> <span class="p">{</span>
+   <span class="k">public</span><span class="o">:</span>
+   <span class="kt">void</span>        <span class="n">fire</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cmd</span><span class="p">)</span>
+   <span class="p">{</span>
+           <span class="n">check</span> <span class="p">(</span> <span class="n">srv_cmd</span><span class="p">.</span><span class="n">ExecuteArgString</span> <span class="p">(</span><span class="mi">-1</span><span class="p">,</span> <span class="n">LXiCTAG_NULL</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span> <span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="n">CLxUser_CommandService</span>         <span class="n">srv_cmd</span><span class="p">;</span>
+<span class="p">};</span>
+
+        <span class="kt">void</span>
+<span class="n">CMyLoadCommand</span><span class="o">::</span><span class="n">cmd_Interact</span> <span class="p">()</span>
+<span class="p">{</span>
+        <span class="cm">/*</span>
+<span class="cm">         * Open the dialog using the &quot;dialog.*&quot; sub-commands. Works here</span>
+<span class="cm">         * because they are non-model, non-undoable commands.</span>
+<span class="cm">         */</span>
+        <span class="n">fire</span> <span class="p">(</span><span class="s">&quot;dialog.setup fileOpen&quot;</span><span class="p">);</span>
+        <span class="n">fire</span> <span class="p">(</span><span class="s">&quot;dialog.title {Load Animation}&quot;</span><span class="p">);</span>
+        <span class="n">fire</span> <span class="p">(</span><span class="s">&quot;dialog.fileTypeCustom {Quicktime Movie} {*.mov;*.mp4} mov&quot;</span><span class="p">);</span>
+        <span class="n">fire</span> <span class="p">(</span><span class="s">&quot;dialog.open&quot;</span><span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * Query the result, getting a list of filenames.</span>
+<span class="cm">         */</span>
+        <span class="n">CLxUser_Command</span>          <span class="n">resCmd</span><span class="p">;</span>
+        <span class="n">CLxUser_ValueArray</span>       <span class="n">va</span><span class="p">;</span>
+        <span class="n">LXtObjectID</span>              <span class="n">obj</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span>             <span class="n">n</span><span class="p">;</span>
+
+        <span class="n">check</span> <span class="p">(</span> <span class="n">srv_cmd</span><span class="p">.</span><span class="n">NewCommand</span> <span class="p">(</span><span class="n">resCmd</span><span class="p">,</span> <span class="s">&quot;dialog.result&quot;</span><span class="p">)</span> <span class="p">);</span>
+        <span class="n">check</span> <span class="p">(</span> <span class="n">srv_cmd</span><span class="p">.</span><span class="n">QueryIndex</span> <span class="p">(</span><span class="n">resCmd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">va</span><span class="p">),</span> <span class="n">LXe_FAILED</span> <span class="p">);</span>
+
+        <span class="cm">/*</span>
+<span class="cm">         * Although it&#39;s a list, there&#39;s only one filename (since this was</span>
+<span class="cm">         * a single-file dialog).  We&#39;ll set our filename argument to the</span>
+<span class="cm">         * first one in the list.</span>
+<span class="cm">         */</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">va</span><span class="p">.</span><span class="n">Count</span> <span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">n</span><span class="p">)</span>
+                <span class="k">return</span><span class="p">;</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span>              <span class="n">filename</span><span class="p">;</span>
+
+        <span class="n">check</span> <span class="p">(</span> <span class="n">va</span><span class="p">.</span><span class="n">String</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span> <span class="p">);</span>
+        <span class="n">check</span> <span class="p">(</span> <span class="n">attr_SetString</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="p">.</span><span class="n">c_str</span> <span class="p">())</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The check() functions are defined in the lx_err namespace.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tutorials/_tutorials.html" class="btn btn-neutral float-right" title="SDK Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TimeFAQs.html" class="btn btn-neutral float-left" title="Dealing with Time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/UIFAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

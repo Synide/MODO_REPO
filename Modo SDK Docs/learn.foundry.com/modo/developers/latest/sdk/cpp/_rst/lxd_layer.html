@@ -1,0 +1,834 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_layer.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Layer &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Listcache" href="lxd_listcache.html" />
+    <link rel="prev" title="Itemui" href="lxd_itemui.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlayerservice">ILxLayerService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlayerscan">ILxLayerScan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtransformscan">ILxTransformScan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxscene1service">ILxScene1Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Layer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="layer">
+<h1>Layer<a class="headerlink" href="#layer" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxlayerservice" id="id1">ILxLayerService</a></p></li>
+<li><p><a class="reference internal" href="#ilxlayerscan" id="id2">ILxLayerScan</a></p></li>
+<li><p><a class="reference internal" href="#ilxtransformscan" id="id3">ILxTransformScan</a></p></li>
+<li><p><a class="reference internal" href="#ilxscene1service" id="id4">ILxScene1Service</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxlayerservice">
+<h2><a class="toc-backref" href="#id1">ILxLayerService</a><a class="headerlink" href="#ilxlayerservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxLayerService">
+<span id="_CPPv315ILxLayerService"></span><span id="_CPPv215ILxLayerService"></span><span id="ILxLayerService"></span><span class="target" id="class_i_lx_layer_service"></span><em class="property">class </em><code class="sig-name descname">ILxLayerService</code><a class="headerlink" href="#_CPPv415ILxLayerService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A portion of the Layer API is wrapped as a Global Service object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N15ILxLayerService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N15ILxLayerService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxLayerService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a03e0b7908dc4a6f7bb57a477176b72cc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As with all globals, the first method gets the ILxScriptQueryID interface for the system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService8SetSceneE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N15ILxLayerService8SetSceneE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N15ILxLayerService8SetSceneE11LXtObjectID11LXtObjectID"></span><span id="ILxLayerService::SetScene__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_layer_service_1a4bebc43b832407e11fcc7d48bd1ef152"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetScene</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>scene</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService8SetSceneE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The layer service functions operate with to a certain scene. This scene should be specified by the client BEFORE any other methods are used, as an initialization step. The scene can also be reset at any time, either to a new scene, or to force a refresh of the layer data. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService5SceneE11LXtObjectIDPPv">
+<span id="_CPPv3N15ILxLayerService5SceneE11LXtObjectIDPPv"></span><span id="_CPPv2N15ILxLayerService5SceneE11LXtObjectIDPPv"></span><span id="ILxLayerService::Scene__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a04444034d91f92ff97c86e05ba1a631f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Scene</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService5SceneE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService5CountE11LXtObjectIDPj">
+<span id="_CPPv3N15ILxLayerService5CountE11LXtObjectIDPj"></span><span id="_CPPv2N15ILxLayerService5CountE11LXtObjectIDPj"></span><span id="ILxLayerService::Count__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_layer_service_1a7414f3d9d115a0245a55a143bfa4c356"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The following functions operate on these lists, with indices based, naturally, on the position within the given list. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService4NameE11LXtObjectIDjPPKc">
+<span id="_CPPv3N15ILxLayerService4NameE11LXtObjectIDjPPKc"></span><span id="_CPPv2N15ILxLayerService4NameE11LXtObjectIDjPPKc"></span><span id="ILxLayerService::Name__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_layer_service_1aa91e64147363780c42649bf409d1987d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService4NameE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService4SlotE11LXtObjectIDjPi">
+<span id="_CPPv3N15ILxLayerService4SlotE11LXtObjectIDjPi"></span><span id="_CPPv2N15ILxLayerService4SlotE11LXtObjectIDjPi"></span><span id="ILxLayerService::Slot__LXtObjectID.unsigned-i.iP"></span><span class="target" id="class_i_lx_layer_service_1a702756f8a10a9aa6a9b23fed3f083462"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Slot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int *<em>slot</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService4SlotE11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService4ItemE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService4ItemE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService4ItemE11LXtObjectIDjPPv"></span><span id="ILxLayerService::Item__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1aee412941a27ef618d234f3be519490dc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService4ItemE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService4MeshE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService4MeshE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService4MeshE11LXtObjectIDjPPv"></span><span id="ILxLayerService::Mesh__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a779b0b32061bee953eb62943d65bdcc0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Mesh</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService4MeshE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService5FlagsE11LXtObjectIDjPi">
+<span id="_CPPv3N15ILxLayerService5FlagsE11LXtObjectIDjPi"></span><span id="_CPPv2N15ILxLayerService5FlagsE11LXtObjectIDjPi"></span><span id="ILxLayerService::Flags__LXtObjectID.unsigned-i.iP"></span><span class="target" id="class_i_lx_layer_service_1a533c29c0ec78d29a87e4c267d95a1995"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService5FlagsE11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService5PivotE11LXtObjectIDjPd">
+<span id="_CPPv3N15ILxLayerService5PivotE11LXtObjectIDjPd"></span><span id="_CPPv2N15ILxLayerService5PivotE11LXtObjectIDjPd"></span><span id="ILxLayerService::Pivot__LXtObjectID.unsigned-i.doubleP"></span><span class="target" id="class_i_lx_layer_service_1af88dfaf8f3281d4425816aadf65501e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Pivot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, double *<em>pivot</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService5PivotE11LXtObjectIDjPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService16PatchSubdivisionE11LXtObjectIDjPi">
+<span id="_CPPv3N15ILxLayerService16PatchSubdivisionE11LXtObjectIDjPi"></span><span id="_CPPv2N15ILxLayerService16PatchSubdivisionE11LXtObjectIDjPi"></span><span id="ILxLayerService::PatchSubdivision__LXtObjectID.unsigned-i.iP"></span><span class="target" id="class_i_lx_layer_service_1a54d2c1d80f3d80e9a81adfdffb346d06"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PatchSubdivision</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int *<em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService16PatchSubdivisionE11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService6BoundsE11LXtObjectIDj9LXtVector9LXtVector">
+<span id="_CPPv3N15ILxLayerService6BoundsE11LXtObjectIDj9LXtVector9LXtVector"></span><span id="_CPPv2N15ILxLayerService6BoundsE11LXtObjectIDj9LXtVector9LXtVector"></span><span id="ILxLayerService::Bounds__LXtObjectID.unsigned-i.LXtVector.LXtVector"></span><span class="target" id="class_i_lx_layer_service_1ab800776a28a121294bfa17d79e1f5d8c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Bounds</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>min</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService6BoundsE11LXtObjectIDj9LXtVector9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService16CurveSmoothAngleE11LXtObjectIDjPd">
+<span id="_CPPv3N15ILxLayerService16CurveSmoothAngleE11LXtObjectIDjPd"></span><span id="_CPPv2N15ILxLayerService16CurveSmoothAngleE11LXtObjectIDjPd"></span><span id="ILxLayerService::CurveSmoothAngle__LXtObjectID.unsigned-i.doubleP"></span><span class="target" id="class_i_lx_layer_service_1a29bb4443b7f30a5576793b20d3293058"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurveSmoothAngle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, double *<em>angle</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService16CurveSmoothAngleE11LXtObjectIDjPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService22SplinePatchSubdivisionE11LXtObjectIDjPi">
+<span id="_CPPv3N15ILxLayerService22SplinePatchSubdivisionE11LXtObjectIDjPi"></span><span id="_CPPv2N15ILxLayerService22SplinePatchSubdivisionE11LXtObjectIDjPi"></span><span id="ILxLayerService::SplinePatchSubdivision__LXtObjectID.unsigned-i.iP"></span><span class="target" id="class_i_lx_layer_service_1ae83bc5a031161b217c27ac529a7e6fa6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SplinePatchSubdivision</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int *<em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService22SplinePatchSubdivisionE11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService10ItemLookupE11LXtObjectIDi11LXtObjectIDPi">
+<span id="_CPPv3N15ILxLayerService10ItemLookupE11LXtObjectIDi11LXtObjectIDPi"></span><span id="_CPPv2N15ILxLayerService10ItemLookupE11LXtObjectIDi11LXtObjectIDPi"></span><span id="ILxLayerService::ItemLookup__LXtObjectID.i.LXtObjectID.iP"></span><span class="target" id="class_i_lx_layer_service_1a4b5bc7a4e04842bfb68fa0c4fbeb43b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, int *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService10ItemLookupE11LXtObjectIDi11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods find an item’s position in one of the lists based on the item itself, or on its name. They will return an error AND set the index to -1 if the item is not found in the specified list. To use this index in layer commands, use LXi_LAYER_ALL mode. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService10NameLookupE11LXtObjectIDiPKcPi">
+<span id="_CPPv3N15ILxLayerService10NameLookupE11LXtObjectIDiPKcPi"></span><span id="_CPPv2N15ILxLayerService10NameLookupE11LXtObjectIDiPKcPi"></span><span id="ILxLayerService::NameLookup__LXtObjectID.i.cCP.iP"></span><span class="target" id="class_i_lx_layer_service_1ab93718f57620fb612e71bd83c2a6def7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NameLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, <em class="property">const</em> char *<em>name</em>, int *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService10NameLookupE11LXtObjectIDiPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService11LayerParentE11LXtObjectIDiPi">
+<span id="_CPPv3N15ILxLayerService11LayerParentE11LXtObjectIDiPi"></span><span id="_CPPv2N15ILxLayerService11LayerParentE11LXtObjectIDiPi"></span><span id="ILxLayerService::LayerParent__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_layer_service_1a07230783ac9d685ecb344bf6dcff9341"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerParent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, int *<em>parentIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService11LayerParentE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods access the parent-child relationships among layers. They return an index into the LXi_LAYER_ALL list, or -1. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService15LayerChildCountE11LXtObjectIDiPi">
+<span id="_CPPv3N15ILxLayerService15LayerChildCountE11LXtObjectIDiPi"></span><span id="_CPPv2N15ILxLayerService15LayerChildCountE11LXtObjectIDiPi"></span><span id="ILxLayerService::LayerChildCount__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_layer_service_1a148590c72703b3ad3c47ca9c93ea9147"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerChildCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService15LayerChildCountE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService10LayerChildE11LXtObjectIDiiPi">
+<span id="_CPPv3N15ILxLayerService10LayerChildE11LXtObjectIDiiPi"></span><span id="_CPPv2N15ILxLayerService10LayerChildE11LXtObjectIDiiPi"></span><span id="ILxLayerService::LayerChild__LXtObjectID.i.i.iP"></span><span class="target" id="class_i_lx_layer_service_1a3057196bcd9a015b2f85609e749f8526"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerChild</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, int <em>childNumber</em>, int *<em>childIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService10LayerChildE11LXtObjectIDiiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService14LayerVMapCountE11LXtObjectIDPi">
+<span id="_CPPv3N15ILxLayerService14LayerVMapCountE11LXtObjectIDPi"></span><span id="_CPPv2N15ILxLayerService14LayerVMapCountE11LXtObjectIDPi"></span><span id="ILxLayerService::LayerVMapCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_layer_service_1a2e9fc0853105756b6124024be62fd256"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerVMapCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService14LayerVMapCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The meshes in the layer list have a number of associated entities like vertex maps, image clips, and textures. APIs are provided to access these entities, presumable as the appropriate COM objects. The list of vert. maps present in the active and background layers can be accessed using these methods. Multiple VMaps with the same name and type are represented as a single entry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService9LayerVMapE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService9LayerVMapE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService9LayerVMapE11LXtObjectIDjPPv"></span><span id="ILxLayerService::LayerVMap__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a53a20730e1efd7873a785dd084b0fca0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerVMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService9LayerVMapE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService14LayerClipCountE11LXtObjectIDPi">
+<span id="_CPPv3N15ILxLayerService14LayerClipCountE11LXtObjectIDPi"></span><span id="_CPPv2N15ILxLayerService14LayerClipCountE11LXtObjectIDPi"></span><span id="ILxLayerService::LayerClipCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_layer_service_1a3833426374edcc020428df625368a2a1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerClipCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService14LayerClipCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a2e9fc0853105756b6124024be62fd256"><span class="std std-ref">LayerVMapCount()</span></a> Return the number of vertex maps. If type is non-NULL, only maps of that type will be included.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a53a20730e1efd7873a785dd084b0fca0"><span class="std std-ref">LayerVMap()</span></a> Return the vertex maps at ‘index’. If type is non-NULL, only maps of that type will be considered. Similar methods provide access to the Clips and Textures used by </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService9LayerClipE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService9LayerClipE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService9LayerClipE11LXtObjectIDjPPv"></span><span id="ILxLayerService::LayerClip__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a29ce30fe1b95f37ca0dd5e5e80c5e320"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerClip</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService9LayerClipE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService18LayerMaterialCountE11LXtObjectIDPi">
+<span id="_CPPv3N15ILxLayerService18LayerMaterialCountE11LXtObjectIDPi"></span><span id="_CPPv2N15ILxLayerService18LayerMaterialCountE11LXtObjectIDPi"></span><span id="ILxLayerService::LayerMaterialCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_layer_service_1acee185c75db854025476da079d822ef6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerMaterialCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService18LayerMaterialCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService13LayerMaterialE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService13LayerMaterialE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService13LayerMaterialE11LXtObjectIDjPPv"></span><span id="ILxLayerService::LayerMaterial__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1ab12b5b69f777633620db2b4412b1f656"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerMaterial</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService13LayerMaterialE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService14LayerPartCountE11LXtObjectIDPi">
+<span id="_CPPv3N15ILxLayerService14LayerPartCountE11LXtObjectIDPi"></span><span id="_CPPv2N15ILxLayerService14LayerPartCountE11LXtObjectIDPi"></span><span id="ILxLayerService::LayerPartCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_layer_service_1a407d07da797d5e734e7b484da4053c76"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerPartCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService14LayerPartCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1acee185c75db854025476da079d822ef6"><span class="std std-ref">LayerMaterialCount()</span></a> Returns the number of materials in the active layers.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1ab12b5b69f777633620db2b4412b1f656"><span class="std std-ref">LayerMaterial()</span></a> Returns the material item (<a class="reference internal" href="lxd_item.html#class_i_lx_item"><span class="std std-ref">ILxItem</span></a>) at the given index in the list of materials in the active layers.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a3833426374edcc020428df625368a2a1"><span class="std std-ref">LayerClipCount()</span></a> Returns the number of clips used by materials in the active layers.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a29ce30fe1b95f37ca0dd5e5e80c5e320"><span class="std std-ref">LayerClip()</span></a> Returns the clip item at the given index. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService9LayerPartE11LXtObjectIDjPPKc">
+<span id="_CPPv3N15ILxLayerService9LayerPartE11LXtObjectIDjPPKc"></span><span id="_CPPv2N15ILxLayerService9LayerPartE11LXtObjectIDjPPKc"></span><span id="ILxLayerService::LayerPart__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_layer_service_1a0cb5dcf49b1281a1ea972678f8bba1c9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerPart</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>part</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService9LayerPartE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService16LayerSelSetCountE11LXtObjectIDjPi">
+<span id="_CPPv3N15ILxLayerService16LayerSelSetCountE11LXtObjectIDjPi"></span><span id="_CPPv2N15ILxLayerService16LayerSelSetCountE11LXtObjectIDjPi"></span><span id="ILxLayerService::LayerSelSetCount__LXtObjectID.unsigned-i.iP"></span><span class="target" id="class_i_lx_layer_service_1ac641d9e9391e504a026406bb8f4c1503"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerSelSetCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>type</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService16LayerSelSetCountE11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a407d07da797d5e734e7b484da4053c76"><span class="std std-ref">LayerPartCount()</span></a> Returns the number of parts in the active layers.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a0cb5dcf49b1281a1ea972678f8bba1c9"><span class="std std-ref">LayerPart()</span></a> Returns the part name at the given index. Access the selection sets for items, polys, or vert/edge using types ID_ITEM, ID_POLY, or ID_VERX/ID_EDGE respectively </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService11LayerSelSetE11LXtObjectIDjjPPKc">
+<span id="_CPPv3N15ILxLayerService11LayerSelSetE11LXtObjectIDjjPPKc"></span><span id="_CPPv2N15ILxLayerService11LayerSelSetE11LXtObjectIDjjPPKc"></span><span id="ILxLayerService::LayerSelSet__LXtObjectID.unsigned-i.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_layer_service_1ad606c4f99e340e9d7a244f52e73bffa2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerSelSet</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>type</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>selSet</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService11LayerSelSetE11LXtObjectIDjjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService17LayerTextureCountE11LXtObjectIDiPi">
+<span id="_CPPv3N15ILxLayerService17LayerTextureCountE11LXtObjectIDiPi"></span><span id="_CPPv2N15ILxLayerService17LayerTextureCountE11LXtObjectIDiPi"></span><span id="ILxLayerService::LayerTextureCount__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_layer_service_1aec4f5113af8529c380ff593613ca8c31"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerTextureCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>layer</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService17LayerTextureCountE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The set of texture items applied to an item, or a part thereof are accessed with these functions. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService12LayerTextureE11LXtObjectIDijPPv">
+<span id="_CPPv3N15ILxLayerService12LayerTextureE11LXtObjectIDijPPv"></span><span id="_CPPv2N15ILxLayerService12LayerTextureE11LXtObjectIDijPPv"></span><span id="ILxLayerService::LayerTexture__LXtObjectID.i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a7ea99107c975db0e304ba5896fd1f05c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerTexture</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>layer</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService12LayerTextureE11LXtObjectIDijPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService20LayerTagTextureCountE11LXtObjectIDijPKcPi">
+<span id="_CPPv3N15ILxLayerService20LayerTagTextureCountE11LXtObjectIDijPKcPi"></span><span id="_CPPv2N15ILxLayerService20LayerTagTextureCountE11LXtObjectIDijPKcPi"></span><span id="ILxLayerService::LayerTagTextureCount__LXtObjectID.i.unsigned-i.cCP.iP"></span><span class="target" id="class_i_lx_layer_service_1af0f155f765316546d17d4b8b3d32031e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerTagTextureCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>layer</em>, unsigned int <em>type</em>, <em class="property">const</em> char *<em>tag</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService20LayerTagTextureCountE11LXtObjectIDijPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1aec4f5113af8529c380ff593613ca8c31"><span class="std std-ref">LayerTextureCount()</span></a> Return the number of textures applied to the given mesh layer.</p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a7ea99107c975db0e304ba5896fd1f05c"><span class="std std-ref">LayerTexture()</span></a> Returns the texture item at the given index in the list of textures applied to the specified mesh layer. The set of textures applied based on a given (PART or MATR) polygon tag may also be accessed. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService15LayerTagTextureE11LXtObjectIDijPKcjPPv">
+<span id="_CPPv3N15ILxLayerService15LayerTagTextureE11LXtObjectIDijPKcjPPv"></span><span id="_CPPv2N15ILxLayerService15LayerTagTextureE11LXtObjectIDijPKcjPPv"></span><span id="ILxLayerService::LayerTagTexture__LXtObjectID.i.unsigned-i.cCP.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a1780d7cd05a81af30f5bc5c4857f5587"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerTagTexture</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>layer</em>, unsigned int <em>type</em>, <em class="property">const</em> char *<em>tag</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService15LayerTagTextureE11LXtObjectIDijPKcjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService16LayerVertexCountE11LXtObjectIDiPi">
+<span id="_CPPv3N15ILxLayerService16LayerVertexCountE11LXtObjectIDiPi"></span><span id="_CPPv2N15ILxLayerService16LayerVertexCountE11LXtObjectIDiPi"></span><span id="ILxLayerService::LayerVertexCount__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_layer_service_1ac279251cdc54ee996c743d34805f6ce9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerVertexCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService16LayerVertexCountE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Mesh elements (vertices, polygons, edges) can also retrieved, hopefully based on the layer list mode as well as a marking system yet to be described… </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService11LayerVertexE11LXtObjectIDijPPv">
+<span id="_CPPv3N15ILxLayerService11LayerVertexE11LXtObjectIDijPPv"></span><span id="_CPPv2N15ILxLayerService11LayerVertexE11LXtObjectIDijPPv"></span><span id="ILxLayerService::LayerVertex__LXtObjectID.i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1ad262f896daf0ebe0a7cf894d80963ef3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerVertex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService11LayerVertexE11LXtObjectIDijPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService14LayerPolyCountE11LXtObjectIDiPi">
+<span id="_CPPv3N15ILxLayerService14LayerPolyCountE11LXtObjectIDiPi"></span><span id="_CPPv2N15ILxLayerService14LayerPolyCountE11LXtObjectIDiPi"></span><span id="ILxLayerService::LayerPolyCount__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_layer_service_1a381194e21b785169d5e05329baeb2390"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerPolyCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService14LayerPolyCountE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService9LayerPolyE11LXtObjectIDijPPv">
+<span id="_CPPv3N15ILxLayerService9LayerPolyE11LXtObjectIDijPPv"></span><span id="_CPPv2N15ILxLayerService9LayerPolyE11LXtObjectIDijPPv"></span><span id="ILxLayerService::LayerPoly__LXtObjectID.i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a8d902b567c31ed9e5a64a3a3a2eaa48f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerPoly</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService9LayerPolyE11LXtObjectIDijPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService14LayerEdgeCountE11LXtObjectIDiPi">
+<span id="_CPPv3N15ILxLayerService14LayerEdgeCountE11LXtObjectIDiPi"></span><span id="_CPPv2N15ILxLayerService14LayerEdgeCountE11LXtObjectIDiPi"></span><span id="ILxLayerService::LayerEdgeCount__LXtObjectID.i.iP"></span><span class="target" id="class_i_lx_layer_service_1a488db85d68434bd2f63421e2c0a8aae8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerEdgeCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, int *<em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService14LayerEdgeCountE11LXtObjectIDiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService9LayerEdgeE11LXtObjectIDijPPv">
+<span id="_CPPv3N15ILxLayerService9LayerEdgeE11LXtObjectIDijPPv"></span><span id="_CPPv2N15ILxLayerService9LayerEdgeE11LXtObjectIDijPPv"></span><span id="ILxLayerService::LayerEdge__LXtObjectID.i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a825e68f43c06764ea69af4a21aaeb2c0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LayerEdge</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>mode</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService9LayerEdgeE11LXtObjectIDijPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService12ScanAllocateE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService12ScanAllocateE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService12ScanAllocateE11LXtObjectIDjPPv"></span><span id="ILxLayerService::ScanAllocate__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a158bb846bfa47c4463288eaf2da9e42c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScanAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>flags</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService12ScanAllocateE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1ac279251cdc54ee996c743d34805f6ce9"><span class="std std-ref">LayerVertexCount()</span></a></p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1ad262f896daf0ebe0a7cf894d80963ef3"><span class="std std-ref">LayerVertex()</span></a></p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a381194e21b785169d5e05329baeb2390"><span class="std std-ref">LayerPolyCount()</span></a></p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a8d902b567c31ed9e5a64a3a3a2eaa48f"><span class="std std-ref">LayerPoly()</span></a></p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a488db85d68434bd2f63421e2c0a8aae8"><span class="std std-ref">LayerEdgeCount()</span></a></p></li>
+<li><p><a class="reference internal" href="#class_i_lx_layer_service_1a825e68f43c06764ea69af4a21aaeb2c0"><span class="std std-ref">LayerEdge()</span></a> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService10CurrentMapE11LXtObjectID6LXtID4PPKc">
+<span id="_CPPv3N15ILxLayerService10CurrentMapE11LXtObjectID6LXtID4PPKc"></span><span id="_CPPv2N15ILxLayerService10CurrentMapE11LXtObjectID6LXtID4PPKc"></span><span id="ILxLayerService::CurrentMap__LXtObjectID.LXtID4.cCPP"></span><span class="target" id="class_i_lx_layer_service_1a0e1baaf36015b4d94cbc4176322dfb18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurrentMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService10CurrentMapE11LXtObjectID6LXtID4PPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService12XfrmAllocateE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N15ILxLayerService12XfrmAllocateE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N15ILxLayerService12XfrmAllocateE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxLayerService::XfrmAllocate__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_layer_service_1a57ecdadd3559b29aedbd68a6e873726a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">XfrmAllocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>toolVec</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService12XfrmAllocateE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A transform scan object is allocated using the layer service. The client must also pass the tool vector object which contains info about weights and axes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService16ScanAllocateItemE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayerService16ScanAllocateItemE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayerService16ScanAllocateItemE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxLayerService::ScanAllocateItem__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_service_1af22305808cb4eeb09e503d70f531bfea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScanAllocateItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>flags</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService16ScanAllocateItemE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>You can also allocate a layer scan object for one mesh layer. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService12IsProceduralE11LXtObjectIDj">
+<span id="_CPPv3N15ILxLayerService12IsProceduralE11LXtObjectIDj"></span><span id="_CPPv2N15ILxLayerService12IsProceduralE11LXtObjectIDj"></span><span id="ILxLayerService::IsProcedural__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_layer_service_1afee1d6b3d0ab0e59636c4d31be1b8ad3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsProcedural</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService12IsProceduralE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The IsProcedural function determines if a layer is procedural or not. However, this function also takes the UI state into account, so if ghosting is enabled in the mesh operation stack and the base mesh is selected, the function will return false, even if the mesh is procedural. This is useful for setting the enable and disable state of tools or commands that operate on procedural layers. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService7SetMarkE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N15ILxLayerService7SetMarkE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N15ILxLayerService7SetMarkE11LXtObjectID11LXtObjectID"></span><span id="ILxLayerService::SetMark__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_layer_service_1a577d7547506cc2ee44498c97785e519c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMark</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService7SetMarkE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These functions set, clear and test for the mark used . </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService9ClearMarkE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N15ILxLayerService9ClearMarkE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N15ILxLayerService9ClearMarkE11LXtObjectID11LXtObjectID"></span><span id="ILxLayerService::ClearMark__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_layer_service_1a2e82c3c3d49e6a5bcf7ba4ba3d90949c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ClearMark</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService9ClearMarkE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService8TestMarkE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N15ILxLayerService8TestMarkE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N15ILxLayerService8TestMarkE11LXtObjectID11LXtObjectID"></span><span id="ILxLayerService::TestMark__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_layer_service_1a57719beae6bbcec662972a6f33d81c44"></span>int <code class="sig-name descname">TestMark</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService8TestMarkE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayerService15CurrentDeformerE11LXtObjectID11LXtObjectIDPPKc">
+<span id="_CPPv3N15ILxLayerService15CurrentDeformerE11LXtObjectID11LXtObjectIDPPKc"></span><span id="_CPPv2N15ILxLayerService15CurrentDeformerE11LXtObjectID11LXtObjectIDPPKc"></span><span id="ILxLayerService::CurrentDeformer__LXtObjectID.LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_layer_service_1a6e01e0859a45e8d3bb35ecedcb223128"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurrentDeformer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>meshItem</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayerService15CurrentDeformerE11LXtObjectID11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the name of the user’s currently selected deformer for the mesh item passed in, allowing the expected mesh to be retrieved through <a class="reference internal" href="lxd_mesh.html#class_i_lx_mesh_filter_ident"><span class="std std-ref">ILxMeshFilterIdent</span></a>. If ghosting is disabled, no deformer is currently selected, or the item passed in is not a mesh, then LXs_MESHFILTER_TOP will be returned. If the base mesh for the given mesh item is currently selected, LXs_MESHFILTER_BASE will be returned. Any other selection will return the identity of the currently selected deformer. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_LAYER_PRIMARY</p></li>
+<li><p>LXi_LAYER_FOREGROUND</p></li>
+<li><p>LXi_LAYER_BACKGROUND</p></li>
+<li><p>LXi_LAYER_ALL</p></li>
+<li><p>LXf_LAYER_FOREGROUND</p></li>
+<li><p>LXf_LAYER_BACKGROUND</p></li>
+<li><p>LXf_LAYER_MAIN</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXf_LAYERSCAN_ACTIVE">
+<span class="target" id="lxd__layer_8hpp_1a979dacda5fb374b0d0e96bf0214c123b"></span><code class="sig-name descname">LXf_LAYERSCAN_ACTIVE</code><a class="headerlink" href="#c.LXf_LAYERSCAN_ACTIVE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Flags select the layers to be processed: ACTIVE is all current meshes; BACKGROUND is all visible but inactive meshes; PRIMARY is the one main selected mesh. The marking flags will mark the various element types as selected. So if MARKVERTS is set, for example, all selected vertices will have the “select” mark mode set. As always if no vertices are selected all will be marked. Set WRITEMESH to enable layer edits. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXf_LAYERSCAN_BACKGROUND</p></li>
+<li><p>LXf_LAYERSCAN_PRIMARY</p></li>
+<li><p>LXf_LAYERSCAN_ALL</p></li>
+<li><p>LXf_LAYERSCAN_MARKVERTS</p></li>
+<li><p>LXf_LAYERSCAN_MARKEDGES</p></li>
+<li><p>LXf_LAYERSCAN_MARKPOLYS</p></li>
+<li><p>LXf_LAYERSCAN_MARKDVRTS</p></li>
+<li><p>LXf_LAYERSCAN_MARKALL</p></li>
+<li><p>LXf_LAYERSCAN_WRITEMESH</p></li>
+<li><p>LXf_LAYERSCAN_EDIT</p></li>
+<li><p>LXf_LAYERSCAN_EDIT_POLYS</p></li>
+<li><p>LXf_LAYERSCAN_EDIT_VERTS</p></li>
+<li><p>LXf_LAYERSCAN_EDIT_EDGES</p></li>
+<li><p>LXf_LAYERSCAN_EDIT_DVRTS</p></li>
+<li><p>LXf_LAYERSCAN_EDIT_POLVRT</p></li>
+</ul>
+</div>
+<div class="section" id="ilxlayerscan">
+<h2><a class="toc-backref" href="#id2">ILxLayerScan</a><a class="headerlink" href="#ilxlayerscan" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxLayerScan">
+<span id="_CPPv312ILxLayerScan"></span><span id="_CPPv212ILxLayerScan"></span><span id="ILxLayerScan"></span><span class="target" id="class_i_lx_layer_scan"></span><em class="property">class </em><code class="sig-name descname">ILxLayerScan</code><a class="headerlink" href="#_CPPv412ILxLayerScan" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The LayerScan interface is the main way to do mesh edits. It can also be used in a non-edit mode to confirm what will happen when editing. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan5ApplyE11LXtObjectID">
+<span id="_CPPv3N12ILxLayerScan5ApplyE11LXtObjectID"></span><span id="_CPPv2N12ILxLayerScan5ApplyE11LXtObjectID"></span><span id="ILxLayerScan::Apply__LXtObjectID"></span><span class="target" id="class_i_lx_layer_scan_1a840eed24302f2619b605597a00535446"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Apply</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan5ApplyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called at the end of an edit operation, <a class="reference internal" href="#class_i_lx_layer_scan_1a840eed24302f2619b605597a00535446"><span class="std std-ref">Apply()</span></a> performs all the mesh edits and terminates the scan. If this is not called for an edit scan any edits will be abandonded. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan5CountE11LXtObjectIDPj">
+<span id="_CPPv3N12ILxLayerScan5CountE11LXtObjectIDPj"></span><span id="_CPPv2N12ILxLayerScan5CountE11LXtObjectIDPj"></span><span id="ILxLayerScan::Count__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_layer_scan_1a0f9457f411c5ffd0bca2694de528c3f3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the number of layers in the scan. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan8GetStateE11LXtObjectIDjPj">
+<span id="_CPPv3N12ILxLayerScan8GetStateE11LXtObjectIDjPj"></span><span id="_CPPv2N12ILxLayerScan8GetStateE11LXtObjectIDjPj"></span><span id="ILxLayerScan::GetState__LXtObjectID.unsigned.unsignedP"></span><span class="target" id="class_i_lx_layer_scan_1a7893f58c3f5ebbf69b21563131a1f9b6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetState</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, unsigned *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan8GetStateE11LXtObjectIDjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query the state of a given layer. The state is a combination of the ACTIVE, BACKGROUND or PRIMARY layer scan flags. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan8MeshItemE11LXtObjectIDjPPv">
+<span id="_CPPv3N12ILxLayerScan8MeshItemE11LXtObjectIDjPPv"></span><span id="_CPPv2N12ILxLayerScan8MeshItemE11LXtObjectIDjPPv"></span><span id="ILxLayerScan::MeshItem__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_scan_1a8b4de676878c5a84ada40a7c05980d93"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan8MeshItemE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each layer is associated with a mesh item. The client can also get the action for the item to read channel values. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan10MeshActionE11LXtObjectIDjPPv">
+<span id="_CPPv3N12ILxLayerScan10MeshActionE11LXtObjectIDjPPv"></span><span id="_CPPv2N12ILxLayerScan10MeshActionE11LXtObjectIDjPPv"></span><span id="ILxLayerScan::MeshAction__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_scan_1af7400b7ef48a9fd55065c1036c68e202"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshAction</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan10MeshActionE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan8MeshBaseE11LXtObjectIDjPPv">
+<span id="_CPPv3N12ILxLayerScan8MeshBaseE11LXtObjectIDjPPv"></span><span id="_CPPv2N12ILxLayerScan8MeshBaseE11LXtObjectIDjPPv"></span><span id="ILxLayerScan::MeshBase__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_scan_1a1cd53574ff3fa7a0e78e078ed38d3905"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshBase</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan8MeshBaseE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients can access the mesh in one of three forms. The “base” mesh is the mesh as stored in the scene. The “instance” mesh is the same mesh but deformed by the currently selected modeling morph. The “edit” mesh is the same mesh again, but allowing modifications. This version is only available if the WRITEMESH flag was set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan12MeshInstanceE11LXtObjectIDjPPv">
+<span id="_CPPv3N12ILxLayerScan12MeshInstanceE11LXtObjectIDjPPv"></span><span id="_CPPv2N12ILxLayerScan12MeshInstanceE11LXtObjectIDjPPv"></span><span id="ILxLayerScan::MeshInstance__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_scan_1a564ae8100248ddbbad7569a81389ba70"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshInstance</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan12MeshInstanceE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan8MeshEditE11LXtObjectIDjPPv">
+<span id="_CPPv3N12ILxLayerScan8MeshEditE11LXtObjectIDjPPv"></span><span id="_CPPv2N12ILxLayerScan8MeshEditE11LXtObjectIDjPPv"></span><span id="ILxLayerScan::MeshEdit__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_layer_scan_1a4f91c74fb5a74c62a55d70369f84b059"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshEdit</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan8MeshEditE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan13SetMeshChangeE11LXtObjectIDjj">
+<span id="_CPPv3N12ILxLayerScan13SetMeshChangeE11LXtObjectIDjj"></span><span id="_CPPv2N12ILxLayerScan13SetMeshChangeE11LXtObjectIDjj"></span><span id="ILxLayerScan::SetMeshChange__LXtObjectID.unsigned.unsigned-i"></span><span class="target" id="class_i_lx_layer_scan_1adbade47578433afc97609b96545ae1a6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMeshChange</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, unsigned int <em>edits</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan13SetMeshChangeE11LXtObjectIDjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The layer scan client is responsible for indicating what types of changes they are making to a mesh. The mesh change bit mask should be set for all edited meshes before changes are applied. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan6UpdateE11LXtObjectID">
+<span id="_CPPv3N12ILxLayerScan6UpdateE11LXtObjectID"></span><span id="_CPPv2N12ILxLayerScan6UpdateE11LXtObjectID"></span><span id="ILxLayerScan::Update__LXtObjectID"></span><span class="target" id="class_i_lx_layer_scan_1abafcf2a485e175b307ca6e5af3dc16ae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Update</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan6UpdateE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called at intermediate points of an edit operation, <a class="reference internal" href="#class_i_lx_layer_scan_1abafcf2a485e175b307ca6e5af3dc16ae"><span class="std std-ref">Update()</span></a> performs the mesh edits, but does not terminate the scan. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxLayerScan13MeshTransformE11LXtObjectIDj10LXtMatrix4">
+<span id="_CPPv3N12ILxLayerScan13MeshTransformE11LXtObjectIDj10LXtMatrix4"></span><span id="_CPPv2N12ILxLayerScan13MeshTransformE11LXtObjectIDj10LXtMatrix4"></span><span id="ILxLayerScan::MeshTransform__LXtObjectID.unsigned.LXtMatrix4"></span><span class="target" id="class_i_lx_layer_scan_1aaa8f9950c8e2672c46efebbd65692a2a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxLayerScan13MeshTransformE11LXtObjectIDj10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients can access the mesh item transforms using this function. It returns a Matrix4 representing the world transform of the mesh item. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxtransformscan">
+<h2><a class="toc-backref" href="#id3">ILxTransformScan</a><a class="headerlink" href="#ilxtransformscan" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxTransformScan">
+<span id="_CPPv316ILxTransformScan"></span><span id="_CPPv216ILxTransformScan"></span><span id="ILxTransformScan"></span><span class="target" id="class_i_lx_transform_scan"></span><em class="property">class </em><code class="sig-name descname">ILxTransformScan</code><a class="headerlink" href="#_CPPv416ILxTransformScan" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan9EnumerateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxTransformScan9EnumerateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxTransformScan9EnumerateE11LXtObjectID11LXtObjectID"></span><span id="ILxTransformScan::Enumerate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_transform_scan_1a4948774cf9dd43ea00673c86c78321e5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enumerate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan9EnumerateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The transform scan interface is also for editing, but is specifically for use in tools which perform transformations. The encapsulates all the different element types  meshes, items, pivots, etc.  as well as some tricky elements of the tool pipe like per-element centers and axes. The client passes a visitor to enumerate over all the elements to transform, and will be called back for each one in sequence. The flags method can read out the properties of the current element. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan5FlagsE11LXtObjectID">
+<span id="_CPPv3N16ILxTransformScan5FlagsE11LXtObjectID"></span><span id="_CPPv2N16ILxTransformScan5FlagsE11LXtObjectID"></span><span id="ILxTransformScan::Flags__LXtObjectID"></span><span class="target" id="class_i_lx_transform_scan_1ab16b6985c0b7ae13f71bf037708ef61c"></span>unsigned int <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan5FlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan8PositionE11LXtObjectID">
+<span id="_CPPv3N16ILxTransformScan8PositionE11LXtObjectID"></span><span id="_CPPv2N16ILxTransformScan8PositionE11LXtObjectID"></span><span id="ILxTransformScan::Position__LXtObjectID"></span><span class="target" id="class_i_lx_transform_scan_1aaaf6932d2a4bd2edcaad81a1944c0734"></span><em class="property">const</em> float *<code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan8PositionE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The main function of the transform is to read the current position and write a new one. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan11SetPositionE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N16ILxTransformScan11SetPositionE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N16ILxTransformScan11SetPositionE11LXtObjectID10LXtFVector"></span><span id="ILxTransformScan::SetPosition__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_transform_scan_1a36d1126557d1920ab411fb1409a37801"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPosition</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan11SetPositionE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan6WeightE11LXtObjectID">
+<span id="_CPPv3N16ILxTransformScan6WeightE11LXtObjectID"></span><span id="_CPPv2N16ILxTransformScan6WeightE11LXtObjectID"></span><span id="ILxTransformScan::Weight__LXtObjectID"></span><span class="target" id="class_i_lx_transform_scan_1a211039f011215592e89facb63fcd78aa"></span>double <code class="sig-name descname">Weight</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan6WeightE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The methods allow values to be read for per-element properties indicated by the flags. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan15AlternateCenterE11LXtObjectID10LXtFVector">
+<span id="_CPPv3N16ILxTransformScan15AlternateCenterE11LXtObjectID10LXtFVector"></span><span id="_CPPv2N16ILxTransformScan15AlternateCenterE11LXtObjectID10LXtFVector"></span><span id="ILxTransformScan::AlternateCenter__LXtObjectID.LXtFVector"></span><span class="target" id="class_i_lx_transform_scan_1aa03f4f5505fc95d947ca5b4a1aabcb23"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AlternateCenter</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>center</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan15AlternateCenterE11LXtObjectID10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan13AlternateAxisE11LXtObjectID9LXtMatrix9LXtMatrix">
+<span id="_CPPv3N16ILxTransformScan13AlternateAxisE11LXtObjectID9LXtMatrix9LXtMatrix"></span><span id="_CPPv2N16ILxTransformScan13AlternateAxisE11LXtObjectID9LXtMatrix9LXtMatrix"></span><span id="ILxTransformScan::AlternateAxis__LXtObjectID.LXtMatrix.LXtMatrix"></span><span class="target" id="class_i_lx_transform_scan_1a68332ed0008fe2a654d3a70b531c660f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AlternateAxis</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>matrix</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>inverse</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan13AlternateAxisE11LXtObjectID9LXtMatrix9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTransformScan4EnumEP23CLxImpl_AbstractVisitor">
+<span id="_CPPv3N16ILxTransformScan4EnumEP23CLxImpl_AbstractVisitor"></span><span id="_CPPv2N16ILxTransformScan4EnumEP23CLxImpl_AbstractVisitor"></span><span id="ILxTransformScan::Enum__CLxImpl_AbstractVisitorP"></span><span class="target" id="class_i_lx_transform_scan_1a563ff1dda078eabdf2fc6e49fa712374"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enum</code><span class="sig-paren">(</span>CLxImpl_AbstractVisitor *<em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTransformScan4EnumEP23CLxImpl_AbstractVisitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The user class method allows easier access to the enumeration method. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfXFRMSCAN_WEIGHT">
+<span class="target" id="lxd__layer_8hpp_1ae8a64bc4295898585367893ef54580de"></span><code class="sig-name descname">LXfXFRMSCAN_WEIGHT</code><a class="headerlink" href="#c.LXfXFRMSCAN_WEIGHT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The flag bits determine which properties apply to the current element. If the weight is not set it can be assumed to be unity. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfXFRMSCAN_ALTCENTER</p></li>
+<li><p>LXfXFRMSCAN_ALTAXIS</p></li>
+</ul>
+</div>
+<div class="section" id="ilxscene1service">
+<h2><a class="toc-backref" href="#id4">ILxScene1Service</a><a class="headerlink" href="#ilxscene1service" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxScene1Service">
+<span id="_CPPv316ILxScene1Service"></span><span id="_CPPv216ILxScene1Service"></span><span id="ILxScene1Service"></span><span class="target" id="class_i_lx_scene1_service"></span><em class="property">class </em><code class="sig-name descname">ILxScene1Service</code><a class="headerlink" href="#_CPPv416ILxScene1Service" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxScene1Service11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxScene1Service11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxScene1Service11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxScene1Service::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_scene1_service_1a666280f4ba3fcfe0b513eda2c1622c62"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScene1Service11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Scene1Service interface is obsolete. There is a new one with more and better methods, and these methods have been moved to ILxTransform. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScene1Service18ItemWorldTransformE11LXtObjectID11LXtObjectIDd9LXtMatrix9LXtVector">
+<span id="_CPPv3N16ILxScene1Service18ItemWorldTransformE11LXtObjectID11LXtObjectIDd9LXtMatrix9LXtVector"></span><span id="_CPPv2N16ILxScene1Service18ItemWorldTransformE11LXtObjectID11LXtObjectIDd9LXtMatrix9LXtVector"></span><span id="ILxScene1Service::ItemWorldTransform__LXtObjectID.LXtObjectID.double.LXtMatrix.LXtVector"></span><span class="target" id="class_i_lx_scene1_service_1a38a83109add0b7199613ca88c062f8ae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemWorldTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>locator</em>, double <em>time</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScene1Service18ItemWorldTransformE11LXtObjectID11LXtObjectIDd9LXtMatrix9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxScene1Service17ItemWorldRotationE11LXtObjectID11LXtObjectIDd9LXtMatrix">
+<span id="_CPPv3N16ILxScene1Service17ItemWorldRotationE11LXtObjectID11LXtObjectIDd9LXtMatrix"></span><span id="_CPPv2N16ILxScene1Service17ItemWorldRotationE11LXtObjectID11LXtObjectIDd9LXtMatrix"></span><span id="ILxScene1Service::ItemWorldRotation__LXtObjectID.LXtObjectID.double.LXtMatrix"></span><span class="target" id="class_i_lx_scene1_service_1a9249547fe3a6d3cf187e4fc461d0b49c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemWorldRotation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>locator</em>, double <em>time</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxScene1Service17ItemWorldRotationE11LXtObjectID11LXtObjectIDd9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_listcache.html" class="btn btn-neutral float-right" title="Listcache" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_itemui.html" class="btn btn-neutral float-left" title="Itemui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_layer.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_tree.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:31 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tree &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Treeview" href="lxd_treeview.html" />
+    <link rel="prev" title="Toolui" href="lxd_toolui.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tree</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtree">ILxTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtreelistener">ILxTreeListener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtreelistener1">ILxTreeListener1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Tree</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tree">
+<h1>Tree<a class="headerlink" href="#tree" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxtree" id="id1">ILxTree</a></p></li>
+<li><p><a class="reference internal" href="#ilxtreelistener" id="id2">ILxTreeListener</a></p></li>
+<li><p><a class="reference internal" href="#ilxtreelistener1" id="id3">ILxTreeListener1</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxtree">
+<h2><a class="toc-backref" href="#id1">ILxTree</a><a class="headerlink" href="#ilxtree" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv47ILxTree">
+<span id="_CPPv37ILxTree"></span><span id="_CPPv27ILxTree"></span><span id="ILxTree"></span><span class="target" id="class_i_lx_tree"></span><em class="property">class </em><code class="sig-name descname">ILxTree</code><a class="headerlink" href="#_CPPv47ILxTree" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N7ILxTree5SpawnE11LXtObjectIDjPPv">
+<span id="_CPPv3N7ILxTree5SpawnE11LXtObjectIDjPPv"></span><span id="_CPPv2N7ILxTree5SpawnE11LXtObjectIDjPPv"></span><span id="ILxTree::Spawn__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_tree_1a6ed77fb8b425669f283b5b999f7de8bf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Spawn</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>mode</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree5SpawnE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The tree interface represents a single tier of a tree, which is a list of siblings, and a currently selected member of that list. <a class="reference internal" href="#class_i_lx_tree_1a6ed77fb8b425669f283b5b999f7de8bf"><span class="std std-ref">Spawn()</span></a> creates a new tree object referencing either the same part or another part of the tree. Clients can copy this tier, or they can get the tier containing the parent, or the sub-items of the current child. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree8ToParentE11LXtObjectID">
+<span id="_CPPv3N7ILxTree8ToParentE11LXtObjectID"></span><span id="_CPPv2N7ILxTree8ToParentE11LXtObjectID"></span><span id="ILxTree::ToParent__LXtObjectID"></span><span class="target" id="class_i_lx_tree_1a889fadcea0fc094c9774dcd2dd6f2f2d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToParent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree8ToParentE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The tree object itself can be walked around the tree. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree7ToChildE11LXtObjectID">
+<span id="_CPPv3N7ILxTree7ToChildE11LXtObjectID"></span><span id="_CPPv2N7ILxTree7ToChildE11LXtObjectID"></span><span id="ILxTree::ToChild__LXtObjectID"></span><span class="target" id="class_i_lx_tree_1ad8e394151e18338b151b0478921f52bc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToChild</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree7ToChildE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree6ToRootE11LXtObjectID">
+<span id="_CPPv3N7ILxTree6ToRootE11LXtObjectID"></span><span id="_CPPv2N7ILxTree6ToRootE11LXtObjectID"></span><span id="ILxTree::ToRoot__LXtObjectID"></span><span class="target" id="class_i_lx_tree_1acd58fc8beacc6c367041db425b1bd918"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToRoot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree6ToRootE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree6IsRootE11LXtObjectID">
+<span id="_CPPv3N7ILxTree6IsRootE11LXtObjectID"></span><span id="_CPPv2N7ILxTree6IsRootE11LXtObjectID"></span><span id="ILxTree::IsRoot__LXtObjectID"></span><span class="target" id="class_i_lx_tree_1ac29ffba55d6246395e693f9fcb283309"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsRoot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree6IsRootE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if this tree has no parent. If so, calling <a class="reference internal" href="#class_i_lx_tree_1a889fadcea0fc094c9774dcd2dd6f2f2d"><span class="std std-ref">ToParent()</span></a> will fail. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree11ChildIsLeafE11LXtObjectID">
+<span id="_CPPv3N7ILxTree11ChildIsLeafE11LXtObjectID"></span><span id="_CPPv2N7ILxTree11ChildIsLeafE11LXtObjectID"></span><span id="ILxTree::ChildIsLeaf__LXtObjectID"></span><span class="target" id="class_i_lx_tree_1a875ba8ae29f999958deb16c88a23c283"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChildIsLeaf</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree11ChildIsLeafE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if the current element has no children. It’s equivalent to calling <a class="reference internal" href="#class_i_lx_tree_1ad8e394151e18338b151b0478921f52bc"><span class="std std-ref">ToChild()</span></a> and testing the count for zero. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree5CountE11LXtObjectIDPj">
+<span id="_CPPv3N7ILxTree5CountE11LXtObjectIDPj"></span><span id="_CPPv2N7ILxTree5CountE11LXtObjectIDPj"></span><span id="ILxTree::Count__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_tree_1afa4fcdeef5bd7c1b6b1a548d90e54b39"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the number of elements in this tier. This can be zero for elements with no children. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree7CurrentE11LXtObjectIDPj">
+<span id="_CPPv3N7ILxTree7CurrentE11LXtObjectIDPj"></span><span id="_CPPv2N7ILxTree7CurrentE11LXtObjectIDPj"></span><span id="ILxTree::Current__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_tree_1a4be353fc67119fc6fb472b72286da25a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Current</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree7CurrentE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The tree object maintains a current element, whose properties can be accessed through an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface on the tree. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree10SetCurrentE11LXtObjectIDj">
+<span id="_CPPv3N7ILxTree10SetCurrentE11LXtObjectIDj"></span><span id="_CPPv2N7ILxTree10SetCurrentE11LXtObjectIDj"></span><span id="ILxTree::SetCurrent__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_tree_1a9f5808342bb8eb97830931c0c6c60966"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetCurrent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree10SetCurrentE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree9ItemStateE11LXtObjectIDPKcPi">
+<span id="_CPPv3N7ILxTree9ItemStateE11LXtObjectIDPKcPi"></span><span id="_CPPv2N7ILxTree9ItemStateE11LXtObjectIDPKcPi"></span><span id="ILxTree::ItemState__LXtObjectID.cCP.iP"></span><span class="target" id="class_i_lx_tree_1a2513b3c3dd8a5c5e36ca9dbf005963de"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemState</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>guid</em>, int *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree9ItemStateE11LXtObjectIDPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree12SetItemStateE11LXtObjectIDPKci">
+<span id="_CPPv3N7ILxTree12SetItemStateE11LXtObjectIDPKci"></span><span id="_CPPv2N7ILxTree12SetItemStateE11LXtObjectIDPKci"></span><span id="ILxTree::SetItemState__LXtObjectID.cCP.i"></span><span class="target" id="class_i_lx_tree_1a228048704a029a3a4543bd8bf0f5d77e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetItemState</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>guid</em>, int <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree12SetItemStateE11LXtObjectIDPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N7ILxTree5CloneEjR12CLxUser_Tree">
+<span id="_CPPv3N7ILxTree5CloneEjR12CLxUser_Tree"></span><span id="_CPPv2N7ILxTree5CloneEjR12CLxUser_Tree"></span><span id="ILxTree::Clone__unsigned.CLxUser_TreeR"></span><span class="target" id="class_i_lx_tree_1ab6a15ddaeb03675a577ce2dd431c48d6"></span>bool <code class="sig-name descname">Clone</code><span class="sig-paren">(</span>unsigned <em>mode</em>, CLxUser_Tree &amp;<em>tree</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ILxTree5CloneEjR12CLxUser_Tree" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiTREE_CLONE</p></li>
+<li><p>LXiTREE_PARENT</p></li>
+<li><p>LXiTREE_CHILD</p></li>
+<li><p>LXiTREE_ROOT</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfTREEITEM_ATTRIB">
+<span class="target" id="lxd__tree_8hpp_1af679517e32bdfd55cfd7ccf053c8e5b2"></span><code class="sig-name descname">LXfTREEITEM_ATTRIB</code><a class="headerlink" href="#c.LXfTREEITEM_ATTRIB" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The state flags provide hints and information about the element. Many of the flags are only returned from the tree, while others are both returned and passed to the tree. the tree is expected to store certain flags itself, notably, ones that match the SETFLAGS state (these are the only flags that will be passed to ItemSetState()). You should return those flags from ItemState() by OR’ing them into whatever other get-only flags you are returning. The following flags are defined. <ul class="simple">
+<li><p>ATTRIB Item is displayed as an attribute (under the +/- expansion widget) instead of as a child.</p></li>
+<li><p>EXPANDED</p></li>
+<li><p>ATTREXP The children or attributes of this item are expanded and visible. The tree is expected to manage this state itself, storing it in SetItemState() and returning it from ItemState().</p></li>
+<li><p>HIDDEN The item is not displayed at all.</p></li>
+</ul>
+</p>
+<p>The filter flags are passed to SetItemState() and returned by ItemState(). Generally you just need to store and return them, and not directly set them yourself.</p>
+<p><ul class="simple">
+<li><p>FILTERED Indicates if the item was hidden because it was filtered out by the tree.</p></li>
+<li><p>FILTER_SKIP This item and its children aren’t affected by filtering, and are always visible.</p></li>
+<li><p>FILTER_EXPANDED</p></li>
+<li><p>FILTER_ATTREXP This is a parent item was expanded due to filtering so that the child item is visible. This should be stored in SetItemTest() and returned from ItemState().</p></li>
+<li><p>FILTER_EXPANDED_BY_USER</p></li>
+<li><p>FILTER_ATTREXP_BY_USER This is a parent item that was expadned by the user while the tree was filtered. This state is only valid while the tree is filtered, and is not used once filtering is turned off. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfTREEITEM_EXPANDED</p></li>
+<li><p>LXfTREEITEM_ATTREXP</p></li>
+<li><p>LXfTREEITEM_HIDDEN</p></li>
+<li><p>LXfTREEITEM_FILTERED</p></li>
+<li><p>LXfTREEITEM_FILTER_SKIP</p></li>
+<li><p>LXfTREEITEM_FILTER_EXPANDED</p></li>
+<li><p>LXfTREEITEM_FILTER_ATTREXP</p></li>
+<li><p>LXfTREEITEM_FILTER_EXPANDED_BY_USER</p></li>
+<li><p>LXfTREEITEM_FILTER_ATTREXP_BY_USER</p></li>
+<li><p>LXfTREEITEM_CLIENT</p></li>
+<li><p>LXfTREEITEM_EXPFLAGS</p></li>
+<li><p>LXfTREEITEM_FILTER_EXPFLAGS</p></li>
+<li><p>LXfTREEITEM_FILTER_EXPFLAGS_BY_USER</p></li>
+<li><p>LXfTREEITEM_FILTER_FLAGS</p></li>
+<li><p>LXfTREEITEM_SETFLAGS</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXmTREEITEM_ROWCOLOR_MASK">
+<span class="target" id="lxd__tree_8hpp_1ad3c1ccf990494969b5a75396b1606f89"></span><code class="sig-name descname">LXmTREEITEM_ROWCOLOR_MASK</code><a class="headerlink" href="#c.LXmTREEITEM_ROWCOLOR_MASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Row colors are pre-defined flags that can be OR’ed into the state flags returned by ItemState(). </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfTREEITEM_ROWCOLOR_NONE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_RED</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_MAGENTA</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_PINK</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_BROWN</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_ORANGE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_YELLOW</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_GREEN</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_LIGHT_GREEN</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_CYAN</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_BLUE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_LIGHT_BLUE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_ULTRAMARINE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_PURPLE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_LIGHT_PURPLE</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_DARK_GREY</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_GREY</p></li>
+<li><p>LXfTREEITEM_ROWCOLOR_WHITE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxtreelistener">
+<h2><a class="toc-backref" href="#id2">ILxTreeListener</a><a class="headerlink" href="#ilxtreelistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxTreeListener">
+<span id="_CPPv315ILxTreeListener"></span><span id="_CPPv215ILxTreeListener"></span><span id="ILxTreeListener"></span><span class="target" id="class_i_lx_tree_listener"></span><em class="property">class </em><code class="sig-name descname">ILxTreeListener</code><a class="headerlink" href="#_CPPv415ILxTreeListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tree clients can attach a listener interface (using the tree’s ListenerPort) which can be informed of changes to the tree, either just attribute values or the structure of the tree. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxTreeListener13NewAttributesE11LXtObjectID">
+<span id="_CPPv3N15ILxTreeListener13NewAttributesE11LXtObjectID"></span><span id="_CPPv2N15ILxTreeListener13NewAttributesE11LXtObjectID"></span><span id="ILxTreeListener::NewAttributes__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener_1a51d7e37abfc5eb0b320fa227cc24cb4f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewAttributes</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxTreeListener13NewAttributesE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>NewAttributes just refreshes the contents of the existing tree cells, asking for new values to display. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxTreeListener8NewShapeE11LXtObjectID">
+<span id="_CPPv3N15ILxTreeListener8NewShapeE11LXtObjectID"></span><span id="_CPPv2N15ILxTreeListener8NewShapeE11LXtObjectID"></span><span id="ILxTreeListener::NewShape__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener_1a46bc742f43648096bc0509edf088970b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewShape</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxTreeListener8NewShapeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>NewShape rebuilds the entire tree, and is used when the hierarchy or number visible of rows has changed in any way, including when folding or unfolding an entry to hide/show its children. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxTreeListener21NewSpaceForThumbnailsE11LXtObjectID">
+<span id="_CPPv3N15ILxTreeListener21NewSpaceForThumbnailsE11LXtObjectID"></span><span id="_CPPv2N15ILxTreeListener21NewSpaceForThumbnailsE11LXtObjectID"></span><span id="ILxTreeListener::NewSpaceForThumbnails__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener_1a362421944897a4d595d3942589ba9bbc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewSpaceForThumbnails</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxTreeListener21NewSpaceForThumbnailsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This indicates that the size of the space reserved for thumbnails has changed, and that new thumbnails hsould be obtained. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxTreeListener20ClearCachedThumbnailE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxTreeListener20ClearCachedThumbnailE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxTreeListener20ClearCachedThumbnailE11LXtObjectIDPKc"></span><span id="ILxTreeListener::ClearCachedThumbnail__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_tree_listener_1ad2819ae24ec75385e499dab91f03497b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ClearCachedThumbnail</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxTreeListener20ClearCachedThumbnailE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the tree is using thumbnails with identifier strings, these allow it to purge specific thumbnails or all thubnails from the cache when it wants to provide new ones. Thumbnails are identified by the stirng assigned to them when they were originally returned. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxTreeListener24ClearAllCachedThumbnailsE11LXtObjectID">
+<span id="_CPPv3N15ILxTreeListener24ClearAllCachedThumbnailsE11LXtObjectID"></span><span id="_CPPv2N15ILxTreeListener24ClearAllCachedThumbnailsE11LXtObjectID"></span><span id="ILxTreeListener::ClearAllCachedThumbnails__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener_1acc3816c72e1cf58859bc13b6293da365"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ClearAllCachedThumbnails</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxTreeListener24ClearAllCachedThumbnailsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxTreeListener22NewShowDescriptionTextE11LXtObjectID">
+<span id="_CPPv3N15ILxTreeListener22NewShowDescriptionTextE11LXtObjectID"></span><span id="_CPPv2N15ILxTreeListener22NewShowDescriptionTextE11LXtObjectID"></span><span id="ILxTreeListener::NewShowDescriptionText__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener_1a338651ee05d52d67397d66c0b322b394"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewShowDescriptionText</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxTreeListener22NewShowDescriptionTextE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This toggles the visibility of the smaller description text in the tree. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxtreelistener1">
+<h2><a class="toc-backref" href="#id3">ILxTreeListener1</a><a class="headerlink" href="#ilxtreelistener1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxTreeListener1">
+<span id="_CPPv316ILxTreeListener1"></span><span id="_CPPv216ILxTreeListener1"></span><span id="ILxTreeListener1"></span><span class="target" id="class_i_lx_tree_listener1"></span><em class="property">class </em><code class="sig-name descname">ILxTreeListener1</code><a class="headerlink" href="#_CPPv416ILxTreeListener1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Legacy listener with only attribute and shape support. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxTreeListener113NewAttributesE11LXtObjectID">
+<span id="_CPPv3N16ILxTreeListener113NewAttributesE11LXtObjectID"></span><span id="_CPPv2N16ILxTreeListener113NewAttributesE11LXtObjectID"></span><span id="ILxTreeListener1::NewAttributes__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener1_1a3c7645284950bf63c6bd312e34bec7ca"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewAttributes</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTreeListener113NewAttributesE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxTreeListener18NewShapeE11LXtObjectID">
+<span id="_CPPv3N16ILxTreeListener18NewShapeE11LXtObjectID"></span><span id="_CPPv2N16ILxTreeListener18NewShapeE11LXtObjectID"></span><span id="ILxTreeListener1::NewShape__LXtObjectID"></span><span class="target" id="class_i_lx_tree_listener1_1aed983234bf215ff86accafd5bd3c8566"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewShape</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxTreeListener18NewShapeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_treeview.html" class="btn btn-neutral float-right" title="Treeview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_toolui.html" class="btn btn-neutral float-left" title="Toolui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_tree.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:31 GMT -->
+</html>

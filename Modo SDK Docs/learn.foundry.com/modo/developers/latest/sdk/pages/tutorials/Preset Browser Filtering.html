@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Preset Browser Filtering.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:08 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preset Browser Filtering &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Preset Browser Paths" href="Preset%20Browser%20Paths.html" />
+    <link rel="prev" title="Prepare/Evaluate Protocol" href="Prepare_Evaluate%20Protocol.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preset Browser Filtering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-string-filter">Simple String Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-filtering">Advanced Filtering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parentheses">Parentheses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#not">NOT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class">class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attribute">attribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#options">(options)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-against-non-existent-attributes">Testing Against Non-Existent Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#range-testing">Range Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combiner">Combiner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-filters">Directory Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Preset Browser Filtering</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preset-browser-filtering">
+<h1>Preset Browser Filtering<a class="headerlink" href="#preset-browser-filtering" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#simple-string-filter" id="id1">Simple String Filter</a></p></li>
+<li><p><a class="reference internal" href="#advanced-filtering" id="id2">Advanced Filtering</a></p>
+<ul>
+<li><p><a class="reference internal" href="#parentheses" id="id3">Parentheses</a></p></li>
+<li><p><a class="reference internal" href="#not" id="id4">NOT</a></p></li>
+<li><p><a class="reference internal" href="#class" id="id5">class</a></p></li>
+<li><p><a class="reference internal" href="#attribute" id="id6">attribute</a></p></li>
+<li><p><a class="reference internal" href="#options" id="id7">(options)</a></p></li>
+<li><p><a class="reference internal" href="#value" id="id8">Value</a></p></li>
+<li><p><a class="reference internal" href="#testing-against-non-existent-attributes" id="id9">Testing Against Non-Existent Attributes</a></p></li>
+<li><p><a class="reference internal" href="#range-testing" id="id10">Range Testing</a></p></li>
+<li><p><a class="reference internal" href="#combiner" id="id11">Combiner</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#directory-filters" id="id12">Directory Filters</a></p></li>
+</ul>
+</div>
+<p>As of modo 801, the Preset Browser supports two kinds of filtering, simple string filtering and advanced filtering.</p>
+<div class="section" id="simple-string-filter">
+<h2><a class="toc-backref" href="#id1">Simple String Filter</a><a class="headerlink" href="#simple-string-filter" title="Permalink to this headline">¶</a></h2>
+<p>The Simple String Filter is commonly used in modo, such as in the Form Editor, Item List, Shader Tree and Command History, and is revealed with the “F” button.  In the Preset Browser, this is applied to all of the files in the thumb browser or the flat list (directories are not filtered).</p>
+<p>The filter searches both the files name (without the path or extension) and the “tags” markup in the user or shared markups. The tags are split into separate strings at commas, with leading spaces ignored. The filter is then applied to the file name and each tag individually, and if any match the file remains visible. Only if none match the filter is the file hidden.</p>
+</div>
+<div class="section" id="advanced-filtering">
+<h2><a class="toc-backref" href="#id2">Advanced Filtering</a><a class="headerlink" href="#advanced-filtering" title="Permalink to this headline">¶</a></h2>
+<p>This should be considered a prototype.  While it is powerful, it is somewhat arcane.</p>
+<p>In the Viewport Options, there’s a simple multi-line edit field labeled Filter String. This allows you to limit what is displayed in the view by testing the markup and metadata. This filter affects the currently visible files in the thumb browser or flat list, and can be set to filter only files or both files and directories.</p>
+<p>The format is explicit, but can feel a bit contrived:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="p">(</span><span class="n">NOT</span> <span class="n">class</span><span class="p">:</span><span class="n">attribute</span><span class="p">(</span><span class="n">options</span><span class="p">)</span><span class="o">=</span><span class="p">{</span><span class="n">value</span><span class="p">}</span><span class="o">..</span><span class="p">{</span><span class="n">value</span><span class="p">})</span> <span class="n">COMBINER</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="parentheses">
+<h3><a class="toc-backref" href="#id3">Parentheses</a><a class="headerlink" href="#parentheses" title="Permalink to this headline">¶</a></h3>
+<p>You can optionally wrap multiple tests in parentheses for grouping purposes.  The COMBINER (described below) determines how this test is handled relative against the next test.</p>
+</div>
+<div class="section" id="not">
+<h3><a class="toc-backref" href="#id4">NOT</a><a class="headerlink" href="#not" title="Permalink to this headline">¶</a></h3>
+<p>The optional NOT prefix inverts the following test</p>
+</div>
+<div class="section" id="class">
+<h3><a class="toc-backref" href="#id5">class</a><a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h3>
+<p>The <em>class</em> is one of ‘’intrinsic’’, ‘’metadata’’, <em>user</em> or ‘’shared’’, and determines where the attribute is pulled from.</p>
+</div>
+<div class="section" id="attribute">
+<h3><a class="toc-backref" href="#id6">attribute</a><a class="headerlink" href="#attribute" title="Permalink to this headline">¶</a></h3>
+<p>The <em>attribute</em> is the internal name of the attribute to test.  Attributes are case sensitive, and are fairly arbitrary (beyond the fact that they obey internal string naming rules).</p>
+<p>The <em>intrinsic</em> class supports the following special properties:</p>
+<ul class="simple">
+<li><p>path:  (filepath) The full local path to the file.</p></li>
+<li><p>name:  (string) The name portion of the path, including the extension.</p></li>
+<li><p>ext:  (string) The extension of the file, if any.</p></li>
+<li><p>size:  (memory) The file size on disk.  Directories currently return a size of 0.</p></li>
+<li><p>isFile:  (boolean) True if this is a file, false if it is a directory.</p></li>
+<li><p>numFiles:  (integer) The total number of recognized files in a directory.</p></li>
+<li><p>numDirs:  (integer) The total number of subdirectories in a directory.</p></li>
+<li><p>numChildren:  (integer) The total number of recognized files and subdirectories in a directory.</p></li>
+<li><p>modTime:  (string) When this file or directory was last modified or created (whichever is more recent).</p></li>
+<li><p>isFavorite:  (boolean)  True if this entry is flagged as a favorite.</p></li>
+<li><p>starRating:  (integer)  0-5 indicating the star rating assigned by the user.</p></li>
+<li><p>tags:  (string) Arbitrary strings provided by the user for tagging purposes.</p></li>
+<li><p>author:  (string) Author of the file.</p></li>
+<li><p>copyright: (string) Copyright information.</p></li>
+<li><p>desc: (string) Description of the file.</p></li>
+</ul>
+</div>
+<div class="section" id="options">
+<h3><a class="toc-backref" href="#id7">(options)</a><a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<p>‘’’(options)’’’:  These is optional, but if present must be in parentheses, and follows the attribute name.  The available options depend on the datatype:  The list of options are space-delimited.</p>
+<p>For strings:</p>
+<ul class="simple">
+<li><p>‘’’substring’’’:  Search the attribute for the test value as a substring.   This is the default.</p></li>
+<li><p>‘’’pattern’’’:  Do pattern matching.</p></li>
+<li><p>‘’’case’’’:  Make the comparison case sensitive.  The default is case insensitive.</p></li>
+<li><p>‘’’exact’’’:  The string must exactly match the test value.  This can be used with <em>case</em> to enforce a case-sensitive compare.</p></li>
+</ul>
+<p>The operator is a standard mathematical test, although the behavior is a bit different depending on the datatype.</p>
+<ul class="simple">
+<li><p>‘’’= (Equal)’’’; the value must match exactly.  When used with strings, this will do pattern matching, a substring search or an exact match depending on which options are set.</p></li>
+<li><dl class="simple">
+<dt>‘’’&lt; (Less Than), &gt; (Greater Than), &lt;= (Less Than or Equal), &gt;= (Greater Than or Equal);’’’ basic logic tests.</dt><dd><ul>
+<li><p>On <strong>numeric</strong> types, this works as you would expect.</p></li>
+<li><p>On ‘’’float numbers’’’, this compares against a very small threshold (epsilon), since you can’t directly compare floats for technical reasons.</p></li>
+<li><p>On ‘’’strings’’’, this does the C function strcmp (or the case insensitive version, depending on if the <em>case</em> option is set) and tests the result.  This is most useful when comparing the <em>modTime</em> attribute against another time to find files newer or older than that time.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Note that if the attribute does not exist on the file or directory and an operator is present (meaning, you’re not just doing an existence test), the test will be considered a failure irrespective of the value being tested against.</p>
+</div>
+<div class="section" id="value">
+<h3><a class="toc-backref" href="#id8">Value</a><a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h3>
+<p>The value to test against.   It must be wrapped in in one of the following ways:</p>
+<ul class="simple">
+<li><p>‘’’Curly braces {…}’’’:  The value string is parsed as a “raw” format value.</p></li>
+<li><p>‘’’Square braces […]’’’:  The value string is parsed as a “nice” format value.</p></li>
+<li><p>‘’’Less than/greater than bracing &lt;…&gt;’’’:  The string is in the form ‘’class:attribute path’’ and represents another attribute to be tested against.  The <em>path</em> is optional; if present, it is the full local path to another file or directory in the dir cache; if omitted, then the attribute is pulled form the current entry.</p></li>
+</ul>
+</div>
+<div class="section" id="testing-against-non-existent-attributes">
+<h3><a class="toc-backref" href="#id9">Testing Against Non-Existent Attributes</a><a class="headerlink" href="#testing-against-non-existent-attributes" title="Permalink to this headline">¶</a></h3>
+<p>It is also important to note that a value test will only happen if the attribute actually exists on the item.  This means that if you wanted to check for everything that has the isFavorite attribute set to false and you did this:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="p">:</span><span class="n">isFavorite</span><span class="o">=</span><span class="p">{</span><span class="n">false</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>It would only match entries which have been previously flagged as favorites and then turned off again (since turning it off just reset the attribute to false; it didn’t remove it from the markup).  Thus you would need to do this for your filter:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="p">:</span><span class="n">isFavorite</span><span class="o">=</span><span class="p">{</span><span class="n">false</span><span class="p">}</span> <span class="n">OR</span> <span class="n">NOT</span> <span class="n">user</span><span class="p">:</span><span class="n">isFavorite</span>
+</pre></div>
+</td></tr></table></div>
+<p>Which would match if the isFavorite attribute is false, or if the isFavorite attribute does not exist.</p>
+</div>
+<div class="section" id="range-testing">
+<h3><a class="toc-backref" href="#id10">Range Testing</a><a class="headerlink" href="#range-testing" title="Permalink to this headline">¶</a></h3>
+<p>The <em>..</em> (two period) syntax can be used to do a range test between the value described above and a second value.  The second value after the <em>..</em> follows the same formatting rules as the first value.  This is only valid with the ‘=’ (equal) operator, since it doesn’t make sense with any of the others.</p>
+<p>When comparing numbers, value from <em>class:attribute</em> must by greater than or equal to the first value and less than or equal to the second value.</p>
+<p>When comparing strings, they are both tested against ‘’class:attribute’’’s value with strcmp() (or a case-insensitive version, if <em>case</em> is set; other string options are ignored).  For those who don’t know, strcmp() returns if a string is “less than” (which can generally be thought of as meaning “comes before in sort order”) or “greater than” another string.  The <em>class:attribute</em> value string must test greater than or equal to the first value string, and  less than or equal to the second test string.  This is primarily useful when testing file times with the <em>intrinsic:modTime</em> attribute, allowing you to see if a file was created in between two time ranges.</p>
+</div>
+<div class="section" id="combiner">
+<h3><a class="toc-backref" href="#id11">Combiner</a><a class="headerlink" href="#combiner" title="Permalink to this headline">¶</a></h3>
+<p>When performing multiple tests, the <em>AND</em> and <em>OR</em> combiners can be used to decide if they all must match or only some must match. <em>AND</em> is optional and is inferred if not provided.  This is most useful when combined with parentheses.</p>
+<p>For example, this matches if a Favorite flag is set in the user markup, or if the user markup Star Rating does not exist, or it does exist and is less than 1.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="p">:</span><span class="n">isFavorite</span><span class="o">=</span><span class="p">{</span><span class="n">true</span><span class="p">}</span> <span class="n">AND</span> <span class="p">(</span><span class="n">NOT</span> <span class="n">user</span><span class="p">:</span><span class="n">starRating</span> <span class="n">OR</span> <span class="n">user</span><span class="p">:</span><span class="n">starRating</span><span class="o">&lt;</span><span class="p">{</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="directory-filters">
+<h2><a class="toc-backref" href="#id12">Directory Filters</a><a class="headerlink" href="#directory-filters" title="Permalink to this headline">¶</a></h2>
+<p>Directories support advanced filters stored in user and shared markup.  These filters are always applied to the directory’s contents when the filter is enabled.  You can access the filter via the <em>F</em> badge in the top-right corner.   They otherwise work just like the viewport-level filter.  It’s not as good as Smart Folders, but it’s something, I guess.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Preset%20Browser%20Paths.html" class="btn btn-neutral float-right" title="Preset Browser Paths" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Prepare_Evaluate%20Protocol.html" class="btn btn-neutral float-left" title="Prepare/Evaluate Protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Preset Browser Filtering.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:08 GMT -->
+</html>

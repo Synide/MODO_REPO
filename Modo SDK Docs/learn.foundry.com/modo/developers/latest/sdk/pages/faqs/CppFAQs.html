@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/CppFAQs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>C++ Specific &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="General" href="GeneralFAQ.html" />
+    <link rel="prev" title="Channels" href="ChannelFAQs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_faqs.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="COMFAQs.html">About COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChannelFAQs.html">Channels</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Specific</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-cannot-allocate-an-object-of-abstract-type-mean">What does cannot allocate an object of abstract type mean?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ItemFAQs.html">Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MeshFAQ.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModifierFAQ.html">Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PythonFAQs.html">Python Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TimeFAQs.html">Dealing with Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UIFAQ.html">User Interface</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_faqs.html">Frequently Asked Questions</a> &raquo;</li>
+        
+      <li>C++ Specific</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-specific">
+<h1>C++ Specific<a class="headerlink" href="#c-specific" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-does-cannot-allocate-an-object-of-abstract-type-mean">
+<h2>What does cannot allocate an object of abstract type mean?<a class="headerlink" href="#what-does-cannot-allocate-an-object-of-abstract-type-mean" title="Permalink to this headline">¶</a></h2>
+<p>This means you have inherited from a superclass which has pure virtual methods, and you have failed to provide an implementation for one or more of those methods. In the context of the SDK, the most likely cause is that you’re using an implementation class with required methods. For example, suppose your package instance inherits from the ChannelModItem Interface. It’s not enough to simply inherit from the implementation.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CInstance</span>
+                <span class="o">:</span> <span class="k">public</span> <span class="n">CLxImpl_PackageInstance</span><span class="p">,</span>
+                  <span class="k">public</span> <span class="n">CLxImpl_ChannelModItem</span>
+<span class="p">{</span>
+                <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you attempt to initialize a polymorph based on this class it will fail with the abstract type error. That’s because the cmod_Flags() method is pure virtual and must be implemented by your class. Of course, for the channel modifier to do anything you need a flags method, so this isn’t really a hardship. It’s just something to be aware of when starting the implementation for your SDK objects.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="GeneralFAQ.html" class="btn btn-neutral float-right" title="General" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ChannelFAQs.html" class="btn btn-neutral float-left" title="Channels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/CppFAQs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

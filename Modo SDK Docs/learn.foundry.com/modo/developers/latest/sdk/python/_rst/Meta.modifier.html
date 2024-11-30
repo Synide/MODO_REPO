@@ -1,0 +1,1258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.modifier.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Meta.modifier &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Meta.package" href="Meta.package.html" />
+    <link rel="prev" title="Meta.falloff" href="Meta.falloff.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Python Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Attrdesc.html">Attrdesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.chanmod.html">Meta.chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.channel.html">Meta.channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.command.html">Meta.command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.drop.html">Meta.drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.falloff.html">Meta.falloff</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta.modifier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evalmodifier">EvalModifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluator">Evaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#itemsbytest">ItemsByTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#itemsbytype">ItemsByType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta">Meta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metaevaluator">MetaEvaluator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metainterface">MetaInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metaserver">MetaServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-evalmodifier">Meta_EvalModifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-objectevaluation">Meta_ObjectEvaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#objectevaluation">ObjectEvaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulation">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-evalmodifier">impl_EvalModifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-modifier">impl_Modifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-objectevaluation">impl_ObjectEvaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-simulation">impl_Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">meta_Modifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-simulation">meta_Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.package.html">Meta.package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.schematic.html">Meta.schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.select.html">Meta.select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vector.html">Vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../python.html">Python Reference</a> &raquo;</li>
+        
+      <li>Meta.modifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meta-modifier">
+<h1>Meta.modifier<a class="headerlink" href="#meta-modifier" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#evalmodifier" id="id8">EvalModifier</a></p></li>
+<li><p><a class="reference internal" href="#evaluator" id="id9">Evaluator</a></p></li>
+<li><p><a class="reference internal" href="#itemsbytest" id="id10">ItemsByTest</a></p></li>
+<li><p><a class="reference internal" href="#itemsbytype" id="id11">ItemsByType</a></p></li>
+<li><p><a class="reference internal" href="#meta" id="id12">Meta</a></p></li>
+<li><p><a class="reference internal" href="#types" id="id13">Types</a></p></li>
+<li><p><a class="reference internal" href="#metaevaluator" id="id14">MetaEvaluator</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id15">Types</a></p></li>
+<li><p><a class="reference internal" href="#metainterface" id="id16">MetaInterface</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id17">Types</a></p></li>
+<li><p><a class="reference internal" href="#metaserver" id="id18">MetaServer</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id19">Types</a></p></li>
+<li><p><a class="reference internal" href="#meta-evalmodifier" id="id20">Meta_EvalModifier</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id21">Types</a></p></li>
+<li><p><a class="reference internal" href="#meta-objectevaluation" id="id22">Meta_ObjectEvaluation</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id23">Types</a></p></li>
+<li><p><a class="reference internal" href="#objectevaluation" id="id24">ObjectEvaluation</a></p></li>
+<li><p><a class="reference internal" href="#simulation" id="id25">Simulation</a></p></li>
+<li><p><a class="reference internal" href="#impl-evalmodifier" id="id26">impl_EvalModifier</a></p></li>
+<li><p><a class="reference internal" href="#impl-modifier" id="id27">impl_Modifier</a></p></li>
+<li><p><a class="reference internal" href="#impl-objectevaluation" id="id28">impl_ObjectEvaluation</a></p></li>
+<li><p><a class="reference internal" href="#impl-simulation" id="id29">impl_Simulation</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id30">meta_Modifier</a></p></li>
+<li><p><a class="reference internal" href="#meta-simulation" id="id31">meta_Simulation</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id32">Types</a></p></li>
+</ul>
+</div>
+<div class="section" id="evalmodifier">
+<h2><a class="toc-backref" href="#id8">EvalModifier</a><a class="headerlink" href="#evalmodifier" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.EvalModifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">EvalModifier</code><a class="headerlink" href="#lxu.meta.modifier.EvalModifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining EvalModifier server. The client will
+subclass this base class, filling in the methods that they require.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">ident</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method to bind custom channels that aren’t part of the
+channels metaclass. Call the next function to add them.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.change_test">
+<code class="sig-name descname">change_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.change_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any changes to custom channels will automatically trigger modifier
+invalidation. Implement this method to invalidate for other changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.eval">
+<code class="sig-name descname">eval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method to evaluate inputs and write outputs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.include_item">
+<code class="sig-name descname">include_item</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.include_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method for modifiers that apply to all items. Return a
+list of indices, if nodes are to be created for this item.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_add_chan">
+<code class="sig-name descname">mod_add_chan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">chan</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_add_chan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to add a named custom channel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_attr">
+<code class="sig-name descname">mod_attr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the Attributes object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_cust_index">
+<code class="sig-name descname">mod_cust_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_cust_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the attribute index of a custom channel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_cust_value">
+<code class="sig-name descname">mod_cust_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_cust_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the value of a custom channel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_cust_write">
+<code class="sig-name descname">mod_cust_write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_cust_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the writable value of a custom channel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_eval">
+<code class="sig-name descname">mod_eval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the Evaluation object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_index">
+<code class="sig-name descname">mod_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the identifing index for this modifier node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_item">
+<code class="sig-name descname">mod_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to get the item for this modifier node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_read_attr">
+<code class="sig-name descname">mod_read_attr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_read_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to read channels defined in the Channels metaclass.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.EvalModifier.mod_result">
+<code class="sig-name descname">mod_result</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">res</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.EvalModifier.mod_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to return a result other than e_OK.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="evaluator">
+<h2><a class="toc-backref" href="#id9">Evaluator</a><a class="headerlink" href="#evaluator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.Evaluator">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">Evaluator</code><a class="headerlink" href="#lxu.meta.modifier.Evaluator" title="Permalink to this definition">¶</a></dt>
+<dd><p>We can also implement alternate forms of evaluation, which can take
+over part of the eval process.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.Evaluator.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Evaluator.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Evaluator.eval">
+<code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Evaluator.eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="itemsbytest">
+<h2><a class="toc-backref" href="#id10">ItemsByTest</a><a class="headerlink" href="#itemsbytest" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.ItemsByTest">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">ItemsByTest</code><a class="headerlink" href="#lxu.meta.modifier.ItemsByTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteration by test function: walks all items in the scene and returns
+as many nodes as requested by the client.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.ItemsByTest.next">
+<code class="sig-name descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.ItemsByTest.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="itemsbytype">
+<h2><a class="toc-backref" href="#id11">ItemsByType</a><a class="headerlink" href="#itemsbytype" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.ItemsByType">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">ItemsByType</code><a class="headerlink" href="#lxu.meta.modifier.ItemsByType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteration by item type: returns one node per item, all index 0</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.ItemsByType.next">
+<code class="sig-name descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.ItemsByType.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="meta">
+<h2><a class="toc-backref" href="#id12">Meta</a><a class="headerlink" href="#meta" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.Meta">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">Meta</code><a class="headerlink" href="#lxu.meta.modifier.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base class for metaclass nodes defines their core features. They have a
+type given by one of the pre-defined type strings, they have an optional
+name, and an optional guid. The are arranged into a tree, and the tree
+can be searched for matching meta nodes.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="types">
+<h2><a class="toc-backref" href="#id13">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="metaevaluator">
+<h2><a class="toc-backref" href="#id14">MetaEvaluator</a><a class="headerlink" href="#metaevaluator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.MetaEvaluator">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">MetaEvaluator</code><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alternate evaluators are under the eval modifier metaclass.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaEvaluator.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaEvaluator.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id15">Types</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="metainterface">
+<h2><a class="toc-backref" href="#id16">MetaInterface</a><a class="headerlink" href="#metainterface" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.MetaInterface">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">MetaInterface</code><a class="headerlink" href="#lxu.meta.modifier.MetaInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>The interface meta node is a sub-interface for an object or server
+of the same guid.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaInterface.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaInterface.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id17">Types</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="metaserver">
+<h2><a class="toc-backref" href="#id18">MetaServer</a><a class="headerlink" href="#metaserver" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.MetaServer">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">MetaServer</code><a class="headerlink" href="#lxu.meta.modifier.MetaServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server meta node defines a plug-in server. The name and class guid
+must be specified, and the alloc() method (defined by the client, returns
+the server class. There is also a dictionary of server tags.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.MetaServer.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.MetaServer.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id19">Types</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="meta-evalmodifier">
+<h2><a class="toc-backref" href="#id20">Meta_EvalModifier</a><a class="headerlink" href="#meta-evalmodifier" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.Meta_EvalModifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">Meta_EvalModifier</code><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for the Falloff object type.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.add_dependent_graph">
+<code class="sig-name descname">add_dependent_graph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graphname</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.add_dependent_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifiers can be automatically invalidated for changes related to
+named graphs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.add_dependent_type">
+<code class="sig-name descname">add_dependent_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.add_dependent_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifiers can be automatically invalidated for changes related to
+other item types.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal metaclass method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.get_all_items">
+<code class="sig-name descname">get_all_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.get_all_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>A modifier associated with an item type will allocate one modifier
+node for each item of that type. Calling get_all_items() will instead
+configure the modifier to process all items, adding zero or more
+nodes for each.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.invalidate">
+<code class="sig-name descname">invalidate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scene</span></em>, <em class="sig-param"><span class="n">reset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any change (other than item types or graphs) that require the modifier
+nodes to be refreshed should invalidate the modifier. If ‘reset’ is
+true then the results of all modifier nodes are cleared regardless.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.set_itemtype">
+<code class="sig-name descname">set_itemtype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.set_itemtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there’s a package server in the meta tree then that’s automatically
+set as the main item type for the modifier. That can be overridden
+with this call.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.set_simulation">
+<code class="sig-name descname">set_simulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.set_simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to set the modifier to be a simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_EvalModifier.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_EvalModifier.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id21">Types</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="meta-objectevaluation">
+<h2><a class="toc-backref" href="#id22">Meta_ObjectEvaluation</a><a class="headerlink" href="#meta-objectevaluation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">Meta_ObjectEvaluation</code><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for the Object evaluator.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Meta_ObjectEvaluation.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Meta_ObjectEvaluation.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id23">Types</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="objectevaluation">
+<h2><a class="toc-backref" href="#id24">ObjectEvaluation</a><a class="headerlink" href="#objectevaluation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.ObjectEvaluation">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">ObjectEvaluation</code><a class="headerlink" href="#lxu.meta.modifier.ObjectEvaluation" title="Permalink to this definition">¶</a></dt>
+<dd><p>One alternate form of evaluation is to create an object and write it
+to an OBJREF channel. The object can be allocated directly or using a
+metaclass.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.ObjectEvaluation.alloc_obj">
+<code class="sig-name descname">alloc_obj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.ObjectEvaluation.alloc_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method to allocate and return a new object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.ObjectEvaluation.init_obj">
+<code class="sig-name descname">init_obj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mod</span></em>, <em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.ObjectEvaluation.init_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method to initialize an object alloced by metaclass.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="simulation">
+<h2><a class="toc-backref" href="#id25">Simulation</a><a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.Simulation">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">Simulation</code><a class="headerlink" href="#lxu.meta.modifier.Simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Co-class for evaluating an EvalModifier in a simulation context.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.Simulation.cleanup_sim">
+<code class="sig-name descname">cleanup_sim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Simulation.cleanup_sim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Simulation.enabled">
+<code class="sig-name descname">enabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chanRead</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Simulation.enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Simulation.init_sim">
+<code class="sig-name descname">init_sim</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">sample</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Simulation.init_sim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Simulation.step">
+<code class="sig-name descname">step</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Simulation.step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.Simulation.step_size">
+<code class="sig-name descname">step_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.Simulation.step_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-evalmodifier">
+<h2><a class="toc-backref" href="#id26">impl_EvalModifier</a><a class="headerlink" href="#impl-evalmodifier" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.impl_EvalModifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">impl_EvalModifier</code><a class="headerlink" href="#lxu.meta.modifier.impl_EvalModifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>This internal class implements the actual EvalModifier server. It basically
+iterates through items to determine what noes to add, and allocates them.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_EvalModifier.eval_Alloc">
+<code class="sig-name descname">eval_Alloc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">eval</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_EvalModifier.eval_Alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_EvalModifier.eval_Next">
+<code class="sig-name descname">eval_Next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_EvalModifier.eval_Next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_EvalModifier.eval_Reset">
+<code class="sig-name descname">eval_Reset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scene</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_EvalModifier.eval_Reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-modifier">
+<h2><a class="toc-backref" href="#id27">impl_Modifier</a><a class="headerlink" href="#impl-modifier" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.impl_Modifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">impl_Modifier</code><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>This internal class implements the actual Modifier object.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.init_node">
+<code class="sig-name descname">init_node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">ident</span></em>, <em class="sig-param"><span class="n">eval</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.init_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_Evaluate">
+<code class="sig-name descname">mod_Evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_Evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_Free">
+<code class="sig-name descname">mod_Free</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cache</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_Free" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_Invalidate">
+<code class="sig-name descname">mod_Invalidate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_Invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_Required">
+<code class="sig-name descname">mod_Required</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_Required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_RequiredCount">
+<code class="sig-name descname">mod_RequiredCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_RequiredCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_Test">
+<code class="sig-name descname">mod_Test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_Test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Modifier.mod_Validate">
+<code class="sig-name descname">mod_Validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">rc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Modifier.mod_Validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-objectevaluation">
+<h2><a class="toc-backref" href="#id28">impl_ObjectEvaluation</a><a class="headerlink" href="#impl-objectevaluation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.impl_ObjectEvaluation">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">impl_ObjectEvaluation</code><a class="headerlink" href="#lxu.meta.modifier.impl_ObjectEvaluation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="lxu.meta.modifier.impl_ObjectEvaluation.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_ObjectEvaluation.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_ObjectEvaluation.eval">
+<code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_ObjectEvaluation.eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-simulation">
+<h2><a class="toc-backref" href="#id29">impl_Simulation</a><a class="headerlink" href="#impl-simulation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.impl_Simulation">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">impl_Simulation</code><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation for Simulation. This just gets the instance from the
+Modifier implementation.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.inherit">
+<code class="sig-name descname">inherit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">modimpl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.inherit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.sim_Bake">
+<code class="sig-name descname">sim_Bake</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.sim_Bake" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.sim_Cleanup">
+<code class="sig-name descname">sim_Cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.sim_Cleanup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.sim_Enabled">
+<code class="sig-name descname">sim_Enabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chanRead</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.sim_Enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.sim_Initialize">
+<code class="sig-name descname">sim_Initialize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">sample</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.sim_Initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.sim_Step">
+<code class="sig-name descname">sim_Step</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.sim_Step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.impl_Simulation.sim_StepSize">
+<code class="sig-name descname">sim_StepSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.impl_Simulation.sim_StepSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id30">meta_Modifier</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.meta_Modifier">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">meta_Modifier</code><a class="headerlink" href="#lxu.meta.modifier.meta_Modifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>This internal class is the metaclass for the Modifier nodes. Its
+_meta is the EvalModifier metaclass. Very meta.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="meta-simulation">
+<h2><a class="toc-backref" href="#id31">meta_Simulation</a><a class="headerlink" href="#meta-simulation" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.modifier.meta_Simulation">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.modifier.</code><code class="sig-name descname">meta_Simulation</code><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metaclass for Simulation. This is added under a Modifier.</p>
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.modifier.meta_Simulation.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.modifier.meta_Simulation.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id32">Types</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Meta.package.html" class="btn btn-neutral float-right" title="Meta.package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Meta.falloff.html" class="btn btn-neutral float-left" title="Meta.falloff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.modifier.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

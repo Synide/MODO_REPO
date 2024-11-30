@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.falloff.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Meta.falloff &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Meta.modifier" href="Meta.modifier.html" />
+    <link rel="prev" title="Meta.drop" href="Meta.drop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Python Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Attrdesc.html">Attrdesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.chanmod.html">Meta.chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.channel.html">Meta.channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.command.html">Meta.command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.drop.html">Meta.drop</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta.falloff</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#falloff">Falloff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metaobject">MetaObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Meta_Falloff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-falloff">impl_Falloff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.modifier.html">Meta.modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.package.html">Meta.package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.schematic.html">Meta.schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.select.html">Meta.select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vector.html">Vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../python.html">Python Reference</a> &raquo;</li>
+        
+      <li>Meta.falloff</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meta-falloff">
+<h1>Meta.falloff<a class="headerlink" href="#meta-falloff" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#falloff" id="id3">Falloff</a></p></li>
+<li><p><a class="reference internal" href="#metaobject" id="id4">MetaObject</a></p></li>
+<li><p><a class="reference internal" href="#types" id="id5">Types</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id6">Meta_Falloff</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id7">Types</a></p></li>
+<li><p><a class="reference internal" href="#impl-falloff" id="id8">impl_Falloff</a></p></li>
+</ul>
+</div>
+<div class="section" id="falloff">
+<h2><a class="toc-backref" href="#id3">Falloff</a><a class="headerlink" href="#falloff" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.falloff.Falloff">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.falloff.</code><code class="sig-name descname">Falloff</code><a class="headerlink" href="#lxu.meta.falloff.Falloff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining Falloff objects. The client will
+subclass this base class, filling in the methods that they require.</p>
+<dl class="py method">
+<dt id="lxu.meta.falloff.Falloff.bounded">
+<code class="sig-name descname">bounded</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Falloff.bounded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method if the weight can be bounded.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Falloff.bounds">
+<code class="sig-name descname">bounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Falloff.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this to return the bounding box for the bounded region.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Falloff.set_local">
+<code class="sig-name descname">set_local</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xfrm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Falloff.set_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call this method to set the world transform for a local falloff.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Falloff.valid">
+<code class="sig-name descname">valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Falloff.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method if the weight can be non-zero anywhere.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Falloff.weight_local">
+<code class="sig-name descname">weight_local</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Falloff.weight_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this to get the weight computed in local coordinates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Falloff.weight_world">
+<code class="sig-name descname">weight_world</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Falloff.weight_world" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this to get the weight computed in world coordinates.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="metaobject">
+<h2><a class="toc-backref" href="#id4">MetaObject</a><a class="headerlink" href="#metaobject" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.falloff.MetaObject">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.falloff.</code><code class="sig-name descname">MetaObject</code><a class="headerlink" href="#lxu.meta.falloff.MetaObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object meta node creates standalone objects that aren’t servers.</p>
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.extract">
+<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">com</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the implementation class object from the COM object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.spawn">
+<code class="sig-name descname">spawn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.spawn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allocate a new instance of the COM object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.MetaObject.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.MetaObject.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="types">
+<h2><a class="toc-backref" href="#id5">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id6">Meta_Falloff</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.falloff.Meta_Falloff">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.falloff.</code><code class="sig-name descname">Meta_Falloff</code><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for the Falloff object type.</p>
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal metaclass method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.extract">
+<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">com</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the implementation class object from the COM object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.set_local">
+<code class="sig-name descname">set_local</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">local</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.set_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the falloff to operate in local coordinates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.spawn">
+<code class="sig-name descname">spawn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.spawn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allocate a new instance of the COM object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.Meta_Falloff.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.Meta_Falloff.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id7">Types</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="impl-falloff">
+<h2><a class="toc-backref" href="#id8">impl_Falloff</a><a class="headerlink" href="#impl-falloff" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.falloff.impl_Falloff">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.falloff.</code><code class="sig-name descname">impl_Falloff</code><a class="headerlink" href="#lxu.meta.falloff.impl_Falloff" title="Permalink to this definition">¶</a></dt>
+<dd><p>This internal class implements the actual Falloff object.</p>
+<dl class="py method">
+<dt id="lxu.meta.falloff.impl_Falloff.fall_Bounds">
+<code class="sig-name descname">fall_Bounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.impl_Falloff.fall_Bounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.impl_Falloff.fall_SetMesh">
+<code class="sig-name descname">fall_SetMesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mesh</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.impl_Falloff.fall_SetMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.impl_Falloff.fall_WeightF">
+<code class="sig-name descname">fall_WeightF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">point</span></em>, <em class="sig-param"><span class="n">polygon</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.impl_Falloff.fall_WeightF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.impl_Falloff.local_weight">
+<code class="sig-name descname">local_weight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.impl_Falloff.local_weight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.falloff.impl_Falloff.world_weight">
+<code class="sig-name descname">world_weight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.falloff.impl_Falloff.world_weight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Meta.modifier.html" class="btn btn-neutral float-right" title="Meta.modifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Meta.drop.html" class="btn btn-neutral float-left" title="Meta.drop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.falloff.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+</html>

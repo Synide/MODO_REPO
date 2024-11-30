@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Command History Viewport.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:54 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command History Viewport &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Create A Custom Form" href="Create%20A%20Custom%20Form.html" />
+    <link rel="prev" title="Command Help" href="Command%20Help.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ui.html">User Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="App.undoSuspend.html">App.undoSuspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Argument%20Types.html">Argument Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Collapsable%20and%20Hideable%20Viewports.html">Collapsable and Hideable Viewports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Dialog%20Formatting.html">Command Dialog Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Help.html">Command Help</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command History Viewport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-entry">Command Entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tabs">Tabs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#undo-list-and-history">Undo List and History</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-list">Command List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scripts">Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20A%20Custom%20Form.html">Create A Custom Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20Layouts.html">Creating Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Defining%20Item%20Categories.html">Defining Item Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dialog%20Commands.html">Dialog Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Event%20Log%20Viewport.html">Event Log Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Categories%20and%20Groups.html">Form Categories and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Editor.html">Form Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Filtering.html">Form Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20System.html">Form System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help%20URLs.html">Help URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icon%20Resources.html">Icon Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layout%20Windows.html">Layout Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MODO%20Projects.html">MODO Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageService%20Reference.html">MessageService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Markup.html">Modo Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface%20and%20Plug-Ins.html">User Interface and Plug-Ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Values.html">User Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ui.html">User Interface</a> &raquo;</li>
+        
+      <li>Command History Viewport</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-history-viewport">
+<h1>Command History Viewport<a class="headerlink" href="#command-history-viewport" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#command-entry" id="id1">Command Entry</a></p></li>
+<li><p><a class="reference internal" href="#tabs" id="id2">Tabs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#undo-list-and-history" id="id3">Undo List and History</a></p>
+<ul>
+<li><p><a class="reference internal" href="#undo-list" id="id4">Undo List</a></p></li>
+<li><p><a class="reference internal" href="#history" id="id5">History</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#command-list" id="id6">Command List</a></p></li>
+<li><p><a class="reference internal" href="#scripts" id="id7">Scripts</a></p></li>
+<li><p><a class="reference internal" href="#results" id="id8">Results</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#filtering" id="id9">Filtering</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id10">More Information</a></p></li>
+</ul>
+</div>
+<p>The Command History Viewport]] viewport tracks command executions, making it an essential development tool. This viewport also contains the undo stack, a complete command list, a simple scripting interface, and the results of any queries performed from the [[Command History Viewport#Command Entry at the bottom of the viewport.</p>
+<div class="section" id="command-entry">
+<h2><a class="toc-backref" href="#id1">Command Entry</a><a class="headerlink" href="#command-entry" title="Permalink to this headline">¶</a></h2>
+<img alt="../../_images/CHist-CommandEntry.png" src="../../_images/CHist-CommandEntry.png" />
+<p>In the default layout the Command History viewport is very short, showing only a single line. This is the Command History Viewport#Command Entry, an edit field where commands can be executed directly. Try this out by typing <em>cmds.saveList</em> into the edit field and press return. This opens a file dialog asking where to save the command list, and then writes a complete list of all commands sorted alphabetically to that file. The executed command will then show up in the history and the undo list. Open that file up in your favorite text editor to see a complete list of all commands available in modo.</p>
+<p>Clicking on any command or script in the Command History Viewport’s lists will insert it into the Command Entry, ready for editing and execution.</p>
+</div>
+<div class="section" id="tabs">
+<h2><a class="toc-backref" href="#id2">Tabs</a><a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h2>
+<p>The Command History Viewport contains five tabs:  Undo List, History, Command list, Scripts and Results.</p>
+<div class="section" id="undo-list-and-history">
+<h3><a class="toc-backref" href="#id3">Undo List and History</a><a class="headerlink" href="#undo-list-and-history" title="Permalink to this headline">¶</a></h3>
+<p>The Undo List and History tabs of the Command History viewport are related, in that both show the commands executed in modo either by the user or by scripts.  The difference is in how they represent the effects of undos and redos.</p>
+<div class="section" id="undo-list">
+<h4><a class="toc-backref" href="#id4">Undo List</a><a class="headerlink" href="#undo-list" title="Permalink to this headline">¶</a></h4>
+<p>The first tab of the Command History shows the <span class="xref std std-doc">./</span>. This shows all executed commands as they are performed, taking into account the effects of undos and redos. You can use this to see what commands are being triggered by your actions. Double-clicking a command will execute it.</p>
+<p>Commands that have themselves executed commands (known as sub-commands) will have a small arrow to their left, which can be clicked to see the sub-commands within. By default, the Command History only shows the first ten or so commands to reduce the need to store the hundreds or thousands of commands that large scripts can execute. This can be adjusted via the {{Link to modo docs|pages/modointerface/Pref_Data.html|Max Sub-Commands Recorded}} option in the {{Link to modo docs|pages/modointerface/Pref_Data.html|Preferences}}.</p>
+<p>The icons indicate if the command is undoable, redoable, a UI command or a Side Effect command the Command System#Command Classes article for information on what the difference is between them.</p>
+</div>
+<div class="section" id="history">
+<h4><a class="toc-backref" href="#id5">History</a><a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h4>
+<p>The Command History Viewport#History tab shows a running history of all commands. This ignores the effects of undos, and lists all commands that have been executed. While the Undo List is a snapshot of the minimum number of steps that got the application to its current state, the History is a complete list of all the steps, including mistakes that were undone. As with the Undo List, double-clicking a command will execute it.  The History tab also shows quiet commands and other commands that might not normally be visible in the undo list.</p>
+<img alt="../../_images/CHist-UndoList.png" src="../../_images/CHist-UndoList.png" />
+<img alt="../../_images/CHist-History.png" src="../../_images/CHist-History.png" />
+</div>
+</div>
+<div class="section" id="command-list">
+<h3><a class="toc-backref" href="#id6">Command List</a><a class="headerlink" href="#command-list" title="Permalink to this headline">¶</a></h3>
+<img alt="../../_images/CHist-CommandList.png" src="../../_images/CHist-CommandList.png" />
+<p>The third tab is the  Command History Viewport#Command List. This contains a complete list of every command in modo, sorted into categories. If you need help on a particular command, you can get information on it’s usage here. You can also execute commands by double-clicking them.</p>
+</div>
+<div class="section" id="scripts">
+<h3><a class="toc-backref" href="#id7">Scripts</a><a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h3>
+<p>The Command History Viewport#Scripts tab is a somewhat primitive list whose main purpose is to show and edit config macros (macros that are stored in config files, as opposed to as separate files on disk). Only macros stored in the user config are editable; those stored in imported configs will be shown with a lock icon.</p>
+<p>Although the other scripting languages are shown here, they cannot be directly manipulated from this tab.</p>
+</div>
+<div class="section" id="results">
+<h3><a class="toc-backref" href="#id8">Results</a><a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<img alt="../../_images/CHist-Results.png" src="../../_images/CHist-Results.png" />
+<p>The final tab is Command History Viewport#Results, which shows the results of any command executed or queried from this viewport, either through the command entry or by double-clicking on a command in the various lists. Commands are logged for success, failure and queries. This is a good place to tinker with commands without having to write a full script.</p>
+</div>
+</div>
+<div class="section" id="filtering">
+<h2><a class="toc-backref" href="#id9">Filtering</a><a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>F</strong> button to the right of the tabs toggles the filtering field specific to each tab, allowing you to easily search for a command or command attribute.  This is particularly useful in the Command List tab.  Turning off the <strong>F</strong> button also turns off filtering for that tab.</p>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id10">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>modo Documentation for the {{Link to modo docs|pages/modointerface/viewports/CommandHistory.html|Command History Viewport}}</p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Create%20A%20Custom%20Form.html" class="btn btn-neutral float-right" title="Create A Custom Form" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Command%20Help.html" class="btn btn-neutral float-left" title="Command Help" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Command History Viewport.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:55 GMT -->
+</html>

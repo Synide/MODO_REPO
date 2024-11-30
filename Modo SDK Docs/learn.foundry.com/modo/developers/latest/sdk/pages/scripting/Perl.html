@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Perl.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Perl &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Script lua" href="Script%20lua.html" />
+    <link rel="prev" title="Macros" href="Macros.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_scripting.html">Scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppleScript.html">AppleScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bouncing%20Ball%20Script%20(Transform%20Channels).html">Bouncing Ball Script (Transform Channels)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChangeRenderFrameRange%20Script.html">ChangeRenderFrameRange Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layerservice.html">Layerservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lua.html">Lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Macros.html">Macros</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Perl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#perl-header">Perl Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#progress-monitors">Progress Monitors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lxmoninit">lxmonInit()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#external-modules">External Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-inc">Modifying &#64;INC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-perl-scripts-outside-modo">Testing Perl Scripts Outside modo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Script%20lua.html">Script lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Interface%20701%20Updates.html">ScriptQuery Interface 701 Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Overview.html">ScriptQuery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting.html">Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting%20Preview.html">Scripting Preview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_scripting.html">Scripting</a> &raquo;</li>
+        
+      <li>Perl</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="perl">
+<h1>Perl<a class="headerlink" href="#perl" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#perl-header" id="id1">Perl Header</a></p></li>
+<li><p><a class="reference internal" href="#arguments" id="id2">Arguments</a></p></li>
+<li><p><a class="reference internal" href="#progress-monitors" id="id3">Progress Monitors</a></p>
+<ul>
+<li><p><a class="reference internal" href="#lxmoninit" id="id4">lxmonInit()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#external-modules" id="id5">External Modules</a></p>
+<ul>
+<li><p><a class="reference internal" href="#environment-variables" id="id6">Environment Variables</a></p></li>
+<li><p><a class="reference internal" href="#modifying-inc" id="id7">Modifying &#64;INC</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#examples" id="id8">Examples</a></p></li>
+<li><p><a class="reference internal" href="#testing-perl-scripts-outside-modo" id="id9">Testing Perl Scripts Outside modo</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id10">More Information</a></p></li>
+</ul>
+</div>
+<p>The first scripting language supported by <em>modo</em> is <span class="xref std std-doc">./</span>.  Perl is commonly found on Unix variants, is available for every platform, and is a standard for automating tasks and writing quick utilities. Due to this ubiquitous presence, there is a wealth of example Perl code, tutorials and documentation available online and in print. In ‘’modo’’, Perl is used for operations that are more complex than can be accomplished with simple macros, allowing for branching, loops, functions and other features.</p>
+<p>As with <a class="reference internal" href="Macros.html"><span class="doc">Macros</span></a> to obtain lower-level information from the various subsystems, including extracting specific mesh information that is not otherwise accessible through commands themselves.</p>
+<p>The official Perl documentation can be found at the [<a class="reference external" href="http://www.perl.org/">http://www.perl.org/</a> Perl website].</p>
+<div class="section" id="perl-header">
+<h2><a class="toc-backref" href="#id1">Perl Header</a><a class="headerlink" href="#perl-header" title="Permalink to this headline">¶</a></h2>
+<p>All perl scripts must have the word <em>perl</em> in the first line so that it can be recognized as a Perl script by the system.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># perl</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">==</span> <span class="n">modo</span> <span class="n">Extensions</span> <span class="n">to</span> <span class="n">Perl</span> <span class="o">==</span>
+
+<span class="n">A</span> <span class="n">number</span> <span class="n">of</span> <span class="k">new</span> <span class="n">functions</span> <span class="n">have</span> <span class="n">been</span> <span class="n">added</span> <span class="n">to</span> <span class="n">Perl</span> <span class="n">in</span> <span class="s">&#39;&#39;</span><span class="n">modo</span><span class="s">&#39;&#39;</span><span class="o">.</span>  <span class="n">The</span> <span class="n">most</span> <span class="n">common</span> <span class="n">batch</span> <span class="n">include</span> <span class="s">&#39;&#39;</span><span class="n">lx</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxq</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxqt</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxeval</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxok</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxres</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxout</span><span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="s">&#39;&#39;</span><span class="n">lxtrace</span><span class="s">&#39;&#39;</span><span class="o">.</span> <span class="n">Errors</span> <span class="n">are</span> <span class="n">reported</span> <span class="n">to</span> <span class="n">the</span> <span class="p">[[</span><span class="n">Event</span> <span class="n">Log</span> <span class="n">Viewport</span><span class="p">]],</span> <span class="n">so</span> <span class="n">it</span><span class="p">?</span><span class="n">s</span> <span class="n">useful</span> <span class="n">to</span> <span class="n">have</span> <span class="n">one</span> <span class="nb">open</span> <span class="k">while</span> <span class="n">developing</span> <span class="n">Perl</span> <span class="n">scripts</span><span class="o">.</span>
+
+<span class="o">===</span> <span class="n">lx</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lx&#39;&#39;&#39;</span> <span class="n">function</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">commands</span> <span class="n">using</span> <span class="n">the</span> <span class="n">standard</span> <span class="s">&#39;&#39;</span><span class="n">modo</span><span class="s">&#39;&#39;</span> <span class="p">[[</span><span class="n">Command</span> <span class="n">System:</span> <span class="n">Basics</span><span class="o">|</span><span class="n">command</span> <span class="n">syntax</span><span class="p">]]</span><span class="o">.</span> <span class="n">This</span> <span class="n">returns</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">the</span> <span class="n">command</span> <span class="n">executed</span> <span class="n">successfully</span><span class="p">,</span> <span class="ow">and</span> <span class="n">nothing</span> <span class="k">if</span> <span class="n">it</span> <span class="n">failed</span> <span class="k">for</span> <span class="n">any</span> <span class="n">reason</span><span class="o">.</span> <span class="s">&#39;&#39;</span><span class="n">lxres</span><span class="s">&#39;&#39;</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">get</span> <span class="n">more</span> <span class="n">specific</span> <span class="n">information</span> <span class="n">about</span> <span class="n">why</span> <span class="n">a</span> <span class="n">command</span> <span class="n">failed</span><span class="o">.</span> <span class="n">Also</span> <span class="n">be</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">check</span> <span class="n">the</span> <span class="n">Event</span> <span class="n">Log</span> <span class="n">viewport</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="k">my</span> <span class="nv">$ok</span> <span class="o">=</span> <span class="n">lx</span><span class="p">(</span> <span class="s">&quot;tool.set prim.cube on&quot;</span> <span class="p">);</span>
+ <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$ok</span><span class="p">){</span>
+     <span class="c1"># handle errors here</span>
+ <span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxq</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lxq&#39;&#39;&#39;</span> <span class="n">function</span> <span class="n">queries</span> <span class="n">a</span> <span class="n">command</span> <span class="n">using</span> <span class="n">the</span> <span class="n">standard</span> <span class="n">question</span> <span class="n">mark</span> <span class="n">syntax</span><span class="p">,</span> <span class="n">returning</span> <span class="n">an</span> <span class="n">array</span> <span class="n">of</span> <span class="nb">values</span><span class="o">.</span> <span class="s">&#39;&#39;</span><span class="k">foreach</span><span class="s">&#39;&#39;</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">easily</span> <span class="n">walk</span> <span class="n">the</span> <span class="n">array</span><span class="o">.</span> <span class="n">If</span> <span class="n">you</span> <span class="n">are</span> <span class="n">only</span> <span class="n">interested</span> <span class="n">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">value</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="k">use</span> <span class="nn">a</span> <span class="nb">scalar</span> <span class="n">value</span> <span class="ow">and</span> <span class="n">Perl</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">handle</span> <span class="n">it</span><span class="o">.</span> <span class="n">If</span> <span class="n">there</span> <span class="n">was</span> <span class="n">an</span> <span class="n">error</span> <span class="n">querying</span> <span class="n">the</span> <span class="n">command</span><span class="p">,</span> <span class="n">nothing</span> <span class="n">is</span> <span class="n">returned</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="c1"># Get an array of names, one for each selected material</span>
+ <span class="k">my</span> <span class="nv">@selMaterialNames</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;material.name ?&quot;</span> <span class="p">);</span>
+ <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$matName</span> <span class="p">(</span><span class="nv">@selMaterialNames</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1"># Process the material name</span>
+ <span class="p">}</span>
+
+ <span class="c1"># Get the maximum number of undos as a single value</span>
+ <span class="k">my</span> <span class="nv">$maxUndos</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;pref.value application.maxUndo ?&quot;</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxqt</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lxqt&#39;&#39;&#39;</span> <span class="n">function</span> <span class="n">queries</span> <span class="p">[[</span><span class="n">Command</span> <span class="n">System:</span> <span class="n">Basics</span><span class="c1">#ToggleValue Arguments|ToggleValue]] commands like &#39;&#39;tool.set&#39;&#39;, returning a simple &#39;&#39;true&#39;&#39; or &#39;&#39;false&#39;&#39; value. &#39;&#39;lxq&#39;&#39; can be used to get the current actual value of a &#39;&#39;ToggleValue&#39;&#39; command, which can be of any datatype and can be one of a number of possible values depending on the command. &#39;&#39;lxqt&#39;&#39; can be used to more easily see if the commands is &quot;on&quot; or not. This example checks to see if the &#39;&#39;Cube&#39;&#39; tool is currently active.</span>
+
+ <span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="k">my</span> <span class="nv">@isActive</span> <span class="o">=</span> <span class="n">lxqt</span><span class="p">(</span> <span class="s">&quot;tool.set prim.cube on&quot;</span> <span class="p">);</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxeval</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lxeval&#39;&#39;&#39;</span> <span class="n">function</span> <span class="n">is</span> <span class="n">a</span> <span class="n">hyrid</span> <span class="n">of</span> <span class="s">&#39;&#39;</span><span class="n">lx</span><span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="s">&#39;&#39;</span><span class="n">lxq</span><span class="s">&#39;&#39;</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">command</span> <span class="n">string</span> <span class="n">contains</span> <span class="n">a</span> <span class="n">question</span> <span class="n">mark</span><span class="p">,</span> <span class="n">the</span> <span class="n">command</span> <span class="n">will</span> <span class="n">be</span> <span class="n">queried</span> <span class="ow">and</span> <span class="n">returned</span><span class="p">;</span> <span class="n">otherwise</span><span class="p">,</span> <span class="n">the</span> <span class="n">command</span> <span class="n">is</span> <span class="n">executed</span> <span class="ow">and</span> <span class="n">success</span> <span class="ow">or</span> <span class="n">failure</span> <span class="n">is</span> <span class="n">returned</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="c1"># Execute</span>
+ <span class="n">lxeval</span><span class="p">(</span> <span class="s">&quot;user.defNew MyValue&quot;</span> <span class="p">);</span>
+ <span class="n">lxeval</span><span class="p">(</span> <span class="s">&quot;user.value MyValue {Test Value}&quot;</span> <span class="p">);</span>
+
+ <span class="c1"># Query</span>
+ <span class="k">my</span> <span class="nv">$value</span> <span class="o">=</span> <span class="n">lxeval</span><span class="p">(</span> <span class="s">&quot;user.value MyValue ?&quot;</span> <span class="p">);</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxok</span><span class="p">()</span> <span class="ow">and</span> <span class="n">lxres</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="n">results</span> <span class="n">of</span> <span class="s">&#39;&#39;</span><span class="n">lx</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxq</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxqt</span><span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="s">&#39;&#39;</span><span class="n">lxeval</span><span class="s">&#39;&#39;</span> <span class="n">can</span> <span class="n">be</span> <span class="n">tested</span> <span class="n">with</span> <span class="s">&#39;&#39;</span><span class="n">lxok</span><span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="s">&#39;&#39;</span><span class="n">lxres</span><span class="s">&#39;&#39;</span><span class="o">.</span> <span class="s">&#39;&#39;&#39;lxok&#39;&#39;&#39;</span> <span class="n">returns</span> <span class="s">&#39;&#39;</span><span class="mi">1</span><span class="s">&#39;&#39;</span> <span class="k">if</span> <span class="n">the</span> <span class="k">last</span> <span class="n">call</span> <span class="n">was</span> <span class="n">successful</span> <span class="ow">and</span> <span class="s">&#39;&#39;</span><span class="mi">0</span><span class="s">&#39;&#39;</span> <span class="k">if</span> <span class="ow">not</span><span class="o">.</span> <span class="s">&#39;&#39;&#39;lxres&#39;&#39;&#39;</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">LxResult</span> <span class="n">code</span><span class="p">,</span> <span class="n">which</span> <span class="n">provides</span> <span class="n">more</span> <span class="n">specific</span> <span class="n">details</span> <span class="n">about</span> <span class="n">result</span> <span class="n">of</span> <span class="n">the</span> <span class="n">commands</span> <span class="n">execution</span><span class="o">.</span> <span class="n">A</span> <span class="n">list</span> <span class="n">of</span> <span class="n">standard</span> <span class="n">result</span> <span class="n">codes</span> <span class="ow">and</span> <span class="n">their</span> <span class="n">meanings</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="n">in</span> <span class="n">the</span> <span class="n">error</span> <span class="n">codes</span> <span class="n">message</span> <span class="n">table</span><span class="p">,</span> <span class="p">[[</span><span class="n">msglxresult</span><span class="o">.</span><span class="n">cfg</span><span class="o">|</span><span class="n">resource:msglxresult</span><span class="o">.</span><span class="n">cfg</span><span class="p">]]</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="k">my</span> <span class="nv">$isOK</span> <span class="o">=</span> <span class="n">lxok</span><span class="p">;</span>
+ <span class="k">my</span> <span class="nv">$result</span> <span class="o">=</span> <span class="n">lxres</span><span class="p">;</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxtrace</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lxtrace&#39;&#39;&#39;</span> <span class="n">function</span> <span class="n">toggles</span> <span class="n">tracing</span> <span class="n">on</span> <span class="ow">and</span> <span class="n">off</span><span class="o">.</span> <span class="n">When</span> <span class="n">tracing</span> <span class="n">is</span> <span class="n">enabled</span><span class="p">,</span> <span class="n">all</span> <span class="n">commands</span> <span class="n">executed</span> <span class="ow">or</span> <span class="n">queried</span>  <span class="n">by</span> <span class="s">&#39;&#39;</span><span class="n">lx</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="n">lxq</span><span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">other</span> <span class="n">execute</span><span class="o">/</span><span class="n">query</span> <span class="n">functions</span> <span class="n">are</span> <span class="n">output</span> <span class="n">to</span> <span class="n">the</span> <span class="s">&#39;&#39;</span><span class="n">Scripting</span><span class="s">&#39;&#39;</span> <span class="n">sub</span><span class="o">-</span><span class="nb">system</span> <span class="n">of</span> <span class="n">the</span> <span class="s">&#39;&#39;</span><span class="n">Event</span> <span class="n">Log</span><span class="s">&#39;&#39;</span> <span class="n">viewport</span><span class="o">.</span> <span class="n">This</span> <span class="n">can</span> <span class="n">also</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">see</span> <span class="k">if</span> <span class="n">tracing</span> <span class="n">is</span> <span class="n">on</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">by</span> <span class="ow">not</span> <span class="n">passing</span> <span class="n">in</span> <span class="n">an</span> <span class="n">argument</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="k">my</span> <span class="nv">$tracing</span> <span class="o">=</span> <span class="n">lxtrace</span><span class="p">;</span>
+ <span class="n">lxtrace</span><span class="p">(</span> <span class="mi">1</span> <span class="p">);</span>              <span class="c1"># Turn on tracing</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxout</span><span class="p">()</span> <span class="o">===</span>
+
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lxout&#39;&#39;&#39;</span> <span class="n">function</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">output</span> <span class="n">debugging</span> <span class="n">information</span> <span class="n">to</span> <span class="n">the</span> <span class="s">&#39;&#39;</span><span class="n">Scripting</span><span class="s">&#39;&#39;</span> <span class="n">sub</span><span class="o">-</span><span class="nb">system</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Event</span> <span class="n">Log</span> <span class="n">viewport</span><span class="p">,</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">any</span> <span class="n">string</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="n">lxout</span><span class="p">(</span> <span class="s">&quot;My Debug Output&quot;</span> <span class="p">);</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxoption</span><span class="p">()</span> <span class="ow">and</span> <span class="n">lxsetOption</span><span class="p">()</span> <span class="o">===</span>
+<span class="n">The</span> <span class="s">&#39;&#39;&#39;lxoption&#39;&#39;&#39;</span> <span class="ow">and</span> <span class="s">&#39;&#39;&#39;lxsetOption&#39;&#39;&#39;</span> <span class="n">functions</span> <span class="n">allow</span> <span class="n">the</span> <span class="n">script</span> <span class="n">to</span> <span class="n">set</span> <span class="n">properties</span> <span class="n">that</span> <span class="n">determine</span> <span class="n">how</span> <span class="n">the</span> <span class="n">other</span> <span class="s">&#39;&#39;</span><span class="n">lx</span><span class="s">&#39;&#39;</span> <span class="n">functions</span> <span class="n">operate</span><span class="o">.</span> <span class="n">Each</span> <span class="n">option</span> <span class="n">is</span> <span class="nb">defined</span> <span class="n">by</span> <span class="n">a</span> <span class="n">tag</span> <span class="n">string</span> <span class="ow">and</span> <span class="n">an</span> <span class="n">associated</span> <span class="n">value</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">options</span> <span class="n">can</span> <span class="n">be</span> <span class="n">changed</span> <span class="n">at</span> <span class="n">any</span> <span class="nb">time</span><span class="o">.</span>
+
+<span class="n">Currently</span> <span class="n">there</span> <span class="n">is</span> <span class="n">only</span> <span class="n">one</span> <span class="n">tag</span> <span class="nb">defined</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;queryAnglesAs&#39;&#39;&#39;</span><span class="p">,</span> <span class="n">which</span> <span class="n">determines</span> <span class="k">if</span> <span class="n">angles</span> <span class="n">queried</span> <span class="n">through</span> <span class="s">&#39;&#39;</span><span class="n">lxq</span><span class="s">&#39;&#39;</span> <span class="n">are</span> <span class="n">returned</span> <span class="n">in</span> <span class="n">radians</span> <span class="ow">or</span> <span class="n">degrees</span><span class="o">.</span> <span class="n">This</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">degrees</span> <span class="n">to</span> <span class="n">maintain</span> <span class="n">backwards</span> <span class="n">compatibility</span> <span class="n">with</span> <span class="n">previous</span> <span class="n">versions</span> <span class="n">of</span> <span class="s">&#39;&#39;</span><span class="n">modo</span><span class="s">&#39;&#39;</span><span class="o">.</span> <span class="n">While</span> <span class="n">this</span> <span class="n">behavior</span> <span class="n">is</span> <span class="n">helpful</span> <span class="k">for</span> <span class="k">new</span> <span class="n">scripters</span><span class="p">,</span> <span class="n">it</span> <span class="n">is</span> <span class="n">generally</span> <span class="n">more</span> <span class="n">useful</span> <span class="n">to</span> <span class="n">work</span> <span class="n">in</span> <span class="n">radians</span><span class="o">.</span> <span class="n">The</span> <span class="n">value</span> <span class="n">can</span> <span class="n">be</span> <span class="n">set</span> <span class="n">to</span> <span class="n">either</span> <span class="n">radians</span> <span class="ow">or</span> <span class="n">degrees</span><span class="p">,</span> <span class="ow">and</span> <span class="n">once</span> <span class="n">set</span> <span class="n">all</span> <span class="n">future</span> <span class="n">queries</span> <span class="n">on</span> <span class="n">angles</span> <span class="n">through</span> <span class="s">&#39;&#39;</span><span class="n">lxq</span><span class="s">&#39;&#39;</span> <span class="n">will</span> <span class="k">return</span> <span class="n">those</span> <span class="n">units</span><span class="o">.</span>  <span class="n">The</span> <span class="n">following</span> <span class="n">shows</span> <span class="n">how</span> <span class="n">to</span> <span class="n">change</span> <span class="n">this</span> <span class="n">option</span> <span class="ow">and</span> <span class="n">query</span> <span class="n">its</span> <span class="n">current</span> <span class="n">state</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="n">lxsetOption</span><span class="p">(</span> <span class="s">&quot;queryAnglesAs&quot;</span><span class="p">,</span> <span class="s">&quot;radians&quot;</span> <span class="p">);</span>
+ <span class="n">lxout</span><span class="p">(</span> <span class="n">lxoption</span><span class="p">(</span> <span class="s">&quot;queryAnglesAs&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="arguments">
+<h2><a class="toc-backref" href="#id2">Arguments</a><a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p>Like macros, Perl scripts support arguments. These are provided in the same way that command line arguments are provided to an external Perl script, through the <em>&#64;ARGV</em> variable.</p>
+</div>
+<div class="section" id="progress-monitors">
+<h2><a class="toc-backref" href="#id3">Progress Monitors</a><a class="headerlink" href="#progress-monitors" title="Permalink to this headline">¶</a></h2>
+<p>Progress bars, or ‘’monitors’’, are also supported in Perl through the ‘lxmonInit’’ and <em>lxmonStep</em> functions.</p>
+<div class="section" id="lxmoninit">
+<h3><a class="toc-backref" href="#id4">lxmonInit()</a><a class="headerlink" href="#lxmoninit" title="Permalink to this headline">¶</a></h3>
+<p>To initialize the progress bar, call <strong>lxmonInit</strong> with the total number of steps in the bar. <strong>lxmonInit</strong> should be called only once per script.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># perl</span>
+
+ <span class="n">lxmonInit</span><span class="p">(</span> <span class="mi">20</span> <span class="p">);</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">lxmonStep</span><span class="p">()</span> <span class="o">===</span>
+<span class="n">To</span> <span class="n">step</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">bar</span><span class="p">,</span> <span class="k">use</span> <span class="nn">lxmonStep</span><span class="o">.</span> <span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="n">this</span> <span class="n">increments</span> <span class="n">the</span> <span class="n">bar</span> <span class="n">one</span> <span class="n">step</span><span class="p">,</span> <span class="n">but</span> <span class="n">you</span> <span class="n">can</span> <span class="n">also</span> <span class="n">increase</span> <span class="n">the</span>
+<span class="n">bar</span> <span class="n">by</span> <span class="n">an</span> <span class="n">arbitrary</span> <span class="n">number</span> <span class="n">steps</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="n">lxmonInit</span><span class="p">(</span> <span class="mi">20</span> <span class="p">);</span>
+
+ <span class="n">lmonStep</span><span class="p">;</span>        <span class="c1">#Increment by one</span>
+ <span class="n">lxmonStep</span><span class="p">(</span> <span class="mi">2</span> <span class="p">);</span>  <span class="c1">#Step the progress bar by two</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="n">The</span> <span class="k">return</span> <span class="n">value</span> <span class="n">of</span> <span class="s">&#39;&#39;</span><span class="n">lxmonStep</span><span class="s">&#39;&#39;</span> <span class="n">is</span> <span class="n">used</span> <span class="n">by</span> <span class="n">the</span> <span class="n">script</span> <span class="n">to</span> <span class="n">determine</span> <span class="k">if</span> <span class="n">the</span> <span class="n">hit</span> <span class="n">the</span> <span class="s">&quot;abort&quot;</span> <span class="n">button</span> <span class="n">in</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">dialog</span><span class="o">.</span> <span class="n">If</span> <span class="s">&#39;&#39;</span><span class="n">lxmonStep</span><span class="s">&#39;&#39;</span> <span class="n">returns</span> <span class="n">false</span><span class="p">,</span> <span class="n">the</span> <span class="n">script</span> <span class="n">should</span> <span class="n">abort</span><span class="o">.</span> <span class="n">The</span> <span class="n">following</span> <span class="n">is</span> <span class="n">a</span> <span class="n">common</span> <span class="n">test</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span> <span class="n">abort</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1"># perl</span>
+
+ <span class="c1">#Initialize the monitor</span>
+ <span class="n">lxmonInit</span><span class="p">(</span> <span class="mi">20</span> <span class="p">);</span>
+
+ <span class="k">my</span> <span class="nv">$count</span><span class="p">;</span>
+ <span class="k">for</span> <span class="p">(</span><span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$count</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span> <span class="nv">$count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1"># Do work here</span>
+
+    <span class="c1"># Step the monitor and check for an abort</span>
+    <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">lxmonStep</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Do clean-up here</span>
+        <span class="nb">die</span><span class="p">(</span> <span class="s">&quot;User Abort&quot;</span> <span class="p">);</span>
+    <span class="p">}</span>
+
+ <span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">syntaxhighlight</span> <span class="o">&gt;</span>
+
+<span class="o">===</span> <span class="n">Monitor</span> <span class="n">Example</span> <span class="o">===</span>
+
+<span class="n">This</span> <span class="n">simple</span> <span class="n">script</span> <span class="n">demonstrates</span> <span class="n">progress</span> <span class="n">bars</span> <span class="n">through</span> <span class="n">the</span> <span class="k">use</span> <span class="nn">of</span> <span class="n">monitors</span><span class="o">.</span> <span class="n">It</span> <span class="n">busy</span> <span class="n">loops</span> <span class="n">so</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">will</span> <span class="nb">open</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">script</span> <span class="n">executes</span> <span class="n">fast</span> <span class="n">enough</span><span class="p">,</span> <span class="n">the</span> <span class="n">progress</span> <span class="n">bar</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">appear</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">syntaxhighlight</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;perl&quot;</span><span class="o">&gt;</span>
+ <span class="c1">#! perl</span>
+
+ <span class="k">my</span> <span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$j</span><span class="p">);</span>
+
+ <span class="c1"># Initialize the monitor with 20 steps</span>
+ <span class="n">lxmonInit</span><span class="p">(</span> <span class="mi">200</span> <span class="p">);</span>
+
+ <span class="c1"># Loop through our 200 steps</span>
+ <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="mi">200</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+
+     <span class="c1"># Do work (i.e.: busy loop )</span>
+     <span class="k">for</span><span class="p">(</span> <span class="nv">$j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">;</span> <span class="nv">$j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+         <span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="c1"># Step the monitor and check for an abort</span>
+     <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">lxmonstep</span> <span class="p">)</span> <span class="p">{</span>
+         <span class="c1"># Clean up and exit</span>
+         <span class="nb">die</span><span class="p">(</span> <span class="s">&quot;User Abort&quot;</span> <span class="p">);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="external-modules">
+<h2><a class="toc-backref" href="#id5">External Modules</a><a class="headerlink" href="#external-modules" title="Permalink to this headline">¶</a></h2>
+<p>There are a large number of publicly-available Perl modules out there. These modules are accessible from within ‘’modo’’, with a little setup. <em>modo</em> comes with a complete standard Perl module distribution.  Other modules are included from various sources on the internet.  Modules are loaded using the Perl <em>use</em> keyword as normal.</p>
+<p>There are two ways to tell modo where your extra modules are:  through environment variables or by modifying <em>&#64;INC</em> at runtime.</p>
+<div class="section" id="environment-variables">
+<h3><a class="toc-backref" href="#id6">Environment Variables</a><a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>The best way to use external modules not found in the standard distribution is to define the environment variable <strong>LX_PERLPATH</strong> and set it to the paths of your modules. Multiple paths are supported by using a semicolon as a delimiter.</p>
+<p>On Windows, this can be setup through the ‘’Environment Variables’’ dialog of the <em>System</em> control panel?s <em>Advanced</em> tab. From there you can add a new <em>User</em> environment variable for ‘’LX_PERLPATH’’.</p>
+<p>Once this path is set, restart modo and you?ll be able to to use the <em>use</em> keyword from a Perl script to import the modules and call their functions.</p>
+</div>
+<div class="section" id="modifying-inc">
+<h3><a class="toc-backref" href="#id7">Modifying &#64;INC</a><a class="headerlink" href="#modifying-inc" title="Permalink to this headline">¶</a></h3>
+<p>An alternate method is to add your paths to <em>&#64;INC</em> in a <em>BEGIN</em> block at the start of your script. Multiple calls to push can be used to add multiple paths.</p>
+<div class="highlight-perl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#perl</span>
+
+ <span class="k">BEGIN</span> <span class="p">{</span>
+     <span class="nb">push</span><span class="p">(</span> <span class="nv">@INC</span><span class="p">,</span> <span class="s">&quot;C:\PathToModules&quot;</span><span class="p">);</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The main disadvantage to modifying <em>&#64;INC</em> is that the module path will be hard-coded into the script, likely requiring the script to be modified before it can be run on a machine with a different configuration. As such, the environment variable method should be used whenever possible.</p>
+<p>After adding the module path, the <em>use</em> keyword can be used to load the modules as normal.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h2><a class="toc-backref" href="#id8">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>See Perl Examples for example Perl scripts.</p>
+</div>
+<div class="section" id="testing-perl-scripts-outside-modo">
+<h2><a class="toc-backref" href="#id9">Testing Perl Scripts Outside modo</a><a class="headerlink" href="#testing-perl-scripts-outside-modo" title="Permalink to this headline">¶</a></h2>
+<p>If you have Perl installed on your computer, you can test scripts outside of modo for syntax errors.</p>
+<p>On Mac OS X and Linux, Perl is included with the operating system. Windows users will have to download a Perl distribution such as ActivePerl before they can test scripts outside of modo.</p>
+<p>To test a script for compile errors, open a <em>Terminal</em> on Mac OS X or an ‘’MS-DOS Prompt’’ on Windows. Then enter the following line:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">perl</span> <span class="o">-</span><span class="n">c</span> <span class="n">MyScript</span><span class="o">.</span><span class="n">pl</span>
+</pre></div>
+</td></tr></table></div>
+<p>The Perl interpreter will now compile your script looking for syntax errors, but will not try to run it (the script won?t run outside of modo if you call any of the <em>lx…()</em> functions anyway). This might be easier for basic syntax checking than using the ‘’Event Log Viewport’’, which only shows the first error it encounters..</p>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id10">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p>Script Examples</p></li>
+<li><p>Scripting Languages</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Script%20lua.html" class="btn btn-neutral float-right" title="Script lua" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Macros.html" class="btn btn-neutral float-left" title="Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Perl.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

@@ -1,0 +1,742 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Command Help.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:54 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command Help &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Command History Viewport" href="Command%20History%20Viewport.html" />
+    <link rel="prev" title="Command Dialog Formatting" href="Command%20Dialog%20Formatting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ui.html">User Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="App.undoSuspend.html">App.undoSuspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Argument%20Types.html">Argument Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Collapsable%20and%20Hideable%20Viewports.html">Collapsable and Hideable Viewports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Dialog%20Formatting.html">Command Dialog Formatting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command Help</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-help-example">Command Help Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-hash">Command Hash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help-urls">Help URLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#icons">Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#field-types">Field  Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-categories">Command Categories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#message-tables">Message Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#templates">Templates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#full-template">Full Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#minimum-template">Minimum Template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20History%20Viewport.html">Command History Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20A%20Custom%20Form.html">Create A Custom Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20Layouts.html">Creating Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Defining%20Item%20Categories.html">Defining Item Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dialog%20Commands.html">Dialog Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Event%20Log%20Viewport.html">Event Log Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Categories%20and%20Groups.html">Form Categories and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Editor.html">Form Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Filtering.html">Form Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20System.html">Form System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help%20URLs.html">Help URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icon%20Resources.html">Icon Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layout%20Windows.html">Layout Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MODO%20Projects.html">MODO Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageService%20Reference.html">MessageService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Markup.html">Modo Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface%20and%20Plug-Ins.html">User Interface and Plug-Ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Values.html">User Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ui.html">User Interface</a> &raquo;</li>
+        
+      <li>Command Help</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-help">
+<h1>Command Help<a class="headerlink" href="#command-help" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
+<li><p><a class="reference internal" href="#command-help-example" id="id4">Command Help Example</a></p></li>
+<li><p><a class="reference internal" href="#command-hash" id="id5">Command Hash</a></p></li>
+<li><p><a class="reference internal" href="#help-urls" id="id6">Help URLs</a></p></li>
+<li><p><a class="reference internal" href="#icons" id="id7">Icons</a></p></li>
+<li><p><a class="reference internal" href="#field-types" id="id8">Field  Types</a></p></li>
+<li><p><a class="reference internal" href="#command-categories" id="id9">Command Categories</a></p>
+<ul>
+<li><p><a class="reference internal" href="#message-tables" id="id10">Message Tables</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#templates" id="id11">Templates</a></p>
+<ul>
+<li><p><a class="reference internal" href="#full-template" id="id12">Full Template</a></p></li>
+<li><p><a class="reference internal" href="#minimum-template" id="id13">Minimum Template</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#more-information" id="id14">More Information</a></p></li>
+</ul>
+</div>
+<p>‘’’Command Help’’’ (‘’cmdhelp’’) is a Configs.  This article specifically covers commands.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id3">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Command Help provides usernames, descriptions, tooltips and other human-readable strings for use in the user interface.  The most common location for these strings will be in the Form View]] and the [[Command History Viewport]].  This also allows commands to be sorted into categories for the [[Command History Viewport#Command List.  All commands should provide a least a bare minimum of Command Help.</p>
+<p>Usernames and descriptions are also available for the TextValueHints]] options by using [[ArgumentType config entries, and by specifying it through on <strong>ArgumentType</strong> atom on the argument’s part of the config.</p>
+</div>
+<div class="section" id="command-help-example">
+<h2><a class="toc-backref" href="#id4">Command Help Example</a><a class="headerlink" href="#command-help-example" title="Permalink to this headline">¶</a></h2>
+<p>Command Help is stored in configs with the following structure.  For commands, there is one <strong>Command</strong> hash per command.  Commands also make use of the <strong>CommandCategory</strong> atom to sort themselves into one or more groups.  These groups are presented in the ‘’Command List’’ tab of the ‘’Command History’’ viewport.</p>
+<p>Note that many of these fields are optional.  If omitted, a default will be used as necessary.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span> &lt;?xml version=&quot;1.0&quot;?&gt;
+ &lt;configuration&gt;
+
+   &lt;atom type=&quot;CommandHelp&quot;&gt;
+
+    &lt;hash type=&quot;Command&quot; key=&quot;some.command@en_US&quot;&gt;
+      &lt;atom type=&quot;UserName&quot;&gt;Full User Name&lt;/atom&gt;
+      &lt;atom type=&quot;ButtonName&quot;&gt;Button Name&lt;/atom&gt;
+      &lt;atom type=&quot;Tooltip&quot;&gt;Tooltip string&lt;/atom&gt;
+      &lt;atom type=&quot;Desc&quot;&gt;The description for the command.&lt;/atom&gt;
+      &lt;atom type=&quot;Example&quot;&gt;some.command argValue&lt;/atom&gt;
+
+      &lt;hash type=&quot;Argument&quot; key=&quot;arg&quot;&gt;
+        &lt;atom type=&quot;UserName&quot;&gt;Argument Name&lt;/atom&gt;
+        &lt;atom type=&quot;Desc&quot;&gt;Argument Description&lt;/atom&gt;
+        &lt;atom type=&quot;ArgumentType&quot;&gt;some.command-argtype&lt;/atom&gt;
+      &lt;/hash&gt;
+    &lt;/hash&gt;
+
+   &lt;/atom&gt;
+
+   &lt;atom type=&quot;Categories&quot;&gt;
+     &lt;hash type=&quot;Category&quot; key=&quot;Commands&quot;&gt;
+       &lt;hash type=&quot;C&quot; key=&quot;{cmdcategory} catmsgtable@cat/subcat:some.command&quot;/&gt;
+     &lt;/hash&gt;
+   &lt;/atom&gt;
+ &lt;/configuration&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="command-hash">
+<h2><a class="toc-backref" href="#id5">Command Hash</a><a class="headerlink" href="#command-hash" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Command</strong> hash is a combination of the command name and the Language Codes.  The default configs should use ‘’en_US’’, as this is used as the fallback in modo.  Other languages can be added as desired as new <em>Command</em> hashes.  For example, tool.set would look like this:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Command&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;tool.set@en_US&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="help-urls">
+<h2><a class="toc-backref" href="#id6">Help URLs</a><a class="headerlink" href="#help-urls" title="Permalink to this headline">¶</a></h2>
+<p>Help URLs are defined using the <em>HelpULRs</em> and <em>HelpURL</em> config entries.  Below are example help URLs for the <em>select.symmetry</em> and ‘’select.edgeLoop commands’’.  See the Help URLs]] article for for more information on adding help.  Help URLs are triggered by clicking the <em>?</em> button in the [[Command Dialogs, or by pressing <em>F1</em> and clicking on a control in the UI.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span> &lt;?xml version=&quot;1.0&quot;?&gt;
+ &lt;configuration&gt;
+
+   &lt;atom type=&quot;HelpURLs&quot;&gt;
+     &lt;hash type=&quot;HelpURL&quot; key=&quot;command:select.symmetry&quot;&gt;pages/modotoolbox/Symmetry.html&lt;/hash&gt;
+     &lt;hash type=&quot;HelpURL&quot; key=&quot;command:select.edgeLoop&quot;&gt;pages/modotoolbox/SelectionModifiers.html#selectloop&lt;/hash&gt;
+   &lt;/atom&gt;
+
+ &lt;/configuration&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="icons">
+<h2><a class="toc-backref" href="#id7">Icons</a><a class="headerlink" href="#icons" title="Permalink to this headline">¶</a></h2>
+<p>Icons are also associated with commands through configs.  Below is the icon definition for the <em>item.alignToWorkplane</em> command, which includes both the small (20 pixel) and large (32 pixel) versions that are used by the Form View]].  The <em>Icon</em> hash’s key is the command name followed by an underscore and the pixel size of that icon.  More information on the ‘’UIElement’’, <em>Image</em> and <em>Icon</em> tags and the general structure of icon configs can be found in the [[Icon Resources article.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span> &lt;?xml version=&quot;1.0&quot;?&gt;
+ &lt;configuration&gt;
+
+   &lt;atom type=&quot;UIElements&quot;&gt;
+
+    &lt;!-- The image containing the individual icons --&gt;
+    &lt;hash type=&quot;Image&quot; key=&quot;icons601_med&quot;&gt;icons601_med.png&lt;/hash&gt;
+
+    &lt;!-- The 20 and 32 pixel icons --&gt;
+    &lt;hash type=&quot;Icon&quot; key=&quot;item.alignToWorkplane_20&quot;&gt;
+      &lt;atom type=&quot;Source&quot;&gt;icons601_med&lt;/atom&gt;
+      &lt;atom type=&quot;Location&quot;&gt;80 40 20 20&lt;/atom&gt;
+    &lt;/hash&gt;
+    &lt;hash type=&quot;Icon&quot; key=&quot;item.alignToWorkplane_32&quot;&gt;
+      &lt;atom type=&quot;Source&quot;&gt;icons601_lge&lt;/atom&gt;
+      &lt;atom type=&quot;Location&quot;&gt;128 64 32 32&lt;/atom&gt;
+    &lt;/hash&gt;
+
+   &lt;/atom&gt;
+
+ &lt;/configuration&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="field-types">
+<h2><a class="toc-backref" href="#id8">Field  Types</a><a class="headerlink" href="#field-types" title="Permalink to this headline">¶</a></h2>
+<p>Any field that is not set will fall back to a default or nothing.  For example, omitting the <em>ButtonName</em> field will cause the command system to fallback to the <em>UserName</em> field, and then to the command’s internal name.  Also note these are only used if the command’s own method returns LXe_NOTIMPL, thus allowing commands to provide their own dynamic strings (which obviously should come from Message Tables so that they too can be localized). <em>tool.set</em> is a good example, as it overrides nearly all of these to provide strings specific to a particular tool.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Command Hash</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description/Use</p></th>
+<th class="head"><p>Fallback</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘’UserName’’</p></td>
+<td><p>atom</p></td>
+<td><p>Yes</p></td>
+<td><p>Command name displayed as the title of the command’s dialog, throughout the Command History, and as a fallback for ‘’ButtonName’’</p></td>
+<td><p>Internal command name</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘’ButtonName’’</p></td>
+<td><p>atom</p></td>
+<td><p>No</p></td>
+<td><p>Command name displayed in on buttons and menus in Form Views.  Generally a shorter version of the username that will fit on a button.  Only really needed if the username is very long.</p></td>
+<td><p>‘’UserName’’, then the internal command name.</p></td>
+</tr>
+<tr class="row-even"><td><p>‘’Desc’’</p></td>
+<td><p>atom</p></td>
+<td><p>Yes</p></td>
+<td><p>A short paragraph describing the command, including pitfalls, usage limitations and other important notes. This should explain any unintuitive or ambiguous operation or behavior of the command. Detailed help should be left to the help files.</p></td>
+<td><p>Empty string</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘’Tooltip’’</p></td>
+<td><p>atom</p></td>
+<td><p>No</p></td>
+<td><p>Default tooltip displayed when hovering over a control derived from this command.</p></td>
+<td><p>‘’ButtonName’’, then ‘’UserName’’, then an empty string</p></td>
+</tr>
+<tr class="row-even"><td><p>‘’Example’’</p></td>
+<td><p>atom</p></td>
+<td><p>No</p></td>
+<td><p>A single line showing an example of executing the command with common arguments set.  This should have valid command syntax, and it should be technically possible to execute it as it appears.</p></td>
+<td><p>Empty string</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘’Argument’’</p></td>
+<td><p>hash</p></td>
+<td><p>Yes</p></td>
+<td><p>The hash is the internal name of the argument.  One of these hashes is required for each argument in the command.</p></td>
+<td><p>(n/a)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Argument Hash</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description/Use</p></th>
+<th class="head"><p>Fallback</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘’UserName’’</p></td>
+<td><p>atom</p></td>
+<td><p>Yes</p></td>
+<td><p>Argument name used for control labels in command dialogs.</p></td>
+<td><p>Internal argument name</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘’Desc’’</p></td>
+<td><p>atom</p></td>
+<td><p>Yes</p></td>
+<td><p>Short paragraph explaining how what the argument does and how it is used.  If the argument is optional, this should also describe the default behavior if it is not set.</p></td>
+<td><p>Empty string</p></td>
+</tr>
+<tr class="row-even"><td><p>‘’ArgumentType’’</p></td>
+<td><p>atom</p></td>
+<td><p>Yes</p></td>
+<td><p>Only required for arguments that use text hints.  This is the hash of an [[ArgumentType]] entry in the config that contains user strings for each of the hints. These are displayed in popups and in other places that text hints are presented to the user.</p></td>
+<td><p>Internal name of text hint</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="command-categories">
+<h2><a class="toc-backref" href="#id9">Command Categories</a><a class="headerlink" href="#command-categories" title="Permalink to this headline">¶</a></h2>
+<p>Categories are a separate portion of the config file, and indicates how a command is sorted in the Command List.  The format for the category is as follows:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Categories&quot;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Category&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;Commands&quot;</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;command.name1&quot;</span><span class="o">&gt;</span><span class="n">category</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;command.name2&quot;</span><span class="o">&gt;</span><span class="n">category</span><span class="o">/</span><span class="n">subcategory</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+     <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Any number of these can be placed in the category section of the config.  The hash type is always ‘’C’’.   Each command can be in one category.  The internal category name including any sub-categories is used as a lookup into the dictionary to obtain a message ID, which is then used to get the actual message.</p>
+<div class="section" id="message-tables">
+<h3><a class="toc-backref" href="#id10">Message Tables</a><a class="headerlink" href="#message-tables" title="Permalink to this headline">¶</a></h3>
+<p>The internal category names are looked up through Message Tables.  The table is always named “Commands:category” with different language codes appended based on the localization.  Each category should have its only message table entry.</p>
+<p>For example, this snippet represents the categorization of two commands.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Categories&quot;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Category&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;Commands&quot;</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;viewport.3dView&quot;</span><span class="o">&gt;</span><span class="n">viewport</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;layout.lockDividers&quot;</span><span class="o">&gt;</span><span class="n">viewport</span><span class="o">/</span><span class="n">layout</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+     <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here is the matching message table itself, which provides usernames for both <em>viewport</em> and ‘’viewport/layout’’.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Messages&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Table&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;Commands:category.en_US&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;T&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span><span class="o">&gt;</span><span class="n">Viewports</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;T&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;viewport/layout&quot;</span><span class="o">&gt;</span><span class="n">Layouts</span><span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The category path will also be broken up at the slashes to find the parent category names, if necessary.  This means that you should define messages for each part of the path.  Lets say your path is ‘’cat/subcat’’. <em>cat</em> is just container for other categories, so it has no commands.  You still need to remember to define message table entries for both <em>cat</em> and ‘’cat/subcat’’, or you’ll see the internal name of <em>cat</em> in the ‘’Command List’’ hierarchy.</p>
+</div>
+</div>
+<div class="section" id="templates">
+<h2><a class="toc-backref" href="#id11">Templates</a><a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<p>You can copy and paste these into configs to get you started.</p>
+<div class="section" id="full-template">
+<h3><a class="toc-backref" href="#id12">Full Template</a><a class="headerlink" href="#full-template" title="Permalink to this headline">¶</a></h3>
+<p>This template includes every cmdhelp field.  Delete the optional entries that you don’t need.  Copy the <em>Argument</em> section for each of your arguments, or remove it if your command has no arguments.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  &lt;atom type=&quot;CommandHelp&quot;&gt;
+
+    &lt;hash type=&quot;Command&quot; key=&quot;@en_US&quot;&gt;
+      &lt;atom type=&quot;UserName&quot;&gt;&lt;/atom&gt;
+      &lt;atom type=&quot;ButtonName&quot;&gt;&lt;/atom&gt;
+      &lt;atom type=&quot;Tooltip&quot;&gt;&lt;/atom&gt;
+      &lt;atom type=&quot;Desc&quot;&gt;&lt;/atom&gt;
+      &lt;atom type=&quot;Example&quot;&gt;&lt;/atom&gt;
+
+      &lt;hash type=&quot;Argument&quot; key=&quot;&quot;&gt;
+        &lt;atom type=&quot;UserName&quot;&gt;&lt;/atom&gt;
+        &lt;atom type=&quot;Desc&quot;&gt;&lt;/atom&gt;
+        &lt;atom type=&quot;ArgumentType&quot;&gt;&lt;/atom&gt;
+      &lt;/hash&gt;
+
+      &lt;!-- Insert more arguments here --&gt;
+    &lt;/hash&gt;
+
+    &lt;!-- Insert more commands here --&gt;
+  &lt;/atom&gt;
+
+  &lt;atom type=&quot;Categories&quot;&gt;
+    &lt;hash type=&quot;Category&quot; key=&quot;Commands&quot;&gt;
+      &lt;hash type=&quot;C&quot; key=&quot;&quot;&gt;&lt;/hash&gt;
+
+      &lt;!-- Insert categorizations for other commands here --&gt;
+    &lt;/hash&gt;
+  &lt;/atom&gt;
+
+  &lt;atom type=&quot;Messages&quot;&gt;
+    &lt;hash type=&quot;Table&quot; key=&quot;Commands:category.en_US&quot;&gt;
+      &lt;hash type=&quot;T&quot; key=&quot;&quot;&gt;&lt;/hash&gt;
+
+      &lt;!-- Insert localizations for other categories and sub-categories here --&gt;
+    &lt;/hash&gt;
+  &lt;/atom&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="minimum-template">
+<h3><a class="toc-backref" href="#id13">Minimum Template</a><a class="headerlink" href="#minimum-template" title="Permalink to this headline">¶</a></h3>
+<p>This template is the very minimum that you need to specify for every command.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  &lt;atom type=&quot;CommandHelp&quot;&gt;
+
+    &lt;hash type=&quot;Command&quot; key=&quot;@en_US&quot;&gt;
+      &lt;atom type=&quot;UserName&quot;&gt;&lt;/atom&gt;
+      &lt;atom type=&quot;Desc&quot;&gt;&lt;/atom&gt;
+      &lt;hash type=&quot;Argument&quot; key=&quot;&quot;&gt;
+        &lt;atom type=&quot;UserName&quot;&gt;&lt;/atom&gt;
+        &lt;atom type=&quot;Desc&quot;&gt;&lt;/atom&gt;
+        &lt;atom type=&quot;ArgumentType&quot;&gt;&lt;/atom&gt;
+      &lt;/hash&gt;
+
+      &lt;!-- Insert more arguments here --&gt;
+    &lt;/hash&gt;
+
+    &lt;!-- Insert more commands here --&gt;
+  &lt;/atom&gt;
+
+  &lt;atom type=&quot;Categories&quot;&gt;
+    &lt;hash type=&quot;Category&quot; key=&quot;Commands&quot;&gt;
+      &lt;hash type=&quot;C&quot; key=&quot;&quot;&gt;&lt;/hash&gt;
+
+      &lt;!-- Insert categorizations for other commands here --&gt;
+    &lt;/hash&gt;
+  &lt;/atom&gt;
+
+  &lt;atom type=&quot;Messages&quot;&gt;
+    &lt;hash type=&quot;Table&quot; key=&quot;Commands:category.en_US&quot;&gt;
+      &lt;hash type=&quot;T&quot; key=&quot;&quot;&gt;&lt;/hash&gt;
+
+      &lt;!-- Insert localizations for other categories and sub-categories here --&gt;
+    &lt;/hash&gt;
+  &lt;/atom&gt;
+</pre></div>
+</td></tr></table></div>
+<p>‘’ArgumentType’’ is only necessary for arguments with text hints.  See the ArgumentType article for more information.</p>
+</div>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id14">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p>Configs</p></li>
+<li><p>ArgumentType</p></li>
+<li><p>Tool Help</p></li>
+<li><p>Item Help</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Command%20History%20Viewport.html" class="btn btn-neutral float-right" title="Command History Viewport" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Command%20Dialog%20Formatting.html" class="btn btn-neutral float-left" title="Command Dialog Formatting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Command Help.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:54 GMT -->
+</html>

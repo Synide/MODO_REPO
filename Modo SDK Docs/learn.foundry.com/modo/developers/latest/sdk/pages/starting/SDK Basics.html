@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/starting/SDK Basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:47 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SDK Basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SDK Guide for Newbies" href="SDK%20Guide%20for%20Newbies.html" />
+    <link rel="prev" title="SDK" href="SDK.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_starting.html">First Steps</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Building%20Plug-ins.html">Building Plug-ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Code%20Completion%20for%20IDEs.html">Code Completion for IDEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDK.html">SDK</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SDK Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#com">COM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilxunknownid">ILxUnknownID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference-counting">Reference Counting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-wrappers">User Wrappers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#services">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#localized-objects">Localized Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#export-wrappers">Export Wrappers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#servers">Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instances">Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#singletons">Singletons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metaclasses">Metaclasses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SDK%20Guide%20for%20Newbies.html">SDK Guide for Newbies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Starting%20Out.html">Starting Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tour%20of%20the%20SDK.html">Tour of the SDK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_starting.html">First Steps</a> &raquo;</li>
+        
+      <li>SDK Basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sdk-basics">
+<h1>SDK Basics<a class="headerlink" href="#sdk-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#com" id="id1">COM</a></p>
+<ul>
+<li><p><a class="reference internal" href="#interfaces" id="id2">Interfaces</a></p></li>
+<li><p><a class="reference internal" href="#ilxunknownid" id="id3">ILxUnknownID</a></p></li>
+<li><p><a class="reference internal" href="#reference-counting" id="id4">Reference Counting</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#user-wrappers" id="id5">User Wrappers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#services" id="id6">Services</a></p></li>
+<li><p><a class="reference internal" href="#localized-objects" id="id7">Localized Objects</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#export-wrappers" id="id8">Export Wrappers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#servers" id="id9">Servers</a></p></li>
+<li><p><a class="reference internal" href="#instances" id="id10">Instances</a></p></li>
+<li><p><a class="reference internal" href="#singletons" id="id11">Singletons</a></p></li>
+<li><p><a class="reference internal" href="#metaclasses" id="id12">Metaclasses</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="com">
+<h2><a class="toc-backref" href="#id1">COM</a><a class="headerlink" href="#com" title="Permalink to this headline">¶</a></h2>
+<p>The nexus SDK is implemented in COM, but as a C++ developer you mostly don’t need to know any of that. Whew! That’s a good thing because while COM is relatively simple, dealing with raw COM objects directly can be complicated. Fortunately the C++ wrapper classes hide most of the complexity. There are, however, a few concepts that are important to understand at a high level.</p>
+<div class="section" id="interfaces">
+<h3><a class="toc-backref" href="#id2">Interfaces</a><a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
+<p>COM distinguishes between <em>objects</em> and ‘’interfaces’’. An object is a specific thing, like an image or a item. An interface is a set of methods for accessing or operating on that thing. COM objects are ‘’polymorphic’’, which is to say that a single object can have more than one interface. Such an object is said to <em>present</em> those interfaces and clients who want to use them <em>query</em> for the interface, which is given by a unique ID called a LXtGUID (index).</p>
+<p>The name of an interface comes from the name of a vTable struct starting with the <strong>ILx</strong> prefix. Some are very specific, like the Item Interface]] (‘’’ILxItem’’’), and some are more generic and are shared by multiple object types. Examples of the latter would be the [[Attributes Interface]] (‘’’ILxAttributes’’’), or the [[Value Interface (‘’’ILxValue’’’).</p>
+</div>
+<div class="section" id="ilxunknownid">
+<h3><a class="toc-backref" href="#id3">ILxUnknownID</a><a class="headerlink" href="#ilxunknownid" title="Permalink to this headline">¶</a></h3>
+<p>The methods that you implement may get arguments of the ILxUnknownID datatype. This is the type for a general COM object before the interfaces are known, but it can be transformed into specific interfaces performing a query. It’s a little like dynamic casting in C++, except that the types are only known at runtime. The query is done automatically by initializing a localization wrapper class.</p>
+<p>Likewise some of the service methods you will be calling also take ILxUnknownID arguments. Fortunately the wrapper classes can cast to that type implicitly so there is very little that needs to be done on your side to support this. Just know that you can pass a wrapper object and it will be converted to the unknown type if necessary.</p>
+</div>
+<div class="section" id="reference-counting">
+<h3><a class="toc-backref" href="#id4">Reference Counting</a><a class="headerlink" href="#reference-counting" title="Permalink to this headline">¶</a></h3>
+<p>COM objects manage their existence by reference counting. Again, this is mostly handled for you by the wrapper classes. When you initialize a wrapper with an ILxUnknownID object a reference is added, and when the wrapper changes or goes out of scope the reference is released.</p>
+</div>
+</div>
+<div class="section" id="user-wrappers">
+<h2><a class="toc-backref" href="#id5">User Wrappers</a><a class="headerlink" href="#user-wrappers" title="Permalink to this headline">¶</a></h2>
+<p>Objects in the SDK are mostly accessed through two kinds of wrappers.</p>
+<div class="section" id="services">
+<h3><a class="toc-backref" href="#id6">Services</a><a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h3>
+<p>Services are interfaces provided by nexus to access internal state. The wrappers are exceptionally easy to use; you just declare them and they are ready to go. The constructor does all the work of hooking the wrapper object to the real interface.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CLxUser_SelectionService</span>  <span class="n">sel_srv</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">now</span> <span class="o">=</span> <span class="n">sel_srv</span><span class="o">.</span><span class="n">GetTime</span> <span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="localized-objects">
+<h3><a class="toc-backref" href="#id7">Localized Objects</a><a class="headerlink" href="#localized-objects" title="Permalink to this headline">¶</a></h3>
+<p>Localized objects come into the plug-in from nexus, often as ILxUnknownID argument pointers. These need to be <em>localized</em> by initializing a class wrapper. For example, this method is passed an unknown object that has a StringTag Interface, which is then localized using the interface wrapper.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">method</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>             <span class="n">thing</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_StringTag</span>        <span class="n">tags</span> <span class="p">(</span><span class="n">thing</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">n</span> <span class="o">=</span> <span class="n">tags</span><span class="o">.</span><span class="n">Count</span> <span class="p">();</span>
+         <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The wrapper can also be initialized using the <em>set()</em> method, and its return value or the <em>test()</em> method can be used to determine if the initialization succeeded. (Lowercase methods operate on the wrapper, uppercase on the actual object.)</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         if (!tags.set (thing))
+                 return LXe_NOTFOUND;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="o">...</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">if</span> <span class="p">(</span><span class="n">tags</span><span class="o">.</span><span class="n">test</span> <span class="p">())</span>
+                 <span class="n">tags</span><span class="o">.</span><span class="n">Get</span> <span class="p">(</span><span class="n">tag_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>Using <em>set()</em> increments a reference to the object which is decremented when the wrapper releases the object, such as when it goes out of scope. There are cases when it’s useful to “steal” the reference that’s already been incremented by a previous call. For example, using raw allocation methods – the ones that take an LXtObjectID as a <em>ppvObj</em> indirect argument – add a reference to the returned object. The <em>take()</em> method transfers ownership of that reference to the wrapper.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LXtObjectID</span>               <span class="n">obj</span><span class="p">;</span>
+         <span class="n">LxResult</span>                  <span class="n">rc</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">rc</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">Allocate</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">LXx_FAIL</span> <span class="p">(</span><span class="n">rc</span><span class="p">))</span>
+                 <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">return</span> <span class="n">wrap</span><span class="o">.</span><span class="n">take</span> <span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="export-wrappers">
+<h2><a class="toc-backref" href="#id8">Export Wrappers</a><a class="headerlink" href="#export-wrappers" title="Permalink to this headline">¶</a></h2>
+<p>It’s also necessary to export objects from the plug-in to nexus. In this case the plug-in creates objects using C++ and wraps them in COM interfaces. When nexus (or sometimes other plug-ins) use the COM methods those call through to the C++ methods for the base class. The C++ class starts by inheriting from the <em>CLxImpl_</em> classes for the interfaces that it wants to present, and it then creates bodies for some subset of the inherited methods. Anything not implemented will have a default code body, if possible.</p>
+<p>For example, a tool – which needs to present Tool Interfaces – could start like this:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMyClass</span> <span class="p">:</span>
+         <span class="n">public</span> <span class="n">CLxImpl_Tool</span><span class="p">,</span>
+         <span class="n">public</span> <span class="n">CLxImpl_ToolModel</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+         <span class="n">void</span>      <span class="n">tool_Evaluate</span> <span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">vts</span><span class="p">)</span>                               <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+         <span class="n">void</span>      <span class="n">tmod_Draw</span> <span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">vts</span><span class="p">,</span> <span class="n">ILxUnknownID</span> <span class="n">stroke</span><span class="p">,</span> <span class="nb">int</span> <span class="n">flags</span><span class="p">)</span>   <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Each CLxImpl class has a unique prefix for all its methods, assuring that there is never a conflict as result of multiple inheritance.</p>
+<p>Once the class implementation is created it’s necessary to create the actual wrapper. This is called a <em>polymorph</em> – because COM object are polymorphic – and it manages the actual COM incarnations of your class instances. The polymorph must exist as long as there are COM instances. The code to create the polymorph is as follows:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CMyClass</span><span class="o">&gt;</span><span class="p">;</span>
+         <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_Tool</span>     <span class="o">&lt;</span><span class="n">CMyClass</span><span class="o">&gt;</span><span class="p">);</span>
+         <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_ToolModel</span><span class="o">&lt;</span><span class="n">CMyClass</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<p>First we create a polymorph object using a template, which allows it to find the methods of your class. To that polymorph we add interfaces, which are the actual COM interfaces that will be presented by your COM object. Each <em>CLxIfc_</em> template object serves as translator from the general COM API to the specifics of your class implementation. This polymorph object, once created, is capable of spawning many instances of your class. There are a few ways to do that.</p>
+<div class="section" id="servers">
+<h3><a class="toc-backref" href="#id9">Servers</a><a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h3>
+<p>In the case of the tool example, the class implements a server. This means that it gets installed into the module during initialization as one of the named servers that the module can provide. The class of the object is given by the first interface, in this case ‘’Tool’’, which is what we want. The server should be given a name globally unique for all servers of this class by calling this function in ‘’initialize()’’.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">lx</span><span class="p">::</span><span class="n">AddServer</span> <span class="p">(</span><span class="s2">&quot;serverName&quot;</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="instances">
+<h3><a class="toc-backref" href="#id10">Instances</a><a class="headerlink" href="#instances" title="Permalink to this headline">¶</a></h3>
+<p>Some exported plug-in objects are created on demand, not as servers but as instances. In that case the best approach is to <a class="reference internal" href="../general/serverinfo/Using%20a%20Spawner.html"><span class="doc">Using a Spawner</span></a>. This example uses the <em>CLxSpawnerCreate</em> class to make a self-contained static method, but at the small cost of a name lookup for each spawn.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMySurfaceBin</span> <span class="p">:</span>
+         <span class="n">public</span> <span class="n">CLxImpl_SurfaceBin</span><span class="p">,</span>
+         <span class="n">public</span> <span class="n">CLxImpl_TableauSurface</span><span class="p">,</span>
+         <span class="n">public</span> <span class="n">CLxImpl_StringTags</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+                 <span class="n">static</span> <span class="n">CMySurfaceBin</span> <span class="o">*</span>
+         <span class="n">Spawn</span> <span class="p">(</span>
+                 <span class="n">void</span>              <span class="o">*</span><span class="n">ppvObj</span><span class="p">)</span>
+         <span class="p">{</span>
+                 <span class="n">CLxSpawnerCreate</span><span class="o">&lt;</span><span class="n">CMySurfaceBin</span><span class="o">&gt;</span> <span class="n">sp</span> <span class="p">(</span><span class="s2">&quot;mySurfBin&quot;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                 <span class="k">if</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">created</span><span class="p">)</span> <span class="p">{</span>
+                         <span class="n">sp</span><span class="o">.</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_SurfaceBin</span>    <span class="o">&lt;</span><span class="n">CMySurfaceBin</span><span class="o">&gt;</span><span class="p">);</span>
+                         <span class="n">sp</span><span class="o">.</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_TableauSurface</span><span class="o">&lt;</span><span class="n">CMySurfaceBin</span><span class="o">&gt;</span><span class="p">);</span>
+                         <span class="n">sp</span><span class="o">.</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_StringTags</span>    <span class="o">&lt;</span><span class="n">CMySurfaceBin</span><span class="o">&gt;</span><span class="p">);</span>
+                 <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                 <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">spawn</span><span class="o">-&gt;</span><span class="n">Alloc</span> <span class="p">(</span><span class="n">ppvObj</span><span class="p">);</span>
+         <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="o">...</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="singletons">
+<h3><a class="toc-backref" href="#id11">Singletons</a><a class="headerlink" href="#singletons" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes it would be overkill to create a spawner because you only ever need one instance of a given object, like a global listener for example. In that case it’s best to inherit from ‘’CLxSingletonPolymorph’’. This encapsulates the polymorphic COM management into the single instance of the object. You just have to remember to add the special method macro and to add your interfaces in the constructor.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">CMySelectionTracker</span> <span class="p">:</span>
+         <span class="n">public</span> <span class="n">CLxImpl_SelectionListener</span><span class="p">,</span>
+         <span class="n">public</span> <span class="n">CLxSingletonPolymorph</span>
+ <span class="p">{</span>
+     <span class="n">public</span><span class="p">:</span>
+        <span class="n">LXxSINGLETON_METHOD</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">CMySelectionTracker</span> <span class="p">()</span>
+        <span class="p">{</span>
+                <span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_SelectionListener</span><span class="o">&lt;</span><span class="n">CMySelectionTracker</span><span class="o">&gt;</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="o">...</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="metaclasses">
+<h3><a class="toc-backref" href="#id12">Metaclasses</a><a class="headerlink" href="#metaclasses" title="Permalink to this headline">¶</a></h3>
+<p>Metaclasses are new in MODO 10, and are intended to make exporting servers and objects much easier. These are custom classes and templates designed to hide much of the boilerplate that’s otherwise required to export objects. Because these are hand-crafted for each object type only a few server types and interfaces are currently supported. More will be added in future versions, but if there is a metaclass for the type of server you want to write, it will be the easiest way to approach the task.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SDK%20Guide%20for%20Newbies.html" class="btn btn-neutral float-right" title="SDK Guide for Newbies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SDK.html" class="btn btn-neutral float-left" title="SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/starting/SDK Basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:47 GMT -->
+</html>

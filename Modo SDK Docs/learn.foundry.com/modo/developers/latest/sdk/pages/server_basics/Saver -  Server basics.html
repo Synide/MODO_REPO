@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Saver -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Saver: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Server Tags" href="Server%20Tags.html" />
+    <link rel="prev" title="Package: Server basics" href="Package%20-%20%20Server%20basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Saver: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#saver-verify">Saver::Verify()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#saver-save">Saver::Save()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-classes">Helper Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>Saver: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="saver-server-basics">
+<h1>Saver: Server basics<a class="headerlink" href="#saver-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id2">Headers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#saver-verify" id="id3">Saver::Verify()</a></p></li>
+<li><p><a class="reference internal" href="#saver-save" id="id4">Saver::Save()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#helper-classes" id="id5">Helper Classes</a></p></li>
+</ul>
+</div>
+<p>A <strong>Saver</strong> is a plug-in server that can write internal nexus objects in a specific file format. Typically the objects are of <em>image</em> and <em>scene</em> types.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>When the modo user selects “Save As…” from the menu, they are presented with a dialog containing a set of formats for the type of object they are saving: image savers for images and scene savers for scenes. Based on the format they choose, a server matching that format will be created to write the object to the file. The internal name of the server is used to reference the format in save commands.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id2">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’io (lx-io.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_Saver’’</p></li>
+<li><p>‘’CLxUser_Monitor’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’value (lx-value.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_Message’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>LXsSAV_OUTCLASS</strong> – the GUID or alias for the object type that this saver can write (e.g. ‘’LXa_IMAGE’’). Only this type of object will be passed to the saver.</p></li>
+<li><p><strong>LXsSAV_DOSTYPE</strong> – the three-character file extension to be used by default (e.g. ‘’JPG’’).</p></li>
+<li><p><strong>LXsSAV_OVERWRITE</strong> – set to “1” this indicates that the server needs to get the real, final path for the destination file. If not set the saver may be told to save the file to a temporary location before it’s copied over the real file.</p></li>
+</ul>
+<p>The plug-in server class derives from CLxImpl_Saver, and exports the ILxSaver interface.</p>
+<div class="section" id="saver-verify">
+<h3><a class="toc-backref" href="#id3">Saver::Verify()</a><a class="headerlink" href="#saver-verify" title="Permalink to this headline">¶</a></h3>
+<p>The Verify() method is called before saving to allow the server to generate info or warnings. For example there may be data in the source object that can’t be saved in this format. The message can be set to show that, to give users a chance to change formats to avoid losing data.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">sav_Verify</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">source</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">message</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Message</span>         <span class="n">msg</span> <span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">if</span> <span class="p">(</span><span class="n">source_data_is_ok</span> <span class="p">(</span><span class="n">source</span><span class="p">))</span>
+                 <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">msg</span><span class="o">.</span><span class="n">SetCode</span> <span class="p">(</span><span class="n">LXe_WARNING</span><span class="p">);</span>
+         <span class="n">msg</span><span class="o">.</span><span class="n">SetMsg</span> <span class="p">(</span><span class="s2">&quot;mymessagetable&quot;</span><span class="p">,</span> <span class="s2">&quot;myerrormessagekey&quot;</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="saver-save">
+<h3><a class="toc-backref" href="#id4">Saver::Save()</a><a class="headerlink" href="#saver-save" title="Permalink to this headline">¶</a></h3>
+<p>The Save() method does the main work of the server, reading the contents of the source object and writing that data to the destination file.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">sav_Save</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">source</span><span class="p">,</span>
+         <span class="n">const</span> <span class="n">char</span>             <span class="o">*</span><span class="n">filename</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">monitor</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Monitor</span>         <span class="n">mon</span> <span class="p">(</span><span class="n">monitor</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         if (!open_file_write (filename))
+                 return LXe_IO_ERROR;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="s1">&#39;&#39;</span><span class="o">&lt;</span> <span class="n">write</span> <span class="n">data</span> <span class="n">to</span> <span class="n">file</span> <span class="o">&gt;</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">close_file</span> <span class="p">();</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="helper-classes">
+<h2><a class="toc-backref" href="#id5">Helper Classes</a><a class="headerlink" href="#helper-classes" title="Permalink to this headline">¶</a></h2>
+<p>The <em>CLxSceneSaver</em> class can be used to write scene savers. See scene (lxu-scene.hpp).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Server%20Tags.html" class="btn btn-neutral float-right" title="Server Tags" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Package%20-%20%20Server%20basics.html" class="btn btn-neutral float-left" title="Package: Server basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Saver -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

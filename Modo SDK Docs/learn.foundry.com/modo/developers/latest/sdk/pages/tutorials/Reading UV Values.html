@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Reading UV Values.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reading UV Values in Python &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Render Frame Size" href="Render%20Frame%20Size.html" />
+    <link rel="prev" title="Reading Persistant Data" href="Reading%20Persistant%20Data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reading UV Values in Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#localizing-a-mesh-object">Localizing a Mesh Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-map-values">Accessing Map Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-familiar-with-the-api">Getting Familiar with the API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#down-to-business">Down to Business</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-step-back">A Step Back</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-visitor">Creating a Visitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Reading UV Values in Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reading-uv-values-in-python">
+<h1>Reading UV Values in Python<a class="headerlink" href="#reading-uv-values-in-python" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#prerequisites" id="id1">Prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#localizing-a-mesh-object" id="id2">Localizing a Mesh Object</a></p></li>
+<li><p><a class="reference internal" href="#accessing-map-values" id="id3">Accessing Map Values</a></p></li>
+<li><p><a class="reference internal" href="#getting-familiar-with-the-api" id="id4">Getting Familiar with the API</a></p></li>
+<li><p><a class="reference internal" href="#down-to-business" id="id5">Down to Business</a></p></li>
+<li><p><a class="reference internal" href="#a-step-back" id="id6">A Step Back</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-visitor" id="id7">Creating a Visitor</a></p></li>
+</ul>
+</div>
+<div class="section" id="prerequisites">
+<h2><a class="toc-backref" href="#id1">Prerequisites</a><a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<p>So what does it take to read the values from a UV Map?  We need an API object called a [[ILxMesh_(index)#Map_Accessor|Mesh Map Accessor]] to select our UV map, a [[ILxMesh_(index)#Polygon_Accessor|Polygon Accessor]] to select polygons and read UV values from them, and a [[Python_API_Overview#Storage_Buffers|Storage Buffer Object]] to store those values in.  When we use the term “select” with reference to the API, what we really mean is that we’re choosing a specific thing to look at more closely.  When we select a polygon, for instance, we aren’t actually changing the currently selected polygons in modo.  Instead, we’re just telling the Python API to focus on a specific polygon so that we can then get some information about it.  This is a very important principal to understand if you’re new to working with the API or scripting systems.</p>
+<p>Even though we’re reading UV positions of individual vertices, we need to check the UV map by looking at polygons and then the vertices that belong to them.  This is because UV vertices can be discontinuous and single vertex can have multiple UV map coordinates.  By looking at each polygon and then at each of the vertices that make it up, we can be sure we aren’t accidently skipping over these extra UV values.</p>
+</div>
+</div>
+<div class="section" id="localizing-a-mesh-object">
+<h2><a class="toc-backref" href="#id2">Localizing a Mesh Object</a><a class="headerlink" href="#localizing-a-mesh-object" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<p>Before you can interact with a Mesh through the Python API, you need to localize it as a mesh object.  There’s a lot of ways you can do this, but one of the quickest for this purpose is to create a [[ILxLayerScan_(index)#C21|LayerScan Object]] which returns the primary layer.  We create layerscan items through the Layer Service:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>LayerScan Objects are primarily used for editing meshes.  This means that when we localize a mesh with LayerScan, we’re telling modo that our mesh is currently being edited.  To make sure modo knows we’re done editing the mesh, we need to (in a sense) turn off the editing mode for LayerScan by calling the LayerScan.Apply() method at the end of our script.</p>
+</div>
+<p>Now we have a localized [[Mesh_Object|Mesh object]] that we can work with.  If you search the mesh object for what methods we can call on it, you’ll see there are ways to access polygons, edges, points, maps, and lots of other attributes.</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">layerService</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>  <span class="c1">#Get the Layer Service</span>
+
+<span class="c1"># Call the ScanAllocate Method from the layer service to create a layerscan object</span>
+<span class="c1"># ScanAllocate requires a mode so we pass the symbol for Layerscan_primary to tell</span>
+<span class="c1"># it that we want to deal with the primary mesh layer.  You can find symbols</span>
+<span class="c1"># for things like this by typing dir(lx.symbol) into the python interpreter in modo</span>
+
+<span class="n">layerScanObject</span> <span class="o">=</span> <span class="n">layerService</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_PRIMARY</span><span class="p">)</span>
+
+<span class="c1"># Finally we call the MeshBase method to get our Mesh Object (lx.object.Mesh)</span>
+<span class="c1"># The MeshBase method could return multiple meshes, so we give it an argument of 0</span>
+<span class="c1"># to indicate we want to first mesh out of any that it might return</span>
+
+<span class="n">localizedMesh</span> <span class="o">=</span> <span class="n">layerScanObject</span><span class="o">.</span><span class="n">MeshBase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="accessing-map-values">
+<h2><a class="toc-backref" href="#id3">Accessing Map Values</a><a class="headerlink" href="#accessing-map-values" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<p>The data from vertex maps such as UV coordinates can only be read into [[Python_API_Overview#Storage_Buffers|Storage Buffers]].  That means that before we can start reading vertex map values, we need to create a new storage object.  The size and type of storage buffer can be set after we create it, or at the same time we create it by feeding the type and size in as arguments.  The type determines what kind of data the buffer will store, and the size determines how many of those values the buffer can hold.  Since we know that UV map coordinates will have 2 values (a U and V component) and these values are floats, we can create the appropriate storage object in a single line of python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">storageBuffer</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The ‘f’ string indicates a float type, while the 2 indicates that our buffer will store two values at a time.</p>
+<p>The next step is to create a Polygon Accessor to access polygons and a Mesh Map Accessor to access our UV map.  This is easy with a localized Mesh Object (remember we called it ‘’localizedMesh’’):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+<span class="n">mapAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">MeshMapAccessor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-familiar-with-the-api">
+<h2><a class="toc-backref" href="#id4">Getting Familiar with the API</a><a class="headerlink" href="#getting-familiar-with-the-api" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<p>So now we have everything we need to start reading values.  We just need to call the appropriate methods on our objects.
+So how do we know what we methods we need and what each method requires to work correctly?  This is where you really need to dig in to the Persistent Interpreter.  Let’s look at the Polygon Accessor object we’ve created and see what kind of polygon attributes we can access.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">polyAccessor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So we can see that there’s lots of different methods available for the Polygon Accessor Object, and if we want to find out how to use one, we just need to check its docs.  To check the docs for the the Polygon Accessor’s Normal() method, for instance, we’d type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">Normal</span><span class="o">.</span><span class="vm">__doc__</span>
+</pre></div>
+</div>
+<p>and get</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span> <span class="n">normal</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The info from the docs is organized so that the information you get from a method is on the left, and the method you’re checking is on the right.  In this example, you can see “vector normal” is what you get back.  The format of this is “data-type <em>space</em> what-the-data-is”.  So you get the polygon normal returned as a vector data type (a vector is a 3 element tuple which usually represents X,Y,Z or R,G,B).  The right side of the equation you can see the method we asked about (Normal) with any required arguments inside of it.  Since the right side is “Normal()” with no arguments, we can see that the normal method doesn’t take any arguments.  Instead, Normal (like a lot of other methods) requires you to select a polygon first (remember that select means to focus the API on, not to actually change the polygons that are selected in modo).
+Let’s go through a few more methods just to point out some other data types:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">Closest</span><span class="o">.</span><span class="vm">__doc__</span>
+<span class="p">(</span><span class="n">boolean</span><span class="p">,</span><span class="n">vector</span> <span class="n">hitPos</span><span class="p">,</span><span class="n">vector</span> <span class="n">hitNorm</span><span class="p">,</span><span class="nb">float</span> <span class="n">hitDist</span><span class="p">)</span> <span class="o">=</span> <span class="n">Closest</span><span class="p">(</span><span class="nb">float</span> <span class="n">maxDis</span><span class="p">,</span><span class="n">vector</span> <span class="n">Pos</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So…  when you call Closest() method, you are required to give 2 arguments.  The first is a float which represents the max Distance to look for a polygon.  The 2nd is a vector that represents the X,Y,Z position of the point that you want to search for polygons from.  This is admittedly not spelled out very explicitly, so you often need to make certain inferences.  Most of the returned info is understandable.  We get a vector to indicate the hit position, a vector indicating the hit normal, a float indicating the hit distance.  But what’s the boolean?  Usually, if a method returns a boolean and it’s not obvious why, the boolean is a true/false statement as to whether the method succeeded or not.  In this case, it indicates whether the Closest() method was actually able to find a polygon within the distance given to it in the arguments.</p>
+</div>
+<div class="right-col docutils container">
+<img alt="../../_images/Dir(polyAccessor).png" src="../../_images/Dir(polyAccessor).png" />
+</div>
+</div>
+<div class="section" id="down-to-business">
+<h2><a class="toc-backref" href="#id5">Down to Business</a><a class="headerlink" href="#down-to-business" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<p>What about the method we actually want to use?  We’ll be using the MapEvaluate() Method.  So a quick look at the docs for it gives us:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boolean</span> <span class="o">=</span> <span class="n">MapEvaluate</span><span class="p">(</span><span class="nb">id</span> <span class="nb">map</span><span class="p">,</span><span class="nb">id</span> <span class="n">point</span><span class="p">,</span><span class="nb">float</span><span class="p">[]</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So the MapEvaluatee method only returns a boolean for whether it succeeds or fails, not any values.  That’s because the values themselves are stored in the storage object we created a while ago.  When you see a [] next to a data type in the requirements for a method, it means the method takes a storage object of that data type.  So the “float[] value” in the requirements just means we need to feed the method a storage object.  We also need an ID for the map we’re reading, and an ID for the point we want to check.  An ‘’ID’’ (not to be confused with ‘’Index’’) is an integer which represents a specific element or item internally in modo.  We can get vertex IDs by selecting a polygon (using the SelectByIndex() method) and then running theVertexByIndex() method.  The UV map ID we can get by selecting our UV map in the mapAccessor we created, and then running the ID() method.</p>
+<p>First off, let’s select the UV map we want to read.  We’ll assume that we know the name of the UV map we want to read.  In our Mesh Map Accessor object, there’s a method to select vertex maps based on their Types and Names.  The symbol we need to indicate a UV map type is found in [[Symbols_defined_in_the_lx_package|dir(lx.symbol)]].  Once the map is selected we can use the ID() method to return its ID.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mapAccessor</span><span class="o">.</span><span class="n">SelectByName</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">i_VMAP_TEXTUREUV</span><span class="p">,</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
+<span class="n">mapID</span> <span class="o">=</span> <span class="n">mapAccessor</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="left-col docutils container">
+<p>Now we need to get the point ID from our polygon accessor.  We need to know how many vertices our current polygon has, and then get the Vertex ID from each one.  First we select a polygon by Index, then use the VertexCount() method to see how many vertices it has.  Then we can get the vertex ID from each one using the VertexByIndex() method and feed these into the MapValue() method to store the UV values in our storage object.</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uvValues</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Make a list to store our UV values</span>
+<span class="n">polyAccessor</span><span class="o">.</span><span class="n">SelectByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Select the polygon whose index is 0</span>
+<span class="n">nVerts</span> <span class="o">=</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span>  <span class="c1"># Store the number of verts that poly has as a variable</span>
+<span class="k">for</span> <span class="n">eachVert</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nVerts</span><span class="p">):</span>  <span class="c1">#  For every one of the verts belonging to this polygon</span>
+        <span class="n">vertID</span> <span class="o">=</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">eachVert</span><span class="p">)</span>  <span class="c1">#  Get the verts Index</span>
+        <span class="k">if</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">MapEvaluate</span><span class="p">(</span><span class="n">mapID</span><span class="p">,</span> <span class="n">vertID</span><span class="p">,</span> <span class="n">storageBuffer</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1">## If the MapEvaluate() method succeeds, the UV value should be stored in our storage object.</span>
+                <span class="c1">## If it doesn&#39;t succeed, it means there isn&#39;t actually a UV value for the vert we were looking at</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">storageBuffer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># We use the get() method on storage objects to return its contents</span>
+                <span class="n">uvValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-step-back">
+<h2><a class="toc-backref" href="#id6">A Step Back</a><a class="headerlink" href="#a-step-back" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<p>So let’s put it all together to see where we’re at.  If we simplify some of the comments and the method searching, our code looks like this:</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="kn">import</span> <span class="nn">lx</span>
+
+<span class="c1">## Localize our mesh ##</span>
+<span class="n">layerService</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+<span class="n">layerScanObject</span> <span class="o">=</span> <span class="n">layerService</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_PRIMARY</span><span class="p">)</span>
+<span class="n">localizedMesh</span> <span class="o">=</span> <span class="n">layerScanObject</span><span class="o">.</span><span class="n">MeshBase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">## Create a Storage Object and Accessors ##</span>
+<span class="n">storageBuffer</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+<span class="n">mapAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">MeshMapAccessor</span><span class="p">()</span>
+
+<span class="c1">## Get Map ID ##</span>
+<span class="n">mapAccessor</span><span class="o">.</span><span class="n">SelectByName</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">i_VMAP_TEXTUREUV</span><span class="p">,</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
+<span class="n">mapID</span> <span class="o">=</span> <span class="n">mapAccessor</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
+
+<span class="c1">## Select a polygon and read its vertex UV values into a list of tuples ##</span>
+<span class="n">uvValues</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">polyAccessor</span><span class="o">.</span><span class="n">SelectByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">nVerts</span> <span class="o">=</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">eachVert</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nVerts</span><span class="p">):</span>
+        <span class="n">vertID</span> <span class="o">=</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">eachVert</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">MapEvaluate</span><span class="p">(</span><span class="n">mapID</span><span class="p">,</span> <span class="n">vertID</span><span class="p">,</span> <span class="n">storageBuffer</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">storageBuffer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                <span class="n">uvValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="c1"># Remember we have to include the Apply() call to let modo know we&#39;re done editing the mesh</span>
+<span class="n">layerScanObject</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="left-col docutils container">
+<p>There’s almost no chance that you’d just want to read the UV values for the vertices of a specific polygon, and nothing else.  So if we wanted to, we could check how many polygons are in our mesh, then wrap up the bottom of our code with a ‘for i in range(number_of_polygons)’ loop.  Then we could look at all the UV values for all the verts (even discontinuous ones) in our mesh.  There’s even a nice PolygonCount() method on our localized mesh that will tell us how many polygons we have.  There’s a trick to this, however.  If we’re looking at each vertex from each polygon, we’re bound to get information about the same vertex twice.  This means we’ll have the same UV coordinates for each polygon that a vertex shares, which is going to be useless and possible harmful.   We’d likely be editing vertices depending on whether they met some criteria, and we certainly wouldn’t want to edit the same UV vertex twice.  So we can fix this by checking our values list, and only add the new values to the list if they aren’t already there.  We’d also do any editing only after we make sure we haven’t already editing this vertex, so the values would need to be stored after any editing happens.</p>
+<p>So there we are, a API script to spit out the UV coordinates for vertices in the current mesh.  But that isn’t the best way to handle this.  For situations like this, when you’re going to be looping through every vertex in your mesh, or every vertex map in your scene, or anything where you’re going to be doing the same thing over and over, you can use what’s called a  [[Visitors_in_Action|Visitor]] to do the looping work for you.</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="kn">import</span> <span class="nn">lx</span>
+
+<span class="c1">## Localize our mesh ##</span>
+<span class="n">layerService</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+<span class="n">layerScanObject</span> <span class="o">=</span> <span class="n">layerService</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_PRIMARY</span><span class="p">)</span>
+<span class="n">localizedMesh</span> <span class="o">=</span> <span class="n">layerScanObject</span><span class="o">.</span><span class="n">MeshBase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">## Create a Storage Object and Accessors ##</span>
+<span class="n">storageBuffer</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+<span class="n">mapAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">MeshMapAccessor</span><span class="p">()</span>
+
+<span class="c1">## Get Map ID ##</span>
+<span class="n">mapAccessor</span><span class="o">.</span><span class="n">SelectByName</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">i_VMAP_TEXTUREUV</span><span class="p">,</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
+<span class="n">mapID</span> <span class="o">=</span> <span class="n">mapAccessor</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
+
+<span class="c1">## Get the total polygons in our mesh and loop through them ##</span>
+<span class="c1">## Select (Focus) on each one and get the uv values for its vertices ##</span>
+<span class="n">uvValues</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">nPolys</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">PolygonCount</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">eachPoly</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nPolys</span><span class="p">):</span>
+        <span class="n">polyAccessor</span><span class="o">.</span><span class="n">SelectByIndex</span><span class="p">(</span><span class="n">eachPoly</span><span class="p">)</span>
+        <span class="n">nVerts</span> <span class="o">=</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">eachVert</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nVerts</span><span class="p">):</span>
+                <span class="n">vertID</span> <span class="o">=</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">eachVert</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">polyAccessor</span><span class="o">.</span><span class="n">MapEvaluate</span><span class="p">(</span><span class="n">mapID</span><span class="p">,</span> <span class="n">vertID</span><span class="p">,</span> <span class="n">storageBuffer</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">storageBuffer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">values</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">uvValues</span><span class="p">:</span>    <span class="c1">#We check to make sure this isn&#39;t a vertex we&#39;ve already looked at</span>
+                                <span class="c1"># Any editing of this vertex&#39;s UV position would go here</span>
+                                <span class="n">uvValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="c1"># Remember we have to include the Apply() call to let modo know we&#39;re done editing the mesh</span>
+<span class="n">layerScanObject</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">uvValues</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-a-visitor">
+<h2><a class="toc-backref" href="#id7">Creating a Visitor</a><a class="headerlink" href="#creating-a-visitor" title="Permalink to this headline">¶</a></h2>
+<div class="left-col docutils container">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is a little more complicated, and assumes you have a little familiarity with object oriented programming.  If you aren’t familiar with these ideas, there’s tons of good resources on the web for understanding python classes that might be worth reading up on</p>
+</div>
+<p>Visitors are API objects you can create for a specific use, and then call in like a plug-in.  Any API objects that have a method called Enumerate() can use a Visitor object to traverse their data sets.  Using a visitor object to look at a lot of data is typically a lot faster than simply looping through it, so it’s a good idea to use visitors when you can.  Since Enumerate() is one of the methods shown on our polyAccessor when we checked [[Media:Dir%28polyAccessor%29.png|dir(polyAccessor)]], we can use a visitor to enumerate the polygons which the accessor can select.  Basically that means that we can create a visitor that will cycle through all of the polygons in our primary mesh layer, and do the same thing to each one.  For our purposes, this is really just the bottom part of the script we’ve already created.</p>
+<p>So how do we set a visitor up?  Since visitors act like plug-ins, we need to include its definition in our python file and put that file in a lxserv folder.  That way, modo imports it on launch and properly interprets it as a plugin.  In your user folder there’s a “scripts” folder where you can create a subdirectory called “lxserv” if it doesn’t exist.  In this python file, we need to create a visitor class, and have it inherit the Visitor Super Class from the lxifc module that’s included with modo’s SDK.  That means we need to import the lxifc module (as well as the lx module) at the start of our script/plugin.  We’ll call the class uvVisitor, because that’s essentially what it is, but you can name your visitors anything you’d like.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="kn">import</span> <span class="nn">lx</span><span class="o">,</span> <span class="nn">lxifc</span>
+
+<span class="k">class</span> <span class="nc">uvVisitor</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Visitor</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Inside of our uvVisitor class, we’ll define two different methods.  These are both inherited methods and need to be named exactly as they are.  We’ll def the __init__() method, where we set up which arguments we need to give the visitor in order for it to be able to work corectly, and the vis_Evaluate() method, which is the method that fires when we call an Enumerate() method from somewhere else.</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="kn">import</span> <span class="nn">lx</span><span class="o">,</span> <span class="nn">lxifc</span>
+
+<span class="k">class</span> <span class="nc">uvVisitor</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Visitor</span><span class="p">):</span>
+<span class="sd">&#39;&#39;&#39; A new visitor object with inherited properties from the lxifc.Visitor class</span>
+<span class="sd">        We just need a Polygon Accessor and Mesh Map Accessor to call the MapEvaluate()</span>
+<span class="sd">        method as we cycle through polygons and check UV values &#39;&#39;&#39;</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polyAccessor</span><span class="p">,</span> <span class="n">mapID</span><span class="p">):</span>     <span class="c1"># The initial setup method</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">polyAccessor</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapID</span> <span class="o">=</span> <span class="n">mapID</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># We&#39;ll create the storage item within our visitor object</span>
+<span class="c1"># so that we don&#39;t need to feed in more variables than necessary</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># We&#39;ll also create an empty list where we can save the UV values</span>
+
+        <span class="k">def</span> <span class="nf">vis_Evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="c1"># When the vis_Evaluate() method is running, it&#39;s as though each polygon</span>
+<span class="c1"># gets selected (in the API sense). That means we can skip the step of</span>
+<span class="c1"># selecting a polygon by it&#39;s index (polyAccessor.SelectByIndex(0) in our early script)</span>
+                <span class="n">nVerts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">eachVert</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nVerts</span><span class="p">):</span>
+                        <span class="n">vertID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">eachVert</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">MapValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapID</span><span class="p">,</span> <span class="n">vertID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                                <span class="n">currentValue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                                <span class="k">if</span> <span class="n">currentValue</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">currentValue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="left-col docutils container">
+<p>Notice that the bottom section of the visitor is almost exactly the same as our early code.  Visitors might seem like a slightly complicated concept, but it’s just a different way of organizing the same processes you would go through in a while or for loop.  So how do we get this visitor to interact with our other code, and how do we use it?  Well the best way would probably be to create a command which calls everything for us, but that’s a little beyond the scope of this walkthrough.  Instead, we’re just going to write a new function outside of the visitor class we created that we can import and call from the same python file.  So what do we put in this new method?  Most of it will be familiar stuff from our earlier code, but there’s a few gaps we need to fill in. Back to the interpreter!</p>
+<p>If we check the docs on our Polygon Accessor’s Enumerate() method, here’s what we get:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">poly</span><span class="o">.</span><span class="n">Enumerate</span><span class="o">.</span><span class="vm">__doc__</span>
+<span class="n">Enumerate</span><span class="p">(</span><span class="n">integer</span> <span class="n">mode</span><span class="p">,</span> <span class="nb">object</span> <span class="n">visitor</span><span class="p">,</span> <span class="nb">object</span> <span class="n">monitor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We need to give the Enumerate() method an integer that specifies the mode, a visitor object (an instance of the class we just created), and a monitor object (if we want a progress monitor to come up during enumeration).  The mode refers to the way that our Visitor object is going to mark a polygon as already looked at once it gets done with it.  In the python API there’s only one mark mode: lx.symbol.iMARK_ANY. So our first argument for Enumerate() will be lx.symbol.iMARK_ANY.  Now we need to create an instance of our Visitor Class.  To do this, we need to come up with a variable name for this instance, and set it equal to our Visitor Class name with any needed variables included.  So here’s what this looks like:</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">():</span>
+        <span class="c1"># We start out with the setup code we wrote earlier to localize the mesh and all that</span>
+        <span class="c1"># This time, however, it&#39;s inside of a function so we can call it from python</span>
+
+        <span class="c1">## Localize our mesh ##</span>
+        <span class="n">layerService</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+        <span class="n">layerScanObject</span> <span class="o">=</span> <span class="n">layerService</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_PRIMARY</span><span class="p">)</span>
+        <span class="n">localizedMesh</span> <span class="o">=</span> <span class="n">layerScanObject</span><span class="o">.</span><span class="n">MeshBase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1">## Create Accessors (Remember we&#39;re creating our storage object inside the visitor class)##</span>
+        <span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+        <span class="n">mapAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">MeshMapAccessor</span><span class="p">()</span>
+
+        <span class="c1">## Get Map ID ##</span>
+        <span class="n">mapAccessor</span><span class="o">.</span><span class="n">SelectByName</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">i_VMAP_TEXTUREUV</span><span class="p">,</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
+        <span class="n">mapID</span> <span class="o">=</span> <span class="n">mapAccessor</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
+
+        <span class="c1">## Now we have what we need to create our Visitor Instance ##</span>
+        <span class="n">visitorInstance</span> <span class="o">=</span> <span class="n">uvVisitor</span><span class="p">(</span><span class="n">polyAccessor</span><span class="p">,</span> <span class="n">mapID</span><span class="p">)</span>
+
+        <span class="c1">## With an instance of our Visitor class, we can now call Enumerate() on our polyAccessor</span>
+        <span class="n">polyAccessor</span><span class="o">.</span><span class="n">Enumerate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iMARK_ANY</span><span class="p">,</span> <span class="n">visitorInstance</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1">## We put 0 instead of a monitor object, because we won&#39;t be using a progress monitor for this example</span>
+
+        <span class="c1">## Remember we have to include the Apply() call to let modo know we&#39;re done editing the mesh</span>
+        <span class="n">layerScanObject</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+
+        <span class="c1"># After we&#39;ve run the polyAccessor.Enumerate() method, our visitor class has created a list within</span>
+        <span class="c1"># the visitorInstance called &quot;values&quot;.  We can get to it as shown below.</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">visitorInstance</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="left-col docutils container">
+<p>So now we just need to put all of this in a file, and learn how to call it from the persistent interpreter.  Here’s all the code put together, with some briefer comments:</p>
+<p>If we save this to a .py File, we can import it from the interpreter and manually call its execute() method.  The file has to be inside the lxserv folder before modo starts in order for modo to see it, though.  For instance, if we save it as ‘readuv.py’ in our user scripts/lxserv folder, typing this into the python interpreter will run it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">readuv</span>
+<span class="n">readuv</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If we look in the results of the python interpreter, we should see a list of UV values for our the current mesh, as long as it has a uv map named “Texture” in it.</p>
+</div>
+<div class="right-col docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="kn">import</span> <span class="nn">lx</span><span class="o">,</span> <span class="nn">lxifc</span>
+
+<span class="k">class</span> <span class="nc">uvVisitor</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Visitor</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polyAccessor</span><span class="p">,</span> <span class="n">mapID</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">polyAccessor</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapID</span> <span class="o">=</span> <span class="n">mapID</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">def</span> <span class="nf">vis_Evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">nVerts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">eachVert</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nVerts</span><span class="p">):</span>
+                        <span class="n">vertID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">eachVert</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">polyAccessor</span><span class="o">.</span><span class="n">MapEvaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapID</span><span class="p">,</span> <span class="n">vertID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">):</span>
+                                <span class="n">currentValue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                                <span class="k">if</span> <span class="n">currentValue</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">currentValue</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">execute</span><span class="p">():</span>
+        <span class="c1">## Localize our mesh ##</span>
+        <span class="n">layerService</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+        <span class="n">layerScanObject</span> <span class="o">=</span> <span class="n">layerService</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_PRIMARY</span><span class="p">)</span>
+        <span class="n">localizedMesh</span> <span class="o">=</span> <span class="n">layerScanObject</span><span class="o">.</span><span class="n">MeshBase</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1">## Create a Storage Object and Accessors ##</span>
+        <span class="n">polyAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+        <span class="n">mapAccessor</span> <span class="o">=</span> <span class="n">localizedMesh</span><span class="o">.</span><span class="n">MeshMapAccessor</span><span class="p">()</span>
+
+        <span class="c1">## Get Map ID ##</span>
+        <span class="n">mapAccessor</span><span class="o">.</span><span class="n">SelectByName</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">i_VMAP_TEXTUREUV</span><span class="p">,</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
+        <span class="n">mapID</span> <span class="o">=</span> <span class="n">mapAccessor</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
+
+        <span class="c1"># Enumerate the polygons in our mesh, get UV values, make sure modo knows</span>
+        <span class="c1"># we&#39;re done editing the mesh and output the values from our UVs</span>
+        <span class="n">visitorInstance</span> <span class="o">=</span> <span class="n">uvVisitor</span><span class="p">(</span><span class="n">polyAccessor</span><span class="p">,</span> <span class="n">mapID</span><span class="p">)</span>
+        <span class="n">polyAccessor</span><span class="o">.</span><span class="n">Enumerate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iMARK_ANY</span><span class="p">,</span> <span class="n">visitorInstance</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">layerScanObject</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">visitorInstance</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+                <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Render%20Frame%20Size.html" class="btn btn-neutral float-right" title="Render Frame Size" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Reading%20Persistant%20Data.html" class="btn btn-neutral float-left" title="Reading Persistant Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Reading UV Values.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:10 GMT -->
+</html>

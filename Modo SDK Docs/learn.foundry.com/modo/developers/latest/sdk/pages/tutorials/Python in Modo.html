@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Python in Modo.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python in Modo &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Query Command Values example" href="Query%20Command%20Values%20example.html" />
+    <link rel="prev" title="Python Treeview Example" href="Python%20Treeview%20Example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python in Modo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-s-python-interpreter-version">Modo’s Python Interpreter Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-s-pythonpath">Modo’s PYTHONPATH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pythonpath-on-a-kit">PYTHONPATH on a kit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonpath-on-a-python-module">PYTHONPATH on a Python Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonpath-on-a-python-file">PYTHONPATH on a Python File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pythonpath-on-a-site-packages-directory">PYTHONPATH on a site-packages Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#packages-in-modo-s-python">Packages in Modo’s Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Python in Modo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-in-modo">
+<h1>Python in Modo<a class="headerlink" href="#python-in-modo" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#modo-s-python-interpreter-version" id="id2">Modo’s Python Interpreter Version</a></p></li>
+<li><p><a class="reference internal" href="#modo-s-pythonpath" id="id3">Modo’s PYTHONPATH</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pythonpath-on-a-kit" id="id4">PYTHONPATH on a kit</a></p></li>
+<li><p><a class="reference internal" href="#pythonpath-on-a-python-module" id="id5">PYTHONPATH on a Python Module</a></p></li>
+<li><p><a class="reference internal" href="#pythonpath-on-a-python-file" id="id6">PYTHONPATH on a Python File</a></p></li>
+<li><p><a class="reference internal" href="#pythonpath-on-a-site-packages-directory" id="id7">PYTHONPATH on a site-packages Directory</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#packages-in-modo-s-python" id="id8">Packages in Modo’s Python</a></p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id1">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This guide intends to introduce the Modo users to the new Python API introduced in Modo 701.</p>
+<p>It does assume that you have a minimum knowledge of Python and Modo GUI and Tools.
+Even when it contains small introductions to them when is considered necessary.</p>
+<p>The new Python API is composed of several modules, and allows the creation of Tools, Commands and other types of plug-ins explained a bit later.
+Unlike the old Scripting API that created fire and forget scripts.This unleash new powerful ways to expand Modo.
+The Python API Modules will be further explained, don’t worry.
+&lt;blockquote class=”toc”&gt;
+&lt;b&gt;Note:&lt;/b&gt;
+You can create your own Python packages and modules to be used with the new API.
+&lt;/blockquote&gt;
+Kits
+====</p>
+<p>Kits were introduced in Modo 501 and are described [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Kits">http://modo.sdk.thefoundry.co.uk/wiki/Kits</a> here], have a read to that page first, and don’t feel daunted by it.
+We will review some of those concepts here.</p>
+<p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Kits">http://modo.sdk.thefoundry.co.uk/wiki/Kits</a> Kits] are extremely useful to group a plug-in (or set of plug-ins), the images they need for their <span class="xref std std-doc">./https://en.wikipedia.org/wiki/Graphical_user_interface</span>, etc. under a folder than the user can install very easily on their HD.</p>
+<p>&lt;blockquote class=”toc”&gt;
+&lt;b&gt;Note:&lt;/b&gt;
+: The index.cfg files for kits are written in the same way for the Python API or C++ plug-ins.
+&lt;/blockquote&gt;</p>
+</div>
+<div class="section" id="modo-s-python-interpreter-version">
+<h2><a class="toc-backref" href="#id2">Modo’s Python Interpreter Version</a><a class="headerlink" href="#modo-s-python-interpreter-version" title="Permalink to this headline">¶</a></h2>
+<p>Modo includes an embedded Python interpreter.</p>
+<p>This table resume the different versions of Modo and their Python interpreters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Modo Version</p></th>
+<th class="head"><p>Python Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>601</p></td>
+<td><p>2.6.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>701</p></td>
+<td><p>2.6.2</p></td>
+</tr>
+<tr class="row-even"><td><p>801</p></td>
+<td><p>2.7.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>901</p></td>
+<td><p>2.7.3</p></td>
+</tr>
+<tr class="row-even"><td><p>10.0</p></td>
+<td><p>2.7.3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modo-s-pythonpath">
+<h2><a class="toc-backref" href="#id3">Modo’s PYTHONPATH</a><a class="headerlink" href="#modo-s-pythonpath" title="Permalink to this headline">¶</a></h2>
+<p>Modo’s Python interpreter resets the Python Path and points it to it’s own Scripts directories.</p>
+<p>There are several ways you can add your own modules and Python packages:</p>
+<div class="section" id="pythonpath-on-a-kit">
+<h3><a class="toc-backref" href="#id4">PYTHONPATH on a kit</a><a class="headerlink" href="#pythonpath-on-a-kit" title="Permalink to this headline">¶</a></h3>
+<p>As we’ve seen a kit in Modo is a directory inside the user scripts directory, containing an index.cfg file and other resources like images, plug-ins, etc.. .
+You can access to this directory from Modo’s menu <em>System</em> &gt; ‘’Open User Scripts Folder’’.</p>
+<p>You can create a directory there with the name of your kit and inside that directory an index.cfg file that will contain xml code.
+Really the index.cfg is a xml file with the extension changed to .cfg.</p>
+<p>Inside that file you can add directives for your forms, plug-ins, etc..</p>
+<p>&lt;blockquote&gt;
+# Open your User Scripts Folder from Modo’s menu <em>System</em> &gt; ‘’Open User Scripts Folder’’.
+# Create a directory called mynewkit.
+# Inside that directory create an index.cfg file and open it on you favourite text editor.
+# Copy and paste this xml code on it:
+&lt;/blockquote&gt;
+&lt;blockquote&gt;</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="c">&lt;!-- Kit name and version number --&gt;</span>
+<span class="nt">&lt;configuration</span> <span class="na">kit=</span><span class="s">&quot;mynewkit&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- This auto-imports all the contents on the kits directory --&gt;</span>
+  <span class="nt">&lt;import&gt;</span>kit_mynewkit:<span class="nt">&lt;/import&gt;</span>
+  <span class="c">&lt;!-- This imports a specific module inside of a directory of the kit --&gt;</span>
+  <span class="nt">&lt;import&gt;</span>directory_name/module.py<span class="nt">&lt;/import&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+</div>
+<div class="section" id="pythonpath-on-a-python-module">
+<h3><a class="toc-backref" href="#id5">PYTHONPATH on a Python Module</a><a class="headerlink" href="#pythonpath-on-a-python-module" title="Permalink to this headline">¶</a></h3>
+<p>In a [<a class="reference external" href="https://docs.python.org/2/glossary.html#term-module">https://docs.python.org/2/glossary.html#term-module</a> module] living on the user scripts directory add to the top part of your module.py file:</p>
+<p>&lt;blockquote&gt;</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Substitute [USER_NAME] for your user name</span>
+<span class="c1"># Substitute [DIR]with the name of the directory containing your module.py</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;C:/Users/[USER_NAME]/AppData/Roaming/Luxology/Scripts/[DIR]/&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+</div>
+<div class="section" id="pythonpath-on-a-python-file">
+<h3><a class="toc-backref" href="#id6">PYTHONPATH on a Python File</a><a class="headerlink" href="#pythonpath-on-a-python-file" title="Permalink to this headline">¶</a></h3>
+<p># Create a python script file that appends to sys.path and import that file at the top of your script:
+&lt;blockquote&gt;</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">addtosysp</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Substitute [USER_NAME] for your user name</span>
+<span class="c1"># Substitute [DIR] with the name of the directory containing your module.py</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;C:/Users/[USER_NAME]/AppData/Roaming/Luxology/Scripts/[DIR]/&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+<p>&lt;blockquote&gt;</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">otherfile</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+<span class="kn">import</span> <span class="nn">addtosysp</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+</div>
+<div class="section" id="pythonpath-on-a-site-packages-directory">
+<h3><a class="toc-backref" href="#id7">PYTHONPATH on a site-packages Directory</a><a class="headerlink" href="#pythonpath-on-a-site-packages-directory" title="Permalink to this headline">¶</a></h3>
+<p># Modo treats the user scripts directory as a site-packages folder. It even correctly processes .pth files contained there at start-up.
+# It means is that you can install packages/modules into  your system python &amp; have them added to modo by adding a .pth file pointing at the system site-packages folder.
+&lt;blockquote class=”toc”&gt;
+&lt;b&gt;Note:&lt;/b&gt;
+For that your External Python version must be <strong>exactly</strong> the same one as the one used by modo internally.
+&lt;/blockquote&gt;</p>
+</div>
+</div>
+<div class="section" id="packages-in-modo-s-python">
+<h2><a class="toc-backref" href="#id8">Packages in Modo’s Python</a><a class="headerlink" href="#packages-in-modo-s-python" title="Permalink to this headline">¶</a></h2>
+<p>To create a [<a class="reference external" href="https://docs.python.org/2/glossary.html#term-package">https://docs.python.org/2/glossary.html#term-package</a> Package] in Python you create a directory and inside that directory a file called __init__.py.</p>
+<ol class="arabic simple">
+<li><p>For example in your user scripts directory create a directory called mypackage.</p></li>
+</ol>
+<p>2. Inside that directory create a file called __init__.py with this content:
+&lt;blockquote&gt;</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Initialization file of  mypackage.  &quot;&quot;&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+<ol class="arabic simple" start="3">
+<li><p>Other modules can go in the same directory of the __init__ file.</p></li>
+</ol>
+<p>4. To use the package in other modules you can use absolute imports:
+&lt;blockquote&gt;</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mypackage.mymodule</span>
+<span class="c1"># Calling a function inside mymodule of mypackage</span>
+<span class="n">mypackage</span><span class="o">.</span><span class="n">mymodule</span><span class="o">.</span><span class="n">myfunction</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+<p>5. Or relative imports:
+&lt;blockquote&gt;</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mypackage</span> <span class="kn">import</span> <span class="n">mymodule</span>
+<span class="c1"># Calling a function inside mymodule of mypackage</span>
+<span class="n">mymodule</span><span class="o">.</span><span class="n">myfunction</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>&lt;/blockquote&gt;</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Query%20Command%20Values%20example.html" class="btn btn-neutral float-right" title="Query Command Values example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Python%20Treeview%20Example.html" class="btn btn-neutral float-left" title="Python Treeview Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Python in Modo.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+</html>

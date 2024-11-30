@@ -1,0 +1,996 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_schematic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Schematic &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Scripts" href="lxd_scripts.html" />
+    <link rel="prev" title="Rndjob" href="lxd_rndjob.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Schematic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicconnection">ILxSchematicConnection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicconnection2">ILxSchematicConnection2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicconnection1">ILxSchematicConnection1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschemadest">ILxSchemaDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicgroup">ILxSchematicGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicnode">ILxSchematicNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicnodeconnection">ILxSchematicNodeConnection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxschematicnodechannel">ILxSchematicNodeChannel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Schematic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="schematic">
+<h1>Schematic<a class="headerlink" href="#schematic" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxschematicconnection" id="id1">ILxSchematicConnection</a></p></li>
+<li><p><a class="reference internal" href="#ilxschematicconnection2" id="id2">ILxSchematicConnection2</a></p></li>
+<li><p><a class="reference internal" href="#ilxschematicconnection1" id="id3">ILxSchematicConnection1</a></p></li>
+<li><p><a class="reference internal" href="#ilxschemadest" id="id4">ILxSchemaDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxschematicgroup" id="id5">ILxSchematicGroup</a></p></li>
+<li><p><a class="reference internal" href="#ilxschematicnode" id="id6">ILxSchematicNode</a></p></li>
+<li><p><a class="reference internal" href="#ilxschematicnodeconnection" id="id7">ILxSchematicNodeConnection</a></p></li>
+<li><p><a class="reference internal" href="#ilxschematicnodechannel" id="id8">ILxSchematicNodeChannel</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxschematicconnection">
+<h2><a class="toc-backref" href="#id1">ILxSchematicConnection</a><a class="headerlink" href="#ilxschematicconnection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxSchematicConnection">
+<span id="_CPPv322ILxSchematicConnection"></span><span id="_CPPv222ILxSchematicConnection"></span><span id="ILxSchematicConnection"></span><span class="target" id="class_i_lx_schematic_connection"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicConnection</code><a class="headerlink" href="#_CPPv422ILxSchematicConnection" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection9ItemFlagsE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N22ILxSchematicConnection9ItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N22ILxSchematicConnection9ItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection::ItemFlags__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection_1a6726945dc5050344ed47963c6cf1b2f3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection9ItemFlagsE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A SchematicConnection server manages a particular connection point for inter-item relations. Normally this is a graph link but can be any type of relation that the client wants to implement. The name of the connection point (the text shown on the node) is the name of the server. This method is called for every item displayed in the schematic to determine if and how it supports this connection point. Failure or a zero falgs value means that the item does not have a connection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection12AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxSchematicConnection12AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxSchematicConnection12AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicConnection::AllowConnect__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection_1a3731f6218366856f578ce99a068a3e55"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllowConnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection12AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given a pair of items, this function returns LXe_TRUE if the connection is allowed. The ‘to’ item is the one with the connection point, and is assumed to have valid item flags, above. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection16AllowConnectTypeE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N22ILxSchematicConnection16AllowConnectTypeE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N22ILxSchematicConnection16AllowConnectTypeE11LXtObjectID11LXtObjectIDj"></span><span id="ILxSchematicConnection::AllowConnectType__LXtObjectID.LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_schematic_connection_1a862761c95165aaeb7a451aed202f0a82"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllowConnectType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, unsigned int <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection16AllowConnectTypeE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returnes LXe_TRUE if the connection is allowed between an item and an item type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection9GraphNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N22ILxSchematicConnection9GraphNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N22ILxSchematicConnection9GraphNameE11LXtObjectIDPPKc"></span><span id="ILxSchematicConnection::GraphName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_schematic_connection_1a7d469edbddff0578e9b9e456df44cb3d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GraphName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection9GraphNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the name of a single graph. For connection points that can be described by one graph the graph name is sufficient for schematic to do all the legwork. Connecting adds a link from the source to the target in the graph, and drawing just enumerates the graph. This must be implemented (to traverse output links), but all connections will be handled fully by the server (as given by the methods below) as long as <a class="reference internal" href="#class_i_lx_schematic_connection_1a141075ce876ca72d9663c8d2a889eaa2"><span class="std std-ref">Count()</span></a> is implemented and returns LXe_OK. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection5CountE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N22ILxSchematicConnection5CountE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N22ILxSchematicConnection5CountE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection::Count__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection_1a141075ce876ca72d9663c8d2a889eaa2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection5CountE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For connections not given by a single graph, the server has to provide the list of connections coming into an item presenting a connection point. These are given by a count and items by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection7ByIndexE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N22ILxSchematicConnection7ByIndexE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N22ILxSchematicConnection7ByIndexE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxSchematicConnection::ByIndex__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_schematic_connection_1a8e5deaa710b5c16857e95827a0f741be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection7ByIndexE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection7ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N22ILxSchematicConnection7ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N22ILxSchematicConnection7ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="ILxSchematicConnection::Connect__LXtObjectID.LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_schematic_connection_1a6b497ff2f67f0d98b9e4d2e1d3bfdf7b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Connect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, int <em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection7ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Servers that enumerate the links themselves also need to manage creating and breaking links. The schematic view will call these methods from a context where undos are allowed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection10DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxSchematicConnection10DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxSchematicConnection10DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicConnection::Disconnect__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection_1a4ad99ea72da64d2586a47b1a048cb406"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Disconnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection10DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection9BaseFlagsE11LXtObjectID">
+<span id="_CPPv3N22ILxSchematicConnection9BaseFlagsE11LXtObjectID"></span><span id="_CPPv2N22ILxSchematicConnection9BaseFlagsE11LXtObjectID"></span><span id="ILxSchematicConnection::BaseFlags__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection_1a4fedb545623e3fe8fc810c3a42fe914c"></span>int <code class="sig-name descname">BaseFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection9BaseFlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is called once to determine the minimum flags that will be used for any item. Certain flags can vary by item type, such as LXfSCON_SINGLE, LXfSCON_MULTIPLE and LXfSCON_ORDERED, but the flags LXfSCON_USESERVER and LXfSCON_REVERSE must be consistent for all item types. LXfSCON_PERITEM should be added as a base flag if the flags can change over time. If set, <a class="reference internal" href="#class_i_lx_schematic_connection_1afe2093f398c73da71e6dafbc736e87d0"><span class="std std-ref">ItemFlagsValid()</span></a> will be called before any schematic draw. Returning these flags allows us to initialize the server list once for all items. If this method is not implemented, LXfSCON_USESERVER and LXfSCON_REVERSE are assumed to be 0. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection12PerItemFlagsE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N22ILxSchematicConnection12PerItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N22ILxSchematicConnection12PerItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection::PerItemFlags__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection_1a511c0c5424bb8fe0756545fc40a96a75"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PerItemFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection12PerItemFlagsE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When a graph should only be present on <em>some</em> items of a particular type, this is called for each item. When rejecting the graph for the element, this should return 0, otherwise it should typically return the same flags as returned by ItemFlags. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection14ItemFlagsValidE11LXtObjectID">
+<span id="_CPPv3N22ILxSchematicConnection14ItemFlagsValidE11LXtObjectID"></span><span id="_CPPv2N22ILxSchematicConnection14ItemFlagsValidE11LXtObjectID"></span><span id="ILxSchematicConnection::ItemFlagsValid__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection_1afe2093f398c73da71e6dafbc736e87d0"></span>int <code class="sig-name descname">ItemFlagsValid</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection14ItemFlagsValidE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When per-item flags are used, there are circumstances under which the flags for an item may change (e.g. a Dynamics package may be added or removed from a mesh). When this happens, any cached per-item data would need to be refreshed. This method is called before any schematic redraw, and if implemented, should return 1 if all item flags are still valid, or 0 if not. This function will only be called once before validating, so once called, you can restore your internal valid flag. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection19ChannelAllowConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi">
+<span id="_CPPv3N22ILxSchematicConnection19ChannelAllowConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi"></span><span id="_CPPv2N22ILxSchematicConnection19ChannelAllowConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi"></span><span id="ILxSchematicConnection::ChannelAllowConnect__LXtObjectID.LXtObjectID.i.LXtObjectID.i"></span><span class="target" id="class_i_lx_schematic_connection_1a305b39169f64b83d967fcc5415b1a86b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelAllowConnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, int <em>fromIndex</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, int <em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection19ChannelAllowConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The following “Channel” functions are used for Schematic Conections that work with connections between Items and Channels. Given a ‘from’ Item and Channel index and a ‘to’ Item and Channel index, this function returns LXe_TRUE if the connection is allowed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection13ChannelIOTypeE11LXtObjectIDPj">
+<span id="_CPPv3N22ILxSchematicConnection13ChannelIOTypeE11LXtObjectIDPj"></span><span id="_CPPv2N22ILxSchematicConnection13ChannelIOTypeE11LXtObjectIDPj"></span><span id="ILxSchematicConnection::ChannelIOType__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_connection_1afafa7ec2c62bdbfaf6885e0959bd8e31"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelIOType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>ioType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection13ChannelIOTypeE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called to determine whether the connection should be an input or output. The type should be set to LXvSCON_INPUT or LXvSCON_OUTPUT. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection12ChannelCountE11LXtObjectID11LXtObjectIDiPj">
+<span id="_CPPv3N22ILxSchematicConnection12ChannelCountE11LXtObjectID11LXtObjectIDiPj"></span><span id="_CPPv2N22ILxSchematicConnection12ChannelCountE11LXtObjectID11LXtObjectIDiPj"></span><span id="ILxSchematicConnection::ChannelCount__LXtObjectID.LXtObjectID.i.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection_1a0a852e31eab3c125555ec0244652aade"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>xItem</em>, int <em>fromIndex</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection12ChannelCountE11LXtObjectID11LXtObjectIDiPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These functions are used to iterate over the Channel connections into or out of an Item or Channel. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection14ChannelByIndexE11LXtObjectID11LXtObjectIDijPPvPi">
+<span id="_CPPv3N22ILxSchematicConnection14ChannelByIndexE11LXtObjectID11LXtObjectIDijPPvPi"></span><span id="_CPPv2N22ILxSchematicConnection14ChannelByIndexE11LXtObjectID11LXtObjectIDijPPvPi"></span><span id="ILxSchematicConnection::ChannelByIndex__LXtObjectID.LXtObjectID.i.unsigned.voidPP.iP"></span><span class="target" id="class_i_lx_schematic_connection_1a0efab4dbe8f31885b0324d0ab050aa47"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>xItem</em>, int <em>fromIndex</em>, unsigned <em>index</em>, void **<em>ppvObj</em>, int *<em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection14ChannelByIndexE11LXtObjectID11LXtObjectIDijPPvPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection14ChannelConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi">
+<span id="_CPPv3N22ILxSchematicConnection14ChannelConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi"></span><span id="_CPPv2N22ILxSchematicConnection14ChannelConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi"></span><span id="ILxSchematicConnection::ChannelConnect__LXtObjectID.LXtObjectID.i.LXtObjectID.i"></span><span class="target" id="class_i_lx_schematic_connection_1a4c232619fc35b8743802f0d3175b59c0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelConnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, int <em>fromIndex</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, int <em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection14ChannelConnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Servers that enumerate the links themselves also need to manage creating and breaking links. The schematic view will call these methods from a context where undos are allowed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSchematicConnection17ChannelDisconnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi">
+<span id="_CPPv3N22ILxSchematicConnection17ChannelDisconnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi"></span><span id="_CPPv2N22ILxSchematicConnection17ChannelDisconnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi"></span><span id="ILxSchematicConnection::ChannelDisconnect__LXtObjectID.LXtObjectID.i.LXtObjectID.i"></span><span class="target" id="class_i_lx_schematic_connection_1a0d98438f85cb52c3ba041116498f0854"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelDisconnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, int <em>fromIndex</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, int <em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSchematicConnection17ChannelDisconnectE11LXtObjectID11LXtObjectIDi11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfSCON_SINGLE">
+<span class="target" id="lxd__schematic_8hpp_1a5d06aff4677bc61b37075cbc13783b1a"></span><code class="sig-name descname">LXfSCON_SINGLE</code><a class="headerlink" href="#c.LXfSCON_SINGLE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If any flags are set they define the type of connection this item allows.<ul class="simple">
+<li><p>SINGLE it can have a single incoming connection from one other item.</p></li>
+<li><p>MULTIPLE it can have multiple incoming connection from one or more item.</p></li>
+<li><p>ORDERED for multiple connections, the order of the connections is important.</p></li>
+<li><p>REVERSE This server uses normal graphs, but reverses the to/from relationships. It is up to the server to set this flag even if it is managing the connections itself, otherwise link tool tips or missing nodes may not be properly identified.</p></li>
+<li><p>PERITEM Typically an item type will have the same set of relationships for all items of that type, e.g. all “Replicator” items will have “Particle Source” and “Protopyes” relationships. In some cases, however, it might be desirable to have a relationship like “Dynamics” only be present for certain mesh items, but not all. In this case LXfSCON_PERITEM would be used, and PerItemFlags would be called for each item.</p></li>
+<li><p>NOLISTS Schematic Connections can be displayed in list views, such as the deformer list. This flag prevents the schematic connection from being displayed in list views, limiting it to the schematic viewport only.</p></li>
+<li><p>CHANNEL This flag indicates that Schematic Connections can be made between Items and Channels.</p></li>
+<li><p>USESERVER this type of connection supports multiple relationships, and fully implements the advanced methods such as Count() &amp; ByIndex(). This flag is typically combined with the flags above. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfSCON_MULTIPLE</p></li>
+<li><p>LXfSCON_ORDERED</p></li>
+<li><p>LXfSCON_REVERSE</p></li>
+<li><p>LXfSCON_PERITEM</p></li>
+<li><p>LXfSCON_NOLISTS</p></li>
+<li><p>LXfSCON_CHANNEL</p></li>
+<li><p>LXfSCON_USESERVER</p></li>
+<li><p>LXvSCON_INPUT</p></li>
+<li><p>LXvSCON_OUTPUT</p></li>
+</ul>
+</div>
+<div class="section" id="ilxschematicconnection2">
+<h2><a class="toc-backref" href="#id2">ILxSchematicConnection2</a><a class="headerlink" href="#ilxschematicconnection2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxSchematicConnection2">
+<span id="_CPPv323ILxSchematicConnection2"></span><span id="_CPPv223ILxSchematicConnection2"></span><span id="ILxSchematicConnection2"></span><span class="target" id="class_i_lx_schematic_connection2"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicConnection2</code><a class="headerlink" href="#_CPPv423ILxSchematicConnection2" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>// Old Schematic Connection Interface (&lt; 14.2) </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection29ItemFlagsE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicConnection29ItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicConnection29ItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection2::ItemFlags__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection2_1a6591225f4f078367d504d6d8c3406388"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection29ItemFlagsE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection212AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection212AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection212AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicConnection2::AllowConnect__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection2_1aff6b7aec6abfd30b0eef7b7854309ec6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllowConnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection212AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection216AllowConnectTypeE11LXtObjectID11LXtObjectIDj">
+<span id="_CPPv3N23ILxSchematicConnection216AllowConnectTypeE11LXtObjectID11LXtObjectIDj"></span><span id="_CPPv2N23ILxSchematicConnection216AllowConnectTypeE11LXtObjectID11LXtObjectIDj"></span><span id="ILxSchematicConnection2::AllowConnectType__LXtObjectID.LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_schematic_connection2_1a9a8076eef7f94a3f7573cae9308e627f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllowConnectType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, unsigned int <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection216AllowConnectTypeE11LXtObjectID11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection29GraphNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N23ILxSchematicConnection29GraphNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N23ILxSchematicConnection29GraphNameE11LXtObjectIDPPKc"></span><span id="ILxSchematicConnection2::GraphName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_schematic_connection2_1a693dedccbd74e8e460db73a5b4e75ae1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GraphName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection29GraphNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection25CountE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicConnection25CountE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicConnection25CountE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection2::Count__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection2_1ad677b7b963055f1c7cbe8b45172e941a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection25CountE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection27ByIndexE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N23ILxSchematicConnection27ByIndexE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N23ILxSchematicConnection27ByIndexE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxSchematicConnection2::ByIndex__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_schematic_connection2_1ab596a6373240f35f143509c46776eb81"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection27ByIndexE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection27ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N23ILxSchematicConnection27ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N23ILxSchematicConnection27ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="ILxSchematicConnection2::Connect__LXtObjectID.LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_schematic_connection2_1a60acae3fdc732fa70a32216773ef0462"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Connect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, int <em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection27ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection210DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection210DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection210DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicConnection2::Disconnect__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection2_1a1969cbcdc62ea825b758057378382a53"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Disconnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection210DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection29BaseFlagsE11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection29BaseFlagsE11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection29BaseFlagsE11LXtObjectID"></span><span id="ILxSchematicConnection2::BaseFlags__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection2_1ae9aff4fb743efbf9005bc95eab8a9bc3"></span>int <code class="sig-name descname">BaseFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection29BaseFlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection212PerItemFlagsE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicConnection212PerItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicConnection212PerItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection2::PerItemFlags__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection2_1a776aa5fb8d22b91208f7862c30425fb0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PerItemFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection212PerItemFlagsE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection214ItemFlagsValidE11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection214ItemFlagsValidE11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection214ItemFlagsValidE11LXtObjectID"></span><span id="ILxSchematicConnection2::ItemFlagsValid__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection2_1a6f665b9dac7561a646918b063e2b7a18"></span>int <code class="sig-name descname">ItemFlagsValid</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection214ItemFlagsValidE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxschematicconnection1">
+<h2><a class="toc-backref" href="#id3">ILxSchematicConnection1</a><a class="headerlink" href="#ilxschematicconnection1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxSchematicConnection1">
+<span id="_CPPv323ILxSchematicConnection1"></span><span id="_CPPv223ILxSchematicConnection1"></span><span id="ILxSchematicConnection1"></span><span class="target" id="class_i_lx_schematic_connection1"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicConnection1</code><a class="headerlink" href="#_CPPv423ILxSchematicConnection1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>// Old Schematic Connection Interface (&lt; MODOP) </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection19ItemFlagsE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicConnection19ItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicConnection19ItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection1::ItemFlags__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection1_1ac586ecfefc74dd3928585e1518e73cfb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection19ItemFlagsE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection112AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection112AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection112AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicConnection1::AllowConnect__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection1_1a02b381a5fd85f8f7de0b2e3448e91d6a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllowConnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection112AllowConnectE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection19GraphNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N23ILxSchematicConnection19GraphNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N23ILxSchematicConnection19GraphNameE11LXtObjectIDPPKc"></span><span id="ILxSchematicConnection1::GraphName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_schematic_connection1_1aaaa8744593b7d6c7cd91f35342fbf07c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GraphName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection19GraphNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection15CountE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicConnection15CountE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicConnection15CountE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection1::Count__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection1_1a020f5543436391e9cf461ccd097219f2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection15CountE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection17ByIndexE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N23ILxSchematicConnection17ByIndexE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N23ILxSchematicConnection17ByIndexE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxSchematicConnection1::ByIndex__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_schematic_connection1_1a48f42d1c470d34b5d75feac1d308e86c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection17ByIndexE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection17ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N23ILxSchematicConnection17ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N23ILxSchematicConnection17ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="ILxSchematicConnection1::Connect__LXtObjectID.LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_schematic_connection1_1a9c3ba544d15a06528642d68445c55871"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Connect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em>, int <em>toIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection17ConnectE11LXtObjectID11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection110DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection110DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection110DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicConnection1::Disconnect__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection1_1a5bf2018ec7ff4a77c1f4d9d49fc5d37e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Disconnect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>from</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection110DisconnectE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection19BaseFlagsE11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection19BaseFlagsE11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection19BaseFlagsE11LXtObjectID"></span><span id="ILxSchematicConnection1::BaseFlags__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection1_1a7a4341592f38cd2ba8cc4b2d421dc6c4"></span>int <code class="sig-name descname">BaseFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection19BaseFlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection112PerItemFlagsE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicConnection112PerItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicConnection112PerItemFlagsE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxSchematicConnection1::PerItemFlags__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_schematic_connection1_1a4b07be24c722886450f04a143256acc8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PerItemFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection112PerItemFlagsE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicConnection114ItemFlagsValidE11LXtObjectID">
+<span id="_CPPv3N23ILxSchematicConnection114ItemFlagsValidE11LXtObjectID"></span><span id="_CPPv2N23ILxSchematicConnection114ItemFlagsValidE11LXtObjectID"></span><span id="ILxSchematicConnection1::ItemFlagsValid__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_connection1_1a2840de04b3938c17fdaae1bdc4d65681"></span>int <code class="sig-name descname">ItemFlagsValid</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicConnection114ItemFlagsValidE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxschemadest">
+<h2><a class="toc-backref" href="#id4">ILxSchemaDest</a><a class="headerlink" href="#ilxschemadest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxSchemaDest">
+<span id="_CPPv313ILxSchemaDest"></span><span id="_CPPv213ILxSchemaDest"></span><span id="ILxSchemaDest"></span><span class="target" id="class_i_lx_schema_dest"></span><em class="property">class </em><code class="sig-name descname">ILxSchemaDest</code><a class="headerlink" href="#_CPPv413ILxSchemaDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ILxSchemaDrop interface is used when dropping items into a schematic view. This interface can be used to identify the group (assembly, workspace) into which the source was dropped, as well as the item, node, channel or graph that it may have been dropped on top of. In addition, this also suports the <a class="reference internal" href="lxd_item.html#class_i_lx_item"><span class="std std-ref">ILxItem</span></a>, <a class="reference internal" href="lxd_groupui.html#class_i_lx_group_dest"><span class="std std-ref">ILxGroupDest</span></a> &amp; <a class="reference internal" href="lxd_itemui.html#class_i_lx_channel_dest"><span class="std std-ref">ILxChannelDest</span></a> interfaces for alternate drop actions. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest8ViewTypeE11LXtObjectID">
+<span id="_CPPv3N13ILxSchemaDest8ViewTypeE11LXtObjectID"></span><span id="_CPPv2N13ILxSchemaDest8ViewTypeE11LXtObjectID"></span><span id="ILxSchemaDest::ViewType__LXtObjectID"></span><span class="target" id="class_i_lx_schema_dest_1a651632bee7ca1afe474e7065c82b05f9"></span>int <code class="sig-name descname">ViewType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest8ViewTypeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the type of scheamtic view </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest8PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N13ILxSchemaDest8PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N13ILxSchemaDest8PositionE11LXtObjectID9LXtVector"></span><span id="ILxSchemaDest::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_schema_dest_1a8cfd3a8b0d8b10b6ad92a6d67ddef7e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest8PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the mouse position in the schematic </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest5GroupE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSchemaDest5GroupE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSchemaDest5GroupE11LXtObjectIDPPv"></span><span id="ILxSchemaDest::Group__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schema_dest_1a66fd73c30bba782d58b6cfa29f57699b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Group</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest5GroupE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the Group (assembly, workspace) at the drop location. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest4ItemE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSchemaDest4ItemE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSchemaDest4ItemE11LXtObjectIDPPv"></span><span id="ILxSchemaDest::Item__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schema_dest_1ae59633a45203b5c7f2ee91c62d393d83"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest4ItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the item being dropped onto, it any. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest4NodeE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSchemaDest4NodeE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSchemaDest4NodeE11LXtObjectIDPPv"></span><span id="ILxSchemaDest::Node__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schema_dest_1ade875b456957950e80cafea05b22f3ac"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Node</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest4NodeE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the schematic node being dropped onto, it any. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest7ChannelE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSchemaDest7ChannelE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSchemaDest7ChannelE11LXtObjectIDPPv"></span><span id="ILxSchemaDest::Channel__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schema_dest_1a08b356d65e692a1daf30df82f293518c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Channel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest7ChannelE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the item channel being dropped onto, it any. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest5GraphE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSchemaDest5GraphE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSchemaDest5GraphE11LXtObjectIDPPv"></span><span id="ILxSchemaDest::Graph__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schema_dest_1aa6120bceb9ab9bfe8affa68df6e5636e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Graph</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest5GraphE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the item graph being dropped onto, it any. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest4LinkE11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxSchemaDest4LinkE11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxSchemaDest4LinkE11LXtObjectIDPPv"></span><span id="ILxSchemaDest::Link__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schema_dest_1a9bdf9afe1bdd86d3b2197c92ce6ee8a9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Link</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest4LinkE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to obtain the schematic link being dropped onto, it any. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest8GetGroupER11CLxLoc_Item">
+<span id="_CPPv3N13ILxSchemaDest8GetGroupER11CLxLoc_Item"></span><span id="_CPPv2N13ILxSchemaDest8GetGroupER11CLxLoc_Item"></span><span id="ILxSchemaDest::GetGroup__CLxLoc_ItemR"></span><span class="target" id="class_i_lx_schema_dest_1a36360be48da6c3986f374d353d637874"></span>bool <code class="sig-name descname">GetGroup</code><span class="sig-paren">(</span>CLxLoc_Item &amp;<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest8GetGroupER11CLxLoc_Item" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxSchemaDest7GetItemER11CLxLoc_Item">
+<span id="_CPPv3N13ILxSchemaDest7GetItemER11CLxLoc_Item"></span><span id="_CPPv2N13ILxSchemaDest7GetItemER11CLxLoc_Item"></span><span id="ILxSchemaDest::GetItem__CLxLoc_ItemR"></span><span class="target" id="class_i_lx_schema_dest_1ae8fa826657bbbb0f90c7a3a5b7d00097"></span>bool <code class="sig-name descname">GetItem</code><span class="sig-paren">(</span>CLxLoc_Item &amp;<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxSchemaDest7GetItemER11CLxLoc_Item" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxschematicgroup">
+<h2><a class="toc-backref" href="#id5">ILxSchematicGroup</a><a class="headerlink" href="#ilxschematicgroup" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxSchematicGroup">
+<span id="_CPPv317ILxSchematicGroup"></span><span id="_CPPv217ILxSchematicGroup"></span><span id="ILxSchematicGroup"></span><span class="target" id="class_i_lx_schematic_group"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicGroup</code><a class="headerlink" href="#_CPPv417ILxSchematicGroup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Group items can be queried for a schematic group interface. This interface provides information about the nodes it contains, and allows the properties of the schematic to be queried and manipulated. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup5GroupE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxSchematicGroup5GroupE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxSchematicGroup5GroupE11LXtObjectIDPPv"></span><span id="ILxSchematicGroup::Group__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_group_1ae33e819ecc8ce39bf47d5c30fae46f57"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Group</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup5GroupE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the group item associated with a schematic group interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup11IsWorkspaceE11LXtObjectID">
+<span id="_CPPv3N17ILxSchematicGroup11IsWorkspaceE11LXtObjectID"></span><span id="_CPPv2N17ILxSchematicGroup11IsWorkspaceE11LXtObjectID"></span><span id="ILxSchematicGroup::IsWorkspace__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_group_1ae30bfaeb425b44e3f69bee85aa535d08"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsWorkspace</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup11IsWorkspaceE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE or LXe_FALSE if the group is a workspace. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup7AddItemE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxSchematicGroup7AddItemE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxSchematicGroup7AddItemE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxSchematicGroup::AddItem__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_group_1a74c55557131b94d9c577db45c98f8500"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup7AddItemE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function adds an item to the schematic group. If successful, the node is returned indirectly as an <a class="reference internal" href="#class_i_lx_schematic_node"><span class="std std-ref">ILxSchematicNode</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup10RemoveItemE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxSchematicGroup10RemoveItemE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxSchematicGroup10RemoveItemE11LXtObjectID11LXtObjectID"></span><span id="ILxSchematicGroup::RemoveItem__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_schematic_group_1a20371310059e0df3f4316b8dc64283eb"></span>void <code class="sig-name descname">RemoveItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup10RemoveItemE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function removes an item from the schematic group. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup9NodeCountE11LXtObjectIDPj">
+<span id="_CPPv3N17ILxSchematicGroup9NodeCountE11LXtObjectIDPj"></span><span id="_CPPv2N17ILxSchematicGroup9NodeCountE11LXtObjectIDPj"></span><span id="ILxSchematicGroup::NodeCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_group_1ae771c4ef2687dac3efcb04ce6eb926a6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NodeCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup9NodeCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the number of schematic nodes in the workspace. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup11NodeByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N17ILxSchematicGroup11NodeByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N17ILxSchematicGroup11NodeByIndexE11LXtObjectIDjPPv"></span><span id="ILxSchematicGroup::NodeByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_schematic_group_1a5e1f47d5d34413005ecf67f85b1edffd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NodeByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup11NodeByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns a schematic node by index. The returned object is of the type <a class="reference internal" href="#class_i_lx_schematic_node"><span class="std std-ref">ILxSchematicNode</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup9InputNodeE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxSchematicGroup9InputNodeE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxSchematicGroup9InputNodeE11LXtObjectIDPPv"></span><span id="ILxSchematicGroup::InputNode__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_group_1a2ef1f298d17e5a1ded2c2204104dfe7d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InputNode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup9InputNodeE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns an assembly input node. The returned object is of the type <a class="reference internal" href="#class_i_lx_schematic_node"><span class="std std-ref">ILxSchematicNode</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup10OutputNodeE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxSchematicGroup10OutputNodeE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxSchematicGroup10OutputNodeE11LXtObjectIDPPv"></span><span id="ILxSchematicGroup::OutputNode__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_group_1aecb345f9d12bf651197573772c6444ba"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OutputNode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup10OutputNodeE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns an assembly output node. The returned object is of the type <a class="reference internal" href="#class_i_lx_schematic_node"><span class="std std-ref">ILxSchematicNode</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSchematicGroup6NNodesEv">
+<span id="_CPPv3N17ILxSchematicGroup6NNodesEv"></span><span id="_CPPv2N17ILxSchematicGroup6NNodesEv"></span><span id="ILxSchematicGroup::NNodes"></span><span class="target" id="class_i_lx_schematic_group_1abd1d9598da576906c3ba4bc862e7facc"></span>unsigned int <code class="sig-name descname">NNodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSchematicGroup6NNodesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxschematicnode">
+<h2><a class="toc-backref" href="#id6">ILxSchematicNode</a><a class="headerlink" href="#ilxschematicnode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxSchematicNode">
+<span id="_CPPv316ILxSchematicNode"></span><span id="_CPPv216ILxSchematicNode"></span><span id="ILxSchematicNode"></span><span class="target" id="class_i_lx_schematic_node"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicNode</code><a class="headerlink" href="#_CPPv416ILxSchematicNode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Schematic Groups contain nodes, these nodes represent items, and may have properties such as exposed channels, exposed graphs, input connections, output connections, as well as visual properties such as a size, position and thumbnail. This interface allows the properties of the node to be queried and manipulated. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode5GroupE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxSchematicNode5GroupE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxSchematicNode5GroupE11LXtObjectIDPPv"></span><span id="ILxSchematicNode::Group__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_node_1a588291ed428b6092656ab05c83fae3f4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Group</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode5GroupE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the group item that the node belongs to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode4ItemE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxSchematicNode4ItemE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxSchematicNode4ItemE11LXtObjectIDPPv"></span><span id="ILxSchematicNode::Item__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_node_1a3f1f26a196e4d1022f64d49f1635fbb3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode4ItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the item that the node represents. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode10AddChannelE11LXtObjectIDj">
+<span id="_CPPv3N16ILxSchematicNode10AddChannelE11LXtObjectIDj"></span><span id="_CPPv2N16ILxSchematicNode10AddChannelE11LXtObjectIDj"></span><span id="ILxSchematicNode::AddChannel__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_schematic_node_1ab6cec6b2d269f3fe12572f17b1592fb4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddChannel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode10AddChannelE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function adds a channel to a schematic node. The index provided should be the index of the channel on the item this node represents. If the channel already exists on another node, it will be moved. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode13RemoveChannelE11LXtObjectIDj">
+<span id="_CPPv3N16ILxSchematicNode13RemoveChannelE11LXtObjectIDj"></span><span id="_CPPv2N16ILxSchematicNode13RemoveChannelE11LXtObjectIDj"></span><span id="ILxSchematicNode::RemoveChannel__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_schematic_node_1a34c0ea85bc494325d781870f88ae9d5d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RemoveChannel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode13RemoveChannelE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Removes a channel from a schematic node. The index provided should be the index of the channel on the item this node represents. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode12ChannelCountE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxSchematicNode12ChannelCountE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxSchematicNode12ChannelCountE11LXtObjectIDPj"></span><span id="ILxSchematicNode::ChannelCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_1a86af0af72e8b55e7a996ed7cc07193a8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode12ChannelCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the number of channels on a schematic node item. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode14ChannelByIndexE11LXtObjectIDjjPPv">
+<span id="_CPPv3N16ILxSchematicNode14ChannelByIndexE11LXtObjectIDjjPPv"></span><span id="_CPPv2N16ILxSchematicNode14ChannelByIndexE11LXtObjectIDjjPPv"></span><span id="ILxSchematicNode::ChannelByIndex__LXtObjectID.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_schematic_node_1a4a528ae553dd2317409fce46ea14b13f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, unsigned int <em>type</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode14ChannelByIndexE11LXtObjectIDjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns a SchematicNodeChannel object representing a specific channel by index. The type argument should be one of the LXi_SCHMNODE values, and specifies whether the input connection or the output connection is requested. The function will return NOTAVAILABLE if no input or output connection is available for the requested channel. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode15ConnectionCountE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxSchematicNode15ConnectionCountE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxSchematicNode15ConnectionCountE11LXtObjectIDPj"></span><span id="ILxSchematicNode::ConnectionCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_1a15e97d6755530b2ab021c347a7a25e32"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ConnectionCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode15ConnectionCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the number of item connections that are exposed on a schematic node. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode17ConnectionByIndexE11LXtObjectIDjjPPv">
+<span id="_CPPv3N16ILxSchematicNode17ConnectionByIndexE11LXtObjectIDjjPPv"></span><span id="_CPPv2N16ILxSchematicNode17ConnectionByIndexE11LXtObjectIDjjPPv"></span><span id="ILxSchematicNode::ConnectionByIndex__LXtObjectID.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_schematic_node_1afa6d8ef6c097ca2324e8354e3c096a2b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ConnectionByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, unsigned int <em>type</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode17ConnectionByIndexE11LXtObjectIDjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns a SchematicNodeConnection object representing a specific item connection by index. The type argument should be one of the LXi_SCHMNODE values, and specifies whether the input connection or the output connection is requested. The function will return NOTAVAILABLE if no input or output connection is available. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode6IsRootE11LXtObjectID">
+<span id="_CPPv3N16ILxSchematicNode6IsRootE11LXtObjectID"></span><span id="_CPPv2N16ILxSchematicNode6IsRootE11LXtObjectID"></span><span id="ILxSchematicNode::IsRoot__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_node_1ad961d69c6a271f712561579268a8b032"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsRoot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode6IsRootE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A single “root” node that is presented to the user may be constructed from multiple sub-nodes, each representing different item types. For example, a locator item can have any number of associated transform items, but these may be presented to the user as a single node. This function returns LXe_TRUE if the node is a root node, otherwise it returns LXe_FALSE. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode8RootNodeE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxSchematicNode8RootNodeE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxSchematicNode8RootNodeE11LXtObjectIDPPv"></span><span id="ILxSchematicNode::RootNode__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_node_1a13f79f1a54811763b3e203c438518fca"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RootNode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode8RootNodeE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given any sub-node, this function returns the root node. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode12SubNodeCountE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxSchematicNode12SubNodeCountE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxSchematicNode12SubNodeCountE11LXtObjectIDPj"></span><span id="ILxSchematicNode::SubNodeCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_1a8f6b540562310d411129e5e740e5a1b2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubNodeCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode12SubNodeCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given any node, this function returns the number of associated sub-nodes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode14SubNodeByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N16ILxSchematicNode14SubNodeByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N16ILxSchematicNode14SubNodeByIndexE11LXtObjectIDjPPv"></span><span id="ILxSchematicNode::SubNodeByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_schematic_node_1a2293984c13725c313459843d53859252"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubNodeByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode14SubNodeByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given any node, this function allows the sub-nodes to be accessed by index. The returned object is of the type <a class="reference internal" href="#class_i_lx_schematic_node"><span class="std std-ref">ILxSchematicNode</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode8PositionE11LXtObjectIDPdPd">
+<span id="_CPPv3N16ILxSchematicNode8PositionE11LXtObjectIDPdPd"></span><span id="_CPPv2N16ILxSchematicNode8PositionE11LXtObjectIDPdPd"></span><span id="ILxSchematicNode::Position__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_schematic_node_1ad1dd50f83de224b7465de1ce259448b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>x</em>, double *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode8PositionE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the position of the schematic node. If this schematic node is a sub-node, the function will fail. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode11SetPositionE11LXtObjectIDdd">
+<span id="_CPPv3N16ILxSchematicNode11SetPositionE11LXtObjectIDdd"></span><span id="_CPPv2N16ILxSchematicNode11SetPositionE11LXtObjectIDdd"></span><span id="ILxSchematicNode::SetPosition__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_schematic_node_1ad8236af668c8b9390d05790d06aef31e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPosition</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode11SetPositionE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function allows the position of the schematic node to be set. If this schematic node is a sub-node, the function will fail. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode4SizeE11LXtObjectIDPdPd">
+<span id="_CPPv3N16ILxSchematicNode4SizeE11LXtObjectIDPdPd"></span><span id="_CPPv2N16ILxSchematicNode4SizeE11LXtObjectIDPdPd"></span><span id="ILxSchematicNode::Size__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_schematic_node_1aa2b7a185259391691c968378a775f38f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>width</em>, double *<em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode4SizeE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the size of the schematic node. This function will return the size of this specific node only, not including any sub-nodes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode12AbsoluteSizeE11LXtObjectIDPdPd">
+<span id="_CPPv3N16ILxSchematicNode12AbsoluteSizeE11LXtObjectIDPdPd"></span><span id="_CPPv2N16ILxSchematicNode12AbsoluteSizeE11LXtObjectIDPdPd"></span><span id="ILxSchematicNode::AbsoluteSize__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_schematic_node_1a266ec458f911edba898193eb26355fe5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AbsoluteSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>width</em>, double *<em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode12AbsoluteSizeE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the size of a root schematic node. If this schematic node is a sub-node, the function will fail. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode8ExpandedE11LXtObjectID">
+<span id="_CPPv3N16ILxSchematicNode8ExpandedE11LXtObjectID"></span><span id="_CPPv2N16ILxSchematicNode8ExpandedE11LXtObjectID"></span><span id="ILxSchematicNode::Expanded__LXtObjectID"></span><span class="target" id="class_i_lx_schematic_node_1ab335e7b5bcfccd8d7a52a9250d81d7ea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Expanded</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode8ExpandedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns LXe_TRUE or LXe_FALSE if the node is expanded to show connections. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxSchematicNode9NSubNodesEv">
+<span id="_CPPv3N16ILxSchematicNode9NSubNodesEv"></span><span id="_CPPv2N16ILxSchematicNode9NSubNodesEv"></span><span id="ILxSchematicNode::NSubNodes"></span><span class="target" id="class_i_lx_schematic_node_1ad22228d3277c36697f85af6d8e1e1e83"></span>unsigned int <code class="sig-name descname">NSubNodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxSchematicNode9NSubNodesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_SCHMNODE_INPUT</p></li>
+<li><p>LXi_SCHMNODE_OUTPUT</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXf_SCHMNODECONN_INPUT">
+<span class="target" id="lxd__schematic_8hpp_1acc17108d7364cef05fc95a77aac0beba"></span><code class="sig-name descname">LXf_SCHMNODECONN_INPUT</code><a class="headerlink" href="#c.LXf_SCHMNODECONN_INPUT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The flags method returns flags that represent the state of the schematic connection. It will be a bit mask containing some of the following.<ul class="simple">
+<li><p>INPUT The connection is an input connection and allows incoming connections from items.</p></li>
+<li><p>OUTPUT The connection is an output connection and allows outgoing connections to items.</p></li>
+<li><p>MULTIPLE The connection allows multiple items to be connected.</p></li>
+<li><p>ORDERED The connection allows multiple items to be connected in a specific order. The MULTIPLE flag will always be set is ORDERED is set.</p></li>
+<li><p>EXPANDED If the connection supports multiple ordered connections, the connection is expanded to display the multiple connections and allow them to be reordered. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXf_SCHMNODECONN_OUTPUT</p></li>
+<li><p>LXf_SCHMNODECONN_MULTIPLE</p></li>
+<li><p>LXf_SCHMNODECONN_ORDERED</p></li>
+<li><p>LXf_SCHMNODECONN_EXPANDED</p></li>
+</ul>
+</div>
+<div class="section" id="ilxschematicnodeconnection">
+<h2><a class="toc-backref" href="#id7">ILxSchematicNodeConnection</a><a class="headerlink" href="#ilxschematicnodeconnection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv426ILxSchematicNodeConnection">
+<span id="_CPPv326ILxSchematicNodeConnection"></span><span id="_CPPv226ILxSchematicNodeConnection"></span><span id="ILxSchematicNodeConnection"></span><span class="target" id="class_i_lx_schematic_node_connection"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicNodeConnection</code><a class="headerlink" href="#_CPPv426ILxSchematicNodeConnection" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Schematic Nodes connect to each other using links. These links can either represent item to item connections or channel to channel connections. The SchematicNodeConnection interface allows item connections to be walked from one node to another. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N26ILxSchematicNodeConnection5FlagsE11LXtObjectIDPj">
+<span id="_CPPv3N26ILxSchematicNodeConnection5FlagsE11LXtObjectIDPj"></span><span id="_CPPv2N26ILxSchematicNodeConnection5FlagsE11LXtObjectIDPj"></span><span id="ILxSchematicNodeConnection::Flags__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_connection_1a3051e2efec9d4f437f952a0200242928"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSchematicNodeConnection5FlagsE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSchematicNodeConnection4NodeE11LXtObjectIDPPv">
+<span id="_CPPv3N26ILxSchematicNodeConnection4NodeE11LXtObjectIDPPv"></span><span id="_CPPv2N26ILxSchematicNodeConnection4NodeE11LXtObjectIDPPv"></span><span id="ILxSchematicNodeConnection::Node__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_node_connection_1a915810360e5632b3d0a1e44792c69c9b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Node</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSchematicNodeConnection4NodeE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the schematic node that this schematic node connection belongs to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSchematicNodeConnection5CountE11LXtObjectIDPj">
+<span id="_CPPv3N26ILxSchematicNodeConnection5CountE11LXtObjectIDPj"></span><span id="_CPPv2N26ILxSchematicNodeConnection5CountE11LXtObjectIDPj"></span><span id="ILxSchematicNodeConnection::Count__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_connection_1a6d38869d283f51ecd676bc69db576007"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSchematicNodeConnection5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Count function will return the number of items connected to the schematic connection. Currently, only input connections can be enumerated. Attempts to enumerate over output connections will return NOTAVAILABLE. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSchematicNodeConnection7ByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N26ILxSchematicNodeConnection7ByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N26ILxSchematicNodeConnection7ByIndexE11LXtObjectIDjPPv"></span><span id="ILxSchematicNodeConnection::ByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_schematic_node_connection_1a938234d5bbeec814fe705236900a6b53"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSchematicNodeConnection7ByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ByIndex function will return the SchematicNodeConnection on another item, that this schematic node connection is connected to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N26ILxSchematicNodeConnection8PositionE11LXtObjectIDjPdPd">
+<span id="_CPPv3N26ILxSchematicNodeConnection8PositionE11LXtObjectIDjPdPd"></span><span id="_CPPv2N26ILxSchematicNodeConnection8PositionE11LXtObjectIDjPdPd"></span><span id="ILxSchematicNodeConnection::Position__LXtObjectID.unsigned-i.doubleP.doubleP"></span><span class="target" id="class_i_lx_schematic_node_connection_1a0bb5dae8e6646a0fa99c48ca6275433d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, double *<em>x</em>, double *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N26ILxSchematicNodeConnection8PositionE11LXtObjectIDjPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The position function will return the absolute position of the schematic connection in the workspace. If the graph supports multiple connections, the position of a specific connection by index can be requested. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXf_SCHMNODECHAN_INPUT">
+<span class="target" id="lxd__schematic_8hpp_1a50d071cd4c22c2381719b80dc2d5c1cb"></span><code class="sig-name descname">LXf_SCHMNODECHAN_INPUT</code><a class="headerlink" href="#c.LXf_SCHMNODECHAN_INPUT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The flags method returns flags that represent the state of the schematic channel connection. It will be a bit mask containing some of the following.<ul class="simple">
+<li><p>INPUT The connection is an input connection and allows incoming connections from channels.</p></li>
+<li><p>OUTPUT The connection is an output connection and allows outgoing connections to channels.</p></li>
+<li><p>MULTIPLE The connection allows multiple channels to be connected. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXf_SCHMNODECHAN_OUTPUT</p></li>
+<li><p>LXf_SCHMNODECHAN_MULTIPLE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxschematicnodechannel">
+<h2><a class="toc-backref" href="#id8">ILxSchematicNodeChannel</a><a class="headerlink" href="#ilxschematicnodechannel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxSchematicNodeChannel">
+<span id="_CPPv323ILxSchematicNodeChannel"></span><span id="_CPPv223ILxSchematicNodeChannel"></span><span id="ILxSchematicNodeChannel"></span><span class="target" id="class_i_lx_schematic_node_channel"></span><em class="property">class </em><code class="sig-name descname">ILxSchematicNodeChannel</code><a class="headerlink" href="#_CPPv423ILxSchematicNodeChannel" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Schematic Nodes connect to each other using links. These links can either represent item to item connections or channel to channel connections. The SchematicNodeChannel interface allows channel connections to be walked from one node to another. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicNodeChannel5FlagsE11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicNodeChannel5FlagsE11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicNodeChannel5FlagsE11LXtObjectIDPj"></span><span id="ILxSchematicNodeChannel::Flags__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_channel_1ad4a17c03421f5aeef3959a1f672f3007"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicNodeChannel5FlagsE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicNodeChannel4NodeE11LXtObjectIDPPv">
+<span id="_CPPv3N23ILxSchematicNodeChannel4NodeE11LXtObjectIDPPv"></span><span id="_CPPv2N23ILxSchematicNodeChannel4NodeE11LXtObjectIDPPv"></span><span id="ILxSchematicNodeChannel::Node__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_schematic_node_channel_1a984717ee76a34bf413b1ec0b2c94f5db"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Node</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicNodeChannel4NodeE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the schematic node that this schematic node channel belongs to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicNodeChannel5IndexE11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicNodeChannel5IndexE11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicNodeChannel5IndexE11LXtObjectIDPj"></span><span id="ILxSchematicNodeChannel::Index__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_channel_1aa968b2009d27027cdf250666da27171a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Index</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicNodeChannel5IndexE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the channel index for this schematic node channel. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicNodeChannel5CountE11LXtObjectIDPj">
+<span id="_CPPv3N23ILxSchematicNodeChannel5CountE11LXtObjectIDPj"></span><span id="_CPPv2N23ILxSchematicNodeChannel5CountE11LXtObjectIDPj"></span><span id="ILxSchematicNodeChannel::Count__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_schematic_node_channel_1a3c47c6f80a07c2f25552adcad3b2a996"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicNodeChannel5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Count function will return the number of channels connected to the schematic connection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicNodeChannel7ByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N23ILxSchematicNodeChannel7ByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N23ILxSchematicNodeChannel7ByIndexE11LXtObjectIDjPPv"></span><span id="ILxSchematicNodeChannel::ByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_schematic_node_channel_1af125c46c127d9113db9165198a0d3690"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicNodeChannel7ByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ByIndex function will return the SchematicNodeChannel on another item, that this schematic node channel is connected to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxSchematicNodeChannel8PositionE11LXtObjectIDPdPd">
+<span id="_CPPv3N23ILxSchematicNodeChannel8PositionE11LXtObjectIDPdPd"></span><span id="_CPPv2N23ILxSchematicNodeChannel8PositionE11LXtObjectIDPdPd"></span><span id="ILxSchematicNodeChannel::Position__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_schematic_node_channel_1aa967af7591b8244945dba74b45d36dd2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>x</em>, double *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxSchematicNodeChannel8PositionE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The position function will return the absolute position of the schematic connection in the workspace. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_scripts.html" class="btn btn-neutral float-right" title="Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_rndjob.html" class="btn btn-neutral float-left" title="Rndjob" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_schematic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

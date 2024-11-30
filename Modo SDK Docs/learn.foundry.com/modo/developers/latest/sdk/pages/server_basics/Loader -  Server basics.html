@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Loader -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Loader: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Movie: Server basics" href="Movie%20-%20%20Server%20basics.html" />
+    <link rel="prev" title="CustomMaterial: Server basics" href="CustomMaterial%20-%20%20Server%20basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Loader: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#loader-recognize">Loader::Recognize()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loader-loadobject">Loader::LoadObject()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loader-cleanup">Loader::Cleanup()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-classes">Helper Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>Loader: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="loader-server-basics">
+<h1>Loader: Server basics<a class="headerlink" href="#loader-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id2">Headers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#loader-recognize" id="id3">Loader::Recognize()</a></p></li>
+<li><p><a class="reference internal" href="#loader-loadobject" id="id4">Loader::LoadObject()</a></p></li>
+<li><p><a class="reference internal" href="#loader-cleanup" id="id5">Loader::Cleanup()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#helper-classes" id="id6">Helper Classes</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id7">See also</a></p></li>
+</ul>
+</div>
+<p>A <strong>Loader</strong> is a plug-in server that can recognize external file formats and read as nexus objects. Typically the objects are of <em>image</em> and <em>scene</em> types. Image loading can be done direct or opaque.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>When the modo user selects a file to load, the system searches for loaders that can support the desired object type, like image. The <em>Recognize()</em> method is called for all those loaders and the first one that succeeds loads the file using one of the <em>Load*()</em> methods. The <em>Cleanup()</em> method is called after the loader is tried or used to revert to a pristine state. Loaders can also present option dialogs after recognize and before the load.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id2">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’io (lx-io.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_Loader’’</p></li>
+<li><p>‘’CLxUser_Monitor’’</p></li>
+<li><p>‘’LXtLoadAccess’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’image (lx-image.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_WriteImage’’</p></li>
+<li><p>‘’LXtImageTarget’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>LXsLOD_CLASSLIST</strong> – whitespace separated list of class GUIDs or aliases for the object types that can be loaded (e.g. LXa_IMAGE)</dt><dd><ul>
+<li><p><strong>LXsLOD_DOSPATTERN</strong> – DOS-style filename pattern for recognized filenames (e.g. “<em>.jpg;</em>.jpeg;*.jp2”)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The plug-in server class derives from CLxImpl_Loader, and exports the ILxLoader interface.</p>
+<div class="section" id="loader-recognize">
+<h3><a class="toc-backref" href="#id3">Loader::Recognize()</a><a class="headerlink" href="#loader-recognize" title="Permalink to this headline">¶</a></h3>
+<p>The Recognize() method is called with a LXtLoadAccess structure, containing the filename to read. If the format is recognized then the method returns OK after setting some data fields in the load struct. The <em>found</em> field is the GUID of the object type found, in this example an image. The <em>target</em> pointer is set to a persistent object that depends on the found object. In this case it’s an LXtImageTarget struct which will hold the pixel type and dimension.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LXiImageTarget</span>         <span class="n">img_target</span><span class="p">;</span>
+         <span class="o">...</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         LxResult
+ load_Recognize (
+         LXtLoadAccess         *load)     LXx_OVERRIDE
+ {
+         if (!open_data_file (load-&gt;filename))
+                 return LXe_FAILED;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         if (!data_header_is_ok ())
+                 return LXe_NOTFOUND;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">img_target</span><span class="o">.</span><span class="n">type</span>   <span class="o">=</span> <span class="n">LXiIMP_RGB24</span><span class="p">;</span>
+         <span class="n">img_target</span><span class="o">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">width_from_header</span> <span class="p">();</span>
+         <span class="n">img_target</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height_from_header</span> <span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">load</span><span class="o">-&gt;</span><span class="n">found</span>  <span class="o">=</span> <span class="n">lx</span><span class="p">::</span><span class="n">LookupGUID</span> <span class="p">(</span><span class="n">LXa_IMAGE</span><span class="p">);</span>
+         <span class="n">load</span><span class="o">-&gt;</span><span class="n">target</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">img_target</span><span class="p">;</span>
+         <span class="n">load</span><span class="o">-&gt;</span><span class="n">opaque</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="loader-loadobject">
+<h3><a class="toc-backref" href="#id4">Loader::LoadObject()</a><a class="headerlink" href="#loader-loadobject" title="Permalink to this headline">¶</a></h3>
+<p>Scene loads and normal image loads are done directly, which means that nexus creates the destination object and passes it to the loader to be filled in. This is why the image recognize method has to return the image dimensions, so a suitable destination can be allocated. Normally the load method is called directly after recognize, so the file can be assumed to still be open. In some cases – such as when using loader options – the load method may be called more directly so the file has to be open.</p>
+<p>The rest of the code shows reading source pixels and writing them to a destination image. There are faster ways to access images as well. This also shows using a Monitor Interface to provide user feedback on how long it will take. The Step() method can return LXe_ABORT if the user changes their mind.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">load_LoadObject</span> <span class="p">(</span>
+         <span class="n">LXtLoadAccess</span>         <span class="o">*</span><span class="n">load</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">destination</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_ImageWrite</span>      <span class="n">dst</span> <span class="p">(</span><span class="n">destination</span><span class="p">);</span>
+         <span class="n">CLxUser_Monitor</span>         <span class="n">mon</span> <span class="p">(</span><span class="n">load</span><span class="o">-&gt;</span><span class="n">monitor</span><span class="p">);</span>
+         <span class="n">LxResult</span>                <span class="n">rc</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         if (!open_data_file_if_not_open_already (load-&gt;filename))
+                 return LXe_FAILED;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">mon</span><span class="o">.</span><span class="n">Init</span> <span class="p">(</span><span class="n">img_target</span><span class="o">.</span><span class="n">height</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         for (unsigned y = 0; y &lt; img_target.height; y++) {
+                 for (unsigned x = 0; x &lt; img_target.width; x++) {
+                         if (!read_pixel_value ())
+                                 return LXe_IO_ERROR;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                         <span class="n">rc</span> <span class="o">=</span> <span class="n">dst</span><span class="o">.</span><span class="n">SetPixel</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">LXiIMP_RGB24</span><span class="p">,</span> <span class="n">pixel_value</span> <span class="p">());</span>
+                         <span class="k">if</span> <span class="p">(</span><span class="n">LXx_FAIL</span> <span class="p">(</span><span class="n">rc</span><span class="p">))</span>
+                                 <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+                 <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                 <span class="n">rc</span> <span class="o">=</span> <span class="n">mon</span><span class="o">.</span><span class="n">Step</span> <span class="p">();</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">LXx_FAIL</span> <span class="p">(</span><span class="n">rc</span><span class="p">))</span>
+                         <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+         <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="loader-cleanup">
+<h3><a class="toc-backref" href="#id5">Loader::Cleanup()</a><a class="headerlink" href="#loader-cleanup" title="Permalink to this headline">¶</a></h3>
+<p>Cleanup() is called after a recognize/load cycle completes, and allows the loader to reset its state for another attempt to load a file. The possible call sequences are:</p>
+<p># File not recognized:
+#* Recognize() – returns failure
+#* Cleanup()
+# File loaded right away:
+#* Recognize() – returns success
+#* LoadObject()
+#* Cleanup()
+# File loaded after options:
+#* Recognize() – returns success
+#* Cleanup()
+#* LoadObject()
+#* Cleanup()</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">load_Cleanup</span> <span class="p">(</span>
+         <span class="n">LXtLoadAccess</span>         <span class="o">*</span><span class="n">load</span><span class="p">)</span>     <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">close_file_if_open</span> <span class="p">();</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="helper-classes">
+<h2><a class="toc-backref" href="#id6">Helper Classes</a><a class="headerlink" href="#helper-classes" title="Permalink to this headline">¶</a></h2>
+<p>The <em>CLxSceneLoader</em> class can be used to write scene loaders. See scene (lxu-scene.hpp).</p>
+</div>
+<div class="section" id="see-also">
+<h2><a class="toc-backref" href="#id7">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>About Opaque Loading</p></li>
+<li><p><a class="reference internal" href="../tutorials/Using%20Loader%20Options.html"><span class="doc">Using Loader Options</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Movie%20-%20%20Server%20basics.html" class="btn btn-neutral float-right" title="Movie: Server basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CustomMaterial%20-%20%20Server%20basics.html" class="btn btn-neutral float-left" title="CustomMaterial: Server basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Loader -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

@@ -1,0 +1,1501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_image.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Image &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Imagemon" href="lxd_imagemon.html" />
+    <link rel="prev" title="Handles" href="lxd_handles.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilximage">ILxImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagesegment">ILxImageSegment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagewrite">ILxImageWrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxindeximage">ILxIndexImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxindeximagewrite">ILxIndexImageWrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlayeredimage">ILxLayeredImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlayeredimagewrite">ILxLayeredImageWrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtileimage">ILxTileImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximageloadertarget1">ILxImageLoaderTarget1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtimagetarget1">LXtImageTarget1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximageloadertarget">ILxImageLoaderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagelevelsample">ILxImageLevelSample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtimagesample">LXtImageSample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximageservice">ILxImageService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximageblockcodec">ILxImageBlockCodec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagefilter">ILxImageFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagefiltersample">ILxImageFilterSample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtimagemetrics">LXtImageMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagefiltermetrics">ILxImageFilterMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtimagemetrics1">LXtImageMetrics1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilximagefiltermetrics1">ILxImageFilterMetrics1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmovie">ILxMovie</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Image</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="image">
+<h1>Image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilximage" id="id1">ILxImage</a></p></li>
+<li><p><a class="reference internal" href="#ilximagesegment" id="id2">ILxImageSegment</a></p></li>
+<li><p><a class="reference internal" href="#ilximagewrite" id="id3">ILxImageWrite</a></p></li>
+<li><p><a class="reference internal" href="#ilxindeximage" id="id4">ILxIndexImage</a></p></li>
+<li><p><a class="reference internal" href="#ilxindeximagewrite" id="id5">ILxIndexImageWrite</a></p></li>
+<li><p><a class="reference internal" href="#ilxlayeredimage" id="id6">ILxLayeredImage</a></p></li>
+<li><p><a class="reference internal" href="#ilxlayeredimagewrite" id="id7">ILxLayeredImageWrite</a></p></li>
+<li><p><a class="reference internal" href="#ilxtileimage" id="id8">ILxTileImage</a></p></li>
+<li><p><a class="reference internal" href="#ilximageloadertarget1" id="id9">ILxImageLoaderTarget1</a></p></li>
+<li><p><a class="reference internal" href="#lxtimagetarget1" id="id10">LXtImageTarget1</a></p></li>
+<li><p><a class="reference internal" href="#ilximageloadertarget" id="id11">ILxImageLoaderTarget</a></p></li>
+<li><p><a class="reference internal" href="#ilximagelevelsample" id="id12">ILxImageLevelSample</a></p></li>
+<li><p><a class="reference internal" href="#lxtimagesample" id="id13">LXtImageSample</a></p></li>
+<li><p><a class="reference internal" href="#ilximageservice" id="id14">ILxImageService</a></p></li>
+<li><p><a class="reference internal" href="#ilximageblockcodec" id="id15">ILxImageBlockCodec</a></p></li>
+<li><p><a class="reference internal" href="#ilximagefilter" id="id16">ILxImageFilter</a></p></li>
+<li><p><a class="reference internal" href="#ilximagefiltersample" id="id17">ILxImageFilterSample</a></p></li>
+<li><p><a class="reference internal" href="#lxtimagemetrics" id="id18">LXtImageMetrics</a></p></li>
+<li><p><a class="reference internal" href="#ilximagefiltermetrics" id="id19">ILxImageFilterMetrics</a></p></li>
+<li><p><a class="reference internal" href="#lxtimagemetrics1" id="id20">LXtImageMetrics1</a></p></li>
+<li><p><a class="reference internal" href="#ilximagefiltermetrics1" id="id21">ILxImageFilterMetrics1</a></p></li>
+<li><p><a class="reference internal" href="#ilxmovie" id="id22">ILxMovie</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiIMD_BYTE">
+<span class="target" id="lxd__image_8hpp_1aab364d0cb87053d799f1b92d1cbea0cd"></span><code class="sig-name descname">LXiIMD_BYTE</code><a class="headerlink" href="#c.LXiIMD_BYTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Images are defined by their pixel format which consists of a datatype and vector size. There are two data types. The BYTE type is an 8 bit integer in the range is 0 to 255. The FLOAT type is a 32-bit floating point number in the nominal range of 0.0 to 1.0. Operations on integer pixel values are clamped so the results are always in the valid range. Floating point colors are not clamped, so the images can represent superbright and superdark pixels. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiIMD_FLOAT</p></li>
+<li><p>LXfIMD_MASK</p></li>
+<li><p>LXxIMD_TYPE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiIMV_GREY">
+<span class="target" id="lxd__image_8hpp_1a3d0dc4a2d22da1b237f3dddfa8f672d8"></span><code class="sig-name descname">LXiIMV_GREY</code><a class="headerlink" href="#c.LXiIMV_GREY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The vector sizes are GREY which is one monochrome component; RGB which is a vector of three color components; or RGBA which is a vector of three color components and alpha. The alpha channel is represented by 0 for transparent, 255 for opaque if in byte format, and 1.0 for opaque if floating point format. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiIMV_RGB</p></li>
+<li><p>LXiIMV_RGBA</p></li>
+<li><p>LXfIMV_MASK</p></li>
+<li><p>LXxIMV_TYPE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiIMT_INDEX">
+<span class="target" id="lxd__image_8hpp_1a5183fe928e8bd5c01c9ac9940cd13ada"></span><code class="sig-name descname">LXiIMT_INDEX</code><a class="headerlink" href="#c.LXiIMT_INDEX" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Index images use the index flag. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiIMT_MASK</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiIMP_GREY8">
+<span class="target" id="lxd__image_8hpp_1a58f6fe3c80e5d5c92cbafb68e7ae33c4"></span><code class="sig-name descname">LXiIMP_GREY8</code><a class="headerlink" href="#c.LXiIMP_GREY8" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Image pixel types are just the mask values combined together. Here are all six of the possible combinations in more convenient form. The color bits of an index mask can be acquired separately as well. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiIMP_GREYFP</p></li>
+<li><p>LXiIMP_RGB24</p></li>
+<li><p>LXiIMP_RGBFP</p></li>
+<li><p>LXiIMP_RGBA32</p></li>
+<li><p>LXiIMP_RGBAFP</p></li>
+<li><p>LXiIMP_IGREY8</p></li>
+<li><p>LXiIMP_IRGB24</p></li>
+<li><p>LXiIMP_IRGBA32</p></li>
+<li><p>LXi_IMP_ISGREY</p></li>
+<li><p>LXiPROCESS_FAST</p></li>
+<li><p>LXiPROCESS_MEDIUM</p></li>
+<li><p>LXiPROCESS_ACCURATE</p></li>
+</ul>
+<dl class="type">
+<dt id="_CPPv414LXtPixelFormat">
+<span id="_CPPv314LXtPixelFormat"></span><span id="_CPPv214LXtPixelFormat"></span><span id="LXtPixelFormat"></span><span class="target" id="lxd__image_8hpp_1a91ac35912a71c663fa97dba0c78677d4"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtPixelFormat</code><a class="headerlink" href="#_CPPv414LXtPixelFormat" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv414LXtProcessHint">
+<span id="_CPPv314LXtProcessHint"></span><span id="_CPPv214LXtProcessHint"></span><span id="LXtProcessHint"></span><span class="target" id="lxd__image_8hpp_1a6a92ad18e378331b23b1e633a2e98ebd"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtProcessHint</code><a class="headerlink" href="#_CPPv414LXtProcessHint" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv412LXtImageByte">
+<span id="_CPPv312LXtImageByte"></span><span id="_CPPv212LXtImageByte"></span><span id="LXtImageByte"></span><span class="target" id="lxd__image_8hpp_1a336e4501f10beee1146426a8f6817250"></span><em class="property">typedef </em>unsigned char <code class="sig-name descname">LXtImageByte</code><a class="headerlink" href="#_CPPv412LXtImageByte" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv413LXtImageFloat">
+<span id="_CPPv313LXtImageFloat"></span><span id="_CPPv213LXtImageFloat"></span><span id="LXtImageFloat"></span><span class="target" id="lxd__image_8hpp_1a0b33b92706fd3cd9dc94987879731e11"></span><em class="property">typedef </em>float <code class="sig-name descname">LXtImageFloat</code><a class="headerlink" href="#_CPPv413LXtImageFloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="type">
+<dt id="_CPPv413LXtImageIndex">
+<span id="_CPPv313LXtImageIndex"></span><span id="_CPPv213LXtImageIndex"></span><span id="LXtImageIndex"></span><span class="target" id="lxd__image_8hpp_1a34eef1afcad193c6bdc4c70d35f42f91"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtImageIndex</code><a class="headerlink" href="#_CPPv413LXtImageIndex" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiIMC_RED">
+<span class="target" id="lxd__image_8hpp_1a93aea6ff0785b1de817f1fe2897c9f30"></span><code class="sig-name descname">LXiIMC_RED</code><a class="headerlink" href="#c.LXiIMC_RED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Color components in stored in vector type pixels are always in RGBA order. Use these indices to access components in a more abstract way. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiIMC_GREEN</p></li>
+<li><p>LXiIMC_BLUE</p></li>
+<li><p>LXiIMC_ALPHA</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsIATTRNAME_CAM_TRANS">
+<span class="target" id="lxd__image_8hpp_1a5e489f13b594e95aa78cfd1db0ce545e"></span><code class="sig-name descname">LXsIATTRNAME_CAM_TRANS</code><a class="headerlink" href="#c.LXsIATTRNAME_CAM_TRANS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Some name and types are defined for common attributes that are read or set by the application.<ul class="simple">
+<li><p>DPI Dots per Inch, which is the number of pixels in the image that will fit vertically in each inch of the printed image. To know the horizontal DPI you have to take pixel aspect into account.</p></li>
+<li><p>PIXASPECT This is the aspect ratio of a single pixel in the image, computed as width/height. If the pixel height is one, then the pixel width is the same as the pixel aspect.</p></li>
+<li><p>REGX0, REGX1, REGY0, REGY1 Pixel coordinates of the borders of the rendered region of the image. X and Y start at zero at the left and top of the image.</p></li>
+<li><p>GAMMA Gamma is an exponent applied to unity-normalized color values in the image before saving. To get the “real” values for pixels in the image, the inverse gamma needs to be applied.</p></li>
+<li><p>COMMENT Everyone’s got something to say, right? </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsIATTRTYPE_CAM_TRANS</p></li>
+<li><p>LXsIATTRNAME_WORLD_TO_CAM</p></li>
+<li><p>LXsIATTRTYPE_WORLD_TO_CAM</p></li>
+<li><p>LXsIATTRNAME_ISO</p></li>
+<li><p>LXsIATTRTYPE_ISO</p></li>
+<li><p>LXsIATTRNAME_EXPTIME</p></li>
+<li><p>LXsIATTRTYPE_EXPTIME</p></li>
+<li><p>LXsIATTRNAME_DPI</p></li>
+<li><p>LXsIATTRTYPE_DPI</p></li>
+<li><p>LXsIATTRNAME_APERATUREX</p></li>
+<li><p>LXsIATTRTYPE_APERATUREX</p></li>
+<li><p>LXsIATTRNAME_APERATUREY</p></li>
+<li><p>LXsIATTRTYPE_APERATUREY</p></li>
+<li><p>LXsIATTRNAME_CLIP_DIST</p></li>
+<li><p>LXsIATTRTYPE_CLIP_DIST</p></li>
+<li><p>LXsIATTRNAME_FOC_LENGTH</p></li>
+<li><p>LXsIATTRTYPE_FOC_LENGTH</p></li>
+<li><p>LXsIATTRNAME_PIXASPECT</p></li>
+<li><p>LXsIATTRTYPE_PIXASPECT</p></li>
+<li><p>LXsIATTRNAME_REGX0</p></li>
+<li><p>LXsIATTRTYPE_REGX0</p></li>
+<li><p>LXsIATTRNAME_REGX1</p></li>
+<li><p>LXsIATTRTYPE_REGX1</p></li>
+<li><p>LXsIATTRNAME_REGY0</p></li>
+<li><p>LXsIATTRTYPE_REGY0</p></li>
+<li><p>LXsIATTRNAME_REGY1</p></li>
+<li><p>LXsIATTRTYPE_REGY1</p></li>
+<li><p>LXsIATTRNAME_GAMMA</p></li>
+<li><p>LXsIATTRTYPE_GAMMA</p></li>
+<li><p>LXsIATTRNAME_COMMENT</p></li>
+<li><p>LXsIATTRTYPE_COMMENT</p></li>
+<li><p>LXsIATTRNAME_APPLY_DISPLAY_LUT</p></li>
+<li><p>LXsIATTRTYPE_APPLY_DISPLAY_LUT</p></li>
+<li><p>LXsSAV_OUTPUT_PIXEL_FORMAT</p></li>
+<li><p>LXsSAV_OUTPUT_KNOWN_COLOR_SPACE</p></li>
+<li><p>LXsIATTRNAME_OUTPUT_COLOR_SPACE</p></li>
+<li><p>LXsIATTRTYPE_OUTPUT_COLOR_SPACE</p></li>
+<li><p>LXsIATTRNAME_COLOR_MAPPING_SERVER_NAME</p></li>
+<li><p>LXsIATTRTYPE_COLOR_MAPPING_SERVER_NAME</p></li>
+<li><p>LXsIATTRNAME_OUTPUT_COLOR_SPACE_EMBEDDING</p></li>
+<li><p>LXsIATTRTYPE_OUTPUT_COLOR_SPACE_EMBEDDING</p></li>
+<li><p>LXsKNOWN_COLORSPACE_LINEAR</p></li>
+<li><p>LXsDEFAULT_COLORSPACE_8BIT</p></li>
+<li><p>LXsDEFAULT_COLORSPACE_16BIT</p></li>
+<li><p>LXsDEFAULT_COLORSPACE_FLOAT</p></li>
+<li><p>LXsDEFAULT_COLORSPACE_GREY</p></li>
+<li><p>LXiDEFAULT_COLORSPACE_NONE</p></li>
+<li><p>LXiDEFAULT_COLORSPACE_8BIT</p></li>
+<li><p>LXiDEFAULT_COLORSPACE_16BIT</p></li>
+<li><p>LXiDEFAULT_COLORSPACE_FLOAT</p></li>
+<li><p>LXiDEFAULT_COLORSPACE_GREY</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsIATTRNAME_LUMA">
+<span class="target" id="lxd__image_8hpp_1a3806e3866409cea7106170837727d66d"></span><code class="sig-name descname">LXsIATTRNAME_LUMA</code><a class="headerlink" href="#c.LXsIATTRNAME_LUMA" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The OpenEXR file specification suggests some common metadata appropriate for HDR or physically accurate images.<ul class="simple">
+<li><p>LUMA The luminance of a white pixel with r=g=b=1.0. The units, candela/m^2, match the ‘whiteLuminance’ OpenEXR standard attribute.</p></li>
+<li><p>FOCDIST The focus distance for the camera.</p></li>
+<li><p>APERTURE the aperture is given in f-stops, (focal length of the lens divided by the diameter of the iris opening). </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsIATTRTYPE_LUMA</p></li>
+<li><p>LXsIATTRNAME_FOCDIST</p></li>
+<li><p>LXsIATTRTYPE_FOCDIST</p></li>
+<li><p>LXsIATTRNAME_APERTURE</p></li>
+<li><p>LXsIATTRTYPE_APERTURE</p></li>
+</ul>
+<div class="section" id="ilximage">
+<h2><a class="toc-backref" href="#id1">ILxImage</a><a class="headerlink" href="#ilximage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv48ILxImage">
+<span id="_CPPv38ILxImage"></span><span id="_CPPv28ILxImage"></span><span id="ILxImage"></span><span class="target" id="class_i_lx_image"></span><em class="property">class </em><code class="sig-name descname">ILxImage</code><a class="headerlink" href="#_CPPv48ILxImage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is the primary interface for image objects, and so this the GUID specified when attempting to load or save images. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N8ILxImage4SizeE11LXtObjectIDPjPj">
+<span id="_CPPv3N8ILxImage4SizeE11LXtObjectIDPjPj"></span><span id="_CPPv2N8ILxImage4SizeE11LXtObjectIDPjPj"></span><span id="ILxImage::Size__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_image_1a7fdc2c271ae380ec693867845a29eb5e"></span>void <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>w</em>, unsigned int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxImage4SizeE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The basic image interface allows clients to read colored pixels or entire lines. When reading pixels the client should always ask for an RGBA format, but for lines the full range of format conversions is possible. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxImage6FormatE11LXtObjectID">
+<span id="_CPPv3N8ILxImage6FormatE11LXtObjectID"></span><span id="_CPPv2N8ILxImage6FormatE11LXtObjectID"></span><span id="ILxImage::Format__LXtObjectID"></span><span class="target" id="class_i_lx_image_1abc8e59803677753d2ddd141663775671"></span><a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <code class="sig-name descname">Format</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxImage6FormatE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxImage8GetPixelE11LXtObjectIDjj14LXtPixelFormatPv">
+<span id="_CPPv3N8ILxImage8GetPixelE11LXtObjectIDjj14LXtPixelFormatPv"></span><span id="_CPPv2N8ILxImage8GetPixelE11LXtObjectIDjj14LXtPixelFormatPv"></span><span id="ILxImage::GetPixel__LXtObjectID.unsigned-i.unsigned-i.LXtPixelFormat.voidP"></span><span class="target" id="class_i_lx_image_1a467f83dc40f1e7ab6dbab7a0d4008340"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, void *<em>pixel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxImage8GetPixelE11LXtObjectIDjj14LXtPixelFormatPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxImage7GetLineE11LXtObjectIDj14LXtPixelFormatPv">
+<span id="_CPPv3N8ILxImage7GetLineE11LXtObjectIDj14LXtPixelFormatPv"></span><span id="_CPPv2N8ILxImage7GetLineE11LXtObjectIDj14LXtPixelFormatPv"></span><span id="ILxImage::GetLine__LXtObjectID.unsigned-i.LXtPixelFormat.voidP"></span><span class="target" id="class_i_lx_image_1a8d055511b3901b5cc6cb524af03af918"></span><em class="property">const</em> void *<code class="sig-name descname">GetLine</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, void *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxImage7GetLineE11LXtObjectIDj14LXtPixelFormatPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsSAV_IMAGE_FLOAT</p></li>
+</ul>
+</div>
+<div class="section" id="ilximagesegment">
+<h2><a class="toc-backref" href="#id2">ILxImageSegment</a><a class="headerlink" href="#ilximagesegment" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxImageSegment">
+<span id="_CPPv315ILxImageSegment"></span><span id="_CPPv215ILxImageSegment"></span><span id="ILxImageSegment"></span><span class="target" id="class_i_lx_image_segment"></span><em class="property">class </em><code class="sig-name descname">ILxImageSegment</code><a class="headerlink" href="#_CPPv415ILxImageSegment" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxImageSegment10GetSegmentE11LXtObjectIDjjjP13LXtImageFloat">
+<span id="_CPPv3N15ILxImageSegment10GetSegmentE11LXtObjectIDjjjP13LXtImageFloat"></span><span id="_CPPv2N15ILxImageSegment10GetSegmentE11LXtObjectIDjjjP13LXtImageFloat"></span><span id="ILxImageSegment::GetSegment__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.LXtImageFloatP"></span><span class="target" id="class_i_lx_image_segment_1a326c6d11ad7b40d54c5c457235c57c4a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSegment</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>y</em>, unsigned int <em>left</em>, unsigned int <em>right</em>, <a class="reference internal" href="#_CPPv413LXtImageFloat" title="LXtImageFloat">LXtImageFloat</a> *<em>rgba</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageSegment10GetSegmentE11LXtObjectIDjjjP13LXtImageFloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An image segment is a sub-range of pixels within a scanline, which is always read in FP RGBA format, and written in any given format. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageSegment10SetSegmentE11LXtObjectIDjjj14LXtPixelFormatPKv">
+<span id="_CPPv3N15ILxImageSegment10SetSegmentE11LXtObjectIDjjj14LXtPixelFormatPKv"></span><span id="_CPPv2N15ILxImageSegment10SetSegmentE11LXtObjectIDjjj14LXtPixelFormatPKv"></span><span id="ILxImageSegment::SetSegment__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.LXtPixelFormat.voidCP"></span><span class="target" id="class_i_lx_image_segment_1a89a70352a09cc7695862043d0a6ee1ee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSegment</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>y</em>, unsigned int <em>left</em>, unsigned int <em>right</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, <em class="property">const</em> void *<em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageSegment10SetSegmentE11LXtObjectIDjjj14LXtPixelFormatPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximagewrite">
+<h2><a class="toc-backref" href="#id3">ILxImageWrite</a><a class="headerlink" href="#ilximagewrite" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxImageWrite">
+<span id="_CPPv313ILxImageWrite"></span><span id="_CPPv213ILxImageWrite"></span><span id="ILxImageWrite"></span><span class="target" id="class_i_lx_image_write"></span><em class="property">class </em><code class="sig-name descname">ILxImageWrite</code><a class="headerlink" href="#_CPPv413ILxImageWrite" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxImageWrite4SizeE11LXtObjectIDPjPj">
+<span id="_CPPv3N13ILxImageWrite4SizeE11LXtObjectIDPjPj"></span><span id="_CPPv2N13ILxImageWrite4SizeE11LXtObjectIDPjPj"></span><span id="ILxImageWrite::Size__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_image_write_1a3701be8d711064307c06fbd000efe650"></span>void <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>w</em>, unsigned int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxImageWrite4SizeE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Writing to an image requires a different interface. This provides methods for assigning color values to pixels or lines. Not all images will be writable. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxImageWrite6FormatE11LXtObjectID">
+<span id="_CPPv3N13ILxImageWrite6FormatE11LXtObjectID"></span><span id="_CPPv2N13ILxImageWrite6FormatE11LXtObjectID"></span><span id="ILxImageWrite::Format__LXtObjectID"></span><span class="target" id="class_i_lx_image_write_1ab84d1ef1d589392d8b61f462ddfa6c2a"></span><a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <code class="sig-name descname">Format</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxImageWrite6FormatE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj">
+<span id="_CPPv3N13ILxImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj"></span><span id="_CPPv2N13ILxImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj"></span><span id="ILxImageWrite::AddAttribute__LXtObjectID.cCP.cCP.unsignedP"></span><span class="target" id="class_i_lx_image_write_1a1f9c4aa04a9e4d5eb4ae8da17d685dc2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddAttribute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char *<em>type</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxImageWrite8SetPixelE11LXtObjectIDjj14LXtPixelFormatPKv">
+<span id="_CPPv3N13ILxImageWrite8SetPixelE11LXtObjectIDjj14LXtPixelFormatPKv"></span><span id="_CPPv2N13ILxImageWrite8SetPixelE11LXtObjectIDjj14LXtPixelFormatPKv"></span><span id="ILxImageWrite::SetPixel__LXtObjectID.unsigned-i.unsigned-i.LXtPixelFormat.voidCP"></span><span class="target" id="class_i_lx_image_write_1ac9bbf5c96dd6b78cf78fdae7e27bdc43"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, <em class="property">const</em> void *<em>pixel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxImageWrite8SetPixelE11LXtObjectIDjj14LXtPixelFormatPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxImageWrite7SetLineE11LXtObjectIDj14LXtPixelFormatPKv">
+<span id="_CPPv3N13ILxImageWrite7SetLineE11LXtObjectIDj14LXtPixelFormatPKv"></span><span id="_CPPv2N13ILxImageWrite7SetLineE11LXtObjectIDj14LXtPixelFormatPKv"></span><span id="ILxImageWrite::SetLine__LXtObjectID.unsigned-i.LXtPixelFormat.voidCP"></span><span class="target" id="class_i_lx_image_write_1acf5bd7eb902c40ba695d53a3da7dc5c1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetLine</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, <em class="property">const</em> void *<em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxImageWrite7SetLineE11LXtObjectIDj14LXtPixelFormatPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxindeximage">
+<h2><a class="toc-backref" href="#id4">ILxIndexImage</a><a class="headerlink" href="#ilxindeximage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxIndexImage">
+<span id="_CPPv313ILxIndexImage"></span><span id="_CPPv213ILxIndexImage"></span><span id="ILxIndexImage"></span><span class="target" id="class_i_lx_index_image"></span><em class="property">class </em><code class="sig-name descname">ILxIndexImage</code><a class="headerlink" href="#_CPPv413ILxIndexImage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxIndexImage4SizeE11LXtObjectIDPjPj">
+<span id="_CPPv3N13ILxIndexImage4SizeE11LXtObjectIDPjPj"></span><span id="_CPPv2N13ILxIndexImage4SizeE11LXtObjectIDPjPj"></span><span id="ILxIndexImage::Size__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_index_image_1abc2598bda8aa9010bdc3010a609b679d"></span>void <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>w</em>, unsigned int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxIndexImage4SizeE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An index image is one that stores index values at the pixel locations and uses a lookup table to get the color. While the <a class="reference internal" href="#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> interface gets the color values at each pixel, this interface allows access to the underlying index and color map. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxIndexImage6FormatE11LXtObjectID">
+<span id="_CPPv3N13ILxIndexImage6FormatE11LXtObjectID"></span><span id="_CPPv2N13ILxIndexImage6FormatE11LXtObjectID"></span><span id="ILxIndexImage::Format__LXtObjectID"></span><span class="target" id="class_i_lx_index_image_1a41474ec6351dac5c8914eac6de0c1571"></span><a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <code class="sig-name descname">Format</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxIndexImage6FormatE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxIndexImage7MapSizeE11LXtObjectIDPj">
+<span id="_CPPv3N13ILxIndexImage7MapSizeE11LXtObjectIDPj"></span><span id="_CPPv2N13ILxIndexImage7MapSizeE11LXtObjectIDPj"></span><span id="ILxIndexImage::MapSize__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_index_image_1ade91431fe9df7e57052485758dded642"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MapSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>numColors</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxIndexImage7MapSizeE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxIndexImage8GetIndexE11LXtObjectIDjjP13LXtImageIndex">
+<span id="_CPPv3N13ILxIndexImage8GetIndexE11LXtObjectIDjjP13LXtImageIndex"></span><span id="_CPPv2N13ILxIndexImage8GetIndexE11LXtObjectIDjjP13LXtImageIndex"></span><span id="ILxIndexImage::GetIndex__LXtObjectID.unsigned-i.unsigned-i.LXtImageIndexP"></span><span class="target" id="class_i_lx_index_image_1a6283587d33fb960a0caa338733a683cd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv413LXtImageIndex" title="LXtImageIndex">LXtImageIndex</a> *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxIndexImage8GetIndexE11LXtObjectIDjjP13LXtImageIndex" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxIndexImage6GetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPv">
+<span id="_CPPv3N13ILxIndexImage6GetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPv"></span><span id="_CPPv2N13ILxIndexImage6GetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPv"></span><span id="ILxIndexImage::GetMap__LXtObjectID.LXtImageIndex.LXtPixelFormat.voidP"></span><span class="target" id="class_i_lx_index_image_1a6685fd72c2e9d7349cbaa969f0746d19"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv413LXtImageIndex" title="LXtImageIndex">LXtImageIndex</a> <em>index</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, void *<em>pixel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxIndexImage6GetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxindeximagewrite">
+<h2><a class="toc-backref" href="#id5">ILxIndexImageWrite</a><a class="headerlink" href="#ilxindeximagewrite" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxIndexImageWrite">
+<span id="_CPPv318ILxIndexImageWrite"></span><span id="_CPPv218ILxIndexImageWrite"></span><span id="ILxIndexImageWrite"></span><span class="target" id="class_i_lx_index_image_write"></span><em class="property">class </em><code class="sig-name descname">ILxIndexImageWrite</code><a class="headerlink" href="#_CPPv418ILxIndexImageWrite" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxIndexImageWrite4SizeE11LXtObjectIDPjPj">
+<span id="_CPPv3N18ILxIndexImageWrite4SizeE11LXtObjectIDPjPj"></span><span id="_CPPv2N18ILxIndexImageWrite4SizeE11LXtObjectIDPjPj"></span><span id="ILxIndexImageWrite::Size__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_index_image_write_1a4760b0677f3e52641e8a5ae54d1fed4e"></span>void <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>w</em>, unsigned int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxIndexImageWrite4SizeE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Writing to an index image can only be done with one of these interfaces. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxIndexImageWrite6FormatE11LXtObjectID">
+<span id="_CPPv3N18ILxIndexImageWrite6FormatE11LXtObjectID"></span><span id="_CPPv2N18ILxIndexImageWrite6FormatE11LXtObjectID"></span><span id="ILxIndexImageWrite::Format__LXtObjectID"></span><span class="target" id="class_i_lx_index_image_write_1a902f36ae8a5e3eceb6eb78eb35062f76"></span><a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <code class="sig-name descname">Format</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxIndexImageWrite6FormatE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxIndexImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj">
+<span id="_CPPv3N18ILxIndexImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj"></span><span id="_CPPv2N18ILxIndexImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj"></span><span id="ILxIndexImageWrite::AddAttribute__LXtObjectID.cCP.cCP.unsignedP"></span><span class="target" id="class_i_lx_index_image_write_1ad73a525dadb060dd1cc31c09fab0597b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddAttribute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char *<em>type</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxIndexImageWrite12AddAttributeE11LXtObjectIDPKcPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxIndexImageWrite8SetIndexE11LXtObjectIDjj13LXtImageIndex">
+<span id="_CPPv3N18ILxIndexImageWrite8SetIndexE11LXtObjectIDjj13LXtImageIndex"></span><span id="_CPPv2N18ILxIndexImageWrite8SetIndexE11LXtObjectIDjj13LXtImageIndex"></span><span id="ILxIndexImageWrite::SetIndex__LXtObjectID.unsigned-i.unsigned-i.LXtImageIndex"></span><span class="target" id="class_i_lx_index_image_write_1a5d79361edd7fbecc4ab38cbd59b76486"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv413LXtImageIndex" title="LXtImageIndex">LXtImageIndex</a> <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxIndexImageWrite8SetIndexE11LXtObjectIDjj13LXtImageIndex" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxIndexImageWrite6SetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPKv">
+<span id="_CPPv3N18ILxIndexImageWrite6SetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPKv"></span><span id="_CPPv2N18ILxIndexImageWrite6SetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPKv"></span><span id="ILxIndexImageWrite::SetMap__LXtObjectID.LXtImageIndex.LXtPixelFormat.voidCP"></span><span class="target" id="class_i_lx_index_image_write_1a9dc815758c2be04b703a19b3560f643a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv413LXtImageIndex" title="LXtImageIndex">LXtImageIndex</a> <em>index</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, <em class="property">const</em> void *<em>pixel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxIndexImageWrite6SetMapE11LXtObjectID13LXtImageIndex14LXtPixelFormatPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxlayeredimage">
+<h2><a class="toc-backref" href="#id6">ILxLayeredImage</a><a class="headerlink" href="#ilxlayeredimage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxLayeredImage">
+<span id="_CPPv315ILxLayeredImage"></span><span id="_CPPv215ILxLayeredImage"></span><span id="ILxLayeredImage"></span><span class="target" id="class_i_lx_layered_image"></span><em class="property">class </em><code class="sig-name descname">ILxLayeredImage</code><a class="headerlink" href="#_CPPv415ILxLayeredImage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage4SizeE11LXtObjectIDPjPj">
+<span id="_CPPv3N15ILxLayeredImage4SizeE11LXtObjectIDPjPj"></span><span id="_CPPv2N15ILxLayeredImage4SizeE11LXtObjectIDPjPj"></span><span id="ILxLayeredImage::Size__LXtObjectID.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_layered_image_1ae0c46de58b56091384fbcc8d549fd243"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>w</em>, unsigned int *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage4SizeE11LXtObjectIDPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>In many cases it is useful to add channels to images beyond the basic R, G, B, and A. In other cases, it is useful to preserve multiple sub-images in a composition. These requirements can be met with a layered image object, consisting of a list of named, independent sub-images, each with their own dimensions, offset, and pixel type. Interlayer blending information is also associated with each layer, Photoshop style.<ul class="simple">
+<li><p>Size This returns the bounds of the image composition. While the combination of layer sizes and offsets makes it possible that some layers’ pixels will not all be in bounds, the entire composition will be cropped at (0,0) to (w,h). </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage5CountE11LXtObjectID">
+<span id="_CPPv3N15ILxLayeredImage5CountE11LXtObjectID"></span><span id="_CPPv2N15ILxLayeredImage5CountE11LXtObjectID"></span><span id="ILxLayeredImage::Count__LXtObjectID"></span><span class="target" id="class_i_lx_layered_image_1aebdd1db8463752cf6ec8eac9f2ddb55d"></span>unsigned int <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage5CountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adding a standard format() method here would allow this object to masquerade as an <a class="reference internal" href="#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> object… probably more confusing than useful.<ul class="simple">
+<li><p>Count return number of layers.</p></li>
+<li><p>Image return <a class="reference internal" href="#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> for layer at ‘index’.</p></li>
+<li><p>Name return name for layer at ‘index’.</p></li>
+<li><p>Type return type string and flags for layer at ‘index’. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage5ImageE11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxLayeredImage5ImageE11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxLayeredImage5ImageE11LXtObjectIDjPPv"></span><span id="ILxLayeredImage::Image__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_layered_image_1a1afa83b4478743c3b1db5b6f3194e20a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Image</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage5ImageE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage4NameE11LXtObjectIDjPPKc">
+<span id="_CPPv3N15ILxLayeredImage4NameE11LXtObjectIDjPPKc"></span><span id="_CPPv2N15ILxLayeredImage4NameE11LXtObjectIDjPPKc"></span><span id="ILxLayeredImage::Name__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_layered_image_1accf2f945bccbc11f2fc3d7435ac88c0e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage4NameE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage4TypeE11LXtObjectIDjPjPPKc">
+<span id="_CPPv3N15ILxLayeredImage4TypeE11LXtObjectIDjPjPPKc"></span><span id="_CPPv2N15ILxLayeredImage4TypeE11LXtObjectIDjPjPPKc"></span><span id="ILxLayeredImage::Type__LXtObjectID.unsigned-i.unsigned-iP.cCPP"></span><span class="target" id="class_i_lx_layered_image_1a5c5d06d89dcd475d044802a97daed0e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, unsigned int *<em>flags</em>, <em class="property">const</em> char **<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage4TypeE11LXtObjectIDjPjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage6OffsetE11LXtObjectIDjPiPi">
+<span id="_CPPv3N15ILxLayeredImage6OffsetE11LXtObjectIDjPiPi"></span><span id="_CPPv2N15ILxLayeredImage6OffsetE11LXtObjectIDjPiPi"></span><span id="ILxLayeredImage::Offset__LXtObjectID.unsigned-i.iP.iP"></span><span class="target" id="class_i_lx_layered_image_1a0a1d4533806554073706b398e774d32f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Offset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int *<em>x</em>, int *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage6OffsetE11LXtObjectIDjPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>Offset return pixel offset for layer at ‘index’ relative to complete layered image composition..</p></li>
+<li><p>Blend returns the opacity and the image blend mode for layer at ‘index’. The image blend mode is one of the LXi_IBM_ modes. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage5BlendE11LXtObjectIDjPfPj">
+<span id="_CPPv3N15ILxLayeredImage5BlendE11LXtObjectIDjPfPj"></span><span id="_CPPv2N15ILxLayeredImage5BlendE11LXtObjectIDjPfPj"></span><span id="ILxLayeredImage::Blend__LXtObjectID.unsigned-i.floatP.unsigned-iP"></span><span class="target" id="class_i_lx_layered_image_1aed5eeda70da885b6e56e8ab3411561a8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Blend</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, float *<em>opacity</em>, unsigned int *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage5BlendE11LXtObjectIDjPfPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage11ChannelNameE11LXtObjectIDjjPPKc">
+<span id="_CPPv3N15ILxLayeredImage11ChannelNameE11LXtObjectIDjjPPKc"></span><span id="_CPPv2N15ILxLayeredImage11ChannelNameE11LXtObjectIDjjPPKc"></span><span id="ILxLayeredImage::ChannelName__LXtObjectID.unsigned.unsigned.cCPP"></span><span class="target" id="class_i_lx_layered_image_1aed404e0b345e34329c106f93e23353d2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>layerIndex</em>, unsigned <em>channelIndex</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage11ChannelNameE11LXtObjectIDjjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>ChannelName Pass back the name of the channel at the given layer and channel index, which may be overridden by the user by inserting semicolon delimiters in between each channel name in the Shader Tree. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage6ParentE11LXtObjectIDjPi">
+<span id="_CPPv3N15ILxLayeredImage6ParentE11LXtObjectIDjPi"></span><span id="_CPPv2N15ILxLayeredImage6ParentE11LXtObjectIDjPi"></span><span id="ILxLayeredImage::Parent__LXtObjectID.unsigned.iP"></span><span class="target" id="class_i_lx_layered_image_1a08413f8c1b90ef03066fa64ff9154d0d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Parent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>layerIndex</em>, int *<em>parentIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage6ParentE11LXtObjectIDjPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>Parent Returns the parent layer index, or -1 if there is no parent</p></li>
+<li><p>IsGroup Returns true if the layer is a group layer </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxLayeredImage7IsGroupE11LXtObjectIDjPj">
+<span id="_CPPv3N15ILxLayeredImage7IsGroupE11LXtObjectIDjPj"></span><span id="_CPPv2N15ILxLayeredImage7IsGroupE11LXtObjectIDjPj"></span><span id="ILxLayeredImage::IsGroup__LXtObjectID.unsigned.unsigned-iP"></span><span class="target" id="class_i_lx_layered_image_1abc6690c218c88ef6751e834d60d885b8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsGroup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>layerIndex</em>, unsigned int *<em>isGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxLayeredImage7IsGroupE11LXtObjectIDjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxlayeredimagewrite">
+<h2><a class="toc-backref" href="#id7">ILxLayeredImageWrite</a><a class="headerlink" href="#ilxlayeredimagewrite" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxLayeredImageWrite">
+<span id="_CPPv320ILxLayeredImageWrite"></span><span id="_CPPv220ILxLayeredImageWrite"></span><span id="ILxLayeredImageWrite"></span><span class="target" id="class_i_lx_layered_image_write"></span><em class="property">class </em><code class="sig-name descname">ILxLayeredImageWrite</code><a class="headerlink" href="#_CPPv420ILxLayeredImageWrite" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxLayeredImageWrite8AddLayerE11LXtObjectID11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N20ILxLayeredImageWrite8AddLayerE11LXtObjectID11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N20ILxLayeredImageWrite8AddLayerE11LXtObjectID11LXtObjectIDPKcPPKc"></span><span id="ILxLayeredImageWrite::AddLayer__LXtObjectID.LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_layered_image_write_1ad4c667938409ea670a910712486405c5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddLayer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char **<em>channelNames</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxLayeredImageWrite8AddLayerE11LXtObjectID11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Layered image objects will provide an <a class="reference internal" href="#class_i_lx_layered_image_write"><span class="std std-ref">ILxLayeredImageWrite</span></a> interface for writing.<ul class="simple">
+<li><p>AddLayer This is the way a layered image is actually created, adding layers by passing in <a class="reference internal" href="#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> objects. The image object will be locked and released by the layered image, so clients may release the image after setting the layer.</p></li>
+<li><p>SetType Layer type and flags can be set using this function.</p></li>
+<li><p>SetOffset Pixel offsets for a layer are set with this function.</p></li>
+<li><p>SetBlending The blending parameter (or opacity) and the blending mode are set with this function. A list of modes should appear here shortly… </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxLayeredImageWrite7SetTypeE11LXtObjectIDjiPKc">
+<span id="_CPPv3N20ILxLayeredImageWrite7SetTypeE11LXtObjectIDjiPKc"></span><span id="_CPPv2N20ILxLayeredImageWrite7SetTypeE11LXtObjectIDjiPKc"></span><span id="ILxLayeredImageWrite::SetType__LXtObjectID.unsigned-i.i.cCP"></span><span class="target" id="class_i_lx_layered_image_write_1a5ae0c56528f42e19b0eef46c2944cf43"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int <em>flags</em>, <em class="property">const</em> char *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxLayeredImageWrite7SetTypeE11LXtObjectIDjiPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxLayeredImageWrite9SetOffsetE11LXtObjectIDjii">
+<span id="_CPPv3N20ILxLayeredImageWrite9SetOffsetE11LXtObjectIDjii"></span><span id="_CPPv2N20ILxLayeredImageWrite9SetOffsetE11LXtObjectIDjii"></span><span id="ILxLayeredImageWrite::SetOffset__LXtObjectID.unsigned-i.i.i"></span><span class="target" id="class_i_lx_layered_image_write_1ad72a8907e3d1fa23a84040066aad98cc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetOffset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, int <em>x</em>, int <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxLayeredImageWrite9SetOffsetE11LXtObjectIDjii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxLayeredImageWrite11SetBlendingE11LXtObjectIDjfPKc">
+<span id="_CPPv3N20ILxLayeredImageWrite11SetBlendingE11LXtObjectIDjfPKc"></span><span id="_CPPv2N20ILxLayeredImageWrite11SetBlendingE11LXtObjectIDjfPKc"></span><span id="ILxLayeredImageWrite::SetBlending__LXtObjectID.unsigned-i.float.cCP"></span><span class="target" id="class_i_lx_layered_image_write_1a4af3bf3dff852326fc7f8e4ce1a2b6d1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetBlending</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, float <em>blend</em>, <em class="property">const</em> char *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxLayeredImageWrite11SetBlendingE11LXtObjectIDjfPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxLayeredImageWrite12AddAttributeE11LXtObjectIDPKcPKcPi">
+<span id="_CPPv3N20ILxLayeredImageWrite12AddAttributeE11LXtObjectIDPKcPKcPi"></span><span id="_CPPv2N20ILxLayeredImageWrite12AddAttributeE11LXtObjectIDPKcPKcPi"></span><span id="ILxLayeredImageWrite::AddAttribute__LXtObjectID.cCP.cCP.iP"></span><span class="target" id="class_i_lx_layered_image_write_1a517a767782889042fcae4e0715a63f8d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddAttribute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char *<em>type</em>, int *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxLayeredImageWrite12AddAttributeE11LXtObjectIDPKcPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxtileimage">
+<h2><a class="toc-backref" href="#id8">ILxTileImage</a><a class="headerlink" href="#ilxtileimage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxTileImage">
+<span id="_CPPv312ILxTileImage"></span><span id="_CPPv212ILxTileImage"></span><span id="ILxTileImage"></span><span class="target" id="class_i_lx_tile_image"></span><em class="property">class </em><code class="sig-name descname">ILxTileImage</code><a class="headerlink" href="#_CPPv412ILxTileImage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxTileImage10LevelCountE11LXtObjectID">
+<span id="_CPPv3N12ILxTileImage10LevelCountE11LXtObjectID"></span><span id="_CPPv2N12ILxTileImage10LevelCountE11LXtObjectID"></span><span id="ILxTileImage::LevelCount__LXtObjectID"></span><span class="target" id="class_i_lx_tile_image_1a4932a15832e5fe7a821c12c5cb1cf770"></span>unsigned <code class="sig-name descname">LevelCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxTileImage10LevelCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The tiled image interface provides a way for clients to implement images using tile trees. Tiles will themselves simply be images, so we can manage a global cache of them internally rather than depending on each implementation to manage an internal cache. A tile tree is a collection of “levels”, which are intended to be images of decreasing size. Each image level is broken into tiles, which allows us to only work on small portions of the image instead of loading an entire image. Typically, the image levels decrease in size by power of two. For example, one dimension of a normal tile tree of an image with size 1024x1024, and tiles of size 256x256, would look like this: Level 2 _ Level 1 _ _ Level 0 _ _ _ _ Where each _ represents a tile. One thing to note is that the meaning of “level” is reverse from ImageLevelSample; level 0 is the base of the tile tree, where each tile is the original size, and the highest value of level will have a single tile. Implementations of the TileImage interface are only required to be able to get the tiles at level 0; they may require the clients to generate tiles above level 0 by resizing the tiles below them.<ul class="simple">
+<li><p>LevelCount LevelCount returns the number of levels in the tile tree. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxTileImage7GetTileE11LXtObjectIDjjjPPv">
+<span id="_CPPv3N12ILxTileImage7GetTileE11LXtObjectIDjjjPPv"></span><span id="_CPPv2N12ILxTileImage7GetTileE11LXtObjectIDjjjPPv"></span><span id="ILxTileImage::GetTile__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_tile_image_1a86db0c525ee683229a73da1d4e6f5c11"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, unsigned int <em>tileX</em>, unsigned int <em>tileY</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxTileImage7GetTileE11LXtObjectIDjjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">GetTile</span>
+</pre></div>
+</div>
+ GetTile is the direct way of getting a tile from the tile image. In general, this will be loaded directly from the file off disk. Tiles will simply be an ILxImageID. These should be created by the implementation, and the client will release them. It should return LXe_OK if it’s okay, but LXe_OUTOFBOUNDS if the tile isn’t in the image. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxTileImage11GetTileSizeE11LXtObjectIDjjjPjPj">
+<span id="_CPPv3N12ILxTileImage11GetTileSizeE11LXtObjectIDjjjPjPj"></span><span id="_CPPv2N12ILxTileImage11GetTileSizeE11LXtObjectIDjjjPjPj"></span><span id="ILxTileImage::GetTileSize__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_tile_image_1a91376aedb0c4198de245208870771d01"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTileSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, unsigned int <em>tileX</em>, unsigned int <em>tileY</em>, unsigned int *<em>width</em>, unsigned int *<em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxTileImage11GetTileSizeE11LXtObjectIDjjjPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">GetTileSize</span>
+</pre></div>
+</div>
+ GetTileSize will determine the width and height of a given tile, and place it in *width and *height. For a given TileImage, these will usually be constant and equal except for boundary tiles. It should return LXe_OK if it’s okay, but LXe_OUTOFBOUNDS if the tile isn’t in the image. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxTileImage12GetLevelSizeE11LXtObjectIDjPjPjPjPj">
+<span id="_CPPv3N12ILxTileImage12GetLevelSizeE11LXtObjectIDjPjPjPjPj"></span><span id="_CPPv2N12ILxTileImage12GetLevelSizeE11LXtObjectIDjPjPjPjPj"></span><span id="ILxTileImage::GetLevelSize__LXtObjectID.unsigned-i.unsigned-iP.unsigned-iP.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_tile_image_1a9b7afd44adb9715cd33bd8345ad95ed2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetLevelSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, unsigned int *<em>width</em>, unsigned int *<em>height</em>, unsigned int *<em>tilesWidth</em>, unsigned int *<em>tilesHeight</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxTileImage12GetLevelSizeE11LXtObjectIDjPjPjPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">GetLevelSize</span>
+</pre></div>
+</div>
+ GetLevelSize will determine the size of an entire level both in pixel counts and tile counts. It will place the former in *width and *height, and the latter in *tilesWidth and *tilesHeight. Any of the pointers should be able to be NULL, if the caller only wants to get the tile dimensions, for instance. It should return LXe_OUTOFBOUNDS if the level isn’t in the image. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxTileImage13DetermineTileE11LXtObjectIDjjjPjPj">
+<span id="_CPPv3N12ILxTileImage13DetermineTileE11LXtObjectIDjjjPjPj"></span><span id="_CPPv2N12ILxTileImage13DetermineTileE11LXtObjectIDjjjPjPj"></span><span id="ILxTileImage::DetermineTile__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_tile_image_1a92e7206150a5604e762e354c3121ab06"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DetermineTile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, unsigned int *<em>tileX</em>, unsigned int *<em>tileY</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxTileImage13DetermineTileE11LXtObjectIDjjjPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">DetermineTile</span>
+</pre></div>
+</div>
+ DetermineTile will determine which tile contains a given pixel at a given level, and place it in *tileX and *tileY. It should return LXe_OK normally, but LXe_OUTOFBOUNDS if the pixel isn’t on that level. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxTileImage14DeterminePixelE11LXtObjectIDjjjPjPj">
+<span id="_CPPv3N12ILxTileImage14DeterminePixelE11LXtObjectIDjjjPjPj"></span><span id="_CPPv2N12ILxTileImage14DeterminePixelE11LXtObjectIDjjjPjPj"></span><span id="ILxTileImage::DeterminePixel__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.unsigned-iP.unsigned-iP"></span><span class="target" id="class_i_lx_tile_image_1aa51819fab5a8704c2bbeb591d210cee8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DeterminePixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>level</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, unsigned int *<em>adjX</em>, unsigned int *<em>adjY</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxTileImage14DeterminePixelE11LXtObjectIDjjjPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">DeterminePixel</span>
+</pre></div>
+</div>
+ DeterminePixel will take in a pixel position X and Y for a given level, and put in *adjX and *adjY the position of the pixel within the tile that contains it. It should return LXe_OK normally, but LXe_OUTOFBOUNDS if the pixel isn’t on that level. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximageloadertarget1">
+<h2><a class="toc-backref" href="#id9">ILxImageLoaderTarget1</a><a class="headerlink" href="#ilximageloadertarget1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxImageLoaderTarget1">
+<span id="_CPPv321ILxImageLoaderTarget1"></span><span id="_CPPv221ILxImageLoaderTarget1"></span><span id="ILxImageLoaderTarget1"></span><span class="target" id="class_i_lx_image_loader_target1"></span><em class="property">class </em><code class="sig-name descname">ILxImageLoaderTarget1</code><a class="headerlink" href="#_CPPv421ILxImageLoaderTarget1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxImageLoaderTarget17SetSizeE11LXtObjectID14LXtPixelFormatjj">
+<span id="_CPPv3N21ILxImageLoaderTarget17SetSizeE11LXtObjectID14LXtPixelFormatjj"></span><span id="_CPPv2N21ILxImageLoaderTarget17SetSizeE11LXtObjectID14LXtPixelFormatjj"></span><span id="ILxImageLoaderTarget1::SetSize__LXtObjectID.LXtPixelFormat.unsigned.unsigned"></span><span class="target" id="class_i_lx_image_loader_target1_1a2776fa7dd0008182ec9155845e755b58"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, unsigned <em>width</em>, unsigned <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxImageLoaderTarget17SetSizeE11LXtObjectID14LXtPixelFormatjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Images can be loaded and saved with appropriate servers of the loader and saver class. Loading can be opaque for disk-based access, although most loaders are currently direct, so a format, type, size and number of colors must be specified by the recognition method to allow the host to create a suitable image object to receive the data. This is done using a target interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxImageLoaderTarget16SetMapE11LXtObjectIDj">
+<span id="_CPPv3N21ILxImageLoaderTarget16SetMapE11LXtObjectIDj"></span><span id="_CPPv2N21ILxImageLoaderTarget16SetMapE11LXtObjectIDj"></span><span id="ILxImageLoaderTarget1::SetMap__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_image_loader_target1_1aa5c30efc5ab6d0a90f56fb75667eec02"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>ncolor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxImageLoaderTarget16SetMapE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtimagetarget1">
+<h2><a class="toc-backref" href="#id10">LXtImageTarget1</a><a class="headerlink" href="#lxtimagetarget1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418st_LXtImageTarget1">
+<span id="_CPPv318st_LXtImageTarget1"></span><span id="_CPPv218st_LXtImageTarget1"></span><span id="st_LXtImageTarget1"></span><span class="target" id="structst___l_xt_image_target1"></span><em class="property">struct </em><code class="sig-name descname">st_LXtImageTarget1</code><a class="headerlink" href="#_CPPv418st_LXtImageTarget1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Legacy struct, still provided for older image loaders. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageTarget14typeE">
+<span id="_CPPv3N18st_LXtImageTarget14typeE"></span><span id="_CPPv2N18st_LXtImageTarget14typeE"></span><span id="st_LXtImageTarget1::type__LXtPixelFormat"></span><span class="target" id="structst___l_xt_image_target1_1afcc9c2f56284827d52c043738948c850"></span><a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <code class="sig-name descname">type</code><a class="headerlink" href="#_CPPv4N18st_LXtImageTarget14typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageTarget11wE">
+<span id="_CPPv3N18st_LXtImageTarget11wE"></span><span id="_CPPv2N18st_LXtImageTarget11wE"></span><span id="st_LXtImageTarget1::w__unsigned-i"></span><span class="target" id="structst___l_xt_image_target1_1a91ca78a9122d225cc673ad18a68d702a"></span>unsigned int <code class="sig-name descname">w</code><a class="headerlink" href="#_CPPv4N18st_LXtImageTarget11wE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageTarget11hE">
+<span id="_CPPv3N18st_LXtImageTarget11hE"></span><span id="_CPPv2N18st_LXtImageTarget11hE"></span><span id="st_LXtImageTarget1::h__unsigned-i"></span><span class="target" id="structst___l_xt_image_target1_1ae7c8ff0182dcb39c0b859b4a93095e1d"></span>unsigned int <code class="sig-name descname">h</code><a class="headerlink" href="#_CPPv4N18st_LXtImageTarget11hE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageTarget16ncolorE">
+<span id="_CPPv3N18st_LXtImageTarget16ncolorE"></span><span id="_CPPv2N18st_LXtImageTarget16ncolorE"></span><span id="st_LXtImageTarget1::ncolor__unsigned-i"></span><span class="target" id="structst___l_xt_image_target1_1aa10e068dbc6c073d3b763e7a3734f457"></span>unsigned int <code class="sig-name descname">ncolor</code><a class="headerlink" href="#_CPPv4N18st_LXtImageTarget16ncolorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximageloadertarget">
+<h2><a class="toc-backref" href="#id11">ILxImageLoaderTarget</a><a class="headerlink" href="#ilximageloadertarget" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxImageLoaderTarget">
+<span id="_CPPv320ILxImageLoaderTarget"></span><span id="_CPPv220ILxImageLoaderTarget"></span><span id="ILxImageLoaderTarget"></span><span class="target" id="class_i_lx_image_loader_target"></span><em class="property">class </em><code class="sig-name descname">ILxImageLoaderTarget</code><a class="headerlink" href="#_CPPv420ILxImageLoaderTarget" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxImageLoaderTarget7SetSizeE11LXtObjectID14LXtPixelFormatjj">
+<span id="_CPPv3N20ILxImageLoaderTarget7SetSizeE11LXtObjectID14LXtPixelFormatjj"></span><span id="_CPPv2N20ILxImageLoaderTarget7SetSizeE11LXtObjectID14LXtPixelFormatjj"></span><span id="ILxImageLoaderTarget::SetSize__LXtObjectID.LXtPixelFormat.unsigned.unsigned"></span><span class="target" id="class_i_lx_image_loader_target_1a6aadb2c34e34cd4fb8ff8a59abcf1250"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, unsigned <em>width</em>, unsigned <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxImageLoaderTarget7SetSizeE11LXtObjectID14LXtPixelFormatjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The latest image loader target interface. This has two additional methods.<ul class="simple">
+<li><p>SetColorspaceDepth</p></li>
+<li><p>SetColorspace These can be used to specify more accurately which colorspaces to use for the given type. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxImageLoaderTarget6SetMapE11LXtObjectIDj">
+<span id="_CPPv3N20ILxImageLoaderTarget6SetMapE11LXtObjectIDj"></span><span id="_CPPv2N20ILxImageLoaderTarget6SetMapE11LXtObjectIDj"></span><span id="ILxImageLoaderTarget::SetMap__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_image_loader_target_1a3863d5f9d887af9a13a1c53bf6e71d8f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMap</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>ncolor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxImageLoaderTarget6SetMapE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxImageLoaderTarget18SetColorspaceDepthE11LXtObjectIDj">
+<span id="_CPPv3N20ILxImageLoaderTarget18SetColorspaceDepthE11LXtObjectIDj"></span><span id="_CPPv2N20ILxImageLoaderTarget18SetColorspaceDepthE11LXtObjectIDj"></span><span id="ILxImageLoaderTarget::SetColorspaceDepth__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_image_loader_target_1a8e0d4196e15234ff0ce1f6f11c50c54d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetColorspaceDepth</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>depth</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxImageLoaderTarget18SetColorspaceDepthE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxImageLoaderTarget13SetColorspaceE11LXtObjectIDPKc">
+<span id="_CPPv3N20ILxImageLoaderTarget13SetColorspaceE11LXtObjectIDPKc"></span><span id="_CPPv2N20ILxImageLoaderTarget13SetColorspaceE11LXtObjectIDPKc"></span><span id="ILxImageLoaderTarget::SetColorspace__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_image_loader_target_1ac4482bf263175541c29ea03ff7dbd9ca"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetColorspace</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>colorspace</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxImageLoaderTarget13SetColorspaceE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximagelevelsample">
+<h2><a class="toc-backref" href="#id12">ILxImageLevelSample</a><a class="headerlink" href="#ilximagelevelsample" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxImageLevelSample">
+<span id="_CPPv319ILxImageLevelSample"></span><span id="_CPPv219ILxImageLevelSample"></span><span id="ILxImageLevelSample"></span><span class="target" id="class_i_lx_image_level_sample"></span><em class="property">class </em><code class="sig-name descname">ILxImageLevelSample</code><a class="headerlink" href="#_CPPv419ILxImageLevelSample" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxImageLevelSample5CountE11LXtObjectID">
+<span id="_CPPv3N19ILxImageLevelSample5CountE11LXtObjectID"></span><span id="_CPPv2N19ILxImageLevelSample5CountE11LXtObjectID"></span><span id="ILxImageLevelSample::Count__LXtObjectID"></span><span class="target" id="class_i_lx_image_level_sample_1a784acb53e058414b77fbd479135f5965"></span>unsigned <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxImageLevelSample5CountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Images can present an alternate interface that allows them to be accessed as a set of levels. The levels are filtered versions of the image at different scales, and typically are arranged in power-law series. The underlying implementation may be tiled, enabling access to images that are larger than the available memory, since the image server only needs sufficient memory for a single tile. Levels can be used directly when rendering so that the only levels used are those approximating the visual scale of the image in the rendered scene. The count returns the number of different levels in the image. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxImageLevelSample12GetLevelSizeE11LXtObjectIDjPjPj">
+<span id="_CPPv3N19ILxImageLevelSample12GetLevelSizeE11LXtObjectIDjPjPj"></span><span id="_CPPv2N19ILxImageLevelSample12GetLevelSizeE11LXtObjectIDjPjPj"></span><span id="ILxImageLevelSample::GetLevelSize__LXtObjectID.unsigned.unsignedP.unsignedP"></span><span class="target" id="class_i_lx_image_level_sample_1a97007b1cafd74b5162f2b9a076f5d93b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetLevelSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>level</em>, unsigned *<em>width</em>, unsigned *<em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxImageLevelSample12GetLevelSizeE11LXtObjectIDjPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each resolution level should be twice the size of the previous level, starting at 1x1 pixels for level zero, although the tiled image load can pass back slightly different dimensions for each resolution level, according to the needs of the tiled format. The image may or may not provide the full image as a level, although the full image must be accessible through the required <a class="reference internal" href="#class_i_lx_image"><span class="std std-ref">ILxImage</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxImageLevelSample11SampleLevelE11LXtObjectIDjP14LXtImageSamplej">
+<span id="_CPPv3N19ILxImageLevelSample11SampleLevelE11LXtObjectIDjP14LXtImageSamplej"></span><span id="_CPPv2N19ILxImageLevelSample11SampleLevelE11LXtObjectIDjP14LXtImageSamplej"></span><span id="ILxImageLevelSample::SampleLevel__LXtObjectID.unsigned.LXtImageSampleP.unsigned"></span><span class="target" id="class_i_lx_image_level_sample_1a77ac6384274f29b8e4cf7b2ee3d99bf5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SampleLevel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>level</em>, LXtImageSample *<em>pixel</em>, unsigned <em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxImageLevelSample11SampleLevelE11LXtObjectIDjP14LXtImageSamplej" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Level images provide image data at a given resolution level, for an array of image samples. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxImageLevelSample8GetPixelE11LXtObjectIDjjj14LXtPixelFormatPv">
+<span id="_CPPv3N19ILxImageLevelSample8GetPixelE11LXtObjectIDjjj14LXtPixelFormatPv"></span><span id="_CPPv2N19ILxImageLevelSample8GetPixelE11LXtObjectIDjjj14LXtPixelFormatPv"></span><span id="ILxImageLevelSample::GetPixel__LXtObjectID.unsigned.unsigned-i.unsigned-i.LXtPixelFormat.voidP"></span><span class="target" id="class_i_lx_image_level_sample_1afa2c53c2681d62251629feb04e8e797f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetPixel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>level</em>, unsigned int <em>x</em>, unsigned int <em>y</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, void *<em>pixel</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxImageLevelSample8GetPixelE11LXtObjectIDjjj14LXtPixelFormatPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Pixels can be directly accessed from a given level, in either integer or floating-point RGBA format, using an x- and y-coordinate in the local coordinate system of the specified level. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxImageLevelSample7GetLineE11LXtObjectIDjjP13LXtImageFloat">
+<span id="_CPPv3N19ILxImageLevelSample7GetLineE11LXtObjectIDjjP13LXtImageFloat"></span><span id="_CPPv2N19ILxImageLevelSample7GetLineE11LXtObjectIDjjP13LXtImageFloat"></span><span id="ILxImageLevelSample::GetLine__LXtObjectID.unsigned.unsigned.LXtImageFloatP"></span><span class="target" id="class_i_lx_image_level_sample_1a0c605a965ef74ce5eaae30f21e323d72"></span><em class="property">const</em> <a class="reference internal" href="#_CPPv413LXtImageFloat" title="LXtImageFloat">LXtImageFloat</a> *<code class="sig-name descname">GetLine</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>level</em>, unsigned <em>y</em>, <a class="reference internal" href="#_CPPv413LXtImageFloat" title="LXtImageFloat">LXtImageFloat</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxImageLevelSample7GetLineE11LXtObjectIDjjP13LXtImageFloat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Levels also support line-by-line access through a modified version of the <a class="reference internal" href="#class_i_lx_image_level_sample_1a0c605a965ef74ce5eaae30f21e323d72"><span class="std std-ref">GetLine()</span></a> method, which uses a y-coordinate in the local coordinate system of the specified level. The data returned is always RGBA in floating point. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtimagesample">
+<h2><a class="toc-backref" href="#id13">LXtImageSample</a><a class="headerlink" href="#lxtimagesample" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417st_LXtImageSample">
+<span id="_CPPv317st_LXtImageSample"></span><span id="_CPPv217st_LXtImageSample"></span><span id="st_LXtImageSample"></span><span class="target" id="structst___l_xt_image_sample"></span><em class="property">struct </em><code class="sig-name descname">st_LXtImageSample</code><a class="headerlink" href="#_CPPv417st_LXtImageSample" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sampling of a level is done using an array of structures, each with a pixel position in the level and a location to receive the RGBA data in floating point format. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N17st_LXtImageSample1xE">
+<span id="_CPPv3N17st_LXtImageSample1xE"></span><span id="_CPPv2N17st_LXtImageSample1xE"></span><span id="st_LXtImageSample::x__unsigned"></span><span class="target" id="structst___l_xt_image_sample_1a8c0ce690cff501e44a1eeaee8d05775d"></span>unsigned <code class="sig-name descname">x</code><a class="headerlink" href="#_CPPv4N17st_LXtImageSample1xE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtImageSample1yE">
+<span id="_CPPv3N17st_LXtImageSample1yE"></span><span id="_CPPv2N17st_LXtImageSample1yE"></span><span id="st_LXtImageSample::y__unsigned"></span><span class="target" id="structst___l_xt_image_sample_1ac577a273ac0562dd7175585462194118"></span>unsigned <code class="sig-name descname">y</code><a class="headerlink" href="#_CPPv4N17st_LXtImageSample1yE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtImageSample4rgbaE">
+<span id="_CPPv3N17st_LXtImageSample4rgbaE"></span><span id="_CPPv2N17st_LXtImageSample4rgbaE"></span><span id="st_LXtImageSample::rgba__LXtImageFloatP"></span><span class="target" id="structst___l_xt_image_sample_1a69a7430d51276b29581fc8d07795074c"></span><a class="reference internal" href="#_CPPv413LXtImageFloat" title="LXtImageFloat">LXtImageFloat</a> *<code class="sig-name descname">rgba</code><a class="headerlink" href="#_CPPv4N17st_LXtImageSample4rgbaE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXi_IBM_NORMAL">
+<span class="target" id="lxd__image_8hpp_1a0a6134a77e9026ced6f1586f3b29f665"></span><code class="sig-name descname">LXi_IBM_NORMAL</code><a class="headerlink" href="#c.LXi_IBM_NORMAL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These are the blending modes: </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_IBM_ERASE</p></li>
+<li><p>LXi_IBM_ADD</p></li>
+<li><p>LXi_IBM_SUB</p></li>
+<li><p>LXi_IBM_DIFF</p></li>
+<li><p>LXi_IBM_MULTIPLY</p></li>
+<li><p>LXi_IBM_SCREEN</p></li>
+<li><p>LXi_IBM_OVERLAY</p></li>
+<li><p>LXi_IBM_SOFTLIGHT</p></li>
+<li><p>LXi_IBM_HARDLIGHT</p></li>
+<li><p>LXi_IBM_DARKEN</p></li>
+<li><p>LXi_IBM_LIGHTEN</p></li>
+<li><p>LXi_IBM_COLORDODGE</p></li>
+<li><p>LXi_IBM_COLORBURN</p></li>
+<li><p>LXi_IBM_SCREEN2</p></li>
+<li><p>LXi_IBM_REPLACE</p></li>
+<li><p>LXi_IBM_ADDNORM</p></li>
+</ul>
+</div>
+<div class="section" id="ilximageservice">
+<h2><a class="toc-backref" href="#id14">ILxImageService</a><a class="headerlink" href="#ilximageservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxImageService">
+<span id="_CPPv315ILxImageService"></span><span id="_CPPv215ILxImageService"></span><span id="ILxImageService"></span><span class="target" id="class_i_lx_image_service"></span><em class="property">class </em><code class="sig-name descname">ILxImageService</code><a class="headerlink" href="#_CPPv415ILxImageService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N15ILxImageService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N15ILxImageService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxImageService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_image_service_1aa7f670e80c414e293d10647b738b673c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Image facilities can be accessed through the SDK using a global service interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService6CreateE11LXtObjectIDjj14LXtPixelFormatjPPv">
+<span id="_CPPv3N15ILxImageService6CreateE11LXtObjectIDjj14LXtPixelFormatjPPv"></span><span id="_CPPv2N15ILxImageService6CreateE11LXtObjectIDjj14LXtPixelFormatjPPv"></span><span id="ILxImageService::Create__LXtObjectID.unsigned-i.unsigned-i.LXtPixelFormat.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_image_service_1ac5d2bf7f6692abc888b63a1aa0e66b37"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Create</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>width</em>, unsigned int <em>height</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, unsigned int <em>maxIndex</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService6CreateE11LXtObjectIDjj14LXtPixelFormatjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService9DuplicateE11LXtObjectID11LXtObjectID14LXtPixelFormatPPv">
+<span id="_CPPv3N15ILxImageService9DuplicateE11LXtObjectID11LXtObjectID14LXtPixelFormatPPv"></span><span id="_CPPv2N15ILxImageService9DuplicateE11LXtObjectID11LXtObjectID14LXtPixelFormatPPv"></span><span id="ILxImageService::Duplicate__LXtObjectID.LXtObjectID.LXtPixelFormat.voidPP"></span><span class="target" id="class_i_lx_image_service_1a219eb8110125a7e42a9771fa641a5a41"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Duplicate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>source</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService9DuplicateE11LXtObjectID11LXtObjectID14LXtPixelFormatPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService4LoadE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N15ILxImageService4LoadE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N15ILxImageService4LoadE11LXtObjectIDPKcPPv"></span><span id="ILxImageService::Load__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_image_service_1ad606cca56c4f83e02520919d546d52d4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Load</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filePath</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService4LoadE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService4SaveE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID">
+<span id="_CPPv3N15ILxImageService4SaveE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID"></span><span id="_CPPv2N15ILxImageService4SaveE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID"></span><span id="ILxImageService::Save__LXtObjectID.LXtObjectID.cCP.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_image_service_1a3f275cbf65bb80b1fe45f2132870981a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Save</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, <em class="property">const</em> char *<em>filePath</em>, <em class="property">const</em> char *<em>format</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService4SaveE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService8ResampleE11LXtObjectID11LXtObjectID11LXtObjectID14LXtProcessHint">
+<span id="_CPPv3N15ILxImageService8ResampleE11LXtObjectID11LXtObjectID11LXtObjectID14LXtProcessHint"></span><span id="_CPPv2N15ILxImageService8ResampleE11LXtObjectID11LXtObjectID11LXtObjectID14LXtProcessHint"></span><span id="ILxImageService::Resample__LXtObjectID.LXtObjectID.LXtObjectID.LXtProcessHint"></span><span class="target" id="class_i_lx_image_service_1a1bbf1598c39900d11aa95ff7e148a01d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Resample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dest</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>source</em>, <a class="reference internal" href="#_CPPv414LXtProcessHint" title="LXtProcessHint">LXtProcessHint</a> <em>hint</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService8ResampleE11LXtObjectID11LXtObjectID11LXtObjectID14LXtProcessHint" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService9CompositeE11LXtObjectID11LXtObjectID11LXtObjectIDK11LXtFVector2">
+<span id="_CPPv3N15ILxImageService9CompositeE11LXtObjectID11LXtObjectID11LXtObjectIDK11LXtFVector2"></span><span id="_CPPv2N15ILxImageService9CompositeE11LXtObjectID11LXtObjectID11LXtObjectIDK11LXtFVector2"></span><span id="ILxImageService::Composite__LXtObjectID.LXtObjectID.LXtObjectID.LXtFVector2C"></span><span class="target" id="class_i_lx_image_service_1aefcaf90e929ca7c7c1335f524e0492ff"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Composite</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dest</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>source</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv411LXtFVector2" title="LXtFVector2">LXtFVector2</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService9CompositeE11LXtObjectID11LXtObjectID11LXtObjectIDK11LXtFVector2" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService8DrawLineE11LXtObjectID11LXtObjectIDK11LXtFVector2K11LXtFVector2K10LXtFVector">
+<span id="_CPPv3N15ILxImageService8DrawLineE11LXtObjectID11LXtObjectIDK11LXtFVector2K11LXtFVector2K10LXtFVector"></span><span id="_CPPv2N15ILxImageService8DrawLineE11LXtObjectID11LXtObjectIDK11LXtFVector2K11LXtFVector2K10LXtFVector"></span><span id="ILxImageService::DrawLine__LXtObjectID.LXtObjectID.LXtFVector2C.LXtFVector2C.LXtFVectorC"></span><span class="target" id="class_i_lx_image_service_1a0a7823ae1024163fb3c50c97f63c1159"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DrawLine</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv411LXtFVector2" title="LXtFVector2">LXtFVector2</a> <em>p0</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv411LXtFVector2" title="LXtFVector2">LXtFVector2</a> <em>p1</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService8DrawLineE11LXtObjectID11LXtObjectIDK11LXtFVector2K11LXtFVector2K10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService10Kelvin2RGBE11LXtObjectIDf10LXtFVector">
+<span id="_CPPv3N15ILxImageService10Kelvin2RGBE11LXtObjectIDf10LXtFVector"></span><span id="_CPPv2N15ILxImageService10Kelvin2RGBE11LXtObjectIDf10LXtFVector"></span><span id="ILxImageService::Kelvin2RGB__LXtObjectID.float.LXtFVector"></span><span class="target" id="class_i_lx_image_service_1aa5423e8efa66db0d0c9b8e2cb3771b71"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Kelvin2RGB</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>kelvin</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>rgbColor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService10Kelvin2RGBE11LXtObjectIDf10LXtFVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService10RGB2KelvinE11LXtObjectIDK10LXtFVectorPf">
+<span id="_CPPv3N15ILxImageService10RGB2KelvinE11LXtObjectIDK10LXtFVectorPf"></span><span id="_CPPv2N15ILxImageService10RGB2KelvinE11LXtObjectIDK10LXtFVectorPf"></span><span id="ILxImageService::RGB2Kelvin__LXtObjectID.LXtFVectorC.floatP"></span><span class="target" id="class_i_lx_image_service_1a0a5fbf020d4e91d128cb9a05de31dda3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RGB2Kelvin</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>rgbColor</em>, float *<em>kelvin</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService10RGB2KelvinE11LXtObjectIDK10LXtFVectorPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService10CreateCropE11LXtObjectID11LXtObjectIDddddPPv">
+<span id="_CPPv3N15ILxImageService10CreateCropE11LXtObjectID11LXtObjectIDddddPPv"></span><span id="_CPPv2N15ILxImageService10CreateCropE11LXtObjectID11LXtObjectIDddddPPv"></span><span id="ILxImageService::CreateCrop__LXtObjectID.LXtObjectID.double.double.double.double.voidPP"></span><span class="target" id="class_i_lx_image_service_1a59ef002579ede2a6a820284daf695614"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateCrop</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>sourceImage</em>, double <em>x</em>, double <em>y</em>, double <em>w</em>, double <em>h</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService10CreateCropE11LXtObjectID11LXtObjectIDddddPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService14ImageGetBufferE11LXtObjectID11LXtObjectID14LXtPixelFormatPv">
+<span id="_CPPv3N15ILxImageService14ImageGetBufferE11LXtObjectID11LXtObjectID14LXtPixelFormatPv"></span><span id="_CPPv2N15ILxImageService14ImageGetBufferE11LXtObjectID11LXtObjectID14LXtPixelFormatPv"></span><span id="ILxImageService::ImageGetBuffer__LXtObjectID.LXtObjectID.LXtPixelFormat.voidP"></span><span class="target" id="class_i_lx_image_service_1a1fb583f0b2dc39c057fe293c43336984"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ImageGetBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>sourceImage</em>, <a class="reference internal" href="#_CPPv414LXtPixelFormat" title="LXtPixelFormat">LXtPixelFormat</a> <em>type</em>, void *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService14ImageGetBufferE11LXtObjectID11LXtObjectID14LXtPixelFormatPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This reads the entire image into a single buffer given the pixel format. This is just like Image::GetLine() except that it does all the lines at once. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService11LoadNoCacheE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N15ILxImageService11LoadNoCacheE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N15ILxImageService11LoadNoCacheE11LXtObjectIDPKcPPv"></span><span id="ILxImageService::LoadNoCache__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_image_service_1af358c4e9133ebe2a997479a3e94b11b1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LoadNoCache</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filePath</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService11LoadNoCacheE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>LaodNoCache() is the same as <a class="reference internal" href="#class_i_lx_image_service_1ad606cca56c4f83e02520919d546d52d4"><span class="std std-ref">Load()</span></a>, but the image is not added to the intenral cache. This is useful when the image is only needed once (say, because it is being loaded and resized). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService13CreateLayeredE11LXtObjectIDjjjPPv">
+<span id="_CPPv3N15ILxImageService13CreateLayeredE11LXtObjectIDjjjPPv"></span><span id="_CPPv2N15ILxImageService13CreateLayeredE11LXtObjectIDjjjPPv"></span><span id="ILxImageService::CreateLayered__LXtObjectID.unsigned-i.unsigned-i.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_image_service_1a77520cae7d03448b5e3fc1bbb4e40a0c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateLayered</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>width</em>, unsigned int <em>height</em>, unsigned int <em>layerNum</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService13CreateLayeredE11LXtObjectIDjjjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxImageService11SaveLayeredE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID">
+<span id="_CPPv3N15ILxImageService11SaveLayeredE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID"></span><span id="_CPPv2N15ILxImageService11SaveLayeredE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID"></span><span id="ILxImageService::SaveLayered__LXtObjectID.LXtObjectID.cCP.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_image_service_1a4efcde0de9f1a2946434ee40c28ff08f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SaveLayered</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>layeredImage</em>, <em class="property">const</em> char *<em>filePath</em>, <em class="property">const</em> char *<em>format</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxImageService11SaveLayeredE11LXtObjectID11LXtObjectIDPKcPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximageblockcodec">
+<h2><a class="toc-backref" href="#id15">ILxImageBlockCodec</a><a class="headerlink" href="#ilximageblockcodec" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxImageBlockCodec">
+<span id="_CPPv318ILxImageBlockCodec"></span><span id="_CPPv218ILxImageBlockCodec"></span><span id="ILxImageBlockCodec"></span><span class="target" id="class_i_lx_image_block_codec"></span><em class="property">class </em><code class="sig-name descname">ILxImageBlockCodec</code><a class="headerlink" href="#_CPPv418ILxImageBlockCodec" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxImageBlockCodec8CompressE11LXtObjectID11LXtObjectIDPPhPi">
+<span id="_CPPv3N18ILxImageBlockCodec8CompressE11LXtObjectID11LXtObjectIDPPhPi"></span><span id="_CPPv2N18ILxImageBlockCodec8CompressE11LXtObjectID11LXtObjectIDPPhPi"></span><span id="ILxImageBlockCodec::Compress__LXtObjectID.LXtObjectID.unsigned-cPP.iP"></span><span class="target" id="class_i_lx_image_block_codec_1abc772443a3b0a7fb02385f6350b9f753"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Compress</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, unsigned char **<em>buf</em>, int *<em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxImageBlockCodec8CompressE11LXtObjectID11LXtObjectIDPPhPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Image block codec interfaces allow an image to be compressed into a block of data which can then be included in other files, such as for thumbnails. <a class="reference internal" href="#class_i_lx_image_block_codec_1abc772443a3b0a7fb02385f6350b9f753"><span class="std std-ref">Compress()</span></a> allocates and returns a block encoding the image. <a class="reference internal" href="#class_i_lx_image_block_codec_1afd7a84d63c6e3d561b3bb00889de5a55"><span class="std std-ref">Free()</span></a> frees the block when the client is done. <a class="reference internal" href="#class_i_lx_image_block_codec_1ae9b61cffd54cbfa27855d70508baf3c5"><span class="std std-ref">Decompress()</span></a> creates an image from a block. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxImageBlockCodec4FreeE11LXtObjectIDPhi">
+<span id="_CPPv3N18ILxImageBlockCodec4FreeE11LXtObjectIDPhi"></span><span id="_CPPv2N18ILxImageBlockCodec4FreeE11LXtObjectIDPhi"></span><span id="ILxImageBlockCodec::Free__LXtObjectID.unsigned-cP.i"></span><span class="target" id="class_i_lx_image_block_codec_1afd7a84d63c6e3d561b3bb00889de5a55"></span>void <code class="sig-name descname">Free</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned char *<em>buf</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxImageBlockCodec4FreeE11LXtObjectIDPhi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxImageBlockCodec10DecompressE11LXtObjectIDPhiPPv">
+<span id="_CPPv3N18ILxImageBlockCodec10DecompressE11LXtObjectIDPhiPPv"></span><span id="_CPPv2N18ILxImageBlockCodec10DecompressE11LXtObjectIDPhiPPv"></span><span id="ILxImageBlockCodec::Decompress__LXtObjectID.unsigned-cP.i.voidPP"></span><span class="target" id="class_i_lx_image_block_codec_1ae9b61cffd54cbfa27855d70508baf3c5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Decompress</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned char *<em>buf</em>, int <em>size</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxImageBlockCodec10DecompressE11LXtObjectIDPhiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximagefilter">
+<h2><a class="toc-backref" href="#id16">ILxImageFilter</a><a class="headerlink" href="#ilximagefilter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxImageFilter">
+<span id="_CPPv314ILxImageFilter"></span><span id="_CPPv214ILxImageFilter"></span><span id="ILxImageFilter"></span><span class="target" id="class_i_lx_image_filter"></span><em class="property">class </em><code class="sig-name descname">ILxImageFilter</code><a class="headerlink" href="#_CPPv414ILxImageFilter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxImageFilter4TypeE11LXtObjectID">
+<span id="_CPPv3N14ILxImageFilter4TypeE11LXtObjectID"></span><span id="_CPPv2N14ILxImageFilter4TypeE11LXtObjectID"></span><span id="ILxImageFilter::Type__LXtObjectID"></span><span class="target" id="class_i_lx_image_filter_1a4a377a88186303dcf792fc9f284b4765"></span>unsigned int <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxImageFilter4TypeE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Full image evaluation is using the <a class="reference internal" href="#class_i_lx_image_filter"><span class="std std-ref">ILxImageFilter</span></a> interface. There are two kinds of filters, Single Sample and Multi Sample. Single Sample is reminiscent of pixel filters, and are provided with a single pixel to evaluate and set. Multi Sample filters get an entire image buffer to evaluate at once. A Multi Sample filter can do everything a Single Sample filter can, but you have to do more work by looping through the pixels in the image yourself and creating a new image buffer, thus using more memory. The <a class="reference internal" href="#class_i_lx_image_filter_1a4a377a88186303dcf792fc9f284b4765"><span class="std std-ref">Type()</span></a> method returns the type of filter, given by one of the codes below. These select which operational method is called and how its results are interpreted. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxImageFilter8GenerateE11LXtObjectIDii11LXtObjectIDPPv">
+<span id="_CPPv3N14ILxImageFilter8GenerateE11LXtObjectIDii11LXtObjectIDPPv"></span><span id="_CPPv2N14ILxImageFilter8GenerateE11LXtObjectIDii11LXtObjectIDPPv"></span><span id="ILxImageFilter::Generate__LXtObjectID.i.i.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_image_filter_1a50eda7e9699e406ec012ebaabe754431"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Generate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>width</em>, int <em>height</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxImageFilter8GenerateE11LXtObjectIDii11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Generate is called on the first filter to generate the base image. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxImageFilter11MultiSampleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N14ILxImageFilter11MultiSampleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N14ILxImageFilter11MultiSampleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxImageFilter::MultiSample__LXtObjectID.LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_image_filter_1a7f22ff5c2d0894870789f3bb84e381b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MultiSample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxImageFilter11MultiSampleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Multi Sample filters can perform convolutes and other operations that involve sampling multiple pixels. They are responsible for creating the output image itself, which can even be at a different resolution, although I’m not sure how good of an idea this is. Blurs, sharpen, trace edge and similar filters requiring multiple samples of an image should be of this type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxImageFilter12SingleSampleE11LXtObjectIDK12LXtColorRGBA12LXtColorRGBA">
+<span id="_CPPv3N14ILxImageFilter12SingleSampleE11LXtObjectIDK12LXtColorRGBA12LXtColorRGBA"></span><span id="_CPPv2N14ILxImageFilter12SingleSampleE11LXtObjectIDK12LXtColorRGBA12LXtColorRGBA"></span><span id="ILxImageFilter::SingleSample__LXtObjectID.LXtColorRGBAC.LXtColorRGBA"></span><span class="target" id="class_i_lx_image_filter_1a79f2da728d5e304a34cdf4ee9ef0c45b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SingleSample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtColorRGBA <em>src</em>, LXtColorRGBA <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxImageFilter12SingleSampleE11LXtObjectIDK12LXtColorRGBA12LXtColorRGBA" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Single Sample filters are provided with the RGBA values of a single pixel to evaluate. The filter function is called for each pixel in turn. This is a good choice for things like creating negatives, performing gamma correction, tinting and other operations that don’t rely on multiple samples. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxImageFilter13SingleSampleNE11LXtObjectIDPK13LXtImageFloatP13LXtImageFloatj">
+<span id="_CPPv3N14ILxImageFilter13SingleSampleNE11LXtObjectIDPK13LXtImageFloatP13LXtImageFloatj"></span><span id="_CPPv2N14ILxImageFilter13SingleSampleNE11LXtObjectIDPK13LXtImageFloatP13LXtImageFloatj"></span><span id="ILxImageFilter::SingleSampleN__LXtObjectID.LXtImageFloatCP.LXtImageFloatP.unsigned"></span><span class="target" id="class_i_lx_image_filter_1a7cc0e795b8094dfdccd3db58f68493d2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SingleSampleN</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv413LXtImageFloat" title="LXtImageFloat">LXtImageFloat</a> *<em>src</em>, <a class="reference internal" href="#_CPPv413LXtImageFloat" title="LXtImageFloat">LXtImageFloat</a> *<em>dest</em>, unsigned <em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxImageFilter13SingleSampleNE11LXtObjectIDPK13LXtImageFloatP13LXtImageFloatj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The multi-sample version of the single-sample filter allows an array of RGBA tuples to be transformed at once. This is used when entire lines need to be filtered but pixels are still independent. Filters that support <a class="reference internal" href="#class_i_lx_image_filter_1a7cc0e795b8094dfdccd3db58f68493d2"><span class="std std-ref">SingleSampleN()</span></a> must also support <a class="reference internal" href="#class_i_lx_image_filter_1a79f2da728d5e304a34cdf4ee9ef0c45b"><span class="std std-ref">SingleSample()</span></a>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_IMAGE_GENERATOR</p></li>
+<li><p>LXi_IMAGE_SINGLE_SAMPLE</p></li>
+<li><p>LXi_IMAGE_MULTI_SAMPLE</p></li>
+<li><p>LXi_IMAGE_SINGLE_SAMPLE_N</p></li>
+</ul>
+</div>
+<div class="section" id="ilximagefiltersample">
+<h2><a class="toc-backref" href="#id17">ILxImageFilterSample</a><a class="headerlink" href="#ilximagefiltersample" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxImageFilterSample">
+<span id="_CPPv320ILxImageFilterSample"></span><span id="_CPPv220ILxImageFilterSample"></span><span id="ILxImageFilterSample"></span><span class="target" id="class_i_lx_image_filter_sample"></span><em class="property">class </em><code class="sig-name descname">ILxImageFilterSample</code><a class="headerlink" href="#_CPPv420ILxImageFilterSample" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxImageFilterSample10SpotSampleE11LXtObjectIDfffPf">
+<span id="_CPPv3N20ILxImageFilterSample10SpotSampleE11LXtObjectIDfffPf"></span><span id="_CPPv2N20ILxImageFilterSample10SpotSampleE11LXtObjectIDfffPf"></span><span id="ILxImageFilterSample::SpotSample__LXtObjectID.float.float.float.floatP"></span><span class="target" id="class_i_lx_image_filter_sample_1a7acd0a75dc5e1be34997a68d90a5d5f5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SpotSample</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float <em>x</em>, float <em>y</em>, float <em>spotSize</em>, float *<em>rgba</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxImageFilterSample10SpotSampleE11LXtObjectIDfffPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface is designed for texturing. It returns a sample in a texture defined by a fraction of the width and height of the image, automatically generating mip maps and blending between them. ‘spotSize’ is a fraction of the image size. The four element ‘rgba’ array will be filled with the sample. If for some reason the stack evaluation failed, this will return 0, and the ‘rgba’ array will be set to all zeros. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtimagemetrics">
+<h2><a class="toc-backref" href="#id18">LXtImageMetrics</a><a class="headerlink" href="#lxtimagemetrics" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418st_LXtImageMetrics">
+<span id="_CPPv318st_LXtImageMetrics"></span><span id="_CPPv218st_LXtImageMetrics"></span><span id="st_LXtImageMetrics"></span><span class="target" id="structst___l_xt_image_metrics"></span><em class="property">struct </em><code class="sig-name descname">st_LXtImageMetrics</code><a class="headerlink" href="#_CPPv418st_LXtImageMetrics" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface can be used to get the metrics filled in by the generator. Since the generator is responsible for this, this function may cause the stack to generate a with VCEVALf_METRICS_ONLY specifically for this information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics6maxResE">
+<span id="_CPPv3N18st_LXtImageMetrics6maxResE"></span><span id="_CPPv2N18st_LXtImageMetrics6maxResE"></span><span id="st_LXtImageMetrics::maxRes__iA"></span><span class="target" id="structst___l_xt_image_metrics_1abde69006c1cad367bceee407a0e41894"></span>int <code class="sig-name descname">maxRes</code>[2]<a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics6maxResE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics9pixelTypeE">
+<span id="_CPPv3N18st_LXtImageMetrics9pixelTypeE"></span><span id="_CPPv2N18st_LXtImageMetrics9pixelTypeE"></span><span id="st_LXtImageMetrics::pixelType__i"></span><span class="target" id="structst___l_xt_image_metrics_1a98262367de49c83f93d5e5f66f368ee9"></span>int <code class="sig-name descname">pixelType</code><a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics9pixelTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics6aspectE">
+<span id="_CPPv3N18st_LXtImageMetrics6aspectE"></span><span id="_CPPv2N18st_LXtImageMetrics6aspectE"></span><span id="st_LXtImageMetrics::aspect__double"></span><span class="target" id="structst___l_xt_image_metrics_1a1844f231227babbf3cf562eba341f752"></span>double <code class="sig-name descname">aspect</code><a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics6aspectE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics8filenameE">
+<span id="_CPPv3N18st_LXtImageMetrics8filenameE"></span><span id="_CPPv2N18st_LXtImageMetrics8filenameE"></span><span id="st_LXtImageMetrics::filename__cA"></span><span class="target" id="structst___l_xt_image_metrics_1a8a4353291c1f484659205a480a9a0ae1"></span>char <code class="sig-name descname">filename</code>[512]<a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics8filenameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics6formatE">
+<span id="_CPPv3N18st_LXtImageMetrics6formatE"></span><span id="_CPPv2N18st_LXtImageMetrics6formatE"></span><span id="st_LXtImageMetrics::format__cA"></span><span class="target" id="structst___l_xt_image_metrics_1a834d4d09ae0ae357805c09e3b99e3163"></span>char <code class="sig-name descname">format</code>[512]<a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics6formatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics5layerE">
+<span id="_CPPv3N18st_LXtImageMetrics5layerE"></span><span id="_CPPv2N18st_LXtImageMetrics5layerE"></span><span id="st_LXtImageMetrics::layer__i"></span><span class="target" id="structst___l_xt_image_metrics_1a0270b202c7a3df4f1aeef6613dd372ca"></span>int <code class="sig-name descname">layer</code><a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics5layerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics15colorspaceDepthE">
+<span id="_CPPv3N18st_LXtImageMetrics15colorspaceDepthE"></span><span id="_CPPv2N18st_LXtImageMetrics15colorspaceDepthE"></span><span id="st_LXtImageMetrics::colorspaceDepth__i"></span><span class="target" id="structst___l_xt_image_metrics_1a0dc060eaf074178ffc6637ff559a4a3e"></span>int <code class="sig-name descname">colorspaceDepth</code><a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics15colorspaceDepthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics10colorspaceE">
+<span id="_CPPv3N18st_LXtImageMetrics10colorspaceE"></span><span id="_CPPv2N18st_LXtImageMetrics10colorspaceE"></span><span id="st_LXtImageMetrics::colorspace__cA"></span><span class="target" id="structst___l_xt_image_metrics_1acc692fead6e5b72cd218c72504b0de34"></span>char <code class="sig-name descname">colorspace</code>[512]<a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics10colorspaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics11archiveFileE">
+<span id="_CPPv3N18st_LXtImageMetrics11archiveFileE"></span><span id="_CPPv2N18st_LXtImageMetrics11archiveFileE"></span><span id="st_LXtImageMetrics::archiveFile__cA"></span><span class="target" id="structst___l_xt_image_metrics_1a586c16d82632be40fb1d8acd42d076a6"></span>char <code class="sig-name descname">archiveFile</code>[512]<a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics11archiveFileE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics10archiveKeyE">
+<span id="_CPPv3N18st_LXtImageMetrics10archiveKeyE"></span><span id="_CPPv2N18st_LXtImageMetrics10archiveKeyE"></span><span id="st_LXtImageMetrics::archiveKey__cA"></span><span class="target" id="structst___l_xt_image_metrics_1afdb222e94e5baae2b52b2c2dca6a45b4"></span>char <code class="sig-name descname">archiveKey</code>[768]<a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics10archiveKeyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N18st_LXtImageMetrics8isStaticE">
+<span id="_CPPv3N18st_LXtImageMetrics8isStaticE"></span><span id="_CPPv2N18st_LXtImageMetrics8isStaticE"></span><span id="st_LXtImageMetrics::isStatic__i"></span><span class="target" id="structst___l_xt_image_metrics_1a053897c3302e4c9319eef9c6840d84ca"></span>int <code class="sig-name descname">isStatic</code><a class="headerlink" href="#_CPPv4N18st_LXtImageMetrics8isStaticE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximagefiltermetrics">
+<h2><a class="toc-backref" href="#id19">ILxImageFilterMetrics</a><a class="headerlink" href="#ilximagefiltermetrics" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxImageFilterMetrics">
+<span id="_CPPv321ILxImageFilterMetrics"></span><span id="_CPPv221ILxImageFilterMetrics"></span><span id="ILxImageFilterMetrics"></span><span class="target" id="class_i_lx_image_filter_metrics"></span><em class="property">class </em><code class="sig-name descname">ILxImageFilterMetrics</code><a class="headerlink" href="#_CPPv421ILxImageFilterMetrics" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxImageFilterMetrics8GenerateE11LXtObjectIDP15LXtImageMetrics">
+<span id="_CPPv3N21ILxImageFilterMetrics8GenerateE11LXtObjectIDP15LXtImageMetrics"></span><span id="_CPPv2N21ILxImageFilterMetrics8GenerateE11LXtObjectIDP15LXtImageMetrics"></span><span id="ILxImageFilterMetrics::Generate__LXtObjectID.LXtImageMetricsP"></span><span class="target" id="class_i_lx_image_filter_metrics_1a2280f0da78d219c307d01e4274e5588b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Generate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtImageMetrics *<em>metrics</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxImageFilterMetrics8GenerateE11LXtObjectIDP15LXtImageMetrics" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>maxRes This should be set to the maximum width and height that the image can be generated at, or 0 for no limit. For image loaders, this would be the size of the image itself; for a Flash loader, this might be some maximum size entered by the user. Any attempt to generate an image greater than this will result in an image being generated at maxRes.</p></li>
+<li><p>pixelType This should be set to the pixel type for the images this stack will generate.</p></li>
+<li><p>aspect This should be set to the aspect ratio of the image. For example, 4:3 aspect would be 1.3333. Generate is called on the first filter to generate the base metrics. Evaluate is called for subsequent filters and may modify the metrics from the upstream source. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxImageFilterMetrics8EvaluateE11LXtObjectIDP15LXtImageMetrics">
+<span id="_CPPv3N21ILxImageFilterMetrics8EvaluateE11LXtObjectIDP15LXtImageMetrics"></span><span id="_CPPv2N21ILxImageFilterMetrics8EvaluateE11LXtObjectIDP15LXtImageMetrics"></span><span id="ILxImageFilterMetrics::Evaluate__LXtObjectID.LXtImageMetricsP"></span><span class="target" id="class_i_lx_image_filter_metrics_1a9aa27a491f05508af3d08f72b6b906db"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtImageMetrics *<em>metrics</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxImageFilterMetrics8EvaluateE11LXtObjectIDP15LXtImageMetrics" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxtimagemetrics1">
+<h2><a class="toc-backref" href="#id20">LXtImageMetrics1</a><a class="headerlink" href="#lxtimagemetrics1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419st_LXtImageMetrics1">
+<span id="_CPPv319st_LXtImageMetrics1"></span><span id="_CPPv219st_LXtImageMetrics1"></span><span id="st_LXtImageMetrics1"></span><span class="target" id="structst___l_xt_image_metrics1"></span><em class="property">struct </em><code class="sig-name descname">st_LXtImageMetrics1</code><a class="headerlink" href="#_CPPv419st_LXtImageMetrics1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 14.1. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics16maxResE">
+<span id="_CPPv3N19st_LXtImageMetrics16maxResE"></span><span id="_CPPv2N19st_LXtImageMetrics16maxResE"></span><span id="st_LXtImageMetrics1::maxRes__iA"></span><span class="target" id="structst___l_xt_image_metrics1_1a868ef98eb8b06aebf9ecc8e7deb35c69"></span>int <code class="sig-name descname">maxRes</code>[2]<a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics16maxResE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics19pixelTypeE">
+<span id="_CPPv3N19st_LXtImageMetrics19pixelTypeE"></span><span id="_CPPv2N19st_LXtImageMetrics19pixelTypeE"></span><span id="st_LXtImageMetrics1::pixelType__i"></span><span class="target" id="structst___l_xt_image_metrics1_1a4306bb7dcbbb723f0fd92075411af48e"></span>int <code class="sig-name descname">pixelType</code><a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics19pixelTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics16aspectE">
+<span id="_CPPv3N19st_LXtImageMetrics16aspectE"></span><span id="_CPPv2N19st_LXtImageMetrics16aspectE"></span><span id="st_LXtImageMetrics1::aspect__double"></span><span class="target" id="structst___l_xt_image_metrics1_1ab43d27133e5a025e11ceea915e44fc61"></span>double <code class="sig-name descname">aspect</code><a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics16aspectE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics18filenameE">
+<span id="_CPPv3N19st_LXtImageMetrics18filenameE"></span><span id="_CPPv2N19st_LXtImageMetrics18filenameE"></span><span id="st_LXtImageMetrics1::filename__cA"></span><span class="target" id="structst___l_xt_image_metrics1_1af8f0a0082ac007d39f9e0776d95c25ef"></span>char <code class="sig-name descname">filename</code>[512]<a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics18filenameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics16formatE">
+<span id="_CPPv3N19st_LXtImageMetrics16formatE"></span><span id="_CPPv2N19st_LXtImageMetrics16formatE"></span><span id="st_LXtImageMetrics1::format__cA"></span><span class="target" id="structst___l_xt_image_metrics1_1a3c5535fd2396a4e82cac7c19fbbef290"></span>char <code class="sig-name descname">format</code>[512]<a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics16formatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics15layerE">
+<span id="_CPPv3N19st_LXtImageMetrics15layerE"></span><span id="_CPPv2N19st_LXtImageMetrics15layerE"></span><span id="st_LXtImageMetrics1::layer__i"></span><span class="target" id="structst___l_xt_image_metrics1_1a3b965d57dca13596a19076734e55026a"></span>int <code class="sig-name descname">layer</code><a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics15layerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics115colorspaceDepthE">
+<span id="_CPPv3N19st_LXtImageMetrics115colorspaceDepthE"></span><span id="_CPPv2N19st_LXtImageMetrics115colorspaceDepthE"></span><span id="st_LXtImageMetrics1::colorspaceDepth__i"></span><span class="target" id="structst___l_xt_image_metrics1_1a690075205bc53de0cb49c6e0ea142b42"></span>int <code class="sig-name descname">colorspaceDepth</code><a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics115colorspaceDepthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics110colorspaceE">
+<span id="_CPPv3N19st_LXtImageMetrics110colorspaceE"></span><span id="_CPPv2N19st_LXtImageMetrics110colorspaceE"></span><span id="st_LXtImageMetrics1::colorspace__cA"></span><span class="target" id="structst___l_xt_image_metrics1_1a5acf1f49bcc045da1fb434725f9510e9"></span>char <code class="sig-name descname">colorspace</code>[512]<a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics110colorspaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics111archiveFileE">
+<span id="_CPPv3N19st_LXtImageMetrics111archiveFileE"></span><span id="_CPPv2N19st_LXtImageMetrics111archiveFileE"></span><span id="st_LXtImageMetrics1::archiveFile__cA"></span><span class="target" id="structst___l_xt_image_metrics1_1adbb51855af19ba34dd610fabb7d37d8e"></span>char <code class="sig-name descname">archiveFile</code>[512]<a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics111archiveFileE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19st_LXtImageMetrics110archiveKeyE">
+<span id="_CPPv3N19st_LXtImageMetrics110archiveKeyE"></span><span id="_CPPv2N19st_LXtImageMetrics110archiveKeyE"></span><span id="st_LXtImageMetrics1::archiveKey__cA"></span><span class="target" id="structst___l_xt_image_metrics1_1a90ce0106f4af3a309977be78eea3a5cb"></span>char <code class="sig-name descname">archiveKey</code>[768]<a class="headerlink" href="#_CPPv4N19st_LXtImageMetrics110archiveKeyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilximagefiltermetrics1">
+<h2><a class="toc-backref" href="#id21">ILxImageFilterMetrics1</a><a class="headerlink" href="#ilximagefiltermetrics1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxImageFilterMetrics1">
+<span id="_CPPv322ILxImageFilterMetrics1"></span><span id="_CPPv222ILxImageFilterMetrics1"></span><span id="ILxImageFilterMetrics1"></span><span class="target" id="class_i_lx_image_filter_metrics1"></span><em class="property">class </em><code class="sig-name descname">ILxImageFilterMetrics1</code><a class="headerlink" href="#_CPPv422ILxImageFilterMetrics1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxImageFilterMetrics18GenerateE11LXtObjectIDP16LXtImageMetrics1">
+<span id="_CPPv3N22ILxImageFilterMetrics18GenerateE11LXtObjectIDP16LXtImageMetrics1"></span><span id="_CPPv2N22ILxImageFilterMetrics18GenerateE11LXtObjectIDP16LXtImageMetrics1"></span><span id="ILxImageFilterMetrics1::Generate__LXtObjectID.LXtImageMetrics1P"></span><span class="target" id="class_i_lx_image_filter_metrics1_1a2dd5fcbd9cd336269a1d4bb58fdf3c9f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Generate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtImageMetrics1 *<em>metrics</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxImageFilterMetrics18GenerateE11LXtObjectIDP16LXtImageMetrics1" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxImageFilterMetrics18EvaluateE11LXtObjectIDP16LXtImageMetrics1">
+<span id="_CPPv3N22ILxImageFilterMetrics18EvaluateE11LXtObjectIDP16LXtImageMetrics1"></span><span id="_CPPv2N22ILxImageFilterMetrics18EvaluateE11LXtObjectIDP16LXtImageMetrics1"></span><span id="ILxImageFilterMetrics1::Evaluate__LXtObjectID.LXtImageMetrics1P"></span><span class="target" id="class_i_lx_image_filter_metrics1_1a4f95432cfde073c9456fb50f86116571"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtImageMetrics1 *<em>metrics</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxImageFilterMetrics18EvaluateE11LXtObjectIDP16LXtImageMetrics1" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsMOVIE_SAVESTEREO</p></li>
+<li><p>LXsMOVIE_OPTIONSCOMMAND</p></li>
+</ul>
+</div>
+<div class="section" id="ilxmovie">
+<h2><a class="toc-backref" href="#id22">ILxMovie</a><a class="headerlink" href="#ilxmovie" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv48ILxMovie">
+<span id="_CPPv38ILxMovie"></span><span id="_CPPv28ILxMovie"></span><span id="ILxMovie"></span><span class="target" id="class_i_lx_movie"></span><em class="property">class </em><code class="sig-name descname">ILxMovie</code><a class="headerlink" href="#_CPPv48ILxMovie" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Since there’s really no better place for this we’ll put the simple animation interface here. This is a very simple API for creating animations. The LXsMOVIE_OPTIONSCOMMAND tag identifies a command that should be executed to set options for the movie saver. It is commonly called when the user has chosen the movie saver from a file dialog, and in any other situation where the user needs to be presented with saver options before actually saving the movie. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N8ILxMovie10BeginMovieE11LXtObjectIDPKciii">
+<span id="_CPPv3N8ILxMovie10BeginMovieE11LXtObjectIDPKciii"></span><span id="_CPPv2N8ILxMovie10BeginMovieE11LXtObjectIDPKciii"></span><span id="ILxMovie::BeginMovie__LXtObjectID.cCP.i.i.i"></span><span class="target" id="class_i_lx_movie_1a66cdee86d9b5d8a4cc17f209f3c2729f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BeginMovie</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>fname</em>, int <em>w</em>, int <em>h</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxMovie10BeginMovieE11LXtObjectIDPKciii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Movie creation API is pretty simple - you begin a movie, add a bunch of images in sequence, and then end it. The movie itself lives on disk at the path specified. There are currently no flags defined, but there may be in the future. Default format is MP4 and default framerate is 15 fps. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxMovie12SetFramerateE11LXtObjectIDi">
+<span id="_CPPv3N8ILxMovie12SetFramerateE11LXtObjectIDi"></span><span id="_CPPv2N8ILxMovie12SetFramerateE11LXtObjectIDi"></span><span id="ILxMovie::SetFramerate__LXtObjectID.i"></span><span class="target" id="class_i_lx_movie_1aea03ccf2eba824dd76b3aefb9098632f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetFramerate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>frate</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxMovie12SetFramerateE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Before adding any frames, you can change the framerate from the default of 15 with following method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxMovie8AddImageE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N8ILxMovie8AddImageE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N8ILxMovie8AddImageE11LXtObjectID11LXtObjectID"></span><span id="ILxMovie::AddImage__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_movie_1a8401b7c2f35ac5b8b6f299a6f010b167"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxMovie8AddImageE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adding an image is straightforward. Do this in sequence. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxMovie8EndMovieE11LXtObjectID">
+<span id="_CPPv3N8ILxMovie8EndMovieE11LXtObjectID"></span><span id="_CPPv2N8ILxMovie8EndMovieE11LXtObjectID"></span><span id="ILxMovie::EndMovie__LXtObjectID"></span><span class="target" id="class_i_lx_movie_1abebdca97cd690fd7b7dae8630fc23c00"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EndMovie</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxMovie8EndMovieE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When done adding images, call this to finalize the movie and write it to disk. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxMovie8AddAudioE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N8ILxMovie8AddAudioE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N8ILxMovie8AddAudioE11LXtObjectID11LXtObjectID"></span><span id="ILxMovie::AddAudio__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_movie_1a9572ff83a8758c7681deca187d1ae857"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddAudio</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>audio</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxMovie8AddAudioE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adding an audio track. This must be called after adding all images before EndMove. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_imagemon.html" class="btn btn-neutral float-right" title="Imagemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_handles.html" class="btn btn-neutral float-left" title="Handles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_image.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

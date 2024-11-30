@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Item gasket.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:06 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Item gasket &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Item mandelbrot" href="Item%20mandelbrot.html" />
+    <link rel="prev" title="Item Command Arguments" href="Item%20Command%20Arguments.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Item gasket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#class-declarations">Class Declarations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server-tags"><span class="xref std std-doc">./Server_Tags</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-index"><span class="xref std std-doc">./Initialize_(index)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementations">Implementations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Item gasket</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="item-gasket">
+<h1>Item gasket<a class="headerlink" href="#item-gasket" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-walkthrough" id="id1">Code Walkthrough</a></p>
+<ul>
+<li><p><a class="reference internal" href="#class-declarations" id="id2">Class Declarations</a></p></li>
+<li><p><a class="reference internal" href="#server-tags" id="id3"><span class="xref std std-doc">./Server_Tags</span></a></p></li>
+<li><p><a class="reference internal" href="#initialize-index" id="id4"><span class="xref std std-doc">./Initialize_(index)</span></a></p></li>
+<li><p><a class="reference internal" href="#implementations" id="id5">Implementations</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Item_gasket.cpp is a basic example plugin. This wiki page is intended as a walkthrough of the code in order to help you better understand the SDK.</p>
+<p>This plugin adds the gasket item to the modo item list.</p>
+<img alt="../../_images/gasket_shot1.png" src="../../_images/gasket_shot1.png" />
+<p>The gasket item.</p>
+<div class="section" id="code-walkthrough">
+<h2><a class="toc-backref" href="#id1">Code Walkthrough</a><a class="headerlink" href="#code-walkthrough" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="class-declarations">
+<h3><a class="toc-backref" href="#id2">Class Declarations</a><a class="headerlink" href="#class-declarations" title="Permalink to this headline">¶</a></h3>
+<p>Our classes are organized in a sort of nested structure, and at the base is this class.</p>
+<p>This class generates the gasket, so we inherit from Tableau_(lx-tableau.hpp)#.2816.29_User_Class:_TableauSurface_method. The TableauSurface Method is responsible for generating all the triangles that intersect the bounding box.</p>
+<p>Additionally, we inherit from Attributes_(lxu-attributes.hpp)#CLxDynamicAttributes, which provides the attributes interface for our gasket.</p>
+<p>Inside the class, our first method is our initialize method. Normally, we have this located in a global initialize function, but for this plugin we have our global initialize function call the initialize method that each class declares. This specific method is covered below in the Initialize section.</p>
+<p>Following that, we have a class called Corner, which is a simple 3D vector class used to compute the corners of the various primitives.</p>
+<p>We have a few functions following that that have the tsrf prefix, indicating that they set certain values related to our tableau surface item, which is part of the item that we this class generates.</p>
+<p>The functions after that generate the different elements need to make up the gasket.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CGasketGenerator :
+                       public CLxImpl_TableauSurface,
+                       public CLxDynamicAttributes
+        {
+           ...
+};
+</pre></div>
+</div>
+<p>We want this class to create a gasket instance, so we first inherit the Package_(lx-package.hpp)#.2825.29_SDK:_ILxPackageInstance_interface, which allows us to set how certain channels of the instance will update the preview.</p>
+<p>Inside the class, our first method is our initialize method. Normally, we have this located in a global initialize function, but for this plugin we have our global initialize function call the initialize method that each class declares. This specific method is covered below in the Initialize section.</p>
+<p>We continue on with the theme of nested functions. In our constructor we use a <a class="reference internal" href="../general/serverinfo/Using%20a%20Spawner.html"><span class="doc">Using a Spawner</span></a>, which creates COM objects that are not servers. We use this spawner to create an object based on the CGasketGenerator class.</p>
+<p>Following this, we have two functions with the pins prefix, indicating that they are redeclarations of virtual functions in the CLxPackageInstance class. These two functions, Initialize and Cleanup, really just add and take away the m_item object from the instance at startup and shutdown of the instance.</p>
+<p>The functions that really do the work are the ones with the prti prefix, indicating that they are redeclarations of virtual functions in the CLxImpl_ParticleItem class. The Prepare function adds channels to our m_item object. The Evaluate function takes the values from the channels that we added in previous function and passes them to the CGasketGenerator object, which we created in our constructor, in order to create our gasket object, which we then put in our m_item object.</p>
+<p>Finally, once we have finished creating our object, we have a function with the tsrc prefix, which indicates that it is a redeclaration of a virtual function in the CLxTableauSource, that updates the preview window with our object.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CGasketInstance :
+               public CLxImpl_PackageInstance,
+               public CLxImpl_ParticleItem,
+               public CLxImpl_TableauSource
+        {
+           public:
+                       static void
+               initialize ()
+               {
+                       CLxGenericPolymorph     *srv;
+
+                       srv = new CLxPolymorph&lt;CGasketInstance&gt;;
+                       srv-&gt;AddInterface (new CLxIfc_PackageInstance&lt;CGasketInstance&gt;);
+                       srv-&gt;AddInterface (new CLxIfc_ParticleItem   &lt;CGasketInstance&gt;);
+                       srv-&gt;AddInterface (new CLxIfc_TableauSource  &lt;CGasketInstance&gt;);
+                       lx::AddSpawner (SPNNAME_INSTANCE, srv);
+               }
+
+               CLxSpawner&lt;CGasketGenerator&gt;     gen_spawn;
+               CLxUser_Item                     m_item;
+
+               CGasketInstance ()
+                       : gen_spawn (SPNNAME_GENERATOR)
+               {}
+
+               LxResult         pins_Initialize (ILxUnknownID item, ILxUnknownID super) LXx_OVERRIDE;
+               void             pins_Cleanup (void) LXx_OVERRIDE;
+
+               LxResult         prti_Prepare  (ILxUnknownID eval, unsigned *index) LXx_OVERRIDE;
+               LxResult         prti_Evaluate (ILxUnknownID attr, unsigned index, void **ppvObj) LXx_OVERRIDE;
+
+               /*
+                * TableauSource interface.
+                */
+               LxResult         tsrc_PreviewUpdate (int chanIndex, int *update) LXx_OVERRIDE;
+};
+</pre></div>
+</div>
+<p>We want this class to create the Package_Object.</p>
+<p>Inside the class, our first method is our initialize method. Normally, we have this located in a global initialize function, but for this plugin we have our global initialize function call the initialize method that each class declares. This specific method is covered below in the Initialize section.</p>
+<p>We continue on with the theme of nested functions. In our constructor we use a <a class="reference internal" href="../general/serverinfo/Using%20a%20Spawner.html"><span class="doc">Using a Spawner</span></a>, which creates COM objects that are not servers. We use this spawner to create an object based on the CGasketInstance function. Following this, there are three functions with the pkg prefix. This indicates that they are redeclarations of virtual functions inside the CLxImplPackage class. The first two function, SetupChannels and TestInterface, add channels and an interface to the package that this class creates.  Most importantly, however, our Attach function attaches the instance that we created in our constructor to our package item.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CGasketPackage :
+                       public CLxImpl_Package
+        {
+           public:
+               static LXtTagInfoDesc            descInfo[];
+
+                       static void
+               initialize ()
+               {
+                       CLxGenericPolymorph     *srv;
+
+                       srv = new CLxPolymorph&lt;CGasketPackage&gt;;
+                       srv-&gt;AddInterface (new CLxIfc_Package   &lt;CGasketPackage&gt;);
+                       srv-&gt;AddInterface (new CLxIfc_StaticDesc&lt;CGasketPackage&gt;);
+                       lx::AddServer (SRVNAME_PACKAGE, srv);
+               }
+
+               CLxSpawner&lt;CGasketInstance&gt;      inst_spawn;
+
+               CGasketPackage ()
+                       : inst_spawn (SPNNAME_INSTANCE)
+               {}
+
+               LxResult                pkg_SetupChannels (ILxUnknownID addChan) LXx_OVERRIDE;
+               LxResult                pkg_TestInterface (const LXtGUID *guid) LXx_OVERRIDE;
+               LxResult                pkg_Attach (void **ppvObj) LXx_OVERRIDE;
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="server-tags">
+<h3><a class="toc-backref" href="#id3"><span class="xref std std-doc">./Server_Tags</span></a><a class="headerlink" href="#server-tags" title="Permalink to this headline">¶</a></h3>
+<p>Servers tags are examined when the server is initialized, and give information about the server. We set the tags in this case by taking descinfo[] arrays and associating the relevant data with the corresponding flags.</p>
+<p>These tags indicate that the CGasketPackage is of the super type Locator.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LXtTagInfoDesc  CGasketPackage::descInfo[] = {
+               { LXsPKG_SUPERTYPE,     LXsITYPE_LOCATOR        },
+               { 0 }
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-index">
+<h3><a class="toc-backref" href="#id4"><span class="xref std std-doc">./Initialize_(index)</span></a><a class="headerlink" href="#initialize-index" title="Permalink to this headline">¶</a></h3>
+<p>Servers are extensible set of features that we add to modo, usually through plugins. Intialize is called when we add the plugin to modo, and is the utility that exports the server.</p>
+<p>As the initialize methods have been written inside the class declarations, we call those functions for our global initialize functions.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        initialize ()
+        {
+               CGasketPackage   :: initialize ();
+               CGasketGenerator :: initialize ();
+               CGasketInstance  :: initialize ();
+}
+</pre></div>
+</div>
+<p>This method adds a new server dependent on the CGasketGenerator class that uses the TableauSource and Attributes interfaces.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">CGasketGenerator</span><span class="p">::</span><span class="n">initialize</span> <span class="p">()</span>
+        <span class="p">{</span>
+                <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+
+                <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CGasketGenerator</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_TableauSurface</span><span class="o">&lt;</span><span class="n">CGasketGenerator</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_Attributes</span>    <span class="o">&lt;</span><span class="n">CGasketGenerator</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">lx</span><span class="p">::</span><span class="n">AddSpawner</span> <span class="p">(</span><span class="n">SPNNAME_GENERATOR</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This method adds a new server dependent on the CGasketInstance class that uses the PackageInstance, ParticleItem, and TableauSource interfaces.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">CGasketInstance</span><span class="p">::</span><span class="n">initialize</span> <span class="p">()</span>
+        <span class="p">{</span>
+                <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+
+                <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CGasketInstance</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_PackageInstance</span><span class="o">&lt;</span><span class="n">CGasketInstance</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_ParticleItem</span>   <span class="o">&lt;</span><span class="n">CGasketInstance</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_TableauSource</span>  <span class="o">&lt;</span><span class="n">CGasketInstance</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">lx</span><span class="p">::</span><span class="n">AddSpawner</span> <span class="p">(</span><span class="n">SPNNAME_INSTANCE</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This method adds a new server dependent on the CGasketPackage class that uses the Package and StaticDesc interfaces.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">CGasketPackage</span><span class="p">::</span><span class="n">initialize</span> <span class="p">()</span>
+        <span class="p">{</span>
+                <span class="n">CLxGenericPolymorph</span>     <span class="o">*</span><span class="n">srv</span><span class="p">;</span>
+
+                <span class="n">srv</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CGasketPackage</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_Package</span>   <span class="o">&lt;</span><span class="n">CGasketPackage</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span> <span class="p">(</span><span class="n">new</span> <span class="n">CLxIfc_StaticDesc</span><span class="o">&lt;</span><span class="n">CGasketPackage</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">lx</span><span class="p">::</span><span class="n">AddServer</span> <span class="p">(</span><span class="n">SRVNAME_PACKAGE</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="implementations">
+<h3><a class="toc-backref" href="#id5">Implementations</a><a class="headerlink" href="#implementations" title="Permalink to this headline">¶</a></h3>
+<p>This section defines certain constants/shortcuts that we use.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#define Cs_TYPE                        &quot;type&quot;</span>
+ <span class="c1">#define Cs_LEVEL               &quot;level&quot;</span>
+
+ <span class="c1">#define TYPEi_SQUAREHOLE        0</span>
+ <span class="c1">#define TYPEi_SQUAREFLAKE       1</span>
+ <span class="c1">#define TYPEi_SERPINSKI                 2</span>
+ <span class="c1">#define TYPEi_TETRAHEDRON       3</span>
+
+ <span class="n">static</span> <span class="n">LXtTextValueHint</span> <span class="n">hint_typechan</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">TYPEi_SQUAREHOLE</span><span class="p">,</span>       <span class="s2">&quot;squareHole&quot;</span><span class="p">,</span>
+        <span class="n">TYPEi_SQUAREFLAKE</span><span class="p">,</span>      <span class="s2">&quot;squareFlake&quot;</span><span class="p">,</span>
+        <span class="n">TYPEi_SERPINSKI</span><span class="p">,</span>        <span class="s2">&quot;serpinski&quot;</span><span class="p">,</span>
+        <span class="n">TYPEi_TETRAHEDRON</span><span class="p">,</span>      <span class="s2">&quot;tetrahedron&quot;</span><span class="p">,</span>
+        <span class="o">-</span><span class="mi">1</span><span class="p">,</span>                     <span class="s2">&quot;=gasket_toy-type&quot;</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span>                      <span class="n">NULL</span>
+ <span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>The package has a set of standard channels with default values. These are setup at the start using the AddChannel interface. The gasket has a type and an iteration count (which needs a low default, since these can get huge really quickly).</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">LxResult</span>
+ <span class="n">CGasketPackage</span><span class="p">::</span><span class="n">pkg_SetupChannels</span> <span class="p">(</span>
+        <span class="n">ILxUnknownID</span>             <span class="n">addChan</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>TestInterface() is required so that nexus knows what interfaces instance of this package support. Necessary to prevent query loops.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">LxResult</span>
+ <span class="n">CGasketPackage</span><span class="p">::</span><span class="n">pkg_TestInterface</span> <span class="p">(</span>
+        <span class="n">const</span> <span class="n">LXtGUID</span>           <span class="o">*</span><span class="n">guid</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Attach() is called to create a new instance of this item. The returned object implements a specific item of this type in the scene.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">LxResult</span>
+ <span class="n">CGasketPackage</span><span class="p">::</span><span class="n">pkg_Attach</span> <span class="p">(</span>
+        <span class="n">void</span>                   <span class="o">**</span><span class="n">ppvObj</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Gasket Item Instance-The instance is the implementation of the item, and there will be one allocated for each item in the scene. It can respond to a set of events. Initialization typically stores the item it’s attached to.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">LxResult</span>
+ <span class="n">CGasketInstance</span><span class="p">::</span><span class="n">pins_Initialize</span> <span class="p">(</span>
+        <span class="n">ILxUnknownID</span>             <span class="n">item</span><span class="p">,</span>
+        <span class="n">ILxUnknownID</span>             <span class="nb">super</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The particle interface initializes and returns a particle object, which is then used to access particle data. This first method is passed an evaluation object which selects the channels it wants and returns a key index.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">LxResult</span>
+ <span class="n">CGasketInstance</span><span class="p">::</span><span class="n">prti_Prepare</span> <span class="p">(</span>
+        <span class="n">ILxUnknownID</span>             <span class="n">evalObj</span><span class="p">,</span>
+        <span class="n">unsigned</span>                <span class="o">*</span><span class="n">index</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Once prepared, the second method is called to actually create the object and initialize its state from the channel values.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">LxResult</span>
+ <span class="n">CGasketInstance</span><span class="p">::</span><span class="n">prti_Evaluate</span> <span class="p">(</span>
+        <span class="n">ILxUnknownID</span>             <span class="n">attr</span><span class="p">,</span>
+        <span class="n">unsigned</span>                 <span class="n">index</span><span class="p">,</span>
+        <span class="n">void</span>                   <span class="o">**</span><span class="n">ppvObj</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+
+        <span class="n">LxResult</span>
+ <span class="n">CGasketInstance</span><span class="p">::</span><span class="n">tsrc_PreviewUpdate</span> <span class="p">(</span>
+        <span class="nb">int</span>                      <span class="n">chanIndex</span><span class="p">,</span>
+        <span class="nb">int</span>                     <span class="o">*</span><span class="n">update</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Gasket Particle Object-The particle object can be enumerated by a client to get the data for all particles. It also can preset an attributes interface to allow the client to set hints, in this case the random seed.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        CGasketGenerator::CGasketGenerator ()
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Like tableau surfaces, particle sources have features. These are the properties of each particle as a vector of floats. We provide the standard 3 particle features: position, transform, and ID.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        unsigned int
+        CGasketGenerator::tsrf_FeatureCount (
+               LXtID4                   type)
+        {
+               ...
+        }
+
+               LxResult
+        CGasketGenerator::tsrf_FeatureByIndex (
+               LXtID4                   type,
+               unsigned int             index,
+               const char             **name)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Given a tableau vertex allocated by the client, we need to determine the
+features they want and their offsets into the vertex vector.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LxResult
+        CGasketGenerator::tsrf_SetVertex (
+               ILxUnknownID             vdesc)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Sampling walks the particles. This will be done by traversing the fractal geometry recursively.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LxResult
+        CGasketGenerator::tsrf_Sample (
+               const LXtTableauBox      bbox,
+               float                    scale,
+               ILxUnknownID             trisoup)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Square gasket root: makes a flat square.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CGasketGenerator::Square9 ()
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Square gasket recursion will split the square into 9 sub-squares. The hole mode is an 8-fold multiplier that leaves out the middle, and the flake mode is a 5-fold multiplier that leaves out the corners.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CGasketGenerator::Square9Gen (
+               const CCorner           &amp;cc,
+               const CCorner           &amp;c0,
+               const CCorner           &amp;c1,
+               const CCorner           &amp;c2,
+               const CCorner           &amp;c3,
+               float                    level)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Serpinski starts with an equilateral triangle. Each level splits the edges evenly and recurses on the three corner triangles.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        void
+        CGasketGenerator::Serpinski ()
+        {
+               ...
+        }
+
+               void
+        CGasketGenerator::SerpinskiGen (
+               const CCorner           &amp;cc,
+               const CCorner           &amp;c0,
+               const CCorner           &amp;c1,
+               const CCorner           &amp;c2,
+               float                    level)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Tetrahedron is four points evenly spaced. Each edge is split and the four corners become half-sized tetrahedrons.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CGasketGenerator::Tetrahedron ()
+        {
+             ...
+        }
+
+               void
+        CGasketGenerator::TetrahedronGen (
+               const CCorner           &amp;cc,
+               const CCorner           &amp;c0,
+               const CCorner           &amp;c1,
+               const CCorner           &amp;c2,
+               const CCorner           &amp;c3,
+               float                    level)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>To send a particle to the client we set the position and ID, if requested (the transform is fixed in this example). Then we generate a single point. This will interpolate between the parent center position and the real center position for intermediate levels.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        void
+        CGasketGenerator::Point (
+               const CCorner           &amp;parent,
+               const CCorner           &amp;center,
+               float                    level)
+        {
+               ...
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Item%20mandelbrot.html" class="btn btn-neutral float-right" title="Item mandelbrot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Item%20Command%20Arguments.html" class="btn btn-neutral float-left" title="Item Command Arguments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Item gasket.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:07 GMT -->
+</html>

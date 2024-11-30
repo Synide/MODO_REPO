@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Tool spikey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:10 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tool spikey &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using Loader Options" href="Using%20Loader%20Options.html" />
+    <link rel="prev" title="Texture test" href="Texture%20test.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tool spikey</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#class-declarations">Class Declarations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-index"><span class="xref std std-doc">./Initialize_(index)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementations">Implementations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Tool spikey</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tool-spikey">
+<h1>Tool spikey<a class="headerlink" href="#tool-spikey" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-walkthrough" id="id1">Code Walkthrough</a></p>
+<ul>
+<li><p><a class="reference internal" href="#class-declarations" id="id2">Class Declarations</a></p></li>
+<li><p><a class="reference internal" href="#initialize-index" id="id3"><span class="xref std std-doc">./Initialize_(index)</span></a></p></li>
+<li><p><a class="reference internal" href="#implementations" id="id4">Implementations</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Tool_spikey is a basic example plugin. This wiki page is intended as a walkthrough of the code in order to help you better understand the SDK.</p>
+<p>This plugin adds the spikey tool to the suite of tools modo has. The tool takes surfaces and makes them more “spikey”, as illustrated in screenshots below</p>
+<img alt="../../_images/Sphereb4spikey.png" src="../../_images/Sphereb4spikey.png" />
+<img alt="../../_images/Sphereafterspikey.png" src="../../_images/Sphereafterspikey.png" />
+<p>__TOC__</p>
+<div class="section" id="code-walkthrough">
+<h2><a class="toc-backref" href="#id1">Code Walkthrough</a><a class="headerlink" href="#code-walkthrough" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="class-declarations">
+<h3><a class="toc-backref" href="#id2">Class Declarations</a><a class="headerlink" href="#class-declarations" title="Permalink to this headline">¶</a></h3>
+<p>We want this class to display structured data in the log. In this case it’s used to show feedback on the current spikey factor, and as such will be called whenever the spikey tool is activate. To that end, we inherit from Log_(lx-log.hpp)#ILxLogInfoBlock as we are going to want our data to be in the form of a log info block. The first method here indicates the name of the command, which in this case is test.spikey.  The next three walk the list of fields, setting the count as 1(there can only be one tool), the name of the data as ‘factor’, and the data type as percent. These are all put into arrays that we can later access.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>       #include &lt;lx_log.hpp&gt;
+
+        class CSpikeyLogBlock :
+                       public CLxImpl_LogInfoBlock
+        {
+              public:
+                       LxResult
+               lb_Name (
+                       const char             **name)          LXx_OVERRIDE
+               {
+                       name[0] = &quot;test.spikey&quot;;
+                       return LXe_OK;
+               }
+
+                       LxResult
+               lb_FieldCount (
+                       unsigned int            *count)         LXx_OVERRIDE
+               {
+                       count[0] = 1;
+                       return LXe_OK;
+               }
+
+                       LxResult
+               lb_FieldName (
+                       unsigned int             index,
+                       const char             **name)          LXx_OVERRIDE
+               {
+                       name[0] = &quot;factor&quot;;
+                       return LXe_OK;
+               }
+
+                       LxResult
+               lb_FieldType (
+                       unsigned int             index,
+                       const char             **type)          LXx_OVERRIDE
+               {
+                       type[0] = LXsTYPE_PERCENT;
+                       return LXe_OK;
+               }
+
+};
+</pre></div>
+</div>
+<p>The Spikey tool. In order to have our class create a tool, we inherit from Tool_(lx-tool.hpp)#Tool. The attributes interface is inherited from the utility class; we inherit from it in order to be able to display the attributes of our tool. First off, the tmod_Initialize function is called  whenever the tool is activated/deactivated. Next, the tmod_Flags function sets flags that indicate certain attributes about the tool. Because we have chosen to use hauling for this tool, we have a tmod_Haul method that indicates which attribute we want to haul. Next, we start implementing our basic tool methods. The tool_Reset function resets all of our tool’s attributes to their original values. tool_VectorType returns the tool vector type, describing the vector packets required for processing. tool_Order specifies the order in the pipe by returning an Ordinal string. tool_Task describes the type of task performed by the tool. tool_Evaluate takes all these methods and uses them to actually perform the tool’s action(s).</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>       #include &lt;lx_tool.hpp&gt;
+       #include &lt;lx_vmodel.hpp&gt;
+       #include &lt;lxu_attributes.hpp&gt;
+       #include &lt;lx_layer.hpp&gt;
+       #include &lt;lx_vector.hpp&gt;
+
+        class CSpikeyTool :
+                       public CLxImpl_Tool,
+                       public CLxImpl_ToolModel,
+                       public CLxDynamicAttributes
+        {
+           public:
+                               CSpikeyTool ();
+
+               void            tool_Reset      () LXx_OVERRIDE;
+               LXtObjectID     tool_VectorType () LXx_OVERRIDE;
+               const char *    tool_Order      () LXx_OVERRIDE;
+               LXtID4          tool_Task       () LXx_OVERRIDE;
+               void            tool_Evaluate   (ILxUnknownID vts) LXx_OVERRIDE;
+
+               unsigned        tmod_Flags      () LXx_OVERRIDE;
+               void            tmod_Initialize (ILxUnknownID vts, ILxUnknownID adjust, unsigned flags) LXx_OVERRIDE;
+               const char *    tmod_Haul       (unsigned index) LXx_OVERRIDE;
+
+               CLxUser_LogService       s_log;
+               CLxUser_LayerService     s_layer;
+               CLxUser_VectorType       v_type;
+               unsigned                 offset_falloff, offset_view;
+               unsigned                 mode_select;
+};
+</pre></div>
+</div>
+<p>This class is a map visitor that collects the maps in vectors based on type. In order to create a map visitor, we are going to need to inherit from Visitor_(lx-visitor.hpp), which allows us to build our custom visitor.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CSpikeMapListVisitor : public CLxImpl_AbstractVisitor
+        {
+               ...
+};
+</pre></div>
+</div>
+<p>This class does evaluation. It does so with a polygon visitor which holds the current state of the action. The main function here is the Evaluate function, which in this class is written to replace the polygon with a fan of triangles. All of the rest of the functions perform utilities that assist the Evaluate function in performing its function.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CSpikePolygonVisitor : public CLxImpl_AbstractVisitor
+        {
+           public:
+               LxResult                 Evaluate ();
+               bool                     Normalize (LXtVector);
+               void                     VertexPos (unsigned index, LXtFVector pos);
+               bool                     VertexCross (unsigned i0, unsigned i1, unsigned i2, LXtVector dir);
+               bool                     GoodNormal (LXtVector dir);
+               bool                     GetSpike (LXtVector pos);
+
+               LXtMeshMapID             map_id;
+               LXtID4                   map_type;
+               unsigned                 vrt_count;
+               double                   pol_weight;
+
+               CSpikeMapListVisitor     e_maps;
+               CLxUser_Mesh             e_mesh;
+               CLxUser_Polygon          e_poly, e_dest;
+               CLxUser_Point            e_vert;
+               CLxUser_FalloffPacket    e_falloff;
+               double                   e_factor;
+               bool                     edit_any;
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-index">
+<h3><a class="toc-backref" href="#id3"><span class="xref std std-doc">./Initialize_(index)</span></a><a class="headerlink" href="#initialize-index" title="Permalink to this headline">¶</a></h3>
+<p>This initialize method exports two servers. The first is dependent on the CSpikeyTool class and includes the interface for all the classes that CSpikeyTool inherited from. The same is done for the second server, with the exception that the class in question here is CSpikeyLogBlock. We want the server dependent on the CSpikeyLogBlock class to be activated at the same time as the one that activates the Spikey tool because it writes information about the Spikey tool to the log so we give them the same name.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        initialize ()
+        {
+             CLxGenericPolymorph               *srv;
+
+               srv = new CLxPolymorph&lt;CSpikeyTool&gt;;
+               srv-&gt;AddInterface (new CLxIfc_Tool      &lt;CSpikeyTool&gt;);
+               srv-&gt;AddInterface (new CLxIfc_ToolModel &lt;CSpikeyTool&gt;);
+               srv-&gt;AddInterface (new CLxIfc_Attributes&lt;CSpikeyTool&gt;);
+               thisModule.AddServer (&quot;test.spikey&quot;, srv);
+
+               srv = new CLxPolymorph&lt;CSpikeyLogBlock&gt;;
+               srv-&gt;AddInterface (new CLxIfc_LogInfoBlock&lt;CSpikeyLogBlock&gt;);
+               thisModule.AddServer (&quot;test.spikey&quot;, srv);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementations">
+<h3><a class="toc-backref" href="#id4">Implementations</a><a class="headerlink" href="#implementations" title="Permalink to this headline">¶</a></h3>
+<p>The CSpikeyTool constructor adds one tool attribute. This causes the plugin to query us for a value for this attribute whenever it is constructed, which happens on activation. To us, this appears as the Spike Strength value. It also allocates a vector type (which doesn’t seem to need anything in it!), the falloff packet offset and the select mode mask.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        CSpikeyTool::CSpikeyTool ()
+        {
+               CLxUser_PacketService    sPkt;
+               CLxUser_MeshService      sMesh;
+
+               dyna_Add (ATTRs_FACTOR, LXsTYPE_PERCENT);
+
+               sPkt.NewVectorType (LXsCATEGORY_TOOL, v_type);
+               sPkt.AddPacket (v_type, LXsP_TOOL_FALLOFF,    LXfVT_GET);
+               sPkt.AddPacket (v_type, LXsP_TOOL_VIEW_EVENT, LXfVT_GET);
+
+               offset_falloff = sPkt.GetOffset (LXsCATEGORY_TOOL, LXsP_TOOL_FALLOFF);
+               offset_view    = sPkt.GetOffset (LXsCATEGORY_TOOL, LXsP_TOOL_VIEW_EVENT);
+               mode_select    = sMesh.SetMode (&quot;select&quot;);
+}
+</pre></div>
+</div>
+<p>Reset sets the attributes back to defaults, in this case 0.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CSpikeyTool::tool_Reset ()
+        {
+                ...
+}
+</pre></div>
+</div>
+<p>Boilerplate methods that identify this as an action (state altering) tool.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LXtObjectID
+        CSpikeyTool::tool_VectorType ()
+        {
+               ...
+        }
+
+               const char *
+        CSpikeyTool::tool_Order ()
+        {
+              ...
+        }
+
+                LXtID4
+        CSpikeyTool::tool_Task ()
+        {
+              ...
+}
+</pre></div>
+</div>
+<p>We employ the simplest possible tool model – default hauling. We indicate that we want to haul one attribute, we name the attribute, and we implement Initialize() which is what to do when the tool activates or re-activates. In this case set the factor back to zero.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               unsigned
+        CSpikeyTool::tmod_Flags ()
+        {
+              ...
+        }
+
+               void
+        CSpikeyTool::tmod_Initialize (
+               ILxUnknownID             vts,
+               ILxUnknownID             adjust,
+               unsigned int             flags)
+        {
+               ...
+        }
+
+               const char *
+        CSpikeyTool::tmod_Haul (
+               unsigned                 index)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Get a vertex position. This gets the position of the given vertex of the polygon relative to the current map. This allows us to evaluate the shape of polygons in morphs.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CSpikePolygonVisitor::VertexPos (
+               unsigned                 index,
+               LXtFVector               pos)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Normalize a vector, if possible.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               bool
+        CSpikePolygonVisitor::Normalize (
+               LXtVector                v)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Get the normalized cross-product of edge vectors defined by the three points of the polygon.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               bool
+        CSpikePolygonVisitor::VertexCross (
+               unsigned                 i0,
+               unsigned                 i1,
+               unsigned                 i2,
+               LXtVector                dir)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Compute a good normal (one that’s symmetry safe, which the basic polygon normal is not). This takes the cross product of the 0’th point, then adds in the rest flipping as needed. Final result is renormalized.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               bool
+        CSpikePolygonVisitor::GoodNormal (
+               LXtVector                dir)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Compute the position of the spike for the current polygon in the current morph map. We compute the average position and the perimeter and normal of the polygon, and compute a position along the normal with an offset given by average edge length modulated by weight. Returns false if it cannot be computed.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               bool
+        CSpikePolygonVisitor::GetSpike (
+               LXtVector                pos)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Evaluation replaces the polygon with a fan of triangles. The central point is given a spike position in all morphs, and other maps are interpolated.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CSpikePolygonVisitor::Evaluate ()
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Tool evaluation uses layer scan interface to walk through all the active meshes and visit all the selected polygons.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CSpikeyTool::tool_Evaluate (
+               ILxUnknownID             vts)
+        {
+               ...
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Using%20Loader%20Options.html" class="btn btn-neutral float-right" title="Using Loader Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Texture%20test.html" class="btn btn-neutral float-left" title="Texture test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Tool spikey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

@@ -1,0 +1,793 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Create Vertex Mesh Operation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CreateVertex Mesh Operation Example &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example cmd sy partifymesh" href="Example%20cmd%20sy%20partifymesh.html" />
+    <link rel="prev" title="Channel Modifier Python Wrapper" href="Channel%20Modifier%20Python%20Wrapper.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CreateVertex Mesh Operation Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-class">Package class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifierserver-class">ModifierServer class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modfierelement-class">ModfierElement class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshop-class">MeshOp class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ui-config">UI Config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Example%20cmd%20sy%20partifymesh.html">Example cmd sy partifymesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Socket%20comms%20wrapper.html">Modo Socket comms wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlaneTool%20example.html">PlaneTool example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read%20a%20Driven%20Channel.html">Read a Driven Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rebuild%20Curve.html">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spherize%20example.html">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>CreateVertex Mesh Operation Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="createvertex-mesh-operation-example">
+<h1>CreateVertex Mesh Operation Example<a class="headerlink" href="#createvertex-mesh-operation-example" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#package-class" id="id2">Package class</a></p></li>
+<li><p><a class="reference internal" href="#modifierserver-class" id="id3">ModifierServer class</a></p></li>
+<li><p><a class="reference internal" href="#modfierelement-class" id="id4">ModfierElement class</a></p></li>
+<li><p><a class="reference internal" href="#meshop-class" id="id5">MeshOp class</a></p></li>
+<li><p><a class="reference internal" href="#ui-config" id="id6">UI Config</a></p></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This example shows how to implement a simple mesh operation to create a
+new vertex in a mesh. We need four objects: a Package object to describe
+the item representing our mesh operation, a Modifier Server and a
+Modifer to hook into the procedural modelling system, and a Mesh
+Operation to perform the operation.</p>
+</div>
+<div class="section" id="package-class">
+<h2><a class="toc-backref" href="#id2">Package class</a><a class="headerlink" href="#package-class" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Package</span></code> class implements the <code class="docutils literal notranslate"><span class="pre">ILxPackage</span></code> interface to
+describe our mesh operation item. Since our item is just a ‘container’
+for the channels that we’d like our mesh operation to have - it doesn’t
+have any extra behaviour itself - our <code class="docutils literal notranslate"><span class="pre">Package</span></code> class inherits from
+the <code class="docutils literal notranslate"><span class="pre">CLxDefaultPackage</span></code> user class. This saves us the trouble of
+implementing an <code class="docutils literal notranslate"><span class="pre">ILxPackageInstance</span></code> class ourselves and simply
+provides a generic package instance for us instead.</p>
+<p>A new instance of the item is created when the user selects ‘Create
+Vertex’ from the mesh operation UI.</p>
+<p>On initialization when the plugin is loaded, we add a server to create a
+new instance of our <code class="docutils literal notranslate"><span class="pre">Package</span></code> object which implements the
+<code class="docutils literal notranslate"><span class="pre">ILxPackage</span></code> interface, and also adds a <code class="docutils literal notranslate"><span class="pre">CLxIfc_StaticDesc</span></code>
+interface to indicate it has a <code class="docutils literal notranslate"><span class="pre">descInfo</span></code> server tag table. The items
+described by the package will have type <code class="docutils literal notranslate"><span class="pre">pmodel.createVertex</span></code>.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Create a new Package server that describes the channels our modifier needs</span>
+
+<span class="kt">void</span> <span class="n">Package</span><span class="o">::</span><span class="n">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CLxGenericPolymorph</span> <span class="o">*</span><span class="n">srv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">Package</span><span class="o">&gt;</span><span class="p">;</span>
+
+    <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="k">new</span> <span class="n">CLxIfc_Package</span><span class="o">&lt;</span><span class="n">Package</span><span class="o">&gt;</span><span class="p">);</span>
+    <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="k">new</span> <span class="n">CLxIfc_StaticDesc</span><span class="o">&lt;</span><span class="n">Package</span><span class="o">&gt;</span><span class="p">);</span>
+
+    <span class="n">lx</span><span class="o">::</span><span class="n">AddServer</span><span class="p">(</span><span class="n">CREATEVERTEX_MESHOP</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>To add the required extra channels to our Package, we implement the
+<code class="docutils literal notranslate"><span class="pre">SetupChannels</span></code> function:</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Add our channels</span>
+
+<span class="n">LxResult</span> <span class="n">Package</span><span class="o">::</span><span class="n">pkg_SetupChannels</span> <span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">addChan</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">CLxUser_AddChannel</span> <span class="nf">ac</span><span class="p">(</span><span class="n">addChan</span><span class="p">);</span>
+
+    <span class="c1">// Add a single position channel to receive the position for the new vertex</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">LXx_OK</span><span class="p">(</span><span class="n">ac</span><span class="p">.</span><span class="n">NewChannel</span><span class="p">(</span><span class="n">POSITION_CHAN</span><span class="p">,</span> <span class="n">LXsTYPE_DISTANCE</span><span class="p">)))</span>
+    <span class="p">{</span>
+        <span class="n">ac</span><span class="p">.</span><span class="n">SetVector</span><span class="p">(</span><span class="n">LXsCHANVEC_XYZ</span><span class="p">);</span>
+
+        <span class="n">LXtVector</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">LXx_V3SET</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+        <span class="n">ac</span><span class="p">.</span><span class="n">SetDefaultVec</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This adds a new channel called <code class="docutils literal notranslate"><span class="pre">position</span></code> with type
+<code class="docutils literal notranslate"><span class="pre">LXsTYPE_DISTANCE</span></code> (so it can handle all the usual unit conversions
+supported by Modo). Having added the channel, we can then mark it as
+really being a vector and set it’s default value. By setting it to be a
+vector, Modo creates <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">Z</span></code> sub-channels to hold the
+value of each component of the position.</p>
+<p>Finally, we give the item a type of <code class="docutils literal notranslate"><span class="pre">LXsITYPE_MESHOP</span></code> in the server
+tags table so that it has the standard channels required for a mesh
+operation. We also add a couple of extra tags to the table,
+<code class="docutils literal notranslate"><span class="pre">LXsPMODEL_SELECTIONTYPES</span></code> to indicate that we’re not interested in
+selections, and <code class="docutils literal notranslate"><span class="pre">LXsPMODEL_NOTRANSFORM</span></code> to tell Modo that we don’t
+need to know the mesh transformation so Modo can avoid evaluating it
+unnecessarily.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Package information describing what type of plugin this is and a few other options</span>
+
+<span class="n">LXtTagInfoDesc</span> <span class="n">Package</span><span class="o">::</span><span class="n">descInfo</span><span class="p">[]</span> <span class="o">=</span>
+<span class="p">{</span>
+    <span class="p">{</span> <span class="n">LXsPKG_SUPERTYPE</span><span class="p">,</span> <span class="n">LXsITYPE_MESHOP</span> <span class="p">},</span>          <span class="c1">// This is a MeshOp plugin</span>
+    <span class="p">{</span> <span class="n">LXsPMODEL_SELECTIONTYPES</span><span class="p">,</span> <span class="n">LXsSELOP_TYPE_NONE</span> <span class="p">},</span>   <span class="c1">// We ignore selections</span>
+    <span class="p">{</span> <span class="n">LXsPMODEL_NOTRANSFORM</span><span class="p">,</span> <span class="s">&quot;.&quot;</span> <span class="p">},</span>             <span class="c1">// We don&#39;t care about the mesh transform</span>
+    <span class="p">{</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modifierserver-class">
+<h2><a class="toc-backref" href="#id3">ModifierServer class</a><a class="headerlink" href="#modifierserver-class" title="Permalink to this headline">¶</a></h2>
+<p>The mesh operation item defined by our <code class="docutils literal notranslate"><span class="pre">Package</span></code> class by itself does
+nothing. To actually do something we need a modifier, and to create a
+modifier we need a modifier server.</p>
+<p>We create a new server at start up in the <code class="docutils literal notranslate"><span class="pre">initialize</span></code> function. The
+modifiers that the server creates will have a server ID of
+<code class="docutils literal notranslate"><span class="pre">pmodel.createVertex.mod</span></code>.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Register a Modifier server that can create our modifier</span>
+
+<span class="kt">void</span> <span class="n">ModifierServer</span><span class="o">::</span><span class="n">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CLxExport_ItemModifierServer</span><span class="o">&lt;</span><span class="n">ModifierServer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">CREATEVERTEX_MESHOP</span> <span class="s">&quot;.mod&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The server implements the <code class="docutils literal notranslate"><span class="pre">ItemType</span></code> function to return
+<code class="docutils literal notranslate"><span class="pre">pmodel.createVertex</span></code>. This means that for every instance of our mesh
+operation item in the scene, the server will be called to create a new
+modifier.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ModifierServer</span><span class="o">::</span><span class="n">ItemType</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">CREATEVERTEX_MESHOP</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>To allocate a new modifier instance, the server’s <code class="docutils literal notranslate"><span class="pre">Alloc</span></code> function is
+called. The <code class="docutils literal notranslate"><span class="pre">item</span></code> parameter is the mesh operation item to which the
+modifier will apply, and the <code class="docutils literal notranslate"><span class="pre">eval</span></code> parameter allows it to access the
+channels data on the item.</p>
+<p>Note that the object we’re creating is just a normal C++ object rather
+than a COM object. This is because our <code class="docutils literal notranslate"><span class="pre">ModifierServer</span></code> class derives
+from <code class="docutils literal notranslate"><span class="pre">CLxItemModifierServer</span></code> rather than implementing the
+<code class="docutils literal notranslate"><span class="pre">ILxEvalModifier</span></code> COM interface directly. This is a helper class in
+the SDK library that handles the common case where we want a single
+modifier for each instance of a specific item type, implementing the
+necessary COM interfaces for us so that we only need to return a simple
+C++ class that handles the actual modifier behaviour.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">CLxItemModifierElement</span><span class="o">*</span> <span class="n">ModifierServer</span><span class="o">::</span><span class="n">Alloc</span><span class="p">(</span><span class="n">CLxUser_Evaluation</span> <span class="o">&amp;</span><span class="n">eval</span><span class="p">,</span> <span class="n">ILxUnknownID</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">ModifierElement</span><span class="p">(</span><span class="n">eval</span><span class="p">,</span> <span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="modfierelement-class">
+<h2><a class="toc-backref" href="#id4">ModfierElement class</a><a class="headerlink" href="#modfierelement-class" title="Permalink to this headline">¶</a></h2>
+<p>The modifier is responsible for querying channel inputs and using them
+to create a new object that implements <code class="docutils literal notranslate"><span class="pre">ILxMeshOperation</span></code>. This new
+object is then stored on the mesh operation item by the modifier and
+used by the procedural modelling system within Modo to modify the mesh.</p>
+<p>In the modifier constructor, we use the supplied <code class="docutils literal notranslate"><span class="pre">eval</span></code> object to mark
+which channels on the item we’re going to read and write, and save their
+index within the attribute block so that we can use it later to read and
+write the channel values when evaluating the modifier.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Initialise the modifier</span>
+
+<span class="n">ModifierElement</span><span class="o">::</span><span class="n">ModifierElement</span><span class="p">(</span><span class="n">CLxUser_Evaluation</span> <span class="o">&amp;</span><span class="n">eval</span><span class="p">,</span> <span class="n">ILxUnknownID</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Save the indices of all the channels we need so that we can use them</span>
+    <span class="c1">// to query and return values when evaluating the modifier</span>
+    <span class="n">mPositionXIndex</span> <span class="o">=</span> <span class="n">eval</span><span class="p">.</span><span class="n">AddChan</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">POSITION_CHAN</span> <span class="s">&quot;.X&quot;</span><span class="p">,</span> <span class="n">LXfECHAN_READ</span><span class="p">);</span>
+    <span class="n">mPositionYIndex</span> <span class="o">=</span> <span class="n">eval</span><span class="p">.</span><span class="n">AddChan</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">POSITION_CHAN</span> <span class="s">&quot;.Y&quot;</span><span class="p">,</span> <span class="n">LXfECHAN_READ</span><span class="p">);</span>
+    <span class="n">mPositionZIndex</span> <span class="o">=</span> <span class="n">eval</span><span class="p">.</span><span class="n">AddChan</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">POSITION_CHAN</span> <span class="s">&quot;.Z&quot;</span><span class="p">,</span> <span class="n">LXfECHAN_READ</span><span class="p">);</span>
+
+    <span class="n">mOutputIndex</span> <span class="o">=</span> <span class="n">eval</span><span class="p">.</span><span class="n">AddChan</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">LXsICHAN_MESHOP_OBJ</span><span class="p">,</span> <span class="n">LXfECHAN_WRITE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The modifier is evaluated to update the mesh op object whenever the
+input channels change. The <code class="docutils literal notranslate"><span class="pre">Eval</span></code> function reads the current position
+values from the input channels, calls the <code class="docutils literal notranslate"><span class="pre">Spawn</span></code> function to create a
+new instance of our <code class="docutils literal notranslate"><span class="pre">MeshOp</span></code> object, and then stores it in the output
+channel.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Evaluate the modifier to produce a new instance of the MeshOp</span>
+
+<span class="kt">void</span> <span class="n">ModifierElement</span><span class="o">::</span><span class="n">Eval</span><span class="p">(</span><span class="n">CLxUser_Evaluation</span> <span class="o">&amp;</span><span class="n">eval</span><span class="p">,</span> <span class="n">CLxUser_Attributes</span> <span class="o">&amp;</span><span class="n">attr</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Read the vertex position from the position channel</span>
+    <span class="n">LXtVector</span> <span class="n">pos</span><span class="p">;</span>
+    <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="p">.</span><span class="n">Float</span><span class="p">(</span><span class="n">mPositionXIndex</span><span class="p">);</span>
+    <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="p">.</span><span class="n">Float</span><span class="p">(</span><span class="n">mPositionYIndex</span><span class="p">);</span>
+    <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="p">.</span><span class="n">Float</span><span class="p">(</span><span class="n">mPositionZIndex</span><span class="p">);</span>
+
+    <span class="c1">// Create a new instance of our MeshOp</span>
+    <span class="n">ILxUnknownID</span> <span class="n">obj</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">MeshOp</span><span class="o">::</span><span class="n">Spawn</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">obj</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// Store it on the output channel</span>
+        <span class="n">attr</span><span class="p">.</span><span class="n">SetRef</span><span class="p">(</span><span class="n">mOutputIndex</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span>
+        <span class="n">lx</span><span class="o">::</span><span class="n">UnkRelease</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="meshop-class">
+<h2><a class="toc-backref" href="#id5">MeshOp class</a><a class="headerlink" href="#meshop-class" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">MeshOp</span></code> class is a COM object that implements the
+<code class="docutils literal notranslate"><span class="pre">ILxMeshOperation</span></code> interface to allow us to modify a mesh.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">initialize</span></code> function registers a spawner that we can use to
+create our <code class="docutils literal notranslate"><span class="pre">MeshOp</span></code> objects. We use a spawner here rather than a
+server since we need to perform some initialisation on the object after
+it’s been created. The <code class="docutils literal notranslate"><span class="pre">MeshOp</span></code> objects have a spawner ID of
+<code class="docutils literal notranslate"><span class="pre">pmodel.createVertex.op</span></code>.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Add a spawner that will allow us to create new instances of the MeshOp class</span>
+<span class="c1">//</span>
+<span class="c1">// We don&#39;t want a server here since we want to create the MeshOp instances ourself</span>
+<span class="c1">// so we can initialise them with the vertex position</span>
+
+<span class="kt">void</span> <span class="n">MeshOp</span><span class="o">::</span><span class="n">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CLxGenericPolymorph</span> <span class="o">*</span><span class="n">srv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">MeshOp</span><span class="o">&gt;</span><span class="p">;</span>
+
+    <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="k">new</span> <span class="n">CLxIfc_MeshOperation</span><span class="o">&lt;</span><span class="n">MeshOp</span><span class="o">&gt;</span><span class="p">);</span>
+
+    <span class="n">lx</span><span class="o">::</span><span class="n">AddSpawner</span><span class="p">(</span><span class="n">CREATEVERTEX_MESHOP</span> <span class="s">&quot;.op&quot;</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ModfierElement</span></code> object calls the <code class="docutils literal notranslate"><span class="pre">Spawn</span></code> function to create a
+new <code class="docutils literal notranslate"><span class="pre">MeshOp</span></code> instance. This function calls the spawner to create the
+object and then stores the supplied position on it so that it can be
+used when the mesh operation is evaluated.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Create a new instance of the MeshOp class from the spawner</span>
+<span class="c1">//</span>
+<span class="c1">// This is effectively a constructor, but we need to create the object via the spawner</span>
+<span class="c1">// rather than directly as it&#39;s really a COM object, not just a plain C++ class</span>
+
+<span class="n">MeshOp</span><span class="o">*</span> <span class="n">MeshOp</span><span class="o">::</span><span class="n">Spawn</span><span class="p">(</span><span class="n">LXtVector</span> <span class="n">pos</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">ppvObj</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="n">CLxSpawner</span><span class="o">&lt;</span><span class="n">MeshOp</span><span class="o">&gt;</span> <span class="n">spawner</span><span class="p">(</span><span class="n">CREATEVERTEX_MESHOP</span> <span class="s">&quot;.op&quot;</span><span class="p">);</span>
+    <span class="n">MeshOp</span><span class="o">*</span> <span class="n">meshop</span> <span class="o">=</span> <span class="n">spawner</span><span class="p">.</span><span class="n">Alloc</span><span class="p">(</span><span class="n">ppvObj</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">meshop</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LXx_VCPY</span><span class="p">(</span><span class="n">meshop</span><span class="o">-&gt;</span><span class="n">mPosition</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">meshop</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Evaluate</span></code> function is called by the procedural modelling system
+to allow the mesh operation to apply its changes to the mesh. Our
+implementation simply queries a point accessor from the mesh and then
+uses it to create a new vertex at the position we stored when the
+<code class="docutils literal notranslate"><span class="pre">MeshOp</span></code> object was created.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Evaluate the MeshOp by modifying the input mesh</span>
+
+<span class="n">LxResult</span> <span class="n">MeshOp</span><span class="o">::</span><span class="n">mop_Evaluate</span><span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">meshObj</span><span class="p">,</span> <span class="n">LXtID4</span> <span class="n">type</span><span class="p">,</span> <span class="n">LXtMarkMode</span> <span class="n">mode</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get the mesh interface from the input mesh object</span>
+    <span class="n">CLxUser_Mesh</span> <span class="nf">mesh</span><span class="p">(</span><span class="n">meshObj</span><span class="p">);</span>
+
+    <span class="c1">// Query a point accessor for the mesh that will allow us to add a new vertex</span>
+    <span class="n">CLxUser_Point</span> <span class="n">pointAccessor</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pointAccessor</span><span class="p">.</span><span class="n">fromMesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">LXe_FAILED</span><span class="p">;</span>
+
+    <span class="c1">// Add the new vertex at the requested position</span>
+    <span class="n">LXtPointID</span> <span class="n">pointID</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">LXx_OK</span><span class="p">(</span><span class="n">pointAccessor</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="n">mPosition</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pointID</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">LXe_FAILED</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="ui-config">
+<h2><a class="toc-backref" href="#id6">UI Config</a><a class="headerlink" href="#ui-config" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">pmodel_createVertex.cfg</span></code> describes the UI for the plugin to Modo.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CommandHelp</span></code> section of the config file provides user readable
+names for various items that will be displayed in the UI. In our case,
+we just need a name for the mesh operation itself, and a name for its
+position channel.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;CommandHelp&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Item&quot;</span> <span class="na">key=</span><span class="s">&quot;pmodel.createVertex@en_US&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;UserName&quot;</span><span class="nt">&gt;</span>Create Vertex<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Channel&quot;</span> <span class="na">key=</span><span class="s">&quot;position&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;UserName&quot;</span><span class="nt">&gt;</span>Position<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/hash&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+<span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Filters</span></code> section describes when to make our UI visible. We can treat
+this as just boilerplate that’s required to make the UI work, but that
+we don’t really need to worry about. Note that the quotes in the
+<code class="docutils literal notranslate"><span class="pre">Node</span></code> values need to be escaped as <code class="docutils literal notranslate"><span class="pre">&amp;quot;</span></code> for the config file to
+function correctly.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Filters&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Preset&quot;</span> <span class="na">key=</span><span class="s">&quot;pmodel.createVertex:filterPreset&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>pmodel.createVertex<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Description&quot;</span><span class="nt">&gt;&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Category&quot;</span><span class="nt">&gt;</span>pmodel:filterCat<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Enable&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Node&quot;</span><span class="nt">&gt;</span>1 .group 0 <span class="ni">&amp;quot;&amp;quot;</span><span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Node&quot;</span><span class="nt">&gt;</span>1 itemtype 0 1 <span class="ni">&amp;quot;</span>pmodel.createVertex<span class="ni">&amp;quot;</span><span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Node&quot;</span><span class="nt">&gt;</span>-1 .endgroup <span class="nt">&lt;/list&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+<span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Attributes</span></code> section defines the main properties panel for the
+mesh operation. In our case we just want to display controls for the
+three components of the position vector. However, in order for the three
+components to be grouped correctly, we need to define them as a separate
+sheet which is referenced as a <code class="docutils literal notranslate"><span class="pre">Sheet</span></code> control from the main sheet.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Attributes&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Sheet&quot;</span> <span class="na">key=</span><span class="s">&quot;pmodel.createVertex:sheet&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Label&quot;</span><span class="nt">&gt;</span>Create Vertex<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Filter&quot;</span><span class="nt">&gt;</span>pmodel.createVertex:filterPreset<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;InCategory&quot;</span> <span class="na">key=</span><span class="s">&quot;itemprops:general#head&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Ordinal&quot;</span><span class="nt">&gt;</span>110<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/hash&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Control&quot;</span> <span class="na">val=</span><span class="s">&quot;ref item-common:sheet&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;StartCollapsed&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Hash&quot;</span><span class="nt">&gt;</span>#0<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Control&quot;</span> <span class="na">val=</span><span class="s">&quot;ref meshoperation:sheet&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;StartCollapsed&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Hash&quot;</span><span class="nt">&gt;</span>#1<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Control&quot;</span> <span class="na">val=</span><span class="s">&quot;sub pmodel.createVertex.position:sheet&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Label&quot;</span><span class="nt">&gt;</span>Position<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;ShowLabel&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Style&quot;</span><span class="nt">&gt;</span>gang<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Hash&quot;</span><span class="nt">&gt;</span>pmodel.createVertex.position.ctrl:control<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Sheet&quot;</span> <span class="na">key=</span><span class="s">&quot;pmodel.createVertex.position:sheet&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Label&quot;</span><span class="nt">&gt;</span>Position<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;ShowLabel&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Style&quot;</span><span class="nt">&gt;</span>gang<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Control&quot;</span> <span class="na">val=</span><span class="s">&quot;cmd item.channel pmodel.createVertex$position.X ?&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Label&quot;</span><span class="nt">&gt;</span>Position X<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Hash&quot;</span><span class="nt">&gt;</span>pmodel.createVertex.position.X.ctrl:control<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Control&quot;</span> <span class="na">val=</span><span class="s">&quot;cmd item.channel pmodel.createVertex$position.Y ?&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Label&quot;</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Hash&quot;</span><span class="nt">&gt;</span>pmodel.createVertex.position.Y.ctrl:control<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;list</span> <span class="na">type=</span><span class="s">&quot;Control&quot;</span> <span class="na">val=</span><span class="s">&quot;cmd item.channel pmodel.createVertex$position.Z ?&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Label&quot;</span><span class="nt">&gt;</span>Z<span class="nt">&lt;/atom&gt;</span>
+            <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Hash&quot;</span><span class="nt">&gt;</span>pmodel.createVertex.position.Z.ctrl:control<span class="nt">&lt;/atom&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+<span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>The position controls obtain the value to display from the
+<code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">item.channel</span> <span class="pre">...</span></code> string in their val tag. For example,
+<code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">item.channel</span> <span class="pre">pmodel.createVertex$position.X</span> <span class="pre">?</span></code> queries the value
+of the X component of the position channel.</p>
+<p>Finally, to make our plugin appear in the Mesh Operations preset
+browser, we need to add it to the mesh operations category. The
+<code class="docutils literal notranslate"><span class="pre">create</span></code> value means it will appear under the ‘Create’ category in the
+list of mesh operations.</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Categories&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Category&quot;</span> <span class="na">key=</span><span class="s">&quot;MeshOperations&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;C&quot;</span> <span class="na">key=</span><span class="s">&quot;pmodel.createVertex&quot;</span><span class="nt">&gt;</span>create<span class="nt">&lt;/hash&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+<span class="nt">&lt;/atom&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Example%20cmd%20sy%20partifymesh.html" class="btn btn-neutral float-right" title="Example cmd sy partifymesh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Channel%20Modifier%20Python%20Wrapper.html" class="btn btn-neutral float-left" title="Channel Modifier Python Wrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Create Vertex Mesh Operation.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

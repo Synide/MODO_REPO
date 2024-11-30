@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_persist.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Persist &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Pmodel" href="lxd_pmodel.html" />
+    <link rel="prev" title="Pattern" href="lxd_pattern.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Persist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpersistenceservice">ILxPersistenceService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpersistenceclient">ILxPersistenceClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpersistententry">ILxPersistentEntry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Persist</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="persist">
+<h1>Persist<a class="headerlink" href="#persist" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxpersistenceservice" id="id1">ILxPersistenceService</a></p></li>
+<li><p><a class="reference internal" href="#ilxpersistenceclient" id="id2">ILxPersistenceClient</a></p></li>
+<li><p><a class="reference internal" href="#ilxpersistententry" id="id3">ILxPersistentEntry</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxpersistenceservice">
+<h2><a class="toc-backref" href="#id1">ILxPersistenceService</a><a class="headerlink" href="#ilxpersistenceservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxPersistenceService">
+<span id="_CPPv321ILxPersistenceService"></span><span id="_CPPv221ILxPersistenceService"></span><span id="ILxPersistenceService"></span><span class="target" id="class_i_lx_persistence_service"></span><em class="property">class </em><code class="sig-name descname">ILxPersistenceService</code><a class="headerlink" href="#_CPPv421ILxPersistenceService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The service provides methods to define the setup of the configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N21ILxPersistenceService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N21ILxPersistenceService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxPersistenceService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_persistence_service_1adc09bca5acc8c9cfe2e749dfd21423dd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService9ConfigureE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N21ILxPersistenceService9ConfigureE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N21ILxPersistenceService9ConfigureE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxPersistenceService::Configure__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_persistence_service_1ab1a0a720c279c9d0138fc4b2670d08ad"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Configure</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService9ConfigureE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients call this method to define a set of persistent attributes. The name will define a top-level atom in the config file which should be unique. The object can be a visitor which, when evaluated, should add entries and values. It should be noted that this function should only be called once for any top-level name during the lifetime of the application. Attempting to call it again will return an error. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService5StartE11LXtObjectIDPKcj">
+<span id="_CPPv3N21ILxPersistenceService5StartE11LXtObjectIDPKcj"></span><span id="_CPPv2N21ILxPersistenceService5StartE11LXtObjectIDPKcj"></span><span id="ILxPersistenceService::Start__LXtObjectID.cCP.unsigned-i"></span><span class="target" id="class_i_lx_persistence_service_1abc1f9a1fc8a2bd53a479ba4654c705cd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Start</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, unsigned int <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService5StartE11LXtObjectIDPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>During configuration, these calls define the nested hierarchy of entries. Each entry has a name and a type  atom, hash or list. Ending the entry definition returns the persistent entry object which can be use to traverse persistent values. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService3EndE11LXtObjectIDPPv">
+<span id="_CPPv3N21ILxPersistenceService3EndE11LXtObjectIDPPv"></span><span id="_CPPv2N21ILxPersistenceService3EndE11LXtObjectIDPPv"></span><span id="ILxPersistenceService::End__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_persistence_service_1a3f49b61f5f3ec2aeb61d354bc8483d14"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">End</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService3EndE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService8AddValueE11LXtObjectIDPKc">
+<span id="_CPPv3N21ILxPersistenceService8AddValueE11LXtObjectIDPKc"></span><span id="_CPPv2N21ILxPersistenceService8AddValueE11LXtObjectIDPKc"></span><span id="ILxPersistenceService::AddValue__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_persistence_service_1a27f085e3f63fe382500a932d00131b2f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddValue</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>typeName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService8AddValueE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>While in an entry definition, values can be added. Currently only one value per entry is allowed. The type name is any of the value types. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService12ConfigureVisEPKcP23CLxImpl_AbstractVisitor">
+<span id="_CPPv3N21ILxPersistenceService12ConfigureVisEPKcP23CLxImpl_AbstractVisitor"></span><span id="_CPPv2N21ILxPersistenceService12ConfigureVisEPKcP23CLxImpl_AbstractVisitor"></span><span id="ILxPersistenceService::ConfigureVis__cCP.CLxImpl_AbstractVisitorP"></span><span class="target" id="class_i_lx_persistence_service_1ade6509b3c17805694b29560cb376f1dc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ConfigureVis</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, CLxImpl_AbstractVisitor *<em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService12ConfigureVisEPKcP23CLxImpl_AbstractVisitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> This user method on the service takes a C++ visitor object and wraps it for COM. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPersistenceService6EndDefER22CLxLoc_PersistentEntry">
+<span id="_CPPv3N21ILxPersistenceService6EndDefER22CLxLoc_PersistentEntry"></span><span id="_CPPv2N21ILxPersistenceService6EndDefER22CLxLoc_PersistentEntry"></span><span id="ILxPersistenceService::EndDef__CLxLoc_PersistentEntryR"></span><span class="target" id="class_i_lx_persistence_service_1a1b865597e439ed12dbf83f1636af49d6"></span>bool <code class="sig-name descname">EndDef</code><span class="sig-paren">(</span>CLxLoc_PersistentEntry &amp;<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPersistenceService6EndDefER22CLxLoc_PersistentEntry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Alternate version of the <a class="reference internal" href="#class_i_lx_persistence_service_1a3f49b61f5f3ec2aeb61d354bc8483d14"><span class="std std-ref">End()</span></a> method to get the persistent entry in more C++ friendly terms. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXi_PERSIST_ATOM</p></li>
+<li><p>LXi_PERSIST_HASH</p></li>
+<li><p>LXi_PERSIST_LIST</p></li>
+</ul>
+</div>
+<div class="section" id="ilxpersistenceclient">
+<h2><a class="toc-backref" href="#id2">ILxPersistenceClient</a><a class="headerlink" href="#ilxpersistenceclient" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxPersistenceClient">
+<span id="_CPPv320ILxPersistenceClient"></span><span id="_CPPv220ILxPersistenceClient"></span><span id="ILxPersistenceClient"></span><span class="target" id="class_i_lx_persistence_client"></span><em class="property">class </em><code class="sig-name descname">ILxPersistenceClient</code><a class="headerlink" href="#_CPPv420ILxPersistenceClient" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>In most case the client will maintain persistent state in the host app and read it whenever it’s needed. This allows the client to react to changes to the application persistent state (like if the user imports new configs) but it can be slower than desired for very complex resource definitions, for example. If that’s the case the client will want to cache their state internally, but they then need to be able to react to config system events. If this is required the client can pass a PersistenceClient object in the call to Configure() instead of a visitor. In this case the object itself will persist, and methods will be used to manage synchnonization. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxPersistenceClient5SetupE11LXtObjectID">
+<span id="_CPPv3N20ILxPersistenceClient5SetupE11LXtObjectID"></span><span id="_CPPv2N20ILxPersistenceClient5SetupE11LXtObjectID"></span><span id="ILxPersistenceClient::Setup__LXtObjectID"></span><span class="target" id="class_i_lx_persistence_client_1ad7c2e736ed07bf2e8688f085613ac83b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Setup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxPersistenceClient5SetupE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>Setup Called to configure the entries and values, like Evaluate() from a visitor.</p></li>
+<li><p>SyncRead Called when the client should read its state from the application. This will be called after a successful initial setup.</p></li>
+<li><p>SyncRead Called when the client should write its cached state to the application. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxPersistenceClient8SyncReadE11LXtObjectID">
+<span id="_CPPv3N20ILxPersistenceClient8SyncReadE11LXtObjectID"></span><span id="_CPPv2N20ILxPersistenceClient8SyncReadE11LXtObjectID"></span><span id="ILxPersistenceClient::SyncRead__LXtObjectID"></span><span class="target" id="class_i_lx_persistence_client_1a155d58ddde2c9fb9c549750003eef273"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SyncRead</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxPersistenceClient8SyncReadE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxPersistenceClient9SyncWriteE11LXtObjectID">
+<span id="_CPPv3N20ILxPersistenceClient9SyncWriteE11LXtObjectID"></span><span id="_CPPv2N20ILxPersistenceClient9SyncWriteE11LXtObjectID"></span><span id="ILxPersistenceClient::SyncWrite__LXtObjectID"></span><span class="target" id="class_i_lx_persistence_client_1a16e315b02518e97591c304f9f3fadf97"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SyncWrite</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxPersistenceClient9SyncWriteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpersistententry">
+<h2><a class="toc-backref" href="#id3">ILxPersistentEntry</a><a class="headerlink" href="#ilxpersistententry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxPersistentEntry">
+<span id="_CPPv318ILxPersistentEntry"></span><span id="_CPPv218ILxPersistentEntry"></span><span id="ILxPersistentEntry"></span><span class="target" id="class_i_lx_persistent_entry"></span><em class="property">class </em><code class="sig-name descname">ILxPersistentEntry</code><a class="headerlink" href="#_CPPv418ILxPersistentEntry" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Access to persistent state is through a persistent entry interface. The value for sub-entries depends on the values of their parent entries, so those need to be set in order to get valid results for sub-entries. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry5CountE11LXtObjectIDPj">
+<span id="_CPPv3N18ILxPersistentEntry5CountE11LXtObjectIDPj"></span><span id="_CPPv2N18ILxPersistentEntry5CountE11LXtObjectIDPj"></span><span id="ILxPersistentEntry::Count__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_persistent_entry_1a9b48fcda3ce5ee0b978a857b07301b79"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry5CountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Entry objects also have an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface for accessing their values, although for now all values are index 0. <a class="reference internal" href="#class_i_lx_persistent_entry_1a9b48fcda3ce5ee0b978a857b07301b79"><span class="std std-ref">Count()</span></a> tells you how many values there are for this entry. For atoms this is 0 or 1, depending on whether it’s defined. For lists and hashes this can be more than one. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6SelectE11LXtObjectIDj">
+<span id="_CPPv3N18ILxPersistentEntry6SelectE11LXtObjectIDj"></span><span id="_CPPv2N18ILxPersistentEntry6SelectE11LXtObjectIDj"></span><span id="ILxPersistentEntry::Select__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_persistent_entry_1a886fb2d5e225258e92561a1a47304c17"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Select</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6SelectE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods pick the specific entry. <a class="reference internal" href="#class_i_lx_persistent_entry_1a886fb2d5e225258e92561a1a47304c17"><span class="std std-ref">Select()</span></a> uses and index and works for lists or hashes, and <a class="reference internal" href="#class_i_lx_persistent_entry_1a3203e5f904c8670856633f9bb33af09c"><span class="std std-ref">Lookup()</span></a> uses a key and is only for hashes. Entries that are atoms don’t need to be explicitly selected. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6LookupE11LXtObjectIDPKc">
+<span id="_CPPv3N18ILxPersistentEntry6LookupE11LXtObjectIDPKc"></span><span id="_CPPv2N18ILxPersistentEntry6LookupE11LXtObjectIDPKc"></span><span id="ILxPersistentEntry::Lookup__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_persistent_entry_1a3203e5f904c8670856633f9bb33af09c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6LookupE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6AppendE11LXtObjectID">
+<span id="_CPPv3N18ILxPersistentEntry6AppendE11LXtObjectID"></span><span id="_CPPv2N18ILxPersistentEntry6AppendE11LXtObjectID"></span><span id="ILxPersistentEntry::Append__LXtObjectID"></span><span class="target" id="class_i_lx_persistent_entry_1a438bb1e6ff8802422f559d0bac8292d7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Append</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6AppendE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods add new values  <a class="reference internal" href="#class_i_lx_persistent_entry_1a438bb1e6ff8802422f559d0bac8292d7"><span class="std std-ref">Append()</span></a> for atoms and lists, and <a class="reference internal" href="#class_i_lx_persistent_entry_1abcab973c10c68440ed8ac30da9bc1f24"><span class="std std-ref">Insert()</span></a> for hashes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6InsertE11LXtObjectIDPKc">
+<span id="_CPPv3N18ILxPersistentEntry6InsertE11LXtObjectIDPKc"></span><span id="_CPPv2N18ILxPersistentEntry6InsertE11LXtObjectIDPKc"></span><span id="ILxPersistentEntry::Insert__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_persistent_entry_1abcab973c10c68440ed8ac30da9bc1f24"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Insert</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6InsertE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6DeleteE11LXtObjectID">
+<span id="_CPPv3N18ILxPersistentEntry6DeleteE11LXtObjectID"></span><span id="_CPPv2N18ILxPersistentEntry6DeleteE11LXtObjectID"></span><span id="ILxPersistentEntry::Delete__LXtObjectID"></span><span class="target" id="class_i_lx_persistent_entry_1a0844f4118d9e931f6bcdecdf37f7babd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Delete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6DeleteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods remove values. <a class="reference internal" href="#class_i_lx_persistent_entry_1a0844f4118d9e931f6bcdecdf37f7babd"><span class="std std-ref">Delete()</span></a> removes this specific value, while <a class="reference internal" href="#class_i_lx_persistent_entry_1a296c03412695f9199d8d0adfff289d46"><span class="std std-ref">Clear()</span></a> removes all values of this type from the current parent. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry5ClearE11LXtObjectID">
+<span id="_CPPv3N18ILxPersistentEntry5ClearE11LXtObjectID"></span><span id="_CPPv2N18ILxPersistentEntry5ClearE11LXtObjectID"></span><span id="ILxPersistentEntry::Clear__LXtObjectID"></span><span class="target" id="class_i_lx_persistent_entry_1a296c03412695f9199d8d0adfff289d46"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Clear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry5ClearE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry4HashE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxPersistentEntry4HashE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxPersistentEntry4HashE11LXtObjectIDPPKc"></span><span id="ILxPersistentEntry::Hash__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_persistent_entry_1a4f629811678c841a8d6a9d97513e21c9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Hash</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry4HashE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For hash entries, this returns the hash itself. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6NumberEv">
+<span id="_CPPv3N18ILxPersistentEntry6NumberEv"></span><span id="_CPPv2N18ILxPersistentEntry6NumberEv"></span><span id="ILxPersistentEntry::Number"></span><span class="target" id="class_i_lx_persistent_entry_1a27df28a277ba7e550770129262f35de0"></span>int <code class="sig-name descname">Number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6NumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Easier way to get the entry count, with -1 for errors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6LookupERKNSt6stringE">
+<span id="_CPPv3N18ILxPersistentEntry6LookupERKNSt6stringE"></span><span id="_CPPv2N18ILxPersistentEntry6LookupERKNSt6stringE"></span><span id="ILxPersistentEntry::Lookup__ssCR"></span><span class="target" id="class_i_lx_persistent_entry_1ac41725b0a20b5a4f473cc0f130d60b11"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6LookupERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Standard string lookup. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxPersistentEntry6InsertERKNSt6stringE">
+<span id="_CPPv3N18ILxPersistentEntry6InsertERKNSt6stringE"></span><span id="_CPPv2N18ILxPersistentEntry6InsertERKNSt6stringE"></span><span id="ILxPersistentEntry::Insert__ssCR"></span><span class="target" id="class_i_lx_persistent_entry_1a7fa983a38f2d99193d9bde36422d8320"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Insert</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxPersistentEntry6InsertERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Standard string insertion. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_pmodel.html" class="btn btn-neutral float-right" title="Pmodel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_pattern.html" class="btn btn-neutral float-left" title="Pattern" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_persist.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

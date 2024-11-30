@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_vectortools.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:31 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vectortools &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Vertex" href="lxd_vertex.html" />
+    <link rel="prev" title="Vector" href="lxd_vector.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vectortools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxvectorcanvas">ILxVectorCanvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxvectorshape">ILxVectorShape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxvectorpath">ILxVectorPath</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxvectorlistener">ILxVectorListener</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Vectortools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vectortools">
+<h1>Vectortools<a class="headerlink" href="#vectortools" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxvectorcanvas" id="id1">ILxVectorCanvas</a></p></li>
+<li><p><a class="reference internal" href="#ilxvectorshape" id="id2">ILxVectorShape</a></p></li>
+<li><p><a class="reference internal" href="#ilxvectorpath" id="id3">ILxVectorPath</a></p></li>
+<li><p><a class="reference internal" href="#ilxvectorlistener" id="id4">ILxVectorListener</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxvectorcanvas">
+<h2><a class="toc-backref" href="#id1">ILxVectorCanvas</a><a class="headerlink" href="#ilxvectorcanvas" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxVectorCanvas">
+<span id="_CPPv315ILxVectorCanvas"></span><span id="_CPPv215ILxVectorCanvas"></span><span id="ILxVectorCanvas"></span><span class="target" id="class_i_lx_vector_canvas"></span><em class="property">class </em><code class="sig-name descname">ILxVectorCanvas</code><a class="headerlink" href="#_CPPv415ILxVectorCanvas" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Vector Canvas interface is used to store all the vector data associated with a vector item. It is usually stored in a channel, and can contain multiple shapes, paths and knots. The server implementing the vector canvas interface will also present a <a class="reference internal" href="#class_i_lx_vector_shape"><span class="std std-ref">ILxVectorShape</span></a> interface representing a single shape that contains all of the vector data and any sub-shapes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxVectorCanvas7GetItemE11LXtObjectIDPPv">
+<span id="_CPPv3N15ILxVectorCanvas7GetItemE11LXtObjectIDPPv"></span><span id="_CPPv2N15ILxVectorCanvas7GetItemE11LXtObjectIDPPv"></span><span id="ILxVectorCanvas::GetItem__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_vector_canvas_1a5d4419c3da45fd65ec8b0adcb4447268"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxVectorCanvas7GetItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The GetItem function returns the item that the vector canvas server is stored on. If the canvas is not associated with an item, the function will return NOTAVAILABLE. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxVectorCanvas14BeginEditBatchE11LXtObjectID">
+<span id="_CPPv3N15ILxVectorCanvas14BeginEditBatchE11LXtObjectID"></span><span id="_CPPv2N15ILxVectorCanvas14BeginEditBatchE11LXtObjectID"></span><span id="ILxVectorCanvas::BeginEditBatch__LXtObjectID"></span><span class="target" id="class_i_lx_vector_canvas_1a1705d629f9429d7d81917e36f3c7df33"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BeginEditBatch</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxVectorCanvas14BeginEditBatchE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Editing canvas data can be expensive, as any change to the data can trigger events that other systems react to. The edit batch allows a group of similar changes to be combined, so the events will not be triggered until the edit is finished and the batch is closed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxVectorCanvas12EndEditBatchE11LXtObjectID">
+<span id="_CPPv3N15ILxVectorCanvas12EndEditBatchE11LXtObjectID"></span><span id="_CPPv2N15ILxVectorCanvas12EndEditBatchE11LXtObjectID"></span><span id="ILxVectorCanvas::EndEditBatch__LXtObjectID"></span><span class="target" id="class_i_lx_vector_canvas_1ab0ff29223ab757e2b1b37d27712fd436"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EndEditBatch</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxVectorCanvas12EndEditBatchE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPKG_CANVAS_CHANNEL">
+<span class="target" id="lxd__vectortools_8hpp_1a74ab6ff8fad74101d6882c1ade24b33b"></span><code class="sig-name descname">LXsPKG_CANVAS_CHANNEL</code><a class="headerlink" href="#c.LXsPKG_CANVAS_CHANNEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Items declare that they can provide a vector canvas with a package tag giving the name of the vector canvas channel. Read in an evaluated context, this will be a ValueReference object channel holding the vector canvas object. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxvectorshape">
+<h2><a class="toc-backref" href="#id2">ILxVectorShape</a><a class="headerlink" href="#ilxvectorshape" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxVectorShape">
+<span id="_CPPv314ILxVectorShape"></span><span id="_CPPv214ILxVectorShape"></span><span id="ILxVectorShape"></span><span class="target" id="class_i_lx_vector_shape"></span><em class="property">class </em><code class="sig-name descname">ILxVectorShape</code><a class="headerlink" href="#_CPPv414ILxVectorShape" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Vector Shape interface represents a single shape in the canvas. Each shape has some basic properties, a collection of paths that make up the shape, as well as any number of sub-shapes. The server can be queried for an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface, allowing the style properties of the shape to be accessed and potentially manipulated. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxVectorShape10ShapeCountE11LXtObjectIDPj">
+<span id="_CPPv3N14ILxVectorShape10ShapeCountE11LXtObjectIDPj"></span><span id="_CPPv2N14ILxVectorShape10ShapeCountE11LXtObjectIDPj"></span><span id="ILxVectorShape::ShapeCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_vector_shape_1a5d2af2711485751a4b7595825fab21e1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShapeCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxVectorShape10ShapeCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Shapes can contain multiple sub-shapes. This function returns the number of child shapes that a shape contains. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxVectorShape12ShapeByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N14ILxVectorShape12ShapeByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N14ILxVectorShape12ShapeByIndexE11LXtObjectIDjPPv"></span><span id="ILxVectorShape::ShapeByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_vector_shape_1ae2a692d0559d0c1ea343f5b9369d887f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShapeByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxVectorShape12ShapeByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allows a child shape to be accessed by index. The object returned can be queried for an <a class="reference internal" href="#class_i_lx_vector_shape"><span class="std std-ref">ILxVectorShape</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxVectorShape6ParentE11LXtObjectIDPPv">
+<span id="_CPPv3N14ILxVectorShape6ParentE11LXtObjectIDPPv"></span><span id="_CPPv2N14ILxVectorShape6ParentE11LXtObjectIDPPv"></span><span id="ILxVectorShape::Parent__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_vector_shape_1aa9916cb76c1f8cb8c7d11d3440eea2af"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Parent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxVectorShape6ParentE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A shape can be queried for it’s parent using the following function. If this shape is the top-most shape, the function will return NOTFOUND, however this shape can be queried for an <a class="reference internal" href="#class_i_lx_vector_canvas"><span class="std std-ref">ILxVectorCanvas</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxVectorShape9PathCountE11LXtObjectIDPj">
+<span id="_CPPv3N14ILxVectorShape9PathCountE11LXtObjectIDPj"></span><span id="_CPPv2N14ILxVectorShape9PathCountE11LXtObjectIDPj"></span><span id="ILxVectorShape::PathCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_vector_shape_1a738873fbb862cf10509f47a8da0abe18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxVectorShape9PathCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A shape can contain multiple paths. This function returns the number of paths stored on a shape. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxVectorShape11PathByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N14ILxVectorShape11PathByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N14ILxVectorShape11PathByIndexE11LXtObjectIDjPPv"></span><span id="ILxVectorShape::PathByIndex__LXtObjectID.unsigned-i.voidPP"></span><span class="target" id="class_i_lx_vector_shape_1a726948ee3b567c4f112eb19192020dea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxVectorShape11PathByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allows a path to be accessed by index. The object returned can be queried for an <a class="reference internal" href="#class_i_lx_vector_path"><span class="std std-ref">ILxVectorPath</span></a> interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxVectorShape9TransformE11LXtObjectIDK9LXtMatrix">
+<span id="_CPPv3N14ILxVectorShape9TransformE11LXtObjectIDK9LXtMatrix"></span><span id="_CPPv2N14ILxVectorShape9TransformE11LXtObjectIDK9LXtMatrix"></span><span id="ILxVectorShape::Transform__LXtObjectID.LXtMatrixC"></span><span class="target" id="class_i_lx_vector_shape_1a6e0bb5a0419638855cb6d099656611b6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Transform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxVectorShape9TransformE11LXtObjectIDK9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A shape can be transformed by passing a 3x3 matrix that encodes a 2D rotation, 2D transform, and 2D scale to be applied to the shape. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxvectorpath">
+<h2><a class="toc-backref" href="#id3">ILxVectorPath</a><a class="headerlink" href="#ilxvectorpath" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxVectorPath">
+<span id="_CPPv313ILxVectorPath"></span><span id="_CPPv213ILxVectorPath"></span><span id="ILxVectorPath"></span><span class="target" id="class_i_lx_vector_path"></span><em class="property">class </em><code class="sig-name descname">ILxVectorPath</code><a class="headerlink" href="#_CPPv413ILxVectorPath" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Vector Path interface provides access to some basic properties, such as if the path is closed or not, as well as providing an accessor to access path knots. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath12IsPathClosedE11LXtObjectID">
+<span id="_CPPv3N13ILxVectorPath12IsPathClosedE11LXtObjectID"></span><span id="_CPPv2N13ILxVectorPath12IsPathClosedE11LXtObjectID"></span><span id="ILxVectorPath::IsPathClosed__LXtObjectID"></span><span class="target" id="class_i_lx_vector_path_1a312d9e4e9bc8ae8fc29f8f042e73393d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsPathClosed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath12IsPathClosedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Paths can either be open or closed. This state can be queried and modified using the following functions. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath13SetPathClosedE11LXtObjectID8LxResult">
+<span id="_CPPv3N13ILxVectorPath13SetPathClosedE11LXtObjectID8LxResult"></span><span id="_CPPv2N13ILxVectorPath13SetPathClosedE11LXtObjectID8LxResult"></span><span id="ILxVectorPath::SetPathClosed__LXtObjectID.LxResult"></span><span class="target" id="class_i_lx_vector_path_1abceb0f3f44623d56fd6f2e09475320f7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPathClosed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>closed</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath13SetPathClosedE11LXtObjectID8LxResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath9KnotCountE11LXtObjectIDPj">
+<span id="_CPPv3N13ILxVectorPath9KnotCountE11LXtObjectIDPj"></span><span id="_CPPv2N13ILxVectorPath9KnotCountE11LXtObjectIDPj"></span><span id="ILxVectorPath::KnotCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_vector_path_1ac1b08721efb1669da22595acf278a7d3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">KnotCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath9KnotCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function returns the number of knots that make up the path. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath17SelectKnotByIndexE11LXtObjectIDj">
+<span id="_CPPv3N13ILxVectorPath17SelectKnotByIndexE11LXtObjectIDj"></span><span id="_CPPv2N13ILxVectorPath17SelectKnotByIndexE11LXtObjectIDj"></span><span id="ILxVectorPath::SelectKnotByIndex__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_vector_path_1a00b9ec8a647b60c6780a9ea9627db089"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectKnotByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath17SelectKnotByIndexE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Knots can be “selected” by index. When a knot is selected, querying the properties of the knot will return information about this knot. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath10SelectKnotE11LXtObjectID15LXtVectorKnotID">
+<span id="_CPPv3N13ILxVectorPath10SelectKnotE11LXtObjectID15LXtVectorKnotID"></span><span id="_CPPv2N13ILxVectorPath10SelectKnotE11LXtObjectID15LXtVectorKnotID"></span><span id="ILxVectorPath::SelectKnot__LXtObjectID.LXtVectorKnotID"></span><span class="target" id="class_i_lx_vector_path_1abf2a757e6d7d135d6c2d4203497cbc63"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectKnot</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv415LXtVectorKnotID" title="LXtVectorKnotID">LXtVectorKnotID</a> <em>knot</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath10SelectKnotE11LXtObjectID15LXtVectorKnotID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Knots can be “selected” directly. When a knot is selected, querying the properties of the knot will return information about this knot. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath13KnotEnumerateE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N13ILxVectorPath13KnotEnumerateE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N13ILxVectorPath13KnotEnumerateE11LXtObjectID11LXtObjectID"></span><span id="ILxVectorPath::KnotEnumerate__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_vector_path_1aefcdac15b8bc1e6b0cc94bd8d0166062"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">KnotEnumerate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath13KnotEnumerateE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Knots can be enumerated using a visitor. For each knot, the visitor evaluate function will be called, and the path accessor will be updated to point at the new knot. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath2IDE11LXtObjectID">
+<span id="_CPPv3N13ILxVectorPath2IDE11LXtObjectID"></span><span id="_CPPv2N13ILxVectorPath2IDE11LXtObjectID"></span><span id="ILxVectorPath::ID__LXtObjectID"></span><span class="target" id="class_i_lx_vector_path_1a723a0d23ced0cbc09753f60be7ec12b0"></span><a class="reference internal" href="#_CPPv415LXtVectorKnotID" title="LXtVectorKnotID">LXtVectorKnotID</a> <code class="sig-name descname">ID</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath2IDE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This methods returns the ID of the curent knot or null if none. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxVectorPath3PosE11LXtObjectIDPdPd">
+<span id="_CPPv3N13ILxVectorPath3PosE11LXtObjectIDPdPd"></span><span id="_CPPv2N13ILxVectorPath3PosE11LXtObjectIDPdPd"></span><span id="ILxVectorPath::Pos__LXtObjectID.doubleP.doubleP"></span><span class="target" id="class_i_lx_vector_path_1a3a41014a1777d516a46973bbe2254449"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Pos</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>x</em>, double *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxVectorPath3PosE11LXtObjectIDPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This methods returns the position of the curent knot. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv415LXtVectorKnotID">
+<span id="_CPPv315LXtVectorKnotID"></span><span id="_CPPv215LXtVectorKnotID"></span><span id="LXtVectorKnotID"></span><span class="target" id="lxd__vectortools_8hpp_1a9ce00668a54149cd52a74a521b00c07a"></span><em class="property">typedef </em>void *<code class="sig-name descname">LXtVectorKnotID</code><a class="headerlink" href="#_CPPv415LXtVectorKnotID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="ilxvectorlistener">
+<h2><a class="toc-backref" href="#id4">ILxVectorListener</a><a class="headerlink" href="#ilxvectorlistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxVectorListener">
+<span id="_CPPv317ILxVectorListener"></span><span id="_CPPv217ILxVectorListener"></span><span id="ILxVectorListener"></span><span class="target" id="class_i_lx_vector_listener"></span><em class="property">class </em><code class="sig-name descname">ILxVectorListener</code><a class="headerlink" href="#_CPPv417ILxVectorListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The Vector Listener allows clients to be signalled whenever the canvas state changes. Clients can attach to a ListenerPort interface on the Canvas object, and be signaled about changes through the <a class="reference internal" href="#class_i_lx_vector_listener"><span class="std std-ref">ILxVectorListener</span></a> interface that they implement. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener7DestroyE11LXtObjectID">
+<span id="_CPPv3N17ILxVectorListener7DestroyE11LXtObjectID"></span><span id="_CPPv2N17ILxVectorListener7DestroyE11LXtObjectID"></span><span id="ILxVectorListener::Destroy__LXtObjectID"></span><span class="target" id="class_i_lx_vector_listener_1abc3a05bcea870444affacb684424fbc4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Destroy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener7DestroyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This event is sent when the canvas is destroyed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener8ShapeAddE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxVectorListener8ShapeAddE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxVectorListener8ShapeAddE11LXtObjectID11LXtObjectID"></span><span id="ILxVectorListener::ShapeAdd__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_vector_listener_1abd16b06155219a16d4621f8a2e132484"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShapeAdd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener8ShapeAddE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>After a shape is added, this event will be called. The shape is passed as an argument. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener11ShapeRemoveE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxVectorListener11ShapeRemoveE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxVectorListener11ShapeRemoveE11LXtObjectID11LXtObjectID"></span><span id="ILxVectorListener::ShapeRemove__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_vector_listener_1a3bf602542c6dba5b69f06e9f62ff09ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShapeRemove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener11ShapeRemoveE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Before a shape is removed, this event will be called. The shape is passed as an argument. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener10ShapeStyleE11LXtObjectID11LXtObjectIDPKc">
+<span id="_CPPv3N17ILxVectorListener10ShapeStyleE11LXtObjectID11LXtObjectIDPKc"></span><span id="_CPPv2N17ILxVectorListener10ShapeStyleE11LXtObjectID11LXtObjectIDPKc"></span><span id="ILxVectorListener::ShapeStyle__LXtObjectID.LXtObjectID.cCP"></span><span class="target" id="class_i_lx_vector_listener_1a16734d610b04deb2c24bc44381b9d20f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShapeStyle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shape</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener10ShapeStyleE11LXtObjectID11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This event is used to mark a shape style change. The shape and name of the style are passed as arguments. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener7PathAddE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxVectorListener7PathAddE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxVectorListener7PathAddE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxVectorListener::PathAdd__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_vector_listener_1ae6e094e20284fcf4ea6cf1a04103e974"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathAdd</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shape</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener7PathAddE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>After a path is added, this event will be called. The shape and path are passed as arguments. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener10PathRemoveE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxVectorListener10PathRemoveE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxVectorListener10PathRemoveE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxVectorListener::PathRemove__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_vector_listener_1ad9eb84c623fe4d9835cdd64b86a644c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">PathRemove</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shape</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener10PathRemoveE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Before a path is removed, this event will be called. The shape and path are passed as arguments. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxVectorListener12KnotPositionE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxVectorListener12KnotPositionE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxVectorListener12KnotPositionE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxVectorListener::KnotPosition__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_vector_listener_1a7f4cc0610dce41f54252c970a0213fc1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">KnotPosition</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shape</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxVectorListener12KnotPositionE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When a knot changes position, this event will be called. The shape and path are provided as arguments, and the path accessor is pointing at the knot that has changed. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_vertex.html" class="btn btn-neutral float-right" title="Vertex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_vector.html" class="btn btn-neutral float-left" title="Vector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_vectortools.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:31 GMT -->
+</html>

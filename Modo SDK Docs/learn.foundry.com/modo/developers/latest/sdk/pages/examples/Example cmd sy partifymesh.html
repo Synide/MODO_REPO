@@ -1,0 +1,1041 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Example cmd sy partifymesh.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Example cmd sy partifymesh &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File Browser Command" href="File%20Browser%20Command.html" />
+    <link rel="prev" title="CreateVertex Mesh Operation Example" href="Create%20Vertex%20Mesh%20Operation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20Vertex%20Mesh%20Operation.html">CreateVertex Mesh Operation Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example cmd sy partifymesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planning">Planning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code">Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config">Config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#icon-resources">Icon Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Socket%20comms%20wrapper.html">Modo Socket comms wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlaneTool%20example.html">PlaneTool example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read%20a%20Driven%20Channel.html">Read a Driven Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rebuild%20Curve.html">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spherize%20example.html">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>Example cmd sy partifymesh</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-cmd-sy-partifymesh">
+<h1>Example cmd sy partifymesh<a class="headerlink" href="#example-cmd-sy-partifymesh" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#planning" id="id2">Planning</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id3">Implementation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#code" id="id4">Code</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sy-partifymesh-cmd-cpp" id="id5">sy_partifymesh_cmd.cpp</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#config" id="id6">Config</a></p></li>
+<li><p><a class="reference internal" href="#icon-resources" id="id7">Icon Resources</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#more-information" id="id8">More Information</a></p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id1">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This article details in laymans terms adding a ‘new’ command to modo.
+It has been written by an SDK end user, so may or may not be representative of ‘good’ or even accurate information.</p>
+</div>
+<div class="section" id="planning">
+<h2><a class="toc-backref" href="#id2">Planning</a><a class="headerlink" href="#planning" title="Permalink to this headline">¶</a></h2>
+<p>It’s good practice to note down a few details describing the scope of what your command does, when it does it and how it may be activated so as to give yourself some guidelines to work too. So…</p>
+<blockquote>
+<div><dl class="simple">
+<dt>‘’What should this command do?’’</dt><dd><ul class="simple">
+<li><p>This command should ‘apply a unique part tag to each polygon in the currently selected mesh’.</p></li>
+</ul>
+</dd>
+<dt>‘’What should this command be called?’’</dt><dd><ul class="simple">
+<li><p>Based on what the command is supposed to do and whom has made it a good name for this command would be ‘’’’sy.partifymesh’’’’.</p></li>
+</ul>
+</dd>
+<dt>‘’When should this command be allowed to run?’’</dt><dd><ul class="simple">
+<li><p>This command should only be ‘enabled’ when the user has a ‘mesh’ item selected AND that mesh item has some polygons.</p></li>
+</ul>
+</dd>
+<dt>‘’Is the command going to possibly run from a button?’’</dt><dd><ul class="simple">
+<li><p>For this particular example we’ll make the command suitable for running from a button. So, we’ll detail help information and images that will automatically apply when the command is mapped to a button.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="implementation">
+<h2><a class="toc-backref" href="#id3">Implementation</a><a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code">
+<h3><a class="toc-backref" href="#id4">Code</a><a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<p>A basic ‘code flow’ summary follows, it’s not in any particular order of operation :</p>
+<ul class="simple">
+<li><p>The module’s initialize method is called which in turn calls the namespace’s initialize method.</p></li>
+<li><p>The namespace initialize registers the ‘server’ with appropriate interfaces for this plugin, which is how modo knows that these servers exist.</p></li>
+<li><p>When the command is activated within modo the constructor sets a CLxUser_Log.  The fact that the log subsystem even exists is set up via server tags (LXtTagInfoDesc ).  Note that this log is purely for debugging purposes, and should not be present in shipping code.</p></li>
+<li><p>The runtime acquires the flags from this plugin via the basic_CmdFlags method, which we use to report that this command performs undoable actions, in this case by calling functions that modify the mesh.</p></li>
+<li><p>The runtime calls the basic_Enable method to see if this command can be run or not, and which is used to mark the command as disabled or enabled in the user interface.  If the command is disabled, cmd_Execute will not be called.</p></li>
+<li><p>When added to as a button in Form View, the runtime calls into basic_AddNotifiers, which in turn essentially registers what events this plugin will receive notification for and how to invalidate the user interface when a relevant event occurs.  In this case, we’re listening for changes to the item selection, and that we want it to notify the user interface to refresh our button’s enable state when that occurs.</p></li>
+<li><p>Finally, the runtime will call the plugin’s cmd_Execute method if the command is enabled.  Errors are reported through the command’s CLxUser_Message, which is obtained through a call to the basic_Message method on our object.</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cm">/* synide@rocketmail.com */</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;lx_plugin.hpp&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">sy_partifymesh_cmd</span>                    <span class="p">{</span>       <span class="k">extern</span> <span class="kt">void</span> <span class="n">initialize</span><span class="p">();</span>
+                                                       <span class="k">extern</span> <span class="kt">void</span> <span class="n">cleanup</span><span class="p">();</span>   <span class="p">};</span>
+
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">sy_partifymesh_cmd</span>                      <span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">cleanup</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">sy_partifymesh_cmd</span>                      <span class="o">::</span><span class="n">cleanup</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="sy-partifymesh-cmd-cpp">
+<h4><a class="toc-backref" href="#id5">sy_partifymesh_cmd.cpp</a><a class="headerlink" href="#sy-partifymesh-cmd-cpp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cm">/* synide@rocketmail.com */</span>
+
+<span class="c1">//=====================================</span>
+<span class="c1">// Notes:</span>
+<span class="c1">//                              April, 2012 - Revised for Liki example.</span>
+<span class="c1">//                              May, 2012 - A More comprehensive implementation.</span>
+<span class="c1">//                                               Added preprocessor directives to disabled EventLog output when not in Debug.</span>
+<span class="c1">//                                               Added &#39;meshes.event&#39; to facilitate disabling if the mesh is emptied of polygons.</span>
+<span class="c1">//                                               Added a &#39;completion&#39; message.</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;lxidef.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;lx_plugin.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;lx_layer.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;lx_mesh.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;lx_log.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;lxu_command.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;lxu_select.hpp&gt;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="n">sy_partifymesh_cmd</span>
+<span class="p">{</span>
+
+<span class="cp">#ifndef __NAMESPACE_STATICS</span>
+
+
+<span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">SERVER_NAME</span>                <span class="o">=</span> <span class="s">&quot;sy.partifymesh&quot;</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">SERVER_USERNAME</span>         <span class="o">=</span> <span class="s">&quot;Sy PartifyMesh&quot;</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="n">LOG_NAME</span>                     <span class="o">=</span> <span class="s">&quot;sy/cmds/partifymesh&quot;</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="n">CLxItemType</span>                           <span class="n">iType_Mesh</span>                 <span class="p">(</span><span class="n">LXsITYPE_MESH</span><span class="p">);</span>
+
+
+<span class="cp">#endif  __NAMESPACE_STATICS</span>
+
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fnI2S</span><span class="p">(</span><span class="kt">unsigned</span> <span class="n">value</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">notnullterminated</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">padding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">asHexadecimal</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">withHexPrefix</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">result</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">asHexadecimal</span><span class="p">)</span> <span class="p">{</span><span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">hex</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="n">padding</span><span class="p">)</span> <span class="p">{</span><span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">padding</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">1000</span> <span class="o">&amp;&amp;</span> <span class="n">padding</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span><span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">notnullterminated</span><span class="p">)</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">;</span>
+        <span class="k">else</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ends</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">asHexadecimal</span> <span class="o">&amp;&amp;</span> <span class="n">withHexPrefix</span><span class="p">)</span> <span class="p">{</span><span class="n">result</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;0x&quot;</span><span class="p">);}</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fnF2Sfixed</span><span class="p">(</span><span class="kt">float</span> <span class="n">value</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">nullterminated</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">os</span><span class="p">;</span>
+        <span class="n">os</span><span class="p">.</span><span class="n">setf</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">fixed</span><span class="p">);</span>
+        <span class="n">os</span><span class="p">.</span><span class="n">precision</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nullterminated</span><span class="p">)</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ends</span><span class="p">;</span>
+        <span class="k">else</span>
+                <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+<span class="p">};</span>
+
+
+
+<span class="cm">/*</span>
+<span class="cm"> * &#39;sy.partifymesh&#39; command is derived from &#39;CLxBasicCommand&#39;.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">CSyPartifyMesh</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CLxBasicCommand</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+        <span class="k">static</span> <span class="n">LXtTagInfoDesc</span>           <span class="n">descInfo</span><span class="p">[];</span>
+
+        <span class="n">CLxUser_LayerService</span>            <span class="n">LayerService</span><span class="p">;</span>
+
+        <span class="cp">#ifdef  _DEBUG</span>
+        <span class="n">CLxUser_Log</span>                     <span class="n">PartifyMeshLog</span><span class="p">;</span>
+
+        <span class="n">CSyPartifyMesh</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">setByName</span><span class="p">(</span><span class="n">LOG_NAME</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="cp">#endif  _DEBUG</span>
+
+
+        <span class="kt">void</span> <span class="nf">basic_Notifiers</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+                <span class="n">basic_AddNotify</span><span class="p">(</span><span class="n">LXsNOTIFIER_SELECT</span><span class="p">,</span> <span class="s">&quot;item +d&quot;</span><span class="p">);</span> <span class="cm">/* Will be notified when Item selection changes */</span>
+                <span class="n">basic_AddNotify</span><span class="p">(</span><span class="n">LXsNOTIFIER_MESHES</span><span class="p">,</span> <span class="s">&quot;+p +d&quot;</span><span class="p">);</span>   <span class="cm">/* Will be notified on polygon changes in the mesh */</span>
+        <span class="p">};</span>
+
+
+        <span class="kt">bool</span> <span class="nf">basic_Enable</span><span class="p">(</span><span class="n">CLxUser_Message</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+                <span class="cm">/*</span>
+<span class="cm">                        Utilize the new (601) CLxItemSelectionType to find the first mesh item and then check if it</span>
+<span class="cm">                        has any polygons.</span>
+<span class="cm">                */</span>
+
+                <span class="kt">bool</span> <span class="n">result</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+                <span class="n">CLxItemSelectionType</span>    <span class="n">TypedItemSelector</span><span class="p">(</span><span class="n">LXsITYPE_MESH</span><span class="p">);</span>
+                <span class="n">CLxUser_Item</span>                    <span class="n">theItem</span><span class="p">;</span>
+                <span class="k">const</span> <span class="kt">char</span>                              <span class="o">*</span><span class="n">ItemName</span><span class="p">;</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">TypedItemSelector</span><span class="p">.</span><span class="n">GetFirst</span><span class="p">(</span><span class="n">theItem</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">theItem</span><span class="p">.</span><span class="n">test</span><span class="p">())</span>
+                <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">theItem</span><span class="p">.</span><span class="n">Type</span><span class="p">()</span> <span class="o">==</span> <span class="n">iType_Mesh</span><span class="p">.</span><span class="n">Type</span><span class="p">())</span>
+                        <span class="p">{</span>
+                                <span class="n">CLxUser_Mesh</span>                    <span class="n">theMesh</span><span class="p">;</span>
+                                <span class="n">CLxUser_ChannelRead</span>             <span class="n">aChanReader</span><span class="p">;</span>
+
+                                <span class="k">if</span> <span class="p">(</span><span class="n">aChanReader</span><span class="p">.</span><span class="n">from</span><span class="p">(</span><span class="n">theItem</span><span class="p">))</span>
+                                <span class="p">{</span>
+                                        <span class="k">if</span> <span class="p">(</span><span class="n">aChanReader</span><span class="p">.</span><span class="n">Object</span><span class="p">(</span><span class="n">theItem</span><span class="p">,</span> <span class="n">LXsICHAN_MESH_MESH</span><span class="p">,</span> <span class="n">theMesh</span><span class="p">))</span>
+                                        <span class="p">{</span>
+                                                <span class="n">result</span> <span class="o">=</span> <span class="n">theMesh</span><span class="p">.</span><span class="n">NPolygons</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+                                                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">)</span>
+                                                <span class="p">{</span>
+                                                        <span class="n">theItem</span><span class="p">.</span><span class="n">UniqueName</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ItemName</span><span class="p">);</span>
+                                                        <span class="k">if</span> <span class="p">(</span><span class="n">ItemName</span><span class="p">)</span> <span class="p">{</span>
+                                                                <span class="n">msg</span><span class="p">.</span><span class="n">SetCode</span><span class="p">(</span><span class="n">LXe_FAILED</span><span class="p">);</span>
+                                                                <span class="n">msg</span><span class="p">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="s">&quot;ItemHasZeroPolygons&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                                                                <span class="n">msg</span><span class="p">.</span><span class="n">SetArgumentString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ItemName</span><span class="p">);</span>
+                                                        <span class="p">}</span>
+                                                <span class="p">}</span>
+                                        <span class="p">}</span>
+                                        <span class="k">else</span>
+                                        <span class="p">{</span>
+                                                <span class="cm">/* Unlikely to ever get here */</span>
+                                                <span class="n">msg</span><span class="p">.</span><span class="n">SetCode</span><span class="p">(</span><span class="n">LXe_CMD_DISABLED</span><span class="p">);</span>
+                                                <span class="n">msg</span><span class="p">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="s">&quot;NoValidMesh&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                                        <span class="p">}</span>
+                                <span class="p">}</span>
+
+                                <span class="n">aChanReader</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+                                <span class="n">theMesh</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+                        <span class="p">}</span>
+                        <span class="k">else</span>
+                        <span class="p">{</span>
+                                <span class="n">msg</span><span class="p">.</span><span class="n">SetCode</span><span class="p">(</span><span class="n">LXe_CMD_DISABLED</span><span class="p">);</span>
+                                <span class="n">msg</span><span class="p">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="s">&quot;NoValidMesh&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                        <span class="p">}</span>
+                        <span class="n">theItem</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                        <span class="n">msg</span><span class="p">.</span><span class="n">SetCode</span><span class="p">(</span><span class="n">LXe_CMD_DISABLED</span><span class="p">);</span>
+                        <span class="n">msg</span><span class="p">.</span><span class="n">SetMessage</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="s">&quot;NoValidMesh&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+        <span class="p">};</span>
+
+
+        <span class="kt">int</span> <span class="nf">basic_CmdFlags</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">LXfCMD_UNDO</span><span class="p">;</span>
+        <span class="p">};</span>
+
+
+        <span class="kt">void</span> <span class="nf">cmd_Execute</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+                <span class="cm">/*</span>
+<span class="cm">                    We restrict the LayerScan&#39;s results to the &#39;Primary&#39; selected mesh only so that we</span>
+<span class="cm">                    guard against the user having multiple &#39;selected&#39; meshs which could result in overload.</span>
+<span class="cm">                */</span>
+
+                <span class="n">CLxUser_LayerScan</span>               <span class="n">LayerScan</span><span class="p">;</span>
+                <span class="n">CLxUser_Item</span>                    <span class="n">theItem</span><span class="p">;</span>
+                <span class="n">CLxUser_Mesh</span>                    <span class="n">theMesh</span><span class="p">;</span>
+                <span class="n">CLxUser_Polygon</span>                 <span class="n">thePolygon</span><span class="p">;</span>
+                <span class="n">CLxUser_StringTag</span>               <span class="n">theTag</span><span class="p">;</span>
+                <span class="k">const</span> <span class="kt">char</span>                      <span class="o">*</span><span class="n">ItemName</span><span class="p">;</span>
+
+                <span class="n">LayerService</span><span class="p">.</span><span class="n">BeginScan</span><span class="p">(</span><span class="n">LXf_LAYERSCAN_PRIMARY</span> <span class="o">|</span> <span class="n">LXf_LAYERSCAN_WRITEMESH</span><span class="p">,</span> <span class="n">LayerScan</span><span class="p">);</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">LayerScan</span><span class="p">.</span><span class="n">ItemByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">theItem</span><span class="p">))</span>
+                        <span class="n">theItem</span><span class="p">.</span><span class="n">UniqueName</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ItemName</span><span class="p">);</span>
+
+                <span class="cm">/* As there should only ever be 1 mesh found by the LayerScan it&#39;s index should be zero. */</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">LayerScan</span><span class="p">.</span><span class="n">EditMeshByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">theMesh</span><span class="p">))</span>
+                <span class="p">{</span>
+                        <span class="kt">int</span> <span class="n">NoOfPolygons</span> <span class="o">=</span> <span class="n">theMesh</span><span class="p">.</span><span class="n">NPolygons</span><span class="p">();</span>
+
+                        <span class="c1">// Set &#39;thePolygon&#39; as the polygon accessor for the &#39;theMesh&#39;.</span>
+                        <span class="n">thePolygon</span><span class="p">.</span><span class="n">fromMeshObj</span><span class="p">(</span><span class="n">theMesh</span><span class="p">);</span>
+
+                        <span class="c1">// Set &#39;theTag&#39; as the &#39;tags&#39; accessor for the polygon.</span>
+                        <span class="n">theTag</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">thePolygon</span><span class="p">);</span>
+
+                        <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">tag</span><span class="p">;</span>
+                        <span class="kt">clock_t</span> <span class="n">timerStart</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span>
+
+                        <span class="cp">#ifdef _DEBUG</span>
+                        <span class="kt">unsigned</span> <span class="n">msg_stride</span> <span class="o">=</span> <span class="n">NoOfPolygons</span> <span class="o">/</span> <span class="mi">5</span><span class="p">;</span>
+                        <span class="kt">unsigned</span> <span class="n">msg_counter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                        <span class="cp">#endif  _DEBUG</span>
+
+                        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i1</span> <span class="o">&lt;</span> <span class="n">NoOfPolygons</span><span class="p">;</span> <span class="n">i1</span><span class="o">++</span><span class="p">)</span>
+                        <span class="p">{</span>
+                                <span class="cm">/*Ask the polygon accessor to populate itself based on the poly index. */</span>
+                                <span class="n">thePolygon</span><span class="p">.</span><span class="n">SelectByIndex</span><span class="p">(</span><span class="n">i1</span><span class="p">);</span>
+
+                                <span class="cm">/* Construct a unique &#39;part&#39; tag name. */</span>
+                                <span class="n">tag</span> <span class="o">=</span> <span class="s">&quot;poly_&quot;</span> <span class="o">+</span> <span class="n">fnI2S</span><span class="p">(</span><span class="n">i1</span><span class="p">);</span>
+
+                                <span class="cm">/* Ask the &#39;tags&#39; accessor to set the &#39;PART&#39; tag. */</span>
+                                <span class="n">theTag</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">LXi_PTAG_PART</span><span class="p">,</span> <span class="n">tag</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+
+                                <span class="cp">#ifdef  _DEBUG</span>
+                                <span class="c1">//logging at 20%, 40%, 60%, 80%</span>
+                                <span class="k">if</span> <span class="p">(</span><span class="n">PartifyMeshLog</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">i1</span> <span class="o">==</span> <span class="p">(</span><span class="n">msg_stride</span> <span class="o">*</span> <span class="n">msg_counter</span><span class="p">)))</span>
+                                <span class="p">{</span>
+                                        <span class="kt">clock_t</span> <span class="n">timerDiff</span> <span class="o">=</span> <span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">timerStart</span><span class="p">;</span>
+                                        <span class="kt">double</span> <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">timerDiff</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">CLOCKS_PER_SEC</span><span class="p">;</span>
+                                        <span class="k">switch</span><span class="p">(</span><span class="n">msg_counter</span><span class="p">)</span>
+                                        <span class="p">{</span>
+                                        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+                                                <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">Message</span><span class="p">(</span><span class="n">LXe_INFO</span><span class="p">,</span> <span class="s">&quot;20\%%, %u polygons in %.6f seconds.&quot;</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+                                                <span class="k">break</span><span class="p">;</span>
+                                        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+                                                <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">Message</span><span class="p">(</span><span class="n">LXe_INFO</span><span class="p">,</span> <span class="s">&quot;40\%%, %u polygons in %.6f seconds.&quot;</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+                                                <span class="k">break</span><span class="p">;</span>
+                                        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+                                                <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">Message</span><span class="p">(</span><span class="n">LXe_INFO</span><span class="p">,</span> <span class="s">&quot;60\%%, %u polygons in %.6f seconds.&quot;</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+                                                <span class="k">break</span><span class="p">;</span>
+                                        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+                                                <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">Message</span><span class="p">(</span><span class="n">LXe_INFO</span><span class="p">,</span> <span class="s">&quot;80\%%, %u polygons in %.6f seconds.&quot;</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+                                                <span class="k">break</span><span class="p">;</span>
+                                        <span class="p">}</span>
+                                        <span class="n">msg_counter</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+                                <span class="p">}</span>
+                                <span class="cp">#endif  _DEBUG</span>
+                        <span class="p">}</span>
+
+                        <span class="cm">/* Tell the LayerScan that we are only &#39;editing&#39; polygon tags. */</span>
+                        <span class="n">LayerScan</span><span class="p">.</span><span class="n">SetMeshChange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">LXf_MESHEDIT_POL_TAGS</span><span class="p">);</span>
+
+                        <span class="cm">/* Apply the mesh changes. */</span>
+                        <span class="n">LayerScan</span><span class="p">.</span><span class="n">Apply</span><span class="p">();</span>
+
+                        <span class="kt">clock_t</span> <span class="n">timerDiff</span> <span class="o">=</span> <span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">timerStart</span><span class="p">;</span>
+                        <span class="kt">double</span> <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">timerDiff</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">CLOCKS_PER_SEC</span><span class="p">;</span>
+
+                        <span class="n">basic_Message</span><span class="p">().</span><span class="n">SetCode</span><span class="p">(</span><span class="n">LXe_INFO</span><span class="p">);</span>
+                        <span class="n">basic_Message</span><span class="p">().</span><span class="n">SetMessage</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="s">&quot;Complete&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                        <span class="n">basic_Message</span><span class="p">().</span><span class="n">SetArgumentInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NoOfPolygons</span><span class="p">);</span>
+                        <span class="n">basic_Message</span><span class="p">().</span><span class="n">SetArgumentString</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">fnF2Sfixed</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">duration</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="mi">6</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span>
+
+                        <span class="cp">#ifdef   _DEBUG</span>
+                        <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">Message</span><span class="p">(</span><span class="n">LXe_INFO</span><span class="p">,</span> <span class="s">&quot;100\%%, %u polygons in %.6f seconds.&quot;</span><span class="p">,</span> <span class="n">NoOfPolygons</span><span class="p">,</span> <span class="n">duration</span><span class="p">);</span>
+                        <span class="cp">#endif  _DEBUG</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                        <span class="cm">/* Unlikely to ever get here */</span>
+                        <span class="n">basic_Message</span><span class="p">().</span><span class="n">SetCode</span><span class="p">(</span><span class="n">LXe_CMD_DISABLED</span><span class="p">);</span>
+                        <span class="n">basic_Message</span><span class="p">().</span><span class="n">SetMessage</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="s">&quot;NoValidMesh&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+                        <span class="cp">#ifdef  _DEBUG</span>
+                        <span class="n">PartifyMeshLog</span><span class="p">.</span><span class="n">Message</span><span class="p">(</span><span class="n">LXe_NOTFOUND</span><span class="p">,</span> <span class="s">&quot;No valid mesh found!&quot;</span><span class="p">);</span>
+                        <span class="cp">#endif _DEBUG</span>
+                <span class="p">}</span>
+        <span class="p">};</span>
+
+
+<span class="p">};</span>
+
+
+<span class="n">LXtTagInfoDesc</span> <span class="n">CSyPartifyMesh</span><span class="o">::</span><span class="n">descInfo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span><span class="n">LXsSRV_LOGSUBSYSTEM</span><span class="p">,</span> <span class="n">LOG_NAME</span><span class="p">},</span>
+        <span class="p">{</span><span class="n">LXsSRV_USERNAME</span><span class="p">,</span> <span class="n">SERVER_USERNAME</span><span class="p">},</span>
+        <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+<span class="p">};</span>
+
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">CLxGenericPolymorph</span> <span class="o">*</span><span class="n">srv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CLxPolymorph</span><span class="o">&lt;</span><span class="n">CSyPartifyMesh</span><span class="o">&gt;</span><span class="p">;</span>
+
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="k">new</span> <span class="n">CLxIfc_Command</span>    <span class="o">&lt;</span><span class="n">CSyPartifyMesh</span><span class="o">&gt;</span><span class="p">);</span>
+                <span class="n">srv</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="k">new</span> <span class="n">CLxIfc_StaticDesc</span> <span class="o">&lt;</span><span class="n">CSyPartifyMesh</span><span class="o">&gt;</span><span class="p">);</span>
+
+                <span class="n">lx</span><span class="o">::</span><span class="n">AddServer</span><span class="p">(</span><span class="n">SERVER_NAME</span><span class="p">,</span> <span class="n">srv</span><span class="p">);</span>
+<span class="p">};</span>
+
+
+<span class="kt">void</span> <span class="nf">cleanup</span><span class="p">()</span> <span class="p">{};</span>
+
+<span class="p">};</span><span class="c1">//namespace sy_partifymesh_cmd</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="config">
+<h3><a class="toc-backref" href="#id6">Config</a><a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h3>
+<p>The following xml file is what’s referred to as a Configs.
+This particular config has the following features :-</p>
+<ul class="simple">
+<li><p>A new command category is created to apportion this particular command under ‘Sy/Cmds’ in the modo command tree listing.</p></li>
+<li><p>We specify command help details regarding what the command does.</p></li>
+<li><p>We define a message table for localized error messages.</p></li>
+<li><p>We specify a help url for this command.</p></li>
+<li><p>We detail some UI elements relating to icons. See <a class="reference internal" href="../ui/Icon%20Resources.html"><span class="doc">Icon Resources</span></a> for more details.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+
+  <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Categories&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Category&quot;</span> <span class="na">key=</span><span class="s">&quot;Commands&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;C&quot;</span> <span class="na">key=</span><span class="s">&quot;sy.partifymesh&quot;</span><span class="nt">&gt;</span>Sy/Cmds<span class="nt">&lt;/hash&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+  <span class="nt">&lt;/atom&gt;</span>
+
+  <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;CommandHelp&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Command&quot;</span> <span class="na">key=</span><span class="s">&quot;sy.partifymesh@en_US&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;UserName&quot;</span><span class="nt">&gt;</span>PartifyMesh<span class="nt">&lt;/atom&gt;</span>
+      <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Desc&quot;</span><span class="nt">&gt;</span>Apply unique &#39;part&#39; tag to each polygon in selected mesh.<span class="nt">&lt;/atom&gt;</span>
+      <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Tooltip&quot;</span><span class="nt">&gt;</span>Apply unique &#39;part&#39; tag to each polygon in selected mesh.<span class="nt">&lt;/atom&gt;</span>
+      <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;ButtonName&quot;</span><span class="nt">&gt;</span>PartifyMesh<span class="nt">&lt;/atom&gt;</span>
+      <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Example&quot;</span><span class="nt">&gt;</span>sy.partifymesh<span class="nt">&lt;/atom&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+  <span class="nt">&lt;/atom&gt;</span>
+
+  <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Messages&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Table&quot;</span> <span class="na">key=</span><span class="s">&quot;sy.partifymesh.en_US&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;T&quot;</span> <span class="na">key=</span><span class="s">&quot;ItemHasZeroPolygons&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;quot;</span>%1<span class="ni">&amp;quot;</span> has zero polygons.<span class="nt">&lt;/hash&gt;</span>
+      <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;T&quot;</span> <span class="na">key=</span><span class="s">&quot;NoValidMesh&quot;</span><span class="nt">&gt;</span>No valid mesh selected.<span class="nt">&lt;/hash&gt;</span>
+      <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;T&quot;</span> <span class="na">key=</span><span class="s">&quot;Complete&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;quot;</span>%1<span class="ni">&amp;quot;</span> polygons completed in <span class="ni">&amp;quot;</span>%2<span class="ni">&amp;quot;</span> seconds.<span class="nt">&lt;/hash&gt;</span>
+    <span class="nt">&lt;/hash&gt;</span>
+  <span class="nt">&lt;/atom&gt;</span>
+
+  <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;HelpURLs&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;HelpURL&quot;</span> <span class="na">key=</span><span class="s">&quot;command:sy.partifymesh&quot;</span><span class="nt">&gt;</span>kit_SyCmds:help\index.html#partifymesh<span class="nt">&lt;/hash&gt;</span>
+  <span class="nt">&lt;/atom&gt;</span>
+
+  <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;UIElements&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Image&quot;</span> <span class="na">key=</span><span class="s">&quot;sy_cmd_icons&quot;</span><span class="nt">&gt;</span>sy_cmd_icons.png<span class="nt">&lt;/hash&gt;</span>
+
+    <span class="c">&lt;!-- First row of image --&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Icon&quot;</span> <span class="na">key=</span><span class="s">&quot;sy.partifymesh_20&quot;</span><span class="nt">&gt;</span>         <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Source&quot;</span><span class="nt">&gt;</span>sy_cmd_icons<span class="nt">&lt;/atom&gt;</span>     <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Location&quot;</span><span class="nt">&gt;</span>0 0 20 20<span class="nt">&lt;/atom&gt;</span>   <span class="nt">&lt;/hash&gt;</span>
+
+    <span class="c">&lt;!-- Second row of image --&gt;</span>
+    <span class="nt">&lt;hash</span> <span class="na">type=</span><span class="s">&quot;Icon&quot;</span> <span class="na">key=</span><span class="s">&quot;sy.partifymesh_32&quot;</span><span class="nt">&gt;</span>         <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Source&quot;</span><span class="nt">&gt;</span>sy_cmd_icons<span class="nt">&lt;/atom&gt;</span>     <span class="nt">&lt;atom</span> <span class="na">type=</span><span class="s">&quot;Location&quot;</span><span class="nt">&gt;</span>0 20 32 32<span class="nt">&lt;/atom&gt;</span>  <span class="nt">&lt;/hash&gt;</span>
+  <span class="nt">&lt;/atom&gt;</span>
+
+<span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="icon-resources">
+<h3><a class="toc-backref" href="#id7">Icon Resources</a><a class="headerlink" href="#icon-resources" title="Permalink to this headline">¶</a></h3>
+<p>The following .png file is provided as an example of the icon images that commands mapped to UI buttons may implement, the display of which is an automated process. When the command returns ‘false’/LXe_CMD_DISABLED from basic_Enable, the system automatically generates a desaturated version of the icon image for the button.
+See the <a class="reference internal" href="../ui/Icon%20Resources.html"><span class="doc">Icon Resources</span></a> article for more details.</p>
+<img alt="../../_images/Sy_cmd_icons.png" src="../../_images/Sy_cmd_icons.png" />
+</div>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id8">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../starting/SDK.html"><span class="doc">SDK</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="File%20Browser%20Command.html" class="btn btn-neutral float-right" title="File Browser Command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Create%20Vertex%20Mesh%20Operation.html" class="btn btn-neutral float-left" title="CreateVertex Mesh Operation Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Example cmd sy partifymesh.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

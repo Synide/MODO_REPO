@@ -1,0 +1,1183 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/RandomSel Script.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RandomSel Script &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Reading Files with Python" href="Reading%20Files%20with%20Python.html" />
+    <link rel="prev" title="Query Command Values example" href="Query%20Command%20Values%20example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RandomSel Script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-script">The Script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#header">Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-lxout-for-debugging">Using lxout() for Debugging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#querying-the-user-value">Querying the User Value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-the-selection-mode">Checking the Selection Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#querying-the-foreground-layer-list">Querying the Foreground Layer List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scanning-the-foreground-layers">Scanning the Foreground Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scanning-the-layer-s-elements">Scanning the Layer?s Elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selecting-an-element">Selecting an Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finishing-up">Finishing Up</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-script">Running the Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-randomsel-coverage-with-user-defnew">Defining RandomSel.coverage with user.defNew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-interface">User Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-form">Creating a Form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-script-when-randomsel-coverage-changes">Running the Script when RandomSel.coverage Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#limiting-the-control-range">Limiting the Control Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-randomsel-coverage-preset-buttons">Creating RandomSel.coverage Preset Buttons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-randomsel-coverage-value-presets">Creating RandomSel.coverage Value Presets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#improving-the-script">Improving the Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>RandomSel Script</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="randomsel-script">
+<h1>RandomSel Script<a class="headerlink" href="#randomsel-script" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-script" id="id1">The Script</a></p>
+<ul>
+<li><p><a class="reference internal" href="#header" id="id2">Header</a></p></li>
+<li><p><a class="reference internal" href="#using-lxout-for-debugging" id="id3">Using lxout() for Debugging</a></p></li>
+<li><p><a class="reference internal" href="#querying-the-user-value" id="id4">Querying the User Value</a></p></li>
+<li><p><a class="reference internal" href="#checking-the-selection-mode" id="id5">Checking the Selection Mode</a></p></li>
+<li><p><a class="reference internal" href="#querying-the-foreground-layer-list" id="id6">Querying the Foreground Layer List</a></p></li>
+<li><p><a class="reference internal" href="#scanning-the-foreground-layers" id="id7">Scanning the Foreground Layers</a></p></li>
+<li><p><a class="reference internal" href="#scanning-the-layer-s-elements" id="id8">Scanning the Layer?s Elements</a></p></li>
+<li><p><a class="reference internal" href="#selecting-an-element" id="id9">Selecting an Element</a></p></li>
+<li><p><a class="reference internal" href="#finishing-up" id="id10">Finishing Up</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#running-the-script" id="id11">Running the Script</a></p></li>
+<li><p><a class="reference internal" href="#defining-randomsel-coverage-with-user-defnew" id="id12">Defining RandomSel.coverage with user.defNew</a></p></li>
+<li><p><a class="reference internal" href="#user-interface" id="id13">User Interface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-form" id="id14">Creating a Form</a></p></li>
+<li><p><a class="reference internal" href="#running-the-script-when-randomsel-coverage-changes" id="id15">Running the Script when RandomSel.coverage Changes</a></p></li>
+<li><p><a class="reference internal" href="#limiting-the-control-range" id="id16">Limiting the Control Range</a></p></li>
+<li><p><a class="reference internal" href="#creating-randomsel-coverage-preset-buttons" id="id17">Creating RandomSel.coverage Preset Buttons</a></p></li>
+<li><p><a class="reference internal" href="#creating-randomsel-coverage-value-presets" id="id18">Creating RandomSel.coverage Value Presets</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#improving-the-script" id="id19">Improving the Script</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id20">More Information</a></p></li>
+</ul>
+</div>
+<p>This example shows how to use Perl]] scripts to read the state of the model through [[ScriptQuery Overview allows you to randomly select points, polygons and edges in a model. What percentage of the model is selected is governed by a user value with the name ‘’RandomSel.Coverage’’.</p>
+<p>The script uses the <em>select.typeFrom</em> command to determine the current selection mode.  It then checks the value of <em>RandomSel.Coverage</em> using the <em>user.value</em> command.  The ScriptQuery Overview#The query Command ScriptQuery interface, and chances the selection using the <em>select.element</em> command.</p>
+<div class="section" id="the-script">
+<h2><a class="toc-backref" href="#id1">The Script</a><a class="headerlink" href="#the-script" title="Permalink to this headline">¶</a></h2>
+<p>Here is the entire random selection script. The leading line numbers are for clarity only.  Blank lines are so the line numbers will match between scripts.  Note that the Python implementation could use the Python#lx.Service method to obtain a <em>Service</em> object instead of using the <em>query</em> command.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1">#perl</span>
+<span class="c1"># Randomly select elements of the current selection type.</span>
+
+<span class="c1">#use strict</span>
+<span class="c1">#use warnings</span>
+
+<span class="c1">#lxout( &quot;RandomSel.pl - Started&quot; );</span>
+
+<span class="c1"># Query user.value for the value of RandomSel.coverage, which</span>
+<span class="c1"># we&#39;ll use to decide how likely an element is be selected.</span>
+<span class="c1"># We only care about the first value, so we store it as a</span>
+<span class="c1"># scalar instead of a list.</span>
+<span class="k">my</span> <span class="nv">$chance</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;user.value RandomSel.coverage ?&quot;</span> <span class="p">);</span>
+
+<span class="k">my</span> <span class="nv">$chancePercent</span> <span class="o">=</span> <span class="nv">$chance</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">;</span>
+<span class="c1">#lxout( &quot;- RandomSel.pl - ${chancePercent} percent chance of selection (chance: ${chance})&quot; );</span>
+
+<span class="c1"># Figure out the current selection type.  We test against the</span>
+<span class="c1"># vertex, polygon and edge types to see which one was most</span>
+<span class="c1"># recently active by using select.typeFrom.  We also test</span>
+<span class="c1"># the item type in case materials are the active selection,</span>
+<span class="c1"># in which case we fail.</span>
+
+<span class="c1"># Used with select.element to select polygons, edges or vertices.</span>
+<span class="k">my</span> <span class="nv">$selType</span><span class="p">;</span>
+
+<span class="c1"># Used to query layerservice for the list of polygons, edges or vertices.</span>
+<span class="k">my</span> <span class="nv">$attrType</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;select.typeFrom typelist:\&quot;vertex;polygon;edge;item;ptag\&quot; ?&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$selType</span>  <span class="o">=</span> <span class="s">&quot;vertex&quot;</span><span class="p">;</span>
+    <span class="nv">$attrType</span> <span class="o">=</span> <span class="s">&quot;vert&quot;</span><span class="p">;</span>
+<span class="c1">#   lxout( &quot;- RandomSel.pl - Vertex Selection Mode&quot; );</span>
+
+<span class="p">}</span> <span class="k">elsif</span><span class="p">(</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;select.typeFrom typelist:\&quot;polygon;vertex;edge;item\&quot; ?&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$selType</span> <span class="o">=</span> <span class="s">&quot;polygon&quot;</span><span class="p">;</span>
+    <span class="nv">$attrType</span> <span class="o">=</span> <span class="s">&quot;poly&quot;</span><span class="p">;</span>
+<span class="c1">#   lxout( &quot;- RandomSel.pl - Polygon Selection Mode&quot; );</span>
+
+<span class="p">}</span> <span class="k">elsif</span><span class="p">(</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;select.typeFrom typelist:\&quot;edge;vertex;polygon;item\&quot; ?&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$selType</span> <span class="o">=</span> <span class="s">&quot;edge&quot;</span><span class="p">;</span>
+    <span class="nv">$attrType</span> <span class="o">=</span> <span class="s">&quot;edge&quot;</span><span class="p">;</span>
+<span class="c1">#   lxout( &quot;- RandomSel.pl - Edge Selection Mode&quot; );</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1"># This only fails if none of the three supported selection</span>
+    <span class="c1"># modes have yet been used since the program started, or</span>
+    <span class="c1"># if &quot;item&quot; or &quot;ptag&quot; (ie: materials) is the current</span>
+    <span class="c1"># selection mode.</span>
+    <span class="nb">die</span><span class="p">(</span> <span class="s">&quot;Must be in vertex, edge or polygon selection mode.&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"># Get the list of foreground layers by querying the layerservice &quot;layers&quot; attribute</span>
+<span class="k">my</span> <span class="nv">@fgLayers</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query layerservice layers ? \&quot;fg\&quot;&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Loop through the foreground layers</span>
+<span class="k">my</span> <span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">foreach</span> <span class="k">my</span> <span class="nv">$layer</span> <span class="p">(</span><span class="nv">@fgLayers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># Loop through all the elements in the layer of the</span>
+    <span class="c1"># current selection type, using the &quot;polys&quot;, &quot;verts&quot;</span>
+    <span class="c1"># or &quot;edges&quot; attributes.</span>
+    <span class="k">my</span> <span class="nv">@elems</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query layerservice ${attrType}s ? \&quot;all\&quot;&quot;</span> <span class="p">);</span>
+
+<span class="c1">#   lxout( &quot;- RandomSel.pl - $#elems ${selType}s total in layer ${layer}.&quot; );</span>
+
+    <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$e</span> <span class="p">(</span><span class="nv">@elems</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Pick a random number; if that is less</span>
+        <span class="c1"># than $chance, we select the element.</span>
+        <span class="k">if</span><span class="p">(</span> <span class="nb">rand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nv">$chance</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="c1"># We&#39;re going to select it; get the index of the element</span>
+            <span class="k">my</span> <span class="nv">$index</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query layerservice ${attrType}.index ? \&quot;$e\&quot;&quot;</span> <span class="p">);</span>
+
+            <span class="c1"># Add this element to the selection</span>
+            <span class="n">lx</span><span class="p">(</span> <span class="s">&quot;select.element layer:$layer type:$selType mode:add index:$index&quot;</span> <span class="p">);</span>
+
+            <span class="nv">$count</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">#lxout( &quot;- RandomSel.pl - $count ${selType}s selected.&quot; );</span>
+
+<span class="c1"># And we&#39;re done.</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>-- Randomly select elements of the current selection type.
+-- lxout( &quot;RandomSel.lua - Started&quot; )
+-- Query user.value for the value of RandomSel.coverage, which
+-- we&#39;ll use to decide how likely an element is be selected.
+-- We only care about the first value, so we extract it from the
+-- table and store it.
+
+chance = lxq( &quot;user.value RandomSel.coverage ?&quot; )[1]
+chancePercent = chance * 100.0
+
+-- lxout( &quot;- RandomSel.lua - ${chancePercent} percent chance of selection (chance: ${chance})&quot; )
+-- Figure out the current selection type.  We test against the
+-- vertex, polygon and edge types to see which one was most
+-- recently active by using select.typeFrom.  We also test
+-- the item type in case materials are the active selection,
+-- in which case we fail.
+
+-- Used with select.element to select polygons, edges or vertices.
+selType = &quot;&quot;
+-- Used to query layerservice for the list of polygons, edges or vertices.
+attrType = &quot;&quot;
+
+if lxq( &quot;select.typeFrom typelist:vertex;polygon;edge;item;ptag ?&quot; )[1] then
+    selType  = &quot;vertex&quot;
+    attrType = &quot;vert&quot;
+--   lxout( &quot;- RandomSel.lua - Vertex Selection Mode&quot; )
+
+elseif lxq( &quot;select.typeFrom typelist:polygon;vertex;edge;item ?&quot; )[1] then
+    selType = &quot;polygon&quot;
+    attrType = &quot;poly&quot;
+--   lxout( &quot;- RandomSel.lua - Polygon Selection Mode&quot; )
+
+elseif lxq( &quot;select.typeFrom typelist:edge;vertex;polygon;item ?&quot; )[1] then
+    $selType = &quot;edge&quot;
+    $attrType = &quot;edge&quot;
+--   lxout( &quot;- RandomSel.lua - Edge Selection Mode&quot; )
+
+else
+    -- This only fails if none of the three supported selection
+    -- modes have yet been used since the program started, or
+    -- if &quot;item&quot; or &quot;ptag&quot; (ie: materials) is the current
+    -- selection mode.
+    error &quot;Must be in vertex, edge or polygon selection mode.&quot;
+end
+
+-- Get the list of foreground layers by querying the layerservice &quot;layers&quot; attribute
+fgLayers = lxq( &quot;query layerservice layers ? fg&quot; )
+
+-- Loop through the foreground layers
+count = 0
+
+for i,layer in ipairs(fgLayers) do
+    -- Loop through all the elements in the layer of the
+    -- current selection type, using the &quot;polys&quot;, &quot;verts&quot;
+    -- or &quot;edges&quot; attributes.
+    elems = lxq( &quot;query layerservice &quot;..attrType..&quot;s ? all&quot; )
+
+--   lxout( &quot;- RandomSel.lua - &quot;..# elems..&quot; &quot;..selType..&quot;s total in layer ..layer..&quot;.&quot; )
+
+    for j,e in ipairs(elems) do
+        -- Pick a random number; if that is less
+        -- than chance, we select the element.
+        if math.random() &lt; chance then
+            -- We&#39;re going to select it; get the index of the element
+            index = lxq( &quot;query layerservice &quot;..attrType..&quot;.index ? &quot;..e.. )[i]
+
+            -- Add this element to the selection
+            lx( &quot;select.element layer:&quot;..layer..&quot; type:&quot;..selType..&quot; mode:add index:&quot;..index )
+
+            count  = count + 1
+        end
+    end
+end
+-- lxout( &quot;- RandomSel.lua - $count ${selType}s selected.&quot; )
+
+-- And we&#39;re done.
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># python</span>
+<span class="c1"># Randomly select elements of the current selection type.</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="c1">#lx.out( &quot;RandomSel.py - Started&quot; )</span>
+
+<span class="c1"># Query user.value for the value of RandomSel.coverage, which</span>
+<span class="c1"># we&#39;ll use to decide how likely an element is be selected.</span>
+<span class="c1"># We only care about the first value, so we store it as a</span>
+<span class="c1"># scalar instead of a list.</span>
+<span class="n">chance</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;user.value RandomSel.coverage ?&quot;</span> <span class="p">)</span>
+
+<span class="n">chancePercent</span> <span class="o">=</span> <span class="n">chance</span> <span class="o">*</span> <span class="mf">100.0</span>
+<span class="c1">#lx.out( &quot;- RandomSel.py - &quot;, chancePercent, &quot; percent chance of selection (chance: &quot;, chance, &quot;)&quot; )</span>
+
+<span class="c1"># Figure out the current selection type.  We test against the</span>
+<span class="c1"># vertex, polygon and edge types to see which one was most</span>
+<span class="c1"># recently active by using select.typeFrom.  We also test</span>
+<span class="c1"># the item type in case materials are the active selection,</span>
+<span class="c1"># in which case we fail.</span>
+
+<span class="c1"># Used with select.element to select polygons, edges or vertices.</span>
+<span class="n">selType</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Used to query layerservice for the list of polygons, edges or vertices.</span>
+<span class="n">attrType</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">if</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;select.typeFrom typelist:vertex;polygon;edge;item;ptag ?&quot;</span> <span class="p">):</span>
+    <span class="n">selType</span>  <span class="o">=</span> <span class="s2">&quot;vertex&quot;</span>
+    <span class="n">attrType</span> <span class="o">=</span> <span class="s2">&quot;vert&quot;</span>
+    <span class="c1">#lx.out( &quot;- RandomSel.py - Vertex Selection Mode&quot; )</span>
+
+<span class="k">elif</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;select.typeFrom typelist:polygon;vertex;edge;item ?&quot;</span> <span class="p">):</span>
+    <span class="n">selType</span> <span class="o">=</span> <span class="s2">&quot;polygon&quot;</span>
+    <span class="n">attrType</span> <span class="o">=</span> <span class="s2">&quot;poly&quot;</span>
+    <span class="c1">#lx.out( &quot;- RandomSel.py - Polygon Selection Mode&quot; )</span>
+
+<span class="k">elif</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;select.typeFrom typelist:edge;vertex;polygon;item ?&quot;</span> <span class="p">):</span>
+    <span class="n">selType</span> <span class="o">=</span> <span class="s2">&quot;edge&quot;</span>
+    <span class="n">attrType</span> <span class="o">=</span> <span class="s2">&quot;edge&quot;</span>
+    <span class="c1">#lx.out( &quot;- RandomSel.py - Edge Selection Mode&quot; )</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># This only fails if none of the three supported selection</span>
+    <span class="c1"># modes have yet been used since the program started, or</span>
+    <span class="c1"># if &quot;item&quot; or &quot;ptag&quot; (ie: materials) is the current</span>
+    <span class="c1"># selection mode.</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;LXe_FAILED:Must be in vertex, edge or polygon selection mode.&quot;</span> <span class="p">)</span>
+
+
+<span class="c1"># Get the list of foreground layers by querying the layerservice &quot;layers&quot; attribute</span>
+<span class="n">fgLayers</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">evalN</span><span class="p">(</span> <span class="s2">&quot;query layerservice layers ? fg&quot;</span> <span class="p">)</span>
+
+<span class="c1"># Loop through the foreground layers</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">fgLayers</span><span class="p">:</span>
+    <span class="c1"># Loop through all the elements in the layer of the</span>
+    <span class="c1"># current selection type, using the &quot;polys&quot;, &quot;verts&quot;</span>
+    <span class="c1"># or &quot;edges&quot; attributes.</span>
+    <span class="n">elems</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">evalN</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span> <span class="o">+</span> <span class="n">attrType</span> <span class="o">+</span> <span class="s2">&quot;s ? all&quot;</span> <span class="p">)</span>
+
+    <span class="c1">#lx.out( &quot;- RandomSel.py - &quot;, len(elems), &quot; &quot;, selType, &quot;s total in layer &quot;, layer, &quot;.&quot; )</span>
+
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+        <span class="c1"># Pick a random number; if that is less</span>
+        <span class="c1"># than chance, we select the element.</span>
+        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">chance</span><span class="p">:</span>
+            <span class="c1"># We&#39;re going to select it; get the index of the element</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span> <span class="o">+</span> <span class="n">attrType</span> <span class="o">+</span> <span class="s2">&quot;.index ? &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">)</span>
+
+            <span class="c1"># Add this element to the selection</span>
+            <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;select.element&quot;</span><span class="p">,</span>  <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">selType</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span> <span class="p">)</span>
+
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+
+<span class="c1">#lx.out( &quot;- RandomSel.py - &quot;, count, &quot; &quot;, selType, &quot;s selected.&quot; )</span>
+
+<span class="c1"># And we&#39;re done.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now a line by line breakdown of the script:</p>
+<div class="section" id="header">
+<h3><a class="toc-backref" href="#id2">Header</a><a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<p>All scripts must start with a language-specific header.  Some languages, such as Perl, often included a path as well, such as ‘’#/user/bin/perl’’, but that isn’t required here. The Perl example also turns on the Perl?s <em>strict</em> and <em>warnings</em> flags.  In Python, we import the <em>random</em> module.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1">#perl</span>
+<span class="c1"># Randomly select elements of the current selection type.</span>
+<span class="c1">#use strict</span>
+<span class="c1">#use warnings</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="o">#</span><span class="n">lua</span>
+<span class="o">#</span> <span class="n">Randomly</span> <span class="nb">select</span> <span class="n">elements</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">selection</span> <span class="nb">type</span><span class="p">.</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="c1"># Randomly select elements of the current selection type.</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-lxout-for-debugging">
+<h3><a class="toc-backref" href="#id3">Using lxout() for Debugging</a><a class="headerlink" href="#using-lxout-for-debugging" title="Permalink to this headline">¶</a></h3>
+<p>Throughout the script there are commented-out calls to <em>lxout</em> (Perl#lxout.28.29, such as this one stating that the script has started executing.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1">#lxout( &quot;RandomSel.pl - Started&quot; );</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">--lxout( &quot;RandomSel.lua - Started&quot; );</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#lx.out( &quot;RandomSel.py - Started&quot; );</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="querying-the-user-value">
+<h3><a class="toc-backref" href="#id4">Querying the User Value</a><a class="headerlink" href="#querying-the-user-value" title="Permalink to this headline">¶</a></h3>
+<p>Line 13 marks the first call to the <em>lxq</em> (Perl#lxq.28.29 with a minimum of <em>0%</em> and a maximum of ‘’100%’’.  This means that the <em>chance</em> variable will be between <em>0.0</em> and ‘’1.0’’. There is also another commented-out call to <em>lxout</em> to report the chance of selection by using the <em>0%</em> to <em>100%</em> value of <em>chance</em> as stored in ‘’chancePercent’’.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="k">my</span> <span class="nv">$chance</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;user.value RandomSel.coverage ?&quot;</span> <span class="p">);</span>
+
+<span class="k">my</span> <span class="nv">$chancePercent</span> <span class="o">=</span> <span class="nv">$chance</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">;</span>
+<span class="c1">#lxout( &quot;- RandomSel.pl - ${chancePercent} percent chance of selection (chance: ${chance})&quot; );</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">chance</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s2">&quot;user.value RandomSel.coverage ?&quot;</span> <span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">chancePercent</span> <span class="o">=</span> <span class="n">chance</span> <span class="o">*</span> <span class="mf">100.0</span>
+<span class="c1">-- lxout( &quot;- RandomSel.lua - ${chancePercent} percent chance of selection (chance: ${chance})&quot; )</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chance</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;user.value RandomSel.coverage ?&quot;</span> <span class="p">)</span>
+
+<span class="n">chancePercent</span> <span class="o">=</span> <span class="n">chance</span> <span class="o">*</span> <span class="mf">100.0</span>
+<span class="c1">#lx.out( &quot;- RandomSel.py - &quot;, chancePercent, &quot; percent chance of selection (chance: &quot;, chance, &quot;)&quot; )</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, the script defines two new variables. The <em>selType</em> variable is the mode argument for the select.element command, which will be used later to select vertices, polygons or edges. The <em>attrType</em> variable is used when querying the layerservice ScriptQuery interface.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1"># Used to with select.element to select polygons, edges or vertices.</span>
+<span class="k">my</span> <span class="nv">$selType</span><span class="p">;</span>
+
+<span class="c1"># Used to query layerservice for the list of polygons, edges or vertices.</span>
+<span class="k">my</span> <span class="nv">$attrType</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Used with select.element to select polygons, edges or vertices.</span>
+<span class="n">selType</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1">-- Used to query layerservice for the list of polygons, edges or vertices.</span>
+<span class="n">attrType</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Used with select.element to select polygons, edges or vertices.</span>
+<span class="n">selType</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Used to query layerservice for the list of polygons, edges or vertices.</span>
+<span class="n">attrType</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="checking-the-selection-mode">
+<h3><a class="toc-backref" href="#id5">Checking the Selection Mode</a><a class="headerlink" href="#checking-the-selection-mode" title="Permalink to this headline">¶</a></h3>
+<p>The next section checks to see what the current selection mode is via the <a class="reference internal" href="Select.typeFrom.html"><span class="doc">Select.typeFrom</span></a> command. This command takes a semicolon-delimited list of selection types to test against. If the first type in the list has been more recently selected than any of the others, the query will be true. These tests are used to check the vertex, polygon and edge selections, respectively, to see which is the current selection.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;select.typeFrom typelist:\&quot;vertex;polygon;edge;item;ptag\&quot; ?&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$selType</span>  <span class="o">=</span> <span class="s">&quot;vertex&quot;</span><span class="p">;</span>
+    <span class="nv">$attrType</span> <span class="o">=</span> <span class="s">&quot;vert&quot;</span><span class="p">;</span>
+<span class="c1">#   lxout( &quot;- RandomSel.pl - Vertex Selection Mode&quot; );</span>
+
+<span class="p">}</span> <span class="k">elsif</span><span class="p">(</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;select.typeFrom typelist:\&quot;polygon;vertex;edge;item\&quot; ?&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$selType</span> <span class="o">=</span> <span class="s">&quot;polygon&quot;</span><span class="p">;</span>
+    <span class="nv">$attrType</span> <span class="o">=</span> <span class="s">&quot;poly&quot;</span><span class="p">;</span>
+<span class="c1">#   lxout( &quot;- RandomSel.pl - Polygon Selection Mode&quot; );</span>
+
+<span class="p">}</span> <span class="k">elsif</span><span class="p">(</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;select.typeFrom typelist:\&quot;edge;vertex;polygon;item\&quot; ?&quot;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$selType</span> <span class="o">=</span> <span class="s">&quot;edge&quot;</span><span class="p">;</span>
+    <span class="nv">$attrType</span> <span class="o">=</span> <span class="s">&quot;edge&quot;</span><span class="p">;</span>
+<span class="c1">#   lxout( &quot;- RandomSel.pl - Edge Selection Mode&quot; );</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>if lxq( &quot;select.typeFrom typelist:vertex;polygon;edge;item;ptag ?&quot; )[1] then
+    selType  = &quot;vertex&quot;
+    attrType = &quot;vert&quot;
+--   lxout( &quot;- RandomSel.lua - Vertex Selection Mode&quot; )
+
+elseif lxq( &quot;select.typeFrom typelist:polygon;vertex;edge;item ?&quot; )[1] then
+    selType = &quot;polygon&quot;
+    attrType = &quot;poly&quot;
+--   lxout( &quot;- RandomSel.lua - Polygon Selection Mode&quot; )
+
+elseif lxq( &quot;select.typeFrom typelist:edge;vertex;polygon;item ?&quot; )[1] then
+    $selType = &quot;edge&quot;
+    $attrType = &quot;edge&quot;
+--   lxout( &quot;- RandomSel.lua - Edge Selection Mode&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that these calls also test the item selection. Together with vertices, polygons and edges, these define the four most common geometry selection types that can directly selected by the user (although more have since been added to ‘’modo’’). Since the script does not support items, it checks for them and uses the language’s own functions to exit if they represent the current selection.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1"># This only fails if none of the three supported selection</span>
+    <span class="c1"># modes have yet been used since the program started, or</span>
+    <span class="c1"># if &quot;item&quot; or &quot;ptag&quot; (ie: materials) is the current</span>
+    <span class="c1"># selection mode.</span>
+    <span class="nb">die</span><span class="p">(</span> <span class="s">&quot;Must be in vertex, edge or polygon selection mode.&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">else</span>
+    <span class="c1">-- This only fails if none of the three supported selection</span>
+    <span class="c1">-- modes have yet been used since the program started, or</span>
+    <span class="c1">-- if &quot;item&quot; or &quot;ptag&quot; (ie: materials) is the current</span>
+    <span class="c1">-- selection mode.</span>
+    <span class="nb">error</span> <span class="s2">&quot;Must be in vertex, edge or polygon selection mode.&quot;</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="c1"># This only fails if none of the three supported selection</span>
+    <span class="c1"># modes have yet been used since the program started, or</span>
+    <span class="c1"># if &quot;item&quot; or &quot;ptag&quot; (ie: materials) is the current</span>
+    <span class="c1"># selection mode.</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;LXe_FAILED:Must be in vertex, edge or polygon selection mode.&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="querying-the-foreground-layer-list">
+<h3><a class="toc-backref" href="#id6">Querying the Foreground Layer List</a><a class="headerlink" href="#querying-the-foreground-layer-list" title="Permalink to this headline">¶</a></h3>
+<p>Now that the current selection mode is known, the script needs to get a list of foreground layers to operate on. It could operate on only the main or primary layer, but instead it chooses to operate on the entire foreground layer selection.</p>
+<p>To get the list of foreground layers, the <em>query</em> command is used with the <em>layerservice</em> ScriptQuery interface. The <em>layers</em> attribute is used with the <em>fg</em> ScriptQuery Overview#Selectors to get the foreground layer list, storing it in the <em>fgLayers</em> variable.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the list of foreground layers by querying the layerservice &quot;layers&quot; attribute</span>
+<span class="k">my</span> <span class="nv">@fgLayers</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query layerservice layers ? \&quot;fg\&quot;&quot;</span> <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Get the list of foreground layers by querying the layerservice &quot;layers&quot; attribute</span>
+ <span class="n">fgLayers</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s2">&quot;query layerservice layers ? fg&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the list of foreground layers by querying the layerservice &quot;layers&quot; attribute</span>
+ <span class="n">fgLayers</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">evalN</span><span class="p">(</span> <span class="s2">&quot;query layerservice layers ? fg&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <em>count</em> variable is used for debugging, and keeps track of the number of elements that have been selected.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop through the foreground layers</span>
+<span class="k">my</span> <span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Loop through the foreground layers</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop through the foreground layers</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scanning-the-foreground-layers">
+<h3><a class="toc-backref" href="#id7">Scanning the Foreground Layers</a><a class="headerlink" href="#scanning-the-foreground-layers" title="Permalink to this headline">¶</a></h3>
+<p>Line 59 marks the beginning of the main loop. The outer loop runs through the list of foreground layers.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> <span class="k">my</span> <span class="nv">$layer</span> <span class="p">(</span><span class="nv">@fgLayers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># Loop through all the elements in the layer of the</span>
+    <span class="c1"># current selection type, using the &quot;polys&quot;, &quot;verts&quot;</span>
+    <span class="c1"># or &quot;edges&quot; attributes.</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">i</span><span class="p">,</span><span class="n">layer</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">fgLayers</span><span class="p">)</span> <span class="kr">do</span>
+    <span class="c1">-- Loop through all the elements in the layer of the</span>
+    <span class="c1">-- current selection type, using the &quot;polys&quot;, &quot;verts&quot;</span>
+    <span class="c1">-- or &quot;edges&quot; attributes.</span>
+    <span class="n">elems</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span><span class="o">..</span><span class="n">attrType</span><span class="o">..</span><span class="s2">&quot;s ? all&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">fgLayers</span><span class="p">:</span>
+    <span class="c1"># Loop through all the elements in the layer of the</span>
+    <span class="c1"># current selection type, using the &quot;polys&quot;, &quot;verts&quot;</span>
+    <span class="c1"># or &quot;edges&quot; attributes.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A list of all elements is obtained with another call to <em>layerservice</em> through the <em>query</em> command. This time, the attribute is stored the one in ‘’attrType’’, which was set in the if/else blocks from lines 30 through 43. For polygons, <em>attrType</em> contains the string ‘’poly’’, but the attribute that gets a list of polygons is called ‘’ploys’’, and so an ?s? is added to the end. The selector <em>all</em> is used to get a list of all elements.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span>    <span class="k">my</span> <span class="nv">@elems</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query layerservice ${attrType}s ? \&quot;all\&quot;&quot;</span> <span class="p">);</span>
+
+<span class="c1">#   lxout( &quot;- RandomSel.pl - $#elems ${selType}s total in layer ${layer}.&quot; );</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>    <span class="n">elems</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span><span class="o">..</span><span class="n">attrType</span><span class="o">..</span><span class="s2">&quot;s ? all&quot;</span> <span class="p">)</span>
+
+<span class="c1">--   lxout( &quot;- RandomSel.lua - &quot;..# elems..&quot; &quot;..selType..&quot;s total in layer ..layer..&quot;.&quot; )</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elems</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">evalN</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span> <span class="o">+</span> <span class="n">attrType</span> <span class="o">+</span> <span class="s2">&quot;s ? all&quot;</span> <span class="p">)</span>
+
+<span class="c1">#lx.out( &quot;- RandomSel.py - &quot;, len(elems), &quot; &quot;, selType, &quot;s total in layer &quot;, layer, &quot;.&quot; )</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scanning-the-layer-s-elements">
+<h3><a class="toc-backref" href="#id8">Scanning the Layer?s Elements</a><a class="headerlink" href="#scanning-the-layer-s-elements" title="Permalink to this headline">¶</a></h3>
+<p>The inner loop scans the layer?s element list. The current element index is stored in the variable ‘’e’’.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> <span class="k">my</span> <span class="nv">$e</span> <span class="p">(</span><span class="nv">@elems</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">j</span><span class="p">,</span><span class="n">e</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span> <span class="kr">do</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, the script picks a random number using the language’s random number function, comparing it against <em>chance</em> to decide if this element should be selected.</p>
+<p>If the test is successful, the select.element command is called to perform the selection. The command takes an index into the layer?s element list. To ensure the indices match, the script queries <em>layerservice</em> yet again, this time for the <em>{attrType}.index</em> attribute. For polygons, this will resolve to ‘’poly.index’’. The selector in this case is the index of the element in the list returned by the <em>{attrType}s</em> query made earlier.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pick a random number; if that is less</span>
+<span class="c1"># than $chance, we select the element.</span>
+<span class="k">if</span><span class="p">(</span> <span class="nb">rand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nv">$chance</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># We&#39;re going to select it; get the index of the element</span>
+    <span class="k">my</span> <span class="nv">$index</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query layerservice ${attrType}.index ? \&quot;$e\&quot;&quot;</span> <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Pick a random number; if that is less</span>
+<span class="c1">-- than chance, we select the element.</span>
+<span class="kr">if</span> <span class="nb">math.random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">chance</span> <span class="kr">then</span>
+    <span class="c1">-- We&#39;re going to select it; get the index of the element</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span><span class="o">..</span><span class="n">attrType</span><span class="o">..</span><span class="s2">&quot;.index ? &quot;</span><span class="o">..</span><span class="n">e</span><span class="o">..</span> <span class="p">)[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pick a random number; if that is less</span>
+<span class="c1"># than chance, we select the element.</span>
+<span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">chance</span><span class="p">:</span>
+    <span class="c1"># We&#39;re going to select it; get the index of the element</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;query layerservice &quot;</span> <span class="o">+</span> <span class="n">attrType</span> <span class="o">+</span> <span class="s2">&quot;.index ? &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="selecting-an-element">
+<h3><a class="toc-backref" href="#id9">Selecting an Element</a><a class="headerlink" href="#selecting-an-element" title="Permalink to this headline">¶</a></h3>
+<p>Finally, the script executes select.element]] using the <em>lx</em> ([[Perl#lxq.28.29) function. The <em>select.element</em> command takes the layer number, which was stored in <em>layer</em> at line 59 when the outer loop was started. It also takes an element type, which was determined at lines 30 through 43. The <em>mode</em> argument is set to <em>add</em> to add these elements to the current selection. Finally, the <em>index</em> argument is set to the contents of <em>index</em> to select that specific element.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Add this element to the selection</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s">&quot;select.element layer:$layer type:$selType mode:add index:$index&quot;</span> <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Add this element to the selection</span>
+<span class="n">lx</span><span class="p">(</span> <span class="s2">&quot;select.element layer:&quot;</span><span class="o">..</span><span class="n">layer</span><span class="o">..</span><span class="s2">&quot; type:&quot;</span><span class="o">..</span><span class="n">selType</span><span class="o">..</span><span class="s2">&quot; mode:add index:&quot;</span><span class="o">..</span><span class="n">index</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add this element to the selection</span>
+<span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;select.element&quot;</span><span class="p">,</span>  <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">selType</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finishing-up">
+<h3><a class="toc-backref" href="#id10">Finishing Up</a><a class="headerlink" href="#finishing-up" title="Permalink to this headline">¶</a></h3>
+<p>The counter is incremented before the loop closes, for debugging purposes, and a final commented-out call to <em>lxout</em> or <em>lx.out</em> is made:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span>            <span class="nv">$count</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+ <span class="c1">#lxout( &quot;- RandomSel.pl - $count ${selType}s selected.&quot; );</span>
+
+<span class="c1"># And we&#39;re done.</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>            <span class="n">count</span>  <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+ <span class="c1">-- lxout( &quot;- RandomSel.lua - $count ${selType}s selected.&quot; )</span>
+
+<span class="c1">-- And we&#39;re done.</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<blockquote>
+<div><blockquote>
+<div><p>count += 1</p>
+</div></blockquote>
+<p>#lx.out( “- RandomSel.py - “, count, ” “, selType, “s selected.” )</p>
+<p># And we’re done.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="running-the-script">
+<h2><a class="toc-backref" href="#id11">Running the Script</a><a class="headerlink" href="#running-the-script" title="Permalink to this headline">¶</a></h2>
+<p>That?s it – the script is done. Try running modo, creating a unit sphere, and executing the script with a line similar to this:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="nv">@d:</span><span class="o">\</span><span class="n">randomsel</span><span class="o">.</span><span class="n">pl</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>@d:\randomsel.lua
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@d</span><span class="p">:</span>\<span class="n">randomsel</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>modifying that as necessary to match the path to the script. Don?t forget to use curly braces around the path to the script if there is a space in it. When you run it, you?ll see that the script does nothing. This is because it relies on a user value, ‘’RandomSel.coverage’’, which hasn?t been defined yet.</p>
+</div>
+<div class="section" id="defining-randomsel-coverage-with-user-defnew">
+<h2><a class="toc-backref" href="#id12">Defining RandomSel.coverage with user.defNew</a><a class="headerlink" href="#defining-randomsel-coverage-with-user-defnew" title="Permalink to this headline">¶</a></h2>
+<p>To define ‘’RandomSel.coverage’’, you?ll use the User Values#user.defNew:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="o">.</span><span class="n">defNew</span> <span class="n">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="n">percent</span>
+</pre></div>
+</td></tr></table></div>
+<p>The first argument is the name of the variable to create, in this case ‘’RandomSel.coverage’’. Note that user value names are case sensitive. The second argument is the <a class="reference internal" href="../general/general/Common%20Datatypes.html"><span class="doc">Common Datatypes</span></a> of the variable. Since we want value in the range of <em>0%</em> to ‘’100%’’, we entered ‘’percent’’.</p>
+<p>The default value of a percentage is ‘’0%’’, so running the script still wouldn?t appear to do anything. You can assign a value to <em>RandomSel.coverage</em> using the User Values#user.value command, the same command that the script uses to get the state of ‘’RandomSel.coverage’’:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="o">.</span><span class="n">value</span> <span class="n">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="mf">0.4</span>
+</pre></div>
+</td></tr></table></div>
+<p>If you would prefer to use units, you can enter the value using the Command System: Executing Commands#Values with Units: Using Square Braces syntax:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="o">.</span><span class="n">value</span> <span class="n">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="p">[</span><span class="mi">40</span><span class="o">%</span><span class="p">]</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now you can run the script with <em>&#64;d:randomsel.pl</em> as described above. If all goes well, you?ll see that about forty percent of the elements in the current selection type are randomly selected.</p>
+</div>
+<div class="section" id="user-interface">
+<h2><a class="toc-backref" href="#id13">User Interface</a><a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<p>While this is interesting, <em>RandomSel.coverage</em> seems a bit unnecessary. The script could just take an argument, or you could edit the script whenever you want to change the coverage. But what if you could put a control on the interface to adjust the coverage, automatically executing the script every time it changed? This is where real power of the <em>user.value</em> comes into play.</p>
+<div class="section" id="creating-a-form">
+<h3><a class="toc-backref" href="#id14">Creating a Form</a><a class="headerlink" href="#creating-a-form" title="Permalink to this headline">¶</a></h3>
+<p>First, you?ll need to create a new form for the <em>user.value</em> command to reside in. The <a class="reference internal" href="../ui/Form%20Editor.html"><span class="doc">Form Editor</span></a> is beyond the scope of this article, but here are some quick steps to help you along:</p>
+<p># Open the Form Editor]] from the [[System menu
+# Right click on the ‘’(new sheet)’’ entry at the bottom of the list, and select ‘’Add Form’’ from the menu. Name the form ‘’Random Selection’’.
+# Click in the <em>X</em> column of the new form to export it. This allows the form to be selected for display in a Forms Viewport.
+# Click the right-facing triangle to show the controls in the form. Currently there are none, just the ‘’(new control)’’ entry.
+# Right click ‘’(new control)’’ and select ‘’Add Command’’ from the menu. Enter ‘’user.value RandomSel.coverage ?’’ as the command
+# Use the <em>Label</em> edit field in the properties viewport to the right of the tree to change the label to ‘’Coverage’’.
+# Create a new ‘’Forms Viewport’’, or find an existing one.
+# Right click in the Forms Viewport?s header to see the list of exported forms, and select ‘’Random Selection’’.</p>
+<p>You should now have a Forms Viewport showing a single percent control labeled ‘’Coverage’’. If you change the value of this control, nothing happens, but the next time you run the script, you?ll see that the new percentage of elements are selected.</p>
+</div>
+<div class="section" id="running-the-script-when-randomsel-coverage-changes">
+<h3><a class="toc-backref" href="#id15">Running the Script when RandomSel.coverage Changes</a><a class="headerlink" href="#running-the-script-when-randomsel-coverage-changes" title="Permalink to this headline">¶</a></h3>
+<p>What you really want is for the script to run automatically whenever the value changes. This can be done by assigning an User Values#Responding to Value Changes:</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">def</span> <span class="n">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="n">action</span> <span class="p">{</span><span class="nv">@d:</span><span class="o">\</span><span class="n">randomsel</span><span class="o">.</span><span class="n">pl</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>user.def RandomSel.coverage action {@d:\randomsel.lua}
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="k">def</span> <span class="nf">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="n">action</span> <span class="p">{</span><span class="nd">@d</span><span class="p">:</span>\<span class="n">randomsel</span><span class="o">.</span><span class="n">py</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now whenever the value of <em>RandomSel.coverage</em> changes, the script will automatically run. Go ahead and give it a try: as you drag the <em>Coverage</em> minislider, you?ll notice that the Command System: Querying#Refiring because it calls the undoable command ‘’select.element’’.</p>
+</div>
+<div class="section" id="limiting-the-control-range">
+<h3><a class="toc-backref" href="#id16">Limiting the Control Range</a><a class="headerlink" href="#limiting-the-control-range" title="Permalink to this headline">¶</a></h3>
+<p>There?s still a problem: it is very easy to go over <em>100%</em> or under ‘’0%’’. To fix this, we?ll use user.def?s User Values#Fixed Ranges attributes.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="o">.</span><span class="k">def</span> <span class="nf">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="nb">min</span> <span class="mf">0.0</span>
+ <span class="n">user</span><span class="o">.</span><span class="k">def</span> <span class="nf">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="nb">max</span> <span class="mf">1.0</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now <em>RandomSel.coverage</em> can never go outside the range of 0% to 100%.</p>
+</div>
+<div class="section" id="creating-randomsel-coverage-preset-buttons">
+<h3><a class="toc-backref" href="#id17">Creating RandomSel.coverage Preset Buttons</a><a class="headerlink" href="#creating-randomsel-coverage-preset-buttons" title="Permalink to this headline">¶</a></h3>
+<p>You can also add a button to your form that will execute the script directly by using the same command you used to execute it from the ‘’Command History’’:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="p">{</span><span class="n">d</span><span class="p">:</span>\<span class="n">randomsel</span><span class="o">.</span><span class="n">pl</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>You can also make buttons that execute with a specific coverage through ‘’user.value’’, such as this example that sets the value to 50%.  Since we have associated an <em>action</em> with the user value, the button will execute the script after changing the value.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="o">.</span><span class="n">value</span> <span class="n">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="mf">0.5</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="creating-randomsel-coverage-value-presets">
+<h3><a class="toc-backref" href="#id18">Creating RandomSel.coverage Value Presets</a><a class="headerlink" href="#creating-randomsel-coverage-value-presets" title="Permalink to this headline">¶</a></h3>
+<p>An alternative to adding preset buttons to the form is to use Value Presets.  This adds a popup to the right of the edit field that allows users to create and choose preset values for edit field style controls.</p>
+<p>Value Presets are defined through the use of a cookie.  Simply setting the cookie on the user value will cause the popup to be created, with any presets automatically being loaded and saved in the Config Files.  The cookie can be any string, and multiple clients can share presets by using the same cookie.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">user</span><span class="o">.</span><span class="k">def</span> <span class="nf">RandomSel</span><span class="o">.</span><span class="n">coverage</span> <span class="n">valuepresetcookie</span> <span class="n">randomSelCoverage</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="improving-the-script">
+<h2><a class="toc-backref" href="#id19">Improving the Script</a><a class="headerlink" href="#improving-the-script" title="Permalink to this headline">¶</a></h2>
+<p>There is quite a bit more that you can improve in this script. For example, the current random selection isn?t really selecting an exact coverage amount, but rather deciding, on an element by element basis, if the element should be selected by chance, resulting in more or less the coverage amount chosen, but not exactly. You can modify the script to ensure that the exact coverage amount is selected.</p>
+<p>The script does not support item selections. You can use the <em>layerservice</em> ScriptQuery interface to add this support as well.</p>
+<p>Another enhancement might be to add a <em>deselect</em> toggle via another user value, causing the script to deselect elements instead of selecting them, or an option to limit the selection to only currently selected or deselected elements, rather than all elements matching the current selection type. The script could be changed to clear the current selection before randomly selecting; currently, the new selection is added to the existing one. There are surely many more variations that you can experiment with.</p>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id20">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../scripting/Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p><a class="reference internal" href="../ui/User%20Values.html"><span class="doc">User Values</span></a></p></li>
+<li><p><a class="reference internal" href="../scripting/ScriptQuery%20Overview.html"><span class="doc">ScriptQuery Overview</span></a></p></li>
+<li><p><a class="reference internal" href="../ui/Form%20System.html"><span class="doc">Form System</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Reading%20Files%20with%20Python.html" class="btn btn-neutral float-right" title="Reading Files with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Query%20Command%20Values%20example.html" class="btn btn-neutral float-left" title="Query Command Values example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/RandomSel Script.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+</html>

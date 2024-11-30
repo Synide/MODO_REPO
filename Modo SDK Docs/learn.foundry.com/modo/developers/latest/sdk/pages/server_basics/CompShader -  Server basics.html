@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/CompShader -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CompShader: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CustomMaterial: Server basics" href="CustomMaterial%20-%20%20Server%20basics.html" />
+    <link rel="prev" title="Command: Server basics" href="Command%20-%20%20Server%20basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CompShader: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-setupchannels">CompShader::SetupChannels()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-linkchannels">CompShader::LinkChannels()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-readchannels">CompShader::ReadChannels()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-evaluate">CompShader::Evaluate()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-setshadeflags">CompShader::SetShadeFlags()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-setopaque">CompShader::SetOpaque()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-custompacket">CompShader::CustomPacket()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-cleanup">CompShader::Cleanup()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compshader-flags">CompShader::Flags()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>CompShader: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="compshader-server-basics">
+<h1>CompShader: Server basics<a class="headerlink" href="#compshader-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id2">Headers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#compshader-setupchannels" id="id3">CompShader::SetupChannels()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-linkchannels" id="id4">CompShader::LinkChannels()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-readchannels" id="id5">CompShader::ReadChannels()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-evaluate" id="id6">CompShader::Evaluate()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-setshadeflags" id="id7">CompShader::SetShadeFlags()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-setopaque" id="id8">CompShader::SetOpaque()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-custompacket" id="id9">CompShader::CustomPacket()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-cleanup" id="id10">CompShader::Cleanup()</a></p></li>
+<li><p><a class="reference internal" href="#compshader-flags" id="id11">CompShader::Flags()</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>A CompShader is plug-in server that implements a component shader.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Component shaders are used to take a a shader input, change its components and produce a new shader output. It can be useful if your shader only needs to change parts of the shading computation.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id2">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<p>shade (lx-shade.hpp)
+* CLxImpl_CompShader action (lx-action.hpp)
+* CLxUser_Evaluation package (lx-package.hpp)
+* CLxUser_AddChannel value (lx-value.hpp)
+* CLxUser_Attributes vector (lx-vector.hpp)
+* CLxUser_PacketService</p>
+<p>The plug-in server class derives from CLxImpl_CompShader, and exports the ILxCompShader interface. For speed purposes the class will also want to keep the packet service ready to hand.</p>
+<p>CLxUser_PacketService pkt_service;</p>
+<div class="section" id="compshader-setupchannels">
+<h3><a class="toc-backref" href="#id3">CompShader::SetupChannels()</a><a class="headerlink" href="#compshader-setupchannels" title="Permalink to this headline">¶</a></h3>
+<p>Like a package, a value texture server must define its channels. The <em>SetupChannels()</em> method is identical to the one used by Package: Server basics.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">csh_SetupChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">addChan</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_AddChannel</span>      <span class="n">ac</span> <span class="p">(</span><span class="n">addChan</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">ac</span><span class="o">.</span><span class="n">NewChannel</span> <span class="p">(</span><span class="s2">&quot;myInput&quot;</span><span class="p">,</span> <span class="s2">&quot;percent&quot;</span><span class="p">);</span>
+         <span class="n">ac</span><span class="o">.</span><span class="n">SetDefault</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-linkchannels">
+<h3><a class="toc-backref" href="#id4">CompShader::LinkChannels()</a><a class="headerlink" href="#compshader-linkchannels" title="Permalink to this headline">¶</a></h3>
+<p>The value texture reads its channel values in a modifier context. That means that it has to declare the channels it wants to read using the Evaluation Interface. This is also a good place to cache the offsets for any vector packets that it wants to read.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">csh_LinkChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="nb">eval</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">item</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Evaluation</span>      <span class="n">ev</span> <span class="p">(</span><span class="nb">eval</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">idx_value</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">AddChan</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;myInput&quot;</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-readchannels">
+<h3><a class="toc-backref" href="#id5">CompShader::ReadChannels()</a><a class="headerlink" href="#compshader-readchannels" title="Permalink to this headline">¶</a></h3>
+<p>Linking channels occurs once as items are added or their relationships are changed. Reading channels then happens any time channel values change. For example changing time may cause channels to be read again if they are animated. Values are read from an Attributes Interface using the index cached when linking channels. The values are then stored in an allocated data structure which is returned from the method.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">csh_ReadChannels</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">attr</span><span class="p">,</span>
+         <span class="n">void</span>                  <span class="o">**</span><span class="n">ppvData</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Attributes</span>      <span class="n">at</span> <span class="p">(</span><span class="n">attr</span><span class="p">);</span>
+         <span class="n">RendData</span>               <span class="o">*</span><span class="n">rd</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RendData</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">rd</span><span class="o">-&gt;</span><span class="n">value</span>  <span class="o">=</span> <span class="n">at</span><span class="o">.</span><span class="n">Float</span> <span class="p">(</span><span class="n">idx_value</span><span class="p">);</span>
+         <span class="n">ppvData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rd</span><span class="p">;</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-evaluate">
+<h3><a class="toc-backref" href="#id6">CompShader::Evaluate()</a><a class="headerlink" href="#compshader-evaluate" title="Permalink to this headline">¶</a></h3>
+<p>Shader evaluation is the second and final step of the evaluation, it is intended to read the material attributes from a sample vector packet and produce shading components. In this silly example we just replace the diffuse shading component with our custom color (red in this case)</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">void</span>
+ <span class="n">csh_Evaluate</span> <span class="p">(</span>
+        <span class="n">ILxUnknownID</span>            <span class="n">vector</span><span class="p">,</span>
+        <span class="n">ILxUnknownID</span>            <span class="n">rayObj</span><span class="p">,</span>
+        <span class="n">LXpShadeComponents</span>     <span class="o">*</span><span class="n">sCmp</span><span class="p">,</span>
+        <span class="n">LXpShadeOutput</span>         <span class="o">*</span><span class="n">sOut</span><span class="p">,</span>
+        <span class="n">void</span>                    <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">RendData</span>               <span class="o">*</span><span class="n">rd</span> <span class="o">=</span> <span class="p">(</span><span class="n">RendData</span> <span class="o">*</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">raycast</span><span class="o">.</span><span class="n">set</span> <span class="p">(</span><span class="n">rayObj</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+               <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">diff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="o">=</span> <span class="n">pack</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+               <span class="n">sOut</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">diff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">spec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">refl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">tran</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">subs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sCmp</span><span class="o">-&gt;</span><span class="n">lumi</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-setshadeflags">
+<h3><a class="toc-backref" href="#id7">CompShader::SetShadeFlags()</a><a class="headerlink" href="#compshader-setshadeflags" title="Permalink to this headline">¶</a></h3>
+<p>This is used to set the shader evaluation flags (<a href="#id12"><span class="problematic" id="id13">LXfSURF_</span></a>). In this example the shader sets the visibility flags so that the surface becomes visible for reflection and refraction rays.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">LxResult</span>
+ <span class="n">csh_SetShadeFlags</span><span class="p">)</span> <span class="p">(</span>
+        <span class="n">LXtObjectID</span>              <span class="bp">self</span><span class="p">,</span>
+        <span class="n">LXpShadeFlags</span>           <span class="o">*</span><span class="n">sFlg</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="n">sFlg</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">|=</span> <span class="n">LXfSURF_VISREFL</span>  <span class="o">|</span> <span class="n">LXfSURF_VISREFR</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-setopaque">
+<h3><a class="toc-backref" href="#id8">CompShader::SetOpaque()</a><a class="headerlink" href="#compshader-setopaque" title="Permalink to this headline">¶</a></h3>
+<p>Opaque shaders are shaders that completely override the shaders below them, for example a shader that would set a constant value
+doesn’t need the computation from previous shaders. This flag is used as a way to optimize the shaders by ignoring the ones that are not used. In general comp shaders should not be opaque.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">LxResult</span>
+ <span class="n">csh_SetOpaque</span><span class="p">)</span> <span class="p">(</span>
+        <span class="n">LXtObjectID</span>              <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">int</span>                     <span class="o">*</span><span class="n">opaque</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-custompacket">
+<h3><a class="toc-backref" href="#id9">CompShader::CustomPacket()</a><a class="headerlink" href="#compshader-custompacket" title="Permalink to this headline">¶</a></h3>
+<p>Shaders may need to use a custom packet to store their attributes. This method returns the packet name (if any)</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">LxResult</span>
+ <span class="n">csh_CustomPacket</span><span class="p">)</span> <span class="p">(</span>
+        <span class="n">LXtObjectID</span>              <span class="bp">self</span><span class="p">,</span>
+        <span class="n">const</span> <span class="n">char</span>              <span class="o">**</span><span class="n">packet</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="n">packet</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;MyPacket&quot;</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-cleanup">
+<h3><a class="toc-backref" href="#id10">CompShader::Cleanup()</a><a class="headerlink" href="#compshader-cleanup" title="Permalink to this headline">¶</a></h3>
+<p>This is called at the end of rendering when the shader is destroyed.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">void</span>
+ <span class="n">csh_Cleanup</span><span class="p">)</span> <span class="p">(</span>
+        <span class="n">LXtObjectID</span>              <span class="bp">self</span><span class="p">,</span>
+        <span class="n">void</span>                    <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="compshader-flags">
+<h3><a class="toc-backref" href="#id11">CompShader::Flags()</a><a class="headerlink" href="#compshader-flags" title="Permalink to this headline">¶</a></h3>
+<p>This is used to return a set of shader flags such as these ones</p>
+<ul class="simple">
+<li><p>LXfSHADERFLAGS_USE_LOCATOR</p></li>
+<li><p>LXfSHADERFLAGS_USE_CLIP</p></li>
+<li><p>LXfSHADERFLAGS_USE_LIGHT</p></li>
+<li><p>LXfSHADERFLAGS_USE_GROUP</p></li>
+</ul>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>       <span class="nb">int</span>
+ <span class="n">csh_Flags</span><span class="p">)</span> <span class="p">(</span>
+        <span class="n">LXtObjectID</span>              <span class="bp">self</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="k">return</span> <span class="n">LXfSHADERFLAGS_USE_LOCATOR</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CustomMaterial%20-%20%20Server%20basics.html" class="btn btn-neutral float-right" title="CustomMaterial: Server basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Command%20-%20%20Server%20basics.html" class="btn btn-neutral float-left" title="Command: Server basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/CompShader -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

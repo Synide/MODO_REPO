@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/starting/SDK Guide for Newbies.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:47 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SDK Guide for Newbies &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Starting Out" href="Starting%20Out.html" />
+    <link rel="prev" title="SDK Basics" href="SDK%20Basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_starting.html">First Steps</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Building%20Plug-ins.html">Building Plug-ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Code%20Completion%20for%20IDEs.html">Code Completion for IDEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDK.html">SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SDK%20Basics.html">SDK Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SDK Guide for Newbies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-modo">What’s Modo?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-an-sdk">What’s an SDK?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sdk-history">SDK History</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-speaks-many-languages">Modo Speaks Many Languages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fire-and-forget-scripts">Fire And Forget Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plug-ins-api-c-and-python">Plug-ins API (C++ and Python)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#td-sdk-901-and-up">TD SDK (901 and up)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#what-can-i-control-in-modo">What Can I Control In Modo?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#where-i-can-find-samples">Where I Can Find Samples?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-m-still-lost-where-can-i-ask-for-help">I’m still lost, Where Can I Ask For Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#where-can-i-ask-for-help-from-a-human-being">Where Can I Ask For Help From A Human Being?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Starting%20Out.html">Starting Out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tour%20of%20the%20SDK.html">Tour of the SDK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_starting.html">First Steps</a> &raquo;</li>
+        
+      <li>SDK Guide for Newbies</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sdk-guide-for-newbies">
+<h1>SDK Guide for Newbies<a class="headerlink" href="#sdk-guide-for-newbies" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p>
+<ul>
+<li><p><a class="reference internal" href="#what-s-modo" id="id2">What’s Modo?</a></p></li>
+<li><p><a class="reference internal" href="#what-s-an-sdk" id="id3">What’s an SDK?</a></p></li>
+<li><p><a class="reference internal" href="#sdk-history" id="id4">SDK History</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#modo-speaks-many-languages" id="id5">Modo Speaks Many Languages</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fire-and-forget-scripts" id="id6">Fire And Forget Scripts</a></p></li>
+<li><p><a class="reference internal" href="#plug-ins-api-c-and-python" id="id7">Plug-ins API (C++ and Python)</a></p></li>
+<li><p><a class="reference internal" href="#td-sdk-901-and-up" id="id8">TD SDK (901 and up)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#what-can-i-control-in-modo" id="id9">What Can I Control In Modo?</a></p></li>
+<li><p><a class="reference internal" href="#where-i-can-find-samples" id="id10">Where I Can Find Samples?</a></p></li>
+<li><p><a class="reference internal" href="#i-m-still-lost-where-can-i-ask-for-help" id="id11">I’m still lost, Where Can I Ask For Help</a></p></li>
+<li><p><a class="reference internal" href="#where-can-i-ask-for-help-from-a-human-being" id="id12">Where Can I Ask For Help From A Human Being?</a></p></li>
+<li><p><a class="reference internal" href="#what-s-next" id="id13">What’s Next?</a></p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id1">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This guide intends to introduce Modo users to the SDK.
+Specifically to the Python API (but many of the concepts explained here are applicable to the C++ SDK).</p>
+<p>It will try to avoid as many technical terms as possible, plus there will be links to the proper sections on this Wiki when need or deemed necessary.</p>
+<div class="section" id="what-s-modo">
+<h3><a class="toc-backref" href="#id2">What’s Modo?</a><a class="headerlink" href="#what-s-modo" title="Permalink to this headline">¶</a></h3>
+<p>Modo is a 3D Application for modelling,sculpting, painting, rigging, animation and rendering.</p>
+<p>You can find more info in the [<a class="reference external" href="https://en.wikipedia.org/wiki/Modo_(software)">https://en.wikipedia.org/wiki/Modo_%28software%29</a> Wikipedia (English)] and in it’s own web page [<a class="reference external" href="http://www.thefoundry.co.uk/products/modo">http://www.thefoundry.co.uk/products/modo</a> Modo] at [<a class="reference external" href="http://www.thefoundry.co.uk/">http://www.thefoundry.co.uk/</a> The Foundry] web page</p>
+</div>
+<div class="section" id="what-s-an-sdk">
+<h3><a class="toc-backref" href="#id3">What’s an SDK?</a><a class="headerlink" href="#what-s-an-sdk" title="Permalink to this headline">¶</a></h3>
+<p>An SDK is a set of files written in any programming language that give access to control the host application, Modo in this case.
+&lt;blockquote class=”toc”&gt;
+&lt;b&gt;Note:&lt;/b&gt;
+: Modo understands different languages.
+: New languages can be added by users with enough knowledge as described in the F.A.Q. questions:
+&lt;blockquote&gt;
+: [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/FAQ#Q:_Is_it_possible_to_create_SDK_wrappers_for_other_languages.3F">http://modo.sdk.thefoundry.co.uk/wiki/FAQ#Q:_Is_it_possible_to_create_SDK_wrappers_for_other_languages.3F</a> 1.20 Is it possible to create SDK wrappers for other languages?]
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;</p>
+</div>
+<div class="section" id="sdk-history">
+<h3><a class="toc-backref" href="#id4">SDK History</a><a class="headerlink" href="#sdk-history" title="Permalink to this headline">¶</a></h3>
+<p>Modo SDK was introduced in stages starting in 301. And continued its expansion on the latests versions. And it will continue doing it so.</p>
+<p>Scripting instead was introduced in Modo 101. In 701 a new [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Category:Python_API">http://modo.sdk.thefoundry.co.uk/wiki/Category:Python_API</a> Python API] was introduced that allowed a deeper access to the SDK similar to the C++ one.</p>
+<p>In Modo 901, a new [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/td-sdk/index.html">http://modo.sdk.thefoundry.co.uk/td-sdk/index.html</a> TD SDK] (an SDK for technical directors) was introduced allowing a more easy access to the Application_programming_interface introduced in 701.</p>
+</div>
+</div>
+<div class="section" id="modo-speaks-many-languages">
+<h2><a class="toc-backref" href="#id5">Modo Speaks Many Languages</a><a class="headerlink" href="#modo-speaks-many-languages" title="Permalink to this headline">¶</a></h2>
+<p>Modo can be accessed and controlled with several programming languages, each one offering different levels of access to modo internal mechanisms:
+&lt;blockquote&gt;</p>
+<ul class="simple">
+<li><p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/SDK#Getting_Started">http://modo.sdk.thefoundry.co.uk/wiki/SDK#Getting_Started</a> C++] is the language that offers the deepest access to Modo.</p></li>
+<li><p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Perl">http://modo.sdk.thefoundry.co.uk/wiki/Perl</a> Perl], [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Lua">http://modo.sdk.thefoundry.co.uk/wiki/Lua</a> Lua] and [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Python">http://modo.sdk.thefoundry.co.uk/wiki/Python</a> Python] are scripting languages. Easier to learn and test that C++ specially for someone starting it’s journey to learn how to program for Modo.</p></li>
+<li><p>Python is the language that provide better access to Modo after C++.</p></li>
+</ul>
+<p>Modo access is really split in two: [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Scripting">http://modo.sdk.thefoundry.co.uk/wiki/Scripting</a> Fire and Forget Scripts] and [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/SDK">http://modo.sdk.thefoundry.co.uk/wiki/SDK</a> Plug-ins].
+&lt;blockquote class=”toc”&gt;
+&lt;b&gt;Note:&lt;/b&gt;
+: The new TD SDK is a set of classes written in Python and sit on top of the Python API. Don’t worry doesn’t hurt a bit! ;)
+&lt;/blockquote&gt;</p>
+<div class="section" id="fire-and-forget-scripts">
+<h3><a class="toc-backref" href="#id6">Fire And Forget Scripts</a><a class="headerlink" href="#fire-and-forget-scripts" title="Permalink to this headline">¶</a></h3>
+<p>If you followed the previous link you know what they are.</p>
+<p>The important thing to remember about them is:
+&lt;blockquote&gt;</p>
+<ul class="simple">
+<li><p>They run once, they do their job and exit. That means you can’t control Modo interactively this way. Still allows for a lot of cool things.</p></li>
+<li><p>There are three languages to write those: [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Perl">http://modo.sdk.thefoundry.co.uk/wiki/Perl</a> Perl], [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Lua">http://modo.sdk.thefoundry.co.uk/wiki/Lua</a> Lua] and [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Python">http://modo.sdk.thefoundry.co.uk/wiki/Python</a> Python]. Pick your choice.</p></li>
+<li><p>They executed slowly than a proper plug-in.</p></li>
+<li><p>Only allows a limited access to Modo capabilities.</p></li>
+<li><p>They are the easiest way to start programming in Modo.</p></li>
+</ul>
+</div>
+<div class="section" id="plug-ins-api-c-and-python">
+<h3><a class="toc-backref" href="#id7">Plug-ins API (C++ and Python)</a><a class="headerlink" href="#plug-ins-api-c-and-python" title="Permalink to this headline">¶</a></h3>
+<p>This is what we will be talking in this guide.</p>
+<p>The important thing to remember about them is:
+&lt;blockquote&gt;</p>
+<ul class="simple">
+<li><p>There are two languages to write those: C++ and [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Category:Python_API">http://modo.sdk.thefoundry.co.uk/wiki/Category:Python_API</a> Python]. Pick your choice, but remember both use a common API but are different programming languages.</p></li>
+<li><p>They executed faster than a fire and forget script or macro.</p></li>
+<li><p>Allows almost full access to Modo capabilities. C++ access is superior.</p></li>
+<li><p>They are the intermediate to advanced way to start programming in Modo.</p></li>
+</ul>
+</div>
+<div class="section" id="td-sdk-901-and-up">
+<h3><a class="toc-backref" href="#id8">TD SDK (901 and up)</a><a class="headerlink" href="#td-sdk-901-and-up" title="Permalink to this headline">¶</a></h3>
+<p>This new TD SDK introduced for Technical Directors is a set of new classes that allows almost the same access than the Python API, but in an easier way.  Think of it as a new grammar for the existing Python API.</p>
+<p>Being introduced on 901 is still new, it has a nice [<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/td-sdk/index.html">http://modo.sdk.thefoundry.co.uk/td-sdk/index.html</a> documentation] and is being expanded as this guide is written.</p>
+</div>
+</div>
+<div class="section" id="what-can-i-control-in-modo">
+<h2><a class="toc-backref" href="#id9">What Can I Control In Modo?</a><a class="headerlink" href="#what-can-i-control-in-modo" title="Permalink to this headline">¶</a></h2>
+<p>Many things, but depends which route you try, either the fire and forget or the full API.</p>
+<p>There is a nice description here: [<a class="reference external" href="http://www.thefoundry.co.uk/products/modo/developers/">http://www.thefoundry.co.uk/products/modo/developers/</a> Information for MODO developers].</p>
+</div>
+<div class="section" id="where-i-can-find-samples">
+<h2><a class="toc-backref" href="#id10">Where I Can Find Samples?</a><a class="headerlink" href="#where-i-can-find-samples" title="Permalink to this headline">¶</a></h2>
+<p>In a few places.</p>
+<p>&lt;blockquote&gt;</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Fire and Forget Scripts:</dt><dd><ul>
+<li><p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Category:Script_Examples">http://modo.sdk.thefoundry.co.uk/wiki/Category:Script_Examples</a> Script Examples]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Plug-ins:</dt><dd><ul>
+<li><p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/td-sdk/examples.html">http://modo.sdk.thefoundry.co.uk/td-sdk/examples.html</a> TD SDK Examples]</p></li>
+<li><p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/Category:API_Examples">http://modo.sdk.thefoundry.co.uk/wiki/Category:API_Examples</a> Python API_Examples]</p></li>
+<li><p>[<a class="reference external" href="http://modo.sdk.thefoundry.co.uk/wiki/SDK#Tutorials">http://modo.sdk.thefoundry.co.uk/wiki/SDK#Tutorials</a> C++ Examples And Tutorials]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="i-m-still-lost-where-can-i-ask-for-help">
+<h2><a class="toc-backref" href="#id11">I’m still lost, Where Can I Ask For Help</a><a class="headerlink" href="#i-m-still-lost-where-can-i-ask-for-help" title="Permalink to this headline">¶</a></h2>
+<p>Fire and Forget scripts and questions can be found in the [<a class="reference external" href="http://community.thefoundry.co.uk/discussion/forum.aspx?f=119">http://community.thefoundry.co.uk/discussion/forum.aspx?f=119</a> Scripting &amp; Macros] section of the forums.</p>
+<p>Plug-ins (either in C++ or Python) examples and questions can be found in [<a class="reference external" href="http://community.thefoundry.co.uk/discussion/forum.aspx?f=37">http://community.thefoundry.co.uk/discussion/forum.aspx?f=37</a> SDK &amp; Plug-in Development] section of the forums.</p>
+</div>
+<div class="section" id="where-can-i-ask-for-help-from-a-human-being">
+<h2><a class="toc-backref" href="#id12">Where Can I Ask For Help From A Human Being?</a><a class="headerlink" href="#where-can-i-ask-for-help-from-a-human-being" title="Permalink to this headline">¶</a></h2>
+<p>There is a forum post: [<a class="reference external" href="http://community.thefoundry.co.uk/discussion/topic.aspx?f=37&amp;t=68068">http://community.thefoundry.co.uk/discussion/topic.aspx?f=37&amp;t=68068</a> SDK Developers Channel [aka live Skype chat]] explaining how to access to the Skype channel for modo development.
+&lt;blockquote class=”toc”&gt;
+&lt;b&gt;Note:&lt;/b&gt;
+: Be aware that we can not be sure the members of that chat are even human at all or connected 24h/365d! :P
+&lt;/blockquote&gt;</p>
+</div>
+<div class="section" id="what-s-next">
+<h2><a class="toc-backref" href="#id13">What’s Next?</a><a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h2>
+<p>Now is time to start getting your hands dirty with Modo SDK and the Python API on the guide’s <a class="reference internal" href="../tutorials/Python%20in%20Modo.html"><span class="doc">Python in Modo</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Starting%20Out.html" class="btn btn-neutral float-right" title="Starting Out" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SDK%20Basics.html" class="btn btn-neutral float-left" title="SDK Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/starting/SDK Guide for Newbies.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:47 GMT -->
+</html>

@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/HostService Reference.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:06 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HostService Reference &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Io image raw" href="Io%20image%20raw.html" />
+    <link rel="prev" title="Hello World" href="Hello%20World.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HostService Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#servers-and-server-attributes">servers And server Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defaultpath-attribute">defaultPath Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>HostService Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hostservice-reference">
+<h1>HostService Reference<a class="headerlink" href="#hostservice-reference" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#attributes" id="id75">Attributes</a></p></li>
+<li><p><a class="reference internal" href="#servers-and-server-attributes" id="id76">servers And server Attributes</a></p></li>
+<li><p><a class="reference internal" href="#defaultpath-attribute" id="id77">defaultPath Attribute</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id78">More Information</a></p></li>
+</ul>
+</div>
+<p>The <strong>hostservice</strong> interface provides access to the list of available <a class="reference internal" href="../starting/SDK.html"><span class="doc">SDK</span></a>, known as ‘’servers’’. This includes both built-in servers that are part of <em>modo</em> itself and any externally loaded modules. The most useful application of this to scripts is to provide a list of loaders and savers.</p>
+<p>Servers with names starting with dollar signs, such as <em>loader/$LXOB</em> and ‘’saver/$Targa’’, are built-in servers. All other servers, such as <em>loader/freeimage</em> and ‘’saver/PNG’’, are plug-in servers.</p>
+<div class="section" id="attributes">
+<h2><a class="toc-backref" href="#id75">Attributes</a><a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<p>Querying the hostservice ScriptQuery interface reveals the following attributes:</p>
+<ul class="simple">
+<li><p>classes</p></li>
+<li><p>class.???</p></li>
+<li><p>servers</p></li>
+<li><p>server.???</p></li>
+<li><p>defaultPath</p></li>
+</ul>
+<p>{{SQAttributeTable
+<a href="#id1"><span class="problematic" id="id2">|</span></a>classes|Get a list of all available server classes.  No selection is required.  Lists of servers within those classes can be obtained with the. server.??? series of attributes.
+<a href="#id3"><span class="problematic" id="id4">|</span></a>string
+<a href="#id5"><span class="problematic" id="id6">|</span></a>query hostservice classes ?
+<a href="#id7"><span class="problematic" id="id8">|</span></a>’’[list of all classes by name]’’
+}}</p>
+<p>{{SQAttributeTable
+<a href="#id9"><span class="problematic" id="id10">|</span></a>class.servers|The only attribute in the class.??? group, class.servers returns a list of all servers within a specific class. The selector must be one of the strings returned by ‘’classes’’.
+<a href="#id11"><span class="problematic" id="id12">|</span></a>string
+<a href="#id13"><span class="problematic" id="id14">|</span></a>query hostservice class.servers ? loader
+<a href="#id15"><span class="problematic" id="id16">|</span></a>’’[list of all servers of the loader class]’’
+}}</p>
+</div>
+<div class="section" id="servers-and-server-attributes">
+<h2><a class="toc-backref" href="#id76">servers And server Attributes</a><a class="headerlink" href="#servers-and-server-attributes" title="Permalink to this headline">¶</a></h2>
+<p>{{SQAttributeTable
+<a href="#id73"><span class="problematic" id="id74">|servers|</span></a>’’’servers’’’ requires no selection. It returns a full list of all available servers, which can then be used with the <em>server</em> attributes.
+<a href="#id17"><span class="problematic" id="id18">|</span></a>string
+<a href="#id19"><span class="problematic" id="id20">|</span></a>query hostservice servers ?
+<a href="#id21"><span class="problematic" id="id22">|</span></a>’’[list of all servers by name]’’
+}}</p>
+<p>The <strong>‘server’</strong> series of attributes provide information about specific servers. Each requires a selector returned by <em>servers</em> or <em>class.servers</em> unless otherwise noted.</p>
+<p>{{SQAttributeTable
+<a href="#id23"><span class="problematic" id="id24">|</span></a>server.name|Get the internal name of a server.
+<a href="#id25"><span class="problematic" id="id26">|</span></a>string
+<a href="#id27"><span class="problematic" id="id28">|</span></a>query hostservice server.name ? loader/$LWO2
+<a href="#id29"><span class="problematic" id="id30">|</span></a>’’$LWO2’’
+}}</p>
+<p>{{SQAttributeTable
+<a href="#id31"><span class="problematic" id="id32">|</span></a>server.userName|Get the human-readable name of a server.
+<a href="#id33"><span class="problematic" id="id34">|</span></a>string
+<a href="#id35"><span class="problematic" id="id36">|</span></a>query hostservice server.userName ? loader/$LWO2
+<a href="#id37"><span class="problematic" id="id38">|</span></a>’’Lightwave Object (LWO2)’’
+}}</p>
+<p>{{SQAttributeTable
+<a href="#id39"><span class="problematic" id="id40">|</span></a>server.class|Get the class of a server. This class can be used as a selector for the <em>class.servers</em> attribute.
+<a href="#id41"><span class="problematic" id="id42">|</span></a>string
+<a href="#id43"><span class="problematic" id="id44">|</span></a>query hostservice server.class ? loader/$LWO2
+<a href="#id45"><span class="problematic" id="id46">|</span></a>’’loader’’
+}}</p>
+<p>{{SQAttributeTable
+<a href="#id47"><span class="problematic" id="id48">|</span></a>server.module|Get the path to the file that the server exists in. If this is a built-in server, an empty list is returned.
+<a href="#id49"><span class="problematic" id="id50">|</span></a>string
+<a href="#id51"><span class="problematic" id="id52">|</span></a>query hostservice server.userName ? loader/mayaAscii
+<a href="#id53"><span class="problematic" id="id54">|</span></a>’’C:Program FilesLuxologymodofmtmayama.lx’’
+}}</p>
+<p>{{SQAttributeTable
+<a href="#id55"><span class="problematic" id="id56">|</span></a>server.infoTag|Get the value of serve tag. Tags can be any simple static information the server wants to provide to the application. Some of these are particularly useful to scripts, such as <em>loader.dosPattern</em> and ‘’saver.dosPattern’’, which define the file extensions of loaders and savers.</p>
+<p>The selector is the tag to be retrieved.  Note that tags are ‘’’case sensitive’’’. Before using this attribute, a specific server must have previously been “selected” with <em>server.name</em> or one of the other <em>server</em> attributes.
+<a href="#id57"><span class="problematic" id="id58">|</span></a>string
+<a href="#id59"><span class="problematic" id="id60">|</span></a>query hostservice server.name ? loader/$LWO2
+query hostservice server.infoTag ? loader.dosPattern
+<a href="#id61"><span class="problematic" id="id62">|</span></a>’’<a href="#id63"><span class="problematic" id="id64">*</span></a>.lwo’’
+}}</p>
+</div>
+<div class="section" id="defaultpath-attribute">
+<h2><a class="toc-backref" href="#id77">defaultPath Attribute</a><a class="headerlink" href="#defaultpath-attribute" title="Permalink to this headline">¶</a></h2>
+<p>{{SQAttributeTable
+<a href="#id65"><span class="problematic" id="id66">|</span></a>defaultPath|Returns the external server search path. It requires no selection. This is also available through PlatformsService Reference interface by passing <em>hosts</em> as the selector to the <em>path.path</em> attribute.
+<a href="#id67"><span class="problematic" id="id68">|</span></a>string
+<a href="#id69"><span class="problematic" id="id70">|</span></a>query hostservice defaultPath ?
+<a href="#id71"><span class="problematic" id="id72">|</span></a>’’C:Program FilesLuxologymodo’’
+}}</p>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id78">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../ui/Dialog%20Commands.html"><span class="doc">Dialog Commands</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p><a class="reference internal" href="../scripting/ScriptQuery%20Overview.html"><span class="doc">ScriptQuery Overview</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Io%20image%20raw.html" class="btn btn-neutral float-right" title="Io image raw" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Hello%20World.html" class="btn btn-neutral float-left" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/HostService Reference.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:06 GMT -->
+</html>

@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_file.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>File &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Filter" href="lxd_filter.html" />
+    <link rel="prev" title="Externalrender" href="lxd_externalrender.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfile1service">ILxFile1Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxvirtualdevice">ILxVirtualDevice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfileservice">ILxFileService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfilereference">ILxFileReference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfileredirect">ILxFileRedirect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>File</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file">
+<h1>File<a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxfile1service" id="id1">ILxFile1Service</a></p></li>
+<li><p><a class="reference internal" href="#ilxvirtualdevice" id="id2">ILxVirtualDevice</a></p></li>
+<li><p><a class="reference internal" href="#ilxfileservice" id="id3">ILxFileService</a></p></li>
+<li><p><a class="reference internal" href="#ilxfilereference" id="id4">ILxFileReference</a></p></li>
+<li><p><a class="reference internal" href="#ilxfileredirect" id="id5">ILxFileRedirect</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxfile1service">
+<h2><a class="toc-backref" href="#id1">ILxFile1Service</a><a class="headerlink" href="#ilxfile1service" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxFile1Service">
+<span id="_CPPv315ILxFile1Service"></span><span id="_CPPv215ILxFile1Service"></span><span id="ILxFile1Service"></span><span class="target" id="class_i_lx_file1_service"></span><em class="property">class </em><code class="sig-name descname">ILxFile1Service</code><a class="headerlink" href="#_CPPv415ILxFile1Service" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service14FileSystemPathE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N15ILxFile1Service14FileSystemPathE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N15ILxFile1Service14FileSystemPathE11LXtObjectIDPKcPPKc"></span><span id="ILxFile1Service::FileSystemPath__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_file1_service_1a5673e067bcde2e4fa6bf62cc15074864"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileSystemPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service14FileSystemPathE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service19FileSystemDefaultIOE11LXtObjectIDi">
+<span id="_CPPv3N15ILxFile1Service19FileSystemDefaultIOE11LXtObjectIDi"></span><span id="_CPPv2N15ILxFile1Service19FileSystemDefaultIOE11LXtObjectIDi"></span><span id="ILxFile1Service::FileSystemDefaultIO__LXtObjectID.i"></span><span class="target" id="class_i_lx_file1_service_1a413b8074a68c3960f74543d18c9a7ff5"></span><em class="property">const</em> char *<code class="sig-name descname">FileSystemDefaultIO</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>isForLoad</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service19FileSystemDefaultIOE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service14IsAbsolutePathE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFile1Service14IsAbsolutePathE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFile1Service14IsAbsolutePathE11LXtObjectIDPKc"></span><span id="ILxFile1Service::IsAbsolutePath__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file1_service_1a8cac07025a6737d46dc8214e3d82d6d6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsAbsolutePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service14IsAbsolutePathE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service13ArePathsEqualE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N15ILxFile1Service13ArePathsEqualE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N15ILxFile1Service13ArePathsEqualE11LXtObjectIDPKcPKc"></span><span id="ILxFile1Service::ArePathsEqual__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_file1_service_1aeb20a5e00d08feed559e4ca60483dba8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArePathsEqual</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path1</em>, <em class="property">const</em> char *<em>path2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service13ArePathsEqualE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service9ParsePathE11LXtObjectIDPKcPcPc">
+<span id="_CPPv3N15ILxFile1Service9ParsePathE11LXtObjectIDPKcPcPc"></span><span id="_CPPv2N15ILxFile1Service9ParsePathE11LXtObjectIDPKcPcPc"></span><span id="ILxFile1Service::ParsePath__LXtObjectID.cCP.cP.cP"></span><span class="target" id="class_i_lx_file1_service_1a0ff804d97aeb0799bca230293706a895"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ParsePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>basename</em>, char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service9ParsePathE11LXtObjectIDPKcPcPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service11ComposePathE11LXtObjectIDPcPKcPKc">
+<span id="_CPPv3N15ILxFile1Service11ComposePathE11LXtObjectIDPcPKcPKc"></span><span id="_CPPv2N15ILxFile1Service11ComposePathE11LXtObjectIDPcPKcPKc"></span><span id="ILxFile1Service::ComposePath__LXtObjectID.cP.cCP.cCP"></span><span class="target" id="class_i_lx_file1_service_1a4d1811ee14274aa14c3e07f6ab89c0b8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ComposePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>filename</em>, <em class="property">const</em> char *<em>basename</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service11ComposePathE11LXtObjectIDPcPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service12MakeRelativeE11LXtObjectIDPcPKcPKc">
+<span id="_CPPv3N15ILxFile1Service12MakeRelativeE11LXtObjectIDPcPKcPKc"></span><span id="_CPPv2N15ILxFile1Service12MakeRelativeE11LXtObjectIDPcPKcPKc"></span><span id="ILxFile1Service::MakeRelative__LXtObjectID.cP.cCP.cCP"></span><span class="target" id="class_i_lx_file1_service_1a939afc9d4946e17eb3f144d4fe898d5b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeRelative</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>relname</em>, <em class="property">const</em> char *<em>filename</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service12MakeRelativeE11LXtObjectIDPcPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service10MakeUniqueE11LXtObjectIDPc">
+<span id="_CPPv3N15ILxFile1Service10MakeUniqueE11LXtObjectIDPc"></span><span id="_CPPv2N15ILxFile1Service10MakeUniqueE11LXtObjectIDPc"></span><span id="ILxFile1Service::MakeUnique__LXtObjectID.cP"></span><span class="target" id="class_i_lx_file1_service_1a6dbb3f46d63689d491ef66a8b8906b7f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeUnique</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service10MakeUniqueE11LXtObjectIDPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service13FindExtensionE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N15ILxFile1Service13FindExtensionE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N15ILxFile1Service13FindExtensionE11LXtObjectIDPKcPPKc"></span><span id="ILxFile1Service::FindExtension__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_file1_service_1a041c49532add9af31e0bccbe72732fff"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FindExtension</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <em class="property">const</em> char **<em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service13FindExtensionE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service12SetExtensionE11LXtObjectIDPcPKc">
+<span id="_CPPv3N15ILxFile1Service12SetExtensionE11LXtObjectIDPcPKc"></span><span id="_CPPv2N15ILxFile1Service12SetExtensionE11LXtObjectIDPcPKc"></span><span id="ILxFile1Service::SetExtension__LXtObjectID.cP.cCP"></span><span class="target" id="class_i_lx_file1_service_1a176e611d7782c6506b65428141a04887"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetExtension</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>path</em>, <em class="property">const</em> char *<em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service12SetExtensionE11LXtObjectIDPcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service13MakeDirectoryE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFile1Service13MakeDirectoryE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFile1Service13MakeDirectoryE11LXtObjectIDPKc"></span><span id="ILxFile1Service::MakeDirectory__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file1_service_1af3c1da48651393cb9e47394cc262b3d0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeDirectory</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service13MakeDirectoryE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service12TestFileTypeE11LXtObjectIDPKcPi">
+<span id="_CPPv3N15ILxFile1Service12TestFileTypeE11LXtObjectIDPKcPi"></span><span id="_CPPv2N15ILxFile1Service12TestFileTypeE11LXtObjectIDPKcPi"></span><span id="ILxFile1Service::TestFileType__LXtObjectID.cCP.iP"></span><span class="target" id="class_i_lx_file1_service_1af1b2f21c17f8ca40b6e833d811ec1296"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestFileType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, int *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service12TestFileTypeE11LXtObjectIDPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service12TestFileModeE11LXtObjectIDPKcPi">
+<span id="_CPPv3N15ILxFile1Service12TestFileModeE11LXtObjectIDPKcPi"></span><span id="_CPPv2N15ILxFile1Service12TestFileModeE11LXtObjectIDPKcPi"></span><span id="ILxFile1Service::TestFileMode__LXtObjectID.cCP.iP"></span><span class="target" id="class_i_lx_file1_service_1a0e8666e010371b9a875ba492b5aeff30"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestFileMode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, int *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service12TestFileModeE11LXtObjectIDPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service10RenameFileE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N15ILxFile1Service10RenameFileE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N15ILxFile1Service10RenameFileE11LXtObjectIDPKcPKc"></span><span id="ILxFile1Service::RenameFile__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_file1_service_1a83c291963e456ee45ca976a7696410b7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RenameFile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>from</em>, <em class="property">const</em> char *<em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service10RenameFileE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service8FileCopyE11LXtObjectIDPKcPKci">
+<span id="_CPPv3N15ILxFile1Service8FileCopyE11LXtObjectIDPKcPKci"></span><span id="_CPPv2N15ILxFile1Service8FileCopyE11LXtObjectIDPKcPKci"></span><span id="ILxFile1Service::FileCopy__LXtObjectID.cCP.cCP.i"></span><span class="target" id="class_i_lx_file1_service_1a20db8534392cc6b43e99251f6145135d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileCopy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>srcFilePath</em>, <em class="property">const</em> char *<em>dstFilePath</em>, int <em>overwrite</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service8FileCopyE11LXtObjectIDPKcPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service10FileDeleteE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFile1Service10FileDeleteE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFile1Service10FileDeleteE11LXtObjectIDPKc"></span><span id="ILxFile1Service::FileDelete__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file1_service_1ad5fd72e6b878611912c39eb3ad6907e2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileDelete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service10FileDeleteE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service9DirDeleteE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFile1Service9DirDeleteE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFile1Service9DirDeleteE11LXtObjectIDPKc"></span><span id="ILxFile1Service::DirDelete__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file1_service_1a299542ee87c703cd8605804b4ffa6ab1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DirDelete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service9DirDeleteE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service22OpenFileWithDefaultAppE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFile1Service22OpenFileWithDefaultAppE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFile1Service22OpenFileWithDefaultAppE11LXtObjectIDPKc"></span><span id="ILxFile1Service::OpenFileWithDefaultApp__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file1_service_1a7ddc3904c6931ab3d98866d89af9cf29"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OpenFileWithDefaultApp</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service22OpenFileWithDefaultAppE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service18RevealInFileViewerE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFile1Service18RevealInFileViewerE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFile1Service18RevealInFileViewerE11LXtObjectIDPKc"></span><span id="ILxFile1Service::RevealInFileViewer__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file1_service_1a4998f84a3bdde1f640a862a5fdeaf02e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RevealInFileViewer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service18RevealInFileViewerE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service7ExecuteE11LXtObjectIDPPKcii">
+<span id="_CPPv3N15ILxFile1Service7ExecuteE11LXtObjectIDPPKcii"></span><span id="_CPPv2N15ILxFile1Service7ExecuteE11LXtObjectIDPPKcii"></span><span id="ILxFile1Service::Execute__LXtObjectID.cCPP.i.i"></span><span class="target" id="class_i_lx_file1_service_1aebedc3da0ebbd47379e569038626ab4f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Execute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>argv</em>, int <em>show</em>, int <em>force32</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service7ExecuteE11LXtObjectIDPPKcii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service9FileToURLE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N15ILxFile1Service9FileToURLE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N15ILxFile1Service9FileToURLE11LXtObjectIDPKcPcj"></span><span id="ILxFile1Service::FileToURL__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file1_service_1ae9824e47aa98183c00a7a46ab5622e61"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileToURL</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service9FileToURLE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service11FileFromURLE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N15ILxFile1Service11FileFromURLE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N15ILxFile1Service11FileFromURLE11LXtObjectIDPKcPcj"></span><span id="ILxFile1Service::FileFromURL__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file1_service_1a407a2bdb7142bccffe5703a6b08e44ae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileFromURL</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>url</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service11FileFromURLE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service9FromLocalE11LXtObjectIDPcPKc">
+<span id="_CPPv3N15ILxFile1Service9FromLocalE11LXtObjectIDPcPKc"></span><span id="_CPPv2N15ILxFile1Service9FromLocalE11LXtObjectIDPcPKc"></span><span id="ILxFile1Service::FromLocal__LXtObjectID.cP.cCP"></span><span class="target" id="class_i_lx_file1_service_1af9886b74a3e49922c58c2be116c8c41e"></span><em class="property">const</em> char *<code class="sig-name descname">FromLocal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>neutral</em>, <em class="property">const</em> char *<em>local</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service9FromLocalE11LXtObjectIDPcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service7ToLocalE11LXtObjectIDPcPKc">
+<span id="_CPPv3N15ILxFile1Service7ToLocalE11LXtObjectIDPcPKc"></span><span id="_CPPv2N15ILxFile1Service7ToLocalE11LXtObjectIDPcPKc"></span><span id="ILxFile1Service::ToLocal__LXtObjectID.cP.cCP"></span><span class="target" id="class_i_lx_file1_service_1a515ae76beca0162257353e31ae9cd9f1"></span><em class="property">const</em> char *<code class="sig-name descname">ToLocal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>local</em>, <em class="property">const</em> char *<em>neutral</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service7ToLocalE11LXtObjectIDPcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service12ToLocalAliasE11LXtObjectIDPcPKc">
+<span id="_CPPv3N15ILxFile1Service12ToLocalAliasE11LXtObjectIDPcPKc"></span><span id="_CPPv2N15ILxFile1Service12ToLocalAliasE11LXtObjectIDPcPKc"></span><span id="ILxFile1Service::ToLocalAlias__LXtObjectID.cP.cCP"></span><span class="target" id="class_i_lx_file1_service_1a50d9ced5eba3304ecb0ccc661fbef468"></span><em class="property">const</em> char *<code class="sig-name descname">ToLocalAlias</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>local</em>, <em class="property">const</em> char *<em>neutral</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service12ToLocalAliasE11LXtObjectIDPcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFile1Service14AllocReferenceE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N15ILxFile1Service14AllocReferenceE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N15ILxFile1Service14AllocReferenceE11LXtObjectIDPKcPPv"></span><span id="ILxFile1Service::AllocReference__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_file1_service_1ad155b9c2bbaf6b5994d2672cedbdf4c1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllocReference</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFile1Service14AllocReferenceE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXe_SKIP">
+<span class="target" id="lxd__file_8hpp_1a7491e505ab8fdcc58a70361ffebdaad0"></span><code class="sig-name descname">LXe_SKIP</code><a class="headerlink" href="#c.LXe_SKIP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function takes a neutral format filename as an asset reference and locates its referand local file. This is a well-defined mapping which performs a search of the content path, and the filename returned is guaranteed to exist. LXe_NOTFOUND is returned if there is no such asset file. The type is the file type string that would be passed to a file dialog and indicates the type of file that this should be, or can be null to indicate that no user alternates should be allowed. LXe_OK is returned when the file was found as-is, and LXe_FILE_REMAP is returned on a successful remap. If the type argument is present, the user will be asked to locate missing files, which can result in different return codes. LXe_SKIP is returned if the user chose to skip this file. LXe_ABORT is returned if the user chose to abort the entire load operation. Note that LXe_SKIP is a fail code. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXe_FILE_REMAP</p></li>
+</ul>
+</div>
+<div class="section" id="ilxvirtualdevice">
+<h2><a class="toc-backref" href="#id2">ILxVirtualDevice</a><a class="headerlink" href="#ilxvirtualdevice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxVirtualDevice">
+<span id="_CPPv316ILxVirtualDevice"></span><span id="_CPPv216ILxVirtualDevice"></span><span id="ILxVirtualDevice"></span><span class="target" id="class_i_lx_virtual_device"></span><em class="property">class </em><code class="sig-name descname">ILxVirtualDevice</code><a class="headerlink" href="#_CPPv416ILxVirtualDevice" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice10InitializeE11LXtObjectIDPKc">
+<span id="_CPPv3N16ILxVirtualDevice10InitializeE11LXtObjectIDPKc"></span><span id="_CPPv2N16ILxVirtualDevice10InitializeE11LXtObjectIDPKc"></span><span id="ILxVirtualDevice::Initialize__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_virtual_device_1a58aed9fe8cf371af22e66d0c123747ca"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice10InitializeE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>Initialize passed a path to a real file, sets the device to that file if it’s of the right type for this device. Selects the root of the device for attributes and scanning. Returns NOTFOUND otherwise.</p></li>
+<li><p>Select passed a partial path, sets the object to refer to a sub-file within the device. The sub-path is of the form “aa/bbb/c”.</p></li>
+<li><p>Extract writes the contents of the current file in the virtual device to the given real file system location.</p></li>
+<li><p>Scan performs a scan of the current location, calling the visitor for each file inside the directory.</p></li>
+<li><p>Name in scan mode this returns the raw name of the sub-file. Otherwise it returns the nice, human-reablabe name of the current location.</p></li>
+<li><p>Date returns the date string for the scan file or current location.</p></li>
+<li><p>Size returns the size of the scan file or current location. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice6SelectE11LXtObjectIDPKc">
+<span id="_CPPv3N16ILxVirtualDevice6SelectE11LXtObjectIDPKc"></span><span id="_CPPv2N16ILxVirtualDevice6SelectE11LXtObjectIDPKc"></span><span id="ILxVirtualDevice::Select__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_virtual_device_1a568b2bcd887f2f147c22bbe6f4328155"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Select</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>sub</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice6SelectE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice7ExtractE11LXtObjectIDPKc">
+<span id="_CPPv3N16ILxVirtualDevice7ExtractE11LXtObjectIDPKc"></span><span id="_CPPv2N16ILxVirtualDevice7ExtractE11LXtObjectIDPKc"></span><span id="ILxVirtualDevice::Extract__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_virtual_device_1a07c030f2ecfba4f6831feaf0d1efbdcb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Extract</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice7ExtractE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice4ScanE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N16ILxVirtualDevice4ScanE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N16ILxVirtualDevice4ScanE11LXtObjectID11LXtObjectID"></span><span id="ILxVirtualDevice::Scan__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_virtual_device_1af9db747f2d8fc9c290caca4cba55378e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Scan</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice4ScanE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice4TypeE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxVirtualDevice4TypeE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxVirtualDevice4TypeE11LXtObjectIDPj"></span><span id="ILxVirtualDevice::Type__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_virtual_device_1a13733cf2314fbfbce3a054c889e0b43b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice4TypeE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice4NameE11LXtObjectIDPcj">
+<span id="_CPPv3N16ILxVirtualDevice4NameE11LXtObjectIDPcj"></span><span id="_CPPv2N16ILxVirtualDevice4NameE11LXtObjectIDPcj"></span><span id="ILxVirtualDevice::Name__LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_virtual_device_1a482b7c5ef3dab681db87c2da65dd1879"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice4NameE11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice4DateE11LXtObjectIDPcj">
+<span id="_CPPv3N16ILxVirtualDevice4DateE11LXtObjectIDPcj"></span><span id="_CPPv2N16ILxVirtualDevice4DateE11LXtObjectIDPcj"></span><span id="ILxVirtualDevice::Date__LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_virtual_device_1aad9d72c384add8138f39757887b5f8c9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Date</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice4DateE11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxVirtualDevice4SizeE11LXtObjectIDPd">
+<span id="_CPPv3N16ILxVirtualDevice4SizeE11LXtObjectIDPd"></span><span id="_CPPv2N16ILxVirtualDevice4SizeE11LXtObjectIDPd"></span><span id="ILxVirtualDevice::Size__LXtObjectID.doubleP"></span><span class="target" id="class_i_lx_virtual_device_1af3110d78d95792403e3bb9ca0b6ef21f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxVirtualDevice4SizeE11LXtObjectIDPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSYSTEM_PATH_PROGRAM">
+<span class="target" id="lxd__file_8hpp_1a0409dfbc5c428f15b2850ce8623191b1"></span><code class="sig-name descname">LXsSYSTEM_PATH_PROGRAM</code><a class="headerlink" href="#c.LXsSYSTEM_PATH_PROGRAM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>FileSystemPath() returns the standard file path for a given name, as defined by one of the LXsSYSTEM_PATH_ defines. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsSYSTEM_PATH_EXENAME</p></li>
+<li><p>LXsSYSTEM_PATH_PROJECT</p></li>
+<li><p>LXsSYSTEM_PATH_TEMP</p></li>
+<li><p>LXsSYSTEM_PATH_LICENSE</p></li>
+<li><p>LXsSYSTEM_PATH_RESOURCE</p></li>
+<li><p>LXsSYSTEM_PATH_MODULE</p></li>
+<li><p>LXsSYSTEM_PATH_PREFS</p></li>
+<li><p>LXsSYSTEM_PATH_HELP</p></li>
+<li><p>LXsSYSTEM_PATH_USER</p></li>
+<li><p>LXsSYSTEM_PATH_CONTENT</p></li>
+<li><p>LXsSYSTEM_PATH_ASSET</p></li>
+<li><p>LXsSYSTEM_PATH_SAMPLE</p></li>
+<li><p>LXsSYSTEM_PATH_CONFIGS</p></li>
+<li><p>LXsSYSTEM_PATH_SCRIPTS</p></li>
+<li><p>LXsSYSTEM_PATH_DOCUMENTS</p></li>
+<li><p>LXsSYSTEM_PATH_KITS</p></li>
+<li><p>LXsSYSTEM_PATH_USER_KITS</p></li>
+<li><p>LXsSYSTEM_PATH_LOGS</p></li>
+<li><p>LXsSYSTEM_PATH_CLOUDCACHE</p></li>
+<li><p>LXsSYSTEM_PATH_USER_CONTENT</p></li>
+</ul>
+</div>
+<div class="section" id="ilxfileservice">
+<h2><a class="toc-backref" href="#id3">ILxFileService</a><a class="headerlink" href="#ilxfileservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxFileService">
+<span id="_CPPv314ILxFileService"></span><span id="_CPPv214ILxFileService"></span><span id="ILxFileService"></span><span class="target" id="class_i_lx_file_service"></span><em class="property">class </em><code class="sig-name descname">ILxFileService</code><a class="headerlink" href="#_CPPv414ILxFileService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Plug-ins can use the File service for various file operations, such as looking up standard file paths by name, or copying files from one location to another. Also see PlatformService for functions to walk the list of all aliased paths and for walking the list of import paths. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService14FileSystemPathE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N14ILxFileService14FileSystemPathE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N14ILxFileService14FileSystemPathE11LXtObjectIDPKcPPKc"></span><span id="ILxFileService::FileSystemPath__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_file_service_1ad708dcd42badea243b0138cce8fa3e7f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileSystemPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService14FileSystemPathE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService14IsAbsolutePathE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxFileService14IsAbsolutePathE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxFileService14IsAbsolutePathE11LXtObjectIDPKc"></span><span id="ILxFileService::IsAbsolutePath__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_service_1a53b5f158db943283cafb1eea08b466d9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsAbsolutePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService14IsAbsolutePathE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if a path is absolute, and LXe_FALSE if it is not. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService13ArePathsEqualE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N14ILxFileService13ArePathsEqualE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N14ILxFileService13ArePathsEqualE11LXtObjectIDPKcPKc"></span><span id="ILxFileService::ArePathsEqual__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_file_service_1a1e0ded077ebdea37bfadd1f641fbaa13"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArePathsEqual</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path1</em>, <em class="property">const</em> char *<em>path2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService13ArePathsEqualE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This compares two paths and returns true if they are equal. This respects case-sensitivity and other quirks specific to the operating system. It doesn’t follow symbolic links or other directory traversal. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService9ParsePathE11LXtObjectIDPKcjPcj">
+<span id="_CPPv3N14ILxFileService9ParsePathE11LXtObjectIDPKcjPcj"></span><span id="_CPPv2N14ILxFileService9ParsePathE11LXtObjectIDPKcjPcj"></span><span id="ILxFileService::ParsePath__LXtObjectID.cCP.unsigned.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1ac93cda26a2d9d1cf8c77a823b23ff98c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ParsePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, unsigned <em>component</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService9ParsePathE11LXtObjectIDPKcjPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This parses a filename path, extracting the last portion of the path into the basename buffer and the path into the path buffer. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService11ComposePathE11LXtObjectIDPKcPKcPcj">
+<span id="_CPPv3N14ILxFileService11ComposePathE11LXtObjectIDPKcPKcPcj"></span><span id="_CPPv2N14ILxFileService11ComposePathE11LXtObjectIDPKcPKcPcj"></span><span id="ILxFileService::ComposePath__LXtObjectID.cCP.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1aec782f79023e5da33e305ca6096a2b54"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ComposePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>basename</em>, <em class="property">const</em> char *<em>path</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService11ComposePathE11LXtObjectIDPKcPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This adds the base filename onto a path with the path separator defined by the OS. If the basename is absolute it returns LXe_INVALIDARG. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService12SetExtensionE11LXtObjectIDPKcPKcPcj">
+<span id="_CPPv3N14ILxFileService12SetExtensionE11LXtObjectIDPKcPKcPcj"></span><span id="_CPPv2N14ILxFileService12SetExtensionE11LXtObjectIDPKcPKcPcj"></span><span id="ILxFileService::SetExtension__LXtObjectID.cCP.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1aab6e9f8ba74ef0d845c56e8c257cac1d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetExtension</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, <em class="property">const</em> char *<em>extension</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService12SetExtensionE11LXtObjectIDPKcPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This takes a filename and extension, and returns the same filename but with the new extension. The extension string is just the part after the period. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService12MakeRelativeE11LXtObjectIDPKcPKcPcj">
+<span id="_CPPv3N14ILxFileService12MakeRelativeE11LXtObjectIDPKcPKcPcj"></span><span id="_CPPv2N14ILxFileService12MakeRelativeE11LXtObjectIDPKcPKcPcj"></span><span id="ILxFileService::MakeRelative__LXtObjectID.cCP.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1a34ab4a63048c521cc60e7a55a156098e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeRelative</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, <em class="property">const</em> char *<em>path</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService12MakeRelativeE11LXtObjectIDPKcPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This makes a filename relative to a path, if possible. This fails if the filename could not be made relative. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService10MakeUniqueE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N14ILxFileService10MakeUniqueE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N14ILxFileService10MakeUniqueE11LXtObjectIDPKcPcj"></span><span id="ILxFileService::MakeUnique__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1aa19527e07ade280e8faecdb9bb7e1749"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeUnique</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService10MakeUniqueE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This computes a unique filename given a base pattern by adding digits. For example, if the path is “c:\a\b\myfile.ext”, this will first see if “c:\a\b\myfile.ext” exists. If it does not, it will be returned. If it does exist, then the path will be changed to “c:\a\b\myfile_1.ext” and tested again, and so on until the path is unique. This method fails if the path portion doesn’t exist. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService13MakeDirectoryE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxFileService13MakeDirectoryE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxFileService13MakeDirectoryE11LXtObjectIDPKc"></span><span id="ILxFileService::MakeDirectory__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_service_1aa7c8f913afe7a5ac47657e9537985eb1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeDirectory</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService13MakeDirectoryE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given a path to a directory, this creates the directories, if possible. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService12TestFileTypeE11LXtObjectIDPKcPj">
+<span id="_CPPv3N14ILxFileService12TestFileTypeE11LXtObjectIDPKcPj"></span><span id="_CPPv2N14ILxFileService12TestFileTypeE11LXtObjectIDPKcPj"></span><span id="ILxFileService::TestFileType__LXtObjectID.cCP.unsignedP"></span><span class="target" id="class_i_lx_file_service_1a98514160409d891675d983367d6dfc9c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestFileType</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, unsigned *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService12TestFileTypeE11LXtObjectIDPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>NONE indicates that the file does not exist or cannot be accessed for some reason. UNKNOWN indicates that the file exists but is some unusual type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService12TestFileModeE11LXtObjectIDPKcPj">
+<span id="_CPPv3N14ILxFileService12TestFileModeE11LXtObjectIDPKcPj"></span><span id="_CPPv2N14ILxFileService12TestFileModeE11LXtObjectIDPKcPj"></span><span id="ILxFileService::TestFileMode__LXtObjectID.cCP.unsignedP"></span><span class="target" id="class_i_lx_file_service_1a4d6a2ba878466718a3b6dc8db7bcc2df"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestFileMode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, unsigned *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService12TestFileModeE11LXtObjectIDPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns a combination of flags indicating if a file can be read and/or written. This method always succeeds, even if the file doesn’t exist. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService10RenameFileE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N14ILxFileService10RenameFileE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N14ILxFileService10RenameFileE11LXtObjectIDPKcPKc"></span><span id="ILxFileService::RenameFile__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_file_service_1ae996bf84a28b4bb28dee59f1749a2a10"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RenameFile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>from</em>, <em class="property">const</em> char *<em>to</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService10RenameFileE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This renames a file on disk, if possible. This will also work on directories. This can also be used to move files. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService8FileCopyE11LXtObjectIDPKcPKcj">
+<span id="_CPPv3N14ILxFileService8FileCopyE11LXtObjectIDPKcPKcj"></span><span id="_CPPv2N14ILxFileService8FileCopyE11LXtObjectIDPKcPKcj"></span><span id="ILxFileService::FileCopy__LXtObjectID.cCP.cCP.unsigned"></span><span class="target" id="class_i_lx_file_service_1af751dbb573be1d01b3f06d2fd021acfa"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileCopy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>srcFilePath</em>, <em class="property">const</em> char *<em>dstFilePath</em>, unsigned <em>overwrite</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService8FileCopyE11LXtObjectIDPKcPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This copies a file from one path to another. If a file already exists at the destination path and overwrite is true, it will be overwritten with no warning given. If overwrite is false, then the method will fail if a file already exists at the destination. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService10FileDeleteE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxFileService10FileDeleteE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxFileService10FileDeleteE11LXtObjectIDPKc"></span><span id="ILxFileService::FileDelete__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_service_1a79e74c9b6ca81618ddab5e38ad1021b9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileDelete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService10FileDeleteE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This deletes a file from disk, if possible. In general, this must be a file (not a directory). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService9DirDeleteE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxFileService9DirDeleteE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxFileService9DirDeleteE11LXtObjectIDPKc"></span><span id="ILxFileService::DirDelete__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_service_1af97dff230d3db24fc08f2315dcab5a18"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DirDelete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService9DirDeleteE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This deletes a dir from disk. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService22OpenFileWithDefaultAppE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxFileService22OpenFileWithDefaultAppE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxFileService22OpenFileWithDefaultAppE11LXtObjectIDPKc"></span><span id="ILxFileService::OpenFileWithDefaultApp__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_service_1a6991adceb9ae9e11f571d2457e04de85"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OpenFileWithDefaultApp</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService22OpenFileWithDefaultAppE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This opens a file in the application associated with it by the operating system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService18RevealInFileViewerE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxFileService18RevealInFileViewerE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxFileService18RevealInFileViewerE11LXtObjectIDPKc"></span><span id="ILxFileService::RevealInFileViewer__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_service_1a95d402ef101c7dae309b6dfd9e6a2409"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RevealInFileViewer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService18RevealInFileViewerE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This finds the file/folder and selects it in Explorer/Finder. Calling this with a folder will open the parent in Explorer/Finder and select it, while using <a class="reference internal" href="#class_i_lx_file_service_1a6991adceb9ae9e11f571d2457e04de85"><span class="std std-ref">OpenFileWithDefaultApp()</span></a> on a folder would show the contents of the folder itself. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService7ExecuteE11LXtObjectIDPPKcii">
+<span id="_CPPv3N14ILxFileService7ExecuteE11LXtObjectIDPPKcii"></span><span id="_CPPv2N14ILxFileService7ExecuteE11LXtObjectIDPPKcii"></span><span id="ILxFileService::Execute__LXtObjectID.cCPP.i.i"></span><span class="target" id="class_i_lx_file_service_1a2dfd455828ac29fa74ccb3b20cdd0781"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Execute</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>argv</em>, int <em>show</em>, int <em>force32</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService7ExecuteE11LXtObjectIDPPKcii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This executes an arbitrary program given an argv-style array of arguments. If “show” is true, the application will be visible when launched; if false, it will be hidden. If force32 is true, the 32 bit version of the application will be launched on a 64 bit system if available supports fat/universal binaries (such as OS X); otherwise, the native version of the application will launch. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService9FileToURLE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N14ILxFileService9FileToURLE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N14ILxFileService9FileToURLE11LXtObjectIDPKcPcj"></span><span id="ILxFileService::FileToURL__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1af9e839f3ed0c637d845257b71b02b007"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileToURL</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService9FileToURLE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These two utilities convert between local paths and URLs. These paths begin with the “file://” URL prefix. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService11FileFromURLE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N14ILxFileService11FileFromURLE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N14ILxFileService11FileFromURLE11LXtObjectIDPKcPcj"></span><span id="ILxFileService::FileFromURL__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1ac22b2091a9ba864a6ae5ebc4cc8f99d1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileFromURL</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>url</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService11FileFromURLE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService9FromLocalE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N14ILxFileService9FromLocalE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N14ILxFileService9FromLocalE11LXtObjectIDPKcPcj"></span><span id="ILxFileService::FromLocal__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1a34cf7d3b30baec3c4e06f2ba21fdb5c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromLocal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>local</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService9FromLocalE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Local file and path names can be converted to and from neutral format with these interfaces. The value returned is the result of the conversion. These conversions are raw, performing a simple conversion without validity checks. Aliases are not used in the first two methods, they are in ‘ToLocalAlias’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService7ToLocalE11LXtObjectIDPcPcj">
+<span id="_CPPv3N14ILxFileService7ToLocalE11LXtObjectIDPcPcj"></span><span id="_CPPv2N14ILxFileService7ToLocalE11LXtObjectIDPcPcj"></span><span id="ILxFileService::ToLocal__LXtObjectID.cP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1a370c157ea966bbc54174407f3f691f75"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLocal</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>neutral</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService7ToLocalE11LXtObjectIDPcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService12ToLocalAliasE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N14ILxFileService12ToLocalAliasE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N14ILxFileService12ToLocalAliasE11LXtObjectIDPKcPcj"></span><span id="ILxFileService::ToLocalAlias__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1acbbe981718673d52695c09e9ef5ead0a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLocalAlias</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>neutral</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService12ToLocalAliasE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService14AllocReferenceE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N14ILxFileService14AllocReferenceE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N14ILxFileService14AllocReferenceE11LXtObjectIDPKcPPv"></span><span id="ILxFileService::AllocReference__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_file_service_1a5bb124696a4bbe48a7b17c2447ea210c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllocReference</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService14AllocReferenceE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService19FindSequencePatternE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N14ILxFileService19FindSequencePatternE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N14ILxFileService19FindSequencePatternE11LXtObjectIDPKcPcj"></span><span id="ILxFileService::FindSequencePattern__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1a1145b3d669e5546c6d34c2b3f37fd41c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FindSequencePattern</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService19FindSequencePatternE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService18FindSequenceBoundsE11LXtObjectIDPKcPjPj">
+<span id="_CPPv3N14ILxFileService18FindSequenceBoundsE11LXtObjectIDPKcPjPj"></span><span id="_CPPv2N14ILxFileService18FindSequenceBoundsE11LXtObjectIDPKcPjPj"></span><span id="ILxFileService::FindSequenceBounds__LXtObjectID.cCP.unsignedP.unsignedP"></span><span class="target" id="class_i_lx_file_service_1a7f853233ef961d20fb1fa8c2aa697c95"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FindSequenceBounds</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>pattern</em>, unsigned *<em>first</em>, unsigned *<em>last</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService18FindSequenceBoundsE11LXtObjectIDPKcPjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService20GenerateSequenceNameE11LXtObjectIDPKcjPcj">
+<span id="_CPPv3N14ILxFileService20GenerateSequenceNameE11LXtObjectIDPKcjPcj"></span><span id="_CPPv2N14ILxFileService20GenerateSequenceNameE11LXtObjectIDPKcjPcj"></span><span id="ILxFileService::GenerateSequenceName__LXtObjectID.cCP.unsigned.cP.unsigned"></span><span class="target" id="class_i_lx_file_service_1aadaab5d241e20c12de663d94e019eeee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GenerateSequenceName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>pattern</em>, unsigned <em>frame</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService20GenerateSequenceNameE11LXtObjectIDPKcjPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService15ValidateLicenseE11LXtObjectIDPKci">
+<span id="_CPPv3N14ILxFileService15ValidateLicenseE11LXtObjectIDPKci"></span><span id="_CPPv2N14ILxFileService15ValidateLicenseE11LXtObjectIDPKci"></span><span id="ILxFileService::ValidateLicense__LXtObjectID.cCP.i"></span><span class="target" id="class_i_lx_file_service_1a1dad9500f7fd90003056a3d011c7ffbd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ValidateLicense</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>product</em>, int <em>versionNum</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService15ValidateLicenseE11LXtObjectIDPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Takes a product name and version number and returns LXe_OK if there is a valid license. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService14FileDateStringE11LXtObjectIDPKcPci">
+<span id="_CPPv3N14ILxFileService14FileDateStringE11LXtObjectIDPKcPci"></span><span id="_CPPv2N14ILxFileService14FileDateStringE11LXtObjectIDPKcPci"></span><span id="ILxFileService::FileDateString__LXtObjectID.cCP.cP.i"></span><span class="target" id="class_i_lx_file_service_1a5cea7456080110f94dbb35836ff8d0b2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileDateString</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService14FileDateStringE11LXtObjectIDPKcPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It is often useful to know the modification time of a file in a platform-agnostic format. This method returns that as a string of “YYYY:MM:DD HH:MM:SS”. This assures that sorting date strings using strcmp()-like functions puts the dates in chronological order. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService13AllocRedirectE11LXtObjectIDPPv">
+<span id="_CPPv3N14ILxFileService13AllocRedirectE11LXtObjectIDPPv"></span><span id="_CPPv2N14ILxFileService13AllocRedirectE11LXtObjectIDPPv"></span><span id="ILxFileService::AllocRedirect__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_file_service_1acba98913e454d73112e3b43283ac0f57"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllocRedirect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService13AllocRedirectE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate a redirection object from the service. When created it has no history so no redirections are done. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService17MakeLegalFilenameE11LXtObjectIDPci">
+<span id="_CPPv3N14ILxFileService17MakeLegalFilenameE11LXtObjectIDPci"></span><span id="_CPPv2N14ILxFileService17MakeLegalFilenameE11LXtObjectIDPci"></span><span id="ILxFileService::MakeLegalFilename__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_file_service_1a987b03d686da9e65339b03d9266292bf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeLegalFilename</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>filename</em>, int <em>replaceDot</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService17MakeLegalFilenameE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This in-place modifies a C string, replacing characters with special meaning in the OS (like slashes and colons) with underscores. If replacedDot is true, periods will also be replaced. This should only be called on filenmaes, as it will remove the slashes and colons from full paths. This returns LXe_TRUE if the path was already legal, and LXe_FALSE if any characters were replaced with underscores. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxFileService14FileSystemPathEPKcRNSt6stringE">
+<span id="_CPPv3N14ILxFileService14FileSystemPathEPKcRNSt6stringE"></span><span id="_CPPv2N14ILxFileService14FileSystemPathEPKcRNSt6stringE"></span><span id="ILxFileService::FileSystemPath__cCP.ssR"></span><span class="target" id="class_i_lx_file_service_1aee04289f43ed6fab3de46cd885ce9742"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FileSystemPath</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, std::string &amp;<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxFileService14FileSystemPathEPKcRNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiFILECOMP_DIRECTORY">
+<span class="target" id="lxd__file_8hpp_1a2e45a8fa46a8585873b655e0bb015fe5"></span><code class="sig-name descname">LXiFILECOMP_DIRECTORY</code><a class="headerlink" href="#c.LXiFILECOMP_DIRECTORY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The components of the path are the directory, the base filename with extension, the root name without extension, and the extension itself. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiFILECOMP_BASENAME</p></li>
+<li><p>LXiFILECOMP_ROOTNAME</p></li>
+<li><p>LXiFILECOMP_EXTENSION</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiFILETYPE_NONE">
+<span class="target" id="lxd__file_8hpp_1a5aceade7cc574e37a7fbf658bf04881c"></span><code class="sig-name descname">LXiFILETYPE_NONE</code><a class="headerlink" href="#c.LXiFILETYPE_NONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns LXe_TRUE if a file exists, and LXe_FALSE if it does not. More detailed information can be returned in the type argument (if non-NULL), and will be one of the following defines. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiFILETYPE_NORMAL</p></li>
+<li><p>LXiFILETYPE_DIRECTORY</p></li>
+<li><p>LXiFILETYPE_UNKNOWN</p></li>
+<li><p>LXiFILETYPE_UNRESOLVED</p></li>
+<li><p>LXiFILEMODE_READ</p></li>
+<li><p>LXiFILEMODE_WRITE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxfilereference">
+<h2><a class="toc-backref" href="#id4">ILxFileReference</a><a class="headerlink" href="#ilxfilereference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxFileReference">
+<span id="_CPPv316ILxFileReference"></span><span id="_CPPv216ILxFileReference"></span><span id="ILxFileReference"></span><span class="target" id="class_i_lx_file_reference"></span><em class="property">class </em><code class="sig-name descname">ILxFileReference</code><a class="headerlink" href="#_CPPv416ILxFileReference" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxFileReference4PathE11LXtObjectIDPPKc">
+<span id="_CPPv3N16ILxFileReference4PathE11LXtObjectIDPPKc"></span><span id="_CPPv2N16ILxFileReference4PathE11LXtObjectIDPPKc"></span><span id="ILxFileReference::Path__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_file_reference_1af1a6ba7bf56629c9a96154b4f7a4ca87"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Path</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxFileReference4PathE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxFileReference8NiceNameE11LXtObjectIDPcj">
+<span id="_CPPv3N16ILxFileReference8NiceNameE11LXtObjectIDPcj"></span><span id="_CPPv2N16ILxFileReference8NiceNameE11LXtObjectIDPcj"></span><span id="ILxFileReference::NiceName__LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_file_reference_1a6b624f86c947e496d53ca4ff2b3572d7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NiceName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxFileReference8NiceNameE11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxFileReference4TypeE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxFileReference4TypeE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxFileReference4TypeE11LXtObjectIDPj"></span><span id="ILxFileReference::Type__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_file_reference_1a94df4eed3f5b0b9144a827d7becd9842"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxFileReference4TypeE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxFileReference4ModeE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxFileReference4ModeE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxFileReference4ModeE11LXtObjectIDPj"></span><span id="ILxFileReference::Mode__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_file_reference_1ae2e517e2d21479af834e4d7b12922135"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Mode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxFileReference4ModeE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxFileReference8SubCountE11LXtObjectIDPj">
+<span id="_CPPv3N16ILxFileReference8SubCountE11LXtObjectIDPj"></span><span id="_CPPv2N16ILxFileReference8SubCountE11LXtObjectIDPj"></span><span id="ILxFileReference::SubCount__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_file_reference_1ad20ac91e88bd7b46c561222a353ff6ba"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxFileReference8SubCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxFileReference10SubByIndexE11LXtObjectIDjPPv">
+<span id="_CPPv3N16ILxFileReference10SubByIndexE11LXtObjectIDjPPv"></span><span id="_CPPv2N16ILxFileReference10SubByIndexE11LXtObjectIDjPPv"></span><span id="ILxFileReference::SubByIndex__LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_file_reference_1af01f294ac8a04be588b1d5b1cafd6e38"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxFileReference10SubByIndexE11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSTAGED_FILE_LIST">
+<span class="target" id="lxd__file_8hpp_1a3ce2e40458e2b2638591d12bc2bc2205"></span><code class="sig-name descname">LXsSTAGED_FILE_LIST</code><a class="headerlink" href="#c.LXsSTAGED_FILE_LIST" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The staged file list contains a list of source and destination file paths, that will be copied the next time modo is started up. This copying is done before any plug-ins are loaded. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxfileredirect">
+<h2><a class="toc-backref" href="#id5">ILxFileRedirect</a><a class="headerlink" href="#ilxfileredirect" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxFileRedirect">
+<span id="_CPPv315ILxFileRedirect"></span><span id="_CPPv215ILxFileRedirect"></span><span id="ILxFileRedirect"></span><span class="target" id="class_i_lx_file_redirect"></span><em class="property">class </em><code class="sig-name descname">ILxFileRedirect</code><a class="headerlink" href="#_CPPv415ILxFileRedirect" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A file redirection object allows path names from a file to be mapped to an equivalant path found through some method of redirection. This is normally used when loading a file to find all other related assets. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxFileRedirect13NeutralFormatE11LXtObjectIDj">
+<span id="_CPPv3N15ILxFileRedirect13NeutralFormatE11LXtObjectIDj"></span><span id="_CPPv2N15ILxFileRedirect13NeutralFormatE11LXtObjectIDj"></span><span id="ILxFileRedirect::NeutralFormat__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_file_redirect_1ab7095c77e5ca8a622e7e4155913e4439"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NeutralFormat</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>allow</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFileRedirect13NeutralFormatE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Configure the redirection to support neutral format names. This means that references are in a format that is the same on all platforms, so that a file saved on a PC can be loaded on a Mac. If this format is enabled aliases are also supported. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFileRedirect13AddSearchPathE11LXtObjectIDPKc">
+<span id="_CPPv3N15ILxFileRedirect13AddSearchPathE11LXtObjectIDPKc"></span><span id="_CPPv2N15ILxFileRedirect13AddSearchPathE11LXtObjectIDPKc"></span><span id="ILxFileRedirect::AddSearchPath__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_file_redirect_1a7cd5af8bd1b5cb81d153d67169ebe6d0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddSearchPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFileRedirect13AddSearchPathE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The search path for a redirection object is intended to be set once. Paths will be searched in the order they’re added. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFileRedirect6LocateE11LXtObjectIDPKcPKcPcj">
+<span id="_CPPv3N15ILxFileRedirect6LocateE11LXtObjectIDPKcPKcPcj"></span><span id="_CPPv2N15ILxFileRedirect6LocateE11LXtObjectIDPKcPKcPcj"></span><span id="ILxFileRedirect::Locate__LXtObjectID.cCP.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_redirect_1adeb900f3deb0a9035c72957518906355"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Locate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <em class="property">const</em> char *<em>type</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFileRedirect6LocateE11LXtObjectIDPKcPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method takes a reference path and tries to find an absolute path to an existing asset matching the reference. The input reference may be absolute or relative, and must be in neutral format if this object is also. The file type is used to open a redirection dialog by the user, and can be left null to suppress that. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFileRedirect14LocateSequenceE11LXtObjectIDPKcPKcPjPjPcj">
+<span id="_CPPv3N15ILxFileRedirect14LocateSequenceE11LXtObjectIDPKcPKcPjPjPcj"></span><span id="_CPPv2N15ILxFileRedirect14LocateSequenceE11LXtObjectIDPKcPKcPjPjPcj"></span><span id="ILxFileRedirect::LocateSequence__LXtObjectID.cCP.cCP.unsignedP.unsignedP.cP.unsigned"></span><span class="target" id="class_i_lx_file_redirect_1af23eadceacbf6d9062f935a2b6f02fb1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LocateSequence</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>pattern</em>, <em class="property">const</em> char *<em>type</em>, unsigned *<em>first</em>, unsigned *<em>last</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFileRedirect14LocateSequenceE11LXtObjectIDPKcPKcPjPjPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A sequence filename (one that contains sequence pattern) can be found using the same search criteria. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxFileRedirect9ReferenceE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N15ILxFileRedirect9ReferenceE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N15ILxFileRedirect9ReferenceE11LXtObjectIDPKcPcj"></span><span id="ILxFileRedirect::Reference__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_file_redirect_1aff1a346b7f180b063731ea8687794328"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Reference</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxFileRedirect9ReferenceE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method takes an absolute asset path and returns a reference. The reference may be relative if the asset can be found on the search path. For neutral format redirction the reference is platform-generic and may contain user aliases. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_filter.html" class="btn btn-neutral float-right" title="Filter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_externalrender.html" class="btn btn-neutral float-left" title="Externalrender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_file.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

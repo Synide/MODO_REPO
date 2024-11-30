@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Item mandelbrot.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:07 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Item mandelbrot &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Item orb" href="Item%20orb.html" />
+    <link rel="prev" title="Item gasket" href="Item%20gasket.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Item mandelbrot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-walkthrough">Code Walkthrough</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-declarations">Class Declarations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#server-tags"><span class="xref std std-doc">./Server_Tags</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-index"><span class="xref std std-doc">./Initialize_(index)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#helper-function">Helper Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementations">Implementations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preview%20Socket.html">Preview Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Item mandelbrot</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="item-mandelbrot">
+<h1>Item mandelbrot<a class="headerlink" href="#item-mandelbrot" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-walkthrough" id="id1">Code Walkthrough</a></p></li>
+<li><p><a class="reference internal" href="#class-declarations" id="id2">Class Declarations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#server-tags" id="id3"><span class="xref std std-doc">./Server_Tags</span></a></p></li>
+<li><p><a class="reference internal" href="#initialize-index" id="id4"><span class="xref std std-doc">./Initialize_(index)</span></a></p></li>
+<li><p><a class="reference internal" href="#helper-function" id="id5">Helper Function</a></p></li>
+<li><p><a class="reference internal" href="#implementations" id="id6">Implementations</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Item_mandelbrot is a basic example plugin. This wiki page is intended as a walkthrough of the code in order to help you better understand the SDK.</p>
+<p>This plugin adds the mandelbrot pattern to modo. A mandelbrot is a shading pattern that you overlay onto whatever you wish.</p>
+<p>You can access the pattern by going to the model tab-&gt;Shading-&gt;Add Layer-&gt;mandelbrot.</p>
+<img alt="../../_images/Sphereshot.png" src="../../_images/Sphereshot.png" />
+<p>A unit sphere before the mandelbrot pattern is applied</p>
+<img alt="pages\tutorials\./../../images/Brat1.png]][[File:Brat2.png" src="images/Brat1.png%5d%5d%5b%5bFile_Brat2.html" />
+<p>The two sides of the above unit sphere after the mandelbrot pattern is applied</p>
+<div class="section" id="code-walkthrough">
+<h2><a class="toc-backref" href="#id1">Code Walkthrough</a><a class="headerlink" href="#code-walkthrough" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="class-declarations">
+<h2><a class="toc-backref" href="#id2">Class Declarations</a><a class="headerlink" href="#class-declarations" title="Permalink to this headline">¶</a></h2>
+<p>This plugin uses a sort of nested code structure wherein we create classes that we later use in other classes which we then again use in our final package class.</p>
+<p>This class forms the base of the structure.</p>
+<p>We want this class to create a filter with which to apply our mandelbrot pattern. First, we inherit from Filter_(lx-filter.hpp)#.284.29_SDK:_ILxStackFilter_interface to be able to compare, query, and convert our filter. We then inherit from CLxImpl_ImageFilter to be able to actually build an image filter, as the mandelbrot pattern is ultimately an image. Finally, we inherit from CLxImpl_ImageFilterMetrics so we can can keep track of the values in the filter.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CMandelbrotFilter :
+                       public CLxImpl_StackFilter,
+                       public CLxImpl_ImageFilter,
+                       public CLxImpl_ImageFilterMetrics
+        {
+           public:
+               CMandelbrotPackage      *src_pkg;
+               CLxUser_GradientFilter   g_filt[4];
+               unsigned                 i_w, i_h, i_max;
+               double                   x_0, x_s, y_0, y_s;
+               float                    s_col[4];
+
+               CLxUser_ImageWrite       w_img;
+               float                   *f_buf;
+               double                   max_log;
+               bool                     use_image, gen_buffer;
+
+               const char *     filt_Type (void)                       LXx_OVERRIDE;
+               unsigned         filt_Compare (ILxUnknownID other)      LXx_OVERRIDE;
+               LxResult         filt_Convert (ILxUnknownID other)      LXx_OVERRIDE;
+
+               unsigned         imf_Type (void)                        LXx_OVERRIDE;
+               LxResult         imf_Generate (int width, int height, ILxUnknownID monitor, void **ppvObj) LXx_OVERRIDE;
+
+               LxResult         imfmet_Generate (LXtImageMetrics *metrics) LXx_OVERRIDE;
+
+           private:
+               LxResult         GenerateFullFilter (void);
+               LxResult         GenerateSmallFilter (const int w, const int  h, CLxUser_ImageWrite &amp;wimg);
+
+               void             GenerateFBuffer (const int w, const int h, float *fbuf);
+               void             ConvertFBufferToImage (const float *fbuf, const int w, const int h, CLxUser_ImageWrite &amp;wimg);
+};
+</pre></div>
+</div>
+<p>We want to be able to create threads and then share our work among them, so we inherit from Thread_(lx-thread.hpp)#.2822.29_SDK:_ILxSharedWork_interface.</p>
+<p>Continuing along with the theme of nested code, we create an object of the type CMandelBrotFilter, the class we just wrote. Following this, we have three classes with the share prefix, indicating that they are redeclarations of virtual functions from the CLxImplSharedWork class. The Spawn class starts everything off, creating a work object that holds the total number of lines in the image that we want our filter to work on. Next, our Evaluate function takes one line of the image and uses the filter on it. The Share function brings these two together, having the work object tell many threads to use the Evaluate method at once.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CMandlebrotWork :
+                       public CLxImpl_SharedWork
+        {
+           public:
+               CMandelbrotFilter       *src_filt;
+               float                   *fbuf;
+               int                      i_y, n_y, w, h;
+
+               LxResult         share_Evaluate ();
+               LxResult         share_Spawn (void **ppvObj);
+               LxResult         share_Share (ILxUnknownID other, unsigned int split);
+
+               float            Pixel (double x, double y);
+};
+</pre></div>
+</div>
+<p>We want to implement our package by creating an instance of it, so we inherit from the Package_(lx-package.hpp)#.2825.29_SDK:_ILxPackageInstance_interface, as the superclass of all image related clips, includes so we inherit from it.</p>
+<p>We create a CLxUser_Item object called m_item. The functions with the pins prefix are redeclarations of virtual functions in the CLxPackageInstance class. The Initialize function sets the m_item object as an instance, and the Cleanup function clears it, removing it as an instance.</p>
+<p>The functions with the vclip prefix are redeclarations of virtual functions declared in the ClxVideoClipItem class. The Prepfilter function sets the channels we need to allocate our filter and records the indices we use for those channels in a cache. The AllocFilter function creates a filter using the channel data from the channels we set in PrepFilter. Cleanup releases the cache we used to set the values of the channels that we used.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CMandelbrotInstance :
+                       public CLxImpl_PackageInstance,
+                       public CLxImpl_VideoClipItem
+        {
+           public:
+               CMandelbrotPackage      *src_pkg;
+               CLxUser_Item             m_item;
+
+               LxResult         pins_Initialize (ILxUnknownID item, ILxUnknownID super) LXx_OVERRIDE;
+               void             pins_Cleanup (void) LXx_OVERRIDE;
+
+               LxResult         vclip_PrepFilter (ILxUnknownID eval, void **cache) LXx_OVERRIDE;
+               LxResult         vclip_AllocFilter (ILxUnknownID attr, void *cache, void **ppvObj) LXx_OVERRIDE;
+               void             vclip_Cleanup (void *cache) LXx_OVERRIDE;
+
+               typedef struct st_GenData {
+                       unsigned        w, h, cx, cy;
+                       unsigned        rad, grd, col;
+                       unsigned        itr;
+               } GenData;
+};
+</pre></div>
+</div>
+<p>We want to construct a package for the mandelbrot filter, so we inherit from Package_(lx-package.hpp).</p>
+<p>Three functions have the pkg prefix, indicating that they are redeclarations of virtual functions in the CLxImplPackage class. The SetupChannels function and the TestInterface function adds channels and attaches an interface to our package. Meanwhile, the Attach function, continuing on with the theme of nested code, creates a CMandekBrotInstance item and attaches it to the package that we are creating.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CMandelbrotPackage :
+                       public CLxImpl_Package
+        {
+           public:
+               CLxUser_ImageService     img_svc;
+               static LXtTagInfoDesc    descInfo[];
+
+               LxResult                pkg_SetupChannels (ILxUnknownID addChan) LXx_OVERRIDE;
+               LxResult                pkg_TestInterface (const LXtGUID *guid) LXx_OVERRIDE;
+               LxResult                pkg_Attach (void **ppvObj) LXx_OVERRIDE;
+};
+</pre></div>
+</div>
+<p>This class creates a Factory_Object for all the object, which takes the objects that we specify and exports them, even is they are not servers. Only CMandelBrotPackage is exported as a server in this fle. Since the polymorph object has to exist for the lifetime of any instance, the are explicitly allocated as part of the global module and freed at shutdown.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        class CFactories {
+           public:
+               CLxPolymorph&lt;CMandelbrotInstance&gt;        inst;
+               CLxPolymorph&lt;CMandelbrotFilter&gt;          filt;
+               CLxPolymorph&lt;CMandlebrotWork&gt;            work;
+
+               CFactories ()
+               {
+                       inst.AddInterface (new CLxIfc_PackageInstance   &lt;CMandelbrotInstance&gt;);
+                       inst.AddInterface (new CLxIfc_VideoClipItem     &lt;CMandelbrotInstance&gt;);
+
+                       filt.AddInterface (new CLxIfc_StackFilter       &lt;CMandelbrotFilter&gt;);
+                       filt.AddInterface (new CLxIfc_ImageFilter       &lt;CMandelbrotFilter&gt;);
+                       filt.AddInterface (new CLxIfc_ImageFilterMetrics&lt;CMandelbrotFilter&gt;);
+
+                       work.AddInterface (new CLxIfc_SharedWork        &lt;CMandlebrotWork&gt;);
+               }
+
+} *pF;
+</pre></div>
+</div>
+<div class="section" id="server-tags">
+<h3><a class="toc-backref" href="#id3"><span class="xref std std-doc">./Server_Tags</span></a><a class="headerlink" href="#server-tags" title="Permalink to this headline">¶</a></h3>
+<p>Servers tags are examined when the server is initialized, and give information about the server. We set the tags in this case by taking descinfo[] arrays and associating the relevant data with the corresponding flags.</p>
+<p>The tags here indicate that our Mandelbrot item type is a subtype of video clip meaning an image that may change over time.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LXtTagInfoDesc  CMandelbrotPackage::descInfo[] = {
+               { LXsPKG_SUPERTYPE,     LXsITYPE_VIDEOCLIP      },
+               { 0 }
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-index">
+<h3><a class="toc-backref" href="#id4"><span class="xref std std-doc">./Initialize_(index)</span></a><a class="headerlink" href="#initialize-index" title="Permalink to this headline">¶</a></h3>
+<p>Intialize is called when we add the plugin to modo, and is the utility that exports the server.</p>
+<p>This function exports a server with the package and staticdesc interfaces that is dependent on the CMandelbrotPackage. It also creates the factories using the function references in 138-164.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        initialize ()
+        {
+               CLxGenericPolymorph             *srv;
+
+               srv = new CLxPolymorph&lt;CMandelbrotPackage&gt;;
+               srv-&gt;AddInterface (new CLxIfc_Package   &lt;CMandelbrotPackage&gt;);
+               srv-&gt;AddInterface (new CLxIfc_StaticDesc&lt;CMandelbrotPackage&gt;);
+               thisModule.AddServer (&quot;mandelbrot&quot;, srv);
+
+               pF = new CFactories;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="helper-function">
+<h3><a class="toc-backref" href="#id5">Helper Function</a><a class="headerlink" href="#helper-function" title="Permalink to this headline">¶</a></h3>
+<p>This function destroys the factories so they can persist while their objects are in use.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        cleanup ()
+        {
+               delete pF;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementations">
+<h3><a class="toc-backref" href="#id6">Implementations</a><a class="headerlink" href="#implementations" title="Permalink to this headline">¶</a></h3>
+<p>Here the channels for the package are created and their default values set using the Package_(lx-package.hpp)#.2815.29_SDK:_ILxAddChannel_interface utility</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        #define Cs_ITERATIONS          &quot;iterations&quot;
+        #define Cs_SIZE                        &quot;size&quot;
+        #define Cs_CENTER              &quot;center&quot;
+        #define Cs_RADIUS              &quot;radius&quot;
+        #define Cs_COLOR               &quot;color&quot;
+        #define Cs_SETCOL              &quot;setColor&quot;
+
+               LxResult
+        CMandelbrotPackage::pkg_SetupChannels (
+               ILxUnknownID             addChan)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>This section uses Wrap_(lx-wrap.hpp)#CLxGenericPolymorph so that nexus knows what interfaces instances of this package support. This is necessary as to prevent query loops.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotPackage::pkg_TestInterface (
+               const LXtGUID           *guid)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Here,  Attach is called to create a new instance of this item. The returned object implements a specific item of this type in the scene using the Wrap_(lx-wrap.hpp)#CLxPolymorph method.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotPackage::pkg_Attach (
+               void                   **ppvObj)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>The instance is the implementation of the item, and this set of code allocates one for each item in the scene. The instant can respond to a set of events.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotInstance::pins_Initialize (
+               ILxUnknownID             item,
+               ILxUnknownID             super)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>The VideoClipItem interface allows this item to function as a generic video clip. PrepFilter allows the item to select channels needed for filter allocation, and record the indices for those in a cache.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotInstance::vclip_PrepFilter (
+               ILxUnknownID             evalObj,
+               void                   **cache)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>AllocFilter creates the image filter for a given frame.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotInstance::vclip_AllocFilter (
+               ILxUnknownID             attrObj,
+               void                    *cache,
+               void                   **ppvObj)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>This section cleans up some data.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CMandelbrotInstance::vclip_Cleanup (
+               void                    *cache)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>This section places the image onto the image stack where it generates target image on the fly</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="n">const</span> <span class="n">char</span> <span class="o">*</span>
+ <span class="n">CMandelbrotFilter</span><span class="p">::</span><span class="n">filt_Type</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+
+        <span class="n">unsigned</span>
+ <span class="n">CMandelbrotFilter</span><span class="p">::</span><span class="n">imf_Type</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>
+ <span class="p">{</span>
+        <span class="o">...</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This uses Compare to compare a filter which has been evaluated to a new one being computed. If the size has changed we require the image to be remade from scratch. For other changes the past result is compatible with the current result so some previous work can be reused.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               unsigned
+        CMandelbrotFilter::filt_Compare (
+               ILxUnknownID             other)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>This section will be called to convert a past evaluation to a compatible filter. We always use the existing image, and if only the color parameters have changed we can reuse the previous gradient input map.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotFilter::filt_Convert (
+               ILxUnknownID             other)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Here, generators allocate an image and fill it in. This filter maintains a reference to the image so it can be reused as needed. Filters that generate and forget would instead simply return the image.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotFilter::imf_Generate (
+               int                      width,
+               int                      height,
+               ILxUnknownID             monitor,
+               void                   **ppvObj)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Generate full filter(the main function in this section) will create the image filter at its full size, using the width and height from the channels on the Mandelbrot item.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotFilter::GenerateFullFilter (void)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Generate small filter does the same as above, except it works on a smaller resolution, using a temporary float buffer. GenerateFBuffer() converts the buffer to the image</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandelbrotFilter::GenerateSmallFilter (
+               const int                w,
+               const int                h,
+               CLxUser_ImageWrite      &amp;wimg)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>We generate the buffer in the threads. We allocate a work object using Alloc(F), initialize it to the image and process it.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CMandelbrotFilter::GenerateFBuffer (
+               const int                w,
+               const int                h,
+               float                   *fbuf)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>This section converts the raw buffered values to colors. This could be done in the workers too, since setting pixels should be thread-safe.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               void
+        CMandelbrotFilter::ConvertFBufferToImage (
+               const float             *fbuf,
+               const int                w,
+               const int                h,
+               CLxUser_ImageWrite      &amp;wimg)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Adds a metrics interface for getting size and type info.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LxResult
+        CMandelbrotFilter::imfmet_Generate (
+               LXtImageMetrics         *metrics)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>The class created here(CMandelbrotWork) is a way to spread the work among threads. Each work object holds a current line and number of lines remaining initialized to zero. The master work object will be initialized to the total lines in the image, and the threading system will allocate enough new work objects to keep the system’s core busy.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>        LxResult
+        CMandlebrotWork::share_Spawn (
+               void                   **ppvObj)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Work objects that have work will be asked to share with those that don’t. In this case we transfer one line from this work object to the other. This is currently the only valid split mode, although it could transfer more lines to reduce contention.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>                LxResult
+        CMandlebrotWork::share_Share (
+               ILxUnknownID             other,
+               unsigned int             split)
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Evaluate(the main function here) processes one piece of work, in this case a line of the image. The floating point buffer is filled with values from -1 to 1.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               LxResult
+        CMandlebrotWork::share_Evaluate ()
+        {
+               ...
+}
+</pre></div>
+</div>
+<p>Here, we compute a single pixel. This is the standard Mandelbrot loop, except that the final iteration count is scaled 0 to 1 in a log scale. Points in the set are assigned -1.</p>
+<div class="highlight-:linenos: notranslate"><div class="highlight"><pre><span></span>               float
+        CMandlebrotWork::Pixel (
+               double                   x,
+               double                   y)
+        {
+              ...
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Item%20orb.html" class="btn btn-neutral float-right" title="Item orb" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Item%20gasket.html" class="btn btn-neutral float-left" title="Item gasket" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Item mandelbrot.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:07 GMT -->
+</html>

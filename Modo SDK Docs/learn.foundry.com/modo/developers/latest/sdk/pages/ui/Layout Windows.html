@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Layout Windows.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:59 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Layout Windows &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MODO Projects" href="MODO%20Projects.html" />
+    <link rel="prev" title="Icon Resources" href="Icon%20Resources.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ui.html">User Interface</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="App.undoSuspend.html">App.undoSuspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Argument%20Types.html">Argument Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Collapsable%20and%20Hideable%20Viewports.html">Collapsable and Hideable Viewports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Dialog%20Formatting.html">Command Dialog Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20Help.html">Command Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20History%20Viewport.html">Command History Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20A%20Custom%20Form.html">Create A Custom Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20Layouts.html">Creating Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Defining%20Item%20Categories.html">Defining Item Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dialog%20Commands.html">Dialog Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Event%20Log%20Viewport.html">Event Log Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Categories%20and%20Groups.html">Form Categories and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Editor.html">Form Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Filtering.html">Form Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20System.html">Form System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help%20URLs.html">Help URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icon%20Resources.html">Icon Resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Layout Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layout-window-vs-layout-createorclose"><em>layout.window</em> vs. <em>layout.createOrClose</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-definition">Config Definition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-properties">Basic Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#closed-window-config-state">Closed Window Config State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MODO%20Projects.html">MODO Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageService%20Reference.html">MessageService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Markup.html">Modo Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface%20and%20Plug-Ins.html">User Interface and Plug-Ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Values.html">User Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ui.html">User Interface</a> &raquo;</li>
+        
+      <li>Layout Windows</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="layout-windows">
+<h1>Layout Windows<a class="headerlink" href="#layout-windows" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#layout-window-vs-layout-createorclose" id="id1"><em>layout.window</em> vs. <em>layout.createOrClose</em></a></p></li>
+<li><p><a class="reference internal" href="#config-definition" id="id2">Config Definition</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-properties" id="id3">Basic Properties</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#closed-window-config-state" id="id4">Closed Window Config State</a></p></li>
+</ul>
+</div>
+<p>Layout Windows are a config construct for defining windows.  You can think of it as layout.createOrClose, but instead of having to provide the window definition entirely through arguments, you can define them through a config construct.</p>
+<div class="section" id="layout-window-vs-layout-createorclose">
+<h2><a class="toc-backref" href="#id1"><em>layout.window</em> vs. <em>layout.createOrClose</em></a><a class="headerlink" href="#layout-window-vs-layout-createorclose" title="Permalink to this headline">¶</a></h2>
+<p>layout.createOrClose allows an entire window definition to be defined through arguments passed to the command.  This means that the command string is overly complex, easily to introduce mistakes into, and difficult to change, especially if the same window is supposed to be used for a key mapping, a button in a form and an entry in a menu.</p>
+<p>‘’layout.window’’  has only three arguments, with all the window state defined in the configs.  This makes it easier to use the same window definition in multiple places, and to add new functionality in the future.  It is also more readable in the configs.  In the future I may add a “window definition editor” in the preferences to help manage these windows.</p>
+<p>‘’layout.window’’ also supports features that <em>layout.createOrClose</em> doesn’t, such as pinned popover support, popover resizing support, and better support for remembering window size and position. <em>layout.window</em> should be used when opening defining windows whenever possible.</p>
+</div>
+<div class="section" id="config-definition">
+<h2><a class="toc-backref" href="#id2">Config Definition</a><a class="headerlink" href="#config-definition" title="Permalink to this headline">¶</a></h2>
+<p>Inside of the root-level <em>Frame</em> atoms, there can be any number of <em>LayoutWindow</em> hashes, each representing a different window definition.  The hash is used in a manner similar to a forms’s hash to define the window, and ‘’layout.createOrClose’’’s “cookie”.  Under the has are all the atoms that define the window.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">Frame</span>
+    <span class="n">LayoutWindow</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>
+      <span class="n">Title</span> <span class="o">&lt;</span><span class="nd">@table@msg</span><span class="o">@&gt;</span>
+      <span class="n">Tooltip</span> <span class="o">&lt;</span><span class="nd">@table@msg</span><span class="o">@&gt;</span>
+      <span class="n">Size</span> <span class="o">&lt;</span><span class="n">w</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">h</span><span class="o">&gt;</span>
+      <span class="n">SizeMin</span> <span class="o">&lt;</span><span class="n">w</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">h</span><span class="o">&gt;</span>
+      <span class="n">SizeMax</span> <span class="o">&lt;</span><span class="n">w</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">h</span><span class="o">&gt;</span>
+      <span class="n">Maximize</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span>        <span class="o">//</span> <span class="n">Only</span> <span class="k">for</span> <span class="s2">&quot;standard&quot;</span> <span class="n">windows</span>
+      <span class="n">Style</span> <span class="o">&lt;</span><span class="n">styleName</span><span class="o">&gt;</span>         <span class="o">//</span> <span class="n">standard</span><span class="p">,</span> <span class="n">palette</span><span class="p">,</span> <span class="n">popoverRollOff</span><span class="p">,</span> <span class="n">popoverClickOff</span><span class="p">,</span> <span class="n">popoverPointAt</span>
+      <span class="n">PointAtPopoverPreferSides</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span>
+      <span class="n">PostRestoreCommand</span> <span class="o">&lt;</span><span class="n">commandString</span><span class="o">&gt;</span>
+      <span class="n">Icon</span> <span class="o">&lt;</span><span class="n">iconResourceName</span><span class="o">&gt;</span>   <span class="o">//</span> <span class="n">Displayed</span> <span class="n">on</span> <span class="n">buttons</span> <span class="ow">in</span> <span class="n">forms</span>
+      <span class="n">Opaque</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span>          <span class="o">//</span> <span class="n">For</span> <span class="n">popovers</span> <span class="n">like</span> <span class="n">the</span> <span class="n">Color</span> <span class="n">Picker</span> <span class="n">where</span> <span class="n">transparency</span> <span class="ow">is</span> <span class="n">bad</span>
+      <span class="n">Contents</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>    <span class="o">//</span> <span class="n">See</span> <span class="n">below</span>
+      <span class="n">SwitcherClass</span> <span class="o">&lt;</span><span class="n">class</span><span class="o">&gt;</span>     <span class="o">//</span> <span class="n">Switcher</span> <span class="n">bar</span> <span class="n">class</span><span class="p">;</span> <span class="n">layout</span> <span class="n">overrides</span> <span class="n">it</span>
+      <span class="n">ShowSwitcherBar</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span> <span class="o">//</span> <span class="n">Enable</span><span class="o">/</span><span class="n">Disable</span> <span class="n">switcher</span> <span class="n">bar</span> <span class="n">entirely</span> <span class="n">on</span> <span class="n">normal</span><span class="o">/</span><span class="n">palette</span> <span class="n">windows</span>
+      <span class="n">PostPopFocus</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>       <span class="o">//</span> <span class="n">Hash</span> <span class="n">of</span> <span class="n">a</span> <span class="n">viewport</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">layout</span> <span class="n">that</span> <span class="n">gets</span> <span class="n">a</span> <span class="s2">&quot;popped focus&quot;</span> <span class="n">event</span>
+      <span class="n">HelpKey</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span>
+      <span class="n">Pinnable</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span>        <span class="o">//</span> <span class="n">Makes</span> <span class="n">popovers</span> <span class="n">pinnable</span> <span class="p">(</span><span class="n">defaults</span> <span class="n">to</span> <span class="n">false</span><span class="p">)</span>
+      <span class="n">OpenPinned</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="basic-properties">
+<h3><a class="toc-backref" href="#id3">Basic Properties</a><a class="headerlink" href="#basic-properties" title="Permalink to this headline">¶</a></h3>
+<p>These define the basic style and dimensions of the window.</p>
+<ul class="simple">
+<li><p>‘’’Style’’’:  One of the available window styles: ‘’standard’’, ‘’palette’’, ‘’popoverRollOff’’, ‘’popoverClickOff’’, ‘’popoverPointAt’’.</p></li>
+<li><p>‘’’Contents’’’: This can be either the string “(layout)” followed by the name of the layout to restore an entire layout into the window, or a viewport type name followed by a matching viewport preset to restore that</p></li>
+<li><p>‘’’Title’’’:  Title displayed in the window’s titlebar, usually a message looking in the form of ‘’&#64;table&#64;msg&#64;’’</p></li>
+<li><p>‘’’Size’’’:  Size of the window’s client area (i.e.: not including window decoration/borders), which may be overridden if the user has resized the window between innovations.</p></li>
+<li><p>‘’’SizeMin’’’: Minimum size below which the window cannot be resized smaller.</p></li>
+<li><p><strong>SizeMax</strong> : Maximum resizable size of the window.</p></li>
+<li><p>‘’’Maximize’’’:  If true, the window is opened maximized on Windows.</p></li>
+<li><p>‘’’PostRestoreCommand’’’:  Command to execute after the window opens.</p></li>
+<li><p>‘’’SwitcherClass’’’:  For non-popover windows, this is the class used by the window’s Switcher Bar.</p></li>
+</ul>
+<p>These are used to set up how a <strong>layout.window</strong> button appears in a form.</p>
+<p><em>‘’’Tooltip’’’:  Tooltip display on a *layout.window</em> button in a form
+* ‘’’Icon’’’:  Resource name of the icon to display when <em>layout.window</em> is used as a button in a form.
+* ‘’’HelpKey’’’:  Key used to look up help when used as a button in a form.</p>
+<p>These are used to modify the behavior of popover windows.</p>
+<ul class="simple">
+<li><p>‘’’Opaque’’’:  Forces popover windows to be opaque.  Useful for special case windows where the exact colors are important, such as color pickers.</p></li>
+<li><p>‘’’PointAtPopoverPreferSides’’’:  If true, a point-at popover will prefer to open to the left/right of the point-at location, rather than above/below it.</p></li>
+<li><p>‘’’Pinnable’’’:  If true, this makes popovers pinnacle.  Only click-off and point-at popovers can be pinned.</p></li>
+<li><p>‘’’OpenPinned’’’:  If true and <em>Pinnable</em> is set, the popover will open pinned.</p></li>
+<li><p>‘’’PostPopFocus’’’:  After opening a popover, the viewport with this viewport preset hash will receive a “popped focus” event, allowing it to do special post-restore behaviors like focusing an edit field.</p></li>
+<li><p>‘’’ ViewCanClosePopover’’’:  The viewport with this viewport preset hash has the ability to close the popover in certain situations, such as when hitting enter in an edit field performs and action and then dismisses the popover.</p></li>
+</ul>
+<p>‘’layout.window’’ is used to instance one of these config definitions as a window.  The command is fairly simple:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> layout.window hash:string &lt;?open:boolean&gt; &lt;pin:boolean&gt; &lt;popUnderMouse:boolean&gt;
+</pre></div>
+</td></tr></table></div>
+<p>In a form, it is commonly deployed as:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> layout.window myWindowhash open:?
+</pre></div>
+</td></tr></table></div>
+<p>The <em>pin</em> argument will force pinnable popover windows to open as pinned.  If <em>popUnderMouse</em> is set to false, a non-pointing popover will open at its last position instead of under the mouse.  This is most commonly used with the <em>pin</em> argument.</p>
+</div>
+</div>
+<div class="section" id="closed-window-config-state">
+<h2><a class="toc-backref" href="#id4">Closed Window Config State</a><a class="headerlink" href="#closed-window-config-state" title="Permalink to this headline">¶</a></h2>
+<p>When the window is closed, the window size and position are stored in a <em>LayoutWindowState</em> hash in the root <em>Frame</em> atom of the config.  This information is used when layout.window opens a previously-opened window, overriding the defined window size and position.</p>
+<p>On quit, the hashes of pinned popover layout windows are stored in an <em>OpenOnLaunch</em> hash in the root <em>Frame</em> atom, so that they can be restored when the app is relaunched.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="MODO%20Projects.html" class="btn btn-neutral float-right" title="MODO Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Icon%20Resources.html" class="btn btn-neutral float-left" title="Icon Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/ui/Layout Windows.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:59 GMT -->
+</html>

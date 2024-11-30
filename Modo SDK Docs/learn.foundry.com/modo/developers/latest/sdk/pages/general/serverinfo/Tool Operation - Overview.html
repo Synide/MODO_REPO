@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/serverinfo/Tool Operation - Overview.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tool Operation - Overview &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Treeview" href="Treeview.html" />
+    <link rel="prev" title="Selection Operation - Overview" href="Selection%20Operation%20-%20Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#general-info">General Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CLxImpl%20Tool.html">CLxImpl Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Channel%20Modifier.html">Channel Modifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Global%20Listener%20Object.html">Global Listener Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mesh%20Operation%20-%20Overview.html">Mesh Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Selection%20Operation%20-%20Overview.html">Selection Operation - Overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tool Operation - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tool-pipe">Tool Pipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool">Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-operation">Tool Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subject-packet">Subject Packet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#item-type">Item Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selection-type">Selection Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creation-command">Creation Command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Treeview.html">Treeview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Using%20a%20Spawner.html">Using a Spawner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Visitors%20in%20Action.html">Visitors in Action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Tool Operation - Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tool-operation-overview">
+<h1>Tool Operation - Overview<a class="headerlink" href="#tool-operation-overview" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#tool-pipe" id="id3">Tool Pipe</a></p></li>
+<li><p><a class="reference internal" href="#tool" id="id4">Tool</a></p>
+<ul>
+<li><p><a class="reference internal" href="#interface" id="id5">Interface</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tool-operation" id="id6">Tool Operation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id7">Interface</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#subject-packet" id="id8">Subject Packet</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id9">Interface</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#item-type" id="id10">Item Type</a></p></li>
+<li><p><a class="reference internal" href="#selection-type" id="id11">Selection Type</a></p></li>
+<li><p><a class="reference internal" href="#creation-command" id="id12">Creation Command</a></p></li>
+</ul>
+</div>
+<p>__TOC__</p>
+<p>The Tool Operation provides a way to integrate existing modelling tools into the procedural system. A tool creates a tool operation, that is automatically wrapped by a mesh operation, allowing it to be evaluated as part of the procedural stack. Tool Operations provide an advantage over Mesh Operations, as they allow tool handles, and access to the tool pipe.</p>
+<div class="section" id="tool-pipe">
+<h2><a class="toc-backref" href="#id3">Tool Pipe</a><a class="headerlink" href="#tool-pipe" title="Permalink to this headline">¶</a></h2>
+<p>When integrating a traditional tool into the procedural system, a tool operation generated by the tool is wrapped automatically by a mesh operation, allowing the tool operation to be evaluated whenever the mesh operation is evaluated. One of the main advantages of tools, is that multiple tools can be combined to create new and interesting operations. For example, a Sweep Effector can be combined with a Curve Generator to create a curve extrude, however, combining the same Sweep Effector with a Helix Generator will create a Spring tool. This behaviour is provided using a mechanism known as the tool pipe; for every tool operation item of the “ACTR” type, a tool pipe graph input is exposed on the item, allowing sub-tools to be connected to modify the “ACTR” tool behaviour. Each Tool Operation is provided with a tool vector, which can be used to get packets defined by previous tools in the tool pipe, and set packets used by subsequent tools in the tool pipe. Each Mesh Operation in the procedural stack that wraps a tool operation, has it’s own unique tool pipe, allowing each operation in the stack to have it’s own collection of sub-tools to modify it’s behaviour.</p>
+</div>
+<div class="section" id="tool">
+<h2><a class="toc-backref" href="#id4">Tool</a><a class="headerlink" href="#tool" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="interface">
+<h3><a class="toc-backref" href="#id5">Interface</a><a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="tool-operation">
+<h2><a class="toc-backref" href="#id6">Tool Operation</a><a class="headerlink" href="#tool-operation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id7">Interface</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="subject-packet">
+<h2><a class="toc-backref" href="#id8">Subject Packet</a><a class="headerlink" href="#subject-packet" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id9">Interface</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="item-type">
+<h2><a class="toc-backref" href="#id10">Item Type</a><a class="headerlink" href="#item-type" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="selection-type">
+<h2><a class="toc-backref" href="#id11">Selection Type</a><a class="headerlink" href="#selection-type" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="creation-command">
+<h2><a class="toc-backref" href="#id12">Creation Command</a><a class="headerlink" href="#creation-command" title="Permalink to this headline">¶</a></h2>
+<p>The Tool Operation can provide a creation command that will be executed to handle the creation of the tool operation item. This allows things like dialogs to be created to ask the user for input, or to create graph connections on creation. To define a creation command, the following server tag should be added to the mesh operation server, the value of the tag should be the command to execute.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LXsPKG_MESHOP_CREATECMD         &quot;meshop.create&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Treeview.html" class="btn btn-neutral float-right" title="Treeview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Selection%20Operation%20-%20Overview.html" class="btn btn-neutral float-left" title="Selection Operation - Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/serverinfo/Tool Operation - Overview.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+</html>

@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/GeneralFAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>General &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Items" href="ItemFAQs.html" />
+    <link rel="prev" title="C++ Specific" href="CppFAQs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_faqs.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="COMFAQs.html">About COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChannelFAQs.html">Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CppFAQs.html">C++ Specific</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-write-to-the-log">How do I write to the log?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-find-the-local-path-represented-by-an-alias">How do I find the local path represented by an alias?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-read-server-tags-on-a-package">How do I read server tags on a package?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-is-it-safe-to-make-changes-to-the-scene-from-inside-a-listener">When is it safe to make changes to the scene from inside a listener?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-are-my-kit-s-python-files-ignored-when-running-under-linux">Why are my Kit’s Python files ignored when running under linux?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-can-i-access-image-layers">How can I access image layers?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ItemFAQs.html">Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MeshFAQ.html">Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModifierFAQ.html">Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PythonFAQs.html">Python Specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SelectionFAQ.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TimeFAQs.html">Dealing with Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UIFAQ.html">User Interface</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_faqs.html">Frequently Asked Questions</a> &raquo;</li>
+        
+      <li>General</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="general">
+<h1>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-do-i-write-to-the-log">
+<h2>How do I write to the log?<a class="headerlink" href="#how-do-i-write-to-the-log" title="Permalink to this headline">¶</a></h2>
+<p>Writing to the event log viewport can be done by deriving from the CLxLogMessage utility class (or the CLxLuxologyLogMessage class, which just adds a Lux copyright). This is done by objio.cpp to report load warnings and errors. See Writing to the Event Log for more detail.</p>
+<p>The spikey tool sample uses a log block to display tool feedback. The current value is formatted into the block and displayed as part of the tool info viewport.</p>
+<p>Writing to the debug output on stdout is possible using one of the variants of LogService::DebugOut(), as shown in the Hello World sample. You have to specify a level, and the default level for release builds is ‘error’ I think. Lower-level messages are filtered out. If you want to see all the debug output, start modo with the “-debug:verbose” command line switch.</p>
+</div>
+<div class="section" id="how-do-i-find-the-local-path-represented-by-an-alias">
+<h2>How do I find the local path represented by an alias?<a class="headerlink" href="#how-do-i-find-the-local-path-represented-by-an-alias" title="Permalink to this headline">¶</a></h2>
+<p>Through the file service.  The “ToLocalAlias” function will return the absolute pathspec in local OS specific format. If the alias could not be found the original string will be returned.</p>
+<p>You can also pass a string that contains a path alias and additional sub-folder content or filespec content and the alias portion will be resolved in place. If the Alias is not translated the original input string is returned unaltered.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_File</span> <span class="n">Service</span>     <span class="n">FileService</span><span class="p">;</span>
+<span class="kt">char</span>                                     <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+<span class="n">string</span>                                   <span class="n">localAliasDir</span><span class="p">,</span> <span class="n">fullLocalPath</span><span class="p">;</span>
+
+<span class="n">localAliasDir</span> <span class="o">=</span> <span class="n">FileService</span><span class="p">.</span><span class="n">ToLocalAlias</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;ArtisticGlassMaterials:&quot;</span><span class="p">);</span>
+<span class="n">fullLocalPath</span> <span class="o">=</span> <span class="n">FileService</span><span class="p">.</span><span class="n">ToLocalAlias</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&quot;ArtisticGlassMaterials:scr</span><span class="se">\t</span><span class="s">est.py&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FileService</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">File</span><span class="p">()</span>
+
+<span class="n">localAliasDir</span> <span class="o">=</span> <span class="n">FileService</span><span class="o">.</span><span class="n">ToLocalAlias</span><span class="p">(</span><span class="s2">&quot;ArtisticGlassMaterials:&quot;</span><span class="p">)</span>
+<span class="n">fullLocalPath</span> <span class="o">=</span> <span class="n">FileService</span><span class="o">.</span><span class="n">ToLocalAlias</span><span class="p">(</span><span class="s2">&quot;ArtisticGlassMaterials:scr</span><span class="se">\t</span><span class="s2">est.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-read-server-tags-on-a-package">
+<h2>How do I read server tags on a package?<a class="headerlink" href="#how-do-i-read-server-tags-on-a-package" title="Permalink to this headline">¶</a></h2>
+<p>Packages are servers, so you can access them through the HostService Interface as a Factory Object. This function returns the value for any server tag given the server class, the name of the server, and the tag key.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>
+<span class="n">ServerTag</span> <span class="p">(</span>
+                <span class="k">const</span> <span class="kt">char</span>             <span class="o">*</span><span class="n">className</span><span class="p">,</span>
+                <span class="k">const</span> <span class="kt">char</span>             <span class="o">*</span><span class="n">serverName</span><span class="p">,</span>
+                <span class="k">const</span> <span class="kt">char</span>             <span class="o">*</span><span class="n">tagKey</span><span class="p">)</span>
+<span class="p">{</span>
+                <span class="n">CLxUser_HostService</span>     <span class="n">hostSrv</span><span class="p">;</span>
+                <span class="n">CLxUser_Factory</span>         <span class="n">factory</span><span class="p">;</span>
+                <span class="k">const</span> <span class="kt">char</span>             <span class="o">*</span><span class="n">value</span><span class="p">;</span>
+
+                <span class="n">hostSrv</span><span class="p">.</span><span class="n">Lookup</span> <span class="p">(</span><span class="n">fac</span><span class="p">,</span> <span class="n">className</span><span class="p">,</span> <span class="n">serverName</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">LXx_OK</span> <span class="p">(</span><span class="n">fac</span><span class="p">.</span><span class="n">InfoTag</span> <span class="p">(</span><span class="n">tagKey</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">))</span>
+                                <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+
+                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to use this function to read server tag for item types (packages), you just need to find the package name from the item type.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>                <span class="kt">bool</span>
+<span class="nf">IsMask</span> <span class="p">(</span>
+                <span class="n">CLxUser_Item</span>           <span class="o">&amp;</span><span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+                <span class="n">CLxUser_SceneService</span>    <span class="n">scnSrv</span><span class="p">;</span>
+                <span class="k">const</span> <span class="kt">char</span>             <span class="o">*</span><span class="n">pkgName</span><span class="p">;</span>
+
+                <span class="n">scnSrv</span><span class="p">.</span><span class="n">ItemTypeName</span> <span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">Type</span> <span class="p">(),</span> <span class="o">&amp;</span><span class="n">pkgName</span><span class="p">);</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">ServerTag</span> <span class="p">(</span><span class="n">LXa_PACKAGE</span><span class="p">,</span> <span class="n">pkgName</span><span class="p">,</span> <span class="n">LXsPKG_IS_MASK</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="when-is-it-safe-to-make-changes-to-the-scene-from-inside-a-listener">
+<h2>When is it safe to make changes to the scene from inside a listener?<a class="headerlink" href="#when-is-it-safe-to-make-changes-to-the-scene-from-inside-a-listener" title="Permalink to this headline">¶</a></h2>
+<p>Listeners allow you to respond to events within Modo, such as selection changes, channel edits, time changes, etc…</p>
+<p>However, making changes to the scene in response to those events can cause potential issues depending on the current undo state (e.g. the event might be part of the user undoing something and generally you don’t want to make changes to the scene in response to that).</p>
+<p>To find out the undo state, you can query it from the Undo Service and take appropriate steps depending on the result.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_UndoService</span> <span class="n">undo_svc</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undoState</span> <span class="o">=</span> <span class="n">undo_svc</span><span class="p">.</span><span class="n">State</span><span class="p">();</span>
+<span class="c1">// undoState will be one of:</span>
+<span class="c1">// LXiUNDO_INVALID</span>
+<span class="c1">// LXiUNDO_ACTIVE</span>
+<span class="c1">// LXiUNDO_SUSPEND</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">undoState</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Undo</span><span class="p">()</span><span class="o">.</span><span class="n">State</span><span class="p">()</span>
+<span class="c1"># undoState will be one of:</span>
+<span class="c1"># lx.symbol.iUNDO_INVALID</span>
+<span class="c1"># lx.symbol.iUNDO_ACTIVE</span>
+<span class="c1"># lx.symbol.iUNDO_SUSPEND</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>INVALID - The undo state is invalid. It is not safe to make changes to the scene.
+<a href="#id3"><span class="problematic" id="id4">*</span></a>ACTIVE - The undo system is recording undo steps for the changes being made. It is safe to make changes to the scene and they will be undoable.
+<a href="#id5"><span class="problematic" id="id6">*</span></a>SUSPEND - The undo system is not recording undo steps for the changes being made. Generally this happens during events like scene loading. It is safe to make changes to the scene, however they will not be undoable.</p>
+</div>
+<div class="section" id="why-are-my-kit-s-python-files-ignored-when-running-under-linux">
+<h2>Why are my Kit’s Python files ignored when running under linux?<a class="headerlink" href="#why-are-my-kit-s-python-files-ignored-when-running-under-linux" title="Permalink to this headline">¶</a></h2>
+<p>Linux is case sensitive. Ensure the names and extensions of the config files in your kit are lowercase.</p>
+</div>
+<div class="section" id="how-can-i-access-image-layers">
+<h2>How can I access image layers?<a class="headerlink" href="#how-can-i-access-image-layers" title="Permalink to this headline">¶</a></h2>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-cpp">
+<p class="tab-title">C++</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CLxUser_ChannelRead</span> <span class="n">read</span><span class="p">;</span>
+<span class="n">read</span><span class="p">.</span><span class="n">from</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+
+<span class="c1">// Read object from channel and cast it to a ImageFilter inteface</span>
+<span class="n">CLxUser_ImageFilter</span> <span class="n">filter</span><span class="p">;</span>
+<span class="n">read</span><span class="p">.</span><span class="n">Object</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">LXsICHAN_VIDEOCLIP_IMAGESTACK</span><span class="p">,</span> <span class="n">filter</span><span class="p">);</span>
+
+<span class="n">CLxUser_ImageFilterMetrics</span> <span class="n">myMetrics</span><span class="p">;</span>
+<span class="n">read</span><span class="p">.</span><span class="n">Object</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">LXsICHAN_VIDEOCLIP_IMAGESTACK</span><span class="p">,</span> <span class="n">myMetrics</span><span class="p">);</span>
+
+<span class="c1">// This will fill the metrics structure so that we can read the image dimensions from it</span>
+<span class="n">LXtImageMetrics</span> <span class="n">metrics</span><span class="p">;</span>
+<span class="n">CLxUser_ImageFilterMetrics</span> <span class="nf">myMetrics</span> <span class="p">(</span><span class="n">filter</span><span class="p">);</span>
+<span class="n">myMetrics</span><span class="p">.</span><span class="n">Generate</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">metrics</span><span class="p">);</span>
+
+<span class="c1">// This returns the image from the filter</span>
+<span class="n">CLxUser_Image</span> <span class="n">image</span><span class="p">;</span>
+<span class="n">filter</span><span class="p">.</span><span class="n">Generate</span> <span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">maxRes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">metrics</span><span class="p">.</span><span class="n">maxRes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+
+<span class="c1">// Read an RGBA pixel</span>
+<span class="n">LXtPixelFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">Format</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">format</span> <span class="o">==</span> <span class="n">LXiIMV_RGBA</span><span class="p">)</span>
+<span class="p">{</span>
+                <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pixel</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+                <span class="n">LxResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">GetPixel</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">format</span><span class="p">,</span> <span class="n">pixel</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-py">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sITYPE_IMAGELAYER</span><span class="p">:</span>
+
+        <span class="n">imgFilter</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">ImageFilter</span><span class="p">(</span> <span class="n">item</span><span class="o">.</span><span class="n">channel</span><span class="p">(</span><span class="s1">&#39;imageStack&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">imgFilter</span><span class="o">.</span><span class="n">Generate</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">Format</span><span class="p">()</span> <span class="o">==</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iIMV_RGBA</span><span class="p">:</span>
+                <span class="n">storage</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+                <span class="n">image</span><span class="o">.</span><span class="n">GetPixel</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iIMV_RGBA</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span>
+                <span class="nb">print</span> <span class="s1">&#39;RGBA values: &#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">storage</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ItemFAQs.html" class="btn btn-neutral float-right" title="Items" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CppFAQs.html" class="btn btn-neutral float-left" title="C++ Specific" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/faqs/GeneralFAQ.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Macros.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Macros &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Perl" href="Perl.html" />
+    <link rel="prev" title="Lua" href="Lua.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_scripting.html">Scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppleScript.html">AppleScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bouncing%20Ball%20Script%20(Transform%20Channels).html">Bouncing Ball Script (Transform Channels)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChangeRenderFrameRange%20Script.html">ChangeRenderFrameRange Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Layerservice.html">Layerservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lua.html">Lua</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Macros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-vs-config-macros">File vs. Config Macros</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#file-macros">File Macros</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-macros">Config Macros</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Script%20lua.html">Script lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Interface%20701%20Updates.html">ScriptQuery Interface 701 Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Overview.html">ScriptQuery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting.html">Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting%20Preview.html">Scripting Preview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_scripting.html">Scripting</a> &raquo;</li>
+        
+      <li>Macros</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="macros">
+<h1>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#file-vs-config-macros" id="id1">File vs. Config Macros</a></p>
+<ul>
+<li><p><a class="reference internal" href="#file-macros" id="id2">File Macros</a></p>
+<ul>
+<li><p><a class="reference internal" href="#header" id="id3">Header</a></p></li>
+<li><p><a class="reference internal" href="#comments" id="id4">Comments</a></p></li>
+<li><p><a class="reference internal" href="#example-macro-mymaterial-lxm" id="id5">Example Macro: <em>MyMaterial.lxm</em></a></p></li>
+<li><p><a class="reference internal" href="#executing-a-file-macro" id="id6">Executing a File Macro</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#config-macros" id="id7">Config Macros</a></p>
+<ul>
+<li><p><a class="reference internal" href="#config-format" id="id8">Config Format</a></p></li>
+<li><p><a class="reference internal" href="#executing-config-macros" id="id9">Executing Config Macros</a></p></li>
+<li><p><a class="reference internal" href="#imported-versus-user-config-macros" id="id10">Imported versus User Config Macros</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#arguments" id="id11">Arguments</a></p>
+<ul>
+<li><p><a class="reference internal" href="#example-macro-wrapping-material-name" id="id12">Example Macro: Wrapping <em>material.name</em></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#more-information" id="id13">More Information</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>‘’’Macros’’’ are the simplest kind of script. They are simple linear lists of <a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a> that are executed in order. If any command fails for any reason, the entire macro is aborted. Macros can take arguments, but they cannot perform branching or loops.</p>
+<p>One of the easiest ways to create a macro is to use the Macro Recorder. Simply turn it on and start using the application, and all the actions will be recorded in a script up to the maximum number of undos available. The macro can be replayed, saved to disk or stored in the config. Saved macros serve as an excellent starting point for creating new scripts.</p>
+<div class="section" id="file-vs-config-macros">
+<h2><a class="toc-backref" href="#id1">File vs. Config Macros</a><a class="headerlink" href="#file-vs-config-macros" title="Permalink to this headline">¶</a></h2>
+<p>Macros can exist either as their own discrete files, or as part of a configuration file.  Both act identically; they only difference is where they’re stored.</p>
+<div class="section" id="file-macros">
+<h3><a class="toc-backref" href="#id2">File Macros</a><a class="headerlink" href="#file-macros" title="Permalink to this headline">¶</a></h3>
+<p>‘’’File macros’’’ are simple ASCII text files, usually with the extension ‘’.lxm’’, although this is not strictly required.</p>
+<div class="section" id="header">
+<h4><a class="toc-backref" href="#id3">Header</a><a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h4>
+<p>In order for the interpreter to identify the file as a macro, it must begin with this line:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#LXMacro#</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="comments">
+<h4><a class="toc-backref" href="#id4">Comments</a><a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h4>
+<p>The number sign (#) character can also be used to insert comments into the script. It must be at the beginning of a line, without any leading white space. Blank lines are automatically skipped. Any other line is considered a command and will be executed by the macro interpreter.</p>
+</div>
+<div class="section" id="example-macro-mymaterial-lxm">
+<h4><a class="toc-backref" href="#id5">Example Macro: <em>MyMaterial.lxm</em></a><a class="headerlink" href="#example-macro-mymaterial-lxm" title="Permalink to this headline">¶</a></h4>
+<p>This simple macro changes the name of the selected material to ‘’MyMaterial’’.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#LXMacro#</span>
+ <span class="mi">2</span><span class="p">)</span>
+ <span class="mi">3</span><span class="p">)</span> <span class="c1"># Set the name of the selected material to MyMaterial</span>
+ <span class="mi">4</span><span class="p">)</span> <span class="n">material</span><span class="o">.</span><span class="n">name</span> <span class="n">MyMaterial</span>
+ <span class="mi">5</span><span class="p">)</span>
+ <span class="mi">6</span><span class="p">)</span> <span class="c1"># Switch to &quot;item&quot; selection mode.</span>
+ <span class="mi">7</span><span class="p">)</span> <span class="n">select</span><span class="o">.</span><span class="n">typeFrom</span> <span class="s2">&quot;item&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="executing-a-file-macro">
+<h4><a class="toc-backref" href="#id6">Executing a File Macro</a><a class="headerlink" href="#executing-a-file-macro" title="Permalink to this headline">¶</a></h4>
+<p>If this script was saved in ‘’C:MyMaterial.lxm’’, it could be executed with the Command System: Executing Scripts, just like any other script.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nd">@d</span><span class="p">:</span>\<span class="n">MyMaterial</span><span class="o">.</span><span class="n">lxm</span>
+</pre></div>
+</td></tr></table></div>
+<p>Upon execution, the selected material would be renamed to ‘’MyMaterial’’, and the selection mode would be switched to ‘’material’’.</p>
+</div>
+</div>
+<div class="section" id="config-macros">
+<h3><a class="toc-backref" href="#id7">Config Macros</a><a class="headerlink" href="#config-macros" title="Permalink to this headline">¶</a></h3>
+<p>Config macros are similar to file macros, but these are stored in the config file. Both macros are executed the same way and support the same features.</p>
+<div class="section" id="config-format">
+<h4><a class="toc-backref" href="#id8">Config Format</a><a class="headerlink" href="#config-format" title="Permalink to this headline">¶</a></h4>
+<p>This is the macro to create a unit sphere, which can be found in ‘’resource:macros.cfg’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Macros&quot;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nb">hash</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Macro&quot;</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;Unit Sphere (Thu Jan 15 10:03:09 2004)&quot;</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">atom</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;UserName&quot;</span><span class="o">&gt;</span><span class="n">Unit</span> <span class="n">Sphere</span><span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Command&quot;</span><span class="o">&gt;</span><span class="n">tool</span><span class="o">.</span><span class="n">set</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="n">prim</span><span class="o">.</span><span class="n">sphere</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="n">on</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Command&quot;</span><span class="o">&gt;</span><span class="n">tool</span><span class="o">.</span><span class="n">reset</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="n">prim</span><span class="o">.</span><span class="n">sphere</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Command&quot;</span><span class="o">&gt;</span><span class="n">tool</span><span class="o">.</span><span class="n">apply</span><span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="nb">list</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Command&quot;</span><span class="o">&gt;</span><span class="n">tool</span><span class="o">.</span><span class="n">set</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="n">prim</span><span class="o">.</span><span class="n">sphere</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="n">off</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="mi">3246712</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="o">&lt;/</span><span class="nb">list</span><span class="o">&gt;</span>
+     <span class="o">&lt;/</span><span class="nb">hash</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="n">atom</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Config Files are XML files, which requires all the quotes in the commands to be replaced with ‘’&amp;amp;quot’’; There is an outermost <em>Macros</em> block can contain any number of <em>Macro</em> hashes, each having a unique key. Here, the key ‘’Unit Sphere (Thu Jan 15 10:03:09 2004)’’ was derived from the script?s username and the current data and time, but anything can be used as long as its unique and contains legal characters. These <em>Macro</em> hashes define each config macro.</p>
+<p>A <em>Macro</em> hash block contains a <em>UserName</em> atom, which is used to display a human-readable name in the Command History Viewport#Scripts.</p>
+<p>The remainder of the block contains <em>Command</em> list entries. Each of these contains a single command to execute. As mentioned before, the quotes have been replaced with &amp;amp;quot; for XML compliance.</p>
+</div>
+<div class="section" id="executing-config-macros">
+<h4><a class="toc-backref" href="#id9">Executing Config Macros</a><a class="headerlink" href="#executing-config-macros" title="Permalink to this headline">¶</a></h4>
+<p>Config macros are executed with the ‘’&#64; syntax’’, just like file macros. Since they exist in config files, they can?t be referenced by filename. Instead, a config macro is executed by using either it?s username or, preferably, it?s unique hash. Here there are spaces in both the name and the hash, so we need to wrap them in quotes or curly braces.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="o">@</span><span class="s2">&quot;Unit Sphere&quot;</span>
+ <span class="o">@</span><span class="s2">&quot;Unit Sphere (Thu Jan 15 10:03:09 2004)&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="imported-versus-user-config-macros">
+<h4><a class="toc-backref" href="#id10">Imported versus User Config Macros</a><a class="headerlink" href="#imported-versus-user-config-macros" title="Permalink to this headline">¶</a></h4>
+<p>There are two kinds of Config Files: <em>User</em> and ‘’Imported’’. An Imported config is one that ships with modo, or is otherwise loaded from a config referenced by an <em>&lt;import&gt;</em> directive in another config. User macros exist in your own user config.</p>
+<p>Where a config macro is loaded from determines if it can be edited (renamed and deleted) or not. Since changes are only saved to your user config, only macros stored in the user config can be edited from the ‘’Command History?s’’ <em>Scripts</em> tab. Imported macros will have locks on their icons in the <em>Scripts</em> tab.</p>
+</div>
+</div>
+<div class="section" id="arguments">
+<h3><a class="toc-backref" href="#id11">Arguments</a><a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+<p>Macros support arguments, which are used as simple substitutions. These are in the form of a percent sign followed by a number, starting from ‘’1’’, such as ‘’%1’’, ‘’%2’’, ‘’%3’’, etc. <em>%1</em> will be replaced with the first argument, <em>%2</em> the second, and so on. Anything else following a <em>%</em> is ignored. <em>%%</em> will be replaced with a single ‘’%’’.</p>
+<div class="section" id="example-macro-wrapping-material-name">
+<h4><a class="toc-backref" href="#id12">Example Macro: Wrapping <em>material.name</em></a><a class="headerlink" href="#example-macro-wrapping-material-name" title="Permalink to this headline">¶</a></h4>
+<p>We can make our material script into a simple wrapper for <em>material.name</em> using a ‘’%1’’.  Note the curly braces we used around the ‘’%1’’.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#LXMacro#</span>
+ <span class="mi">2</span><span class="p">)</span>
+ <span class="mi">3</span><span class="p">)</span> <span class="c1"># Set the name of the selected material to %1</span>
+ <span class="mi">4</span><span class="p">)</span> <span class="n">material</span><span class="o">.</span><span class="n">name</span> <span class="o">%</span><span class="mi">1</span>
+ <span class="mi">5</span><span class="p">)</span>
+ <span class="mi">6</span><span class="p">)</span> <span class="c1"># Switch to &quot;item&quot; selection mode.</span>
+ <span class="mi">7</span><span class="p">)</span> <span class="n">select</span><span class="o">.</span><span class="n">typeFrom</span> <span class="s2">&quot;item&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>If this script was saved in ‘’C:RenameMaterial.lxm’’, it could be executed like so.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nd">@d</span><span class="p">:</span>\<span class="n">RenameMaterial</span><span class="o">.</span><span class="n">lxm</span> <span class="s2">&quot;New Name&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Upon execution, <em>%1</em> is replaced with ‘‘“New Name”’’, including the quotes. This causes <em>material.name</em> command is fired as such:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">material</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;New Name&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that the <em>%1</em> can be anywhere outside a comment and it will be replaced; it need not be in the argument portion of a command string.</p>
+</div>
+</div>
+<div class="section" id="more-information">
+<h3><a class="toc-backref" href="#id13">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p>Config Files</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Perl.html" class="btn btn-neutral float-right" title="Perl" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Lua.html" class="btn btn-neutral float-left" title="Lua" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Macros.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

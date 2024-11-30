@@ -1,0 +1,898 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Particle &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Pattern" href="lxd_pattern.html" />
+    <link rel="prev" title="Package" href="lxd_package.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Particle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxparticleitem">ILxParticleItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxreplicatorenumerator">ILxReplicatorEnumerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxparticleevalframe">ILxParticleEvalFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxparticlefilter">ILxParticleFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxparticlecooperator">ILxParticleCoOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpointcacheitem">ILxPointCacheItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxparticleservice">ILxParticleService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxpanimdeform">LXpAnimDeform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxpsamplefalloff">LXpSampleFalloff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Particle</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="particle">
+<h1>Particle<a class="headerlink" href="#particle" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxparticleitem" id="id1">ILxParticleItem</a></p></li>
+<li><p><a class="reference internal" href="#ilxreplicatorenumerator" id="id2">ILxReplicatorEnumerator</a></p></li>
+<li><p><a class="reference internal" href="#ilxparticleevalframe" id="id3">ILxParticleEvalFrame</a></p></li>
+<li><p><a class="reference internal" href="#ilxparticlefilter" id="id4">ILxParticleFilter</a></p></li>
+<li><p><a class="reference internal" href="#ilxparticlecooperator" id="id5">ILxParticleCoOperator</a></p></li>
+<li><p><a class="reference internal" href="#ilxpointcacheitem" id="id6">ILxPointCacheItem</a></p></li>
+<li><p><a class="reference internal" href="#ilxparticleservice" id="id7">ILxParticleService</a></p></li>
+<li><p><a class="reference internal" href="#lxpanimdeform" id="id8">LXpAnimDeform</a></p></li>
+<li><p><a class="reference internal" href="#lxpsamplefalloff" id="id9">LXpSampleFalloff</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>LXsPKG_REPLICATOR</p></li>
+<li><p>LXs_PKG_IS_REPLICATOR</p></li>
+</ul>
+<div class="section" id="ilxparticleitem">
+<h2><a class="toc-backref" href="#id1">ILxParticleItem</a><a class="headerlink" href="#ilxparticleitem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxParticleItem">
+<span id="_CPPv315ILxParticleItem"></span><span id="_CPPv215ILxParticleItem"></span><span id="ILxParticleItem"></span><span class="target" id="class_i_lx_particle_item"></span><em class="property">class </em><code class="sig-name descname">ILxParticleItem</code><a class="headerlink" href="#_CPPv415ILxParticleItem" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxParticleItem7PrepareE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N15ILxParticleItem7PrepareE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N15ILxParticleItem7PrepareE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxParticleItem::Prepare__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_particle_item_1afad672920508b06012d03a741e79d135"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Prepare</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>eval</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxParticleItem7PrepareE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Any item can potentially act as a particle source. This interface allocates a particle object for a given item.<ul class="simple">
+<li><p>Prepare Given an <a class="reference internal" href="lxd_action.html#class_i_lx_evaluation"><span class="std std-ref">ILxEvaluation</span></a> interface, the item selects that channels it needs for input. It can return an index, generally for the first channel it added.</p></li>
+<li><p>Evaluate After prepping, this method is called to allocate the particle source object. The <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface and index are used to read channels selected by the <a class="reference internal" href="#class_i_lx_particle_item_1afad672920508b06012d03a741e79d135"><span class="std std-ref">Prepare()</span></a> method. The particle object doesn’t have a specialized interface, and is instead implemented using a TableauSurface interface to get the point data, and an attributes interface to set the special attributes. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxParticleItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N15ILxParticleItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N15ILxParticleItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxParticleItem::Evaluate__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_particle_item_1ae9ef666dcc1ed19040fc8c6f939ce05a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxParticleItem8EvaluateE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxParticleItem5AllocE12ILxUnknownIDjR18CLxLocalizedObject">
+<span id="_CPPv3N15ILxParticleItem5AllocE12ILxUnknownIDjR18CLxLocalizedObject"></span><span id="_CPPv2N15ILxParticleItem5AllocE12ILxUnknownIDjR18CLxLocalizedObject"></span><span id="ILxParticleItem::Alloc__ILxUnknownID.unsigned.CLxLocalizedObjectR"></span><span class="target" id="class_i_lx_particle_item_1a5f345bfff49d1133aaf7c6bfceef7231"></span>bool <code class="sig-name descname">Alloc</code><span class="sig-paren">(</span>ILxUnknownID <em>attr</em>, unsigned <em>index</em>, CLxLocalizedObject &amp;<em>loc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxParticleItem5AllocE12ILxUnknownIDjR18CLxLocalizedObject" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPKG_READPARTICLES">
+<span class="target" id="lxd__particle_8hpp_1ab523de4c0f8c6a35bc0578caafbad755"></span><code class="sig-name descname">LXsPKG_READPARTICLES</code><a class="headerlink" href="#c.LXsPKG_READPARTICLES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Any item can read particle sources by setting this tag. This allows particle graph connections for the item. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsITYPE_SINGLEPARTICLE</p></li>
+<li><p>LXsITYPE_MULTIPARTICLE</p></li>
+<li><p>LXsITYPE_ORDEREDPARTICLE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPARTICLEATTR_SEED">
+<span class="target" id="lxd__particle_8hpp_1ade452ff088bf0005ef6defdce73ea0f3"></span><code class="sig-name descname">LXsPARTICLEATTR_SEED</code><a class="headerlink" href="#c.LXsPARTICLEATTR_SEED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The particle object can also support an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface to provide options that the client can set.<ul class="simple">
+<li><p>SEED integer attribute that is the random seed for the particle ID or other random attributes of the paricle source.</p></li>
+<li><p>USEPOL integer setting that can be set on mesh particle sources. 0 generates particles on all vertices; 1 generates particles at polygon centers rather than on points; and 2 generates particles only at detached vertices.</p></li>
+<li><p>UPAXIS integer channel which defines the up axis as 0, 1 or 2. This is used for point clouds to determine the best way to orient the particles.</p></li>
+<li><p>DEFORM integer boolean that can be set on mesh particle sources. When true particles are on the deformed mesh, on the base mesh if not.</p></li>
+<li><p>SPACING spacing is used to increase the number of particles at render time with the render multiplier </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsPARTICLEATTR_USEPOL</p></li>
+<li><p>LXsPARTICLEATTR_UPAXIS</p></li>
+<li><p>LXsPARTICLEATTR_DEFORM</p></li>
+<li><p>LXsPARTICLEATTR_SPACING</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiTBLX_PARTICLES">
+<span class="target" id="lxd__particle_8hpp_1a8eec6da057079388afaedbaea372f54b"></span><code class="sig-name descname">LXiTBLX_PARTICLES</code><a class="headerlink" href="#c.LXiTBLX_PARTICLES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Particle features defined for vertices in the source. For legacy reasons these defines have a tableau prefix. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsTBLX_PARTICLE_POS</p></li>
+<li><p>LXsTBLX_PARTICLE_XFRM</p></li>
+<li><p>LXsTBLX_PARTICLE_ID</p></li>
+<li><p>LXsTBLX_PARTICLE_SIZE</p></li>
+<li><p>LXsTBLX_PARTICLE_VEL</p></li>
+<li><p>LXsTBLX_PARTICLE_MASS</p></li>
+<li><p>LXsTBLX_PARTICLE_FORCE</p></li>
+<li><p>LXsTBLX_PARTICLE_AGE</p></li>
+<li><p>LXsTBLX_PARTICLE_PATH</p></li>
+<li><p>LXsTBLX_PARTICLE_DISS</p></li>
+<li><p>LXsTBLX_PARTICLE_RATE</p></li>
+<li><p>LXsTBLX_PARTICLE_ITEM</p></li>
+<li><p>LXsTBLX_PARTICLE_ANGVEL</p></li>
+<li><p>LXsTBLX_PARTICLE_TORQUE</p></li>
+<li><p>LXsTBLX_PARTICLE_PPREV</p></li>
+<li><p>LXsTBLX_PARTICLE_LUM</p></li>
+<li><p>LXsTBLX_PARTICLE_RGB</p></li>
+<li><p>LXiTBLX_COLLISION</p></li>
+<li><p>LXsTBLX_COLLISION_VAL</p></li>
+<li><p>LXsTBLX_COLLISION_POS</p></li>
+<li><p>LXsTBLX_COLLISION_NORM</p></li>
+<li><p>LXsTBLX_COLLISION_COUNT</p></li>
+<li><p>LXsTBLX_COLLISION_TIME</p></li>
+</ul>
+</div>
+<div class="section" id="ilxreplicatorenumerator">
+<h2><a class="toc-backref" href="#id2">ILxReplicatorEnumerator</a><a class="headerlink" href="#ilxreplicatorenumerator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxReplicatorEnumerator">
+<span id="_CPPv323ILxReplicatorEnumerator"></span><span id="_CPPv223ILxReplicatorEnumerator"></span><span id="ILxReplicatorEnumerator"></span><span class="target" id="class_i_lx_replicator_enumerator"></span><em class="property">class </em><code class="sig-name descname">ILxReplicatorEnumerator</code><a class="headerlink" href="#_CPPv423ILxReplicatorEnumerator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ReplicatorEnumerator interface allows traversal of the members of the particle item. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator9EnumerateE11LXtObjectID11LXtObjectID11LXtObjectIDi">
+<span id="_CPPv3N23ILxReplicatorEnumerator9EnumerateE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="_CPPv2N23ILxReplicatorEnumerator9EnumerateE11LXtObjectID11LXtObjectID11LXtObjectIDi"></span><span id="ILxReplicatorEnumerator::Enumerate__LXtObjectID.LXtObjectID.LXtObjectID.i"></span><span class="target" id="class_i_lx_replicator_enumerator_1abbf0ddd1c09d6d0929322ae9280095b8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enumerate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chan</em>, int <em>localXform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator9EnumerateE11LXtObjectID11LXtObjectID11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_replicator_enumerator_1abbf0ddd1c09d6d0929322ae9280095b8"><span class="std std-ref">Enumerate()</span></a> method takes a visitor and calls its Evaluate() method for each replicant of a replicator. During each Evaluate() call, the visitor can get information about the member. If ‘localXform’ is true, then the transforms from the Replicator Item &amp; Particle Source are <em>not</em> applied. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator4ItemE11LXtObjectIDPPv">
+<span id="_CPPv3N23ILxReplicatorEnumerator4ItemE11LXtObjectIDPPv"></span><span id="_CPPv2N23ILxReplicatorEnumerator4ItemE11LXtObjectIDPPv"></span><span id="ILxReplicatorEnumerator::Item__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_replicator_enumerator_1ad8e3a5906c90ecd397a5fb9158875b83"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator4ItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator8PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N23ILxReplicatorEnumerator8PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N23ILxReplicatorEnumerator8PositionE11LXtObjectID9LXtVector"></span><span id="ILxReplicatorEnumerator::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_replicator_enumerator_1a7fac8c416b3a0d3eaf00338e728e4e28"></span>void <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator8PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator11OrientationE11LXtObjectID9LXtMatrix">
+<span id="_CPPv3N23ILxReplicatorEnumerator11OrientationE11LXtObjectID9LXtMatrix"></span><span id="_CPPv2N23ILxReplicatorEnumerator11OrientationE11LXtObjectID9LXtMatrix"></span><span id="ILxReplicatorEnumerator::Orientation__LXtObjectID.LXtMatrix"></span><span class="target" id="class_i_lx_replicator_enumerator_1a2766d3e559c9fdb7721fc5cc2e1965d7"></span>void <code class="sig-name descname">Orientation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>mx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator11OrientationE11LXtObjectID9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator2IdE11LXtObjectID">
+<span id="_CPPv3N23ILxReplicatorEnumerator2IdE11LXtObjectID"></span><span id="_CPPv2N23ILxReplicatorEnumerator2IdE11LXtObjectID"></span><span id="ILxReplicatorEnumerator::Id__LXtObjectID"></span><span class="target" id="class_i_lx_replicator_enumerator_1a8ef6eb86649a893e4c1e820797135b59"></span>float <code class="sig-name descname">Id</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator2IdE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator8DissolveE11LXtObjectID">
+<span id="_CPPv3N23ILxReplicatorEnumerator8DissolveE11LXtObjectID"></span><span id="_CPPv2N23ILxReplicatorEnumerator8DissolveE11LXtObjectID"></span><span id="ILxReplicatorEnumerator::Dissolve__LXtObjectID"></span><span class="target" id="class_i_lx_replicator_enumerator_1abe009b2a4e1976e8eb99bdb1da2abb88"></span>float <code class="sig-name descname">Dissolve</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator8DissolveE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator7GroupIdE11LXtObjectID">
+<span id="_CPPv3N23ILxReplicatorEnumerator7GroupIdE11LXtObjectID"></span><span id="_CPPv2N23ILxReplicatorEnumerator7GroupIdE11LXtObjectID"></span><span id="ILxReplicatorEnumerator::GroupId__LXtObjectID"></span><span class="target" id="class_i_lx_replicator_enumerator_1aec0bfd09dbe7850040d8d072fd7efbf6"></span>float <code class="sig-name descname">GroupId</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator7GroupIdE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator8GeometryE11LXtObjectIDPPv">
+<span id="_CPPv3N23ILxReplicatorEnumerator8GeometryE11LXtObjectIDPPv"></span><span id="_CPPv2N23ILxReplicatorEnumerator8GeometryE11LXtObjectIDPPv"></span><span id="ILxReplicatorEnumerator::Geometry__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_replicator_enumerator_1a9f310ae32b306da8800e2400257faa57"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Geometry</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator8GeometryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitor12ILxUnknownIDb">
+<span id="_CPPv3N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitor12ILxUnknownIDb"></span><span id="_CPPv2N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitor12ILxUnknownIDb"></span><span id="ILxReplicatorEnumerator::Enum__CLxImpl_AbstractVisitorP.ILxUnknownID.b"></span><span class="target" id="class_i_lx_replicator_enumerator_1a00a1c042f3a9e170e44f2a9f82f2dee6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enum</code><span class="sig-paren">(</span>CLxImpl_AbstractVisitor *<em>visitor</em>, ILxUnknownID <em>chan</em>, bool <em>localXform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitor12ILxUnknownIDb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The two <a class="reference internal" href="#class_i_lx_replicator_enumerator_1a00a1c042f3a9e170e44f2a9f82f2dee6"><span class="std std-ref">Enum()</span></a> methods correspond to the two ways of acquiring an enumerator. The channel-read object is not needed for enumerators allocated as part of a modifier. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitorb">
+<span id="_CPPv3N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitorb"></span><span id="_CPPv2N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitorb"></span><span id="ILxReplicatorEnumerator::Enum__CLxImpl_AbstractVisitorP.b"></span><span class="target" id="class_i_lx_replicator_enumerator_1a30fd812f397a6de5b7087cfc2f79dd51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enum</code><span class="sig-paren">(</span>CLxImpl_AbstractVisitor *<em>visitor</em>, bool <em>localXform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator4EnumEP23CLxImpl_AbstractVisitorb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxReplicatorEnumerator7GetItemER11CLxLoc_Item">
+<span id="_CPPv3N23ILxReplicatorEnumerator7GetItemER11CLxLoc_Item"></span><span id="_CPPv2N23ILxReplicatorEnumerator7GetItemER11CLxLoc_Item"></span><span id="ILxReplicatorEnumerator::GetItem__CLxLoc_ItemR"></span><span class="target" id="class_i_lx_replicator_enumerator_1a3a532e829729e22067392efcc98fa49a"></span>bool <code class="sig-name descname">GetItem</code><span class="sig-paren">(</span>CLxLoc_Item &amp;<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxReplicatorEnumerator7GetItemER11CLxLoc_Item" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxparticleevalframe">
+<h2><a class="toc-backref" href="#id3">ILxParticleEvalFrame</a><a class="headerlink" href="#ilxparticleevalframe" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxParticleEvalFrame">
+<span id="_CPPv320ILxParticleEvalFrame"></span><span id="_CPPv220ILxParticleEvalFrame"></span><span id="ILxParticleEvalFrame"></span><span class="target" id="class_i_lx_particle_eval_frame"></span><em class="property">class </em><code class="sig-name descname">ILxParticleEvalFrame</code><a class="headerlink" href="#_CPPv420ILxParticleEvalFrame" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame17VertexDescriptionE11LXtObjectID">
+<span id="_CPPv3N20ILxParticleEvalFrame17VertexDescriptionE11LXtObjectID"></span><span id="_CPPv2N20ILxParticleEvalFrame17VertexDescriptionE11LXtObjectID"></span><span id="ILxParticleEvalFrame::VertexDescription__LXtObjectID"></span><span class="target" id="class_i_lx_particle_eval_frame_1ae212b143d7922774bff1c675c722dc6c"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">VertexDescription</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame17VertexDescriptionE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The particle evaluation frame object maintains the state of the particle simulation. There can be any number of particles, but all of them contain the same information in the form of a vector of floats. This method gets the description of the complete vertex vector for the simulation. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame8MaxCountE11LXtObjectID">
+<span id="_CPPv3N20ILxParticleEvalFrame8MaxCountE11LXtObjectID"></span><span id="_CPPv2N20ILxParticleEvalFrame8MaxCountE11LXtObjectID"></span><span id="ILxParticleEvalFrame::MaxCount__LXtObjectID"></span><span class="target" id="class_i_lx_particle_eval_frame_1a66b5369acbdfef1b3685b219fa6b678f"></span>unsigned <code class="sig-name descname">MaxCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame8MaxCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_eval_frame_1a66b5369acbdfef1b3685b219fa6b678f"><span class="std std-ref">MaxCount()</span></a> returns the number of particle slots, although not all will contain active particles. <a class="reference internal" href="#class_i_lx_particle_eval_frame_1a0a4f36ccc861324cf8bd6d0359919331"><span class="std std-ref">AliveCount()</span></a> returns the number of active particles. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame10AliveCountE11LXtObjectID">
+<span id="_CPPv3N20ILxParticleEvalFrame10AliveCountE11LXtObjectID"></span><span id="_CPPv2N20ILxParticleEvalFrame10AliveCountE11LXtObjectID"></span><span id="ILxParticleEvalFrame::AliveCount__LXtObjectID"></span><span class="target" id="class_i_lx_particle_eval_frame_1a0a4f36ccc861324cf8bd6d0359919331"></span>unsigned <code class="sig-name descname">AliveCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame10AliveCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame11AddParticleE11LXtObjectIDPKfPj">
+<span id="_CPPv3N20ILxParticleEvalFrame11AddParticleE11LXtObjectIDPKfPj"></span><span id="_CPPv2N20ILxParticleEvalFrame11AddParticleE11LXtObjectIDPKfPj"></span><span id="ILxParticleEvalFrame::AddParticle__LXtObjectID.floatCP.unsignedP"></span><span class="target" id="class_i_lx_particle_eval_frame_1a6c5ae7f4b50c75246a32121cb3022dca"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddParticle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> float *<em>state</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame11AddParticleE11LXtObjectIDPKfPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_eval_frame_1a6c5ae7f4b50c75246a32121cb3022dca"><span class="std std-ref">AddParticle()</span></a> adds a new particle with an initial state given by the vector. After this the tags can be set through the StringTag interface. The index of the particle is returned. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame12KillParticleE11LXtObjectIDj">
+<span id="_CPPv3N20ILxParticleEvalFrame12KillParticleE11LXtObjectIDj"></span><span id="_CPPv2N20ILxParticleEvalFrame12KillParticleE11LXtObjectIDj"></span><span id="ILxParticleEvalFrame::KillParticle__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_particle_eval_frame_1a03236d64119e6d0d612bbe8000d9d3f0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">KillParticle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame12KillParticleE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This changes an active particle into an inactive one. Inactive particle slots may be reused for new particles. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame7IsAliveE11LXtObjectIDj">
+<span id="_CPPv3N20ILxParticleEvalFrame7IsAliveE11LXtObjectIDj"></span><span id="_CPPv2N20ILxParticleEvalFrame7IsAliveE11LXtObjectIDj"></span><span id="ILxParticleEvalFrame::IsAlive__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_particle_eval_frame_1a8377bd080fa7cbf5af483e41fe1be26f"></span>unsigned <code class="sig-name descname">IsAlive</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame7IsAliveE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method tests if a given particle is active. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame9GetVectorE11LXtObjectIDjPf">
+<span id="_CPPv3N20ILxParticleEvalFrame9GetVectorE11LXtObjectIDjPf"></span><span id="_CPPv2N20ILxParticleEvalFrame9GetVectorE11LXtObjectIDjPf"></span><span id="ILxParticleEvalFrame::GetVector__LXtObjectID.unsigned.floatP"></span><span class="target" id="class_i_lx_particle_eval_frame_1aa68c9faf6ee0af10bbf0efef6572ae43"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetVector</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, float *<em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame9GetVectorE11LXtObjectIDjPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The state vector for a particle can be read and set using these methods. For <a class="reference internal" href="#class_i_lx_particle_eval_frame_1aa68c9faf6ee0af10bbf0efef6572ae43"><span class="std std-ref">GetVector()</span></a> the client has to pass a sufficient buffer to recieve the requested state vector. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame9SetVectorE11LXtObjectIDjPKf">
+<span id="_CPPv3N20ILxParticleEvalFrame9SetVectorE11LXtObjectIDjPKf"></span><span id="_CPPv2N20ILxParticleEvalFrame9SetVectorE11LXtObjectIDjPKf"></span><span id="ILxParticleEvalFrame::SetVector__LXtObjectID.unsigned.floatCP"></span><span class="target" id="class_i_lx_particle_eval_frame_1aac2b60ae776f450d769d1c3495b8c077"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetVector</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, <em class="property">const</em> float *<em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame9SetVectorE11LXtObjectIDjPKf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame8AliveRunE11LXtObjectIDjPPKjPj">
+<span id="_CPPv3N20ILxParticleEvalFrame8AliveRunE11LXtObjectIDjPPKjPj"></span><span id="_CPPv2N20ILxParticleEvalFrame8AliveRunE11LXtObjectIDjPPKjPj"></span><span id="ILxParticleEvalFrame::AliveRun__LXtObjectID.unsigned.unsignedCPP.unsignedP"></span><span class="target" id="class_i_lx_particle_eval_frame_1a9feed41b1317033e2117451f8605cbc0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AliveRun</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>first</em>, <em class="property">const</em> unsigned **<em>alive</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame8AliveRunE11LXtObjectIDjPPKjPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Particles can also be accessed in runs to improve performance. These methods return runs of ‘alive’ flags and vector values starting from particle index ‘first’ and containing ‘count’ particles. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame9VectorRunE11LXtObjectIDjPPfPj">
+<span id="_CPPv3N20ILxParticleEvalFrame9VectorRunE11LXtObjectIDjPPfPj"></span><span id="_CPPv2N20ILxParticleEvalFrame9VectorRunE11LXtObjectIDjPPfPj"></span><span id="ILxParticleEvalFrame::VectorRun__LXtObjectID.unsigned.floatPP.unsignedP"></span><span class="target" id="class_i_lx_particle_eval_frame_1a634108355a01232179609e5ef07b8a36"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">VectorRun</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>first</em>, float **<em>values</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame9VectorRunE11LXtObjectIDjPPfPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxParticleEvalFrame9NeighborsE11LXtObjectID10LXtFVectordiPjPdPj">
+<span id="_CPPv3N20ILxParticleEvalFrame9NeighborsE11LXtObjectID10LXtFVectordiPjPdPj"></span><span id="_CPPv2N20ILxParticleEvalFrame9NeighborsE11LXtObjectID10LXtFVectordiPjPdPj"></span><span id="ILxParticleEvalFrame::Neighbors__LXtObjectID.LXtFVector.double.i.unsignedP.doubleP.unsignedP"></span><span class="target" id="class_i_lx_particle_eval_frame_1a61f84dd6e8906814fa49cbfe3ac4af76"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Neighbors</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>pos</em>, double <em>maxDist</em>, int <em>maxCount</em>, unsigned *<em>index</em>, double *<em>dist</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxParticleEvalFrame9NeighborsE11LXtObjectID10LXtFVectordiPjPdPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Find nearest particles to the given 3D position. The maxDist is the range to search for particles, and can be -1 for searching everywhere. The maxCount is the maximum number to return, and the index and dist arrays should be at least that long. If you are giving an existing particle position you need to ask for one more particle than you want since the particle itself will be first. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfFRAME_ALIVE">
+<span class="target" id="lxd__particle_8hpp_1abf94e83fcb8f0deb055d6b4bcccd7b85"></span><code class="sig-name descname">LXfFRAME_ALIVE</code><a class="headerlink" href="#c.LXfFRAME_ALIVE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ‘alive’ run holds state bits for each particle. Newborn particles are alive+changed, just killed particles are dead+changed. The changed flag is cleared at the start of each timestep. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfFRAME_CHANGED</p></li>
+</ul>
+</div>
+<div class="section" id="ilxparticlefilter">
+<h2><a class="toc-backref" href="#id4">ILxParticleFilter</a><a class="headerlink" href="#ilxparticlefilter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxParticleFilter">
+<span id="_CPPv317ILxParticleFilter"></span><span id="_CPPv217ILxParticleFilter"></span><span id="ILxParticleFilter"></span><span class="target" id="class_i_lx_particle_filter"></span><em class="property">class </em><code class="sig-name descname">ILxParticleFilter</code><a class="headerlink" href="#_CPPv417ILxParticleFilter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter6VertexE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N17ILxParticleFilter6VertexE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N17ILxParticleFilter6VertexE11LXtObjectID11LXtObjectID"></span><span id="ILxParticleFilter::Vertex__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_particle_filter_1a486aa1ae618b08a96fd4ba536b40c7ec"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">Vertex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>full</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter6VertexE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Process layers are filters that are called in sequence to generate the simulation. The filter provides a peek at the vertex features that it wants to read or write. For all operations on the particle state, these are the only features that the filter will see. The particle frame will remap the full state into the state requested by the filter. If ‘full’ is null, then this should return the features required by this filter. If ‘full’ is non-null, then it contains the full set of features in the simulation and the filter can return a second vertex containing any of the features in the full set. Filters that don’t want optional features can just return the same required vertex for both cases. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter5FlagsE11LXtObjectID">
+<span id="_CPPv3N17ILxParticleFilter5FlagsE11LXtObjectID"></span><span id="_CPPv2N17ILxParticleFilter5FlagsE11LXtObjectID"></span><span id="ILxParticleFilter::Flags__LXtObjectID"></span><span class="target" id="class_i_lx_particle_filter_1ac030501165015a8815f5c8a00def6e33"></span>unsigned <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter5FlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A filter can have one of several types. These determine which processing method will be used for the filter. Additional flags can be set to select the stage of the process where the filter wants to run. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDd">
+<span id="_CPPv3N17ILxParticleFilter10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDd"></span><span id="_CPPv2N17ILxParticleFilter10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDd"></span><span id="ILxParticleFilter::Initialize__LXtObjectID.LXtObjectID.LXtObjectID.double"></span><span class="target" id="class_i_lx_particle_filter_1a9fda700b9bf43eb3266400b658ff6a83"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vertex</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>frame</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_filter_1a9fda700b9bf43eb3266400b658ff6a83"><span class="std std-ref">Initialize()</span></a> is called at start of simulation and gets the frame object and start time. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter4StepE11LXtObjectID11LXtObjectIDd">
+<span id="_CPPv3N17ILxParticleFilter4StepE11LXtObjectID11LXtObjectIDd"></span><span id="_CPPv2N17ILxParticleFilter4StepE11LXtObjectID11LXtObjectIDd"></span><span id="ILxParticleFilter::Step__LXtObjectID.LXtObjectID.double"></span><span class="target" id="class_i_lx_particle_filter_1a641a84ecf2b43b6399ac138707cc2e9d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Step</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>other</em>, double <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter4StepE11LXtObjectID11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_filter_1a641a84ecf2b43b6399ac138707cc2e9d"><span class="std std-ref">Step()</span></a> is called for each new time step. The ‘other’ pointer is another instance of this same filters, and contains the evaluation state for this timestep. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter7CleanupE11LXtObjectID">
+<span id="_CPPv3N17ILxParticleFilter7CleanupE11LXtObjectID"></span><span id="_CPPv2N17ILxParticleFilter7CleanupE11LXtObjectID"></span><span id="ILxParticleFilter::Cleanup__LXtObjectID"></span><span class="target" id="class_i_lx_particle_filter_1aafc1aacc1b1c96a3e62a937671d7ac2a"></span>void <code class="sig-name descname">Cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter7CleanupE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_filter_1aafc1aacc1b1c96a3e62a937671d7ac2a"><span class="std std-ref">Cleanup()</span></a> is called when the simulation is complete. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter5FrameE11LXtObjectIDj">
+<span id="_CPPv3N17ILxParticleFilter5FrameE11LXtObjectIDj"></span><span id="_CPPv2N17ILxParticleFilter5FrameE11LXtObjectIDj"></span><span id="ILxParticleFilter::Frame__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_particle_filter_1aa9124e1f2a787ca55cd91a7564735f4e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Frame</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>stage</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter5FrameE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_filter_1aa9124e1f2a787ca55cd91a7564735f4e"><span class="std std-ref">Frame()</span></a> is called for filters of type LXi_PFILT_FRAME and allows the filter to process the entire frame in any manner. This is the only way to add or remove particles, for example. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter3RunE11LXtObjectIDjPPfPKjjj">
+<span id="_CPPv3N17ILxParticleFilter3RunE11LXtObjectIDjPPfPKjjj"></span><span id="_CPPv2N17ILxParticleFilter3RunE11LXtObjectIDjPPfPKjjj"></span><span id="ILxParticleFilter::Run__LXtObjectID.unsigned.floatPP.unsignedCP.unsigned.unsigned"></span><span class="target" id="class_i_lx_particle_filter_1a0a7eb59ed8c2e6c0403ff63cd559675c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Run</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>stage</em>, float **<em>values</em>, <em class="property">const</em> unsigned *<em>alive</em>, unsigned <em>base</em>, unsigned <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter3RunE11LXtObjectIDjPPfPKjjj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_filter_1a0a7eb59ed8c2e6c0403ff63cd559675c"><span class="std std-ref">Run()</span></a> is called for filters of type LXi_PFILT_RUN and allows the filter to process a run of particles starting at ‘base’ for ‘count’ particles. The values arrays that are passed in match the description of the requested vertex vector. Some of these particles may be dead, but it may be faster to process them than to test. The alive state can be read by setting the ALIVERUN flag. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxParticleFilter8ParticleE11LXtObjectIDjPf">
+<span id="_CPPv3N17ILxParticleFilter8ParticleE11LXtObjectIDjPf"></span><span id="_CPPv2N17ILxParticleFilter8ParticleE11LXtObjectIDjPf"></span><span id="ILxParticleFilter::Particle__LXtObjectID.unsigned.floatP"></span><span class="target" id="class_i_lx_particle_filter_1aac52c896f433685ded5438d6fb974507"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Particle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>stage</em>, float *<em>vertex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxParticleFilter8ParticleE11LXtObjectIDjPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_particle_filter_1aac52c896f433685ded5438d6fb974507"><span class="std std-ref">Particle()</span></a> is called for filters of type LXi_PFILT_PARTICLE or LXi_PFILT_NEW_PARTICLE and allows the filter to process a single particle at a time. Again the vector passed matches the request by the filter. For the ‘NEW’ case this method is only called for particles added by a previous particle filter. This can return LXePARTICLE_KILL to kill the particle. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiPFILT_FRAME</p></li>
+<li><p>LXiPFILT_RUN</p></li>
+<li><p>LXiPFILT_PARTICLE</p></li>
+<li><p>LXiPFILT_NEW_PARTICLE</p></li>
+<li><p>LXmPFILT_TYPE</p></li>
+<li><p>LXfPFILT_PRESTAGE</p></li>
+<li><p>LXfPFILT_DERIVSTAGE</p></li>
+<li><p>LXfPFILT_POSTSTAGE</p></li>
+<li><p>LXfPFILT_ALIVERUN</p></li>
+<li><p>LXsPKG_PFILT_CHANNEL</p></li>
+<li><p>LXsPFILT_ENABLECHANNEL</p></li>
+<li><p>LXePARTICLE_KILL</p></li>
+</ul>
+</div>
+<div class="section" id="ilxparticlecooperator">
+<h2><a class="toc-backref" href="#id5">ILxParticleCoOperator</a><a class="headerlink" href="#ilxparticlecooperator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxParticleCoOperator">
+<span id="_CPPv321ILxParticleCoOperator"></span><span id="_CPPv221ILxParticleCoOperator"></span><span id="ILxParticleCoOperator"></span><span class="target" id="class_i_lx_particle_co_operator"></span><em class="property">class </em><code class="sig-name descname">ILxParticleCoOperator</code><a class="headerlink" href="#_CPPv421ILxParticleCoOperator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxParticleCoOperator10InitializeE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N21ILxParticleCoOperator10InitializeE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N21ILxParticleCoOperator10InitializeE11LXtObjectID11LXtObjectID"></span><span id="ILxParticleCoOperator::Initialize__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_particle_co_operator_1a23ace4c9aaae1e4749db91ecb521a724"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>eval</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxParticleCoOperator10InitializeE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A particle co-operator is an item that can be linked to a particle operator. This allows it to be part of the process for a specific operator. Init and cleanup are called at the start and end of the sim. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxParticleCoOperator7CleanupE11LXtObjectID">
+<span id="_CPPv3N21ILxParticleCoOperator7CleanupE11LXtObjectID"></span><span id="_CPPv2N21ILxParticleCoOperator7CleanupE11LXtObjectID"></span><span id="ILxParticleCoOperator::Cleanup__LXtObjectID"></span><span class="target" id="class_i_lx_particle_co_operator_1aa963c8c52f20c993c6673bc078cd235f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxParticleCoOperator7CleanupE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxParticleCoOperator4StepE11LXtObjectIDd">
+<span id="_CPPv3N21ILxParticleCoOperator4StepE11LXtObjectIDd"></span><span id="_CPPv2N21ILxParticleCoOperator4StepE11LXtObjectIDd"></span><span id="ILxParticleCoOperator::Step__LXtObjectID.double"></span><span class="target" id="class_i_lx_particle_co_operator_1a5a3d080ae65ef4ea57ea74b54caa811e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Step</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>dT</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxParticleCoOperator4StepE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The operator is called at the start of the step with the time, and for each particle. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxParticleCoOperator8ParticleE11LXtObjectID">
+<span id="_CPPv3N21ILxParticleCoOperator8ParticleE11LXtObjectID"></span><span id="_CPPv2N21ILxParticleCoOperator8ParticleE11LXtObjectID"></span><span id="ILxParticleCoOperator::Particle__LXtObjectID"></span><span class="target" id="class_i_lx_particle_co_operator_1aab2a9243335904bc4b6e98cba368156e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Particle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxParticleCoOperator8ParticleE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsPKG_PCOOP_CHANNEL</p></li>
+<li><p>LXsGRAPH_PARTICLEOP</p></li>
+</ul>
+</div>
+<div class="section" id="ilxpointcacheitem">
+<h2><a class="toc-backref" href="#id6">ILxPointCacheItem</a><a class="headerlink" href="#ilxpointcacheitem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxPointCacheItem">
+<span id="_CPPv317ILxPointCacheItem"></span><span id="_CPPv217ILxPointCacheItem"></span><span id="ILxPointCacheItem"></span><span class="target" id="class_i_lx_point_cache_item"></span><em class="property">class </em><code class="sig-name descname">ILxPointCacheItem</code><a class="headerlink" href="#_CPPv417ILxPointCacheItem" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxPointCacheItem7PrepareE11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N17ILxPointCacheItem7PrepareE11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N17ILxPointCacheItem7PrepareE11LXtObjectID11LXtObjectIDPj"></span><span id="ILxPointCacheItem::Prepare__LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_point_cache_item_1a3e9e27f7cbd7d27c0de6c8eb64f151e4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Prepare</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>eval</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPointCacheItem7PrepareE11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Other items can function as point caches. If they provide a PointCacheItem interface then the particle simulation can store its results into the cache. The cache item will typically also have a ParticleItem interface to allow the cache to be used.<ul class="simple">
+<li><p>Prepare Allow the point cache to attach itself to an evaluation context by adding channels.</p></li>
+<li><p>Initialize This is called to start writing frames into the cache. Any previous contents of the cache should be cleared. This is passed the vertex description for the particle features to be saved, and the attributes for reading added channels. It also gets the start time and sample rate.</p></li>
+<li><p>SaveFrame This saves a single frame of particle data to the cache. The object is a particle object with a TableauSurface interface.</p></li>
+<li><p>Cleanup This is called when writing data to the cache is complete. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPointCacheItem10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDjdd">
+<span id="_CPPv3N17ILxPointCacheItem10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDjdd"></span><span id="_CPPv2N17ILxPointCacheItem10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDjdd"></span><span id="ILxPointCacheItem::Initialize__LXtObjectID.LXtObjectID.LXtObjectID.unsigned.double.double"></span><span class="target" id="class_i_lx_point_cache_item_1a5570151931ffeea34ee153ec53f003c1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>vdesc</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned <em>index</em>, double <em>time</em>, double <em>sample</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPointCacheItem10InitializeE11LXtObjectID11LXtObjectID11LXtObjectIDjdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPointCacheItem9SaveFrameE11LXtObjectID11LXtObjectIDd">
+<span id="_CPPv3N17ILxPointCacheItem9SaveFrameE11LXtObjectID11LXtObjectIDd"></span><span id="_CPPv2N17ILxPointCacheItem9SaveFrameE11LXtObjectID11LXtObjectIDd"></span><span id="ILxPointCacheItem::SaveFrame__LXtObjectID.LXtObjectID.double"></span><span class="target" id="class_i_lx_point_cache_item_1a4dca0ce24a311b91ed44fb0129739f8e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SaveFrame</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>pobj</em>, double <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPointCacheItem9SaveFrameE11LXtObjectID11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPointCacheItem7CleanupE11LXtObjectID">
+<span id="_CPPv3N17ILxPointCacheItem7CleanupE11LXtObjectID"></span><span id="_CPPv2N17ILxPointCacheItem7CleanupE11LXtObjectID"></span><span id="ILxPointCacheItem::Cleanup__LXtObjectID"></span><span class="target" id="class_i_lx_point_cache_item_1a7bcd2ada09ade001e041724294bf5d27"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPointCacheItem7CleanupE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsGRAPH_POINTCACHE</p></li>
+<li><p>LXsITYPE_PSIM</p></li>
+<li><p>LXsICHAN_PSIM_ENABLE</p></li>
+<li><p>LXsICHAN_PSIM_SAMPLES</p></li>
+<li><p>LXsICHAN_PSIM_ADDAGE</p></li>
+<li><p>LXsICHAN_PSIM_ADDPATH</p></li>
+<li><p>LXsICHAN_PSIM_STOREFORCE</p></li>
+<li><p>LXsICHAN_PSIM_STOREMASS</p></li>
+<li><p>LXsICHAN_PSIM_AGEKILL</p></li>
+<li><p>LXsICHAN_PSIM_AGEMAX</p></li>
+<li><p>LXsICHAN_PSIM_AGEEXTEND</p></li>
+<li><p>LXsICHAN_PSIM_GRAVENABLE</p></li>
+<li><p>LXsICHAN_PSIM_GRAVAXIS</p></li>
+<li><p>LXsICHAN_PSIM_GRAVITY</p></li>
+<li><p>LXsICHAN_PSIM_DRAGENABLE</p></li>
+<li><p>LXsICHAN_PSIM_DRAG</p></li>
+<li><p>LXsICHAN_PSIM_COLOR</p></li>
+<li><p>LXsICHAN_PSIM_TGROUP</p></li>
+<li><p>LXsICHAN_PSIM_PCOUNT</p></li>
+<li><p>LXsICHAN_PSIM_NTHREAD</p></li>
+<li><p>LXsICHAN_PSIM_CACHEMEM</p></li>
+<li><p>LXsGRAPH_PSIM</p></li>
+</ul>
+</div>
+<div class="section" id="ilxparticleservice">
+<h2><a class="toc-backref" href="#id7">ILxParticleService</a><a class="headerlink" href="#ilxparticleservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxParticleService">
+<span id="_CPPv318ILxParticleService"></span><span id="_CPPv218ILxParticleService"></span><span id="ILxParticleService"></span><span class="target" id="class_i_lx_particle_service"></span><em class="property">class </em><code class="sig-name descname">ILxParticleService</code><a class="headerlink" href="#_CPPv418ILxParticleService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The particle service provides methods for accessing particle-related information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxParticleService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxParticleService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxParticleService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_particle_service_1af3780e27e9cedfcf44223352f39608b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService23GetReplicatorEnumeratorE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxParticleService23GetReplicatorEnumeratorE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxParticleService23GetReplicatorEnumeratorE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxParticleService::GetReplicatorEnumerator__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_particle_service_1a90ba30f42b36513bc26f439d18af8618"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetReplicatorEnumerator</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>replicatorItem</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService23GetReplicatorEnumeratorE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get an enumerator for a replicator. This requires a valid replicator item, and will need an evaluated channel-read object to enumerate. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService20EnumParticleFeaturesE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N18ILxParticleService20EnumParticleFeaturesE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N18ILxParticleService20EnumParticleFeaturesE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxParticleService::EnumParticleFeatures__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_particle_service_1ae0bf5e80bd901e11eb8c6e2a673e0d23"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnumParticleFeatures</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService20EnumParticleFeaturesE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enumerate the particle features added to an item. Any item can set the USEFEATURES server tag to allow features to be added. For each feature the visitor can read the ident string and channel offset. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService12FeatureIdentE11LXtObjectIDPPKc">
+<span id="_CPPv3N18ILxParticleService12FeatureIdentE11LXtObjectIDPPKc"></span><span id="_CPPv2N18ILxParticleService12FeatureIdentE11LXtObjectIDPPKc"></span><span id="ILxParticleService::FeatureIdent__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_particle_service_1a583c5330609ad9d1efa5c85d10ab499d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FeatureIdent</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService12FeatureIdentE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService13FeatureOffsetE11LXtObjectIDPj">
+<span id="_CPPv3N18ILxParticleService13FeatureOffsetE11LXtObjectIDPj"></span><span id="_CPPv2N18ILxParticleService13FeatureOffsetE11LXtObjectIDPj"></span><span id="ILxParticleService::FeatureOffset__LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_particle_service_1a60d197626fab14b405f55307ca819ac3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FeatureOffset</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService13FeatureOffsetE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService18TriGroupToParticleE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxParticleService18TriGroupToParticleE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxParticleService18TriGroupToParticleE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxParticleService::TriGroupToParticle__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_particle_service_1a7e86d7f1dd57f3f168908e26f591ba4b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TriGroupToParticle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>triGroup</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService18TriGroupToParticleE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If you have a triGroup object with positional data and other particle features, you can convert it to a particle object with this function. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService13TriGroupBlendE11LXtObjectID11LXtObjectID11LXtObjectIDd">
+<span id="_CPPv3N18ILxParticleService13TriGroupBlendE11LXtObjectID11LXtObjectID11LXtObjectIDd"></span><span id="_CPPv2N18ILxParticleService13TriGroupBlendE11LXtObjectID11LXtObjectID11LXtObjectIDd"></span><span id="ILxParticleService::TriGroupBlend__LXtObjectID.LXtObjectID.LXtObjectID.double"></span><span class="target" id="class_i_lx_particle_service_1a8ed1b731e92d22c4c77676c2bb85336a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TriGroupBlend</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>triGroup0</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>triGroup1</em>, double <em>blend</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService13TriGroupBlendE11LXtObjectID11LXtObjectID11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>You can also blend two tri-groups representing particle state. Group 0 will be changed based on the amount, with 0.0 being no change and 1.0 being complete replacement. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService17EnumeratorPrepareE11LXtObjectID11LXtObjectID11LXtObjectIDPj">
+<span id="_CPPv3N18ILxParticleService17EnumeratorPrepareE11LXtObjectID11LXtObjectID11LXtObjectIDPj"></span><span id="_CPPv2N18ILxParticleService17EnumeratorPrepareE11LXtObjectID11LXtObjectID11LXtObjectIDPj"></span><span id="ILxParticleService::EnumeratorPrepare__LXtObjectID.LXtObjectID.LXtObjectID.unsignedP"></span><span class="target" id="class_i_lx_particle_service_1a596933718f3d0d59ae385642330bd54b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnumeratorPrepare</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>eval</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>replItem</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService17EnumeratorPrepareE11LXtObjectID11LXtObjectID11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods are provided for accessing a replicator enumerator as part of a modifier. The channel-read object in this case should be NULL. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService18EnumeratorEvaluateE11LXtObjectID11LXtObjectIDjPPv">
+<span id="_CPPv3N18ILxParticleService18EnumeratorEvaluateE11LXtObjectID11LXtObjectIDjPPv"></span><span id="_CPPv2N18ILxParticleService18EnumeratorEvaluateE11LXtObjectID11LXtObjectIDjPPv"></span><span id="ILxParticleService::EnumeratorEvaluate__LXtObjectID.LXtObjectID.unsigned.voidPP"></span><span class="target" id="class_i_lx_particle_service_1ab0f3e5cb86f21fcfbd19a17272ec22cd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnumeratorEvaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService18EnumeratorEvaluateE11LXtObjectID11LXtObjectIDjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService14ItemToParticleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxParticleService14ItemToParticleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxParticleService14ItemToParticleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxParticleService::ItemToParticle__LXtObjectID.LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_particle_service_1acd51d34006dfb6f094b4f516bd6c88b0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemToParticle</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService14ItemToParticleE11LXtObjectID11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a particle object from any particle item. Takes an eval channel read object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxParticleService12EnumFeaturesE12ILxUnknownIDP23CLxImpl_AbstractVisitor">
+<span id="_CPPv3N18ILxParticleService12EnumFeaturesE12ILxUnknownIDP23CLxImpl_AbstractVisitor"></span><span id="_CPPv2N18ILxParticleService12EnumFeaturesE12ILxUnknownIDP23CLxImpl_AbstractVisitor"></span><span id="ILxParticleService::EnumFeatures__ILxUnknownID.CLxImpl_AbstractVisitorP"></span><span class="target" id="class_i_lx_particle_service_1acb999d617c4714cffbef0d505a2d60cb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">EnumFeatures</code><span class="sig-paren">(</span>ILxUnknownID <em>item</em>, CLxImpl_AbstractVisitor *<em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxParticleService12EnumFeaturesE12ILxUnknownIDP23CLxImpl_AbstractVisitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxpanimdeform">
+<h2><a class="toc-backref" href="#id8">LXpAnimDeform</a><a class="headerlink" href="#lxpanimdeform" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416st_LXpAnimDeform">
+<span id="_CPPv316st_LXpAnimDeform"></span><span id="_CPPv216st_LXpAnimDeform"></span><span id="st_LXpAnimDeform"></span><span class="target" id="structst___l_xp_anim_deform"></span><em class="property">struct </em><code class="sig-name descname">st_LXpAnimDeform</code><a class="headerlink" href="#_CPPv416st_LXpAnimDeform" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This packet is used by deformers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N16st_LXpAnimDeform3dirE">
+<span id="_CPPv3N16st_LXpAnimDeform3dirE"></span><span id="_CPPv2N16st_LXpAnimDeform3dirE"></span><span id="st_LXpAnimDeform::dir__LXtFVector"></span><span class="target" id="structst___l_xp_anim_deform_1a004fe719fc8ef313e44c709f3ab1b8b3"></span><a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <code class="sig-name descname">dir</code><a class="headerlink" href="#_CPPv4N16st_LXpAnimDeform3dirE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N16st_LXpAnimDeform9amplitudeE">
+<span id="_CPPv3N16st_LXpAnimDeform9amplitudeE"></span><span id="_CPPv2N16st_LXpAnimDeform9amplitudeE"></span><span id="st_LXpAnimDeform::amplitude__float"></span><span class="target" id="structst___l_xp_anim_deform_1a3a7259fc84657932f97b970f4918bfdc"></span>float <code class="sig-name descname">amplitude</code><a class="headerlink" href="#_CPPv4N16st_LXpAnimDeform9amplitudeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsP_ANIM_DEFORM</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXs_FX_DEFORM_AMP">
+<span class="target" id="lxd__particle_8hpp_1a8ff8be635a3f152352c35fefed075f98"></span><code class="sig-name descname">LXs_FX_DEFORM_AMP</code><a class="headerlink" href="#c.LXs_FX_DEFORM_AMP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For now we have one deformer effect: amplitude. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="lxpsamplefalloff">
+<h2><a class="toc-backref" href="#id9">LXpSampleFalloff</a><a class="headerlink" href="#lxpsamplefalloff" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419st_LXpSampleFalloff">
+<span id="_CPPv319st_LXpSampleFalloff"></span><span id="_CPPv219st_LXpSampleFalloff"></span><span id="st_LXpSampleFalloff"></span><span class="target" id="structst___l_xp_sample_falloff"></span><em class="property">struct </em><code class="sig-name descname">st_LXpSampleFalloff</code><a class="headerlink" href="#_CPPv419st_LXpSampleFalloff" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This packet is used by deformers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N19st_LXpSampleFalloff5valueE">
+<span id="_CPPv3N19st_LXpSampleFalloff5valueE"></span><span id="_CPPv2N19st_LXpSampleFalloff5valueE"></span><span id="st_LXpSampleFalloff::value__float"></span><span class="target" id="structst___l_xp_sample_falloff_1a5781a4bc17878fb5769e000829a64681"></span>float <code class="sig-name descname">value</code><a class="headerlink" href="#_CPPv4N19st_LXpSampleFalloff5valueE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsP_SAMPLE_FALLOFF</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_pattern.html" class="btn btn-neutral float-right" title="Pattern" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_package.html" class="btn btn-neutral float-left" title="Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

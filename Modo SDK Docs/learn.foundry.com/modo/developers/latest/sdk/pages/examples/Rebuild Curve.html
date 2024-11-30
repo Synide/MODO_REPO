@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Rebuild Curve.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rebuild Curve &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rename Item example" href="Rename%20Item%20example.html" />
+    <link rel="prev" title="Read a Driven Channel" href="Read%20a%20Driven%20Channel.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_examples.html">Code Examples and Snippets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Modifier%20Python%20Wrapper.html">Channel Modifier Python Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create%20Vertex%20Mesh%20Operation.html">CreateVertex Mesh Operation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Example%20cmd%20sy%20partifymesh.html">Example cmd sy partifymesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File%20Browser%20Command.html">File Browser Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Form%20Command%20List%20example.html">Form Command List example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Get%20Scene%20Savers%20example.html">Get Scene Savers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Load%20Clip%20example.html">Load Clip example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Socket%20comms%20wrapper.html">Modo Socket comms wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlaneTool%20example.html">PlaneTool example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read%20a%20Driven%20Channel.html">Read a Driven Channel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Rebuild Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rename%20Item%20example.html">Rename Item example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setting%20a%20string%20channels%20default%20value.html">Setting a string channels default value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shader%20Tree%20Navigation.html">Shader Tree Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spherize%20example.html">Spherize example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wav%20Dump%20example.html">Wav Dump example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_examples.html">Code Examples and Snippets</a> &raquo;</li>
+        
+      <li>Rebuild Curve</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rebuild-curve">
+<h1>Rebuild Curve<a class="headerlink" href="#rebuild-curve" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how to create a command which can read curve attributes.  It is made up of the command itself, as well as a visitor object which we use to scan a mesh layer for curve polygons.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lx</span>
+<span class="kn">import</span> <span class="nn">lxu.select</span>
+<span class="kn">import</span> <span class="nn">lxu.command</span>
+<span class="kn">import</span> <span class="nn">lxifc</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">floor</span>
+
+<span class="k">def</span> <span class="nf">dSqr</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Quick function to get the distance squared between two points&#39;&#39;&#39;</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">dist</span> <span class="o">+=</span> <span class="p">(</span><span class="n">vec2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">vec1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">dist</span>
+
+
+<span class="k">class</span> <span class="nc">CurveFinder</span><span class="p">(</span><span class="n">lxifc</span><span class="o">.</span><span class="n">Visitor</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;This visitor object will scan through selected polygons and</span>
+<span class="sd">    create a dictionary of those polygons who are curves.  The ID of the</span>
+<span class="sd">    polygon will be the key, and the value will be the position or its root</span>
+<span class="sd">    vertex.  Later, we&#39;ll compare this position to the position of curve</span>
+<span class="sd">    objects we get to make sure we&#39;re only affecting the curves the user intends.&#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polyAccessor</span><span class="p">,</span> <span class="n">pointAccessor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span> <span class="o">=</span> <span class="n">polyAccessor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="n">pointAccessor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curves</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">vis_Evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">Type</span><span class="p">()</span> <span class="o">==</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iPTYP_CURVE</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">Pos</span><span class="p">()</span>
+            <span class="n">ID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curves</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos</span>
+
+<span class="k">class</span> <span class="nc">CurvePoints</span><span class="p">(</span><span class="n">lxu</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">BasicCommand</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;After initializing the command, arguments are added one by one.  These</span>
+<span class="sd">        arguments can then be referenced later by the order they were added, so</span>
+<span class="sd">        the first argument will be index 0, the second index 1, etc.&#39;&#39;&#39;</span>
+        <span class="n">lxu</span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">BasicCommand</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna_Add</span><span class="p">(</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sTYPE_BOOLEAN</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna_Add</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sTYPE_BOOLEAN</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna_Add</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sTYPE_INTEGER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basic_SetFlags</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMDARG_OPTIONAL</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna_Add</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">sTYPE_DISTANCE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basic_SetFlags</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMDARG_OPTIONAL</span><span class="p">)</span>
+        <span class="sd">&#39;&#39;&#39;Adding a argument requires an internal string name for the argument, and</span>
+<span class="sd">        a type for the argument.  By default all arguments are required, but we can</span>
+<span class="sd">        use the basic_SetFlags method to change that if we need to&#39;&#39;&#39;</span>
+
+
+    <span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">CMD</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Call commands without lx.eval&#39;&#39;&#39;</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Command</span><span class="p">()</span><span class="o">.</span><span class="n">ExecuteArgString</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iCTAG_NULL</span><span class="p">,</span> <span class="n">CMD</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cmd_ArgUserName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;This sets the user name for the argument of a given index.  Ideally, these</span>
+<span class="sd">        user names should exist in a message table inside of a config, but for this</span>
+<span class="sd">        example it&#39;s not really all that important&#39;&#39;&#39;</span>
+
+        <span class="n">argNames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Use Spacing Distance&#39;</span><span class="p">,</span> <span class="s1">&#39;Remove Original Curve&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;Point Count&#39;</span><span class="p">,</span> <span class="s1">&#39;Point Spacing&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">argNames</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">cmd_UserName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;This sets the user name for the command itself.  Again, we should</span>
+<span class="sd">        ideally use a message table, but we will just use a string for simplicity&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;Rebuild Curve&#39;</span>
+
+    <span class="k">def</span> <span class="nf">cmd_DialogInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;If the user doesn&#39;t provide all required arguments, modo opens a dialog</span>
+<span class="sd">        to ask for them.  When this happens, the cmd_DialogInit is called which</span>
+<span class="sd">        allows us to set default values for our the command arguments&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_SetInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_SetInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_SetInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr_SetFlt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">05</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cmd_ArgEnable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">arg</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;When the command dialog opens and when the user interacts with it,</span>
+<span class="sd">        modo calls this method for each of our arguments.  That gives us a chance</span>
+<span class="sd">        to read what the current values for arguments are, and choose if we need</span>
+<span class="sd">        to disable an argument&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">arg</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">lx</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">e_CMD_DISABLED</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">arg</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">lx</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">e_CMD_DISABLED</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">e_OK</span>
+
+    <span class="k">def</span> <span class="nf">cmd_Flags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;cmd_Flags tells modo what kind of command we have.  Since we&#39;re changing</span>
+<span class="sd">        the state of the scene by altering geometry, we need to make this an undoable</span>
+<span class="sd">        command&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMD_MODEL</span> <span class="o">|</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">fCMD_UNDO</span>
+
+    <span class="k">def</span> <span class="nf">getCurve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layerScan</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;For organization, the command is split into two parts.  This method grabs</span>
+<span class="sd">        a curve object from the current mesh layer and returns it to the main execution</span>
+<span class="sd">        method.  If a curve is selected, we find which curve in the curve Group is the</span>
+<span class="sd">        same as the selected one, and return it.  Otherwise, we return all curves</span>
+<span class="sd">        we find.&#39;&#39;&#39;</span>
+
+        <span class="c1"># Layerscan lets us get the mesh as an item object, and as an editable mesh.</span>
+        <span class="n">curveItem</span> <span class="o">=</span> <span class="n">layerScan</span><span class="o">.</span><span class="n">MeshItem</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="n">layerScan</span><span class="o">.</span><span class="n">MeshEdit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">PolygonAccessor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">PointAccessor</span><span class="p">()</span>
+
+        <span class="sd">&#39;&#39;&#39;Getting a curve Group object from an item requires reading the</span>
+<span class="sd">        crvGroup channel, casting the channel&#39;s value object as a value</span>
+<span class="sd">        reference, and finally casting the object from the value reference as</span>
+<span class="sd">        a curve group.  The curve group is an item which contains all the curves</span>
+<span class="sd">        within the provided item.  We access an individual curve by using the</span>
+<span class="sd">        ByIndex() method&#39;&#39;&#39;</span>
+        <span class="n">chanRead</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Channels</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">crvChan</span> <span class="o">=</span> <span class="n">curveItem</span><span class="o">.</span><span class="n">ChannelLookup</span><span class="p">(</span><span class="s1">&#39;crvGroup&#39;</span><span class="p">)</span>
+        <span class="n">crvValObj</span> <span class="o">=</span> <span class="n">chanRead</span><span class="o">.</span><span class="n">ValueObj</span><span class="p">(</span><span class="n">curveItem</span><span class="p">,</span> <span class="n">crvChan</span><span class="p">)</span>
+        <span class="n">valRef</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">ValueReference</span><span class="p">(</span><span class="n">crvValObj</span><span class="p">)</span>
+        <span class="n">curveGroup</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">CurveGroup</span><span class="p">(</span><span class="n">valRef</span><span class="o">.</span><span class="n">GetObject</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">curveGroup</span><span class="o">.</span><span class="n">Count</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="sd">&#39;&#39;&#39;We use our visitor to scan through any selected polygons and check if</span>
+<span class="sd">        they are curves.  If so, we make a dictionary with those curve IDs and</span>
+<span class="sd">        the root vertex position.&#39;&#39;&#39;</span>
+        <span class="n">curveVis</span> <span class="o">=</span> <span class="n">CurveFinder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+        <span class="n">selM</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Mesh</span><span class="p">()</span><span class="o">.</span><span class="n">ModeCompose</span><span class="p">(</span><span class="s1">&#39;select&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">Enumerate</span><span class="p">(</span><span class="n">selM</span><span class="p">,</span> <span class="n">curveVis</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;For every curve that the visitor found, we want to pair it with a</span>
+<span class="sd">        curve object from the curve group.  We&#39;ll make a new dictionary, where</span>
+<span class="sd">        the curve&#39;s ID is the key again, but the value will be the curve object</span>
+<span class="sd">        itself.&#39;&#39;&#39;</span>
+        <span class="n">retCurves</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">selCurve</span> <span class="ow">in</span> <span class="n">curveVis</span><span class="o">.</span><span class="n">curves</span><span class="p">:</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="mi">9</span><span class="o">**</span><span class="mi">99</span>
+            <span class="sd">&#39;&#39;&#39;There are no direct links to find which curve in the curve group</span>
+<span class="sd">            belongs to a specific polygon in a mesh, so we need to compare the root</span>
+<span class="sd">            position of the curve with the root vertices position.  We assume the</span>
+<span class="sd">            curve object with a root position closest to a given root vertex is the</span>
+<span class="sd">            same curve.&#39;&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">curveGroup</span><span class="o">.</span><span class="n">Count</span><span class="p">()):</span>
+                <span class="n">curve</span> <span class="o">=</span> <span class="n">curveGroup</span><span class="o">.</span><span class="n">ByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">curve</span><span class="o">.</span><span class="n">Position</span><span class="p">()</span>
+                <span class="n">tmpD</span> <span class="o">=</span> <span class="n">dSqr</span><span class="p">(</span><span class="n">curveVis</span><span class="o">.</span><span class="n">curves</span><span class="p">[</span><span class="n">selCurve</span><span class="p">],</span> <span class="n">pos</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">tmpD</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+                    <span class="n">dist</span> <span class="o">=</span> <span class="n">tmpD</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">retCurves</span><span class="p">[</span><span class="n">selCurve</span><span class="p">]</span> <span class="o">=</span> <span class="n">curveGroup</span><span class="o">.</span><span class="n">ByIndex</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">retCurves</span>
+
+    <span class="k">def</span> <span class="nf">basic_Execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Even though the point count and spacing distance arguments are both</span>
+<span class="sd">        optional, one of them has to be set.  We check that first.&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dyna_IsSet</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">dyna_IsSet</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="sd">&#39;&#39;&#39;Next we need to make sure we didn&#39;t get a spacing distance of 0</span>
+<span class="sd">            or less, or a point count of less than 2&#39;&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">mode</span><span class="p">:</span>
+                <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetFlt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">e_BADDIST</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">e_ABORT</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ptCount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetInt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">ptCount</span> <span class="o">&lt;</span><span class="mi">2</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">e_BADPTS</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">e_ABORT</span>
+
+            <span class="sd">&#39;&#39;&#39;Finally, we can get a layerscan object in order to check if there</span>
+<span class="sd">            are curves in the mesh.&#39;&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="o">=</span> <span class="n">lxu</span><span class="o">.</span><span class="n">select</span><span class="o">.</span><span class="n">SceneSelection</span><span class="p">()</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+            <span class="n">ls</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">Layer</span><span class="p">()</span>
+            <span class="n">lscan</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">ScanAllocate</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_EDIT</span> <span class="o">|</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_LAYERSCAN_MARKPOLYS</span><span class="p">)</span>
+            <span class="n">curves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCurve</span><span class="p">(</span><span class="n">lscan</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">curves</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">e_NOCURVE</span><span class="p">()</span>
+                <span class="n">lscan</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">e_ABORT</span>
+
+            <span class="sd">&#39;&#39;&#39;All our tests passed, and we have at least 1 curve object to rebuild&#39;&#39;&#39;</span>
+            <span class="n">killSwitch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr_GetInt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ID</span> <span class="ow">in</span> <span class="n">curves</span><span class="p">:</span>
+                <span class="n">curve</span> <span class="o">=</span> <span class="n">curves</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span>
+                <span class="sd">&#39;&#39;&#39;First we get a list of all the positions we want to form</span>
+<span class="sd">                our curve from.  Then we generate points there using a Point object&#39;&#39;&#39;</span>
+                <span class="k">if</span> <span class="n">mode</span><span class="p">:</span>
+                    <span class="n">ptCount</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">Length</span><span class="p">()</span><span class="o">/</span><span class="n">dist</span><span class="p">))</span>
+                <span class="n">pts</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ptCount</span><span class="p">):</span>
+                    <span class="n">curve</span><span class="o">.</span><span class="n">SetLenFraction</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ptCount</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+                    <span class="n">pts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">Position</span><span class="p">())</span>
+                <span class="n">ptList</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
+                    <span class="n">ptList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                <span class="sd">&#39;&#39;&#39;We need to add the IDs from each newly created point into a</span>
+<span class="sd">                storage object, and using that storage object we can create a polygon&#39;&#39;&#39;</span>
+                <span class="n">pBuf</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+                <span class="n">pBuf</span><span class="o">.</span><span class="n">setSize</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ptList</span><span class="p">))</span>
+                <span class="n">pBuf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ptList</span><span class="p">)</span>
+                <span class="n">polyID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">iPTYP_CURVE</span><span class="p">,</span> <span class="n">pBuf</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ptList</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="sd">&#39;&#39;&#39;Finally we check if the user wants to remove the original curve.</span>
+<span class="sd">                If they do, we need to remove each of the verts, and then the polygon&#39;&#39;&#39;</span>
+                <span class="k">if</span> <span class="n">killSwitch</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">VertexCount</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">VertexByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">Remove</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">poly</span><span class="o">.</span><span class="n">Remove</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">SetMeshEdits</span><span class="p">(</span><span class="n">lx</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">f_MESHEDIT_GEOMETRY</span><span class="p">)</span>
+
+            <span class="n">lscan</span><span class="o">.</span><span class="n">Apply</span><span class="p">()</span>
+
+    <span class="sd">&#39;&#39;&#39;These error dialogs catch known cases of failures earlier in the process&#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">e_NOCURVE</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.setup error&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.title {Rebuild Curve}&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.msg {No curve was found in the current mesh layer.}&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.open&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">e_BADDIST</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.setup error&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.title {Rebuild Curve}&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.msg {Distance must be greater than 0}&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.open&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">e_BADPTS</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.setup error&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.title {Rebuild Curve}&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.msg {A minimum of 2 points must be used}&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="s1">&#39;dialog.open&#39;</span><span class="p">)</span>
+
+<span class="n">lx</span><span class="o">.</span><span class="n">bless</span><span class="p">(</span><span class="n">CurvePoints</span><span class="p">,</span> <span class="s2">&quot;curve.rebuild&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Rename%20Item%20example.html" class="btn btn-neutral float-right" title="Rename Item example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Read%20a%20Driven%20Channel.html" class="btn btn-neutral float-left" title="Read a Driven Channel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/examples/Rebuild Curve.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:11 GMT -->
+</html>

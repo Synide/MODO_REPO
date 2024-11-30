@@ -1,0 +1,2480 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Layerservice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Layerservice &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lua" href="Lua.html" />
+    <link rel="prev" title="ChangeRenderFrameRange Script" href="ChangeRenderFrameRange%20Script.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_scripting.html">Scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppleScript.html">AppleScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bouncing%20Ball%20Script%20(Transform%20Channels).html">Bouncing Ball Script (Transform Channels)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChangeRenderFrameRange%20Script.html">ChangeRenderFrameRange Script</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Layerservice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">layerservice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#special-selectors">Special Selectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layers">layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kids">kids</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parts">parts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models">models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#materials">materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#textures">textures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clips">clips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vmaps">vmaps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verts">verts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polys">polys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selmode">selmode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Lua.html">Lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Macros.html">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Script%20lua.html">Script lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Interface%20701%20Updates.html">ScriptQuery Interface 701 Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Overview.html">ScriptQuery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting.html">Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting%20Preview.html">Scripting Preview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_scripting.html">Scripting</a> &raquo;</li>
+        
+      <li>Layerservice</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="layerservice">
+<h1>Layerservice<a class="headerlink" href="#layerservice" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id9">layerservice</a></p>
+<ul>
+<li><p><a class="reference internal" href="#special-selectors" id="id10">Special Selectors</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-selectors" id="id11">Using Selectors</a></p></li>
+<li><p><a class="reference internal" href="#layer-specific-selections" id="id12">Layer-Specific Selections</a></p></li>
+<li><p><a class="reference internal" href="#selecting-layers-vertex-maps-etc" id="id13">“Selecting” Layers, Vertex Maps, etc.</a></p></li>
+<li><p><a class="reference internal" href="#selecting-points-polygons-and-edges" id="id14">Selecting Points, Polygons and Edges</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#layers" id="id15">layers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#layer" id="id16">layer</a></p></li>
+<li><p><a class="reference internal" href="#layer-groups" id="id17">layer_groups</a></p></li>
+<li><p><a class="reference internal" href="#layer-elements" id="id18">layer_elements</a></p></li>
+<li><p><a class="reference internal" href="#layer-lists" id="id19">layer_lists</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id20">layers</a></p></li>
+<li><p><a class="reference internal" href="#layer-n" id="id21">layer.N</a></p></li>
+<li><p><a class="reference internal" href="#layer-name" id="id22">layer.name</a></p></li>
+<li><p><a class="reference internal" href="#layer-index" id="id23">layer.index</a></p></li>
+<li><p><a class="reference internal" href="#layer-subdivlevel" id="id24">layer.subdivLevel</a></p></li>
+<li><p><a class="reference internal" href="#layer-curveangle" id="id25">layer.curveAngle</a></p></li>
+<li><p><a class="reference internal" href="#layer-parent" id="id26">layer.parent</a></p></li>
+<li><p><a class="reference internal" href="#layer-childcount" id="id27">layer.childCount</a></p></li>
+<li><p><a class="reference internal" href="#layer-children" id="id28">layer.children</a></p></li>
+<li><p><a class="reference internal" href="#layer-pivot" id="id29">layer.pivot</a></p></li>
+<li><p><a class="reference internal" href="#layer-bounds" id="id30">layer.bounds</a></p></li>
+<li><p><a class="reference internal" href="#layer-visible" id="id31">layer.visible</a></p></li>
+<li><p><a class="reference internal" href="#layer-model" id="id32">layer.model</a></p></li>
+<li><p><a class="reference internal" href="#layer-id" id="id33">layer.id</a></p></li>
+<li><p><a class="reference internal" href="#layer-splpatchlevel" id="id34">layer.splPatchLevel</a></p></li>
+<li><p><a class="reference internal" href="#layer-wpos" id="id35">layer.wpos</a></p></li>
+<li><p><a class="reference internal" href="#layer-wbounds" id="id36">layer.wbounds</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#kids" id="id37">kids</a></p>
+<ul>
+<li><p><a class="reference internal" href="#kid" id="id38">kid</a></p></li>
+<li><p><a class="reference internal" href="#kid-groups" id="id39">kid_groups</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id40">kids</a></p></li>
+<li><p><a class="reference internal" href="#kid-n" id="id41">kid.N</a></p></li>
+<li><p><a class="reference internal" href="#kid-name" id="id42">kid.name</a></p></li>
+<li><p><a class="reference internal" href="#kid-index" id="id43">kid.index</a></p></li>
+<li><p><a class="reference internal" href="#kid-layer" id="id44">kid.layer</a></p></li>
+<li><p><a class="reference internal" href="#kid-parent" id="id45">kid.parent</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#parts" id="id46">parts</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part" id="id47">part</a></p></li>
+<li><p><a class="reference internal" href="#part-groups" id="id48">part_groups</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id49">parts</a></p></li>
+<li><p><a class="reference internal" href="#part-n" id="id50">part.N</a></p></li>
+<li><p><a class="reference internal" href="#part-name" id="id51">part.name</a></p></li>
+<li><p><a class="reference internal" href="#part-index" id="id52">part.index</a></p></li>
+<li><p><a class="reference internal" href="#part-layer" id="id53">part.layer</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#models" id="id54">models</a></p>
+<ul>
+<li><p><a class="reference internal" href="#model" id="id55">model</a></p></li>
+<li><p><a class="reference internal" href="#model-groups" id="id56">model_groups</a></p></li>
+<li><p><a class="reference internal" href="#model-n" id="id57">model.N</a></p></li>
+<li><p><a class="reference internal" href="#model-name" id="id58">model.name</a></p></li>
+<li><p><a class="reference internal" href="#model-index" id="id59">model.index</a></p></li>
+<li><p><a class="reference internal" href="#model-layer" id="id60">model.layer</a></p></li>
+<li><p><a class="reference internal" href="#model-curname" id="id61">model.curName</a></p></li>
+<li><p><a class="reference internal" href="#model-curindex" id="id62">model.curIndex</a></p></li>
+<li><p><a class="reference internal" href="#model-file" id="id63">model.file</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#materials" id="id64">materials</a></p>
+<ul>
+<li><p><a class="reference internal" href="#material" id="id65">material</a></p></li>
+<li><p><a class="reference internal" href="#material-groups" id="id66">material_groups</a></p></li>
+<li><p><a class="reference internal" href="#materials-depricated" id="id67">materials depricated?</a></p></li>
+<li><p><a class="reference internal" href="#material-n" id="id68">material.N</a></p></li>
+<li><p><a class="reference internal" href="#material-name" id="id69">material.name</a></p></li>
+<li><p><a class="reference internal" href="#material-index" id="id70">material.index</a></p></li>
+<li><p><a class="reference internal" href="#material-layer" id="id71">material.layer</a></p></li>
+<li><p><a class="reference internal" href="#material-opacity" id="id72">material.opacity</a></p></li>
+<li><p><a class="reference internal" href="#material-color" id="id73">material.color</a></p></li>
+<li><p><a class="reference internal" href="#material-luminous" id="id74">material.luminous</a></p></li>
+<li><p><a class="reference internal" href="#material-diffuse" id="id75">material.diffuse</a></p></li>
+<li><p><a class="reference internal" href="#material-specular" id="id76">material.specular</a></p></li>
+<li><p><a class="reference internal" href="#material-gloss" id="id77">material.gloss</a></p></li>
+<li><p><a class="reference internal" href="#material-reflect" id="id78">material.reflect</a></p></li>
+<li><p><a class="reference internal" href="#material-transp" id="id79">material.transp</a></p></li>
+<li><p><a class="reference internal" href="#material-transl" id="id80">material.transl</a></p></li>
+<li><p><a class="reference internal" href="#material-refindex" id="id81">material.refIndex</a></p></li>
+<li><p><a class="reference internal" href="#material-bump" id="id82">material.bump</a></p></li>
+<li><p><a class="reference internal" href="#material-colhigh" id="id83">material.colHigh</a></p></li>
+<li><p><a class="reference internal" href="#material-colfilt" id="id84">material.colFilt</a></p></li>
+<li><p><a class="reference internal" href="#material-difsharp" id="id85">material.difSharp</a></p></li>
+<li><p><a class="reference internal" href="#material-id" id="id86">material.id</a></p></li>
+<li><p><a class="reference internal" href="#material-textures" id="id87">material.textures</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#textures" id="id88">textures</a></p>
+<ul>
+<li><p><a class="reference internal" href="#texture" id="id89">texture</a></p></li>
+<li><p><a class="reference internal" href="#texture-groups" id="id90">texture_groups</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id91">textures</a></p></li>
+<li><p><a class="reference internal" href="#texture-n" id="id92">texture.N</a></p></li>
+<li><p><a class="reference internal" href="#texture-name" id="id93">texture.name</a></p></li>
+<li><p><a class="reference internal" href="#texture-index" id="id94">texture.index</a></p></li>
+<li><p><a class="reference internal" href="#texture-layer" id="id95">texture.layer</a></p></li>
+<li><p><a class="reference internal" href="#texture-id" id="id96">texture.id</a></p></li>
+<li><p><a class="reference internal" href="#texture-type" id="id97">texture.type</a></p></li>
+<li><p><a class="reference internal" href="#texture-channel" id="id98">texture.channel</a></p></li>
+<li><p><a class="reference internal" href="#texture-opacity" id="id99">texture.opacity</a></p></li>
+<li><p><a class="reference internal" href="#texture-enable" id="id100">texture.enable</a></p></li>
+<li><p><a class="reference internal" href="#texture-invert" id="id101">texture.invert</a></p></li>
+<li><p><a class="reference internal" href="#texture-blendmode" id="id102">texture.blendMode</a></p></li>
+<li><p><a class="reference internal" href="#texture-position" id="id103">texture.position</a></p></li>
+<li><p><a class="reference internal" href="#texture-rotation" id="id104">texture.rotation</a></p></li>
+<li><p><a class="reference internal" href="#texture-scale" id="id105">texture.scale</a></p></li>
+<li><p><a class="reference internal" href="#texture-projtype" id="id106">texture.projType</a></p></li>
+<li><p><a class="reference internal" href="#texture-projaxis" id="id107">texture.projAxis</a></p></li>
+<li><p><a class="reference internal" href="#texture-coordsys" id="id108">texture.coordSys</a></p></li>
+<li><p><a class="reference internal" href="#texture-falltype" id="id109">texture.fallType</a></p></li>
+<li><p><a class="reference internal" href="#texture-falloff" id="id110">texture.falloff</a></p></li>
+<li><p><a class="reference internal" href="#texture-uvname" id="id111">texture.uvName</a></p></li>
+<li><p><a class="reference internal" href="#texture-uvmap" id="id112">texture.uvMap</a></p></li>
+<li><p><a class="reference internal" href="#texture-clip" id="id113">texture.clip</a></p></li>
+<li><p><a class="reference internal" href="#texture-clipfile" id="id114">texture.clipFile</a></p></li>
+<li><p><a class="reference internal" href="#texture-locator" id="id115">texture.locator</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#clips" id="id116">clips</a></p>
+<ul>
+<li><p><a class="reference internal" href="#clip" id="id117">clip</a></p></li>
+<li><p><a class="reference internal" href="#clip-groups" id="id118">clip_groups</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id119">clips</a></p></li>
+<li><p><a class="reference internal" href="#clip-n" id="id120">clip.N</a></p></li>
+<li><p><a class="reference internal" href="#clip-name" id="id121">clip.name</a></p></li>
+<li><p><a class="reference internal" href="#clip-file" id="id122">clip.file</a></p></li>
+<li><p><a class="reference internal" href="#clip-index" id="id123">clip.index</a></p></li>
+<li><p><a class="reference internal" href="#clip-layer" id="id124">clip.layer</a></p></li>
+<li><p><a class="reference internal" href="#clip-id" id="id125">clip.id</a></p></li>
+<li><p><a class="reference internal" href="#clip-info" id="id126">clip.info</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#vmaps" id="id127">vmaps</a></p>
+<ul>
+<li><p><a class="reference internal" href="#vmap" id="id128">vmap</a></p></li>
+<li><p><a class="reference internal" href="#vmap-groups" id="id129">vmap_groups</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id130">vmaps</a></p></li>
+<li><p><a class="reference internal" href="#vmaps-n" id="id131">vmaps.N</a></p></li>
+<li><p><a class="reference internal" href="#vmap-name" id="id132">vmap.name</a></p></li>
+<li><p><a class="reference internal" href="#vmap-index" id="id133">vmap.index</a></p></li>
+<li><p><a class="reference internal" href="#vmap-layer" id="id134">vmap.layer</a></p></li>
+<li><p><a class="reference internal" href="#vmap-type" id="id135">vmap.type</a></p></li>
+<li><p><a class="reference internal" href="#vmap-dim" id="id136">vmap.dim</a></p></li>
+<li><p><a class="reference internal" href="#vmap-selected" id="id137">vmap.selected</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#verts" id="id138">verts</a></p>
+<ul>
+<li><p><a class="reference internal" href="#vert" id="id139">vert</a></p></li>
+<li><p><a class="reference internal" href="#vert-groups" id="id140">vert_groups</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id141">verts</a></p></li>
+<li><p><a class="reference internal" href="#vert-n" id="id142">vert.N</a></p></li>
+<li><p><a class="reference internal" href="#vert-name" id="id143">vert.name</a></p></li>
+<li><p><a class="reference internal" href="#vert-index" id="id144">vert.index</a></p></li>
+<li><p><a class="reference internal" href="#vert-layer" id="id145">vert.layer</a></p></li>
+<li><p><a class="reference internal" href="#vert-pos" id="id146">vert.pos</a></p></li>
+<li><p><a class="reference internal" href="#vert-normal" id="id147">vert.normal</a></p></li>
+<li><p><a class="reference internal" href="#vert-numpolys" id="id148">vert.numPolys</a></p></li>
+<li><p><a class="reference internal" href="#vert-polylist" id="id149">vert.polyList</a></p></li>
+<li><p><a class="reference internal" href="#vert-numverts" id="id150">vert.numVerts</a></p></li>
+<li><p><a class="reference internal" href="#vert-vertlist" id="id151">vert.vertList</a></p></li>
+<li><p><a class="reference internal" href="#vert-selected" id="id152">vert.selected</a></p></li>
+<li><p><a class="reference internal" href="#vert-hidden" id="id153">vert.hidden</a></p></li>
+<li><p><a class="reference internal" href="#vert-selsets" id="id154">vert.selSets</a></p></li>
+<li><p><a class="reference internal" href="#vert-vmapvalue" id="id155">vert.vmapValue</a></p></li>
+<li><p><a class="reference internal" href="#vert-symmetric" id="id156">vert.symmetric</a></p></li>
+<li><p><a class="reference internal" href="#vert-wpos" id="id157">vert.wpos</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#polys" id="id158">polys</a></p></li>
+<li><p><a class="reference internal" href="#selmode" id="id159">selmode</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id160">More Information</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id9">layerservice</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Commands are executed and queried directly through the command syntax description previously in this guide, but this doesn?t provide any detailed information about meshes and their related elements.</p>
+<p>The <strong>layerservice</strong> ScriptQuery can be used to obtain this detailed mesh information.</p>
+<p>Many item-level operations in <strong>layerservice</strong> have been superseded by those in ‘’’sceneservice]]’’’. Be sure to check <strong>[[sceneservice</strong> to see if it is more appropriate to your task than layerservice. In general, when you want to deal with items and their channels or when you want scene-level information, you’ll mostly be making use of sceneservice. When you want to deal with modeling operations or need to obtain information about the specific vertices, polygons and edges of a mesh, you’d use layerservice.</p>
+<p>Due to its design, <strong>layerservice</strong> is only meant to work on mesh items. Attempting to pass other kinds of items to any of the attributes will fail.</p>
+<div class="section" id="special-selectors">
+<h3><a class="toc-backref" href="#id10">Special Selectors</a><a class="headerlink" href="#special-selectors" title="Permalink to this headline">¶</a></h3>
+<p>This interface hosts a series of global lists of layers, models, materials, parts, textures, clips and vertex maps. There are also local lists specific to the layer selection for accessing vertices, edges and polygons.</p>
+<p>The root-level attributes ending in an ?s? all return valid selectors for the more specific property attributes, similar to how the return values from the commandservice]] commands and [[categories attributes are the selectors for the more specific property attributes. However, the <em>layerservice</em> ?s? attributes require the use of selectors returned by the various attributes ending in <em>_groups</em> to filter the query to specific groups of elements.</p>
+<p>The ?s? attributes are ‘’layers, kids, materials, parts, textures, clips, vmaps, verts, polys, edges’’ and ‘’models’’.</p>
+<p>The <em>_groups</em> attributes are ‘’layer_groups, kid_groups, material_groups, part_groups, texture_groups, clip_groups, vmap_groups, vert_groups, poly_groups’’ and ‘’edge_groups’’.</p>
+<div class="section" id="using-selectors">
+<h4><a class="toc-backref" href="#id11">Using Selectors</a><a class="headerlink" href="#using-selectors" title="Permalink to this headline">¶</a></h4>
+<p>In the case of layers, the <em>_groups</em> attribute returns the keywords ‘’main, fg, bg’’ and all’’. Getting a list of foreground layers is done in the following example.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layers ? fg
+</pre></div>
+</td></tr></table></div>
+<p>Each of the values returned by this query can be passed into the a more specific property attribute, such as ‘’layer.subdivLevel’’. In the following example we assume that the query returned “0”, and we provided that as the selector to ‘’layer.subdivLevel’’:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layers.subdivLevel ? 0
+</pre></div>
+</td></tr></table></div>
+<p>Alternatively, all of the different ?s? attributes support the list walking keywords returned by the <em>layers_element</em> attributes ‘’first, last, next’’ and ‘’prev’’, which are fairly self-explanatory. This example returns the first vertex map:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmaps ? first
+</pre></div>
+</td></tr></table></div>
+<p>The result of this query can then be passed to the property attributes. The next vertex map can then be obtained with:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmaps ? next
+</pre></div>
+</td></tr></table></div>
+<p>And so on.</p>
+</div>
+<div class="section" id="layer-specific-selections">
+<h4><a class="toc-backref" href="#id12">Layer-Specific Selections</a><a class="headerlink" href="#layer-specific-selections" title="Permalink to this headline">¶</a></h4>
+<p>In the case of vertices, edges and polygons, a layer selection is required before any of their attributes can be used. This can be done by using any of the layer attributes that takes a selection.</p>
+<p>The <em>layer.index</em> attribute, for example, actually gets the index of a specific layer, but it also changes the selection in the service.</p>
+<p>In this example we switch the layer selection to the primary layer, discarding the returned value:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.index ? main
+</pre></div>
+</td></tr></table></div>
+<p>After that, the various vertex, polygon and edge attributes can be used to get information specifically related to that layer, such as this query to get the number of selected vertices in the layer:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  query layerservice vert.N ? selected
+</pre></div>
+</td></tr></table></div>
+<p>The above example also demonstrates the different grouping keywords used by the local lists. A complete list of keywords can be obtained by querying ‘’vert_groups, edge_groups and poly_groups’’, and includes ‘’selected, unselected’’, and ‘’all’’.</p>
+</div>
+<div class="section" id="selecting-layers-vertex-maps-etc">
+<h4><a class="toc-backref" href="#id13">“Selecting” Layers, Vertex Maps, etc.</a><a class="headerlink" href="#selecting-layers-vertex-maps-etc" title="Permalink to this headline">¶</a></h4>
+<p>As mentioned above, it is important to note that all attributes work only on the current layer chosen for querying. This is especially true of the ‘’vert.???, poly.???’’ and <em>edge.???</em> element attributes.</p>
+<p>This is termed as selection, but is not the same as how you select elements with the mouse through the interface; rather this is to provide layerservice with a context to query another attribute. This kind of selection is performed by simply querying one of the attributes of the element you want to select.</p>
+<p>For example, to “select” a layer, simply query any <em>layer.???</em> attribute, such as layer.index.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  query layerservice layer.index ? main
+</pre></div>
+</td></tr></table></div>
+<p>After this, the various ‘’vert.???, poly.???’’, etc. attributes can be used. The return value from the query above can be ignored; our only purpose is to tell layerservice which layer we plan to query the properties of.</p>
+<p>Once “selected”, it remains until a new call to one of the <em>layer.???</em> attributes.</p>
+<p>Similarly, attributes such as vert.vmapValue and poly.vmapValue require a vertex map selection, as mentioned in the attribute?s description</p>
+</div>
+<div class="section" id="selecting-points-polygons-and-edges">
+<h4><a class="toc-backref" href="#id14">Selecting Points, Polygons and Edges</a><a class="headerlink" href="#selecting-points-polygons-and-edges" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>select.element</strong> command can be used to select vertices, polygons and edges (this is selecting like how you would select a polygon in a model viewport, not the query selecting described in the previous section).</p>
+<p>Once selected, elements can be manipulated using other commands. In all cases, the selectors returned by the verts, polys and edges attributes can be used to select those individual elements. <em>verts</em> and <em>polys</em> bother return element indices, while edges returns a vertex pair separated by commas and wrapped in parentheses, such as “(21, 18)”.</p>
+</div>
+</div>
+<div class="section" id="layers">
+<h3><a class="toc-backref" href="#id15">layers</a><a class="headerlink" href="#layers" title="Permalink to this headline">¶</a></h3>
+<p>The ‘’’layer attributes’’’ provide information about the individual layers that make up a mesh.</p>
+<div class="section" id="layer">
+<h4><a class="toc-backref" href="#id16">layer</a><a class="headerlink" href="#layer" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of layer attributes. No selection needed.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the layer.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-groups">
+<h4><a class="toc-backref" href="#id17">layer_groups</a><a class="headerlink" href="#layer-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of layer group keywords, used to querying subsets of layers:</p>
+<ul class="simple">
+<li><p><em>All:</em> All layers.</p></li>
+<li><p><em>Fg:</em> Foreground layers; currently active.</p></li>
+<li><p><em>Foregruond:</em> Synonym for “fg”</p></li>
+<li><p><em>Bg:</em> Background layers; currently inactive, for reference.</p></li>
+<li><p><em>Background:</em> Synonym for “bg”</p></li>
+<li><p><em>Main:</em> Main; new geometry creation will go here.</p></li>
+</ul>
+<p>string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>all
+fg
+bg
+primary
+main</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-elements">
+<h4><a class="toc-backref" href="#id18">layer_elements</a><a class="headerlink" href="#layer-elements" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of keywords for walking lists:</p>
+<ul class="simple">
+<li><p><em>First:</em> Go to the head of the list.</p></li>
+<li><p><em>Last:</em> Go to the tail element in the list.</p></li>
+<li><p><em>Prev:</em> Go to the prev element in the list.</p></li>
+<li><p><em>Next:</em> Go to the next element in the list.</p></li>
+</ul>
+<p>string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer_elements ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+first last prev next</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-lists">
+<h4><a class="toc-backref" href="#id19">layer_lists</a><a class="headerlink" href="#layer-lists" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of layer group keywords, used to querying subsets of layers:</p>
+<ul class="simple">
+<li><p><em>Kids:</em> A list of child layers parented to this one.</p></li>
+<li><p><em>Part:</em> A list of parts used in these layers.</p></li>
+<li><p><em>Material:</em> A list of materials used in these layers.</p></li>
+<li><p><em>Texture:</em> A list of textures used in these layers.</p></li>
+<li><p><em>Clip:</em> A list of clips (images) used in these layers.</p></li>
+<li><p><em>VMap:</em> A list of vertex maps used in these layers.</p></li>
+<li><p><em>Poly:</em> A list of polygons in these layers.</p></li>
+<li><p><em>Vert:</em> A list of vertices in these layers.</p></li>
+<li><p><em>Edge:</em> A list of edges in these layers.</p></li>
+</ul>
+<p>string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer_lists ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>kids
+part
+material
+texture
+clip
+vmap
+poly
+vert
+edge
+model
+uv</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h4><a class="toc-backref" href="#id20">layers</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of layer possible selections to pass into the more specific “layer.???” attributes.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layers ? fg
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list of foreground layers]</p>
+</div>
+<div class="section" id="layer-n">
+<h4><a class="toc-backref" href="#id21">layer.N</a><a class="headerlink" href="#layer-n" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of layers.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.N ? fg
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-name">
+<h4><a class="toc-backref" href="#id22">layer.name</a><a class="headerlink" href="#layer-name" title="Permalink to this headline">¶</a></h4>
+<p>Get the layer?s name.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.name ? 1
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+Mesh</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-index">
+<h4><a class="toc-backref" href="#id23">layer.index</a><a class="headerlink" href="#layer-index" title="Permalink to this headline">¶</a></h4>
+<p>Get the absolute index of the layer. Indicies start a 1.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.index ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<div class="section" id="layer-subdivlevel">
+<h4><a class="toc-backref" href="#id24">layer.subdivLevel</a><a class="headerlink" href="#layer-subdivlevel" title="Permalink to this headline">¶</a></h4>
+<p>Get the subdivision level of the layer.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.subdivLevel ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+2</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-curveangle">
+<h4><a class="toc-backref" href="#id25">layer.curveAngle</a><a class="headerlink" href="#layer-curveangle" title="Permalink to this headline">¶</a></h4>
+<p>Get the curve angle setting of a layer.</p>
+<p>Datatype:
+angle</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.curveAngle ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+6.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-parent">
+<h4><a class="toc-backref" href="#id26">layer.parent</a><a class="headerlink" href="#layer-parent" title="Permalink to this headline">¶</a></h4>
+<p>Get the parent index of the layer.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.parent ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+-1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-childcount">
+<h4><a class="toc-backref" href="#id27">layer.childCount</a><a class="headerlink" href="#layer-childcount" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of layers parented to this one. The selector must be a layer_elements keyword or a specific selection from a layers query.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.childCount ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<div class="section" id="layer-children">
+<h4><a class="toc-backref" href="#id28">layer.children</a><a class="headerlink" href="#layer-children" title="Permalink to this headline">¶</a></h4>
+<p>Get the item IDs of the children of this layer. Returns an empty list if there are no children.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.children ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-pivot">
+<h4><a class="toc-backref" href="#id29">layer.pivot</a><a class="headerlink" href="#layer-pivot" title="Permalink to this headline">¶</a></h4>
+<p>Get the pivot point of the layers. Three numbers are returned, representing the X, Y and Z axes.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.pivot ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0.0 0.0 0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-bounds">
+<h4><a class="toc-backref" href="#id30">layer.bounds</a><a class="headerlink" href="#layer-bounds" title="Permalink to this headline">¶</a></h4>
+<p>Get the bounding box enclosing the layers. Six numbers are returned; which should be two pairs of X, Y and Z coordinates marking the opposite corners of the volume.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.bounds ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+-0.5 -0.5 -0.5 0.5 0.5 0.5</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-visible">
+<h4><a class="toc-backref" href="#id31">layer.visible</a><a class="headerlink" href="#layer-visible" title="Permalink to this headline">¶</a></h4>
+<p>Get the layer visibility, returning fg, bg, main or none.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.visible ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+fg</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-model">
+<h4><a class="toc-backref" href="#id32">layer.model</a><a class="headerlink" href="#layer-model" title="Permalink to this headline">¶</a></h4>
+<p>Get the filename of the model the layer belongs to. This includes the full path to the file.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.model ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+c:PathFilename.lwo</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-id">
+<h4><a class="toc-backref" href="#id33">layer.id</a><a class="headerlink" href="#layer-id" title="Permalink to this headline">¶</a></h4>
+<p>Get the item reference ID of the layer.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.id ? mesh020
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+mesh_375A8C59897A</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-splpatchlevel">
+<h4><a class="toc-backref" href="#id34">layer.splPatchLevel</a><a class="headerlink" href="#layer-splpatchlevel" title="Permalink to this headline">¶</a></h4>
+<p>Return the spline patch level of the layer</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.splPatchLevel ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+16</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-wpos">
+<h4><a class="toc-backref" href="#id35">layer.wpos</a><a class="headerlink" href="#layer-wpos" title="Permalink to this headline">¶</a></h4>
+<p>Return the world position of the layer</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  query layerservice layer.wpos ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>0.1
+0.5
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="layer-wbounds">
+<h4><a class="toc-backref" href="#id36">layer.wbounds</a><a class="headerlink" href="#layer-wbounds" title="Permalink to this headline">¶</a></h4>
+<p>???
+Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.wbounds ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+???</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="kids">
+<h3><a class="toc-backref" href="#id37">kids</a><a class="headerlink" href="#kids" title="Permalink to this headline">¶</a></h3>
+<p>The kid series of attributes are a subset of the layer attributes, and are used to list the children of the a layer. The
+‘’kid.???’’ and <em>layer.???</em> attributes use the same layer selectors.
+The kid attribute itself is use to get the list of available <em>kid.???</em> attributes. The <em>kid_groups</em> attribute is used to
+provide group filters for the other attributes.</p>
+<div class="section" id="kid">
+<h4><a class="toc-backref" href="#id38">kid</a><a class="headerlink" href="#kid" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of kid attributes. No selection is needed.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the kid.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="kid-groups">
+<h4><a class="toc-backref" href="#id39">kid_groups</a><a class="headerlink" href="#kid-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of kid keywords to pass as the selection for the other attributes. No selection is needed.</p>
+<ul class="simple">
+<li><p><em>All:</em> Children of all layers.</p></li>
+<li><p><em>Fg:</em> Children of the foreground layers.</p></li>
+<li><p><em>Bg:</em> Children of the background layers.</p></li>
+<li><p><em>Main:</em> Children of the primary layer.</p></li>
+</ul>
+<p>string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>all
+fg
+bg
+main</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h4><a class="toc-backref" href="#id40">kids</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the “kid.???” attributes. These are in the form of absolute indices into the global layer list, and representing the children of the layer selection.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kids ? main
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="kid-n">
+<h4><a class="toc-backref" href="#id41">kid.N</a><a class="headerlink" href="#kid-n" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of children of the layer selection.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid.n ? main
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="kid-name">
+<h4><a class="toc-backref" href="#id42">kid.name</a><a class="headerlink" href="#kid-name" title="Permalink to this headline">¶</a></h4>
+<p>Name of a child of the layer selection. The selection must be one of the keywords returned by layer_element, or a previous layer_element selection must exist.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+Mesh</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="kid-index">
+<h4><a class="toc-backref" href="#id43">kid.index</a><a class="headerlink" href="#kid-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a child layer in the global layer list. Indices start from 1.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="kid-layer">
+<h4><a class="toc-backref" href="#id44">kid.layer</a><a class="headerlink" href="#kid-layer" title="Permalink to this headline">¶</a></h4>
+<p>Get the layer index of the child. Indices start from 1.</p>
+<p>Datatype:
+index</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid.layer ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="kid-parent">
+<h4><a class="toc-backref" href="#id45">kid.parent</a><a class="headerlink" href="#kid-parent" title="Permalink to this headline">¶</a></h4>
+<p>Index of a parent of this specific child layer in the global layer list. Returns 0 if the kid has no parent.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice kid.parent ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="parts">
+<h3><a class="toc-backref" href="#id46">parts</a><a class="headerlink" href="#parts" title="Permalink to this headline">¶</a></h3>
+<p>The part attributes provide access to the lists of polygons associated with part names.</p>
+<p>The part attribute is use to get the list of available <em>part.???</em> attributes. The part_groups attribute is used to provide group filters for the other attributes.</p>
+<p>The parts attribute returns a list of possible, specific selectors for the various <em>part.???</em> attributes, while part.N returns the number of parts in that grouping. Both attributes require a keyword from the part_group attribute as a selector.</p>
+<p>The <em>part.???</em> attributes query specific properties of an individual part. For each, the selector must be a Layerservice#layer_elements keywords (first, last, prev or next), or a specific selection from a parts query, or simply an index between 0 and part.N.</p>
+<div class="section" id="part">
+<h4><a class="toc-backref" href="#id47">part</a><a class="headerlink" href="#part" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of part attributes.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice part ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the part.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="part-groups">
+<h4><a class="toc-backref" href="#id48">part_groups</a><a class="headerlink" href="#part-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of group keywords to pass as the selection for the other attributes. No selection is needed. There is currently only one keyword, All, which returns all parts.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice part_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+all</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h4><a class="toc-backref" href="#id49">parts</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the “part.???” attributes. These are provided as absolute indices in the global part list.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice parts ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>0
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="part-n">
+<h4><a class="toc-backref" href="#id50">part.N</a><a class="headerlink" href="#part-n" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of parts.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice part.n ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+2</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="part-name">
+<h4><a class="toc-backref" href="#id51">part.name</a><a class="headerlink" href="#part-name" title="Permalink to this headline">¶</a></h4>
+<p>Name of a part in the part list.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice part.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>Bolt
+Nut</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="part-index">
+<h4><a class="toc-backref" href="#id52">part.index</a><a class="headerlink" href="#part-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a part in the part list. Indices start from 0.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice part.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="part-layer">
+<h4><a class="toc-backref" href="#id53">part.layer</a><a class="headerlink" href="#part-layer" title="Permalink to this headline">¶</a></h4>
+<p>Get the current layer index, usually of the current mesh. Indices start from 1.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice part.layer ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="models">
+<h3><a class="toc-backref" href="#id54">models</a><a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
+<p>The model series of attributes provide information about the models, which are defined as a collection of layers stored in a file.</p>
+<p>The model attribute itself will return the list of available model.??? attributes.</p>
+<p>The model.??? attributes query specific properties of an individual model. For each, the selector must be a specific
+selection from a models query, or an index between 0 and model.N, or one of the models_groups selectors.</p>
+<div class="section" id="model">
+<h4><a class="toc-backref" href="#id55">model</a><a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of model attributes. No selection is needed.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+[list of model.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-groups">
+<h4><a class="toc-backref" href="#id56">model_groups</a><a class="headerlink" href="#model-groups" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="model-n">
+<h4><a class="toc-backref" href="#id57">model.N</a><a class="headerlink" href="#model-n" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of models in memory.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.n ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+2</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-name">
+<h4><a class="toc-backref" href="#id58">model.name</a><a class="headerlink" href="#model-name" title="Permalink to this headline">¶</a></h4>
+<p>Get the filename of the model, or an empty list if it has not yet been saved. This is the filename only, without the path to the file.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.name ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+Filename.lxo</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-index">
+<h4><a class="toc-backref" href="#id59">model.index</a><a class="headerlink" href="#model-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a model in the global model list. Note that the indices start from 1.</p>
+<p>‘’’Datatype:’’’
+integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.index ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-layer">
+<h4><a class="toc-backref" href="#id60">model.layer</a><a class="headerlink" href="#model-layer" title="Permalink to this headline">¶</a></h4>
+<p>Return the index of the current layer of the model. Layer indices start from 1.</p>
+<p>‘’’Datatype:’’’
+integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.layer ? first
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-curname">
+<h4><a class="toc-backref" href="#id61">model.curName</a><a class="headerlink" href="#model-curname" title="Permalink to this headline">¶</a></h4>
+<p>Get the name of the current model. If the file has not yet been saved, this may be “untitled” or “untitled*”.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.curName ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+Filename.lxo</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-curindex">
+<h4><a class="toc-backref" href="#id62">model.curIndex</a><a class="headerlink" href="#model-curindex" title="Permalink to this headline">¶</a></h4>
+<p>Return the currently selected model?s index. Indices start from 1.</p>
+<p>‘’’Datatype:’’’
+integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.curIndex ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="model-file">
+<h4><a class="toc-backref" href="#id63">model.file</a><a class="headerlink" href="#model-file" title="Permalink to this headline">¶</a></h4>
+<p>Get the filename of the model, or an empty list if it has not yet been saved. This includes the full path to the file as well as the filename.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice model.file ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+C:pathFilename.lwo</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="materials">
+<h3><a class="toc-backref" href="#id64">materials</a><a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h3>
+<p>The material attribute is use to get the list of available material.??? attributes. used to provide group filters for the other attributes.</p>
+<p>The materials attribute returns a list of possible, specific selectors for the various material.??? attributes, while material.N returns the number of materials in that grouping. Both attributes require a keyword from the material_group attribute as a selector.</p>
+<div class="section" id="material">
+<h4><a class="toc-backref" href="#id65">material</a><a class="headerlink" href="#material" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of material attributes. No selection is needed.</p>
+<p>‘’’Datatype:’’’ string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ [list the material.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-groups">
+<h4><a class="toc-backref" href="#id66">material_groups</a><a class="headerlink" href="#material-groups" title="Permalink to this headline">¶</a></h4>
+<p>Description: Get a list of group keywords for use as the selection for the other attributes. No selection is needed.</p>
+<p>‘’’Datatype:’’’ string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ all</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="materials-depricated">
+<h4><a class="toc-backref" href="#id67">materials depricated?</a><a class="headerlink" href="#materials-depricated" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the material.??? attributes. These are in the form of absolute indices into the global materials list. Material indices start from 0.</p>
+<p>‘’’Datatype:’’’ integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice materials ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ 0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-n">
+<h4><a class="toc-backref" href="#id68">material.N</a><a class="headerlink" href="#material-n" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of materials.</p>
+<p>‘’’Datatype:’’’ integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.n ? all
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ 1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-name">
+<h4><a class="toc-backref" href="#id69">material.name</a><a class="headerlink" href="#material-name" title="Permalink to this headline">¶</a></h4>
+<p>Name of a material in the material list. The selection must be one of the keywords returned by layer_element, or a previous layer_element selection must exist.</p>
+<p>‘’’Datatype:’’’ string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ Default</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-index">
+<h4><a class="toc-backref" href="#id70">material.index</a><a class="headerlink" href="#material-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a material in the material list.</p>
+<p>‘’’Datatype:’’’ integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ 0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-layer">
+<h4><a class="toc-backref" href="#id71">material.layer</a><a class="headerlink" href="#material-layer" title="Permalink to this headline">¶</a></h4>
+<p>Returns the index of the current layer, usually that of a mesh item.</p>
+<p>‘’’Datatype:’’’ integer</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.index ?
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’ 0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-opacity">
+<h4><a class="toc-backref" href="#id72">material.opacity</a><a class="headerlink" href="#material-opacity" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s opacity.</p>
+<p>‘’’Datatype:’’’ percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.opacity ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-color">
+<h4><a class="toc-backref" href="#id73">material.color</a><a class="headerlink" href="#material-color" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s color. Returns three floats representing the red, green and blue components of the color.</p>
+<p>‘’’Datatype:’’’ float</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.color ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.8 0.8 0.8</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-luminous">
+<h4><a class="toc-backref" href="#id74">material.luminous</a><a class="headerlink" href="#material-luminous" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s luminosity.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.luminous ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-diffuse">
+<h4><a class="toc-backref" href="#id75">material.diffuse</a><a class="headerlink" href="#material-diffuse" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s diffusion.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.diffuse ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-specular">
+<h4><a class="toc-backref" href="#id76">material.specular</a><a class="headerlink" href="#material-specular" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s specular.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.specular ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-gloss">
+<h4><a class="toc-backref" href="#id77">material.gloss</a><a class="headerlink" href="#material-gloss" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s glossiness.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.gloss ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.3</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-reflect">
+<h4><a class="toc-backref" href="#id78">material.reflect</a><a class="headerlink" href="#material-reflect" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s reflection amount.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.reflect ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-transp">
+<h4><a class="toc-backref" href="#id79">material.transp</a><a class="headerlink" href="#material-transp" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s transparency.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.transp ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-transl">
+<h4><a class="toc-backref" href="#id80">material.transl</a><a class="headerlink" href="#material-transl" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s translucency.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.transl ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-refindex">
+<h4><a class="toc-backref" href="#id81">material.refIndex</a><a class="headerlink" href="#material-refindex" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s refraction index.</p>
+<p>‘’’Datatype:’’’
+float</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.diffuse ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-bump">
+<h4><a class="toc-backref" href="#id82">material.bump</a><a class="headerlink" href="#material-bump" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s bump amount.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.bump ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-colhigh">
+<h4><a class="toc-backref" href="#id83">material.colHigh</a><a class="headerlink" href="#material-colhigh" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s color highlights value.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.colHigh ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-colfilt">
+<h4><a class="toc-backref" href="#id84">material.colFilt</a><a class="headerlink" href="#material-colfilt" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s color filter value.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.colrilt ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-difsharp">
+<h4><a class="toc-backref" href="#id85">material.difSharp</a><a class="headerlink" href="#material-difsharp" title="Permalink to this headline">¶</a></h4>
+<p>Get the material?s diffuse sharpness amount.</p>
+<p>‘’’Datatype:’’’
+percent</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.difsharp ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-id">
+<h4><a class="toc-backref" href="#id86">material.id</a><a class="headerlink" href="#material-id" title="Permalink to this headline">¶</a></h4>
+<p>Get the item reference ID of the material.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.id ? 0
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’
+textureLayer_01253459C65C</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="material-textures">
+<h4><a class="toc-backref" href="#id87">material.textures</a><a class="headerlink" href="#material-textures" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of item reference IDs for the textures associated with the material.</p>
+<p>‘’’Datatype:’’’
+string</p>
+<p>‘’’Example:’’’</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice material.textures ? first
+</pre></div>
+</td></tr></table></div>
+<p>‘’’Result:’’’</p>
+<p>textureLayer_8F767159B978
+textureLayer_82B83B59C65B
+textureLayer_01253459C65C
+texturelayer_14059A598979</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="textures">
+<h3><a class="toc-backref" href="#id88">textures</a><a class="headerlink" href="#textures" title="Permalink to this headline">¶</a></h3>
+<p>The texture attributes are used to obtain the properties of attributes.</p>
+<p>The texture attribute is use to get the list of available texture.??? attributes. The texture_groups attribute is used to
+provide group filters for the other attributes.</p>
+<p>The textures attribute returns a list of possible, specific selectors for the various texture.??? attributes, while texture.N returns the number of parts in that grouping. Both attributes require a keyword from the texture_group attribute as a selector.</p>
+<p>The texture.??? attributes query specific properties of an individual texture. For each, the selector must be a layer_elements keyword (first, last, prev or next), or a specific selection from a textures query, or simply an index between 0 and texture.N.</p>
+<div class="section" id="texture">
+<h4><a class="toc-backref" href="#id89">texture</a><a class="headerlink" href="#texture" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of texture attributes.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the texture.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-groups">
+<h4><a class="toc-backref" href="#id90">texture_groups</a><a class="headerlink" href="#texture-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of group keywords to pass as the selection for the other attributes. No selection is needed. There is currently only one keyword, All, which returns all textures.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+all</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h4><a class="toc-backref" href="#id91">textures</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the texture.??? attributes, which are absolute indices into the texture list.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>0
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-n">
+<h4><a class="toc-backref" href="#id92">texture.N</a><a class="headerlink" href="#texture-n" title="Permalink to this headline">¶</a></h4>
+<p>Total number of textures.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.n ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+2</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-name">
+<h4><a class="toc-backref" href="#id93">texture.name</a><a class="headerlink" href="#texture-name" title="Permalink to this headline">¶</a></h4>
+<p>Name of a texture in the texture list.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>Bolt
+Nut</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-index">
+<h4><a class="toc-backref" href="#id94">texture.index</a><a class="headerlink" href="#texture-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a texture in the texture list. Indiices start from 0.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-layer">
+<h4><a class="toc-backref" href="#id95">texture.layer</a><a class="headerlink" href="#texture-layer" title="Permalink to this headline">¶</a></h4>
+<p>Get the current layer index, usually of the current mesh. Indices start from 1.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.material ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-id">
+<h4><a class="toc-backref" href="#id96">texture.id</a><a class="headerlink" href="#texture-id" title="Permalink to this headline">¶</a></h4>
+<p>Get the item reference ID of the texture.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.id ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+textureLayer_8F767159B978</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-type">
+<h4><a class="toc-backref" href="#id97">texture.type</a><a class="headerlink" href="#texture-type" title="Permalink to this headline">¶</a></h4>
+<p>Get the type name of a texture.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.type ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+advancedMaterial</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-channel">
+<h4><a class="toc-backref" href="#id98">texture.channel</a><a class="headerlink" href="#texture-channel" title="Permalink to this headline">¶</a></h4>
+<p>Get the channel name in the material that the texture is applied to.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.channel ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+color</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-opacity">
+<h4><a class="toc-backref" href="#id99">texture.opacity</a><a class="headerlink" href="#texture-opacity" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture opacity.</p>
+<p>Datatype:
+percent</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.opacity ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-enable">
+<h4><a class="toc-backref" href="#id100">texture.enable</a><a class="headerlink" href="#texture-enable" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture enable state.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.enable ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-invert">
+<h4><a class="toc-backref" href="#id101">texture.invert</a><a class="headerlink" href="#texture-invert" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture inversion state.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.invert ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-blendmode">
+<h4><a class="toc-backref" href="#id102">texture.blendMode</a><a class="headerlink" href="#texture-blendmode" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture blending mode.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.blendMode ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+normal</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-position">
+<h4><a class="toc-backref" href="#id103">texture.position</a><a class="headerlink" href="#texture-position" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture position. Returns three distances representing the X, Y and Z position.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.position ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>3.126
+1.25
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-rotation">
+<h4><a class="toc-backref" href="#id104">texture.rotation</a><a class="headerlink" href="#texture-rotation" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture rotation. Returns three angles representing the X, Y and Z rotation.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.rotation ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>0.0
+90.0
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-scale">
+<h4><a class="toc-backref" href="#id105">texture.scale</a><a class="headerlink" href="#texture-scale" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture scale. Returns three floats representing the X, Y and Z rotation.</p>
+<p>Datatype:
+float</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.scale ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>1.0
+1.0
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-projtype">
+<h4><a class="toc-backref" href="#id106">texture.projType</a><a class="headerlink" href="#texture-projtype" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture projection type.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.projType ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+planar</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-projaxis">
+<h4><a class="toc-backref" href="#id107">texture.projAxis</a><a class="headerlink" href="#texture-projaxis" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture projection axis.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.projAxis ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-coordsys">
+<h4><a class="toc-backref" href="#id108">texture.coordSys</a><a class="headerlink" href="#texture-coordsys" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture coordinate system, such as particle, object and world.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.coordSys ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+object</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-falltype">
+<h4><a class="toc-backref" href="#id109">texture.fallType</a><a class="headerlink" href="#texture-falltype" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture falloff type, such as cube, sphere, linearX, linearY, and linearZ.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.falloffType ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+cube</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-falloff">
+<h4><a class="toc-backref" href="#id110">texture.falloff</a><a class="headerlink" href="#texture-falloff" title="Permalink to this headline">¶</a></h4>
+<p>Get the texture falloff amount. Returns three distances representing the X, Y and Z falloff.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.falloff ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>1.0
+100.0
+1.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-uvname">
+<h4><a class="toc-backref" href="#id111">texture.uvName</a><a class="headerlink" href="#texture-uvname" title="Permalink to this headline">¶</a></h4>
+<p>Get the name of the UV map associated with the texture.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.uvName ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+My UV Map</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-uvmap">
+<h4><a class="toc-backref" href="#id112">texture.uvMap</a><a class="headerlink" href="#texture-uvmap" title="Permalink to this headline">¶</a></h4>
+<p>Get the index of the UV map associated with the texture.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.uvMap ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-clip">
+<h4><a class="toc-backref" href="#id113">texture.clip</a><a class="headerlink" href="#texture-clip" title="Permalink to this headline">¶</a></h4>
+<p>Get the index of the clip applied to the texture.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.clip ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-clipfile">
+<h4><a class="toc-backref" href="#id114">texture.clipFile</a><a class="headerlink" href="#texture-clipfile" title="Permalink to this headline">¶</a></h4>
+<p>texture.clipFile</p>
+<p>Description:
+Get the path and filename of the clip applied to the texture.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.clipFile ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+c:pathcreatureface.tga</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="texture-locator">
+<h4><a class="toc-backref" href="#id115">texture.locator</a><a class="headerlink" href="#texture-locator" title="Permalink to this headline">¶</a></h4>
+<p>Get the id of the texture locator</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice texture.locator ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+txtrLocator024</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="clips">
+<h3><a class="toc-backref" href="#id116">clips</a><a class="headerlink" href="#clips" title="Permalink to this headline">¶</a></h3>
+<p>The clip attributes give access to the clip list.</p>
+<p>The clip attribute is use to get the list of available clip.??? attributes. The clip_groups attribute is used to provide group filters for the other attributes.</p>
+<p>The clips attribute returns a list of possible, specific selectors for the various clip.??? attributes, while clip.N returns the number of parts in that grouping. Both attributes require a keyword from the clip_group attribute as a selector.</p>
+<p>The clip.??? attributes query specific properties of an individual clip (image). For each, the selector must be a layer_elements keyword (first, last, prev or next), or a specific selection from a clips query, or simply an index between 0 and clip.N.</p>
+<div class="section" id="clip">
+<h4><a class="toc-backref" href="#id117">clip</a><a class="headerlink" href="#clip" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of clip attributes.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the clip.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-groups">
+<h4><a class="toc-backref" href="#id118">clip_groups</a><a class="headerlink" href="#clip-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of group keywords to pass as the selection for the other attributes. No selection is needed. There is currently only one keyword, All, which returns all clips.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+all</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h4><a class="toc-backref" href="#id119">clips</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the clip.??? attributes. These are provided as absolute indices into the clip list.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clips ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0 1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-n">
+<h4><a class="toc-backref" href="#id120">clip.N</a><a class="headerlink" href="#clip-n" title="Permalink to this headline">¶</a></h4>
+<p>Total number of clips. The selection must be one of the keywords returned by clip_groups, or a previous clip_groups selection must exist.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.n ? all
+</pre></div>
+</td></tr></table></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-name">
+<h4><a class="toc-backref" href="#id121">clip.name</a><a class="headerlink" href="#clip-name" title="Permalink to this headline">¶</a></h4>
+<p>Name of a clip in the clip list. This is often the filename to the image without the path.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+creatureface.tga</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-file">
+<h4><a class="toc-backref" href="#id122">clip.file</a><a class="headerlink" href="#clip-file" title="Permalink to this headline">¶</a></h4>
+<p>Filename of a clip in the clip list, including the full path to the file.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.file ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+c:pathcreatureface.tga</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-index">
+<h4><a class="toc-backref" href="#id123">clip.index</a><a class="headerlink" href="#clip-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a clip in the clip list.</p>
+<p>Datatype:</p>
+<p>integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-layer">
+<h4><a class="toc-backref" href="#id124">clip.layer</a><a class="headerlink" href="#clip-layer" title="Permalink to this headline">¶</a></h4>
+<p>Get the layer index of the clip. Layer indices start from 1.</p>
+<p>Datatype:
+index</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.layer ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-id">
+<h4><a class="toc-backref" href="#id125">clip.id</a><a class="headerlink" href="#clip-id" title="Permalink to this headline">¶</a></h4>
+<p>Get the item reference ID of the clip.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.id ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+videoClip_CB383659CFDD</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clip-info">
+<h4><a class="toc-backref" href="#id126">clip.info</a><a class="headerlink" href="#clip-info" title="Permalink to this headline">¶</a></h4>
+<p>Get some information about the clip. This includes the pixel type, (such as RGB), the width, height, bits per pixel, and pixel aspect ratio.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice clip.info ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+RGB w:188 h:120 bpp:8 pa:1</p>
+</div>
+</div>
+<div class="section" id="vmaps">
+<h3><a class="toc-backref" href="#id127">vmaps</a><a class="headerlink" href="#vmaps" title="Permalink to this headline">¶</a></h3>
+<p>The Vertex Map attributes can be used to get the information about vertex maps, or vmaps.</p>
+<p>The vmap attribute is use to get the list of available vmap.??? attributes. The
+vmap_groups attribute is used to provide group filters for the other attributes.</p>
+<p>The vmaps attribute returns a list of possible, specific selectors for the various vmap.??? attributes, while vmap.N returns the number of parts in that grouping.
+Both attributes require a keyword from the vmap_group attribute as a selector.</p>
+<p>The vmap.??? attributes query specific properties of an individual vertex map. For each, the selector must be a layer_elements keyword (first, last, prev or next),
+or a specific selection from a vmaps query, or simply an index between 0 and vmap.N.</p>
+<div class="section" id="vmap">
+<h4><a class="toc-backref" href="#id128">vmap</a><a class="headerlink" href="#vmap" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of vertex map attributes.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the vmap.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-groups">
+<h4><a class="toc-backref" href="#id129">vmap_groups</a><a class="headerlink" href="#vmap-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of group keywords to pass as the selection for the other attributes.</p>
+<ul class="simple">
+<li><p><em>All:</em> All vertex maps.</p></li>
+<li><p><em>Selected:</em> Selected vertex maps.</p></li>
+<li><p><em>Weight:</em> All weight maps.</p></li>
+<li><p><em>Texture:</em> All texture maps.</p></li>
+<li><p><em>Subweight:</em> All subdivision surface weight maps.</p></li>
+<li><p><em>Morph:</em> All morph maps.</p></li>
+<li><p><em>AbsMorph:</em> All absolute morph maps.</p></li>
+<li><p><em>RGB:</em> All RGB color maps.</p></li>
+<li><p><em>RGBA:</em> All RGBA color maps.</p></li>
+<li><p><em>Normal:</em> All vertex normal maps.</p></li>
+</ul>
+<p>string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>all
+selected
+weight
+texture
+subweight
+morph
+absmorph
+rgb
+rgba</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h4><a class="toc-backref" href="#id130">vmaps</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the ?vmap.???? attributes. These are in the form of absolute indices into the global vertex map list.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmaps ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmaps-n">
+<h4><a class="toc-backref" href="#id131">vmaps.N</a><a class="headerlink" href="#vmaps-n" title="Permalink to this headline">¶</a></h4>
+<p>Total number of vertex maps. The selection must be one of the keywords returned by vmap_groups, or a previous vmap_groups selection must exist.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.n ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-name">
+<h4><a class="toc-backref" href="#id132">vmap.name</a><a class="headerlink" href="#vmap-name" title="Permalink to this headline">¶</a></h4>
+<p>Name of a vertex map in the vertex map list.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+Subdivision</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-index">
+<h4><a class="toc-backref" href="#id133">vmap.index</a><a class="headerlink" href="#vmap-index" title="Permalink to this headline">¶</a></h4>
+<p>Index of a vertex map in the vertex map list. Indices start from 0.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-layer">
+<h4><a class="toc-backref" href="#id134">vmap.layer</a><a class="headerlink" href="#vmap-layer" title="Permalink to this headline">¶</a></h4>
+<p>Index of the vertex map in the layer list. Layer indices start from 1.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.layer ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-type">
+<h4><a class="toc-backref" href="#id135">vmap.type</a><a class="headerlink" href="#vmap-type" title="Permalink to this headline">¶</a></h4>
+<p>Get the type of a vertex map in the vertex map list.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.type ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+subweight</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-dim">
+<h4><a class="toc-backref" href="#id136">vmap.dim</a><a class="headerlink" href="#vmap-dim" title="Permalink to this headline">¶</a></h4>
+<p>Get the dimensions of a vertex map in the vertex map list.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.dim ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vmap-selected">
+<h4><a class="toc-backref" href="#id137">vmap.selected</a><a class="headerlink" href="#vmap-selected" title="Permalink to this headline">¶</a></h4>
+<p>Returns true if the vertex map is selected</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vmap.selected ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="verts">
+<h3><a class="toc-backref" href="#id138">verts</a><a class="headerlink" href="#verts" title="Permalink to this headline">¶</a></h3>
+<p>The vertex attributes provide detailed information about individual vertices in a mesh.</p>
+<p>The vert attribute is used to get the list of available vert.??? attributes. The vert_groups attribute is used to provide group filters for the other attributes.</p>
+<p>The verts attribute returns a list of possible, specific selectors for the various vert.??? attributes, while vert.N returns the number of parts in that grouping. Both attributes require a keyword from the vert_group attribute as a selector.</p>
+<p>Before using any of the remaining vertex attributes, you must first select a layer with a layer.??? attribute. The following example selects the first layer, but <em>first</em> can be replaced with a specific index or any of the layer_element keywords as described in the layer.index documentation above.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice layer.index ? first
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="vert">
+<h4><a class="toc-backref" href="#id139">vert</a><a class="headerlink" href="#vert" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of vertex attributes.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+[list the vert.??? attribute names]</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-groups">
+<h4><a class="toc-backref" href="#id140">vert_groups</a><a class="headerlink" href="#vert-groups" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of group keywords to pass as the selection for the other attributes.</p>
+<ul class="simple">
+<li><p><em>Selected:</em> Selected vertices.</p></li>
+<li><p><em>Unselected:</em> Unselected vertices.</p></li>
+<li><p><em>All:</em> All vertices.</p></li>
+<li><p><em>Visible:</em> All vertices that are not hidden.</p></li>
+</ul>
+<p>string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert_groups ?
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>all
+selected
+unselected
+visible</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id8">
+<h4><a class="toc-backref" href="#id141">verts</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of selectors for the vert.??? attributes, provided in the form of absolute vertex indices.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice verts ? all
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>0
+1
+2
+3</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-n">
+<h4><a class="toc-backref" href="#id142">vert.N</a><a class="headerlink" href="#vert-n" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of vertices in the grouping.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.N ? selected
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+4</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-name">
+<h4><a class="toc-backref" href="#id143">vert.name</a><a class="headerlink" href="#vert-name" title="Permalink to this headline">¶</a></h4>
+<p>Get the “name” of a vertex. This name is in the form of layer index:vertex index. For example the tenth vertex in the third layer has the name 3:10.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.name ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0:0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-index">
+<h4><a class="toc-backref" href="#id144">vert.index</a><a class="headerlink" href="#vert-index" title="Permalink to this headline">¶</a></h4>
+<p>Get the absolute index of a vertex. Indices start from 0.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.index ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-layer">
+<h4><a class="toc-backref" href="#id145">vert.layer</a><a class="headerlink" href="#vert-layer" title="Permalink to this headline">¶</a></h4>
+<p>Get the index of the layer the vertex is in. Layer indices start from 1.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.layer ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-pos">
+<h4><a class="toc-backref" href="#id146">vert.pos</a><a class="headerlink" href="#vert-pos" title="Permalink to this headline">¶</a></h4>
+<p>Get the position of the vertex. The query returns three numbers representing the X, Y and Z coordinates of the vertex.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.pos ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>5.0
+-0.28
+-6.48</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-normal">
+<h4><a class="toc-backref" href="#id147">vert.normal</a><a class="headerlink" href="#vert-normal" title="Permalink to this headline">¶</a></h4>
+<p>Get the normal of the vertex. The query returns three numbers representing the vertex normal as an average of the normals of the polygons it belongs to.</p>
+<p>Datatype:
+distance</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.normal ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>1.0
+0.0
+0.0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-numpolys">
+<h4><a class="toc-backref" href="#id148">vert.numPolys</a><a class="headerlink" href="#vert-numpolys" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of polygons sharing this vertex.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.numPolys ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-polylist">
+<h4><a class="toc-backref" href="#id149">vert.polyList</a><a class="headerlink" href="#vert-polylist" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of the absolute indices of the polygons sharing this vertex. The queried values can be used as selections for the poly.??? attributes.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.polyList ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-numverts">
+<h4><a class="toc-backref" href="#id150">vert.numVerts</a><a class="headerlink" href="#vert-numverts" title="Permalink to this headline">¶</a></h4>
+<p>Get the number of vertices connected to this vertex by edges. This is also called the valence.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.numVerts ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+2</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-vertlist">
+<h4><a class="toc-backref" href="#id151">vert.vertList</a><a class="headerlink" href="#vert-vertlist" title="Permalink to this headline">¶</a></h4>
+<p>Get a list of the absolute indices of the vertices connected to this vertex by edges. The queried values can be used as selections for the vert.??? attributes.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.vertList ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>1
+3</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-selected">
+<h4><a class="toc-backref" href="#id152">vert.selected</a><a class="headerlink" href="#vert-selected" title="Permalink to this headline">¶</a></h4>
+<p>Returns true if the vertex is selected.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.selected ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+1</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-hidden">
+<h4><a class="toc-backref" href="#id153">vert.hidden</a><a class="headerlink" href="#vert-hidden" title="Permalink to this headline">¶</a></h4>
+<p>Returns true if the vertex is hidden.</p>
+<p>Datatype:
+integer</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.hidden ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-selsets">
+<h4><a class="toc-backref" href="#id154">vert.selSets</a><a class="headerlink" href="#vert-selsets" title="Permalink to this headline">¶</a></h4>
+<p>Returns a list of selection sets the vertex belongs to. Returns an empty list if the vertex does not belong to any selection sets. This requires an index.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.selSets ? 0
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-vmapvalue">
+<h4><a class="toc-backref" href="#id155">vert.vmapValue</a><a class="headerlink" href="#vert-vmapvalue" title="Permalink to this headline">¶</a></h4>
+<p>Returns the value of the vertex map last queried for this vertex. Note that a vertex map must have previously been “selected” using one of the vmap.??? attributes.</p>
+<p>Datatype:
+float</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.vmapValue ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0.5</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-symmetric">
+<h4><a class="toc-backref" href="#id156">vert.symmetric</a><a class="headerlink" href="#vert-symmetric" title="Permalink to this headline">¶</a></h4>
+<p>Return the name of the vertex opposite this one. This is the vertex that would also be affected by tools when symmetry is active.</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.symmetric ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:
+0:3</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vert-wpos">
+<h4><a class="toc-backref" href="#id157">vert.wpos</a><a class="headerlink" href="#vert-wpos" title="Permalink to this headline">¶</a></h4>
+<p>Return the world position of the vertex</p>
+<p>Datatype:
+string</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> query layerservice vert.wpos ? first
+</pre></div>
+</td></tr></table></div>
+<p>Result:</p>
+<p>0.0
+-0.5
+0.0</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="polys">
+<h3><a class="toc-backref" href="#id158">polys</a><a class="headerlink" href="#polys" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>poly</p></li>
+<li><p>poly_groups</p></li>
+<li><p>poly.N</p></li>
+<li><p>poly.name</p></li>
+<li><p>poly.index</p></li>
+<li><p>poly.layer</p></li>
+<li><p>poly.numVerts</p></li>
+<li><p>poly.vertList</p></li>
+<li><p>poly.normal</p></li>
+<li><p>poly.type</p></li>
+<li><p>poly.vmapValue</p></li>
+<li><p>poly.discos</p></li>
+<li><p>poly.material</p></li>
+<li><p>poly.part</p></li>
+<li><p>poly.selected</p></li>
+<li><p>poly.hidden</p></li>
+<li><p>poly.pos</p></li>
+<li><p>poly.tags</p></li>
+<li><p>poly.tagTypes</p></li>
+<li><p>poly.selSets</p></li>
+<li><p>poly.symmetric</p></li>
+<li><p>poly.wpos</p></li>
+<li><p>poly.wnormal</p></li>
+<li><p>poly.vertNormals</p></li>
+<li><p>poly.wvertNormals</p></li>
+<li><p>poly.workpos</p></li>
+<li><p>poly.worknormal</p></li>
+<li><p>edge</p></li>
+<li><p>edge_groups</p></li>
+<li><p>edge.N</p></li>
+<li><p>edge.name</p></li>
+<li><p>edge.index</p></li>
+<li><p>edge.layer</p></li>
+<li><p>edge.vertList</p></li>
+<li><p>edge.numPolys</p></li>
+<li><p>edge.polyList</p></li>
+<li><p>edge.length</p></li>
+<li><p>edge.creaseWeight</p></li>
+<li><p>edge.vector</p></li>
+<li><p>edge.pos</p></li>
+<li><p>edge.selected</p></li>
+<li><p>edge.hidden</p></li>
+<li><p>edge.selSets</p></li>
+<li><p>edge.symmetric</p></li>
+<li><p>edge.wpos</p></li>
+<li><p>edge.wvector</p></li>
+<li><p>edge.workpos</p></li>
+<li><p>edge.workvector</p></li>
+<li><p>uv</p></li>
+<li><p>uv_groups</p></li>
+<li><p>uv.N</p></li>
+<li><p>uv.name</p></li>
+<li><p>uv.index</p></li>
+<li><p>uv.layer</p></li>
+<li><p>uv.vert</p></li>
+<li><p>uv.poly</p></li>
+<li><p>uv.vmap</p></li>
+<li><p>uv.disco</p></li>
+<li><p>uv.pos</p></li>
+<li><p>uv.selected</p></li>
+<li><p>uv.hidden</p></li>
+<li><p>polset</p></li>
+<li><p>polset_groups</p></li>
+<li><p>polset.N</p></li>
+<li><p>polset.name</p></li>
+<li><p>polset.index</p></li>
+<li><p>polset.layer</p></li>
+<li><p>vrtset</p></li>
+<li><p>vrtset_groups</p></li>
+<li><p>vrtset.N</p></li>
+<li><p>vrtset.name</p></li>
+<li><p>vrtset.index</p></li>
+<li><p>vrtset.layer</p></li>
+<li><p>itmset</p></li>
+<li><p>itmset_groups</p></li>
+<li><p>itmset.N</p></li>
+<li><p>itmset.name</p></li>
+<li><p>itmset.index</p></li>
+<li><p>itmset.layer</p></li>
+</ul>
+</div>
+<div class="section" id="selmode">
+<h3><a class="toc-backref" href="#id159">selmode</a><a class="headerlink" href="#selmode" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="more-information">
+<h3><a class="toc-backref" href="#id160">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p>ILxCommandService (index)</p></li>
+<li><p>ILxCommand (index)</p></li>
+<li><p><a class="reference internal" href="ScriptQuery%20Overview.html"><span class="doc">ScriptQuery Overview</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Lua.html" class="btn btn-neutral float-right" title="Lua" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ChangeRenderFrameRange%20Script.html" class="btn btn-neutral float-left" title="ChangeRenderFrameRange Script" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/Layerservice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_channelui.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Channelui &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Clip" href="lxd_clip.html" />
+    <link rel="prev" title="Chanmod" href="lxd_chanmod.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Channelui</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelui">ILxChannelUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchannelui1">ILxChannelUI1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchanneluiservice">ILxChannelUIService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxchanneluiservice-tmp-sgs">ILxChannelUIService::Tmp_Sgs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Channelui</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="channelui">
+<h1>Channelui<a class="headerlink" href="#channelui" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxchannelui" id="id1">ILxChannelUI</a></p></li>
+<li><p><a class="reference internal" href="#ilxchannelui1" id="id2">ILxChannelUI1</a></p></li>
+<li><p><a class="reference internal" href="#ilxchanneluiservice" id="id3">ILxChannelUIService</a></p></li>
+<li><p><a class="reference internal" href="#ilxchanneluiservice-tmp-sgs" id="id4">ILxChannelUIService::Tmp_Sgs</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxchannelui">
+<h2><a class="toc-backref" href="#id1">ILxChannelUI</a><a class="headerlink" href="#ilxchannelui" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxChannelUI">
+<span id="_CPPv312ILxChannelUI"></span><span id="_CPPv212ILxChannelUI"></span><span id="ILxChannelUI"></span><span class="target" id="class_i_lx_channel_u_i"></span><em class="property">class </em><code class="sig-name descname">ILxChannelUI</code><a class="headerlink" href="#_CPPv412ILxChannelUI" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The item.channel command is used to show channels as controls in the UI. For full support the channels need to provide some way to tell the UI if the channel is enabled or when the some state changes. This is done by providing an <a class="reference internal" href="#class_i_lx_channel_u_i"><span class="std std-ref">ILxChannelUI</span></a> interface on the item type/package object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI7EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N12ILxChannelUI7EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N12ILxChannelUI7EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxChannelUI::Enabled__LXtObjectID.cCP.LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_channel_u_i_1ae101531298332484d213d928079b36f4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enabled</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI7EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The enable method works very much like a command enable function, and returns the same kinds of codes: LXe_CMD_DISABLED if disabled, LXe_OK for enabled and anything else for a failure code. The item type and channel name are provided as arguments, allowing the same object to handle multiple different channels. A disable message can be returned as part of the ILxMessageID. Note that, as with commands, the code stored in the ILxMessageID should also be returned by the enable function. The item argument may be NULL, or may be provided by the caller. The object can use this for for more specific enable tests. Note that it is valid for the item to be NULL, in which case a general test should be applied to item type itself. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI15DependencyCountE11LXtObjectIDPKcPj">
+<span id="_CPPv3N12ILxChannelUI15DependencyCountE11LXtObjectIDPKcPj"></span><span id="_CPPv2N12ILxChannelUI15DependencyCountE11LXtObjectIDPKcPj"></span><span id="ILxChannelUI::DependencyCount__LXtObjectID.cCP.unsignedP"></span><span class="target" id="class_i_lx_channel_u_i_1af01f4ab0b8c121aab80b94da2d0abe0b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DependencyCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI15DependencyCountE11LXtObjectIDPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>item.channel needs a way to know what other channels this channel might depend on for its enable state. The following methods are used to see if a recently changed channel is a dependency of this channel and thus control if this channel is enabled (i.e., available for user interaction) or not (i.e., “ghosted”). If the changed channel is a dependency, then this channel’s UI representation is told to update it’s “enabled” state with that returned by the <a class="reference internal" href="#class_i_lx_channel_u_i_1ae101531298332484d213d928079b36f4"><span class="std std-ref">Enabled()</span></a> method. Note that the dependency mechanism only allows watching channels on the same item. This includes allowing packages to watch for changes to channels on other packages as long as both packages are on the same item. If you need more flexibility, you’ll need to implement your own notifier through the <a class="reference internal" href="#class_i_lx_channel_u_i_1a138f473c844e1c6a071abb66c026123e"><span class="std std-ref">UIHints()</span></a> method. The depItemType argument thus indicates a channel in different package on the item, or a supertype of the item itself. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI17DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc">
+<span id="_CPPv3N12ILxChannelUI17DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc"></span><span id="_CPPv2N12ILxChannelUI17DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc"></span><span id="ILxChannelUI::DependencyByIndex__LXtObjectID.cCP.unsigned.LXtItemTypeP.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_1add30abda27e04b0fee49e98675472b11"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DependencyByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> *<em>depItemType</em>, <em class="property">const</em> char **<em>depChannelName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI17DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI21DependencyByIndexNameE11LXtObjectIDPKcjPPKcPPKc">
+<span id="_CPPv3N12ILxChannelUI21DependencyByIndexNameE11LXtObjectIDPKcjPPKcPPKc"></span><span id="_CPPv2N12ILxChannelUI21DependencyByIndexNameE11LXtObjectIDPKcjPPKcPPKc"></span><span id="ILxChannelUI::DependencyByIndexName__LXtObjectID.cCP.unsigned.cCPP.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_1ab5ce46bcd7fec21c1e5e6b4f5f26ee40"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DependencyByIndexName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, unsigned <em>index</em>, <em class="property">const</em> char **<em>depItemTypeName</em>, <em class="property">const</em> char **<em>depChannelName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI21DependencyByIndexNameE11LXtObjectIDPKcjPPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This variation is more robust, taking an item type as a string instead of an integer code. This works well for packages, which do not support type codes. Clients only need to implement one of those, although <a class="reference internal" href="#class_i_lx_channel_u_i_1ab5ce46bcd7fec21c1e5e6b4f5f26ee40"><span class="std std-ref">DependencyByIndexName()</span></a> is preferred. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI11ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N12ILxChannelUI11ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N12ILxChannelUI11ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxChannelUI::ItemEnabled__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_channel_u_i_1a8268c53f871ec40ce351f608a5181986"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemEnabled</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI11ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Entire items can also be disabled or enabled. When disabled, all controls related to item (such as channel controls in property forms) will be considered disabled, and the item will be marked as disabled in the Item List. The item argument is the specific item being tested. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI8ItemIconE11LXtObjectID11LXtObjectIDPPKc">
+<span id="_CPPv3N12ILxChannelUI8ItemIconE11LXtObjectID11LXtObjectIDPPKc"></span><span id="_CPPv2N12ILxChannelUI8ItemIconE11LXtObjectID11LXtObjectIDPPKc"></span><span id="ILxChannelUI::ItemIcon__LXtObjectID.LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_1ae4024f07b7f942c12a3045801ffa7b1b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemIcon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <em class="property">const</em> char **<em>icon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI8ItemIconE11LXtObjectID11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An item can return a specific icon resource name based on some state, like an item tag. This isn’t updated too frequently, and thus should be a relatively static icon. If this returns a failure code or is not implemented, the icon found referenced in the Item Help configs is used. The resource name should not include any size suffix (ie: return “MyItemIcon”, not “MyItemIcon_20”). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI7UIHintsE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N12ILxChannelUI7UIHintsE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N12ILxChannelUI7UIHintsE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxChannelUI::UIHints__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_channel_u_i_1a138f473c844e1c6a071abb66c026123e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UIHints</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>hints</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI7UIHintsE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A channel’s UI hints are automatically populated for it before being used for the UI. However, items further tweak these by implementing this method and setting the UI hints properties themselves. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI12UIValueHintsE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N12ILxChannelUI12UIValueHintsE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N12ILxChannelUI12UIValueHintsE11LXtObjectIDPKcPPv"></span><span id="ILxChannelUI::UIValueHints__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_channel_u_i_1a3ca14e705358cea974aedb81480f615d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UIValueHints</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI12UIValueHintsE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Channels can similar return a specific UIValueHints object for their UI, and to provide a per-channel notifier list. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxChannelUI6CookieE11LXtObjectIDPKcPKcPPKc">
+<span id="_CPPv3N12ILxChannelUI6CookieE11LXtObjectIDPKcPKcPPKc"></span><span id="_CPPv2N12ILxChannelUI6CookieE11LXtObjectIDPKcPKcPPKc"></span><span id="ILxChannelUI::Cookie__LXtObjectID.cCP.cCP.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_1af64a3b39cd970f481fc43b6d4fd9a0a8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Cookie</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, <em class="property">const</em> char *<em>requestedFor</em>, <em class="property">const</em> char **<em>cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxChannelUI6CookieE11LXtObjectIDPKcPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each item/channel pair can have a cookie associated with it. This is primarily used to associate global data with the channel, which is often stored in the config. A common case is to provide a value preset popup for numeric channels. The cookie is optional. This method can return any failure code, such as LXe_NOTIMPL or LXe_NOTFOUND, if the channel does not have a cookie. A single channel may have multiple cookies for different purposes, and in fact may use the same cookie for multiple states. This allows the channel to support one global but not another. Which cookie the client wants is determined by the requestedFor argument. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxchannelui1">
+<h2><a class="toc-backref" href="#id2">ILxChannelUI1</a><a class="headerlink" href="#ilxchannelui1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxChannelUI1">
+<span id="_CPPv313ILxChannelUI1"></span><span id="_CPPv213ILxChannelUI1"></span><span id="ILxChannelUI1"></span><span class="target" id="class_i_lx_channel_u_i1"></span><em class="property">class </em><code class="sig-name descname">ILxChannelUI1</code><a class="headerlink" href="#_CPPv413ILxChannelUI1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI17EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N13ILxChannelUI17EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N13ILxChannelUI17EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxChannelUI1::Enabled__LXtObjectID.cCP.LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_channel_u_i1_1a899a246ebbcab14628656b4dfa7c8f2d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Enabled</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>chanRead</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI17EnabledE11LXtObjectIDPKc11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI115DependencyCountE11LXtObjectIDPKcPj">
+<span id="_CPPv3N13ILxChannelUI115DependencyCountE11LXtObjectIDPKcPj"></span><span id="_CPPv2N13ILxChannelUI115DependencyCountE11LXtObjectIDPKcPj"></span><span id="ILxChannelUI1::DependencyCount__LXtObjectID.cCP.unsignedP"></span><span class="target" id="class_i_lx_channel_u_i1_1a79b41ff06a594b932b24dcafa01aec35"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DependencyCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, unsigned *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI115DependencyCountE11LXtObjectIDPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI117DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc">
+<span id="_CPPv3N13ILxChannelUI117DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc"></span><span id="_CPPv2N13ILxChannelUI117DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc"></span><span id="ILxChannelUI1::DependencyByIndex__LXtObjectID.cCP.unsigned.LXtItemTypeP.cCPP"></span><span class="target" id="class_i_lx_channel_u_i1_1a2eb21b3af95c36d56f6bcb5c3082cbdf"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DependencyByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, unsigned <em>index</em>, <a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> *<em>depItemType</em>, <em class="property">const</em> char **<em>depChannelName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI117DependencyByIndexE11LXtObjectIDPKcjP11LXtItemTypePPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI111ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N13ILxChannelUI111ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N13ILxChannelUI111ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxChannelUI1::ItemEnabled__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_channel_u_i1_1ae7dc1b7d85482777584965b2c3d53c1c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemEnabled</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI111ItemEnabledE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI17UIHintsE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N13ILxChannelUI17UIHintsE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N13ILxChannelUI17UIHintsE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxChannelUI1::UIHints__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_channel_u_i1_1adbd840118d72290f0225c53c2b88aff3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UIHints</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>hints</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI17UIHintsE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI112UIValueHintsE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N13ILxChannelUI112UIValueHintsE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N13ILxChannelUI112UIValueHintsE11LXtObjectIDPKcPPv"></span><span id="ILxChannelUI1::UIValueHints__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_channel_u_i1_1a7018d5ce8368ab148e3785b9670fbd48"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UIValueHints</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI112UIValueHintsE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxChannelUI16CookieE11LXtObjectIDPKcPKcPPKc">
+<span id="_CPPv3N13ILxChannelUI16CookieE11LXtObjectIDPKcPKcPPKc"></span><span id="_CPPv2N13ILxChannelUI16CookieE11LXtObjectIDPKcPKcPPKc"></span><span id="ILxChannelUI1::Cookie__LXtObjectID.cCP.cCP.cCPP"></span><span class="target" id="class_i_lx_channel_u_i1_1a5bebe87ae8fbab64560fad8e83540527"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Cookie</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>channelName</em>, <em class="property">const</em> char *<em>requestedFor</em>, <em class="property">const</em> char **<em>cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxChannelUI16CookieE11LXtObjectIDPKcPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxchanneluiservice">
+<h2><a class="toc-backref" href="#id3">ILxChannelUIService</a><a class="headerlink" href="#ilxchanneluiservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxChannelUIService">
+<span id="_CPPv319ILxChannelUIService"></span><span id="_CPPv219ILxChannelUIService"></span><span id="ILxChannelUIService"></span><span class="target" id="class_i_lx_channel_u_i_service"></span><em class="property">class </em><code class="sig-name descname">ILxChannelUIService</code><a class="headerlink" href="#_CPPv419ILxChannelUIService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The service interface provides some general methods for getting information about. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxChannelUIService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxChannelUIService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxChannelUIService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_channel_u_i_service_1aea92600d7792aff24272785e57cbd51a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService12ItemTypeNameE11LXtObjectID11LXtItemTypejPPKc">
+<span id="_CPPv3N19ILxChannelUIService12ItemTypeNameE11LXtObjectID11LXtItemTypejPPKc"></span><span id="_CPPv2N19ILxChannelUIService12ItemTypeNameE11LXtObjectID11LXtItemTypejPPKc"></span><span id="ILxChannelUIService::ItemTypeName__LXtObjectID.LXtItemType.unsigned.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_service_1a1675f67084de241f9b4d2fd9836dfcbe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemTypeName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> <em>typeID</em>, unsigned <em>useSuper</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService12ItemTypeNameE11LXtObjectID11LXtItemTypejPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given an item type, these returns the type’s username (not the internal name) and description, as defined in the ItemHelp configs. If useSuper is true, the supertye’s information will be used if no information can be found for the specific type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService12ItemTypeDescE11LXtObjectID11LXtItemTypejPPKc">
+<span id="_CPPv3N19ILxChannelUIService12ItemTypeDescE11LXtObjectID11LXtItemTypejPPKc"></span><span id="_CPPv2N19ILxChannelUIService12ItemTypeDescE11LXtObjectID11LXtItemTypejPPKc"></span><span id="ILxChannelUIService::ItemTypeDesc__LXtObjectID.LXtItemType.unsigned.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_service_1a48a37c403b8469d0fd8ef8c6993ca63a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemTypeDesc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> <em>typeID</em>, unsigned <em>useSuper</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService12ItemTypeDescE11LXtObjectID11LXtItemTypejPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService16ItemTypeIconTextE11LXtObjectID11LXtItemTypejPcj">
+<span id="_CPPv3N19ILxChannelUIService16ItemTypeIconTextE11LXtObjectID11LXtItemTypejPcj"></span><span id="_CPPv2N19ILxChannelUIService16ItemTypeIconTextE11LXtObjectID11LXtItemTypejPcj"></span><span id="ILxChannelUIService::ItemTypeIconText__LXtObjectID.LXtItemType.unsigned.cP.unsigned"></span><span class="target" id="class_i_lx_channel_u_i_service_1a4bfcc2cf223d1ccb1f27ada2d0656e6d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ItemTypeIconText</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> <em>typeID</em>, unsigned <em>useSuper</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService16ItemTypeIconTextE11LXtObjectID11LXtItemTypejPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the name of the icon for this item type, optionally falling back to its supertype. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService15MeshMapUserNameE11LXtObjectIDPKcjPcj">
+<span id="_CPPv3N19ILxChannelUIService15MeshMapUserNameE11LXtObjectIDPKcjPcj"></span><span id="_CPPv2N19ILxChannelUIService15MeshMapUserNameE11LXtObjectIDPKcjPcj"></span><span id="ILxChannelUIService::MeshMapUserName__LXtObjectID.cCP.unsigned.cP.unsigned"></span><span class="target" id="class_i_lx_channel_u_i_service_1a9e5cbbef1db05b3726ea1f45942d2892"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MeshMapUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, unsigned <em>addIcon</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService15MeshMapUserNameE11LXtObjectIDPKcjPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the username of a mesh map given its internal name. If addIcon is true, the icon will be encoded into the buffer as a rich text string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService15ChannelUserNameE11LXtObjectID11LXtObjectIDjPcj">
+<span id="_CPPv3N19ILxChannelUIService15ChannelUserNameE11LXtObjectID11LXtObjectIDjPcj"></span><span id="_CPPv2N19ILxChannelUIService15ChannelUserNameE11LXtObjectID11LXtObjectIDjPcj"></span><span id="ILxChannelUIService::ChannelUserName__LXtObjectID.LXtObjectID.unsigned.cP.unsigned"></span><span class="target" id="class_i_lx_channel_u_i_service_1ad854c53c411fcd90342b2d4d82bf31f9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>channel</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService15ChannelUserNameE11LXtObjectID11LXtObjectIDjPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the username, description and toolitp of a channel given an item (not an item type) and the channel index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService18ChannelDescriptionE11LXtObjectID11LXtObjectIDjPPKc">
+<span id="_CPPv3N19ILxChannelUIService18ChannelDescriptionE11LXtObjectID11LXtObjectIDjPPKc"></span><span id="_CPPv2N19ILxChannelUIService18ChannelDescriptionE11LXtObjectID11LXtObjectIDjPPKc"></span><span id="ILxChannelUIService::ChannelDescription__LXtObjectID.LXtObjectID.unsigned.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_service_1a100626f9b89d24a20686e63ddaee33f0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelDescription</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>channel</em>, <em class="property">const</em> char **<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService18ChannelDescriptionE11LXtObjectID11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService14ChannelToolTipE11LXtObjectID11LXtObjectIDjPPKc">
+<span id="_CPPv3N19ILxChannelUIService14ChannelToolTipE11LXtObjectID11LXtObjectIDjPPKc"></span><span id="_CPPv2N19ILxChannelUIService14ChannelToolTipE11LXtObjectID11LXtObjectIDjPPKc"></span><span id="ILxChannelUIService::ChannelToolTip__LXtObjectID.LXtObjectID.unsigned.cCPP"></span><span class="target" id="class_i_lx_channel_u_i_service_1a119a0a095727d957f18a62b0c57d1c4c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ChannelToolTip</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, unsigned <em>channel</em>, <em class="property">const</em> char **<em>tip</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService14ChannelToolTipE11LXtObjectID11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService11GetTypeIconE11LXtItemTypejRNSt6stringE">
+<span id="_CPPv3N19ILxChannelUIService11GetTypeIconE11LXtItemTypejRNSt6stringE"></span><span id="_CPPv2N19ILxChannelUIService11GetTypeIconE11LXtItemTypejRNSt6stringE"></span><span id="ILxChannelUIService::GetTypeIcon__LXtItemType.unsigned.ssR"></span><span class="target" id="class_i_lx_channel_u_i_service_1a0f18a88ed69dc1d619cbb13f2ca15fd1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTypeIcon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> <em>typeID</em>, unsigned <em>useSuper</em>, std::string &amp;<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService11GetTypeIconE11LXtItemTypejRNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService14GetMapUserNameEPKcjRNSt6stringE">
+<span id="_CPPv3N19ILxChannelUIService14GetMapUserNameEPKcjRNSt6stringE"></span><span id="_CPPv2N19ILxChannelUIService14GetMapUserNameEPKcjRNSt6stringE"></span><span id="ILxChannelUIService::GetMapUserName__cCP.unsigned.ssR"></span><span class="target" id="class_i_lx_channel_u_i_service_1ab674fdf9036bc68b2508ab36c3b7dace"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetMapUserName</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, unsigned <em>addIcon</em>, std::string &amp;<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService14GetMapUserNameEPKcjRNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="class">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_SgsE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_SgsE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_SgsE"></span><span id="ILxChannelUIService::Tmp_Sgs"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs"></span><em class="property">class </em><code class="sig-name descname">Tmp_Sgs</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_SgsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs13sgs_GetStringEPcj">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs13sgs_GetStringEPcj"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs13sgs_GetStringEPcj"></span><span id="ILxChannelUIService::Tmp_Sgs::sgs_GetString__cP.unsigned-i"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a0d45f8b006d5491dc77f66fdae414020"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">sgs_GetString</code><span class="sig-paren">(</span>char *<em>buf</em>, unsigned int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs13sgs_GetStringEPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs3srvE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs3srvE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs3srvE"></span><span id="ILxChannelUIService::Tmp_Sgs::srv__CLxLoc_ChannelUIServiceP"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a7a18952a2a971418a629de62addcef74"></span>CLxLoc_ChannelUIService *<code class="sig-name descname">srv</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs3srvE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs6typeIDE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs6typeIDE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs6typeIDE"></span><span id="ILxChannelUIService::Tmp_Sgs::typeID__LXtItemType"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a0ae4c1315160d5fdb390df214879101e"></span><a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> <code class="sig-name descname">typeID</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs6typeIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs7mapNameE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs7mapNameE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs7mapNameE"></span><span id="ILxChannelUIService::Tmp_Sgs::mapName__cCP"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1ac4262fdebaf7ca1366f7b8ed7f64aff3"></span><em class="property">const</em> char *<code class="sig-name descname">mapName</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs7mapNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs8useSuperE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs8useSuperE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs8useSuperE"></span><span id="ILxChannelUIService::Tmp_Sgs::useSuper__unsigned"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a1f54000f7d0bea6d034d3c671a4abeaa"></span>unsigned <code class="sig-name descname">useSuper</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs8useSuperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs7addIconE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs7addIconE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs7addIconE"></span><span id="ILxChannelUIService::Tmp_Sgs::addIcon__unsigned"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a86381ce455c540b01a1b0caffd7d2504"></span>unsigned <code class="sig-name descname">addIcon</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs7addIconE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N19ILxChannelUIService7Tmp_Sgs5isMapE">
+<span id="_CPPv3N19ILxChannelUIService7Tmp_Sgs5isMapE"></span><span id="_CPPv2N19ILxChannelUIService7Tmp_Sgs5isMapE"></span><span id="ILxChannelUIService::Tmp_Sgs::isMap__b"></span><span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a82f9e4e13587f0dc064f5edb0e7ae3e0"></span>bool <code class="sig-name descname">isMap</code><a class="headerlink" href="#_CPPv4N19ILxChannelUIService7Tmp_Sgs5isMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ilxchanneluiservice-tmp-sgs">
+<h2><a class="toc-backref" href="#id4">ILxChannelUIService::Tmp_Sgs</a><a class="headerlink" href="#ilxchanneluiservice-tmp-sgs" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs"></span><em class="property">class </em><code class="sig-name descname">Tmp_Sgs</code><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a0d45f8b006d5491dc77f66fdae414020"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">sgs_GetString</code><span class="sig-paren">(</span>char *<em>buf</em>, unsigned int <em>len</em><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a7a18952a2a971418a629de62addcef74"></span>CLxLoc_ChannelUIService *<code class="sig-name descname">srv</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a0ae4c1315160d5fdb390df214879101e"></span><a class="reference internal" href="lxd_item.html#_CPPv411LXtItemType" title="LXtItemType">LXtItemType</a> <code class="sig-name descname">typeID</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1ac4262fdebaf7ca1366f7b8ed7f64aff3"></span><em class="property">const</em> char *<code class="sig-name descname">mapName</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a1f54000f7d0bea6d034d3c671a4abeaa"></span>unsigned <code class="sig-name descname">useSuper</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a86381ce455c540b01a1b0caffd7d2504"></span>unsigned <code class="sig-name descname">addIcon</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_channel_u_i_service_1_1_tmp___sgs_1a82f9e4e13587f0dc064f5edb0e7ae3e0"></span>bool <code class="sig-name descname">isMap</code><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_clip.html" class="btn btn-neutral float-right" title="Clip" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_chanmod.html" class="btn btn-neutral float-left" title="Chanmod" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_channelui.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

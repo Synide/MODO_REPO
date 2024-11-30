@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/serverinfo/CLxImpl Tool.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CLxImpl Tool &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Channel Modifier" href="Channel%20Modifier.html" />
+    <link rel="prev" title="Telnet" href="../systems/Telnet.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#general-info">General Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CLxImpl Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interface-methods">Interface Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#undocumented-methods">Undocumented Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Channel%20Modifier.html">Channel Modifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Global%20Listener%20Object.html">Global Listener Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mesh%20Operation%20-%20Overview.html">Mesh Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Selection%20Operation%20-%20Overview.html">Selection Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tool%20Operation%20-%20Overview.html">Tool Operation - Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Treeview.html">Treeview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Using%20a%20Spawner.html">Using a Spawner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Visitors%20in%20Action.html">Visitors in Action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>CLxImpl Tool</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clximpl-tool">
+<h1>CLxImpl Tool<a class="headerlink" href="#clximpl-tool" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id9">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#interface-methods" id="id10">Interface Methods</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tool-reset" id="id11">tool_Reset()</a></p></li>
+<li><p><a class="reference internal" href="#tool-task" id="id12">tool_Task()</a></p></li>
+<li><p><a class="reference internal" href="#tool-order" id="id13">tool_Order()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#undocumented-methods" id="id14">Undocumented Methods</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tool-sequence" id="id15">tool_Sequence()</a></p></li>
+<li><p><a class="reference internal" href="#tool-shouldbeattribute-lxtid4-task" id="id16">tool_ShouldBeAttribute(LXtID4 task)</a></p></li>
+<li><p><a class="reference internal" href="#tool-getop-void-ppvobj-unsigned-flags" id="id17">tool_GetOp(void** ppvObj,unsigned flags)</a></p></li>
+<li><p><a class="reference internal" href="#tool-compareop-ilxunknownid-vts-lxtobjectid-toolop" id="id18">tool_CompareOp(ILxUnknownID vts, LXtObjectID toolop)</a></p></li>
+<li><p><a class="reference internal" href="#tool-updateop-ilxunknownid-toolop" id="id19">tool_UpdateOp(ILxUnknownID toolOP)</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id9">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The CLxImpl_Tool interface contains the core methods we will use to build our tool and must always be included when creating a tool. It should be noted that some of the methods within CLxImpl_Tool are also dependant on other packages however where possible I will mention these.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#include &lt;lx_layer.hpp&gt;</span>
+<span class="c1">#include &lt;lx_tool.hpp&gt;</span>
+
+<span class="k">class</span> <span class="nc">BasicTool</span> <span class="p">:</span> <span class="n">public</span> <span class="n">CLxImpl_Tool</span>
+<span class="p">{</span>
+<span class="n">public</span><span class="p">:</span>
+    <span class="n">BasicTool</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="interface-methods">
+<h2><a class="toc-backref" href="#id10">Interface Methods</a><a class="headerlink" href="#interface-methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tool-reset">
+<h3><a class="toc-backref" href="#id11">tool_Reset()</a><a class="headerlink" href="#tool-reset" title="Permalink to this headline">¶</a></h3>
+<p>The Reset method sets the tool attributes back to their initial/default state(as defined within the constructor).</p>
+<p>Header Definition</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">void</span>              <span class="n">tool_Reset</span><span class="p">()</span> <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Implementation</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">BasicTool</span><span class="p">::</span><span class="n">tool_Reset</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">attr_SetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+    <span class="n">attr_SetFlt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>attr_SetFlt, attr_SetBool, attr_SetInt, etc are used to reset different variable types.
+<a href="#id3"><span class="problematic" id="id4">*</span></a>The index is used to reference the required attribute in the order it was defined in.
+<a href="#id5"><span class="problematic" id="id6">*</span></a>The value argument is the value you wish it to reset to.</p>
+<p>This method applys the tool, recursively applying any hierarchy of sub-tools. Naturally, it validates the tool state upon completion.</p>
+<p>Header Definition</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">void</span>              <span class="n">tool_Evaluate</span><span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">vts</span><span class="p">)</span> <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Implementation</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">BasicTool</span><span class="p">::</span><span class="n">tool_Evaluate</span><span class="p">(</span><span class="n">ILxUnknownID</span> <span class="n">vts</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">factorX</span><span class="p">,</span> <span class="n">factorY</span><span class="p">;</span>
+
+    <span class="n">attr_GetFlt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">factorX</span><span class="p">);</span>
+    <span class="n">attr_GetFlt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">factorY</span><span class="p">);</span>
+
+    <span class="n">my_log</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="s2">&quot;Factor X: &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="p">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">factorX</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Factor Y: &quot;</span> <span class="o">+</span> <span class="n">toString</span><span class="p">(</span><span class="n">factorY</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><a href="#id7"><span class="problematic" id="id8">*</span></a>attr_GetFlt can be used to retrieve a attribute for use within the tool.</p>
+<p>This method returns the tool vector type, describing the vector packets required for processing.</p>
+<p>Header Definition</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">LXtObjectID</span>       <span class="n">tool_VectorType</span><span class="p">()</span> <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Implementation</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">LXtObjectID</span> <span class="n">BasicTool</span><span class="p">::</span><span class="n">tool_VectorType</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">v_type</span><span class="o">.</span><span class="n">m_loc</span><span class="p">;</span>        <span class="o">//</span> <span class="n">peek</span> <span class="n">method</span><span class="p">;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">add</span><span class="o">-</span><span class="n">ref</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="tool-task">
+<h3><a class="toc-backref" href="#id12">tool_Task()</a><a class="headerlink" href="#tool-task" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the type of task performed by the tool.</p>
+<p>Header Definition</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">LXtID4</span>            <span class="n">tool_Task</span><span class="p">()</span> <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Implementation</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">LXtID4</span> <span class="n">BasicTool</span><span class="p">::</span><span class="n">tool_Task</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">LXi_TASK_ACTR</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LXi_TASK_ACEN</p></td>
+<td><p>Refers to a action center, defines a position about which a tool operation is centered.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_ACTR</p></td>
+<td><p>A Actor or state altering tool, most tools will be made using this, refers to the primary tool in the tool pipe.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_AXIS</p></td>
+<td><p>Refers to the axis, defines a axis or co-ordinate suystem in which a tool operates.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_BRSH</p></td>
+<td><p>Refers to a paint brush.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_CONS</p></td>
+<td><p>Refers to a constraint, constrains mouse events to move along a continuous surface</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_CONT</p></td>
+<td><p>Refers to a content preset.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_EFFR</p></td>
+<td><p>Refers to a effector, read particles and effects at the position.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_NOZL</p></td>
+<td><p>Refers to a nozzle(used with brushes)</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_PATH</p></td>
+<td><p>Refers to a path generator</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_PINK</p></td>
+<td><p>Paint Ink</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_POST</p></td>
+<td><p>Refers to a post apply actor</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_PTCL</p></td>
+<td><p>Refers to a surface particle generator</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_SIDE</p></td>
+<td><p>Not 100% Sure, by process of elimination I bielive it isthe visual aid - Adds to display without changing anything.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_SNAP</p></td>
+<td><p>Refers to the snap, attracts and locks mouse events to specific positions or elements.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_STYL</p></td>
+<td><p>Doesnt actually effect anything.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXi_TASK_SYMM</p></td>
+<td><p>Refers to tool symmetry</p></td>
+</tr>
+<tr class="row-even"><td><p>LXi_TASK_WGHT</p></td>
+<td><p>Refers to the falloff, defines the strength of the tool operation through space.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_TASK_WORK</p></td>
+<td><p>Refers to the workplane.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tool-order">
+<h3><a class="toc-backref" href="#id13">tool_Order()</a><a class="headerlink" href="#tool-order" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the order in the pipe, by returning an Ordinal string.</p>
+<p>[<a class="reference external" href="https://i.ibb.co/T0k3sj5/tool-Basic-As-Action-Center">https://i.ibb.co/T0k3sj5/tool-Basic-As-Action-Center</a>.png|Action Center Order] [<a class="reference external" href="https://i.ibb.co/Lp8SPw9/tool-Basic-As-Falloff">https://i.ibb.co/Lp8SPw9/tool-Basic-As-Falloff</a>.png| Falloff Order]</p>
+<p>Header Definition</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span>  <span class="n">tool_Order</span><span class="p">()</span> <span class="n">LXx_OVERRIDE</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Implementation</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">BasicTool</span><span class="p">::</span><span class="n">tool_Order</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">LXs_ORD_ACTR</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LXs_ORD_ACEN</p></td>
+<td><p>Refers to a action center, defines a position about which a tool operation is centered.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_ACTR</p></td>
+<td><p>A Actor or state altering tool, most tools will be made using this, refers to the primary tool in the tool pipe.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_AXIS</p></td>
+<td><p>Refers to the axis, defines a axis or co-ordinate suystem in which a tool operates.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_BRSH</p></td>
+<td><p>Refers to a paint brush.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_CONS</p></td>
+<td><p>Refers to a constraint, constrains mouse events to move along a continuous surface</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_CONT</p></td>
+<td><p>Refers to a content preset.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_EFFR</p></td>
+<td><p>Refers to a effector, read particles and effects at the position.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_NOZL</p></td>
+<td><p>Refers to a nozzle(used with brushes)</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_PATH</p></td>
+<td><p>Refers to a path generator</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_PINK</p></td>
+<td><p>Paint Ink</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_POST</p></td>
+<td><p>Refers to a post apply actor</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_PTCL</p></td>
+<td><p>Refers to a surface particle generator</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_SIDE</p></td>
+<td><p>Not 100% Sure, by process of elimination I bielive it isthe visual aid - Adds to display without changing anything.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_SNAP</p></td>
+<td><p>Refers to the snap, attracts and locks mouse events to specific positions or elements.</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_STYL</p></td>
+<td><p>Doesnt actually effect anything.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_SYMM</p></td>
+<td><p>Refers to tool symmetry</p></td>
+</tr>
+<tr class="row-even"><td><p>LXs_ORD_WGHT</p></td>
+<td><p>Refers to the falloff, defines the strength of the tool operation through space.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LXs_ORD_WORK</p></td>
+<td><p>Refers to the workplane.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="undocumented-methods">
+<h2><a class="toc-backref" href="#id14">Undocumented Methods</a><a class="headerlink" href="#undocumented-methods" title="Permalink to this headline">¶</a></h2>
+<p>I am currently giving these methods there own category as so far I have not been able to get them to work.
+They are related to procedural tools however please refer to the SDK docs for more info</p>
+<div class="section" id="tool-sequence">
+<h3><a class="toc-backref" href="#id15">tool_Sequence()</a><a class="headerlink" href="#tool-sequence" title="Permalink to this headline">¶</a></h3>
+<p>This method uses the attribute sequence object given to store the tool’s complete state by generating the sequence of attribute changes needed to reproduce that exact state. A tool whose state is expressed entirely by its attributes may return LXe_NOTIMPL from this method, and let the system build the sequence directly from the attribute list.
+//BasicToolCLxImpl_Tool::tool_Sequence ===</p>
+</div>
+<div class="section" id="tool-shouldbeattribute-lxtid4-task">
+<h3><a class="toc-backref" href="#id16">tool_ShouldBeAttribute(LXtID4 task)</a><a class="headerlink" href="#tool-shouldbeattribute-lxtid4-task" title="Permalink to this headline">¶</a></h3>
+<p>int tool_ShouldBeAttribute(LXtID4 task)</p>
+</div>
+<div class="section" id="tool-getop-void-ppvobj-unsigned-flags">
+<h3><a class="toc-backref" href="#id17">tool_GetOp(void** ppvObj,unsigned flags)</a><a class="headerlink" href="#tool-getop-void-ppvobj-unsigned-flags" title="Permalink to this headline">¶</a></h3>
+<p>LxResult tool_GetOp(void** ppvObj,unsigned flags)</p>
+</div>
+<div class="section" id="tool-compareop-ilxunknownid-vts-lxtobjectid-toolop">
+<h3><a class="toc-backref" href="#id18">tool_CompareOp(ILxUnknownID vts, LXtObjectID toolop)</a><a class="headerlink" href="#tool-compareop-ilxunknownid-vts-lxtobjectid-toolop" title="Permalink to this headline">¶</a></h3>
+<p>int tool_CompareOp(ILxUnknownID vts, LXtObjectID toolop)</p>
+</div>
+<div class="section" id="tool-updateop-ilxunknownid-toolop">
+<h3><a class="toc-backref" href="#id19">tool_UpdateOp(ILxUnknownID toolOP)</a><a class="headerlink" href="#tool-updateop-ilxunknownid-toolop" title="Permalink to this headline">¶</a></h3>
+<p>LxResult tool_UpdateOp(ILxUnknownID toolOP)</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Channel%20Modifier.html" class="btn btn-neutral float-right" title="Channel Modifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../systems/Telnet.html" class="btn btn-neutral float-left" title="Telnet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/serverinfo/CLxImpl Tool.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+</html>

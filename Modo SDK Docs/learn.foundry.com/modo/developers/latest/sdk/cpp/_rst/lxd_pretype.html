@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_pretype.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pretype &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Preview" href="lxd_preview.html" />
+    <link rel="prev" title="Predest" href="lxd_predest.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pretype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetloadertarget">ILxPresetLoaderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresettype">ILxPresetType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresettype1">ILxPresetType1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetmetrics">ILxPresetMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetmetrics1">ILxPresetMetrics1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetdo">ILxPresetDo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetbrowsersource">ILxPresetBrowserSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetbrowserservice">ILxPresetBrowserService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpbspecialsellistener">ILxPBSpecialSelListener</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Pretype</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pretype">
+<h1>Pretype<a class="headerlink" href="#pretype" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxpresetloadertarget" id="id1">ILxPresetLoaderTarget</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresettype" id="id2">ILxPresetType</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresettype1" id="id3">ILxPresetType1</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresetmetrics" id="id4">ILxPresetMetrics</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresetmetrics1" id="id5">ILxPresetMetrics1</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresetdo" id="id6">ILxPresetDo</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresetbrowsersource" id="id7">ILxPresetBrowserSource</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresetbrowserservice" id="id8">ILxPresetBrowserService</a></p></li>
+<li><p><a class="reference internal" href="#ilxpbspecialsellistener" id="id9">ILxPBSpecialSelListener</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>LXiSEL_PRST</p></li>
+</ul>
+<div class="section" id="ilxpresetloadertarget">
+<h2><a class="toc-backref" href="#id1">ILxPresetLoaderTarget</a><a class="headerlink" href="#ilxpresetloadertarget" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxPresetLoaderTarget">
+<span id="_CPPv321ILxPresetLoaderTarget"></span><span id="_CPPv221ILxPresetLoaderTarget"></span><span id="ILxPresetLoaderTarget"></span><span class="target" id="class_i_lx_preset_loader_target"></span><em class="property">class </em><code class="sig-name descname">ILxPresetLoaderTarget</code><a class="headerlink" href="#_CPPv421ILxPresetLoaderTarget" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxPresetLoaderTarget10ServerNameE11LXtObjectIDPcj">
+<span id="_CPPv3N21ILxPresetLoaderTarget10ServerNameE11LXtObjectIDPcj"></span><span id="_CPPv2N21ILxPresetLoaderTarget10ServerNameE11LXtObjectIDPcj"></span><span id="ILxPresetLoaderTarget::ServerName__LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_preset_loader_target_1ac0d7e98b616424f75e20d0b27bb9384e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPresetLoaderTarget10ServerNameE11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When using LoaderFind() or LoaderFindAny(), the LoadAccess-&gt;target member will point to one of these objects. This contains the name of the server that recognized the file, and the categories that the server said the file belongs to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPresetLoaderTarget13CategoryCountE11LXtObjectIDPi">
+<span id="_CPPv3N21ILxPresetLoaderTarget13CategoryCountE11LXtObjectIDPi"></span><span id="_CPPv2N21ILxPresetLoaderTarget13CategoryCountE11LXtObjectIDPi"></span><span id="ILxPresetLoaderTarget::CategoryCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_preset_loader_target_1a94402e65d7c10ac8f617f8c39a2692f6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CategoryCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPresetLoaderTarget13CategoryCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxPresetLoaderTarget15CategoryByIndexE11LXtObjectIDiPPKc">
+<span id="_CPPv3N21ILxPresetLoaderTarget15CategoryByIndexE11LXtObjectIDiPPKc"></span><span id="_CPPv2N21ILxPresetLoaderTarget15CategoryByIndexE11LXtObjectIDiPPKc"></span><span id="ILxPresetLoaderTarget::CategoryByIndex__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_preset_loader_target_1a28a8b15c30ae1bc968f72d627a472e36"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CategoryByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxPresetLoaderTarget15CategoryByIndexE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresettype">
+<h2><a class="toc-backref" href="#id2">ILxPresetType</a><a class="headerlink" href="#ilxpresettype" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxPresetType">
+<span id="_CPPv313ILxPresetType"></span><span id="_CPPv213ILxPresetType"></span><span id="ILxPresetType"></span><span class="target" id="class_i_lx_preset_type"></span><em class="property">class </em><code class="sig-name descname">ILxPresetType</code><a class="headerlink" href="#_CPPv413ILxPresetType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clients that want to have their contents show up in the preset browser need to register a server with the system. This is done simply by defining a new plug-in with the ILxPreset interface. This interface is not only used to populate the browser, but also used to actually load and apply presets. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType9RecognizeE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N13ILxPresetType9RecognizeE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N13ILxPresetType9RecognizeE11LXtObjectIDPKcPPKc"></span><span id="ILxPresetType::Recognize__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_preset_type_1a12676481868e5e8eea3b8681ebef91f7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Recognize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <em class="property">const</em> char **<em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType9RecognizeE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The recognize method is passed the full path to a file. The server should return an OK code if the server wants to take ownership of it, in which case it may be asked to present the relative metrics, thumbnails and so on, or asked to apply (load) the preset into a compatible object. Returning a failure code will pass the file on to the next server. If no servers recognize the file, it will not be shown in the browser, and no servers will be asked to try to load the file. A category string is returned indirectly, and should be one of the categories provided by the server through LXsPBS_CATEGORY. This is used to decide if the preset should be be shown when the browser is set to only show a specific category. As of 801, the <a class="reference internal" href="#class_i_lx_preset_type_1a12676481868e5e8eea3b8681ebef91f7"><span class="std std-ref">Recognize()</span></a> method does not return a GUID. Pre-801 servers may return a GUID for use with drag and drop, but modern clients use <a class="reference internal" href="lxd_drop.html#class_i_lx_drop"><span class="std std-ref">ILxDrop</span></a> to handle arbitrary drop sources and targets, and the <a class="reference internal" href="#class_i_lx_preset_type_1ae57c05f095dcebd307bd3f0944811fd5"><span class="std std-ref">Apply()</span></a> method may support multiple possible interfaces. As such, the old GUID is considred obsolete and was removed. Note that the <a class="reference internal" href="#class_i_lx_preset_type_1a12676481868e5e8eea3b8681ebef91f7"><span class="std std-ref">Recognize()</span></a> method must be thread-safe, as it is called asynchronously to filter the preset browser’s file list. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType5ApplyE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N13ILxPresetType5ApplyE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N13ILxPresetType5ApplyE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxPresetType::Apply__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_preset_type_1ae57c05f095dcebd307bd3f0944811fd5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Apply</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>destination</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType5ApplyE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_preset_type_1ae57c05f095dcebd307bd3f0944811fd5"><span class="std std-ref">Apply()</span></a> method is also obsolete. It was previous used for legacy D&amp;D, but that has been superceded by <a class="reference internal" href="lxd_drop.html#class_i_lx_drop"><span class="std std-ref">ILxDrop</span></a> servers. Servers can not implement this method and simply return LXe_NOTIMPL, in which case an <a class="reference internal" href="lxd_drop.html#class_i_lx_drop"><span class="std std-ref">ILxDrop</span></a> server must be used to apply the preset. In legacy D&amp;D, once a preset has been recognized the client may ask the server to apply the preset, or it may simply ask for metrics (see the section on metrics for more information on the latter). To apply the preset, a client would call this method. The client needs to provide the path to a file that was previously identified with the above <a class="reference internal" href="#class_i_lx_preset_type_1a12676481868e5e8eea3b8681ebef91f7"><span class="std std-ref">Recognize()</span></a> call. The destination argument is a COM object containing one or more interfaces that the prset can use to decide how to apply itself. The <a class="reference internal" href="#class_i_lx_preset_type_1ae57c05f095dcebd307bd3f0944811fd5"><span class="std std-ref">Apply()</span></a> method itself will query the destination object for the required interface, failing if it is not found. By default, the server is assumed to support <a class="reference internal" href="#class_i_lx_preset_type_1ae57c05f095dcebd307bd3f0944811fd5"><span class="std std-ref">Apply()</span></a>, and will be considered when testing servers for drag and drop support. If it does not support <a class="reference internal" href="#class_i_lx_preset_type_1ae57c05f095dcebd307bd3f0944811fd5"><span class="std std-ref">Apply()</span></a>, the LXsPBS_CANAPPLY server tag must be present with a value of “false”. This is particularly useful for things like images, which aren’t presets per say, but still show up in the browser. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType2DoE11LXtObjectIDPKc">
+<span id="_CPPv3N13ILxPresetType2DoE11LXtObjectIDPKc"></span><span id="_CPPv2N13ILxPresetType2DoE11LXtObjectIDPKc"></span><span id="ILxPresetType::Do__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_type_1ac138941eaf13ec2324e59cb48f733be2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Do</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType2DoE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It is also possible to load a preset without a destination. An example would be double-clicking on a preset in the browser, rather than using drag and drop. In this case, the server needs to look at the current selection state and intelligently apply the preset itself. We just call this a “do” instead of an “apply”. Note that the <a class="reference internal" href="#class_i_lx_preset_type_1ac138941eaf13ec2324e59cb48f733be2"><span class="std std-ref">Do()</span></a> method should call a command to actually do the apply. This is because preset.do is a UI command, and they only way to promot it to undoable or side-effect behavior is by executing another command within it. By default, the server is assumed to support <a class="reference internal" href="#class_i_lx_preset_type_1ac138941eaf13ec2324e59cb48f733be2"><span class="std std-ref">Do()</span></a>, and thus will be considered when evaluating servers in preset.do. If it does not support <a class="reference internal" href="#class_i_lx_preset_type_1ac138941eaf13ec2324e59cb48f733be2"><span class="std std-ref">Do()</span></a>, the LXsPBS_CANDO server tag must be present with a value of “false”. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType14DoCommandFlagsE11LXtObjectIDPKcPi">
+<span id="_CPPv3N13ILxPresetType14DoCommandFlagsE11LXtObjectIDPKcPi"></span><span id="_CPPv2N13ILxPresetType14DoCommandFlagsE11LXtObjectIDPKcPi"></span><span id="ILxPresetType::DoCommandFlags__LXtObjectID.cCP.iP"></span><span class="target" id="class_i_lx_preset_type_1a09f9dcdd481a20ce294a0150f140de69"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DoCommandFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType14DoCommandFlagsE11LXtObjectIDPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the execution flags for a file previously recognized by the server. If not implemented, the default UI flags are used. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType7MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv">
+<span id="_CPPv3N13ILxPresetType7MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv"></span><span id="_CPPv2N13ILxPresetType7MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv"></span><span id="ILxPresetType::Metrics__LXtObjectID.cCP.i.i.i.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_type_1a18880bf35259171441255b128542298a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Metrics</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int <em>flags</em>, int <em>w</em>, int <em>h</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>prevMetrics</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType7MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Lastly, it is valid for a client to return LXe_NOTIMPL and not generate any metrics at all. This allows the creation of clients that only recognize file types and allow them to show up in the browser with default properties. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType24GenericThumbnailResourceE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N13ILxPresetType24GenericThumbnailResourceE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N13ILxPresetType24GenericThumbnailResourceE11LXtObjectIDPKcPPKc"></span><span id="ILxPresetType::GenericThumbnailResource__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_preset_type_1a9694316876f7d3e2e84bdf7115dbdcfc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GenericThumbnailResource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <em class="property">const</em> char **<em>resourceName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType24GenericThumbnailResourceE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Servers can define a generic named resource image that is used if the metrics themselves do not provide either a specific thumbnail or a named resource. If this fails, no thumbnail will be shown. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType10BaseAspectE11LXtObjectIDPf">
+<span id="_CPPv3N13ILxPresetType10BaseAspectE11LXtObjectIDPf"></span><span id="_CPPv2N13ILxPresetType10BaseAspectE11LXtObjectIDPf"></span><span id="ILxPresetType::BaseAspect__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_preset_type_1ac70b1cf29e1a519de7938cb15fedac05"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BaseAspect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>aspect</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType10BaseAspectE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Servers can also define an aspect ratio that should be used for the thumbnails representing their content. If not implemented, the default aspect of 1.0 is used. Since the browser can only show one aspect, there is no point in returning per-thumbnail aspects. Note that thumbnail images themselves need not be this aspect, and will automatically be centered within the thumbnail’s bounds. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType14StoreThumbnailE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N13ILxPresetType14StoreThumbnailE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N13ILxPresetType14StoreThumbnailE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxPresetType::StoreThumbnail__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_preset_type_1a069544b34f707fbe4703f4a0df4b5aa0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StoreThumbnail</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType14StoreThumbnailE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The user can update the thumbnail at will. If the preset format supports it, the new thumbnail can be stored directly in the prefest file itself when this method is called. If not supported, this can return LXe_NOTIMPL. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType16DefaultThumbnailE11LXtObjectIDPKc">
+<span id="_CPPv3N13ILxPresetType16DefaultThumbnailE11LXtObjectIDPKc"></span><span id="_CPPv2N13ILxPresetType16DefaultThumbnailE11LXtObjectIDPKc"></span><span id="ILxPresetType::DefaultThumbnail__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_type_1aadcb8451cc4c5a97fa2fc61315bfd35c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DefaultThumbnail</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType16DefaultThumbnailE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This indicates that any previosuly stored thumbnail should be removed and the default should be used. This only makes sense if a thumbnail can be generated procedurally, and can return LXe_NOTIMPL if this isn’t supported. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxPresetType11StoreMarkupE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N13ILxPresetType11StoreMarkupE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N13ILxPresetType11StoreMarkupE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxPresetType::StoreMarkup__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_preset_type_1a3db31ea1f423756e40593b713f64bfea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StoreMarkup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxPresetType11StoreMarkupE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>User-defined markup (favorites, tags, etc) can be stored in the file. The object passed in will have an <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interface, and its contents should be written to the file, if the format supports it. If not, this can return LXe_NOTIMPL. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXe_PRESET_ALREADY_APPLIED">
+<span class="target" id="lxd__pretype_8hpp_1a694d151ba7e745704283bb1f083aad7e"></span><code class="sig-name descname">LXe_PRESET_ALREADY_APPLIED</code><a class="headerlink" href="#c.LXe_PRESET_ALREADY_APPLIED" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Do() is usally called from a command, but this is often a UI command, and does not contain undo blocks. Ideally, the server’s own Do() method should also call a command with the proper flags for undos or whatnot, and ideally that command would be preset.do. The idea is that you’d call commands to set up the appropriate state, and then call execute preset.do to do the actual work. These commands should not involve anything that couldn’t be done by simply double-clicking on a preset in the Preset Browser (i.e., no viewport coordinates or other UI-centric things like that). Some presets support scripts that perform special behaviors. One is to detect that a preset is already applied and that it doesn’t need to be applied again. This should not be considered a failure, so we have this special code to indicate this. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsPBS_CATEGORY</p></li>
+<li><p>LXsPBS_DOSPATTERN</p></li>
+<li><p>LXsPBS_CANAPPLY</p></li>
+<li><p>LXsPBS_CANDO</p></li>
+<li><p>LXsPBS_ORDINAL</p></li>
+<li><p>LXsPBS_DYNAMICTHUMBNAILS</p></li>
+<li><p>LXsPBS_SYNTHETICSUPPORT</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiPBMETRICS_THUMBNAIL_IMAGE">
+<span class="target" id="lxd__pretype_8hpp_1a8786eb6b2cfd68f2cdac412072e7b1b9"></span><code class="sig-name descname">LXiPBMETRICS_THUMBNAIL_IMAGE</code><a class="headerlink" href="#c.LXiPBMETRICS_THUMBNAIL_IMAGE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The metrics method is used to request information about the file. This may be called multiple times and may be called concurrently. As such, this method must be thread safe. Such information is requested through the Metrics() method. The results are returned as an object containing an <a class="reference internal" href="#class_i_lx_preset_metrics"><span class="std std-ref">ILxPresetMetrics</span></a> interface. The preset browser expects the returned object to be AddRef()’ed before it is returned, and it will be Release()’ed by the browser when no longer needed. Exactly what kind of information is being requested is determined by the flags argument:</p>
+<p><ul class="simple">
+<li><p>THUMBNAIL_IMAGE The client should generate a suitable thumbnail, which will be later obtained through ThumbnailImage().</p></li>
+<li><p>BASIC_INFO The Label(), Caption() and ToolTip() methods should be initialized so that they can return useful information about the preset, if desired.</p></li>
+<li><p>EXTRA_ATTRIBUTES The client should load any state that can be used to return <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> objects from the Metadata() and Markup() methods, if supported. Note that the Metrics() object should include the label, caption and tooltip properties, even though those methods exist on the metrics object itself. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiPBMETRICS_BASIC_INFO</p></li>
+<li><p>LXiPBMETRICS_EXTRA_ATTRIBUTES</p></li>
+<li><p>LXiPBMETRICS_ALL</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiPBTHUMBSIZE_FULL">
+<span class="target" id="lxd__pretype_8hpp_1ab318d4766fe439652df244916f1f4f9e"></span><code class="sig-name descname">LXiPBTHUMBSIZE_FULL</code><a class="headerlink" href="#c.LXiPBTHUMBSIZE_FULL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If a flag isn’t set, then that data isn’t needed  there’s no point spending the time generating a thumbnail if all the browser wants is basic metrics. The metrics method is called with the the path to the image and the desired width and height of the thumbnail. If there was a previous call to this method for this path, the old metrics object may also be passed in as prevMetrics. The server is expected to return a valid object with an <a class="reference internal" href="#class_i_lx_preset_metrics"><span class="std std-ref">ILxPresetMetrics</span></a> interface. Note that if prevMetrics is not NULL, the server may use it as a reference. As of nexus 801, this will always be NULL, but in older versions it may be passed. The server should NOT in-place modify prevMetrics. This is because the Metrics() method may be called from a thread, and prevMetrics may be in active use; changing it could result in a crash. An example of using prevMetrics as a reference may be to obtain its thumbnail image, check to see if it matches the requested width and height, and if so then AddRef()’ing it, and storing it in the new metrics structure. Of course, there’s no need to even do this if the THUMBNAIL_IMAGE flag isn’t set. If the metrics are identical to prevMetrics, you can simply AddRef() it and return it.</p>
+<p>If w/h are LXiPBTHUMBSIZE_FULL and LXiPBMETRICS_THUMBNAIL_IMAGE is set, then the full resolution image should be returned. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresettype1">
+<h2><a class="toc-backref" href="#id3">ILxPresetType1</a><a class="headerlink" href="#ilxpresettype1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxPresetType1">
+<span id="_CPPv314ILxPresetType1"></span><span id="_CPPv214ILxPresetType1"></span><span id="ILxPresetType1"></span><span class="target" id="class_i_lx_preset_type1"></span><em class="property">class </em><code class="sig-name descname">ILxPresetType1</code><a class="headerlink" href="#_CPPv414ILxPresetType1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The old version of this interface was retired in 801, and is missing some of the newer methods and has changes to others. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType19RecognizeE11LXtObjectIDPKcPPK7LXtGUIDPPKc">
+<span id="_CPPv3N14ILxPresetType19RecognizeE11LXtObjectIDPKcPPK7LXtGUIDPPKc"></span><span id="_CPPv2N14ILxPresetType19RecognizeE11LXtObjectIDPKcPPK7LXtGUIDPPKc"></span><span id="ILxPresetType1::Recognize__LXtObjectID.cCP.LXtGUIDCPP.cCPP"></span><span class="target" id="class_i_lx_preset_type1_1a5a7c4b79f835d7ca84603b2d28bfabad"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Recognize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <em class="property">const</em> LXtGUID **<em>guid</em>, <em class="property">const</em> char **<em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType19RecognizeE11LXtObjectIDPKcPPK7LXtGUIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For legacy servers, the method returns a GUID to decide how to load the file, based on what the server found in the file. The object passed to the (also obsolete) <a class="reference internal" href="#class_i_lx_preset_type1_1aaac4347ea81be2cfb8f6187c8522edd0"><span class="std std-ref">Apply()</span></a> method is expected to have this interface. Often this is not a common GUID like <a class="reference internal" href="lxd_item.html#class_i_lx_item"><span class="std std-ref">ILxItem</span></a>, but rather defines a container that holds the true target of the preset load. For example, it may have a method to return an item, scene, image or other common object, but also may include secondary information that will help the server determine how the client would like the preset loaded. Different sub-types of object might have different application objects as well. For example, both lights and materials are items with the <a class="reference internal" href="lxd_item.html#class_i_lx_item"><span class="std std-ref">ILxItem</span></a> interface, but they may be wrapped in another object with the appropriate ILxLightPresetDestination or ILxMaterialPresetDestination interface. Alternatively, the requested interface may in fact be normally preset on the specific objects themselves along with their normal interfaces, thus obviating the need for a special container to wrap them. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType15ApplyE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N14ILxPresetType15ApplyE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N14ILxPresetType15ApplyE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxPresetType1::Apply__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_preset_type1_1aaac4347ea81be2cfb8f6187c8522edd0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Apply</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>destination</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType15ApplyE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType12DoE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxPresetType12DoE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxPresetType12DoE11LXtObjectIDPKc"></span><span id="ILxPresetType1::Do__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_type1_1aaea2a735a8df200dc35471b02e76c7ae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Do</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType12DoE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType114DoCommandFlagsE11LXtObjectIDPKcPi">
+<span id="_CPPv3N14ILxPresetType114DoCommandFlagsE11LXtObjectIDPKcPi"></span><span id="_CPPv2N14ILxPresetType114DoCommandFlagsE11LXtObjectIDPKcPi"></span><span id="ILxPresetType1::DoCommandFlags__LXtObjectID.cCP.iP"></span><span class="target" id="class_i_lx_preset_type1_1a1f6237a4fdfaf2881aa315ba93bf0845"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DoCommandFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType114DoCommandFlagsE11LXtObjectIDPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType17MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv">
+<span id="_CPPv3N14ILxPresetType17MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv"></span><span id="_CPPv2N14ILxPresetType17MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv"></span><span id="ILxPresetType1::Metrics__LXtObjectID.cCP.i.i.i.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_type1_1a1f0d270f4e791a2c3800d07bcc11b99b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Metrics</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int <em>flags</em>, int <em>w</em>, int <em>h</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>prevMetrics</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType17MetricsE11LXtObjectIDPKciii11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType124GenericThumbnailResourceE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N14ILxPresetType124GenericThumbnailResourceE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N14ILxPresetType124GenericThumbnailResourceE11LXtObjectIDPKcPPKc"></span><span id="ILxPresetType1::GenericThumbnailResource__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_preset_type1_1a704a1f5fa0a31f912fbc2f2a2c99c608"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GenericThumbnailResource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, <em class="property">const</em> char **<em>resourceName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType124GenericThumbnailResourceE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxPresetType110BaseAspectE11LXtObjectIDPf">
+<span id="_CPPv3N14ILxPresetType110BaseAspectE11LXtObjectIDPf"></span><span id="_CPPv2N14ILxPresetType110BaseAspectE11LXtObjectIDPf"></span><span id="ILxPresetType1::BaseAspect__LXtObjectID.floatP"></span><span class="target" id="class_i_lx_preset_type1_1a3826c2856c6c652d16efb21179723414"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">BaseAspect</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>aspect</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxPresetType110BaseAspectE11LXtObjectIDPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresetmetrics">
+<h2><a class="toc-backref" href="#id4">ILxPresetMetrics</a><a class="headerlink" href="#ilxpresetmetrics" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxPresetMetrics">
+<span id="_CPPv316ILxPresetMetrics"></span><span id="_CPPv216ILxPresetMetrics"></span><span id="ILxPresetMetrics"></span><span class="target" id="class_i_lx_preset_metrics"></span><em class="property">class </em><code class="sig-name descname">ILxPresetMetrics</code><a class="headerlink" href="#_CPPv416ILxPresetMetrics" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The metrics object is passed to the server’s Metrics() method to get information about the file. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxPresetMetrics14ThumbnailImageE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxPresetMetrics14ThumbnailImageE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxPresetMetrics14ThumbnailImageE11LXtObjectIDPPv"></span><span id="ILxPresetMetrics::ThumbnailImage__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_metrics_1a21a23c3514f8bc9ed56562978f440199"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ThumbnailImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxPresetMetrics14ThumbnailImageE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns an ILxImageID representing the thumbnail of a preset. The dimensions of the thumbnail should be those passed to the ILxPresetBrowserClient’s Metrics() method, or smaller if the dimensions requested are larger than the preset can provide. Returning a larger image is discouraged, but if done it will be scaled down as necessary. The returned image can be NULL if no thumbnail is available, but if non-NULL it should be AddRef()’ed, as the caller will release it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxPresetMetrics18ThumbnailIdealSizeE11LXtObjectIDPiPi">
+<span id="_CPPv3N16ILxPresetMetrics18ThumbnailIdealSizeE11LXtObjectIDPiPi"></span><span id="_CPPv2N16ILxPresetMetrics18ThumbnailIdealSizeE11LXtObjectIDPiPi"></span><span id="ILxPresetMetrics::ThumbnailIdealSize__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_preset_metrics_1a3ab9f866bd2da95cfbbb71424fc4c8e8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ThumbnailIdealSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>idealW</em>, int *<em>idealH</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxPresetMetrics18ThumbnailIdealSizeE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The ideal width and height are the native resolution of the thumbnail. When no new thumbnail is yet available, the browser will temporarily scale the old thumbnail to be no larger than the ideal size. This avoids popping if the image were to become larger than ideal, then pop back to ideal when the final image comes in. If the thumbnail is computed dynamically and thus has no ideal or maximum size, idealW and idealH can be set to 0. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxPresetMetrics17ThumbnailResourceE11LXtObjectIDPPKc">
+<span id="_CPPv3N16ILxPresetMetrics17ThumbnailResourceE11LXtObjectIDPPKc"></span><span id="_CPPv2N16ILxPresetMetrics17ThumbnailResourceE11LXtObjectIDPPKc"></span><span id="ILxPresetMetrics::ThumbnailResource__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_preset_metrics_1acc25c1c4320f3a180c4c450301306c40"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ThumbnailResource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>resourceName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxPresetMetrics17ThumbnailResourceE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the above method fails, this method will be called to get a generic image representing the preset. The image a named resource that will be looked up from the configs, and will be scaled down as appropriate (it won’t be scaled up, only down). If this also fails, we fall back to the server’s GenericThumbnailResource() method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxPresetMetrics8MetadataE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxPresetMetrics8MetadataE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxPresetMetrics8MetadataE11LXtObjectIDPPv"></span><span id="ILxPresetMetrics::Metadata__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_metrics_1a59e5b8fa6d576a3382652d87f79a2871"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Metadata</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxPresetMetrics8MetadataE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxPresetMetrics6MarkupE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxPresetMetrics6MarkupE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxPresetMetrics6MarkupE11LXtObjectIDPPv"></span><span id="ILxPresetMetrics::Markup__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_metrics_1a2506185c4085c5ba633b39a98d0a9f2d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Markup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxPresetMetrics6MarkupE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Markup is defined by the browser and is generated by the user, and includes things like star ratings, tags and ohter properties. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxPresetMetrics5FlagsE11LXtObjectIDPi">
+<span id="_CPPv3N16ILxPresetMetrics5FlagsE11LXtObjectIDPi"></span><span id="_CPPv2N16ILxPresetMetrics5FlagsE11LXtObjectIDPi"></span><span id="ILxPresetMetrics::Flags__LXtObjectID.iP"></span><span class="target" id="class_i_lx_preset_metrics_1a88ead256312a47840131c957db51ff32"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxPresetMetrics5FlagsE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Servers can also return per-file flags, which indicate special behaviors for the file. These are the same LXiDCFM_ defines used by the DirBrowser. For example, LXiDCFM_DYNAMIC_THUMBNAILS is commonly set on color presets, since the thumbnail can be quickly generated at an arbitrary size, and thus need not be cached on disk. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPBMETA_LABEL">
+<span class="target" id="lxd__pretype_8hpp_1a4f399aaf216eb3b2a03063e981eda369"></span><code class="sig-name descname">LXsPBMETA_LABEL</code><a class="headerlink" href="#c.LXsPBMETA_LABEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The metrics interface can return two objects with <a class="reference internal" href="lxd_value.html#class_i_lx_attributes"><span class="std std-ref">ILxAttributes</span></a> interfaces, one for metadata defined by the preset itself, and one for markup stored in the file by the Preset Browser. Metadata includes properties such as the width and height of an image, the number of polygons in a mesh, etc. Note that this should also include the label, caption and tooltip as returned from the above methods. Some common metadata includes:</p>
+<p><ul class="simple">
+<li><p>label (string) The label displayed for the file in the browser in place of the filename. If not present, the filename without the extension will be used instead, with underscores replaced by spaces.</p></li>
+<li><p>caption (string) A very short descriptive text (just a couple of words) normally displayed underneath the thumbnail. For example, color presets use this for the RGB values of the color, while item presets use it for the name of the item type, and image presets use it for the image resolution and bit depth.</p></li>
+<li><p>tooltip (string) A tooltip displayed when the user hovers the mouse over the file’s thumbnail. If omitted, then a tooltip is automatically generated based on other metadata.</p></li>
+<li><p>type (string) A short internal string identifying the kind of preset. This is for use with filtering and sorting, and so that clients can esaily identify recognized files in the dir cache without having to parse them themselves. This isn’t always present, and it is possible for multiple presets to indicate the same type if they can be used the same way, even if different preset servers handle them. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsPBMETA_CAPTION</p></li>
+<li><p>LXsPBMETA_TOOLTIP</p></li>
+<li><p>LXsPBMETA_PRESET_TYPE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxpresetmetrics1">
+<h2><a class="toc-backref" href="#id5">ILxPresetMetrics1</a><a class="headerlink" href="#ilxpresetmetrics1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxPresetMetrics1">
+<span id="_CPPv317ILxPresetMetrics1"></span><span id="_CPPv217ILxPresetMetrics1"></span><span id="ILxPresetMetrics1"></span><span class="target" id="class_i_lx_preset_metrics1"></span><em class="property">class </em><code class="sig-name descname">ILxPresetMetrics1</code><a class="headerlink" href="#_CPPv417ILxPresetMetrics1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The old version of this interface was retired in 801, and is missing some of the newer methods. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxPresetMetrics15LabelE11LXtObjectIDPPKc">
+<span id="_CPPv3N17ILxPresetMetrics15LabelE11LXtObjectIDPPKc"></span><span id="_CPPv2N17ILxPresetMetrics15LabelE11LXtObjectIDPPKc"></span><span id="ILxPresetMetrics1::Label__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_preset_metrics1_1ac3b4571f147e9130438b122a7caee9c2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Label</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>label</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPresetMetrics15LabelE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPresetMetrics114ThumbnailImageE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxPresetMetrics114ThumbnailImageE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxPresetMetrics114ThumbnailImageE11LXtObjectIDPPv"></span><span id="ILxPresetMetrics1::ThumbnailImage__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_metrics1_1a62bec500df4f119a12f9cc17d69d3dfb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ThumbnailImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPresetMetrics114ThumbnailImageE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPresetMetrics118ThumbnailIdealSizeE11LXtObjectIDPiPi">
+<span id="_CPPv3N17ILxPresetMetrics118ThumbnailIdealSizeE11LXtObjectIDPiPi"></span><span id="_CPPv2N17ILxPresetMetrics118ThumbnailIdealSizeE11LXtObjectIDPiPi"></span><span id="ILxPresetMetrics1::ThumbnailIdealSize__LXtObjectID.iP.iP"></span><span class="target" id="class_i_lx_preset_metrics1_1af4d478438712880c7bc5200b552db2e0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ThumbnailIdealSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>idealW</em>, int *<em>idealH</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPresetMetrics118ThumbnailIdealSizeE11LXtObjectIDPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPresetMetrics117ThumbnailResourceE11LXtObjectIDPPKc">
+<span id="_CPPv3N17ILxPresetMetrics117ThumbnailResourceE11LXtObjectIDPPKc"></span><span id="_CPPv2N17ILxPresetMetrics117ThumbnailResourceE11LXtObjectIDPPKc"></span><span id="ILxPresetMetrics1::ThumbnailResource__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_preset_metrics1_1ad955dfebbc2bb7ad61682976c4b268b8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ThumbnailResource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>resourceName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPresetMetrics117ThumbnailResourceE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPresetMetrics17CaptionE11LXtObjectIDPPKc">
+<span id="_CPPv3N17ILxPresetMetrics17CaptionE11LXtObjectIDPPKc"></span><span id="_CPPv2N17ILxPresetMetrics17CaptionE11LXtObjectIDPPKc"></span><span id="ILxPresetMetrics1::Caption__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_preset_metrics1_1a1ce624337ead80166cfa940d4e47c1fd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Caption</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>caption</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPresetMetrics17CaptionE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxPresetMetrics17ToolTipE11LXtObjectIDPPKc">
+<span id="_CPPv3N17ILxPresetMetrics17ToolTipE11LXtObjectIDPPKc"></span><span id="_CPPv2N17ILxPresetMetrics17ToolTipE11LXtObjectIDPPKc"></span><span id="ILxPresetMetrics1::ToolTip__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_preset_metrics1_1a6f88f0c3ff9f042b1d6bb193f61868ea"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToolTip</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>tooltip</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxPresetMetrics17ToolTipE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresetdo">
+<h2><a class="toc-backref" href="#id6">ILxPresetDo</a><a class="headerlink" href="#ilxpresetdo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxPresetDo">
+<span id="_CPPv311ILxPresetDo"></span><span id="_CPPv211ILxPresetDo"></span><span id="ILxPresetDo"></span><span class="target" id="class_i_lx_preset_do"></span><em class="property">class </em><code class="sig-name descname">ILxPresetDo</code><a class="headerlink" href="#_CPPv411ILxPresetDo" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Double-clicks normally execute the <a class="reference internal" href="#class_i_lx_preset_do_1a8885eb413853a846086fd92f0c8fb002"><span class="std std-ref">Do()</span></a> method of the preset type server associated with the preset. This works for the general preset browser, but there are focused cases where we want overrides. For example, the MatCap PBView shows images, but double-clicking one should load it as a matcap instead of as a clip. By implementing an <a class="reference internal" href="#class_i_lx_preset_do"><span class="std std-ref">ILxPresetDo</span></a> server and setting it on the PBView, it can do exactly that. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxPresetDo4TestE11LXtObjectIDPKc">
+<span id="_CPPv3N11ILxPresetDo4TestE11LXtObjectIDPKc"></span><span id="_CPPv2N11ILxPresetDo4TestE11LXtObjectIDPKc"></span><span id="ILxPresetDo::Test__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_do_1aa01881f9662728200133cb9ce4e37bbe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Test</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxPresetDo4TestE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When a file is double-clicked, the <a class="reference internal" href="#class_i_lx_preset_do_1aa01881f9662728200133cb9ce4e37bbe"><span class="std std-ref">Test()</span></a> method is called to see if the server can handle the preset. It should return a success code (LXe_OK, for example) if it can handle the file, and a failure code if it can’t. Note that this may be passed an empty path when “do on deselect” is set for the browser, allowing the client to do special behaviors when the selection is cleared. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxPresetDo2DoE11LXtObjectIDPKc">
+<span id="_CPPv3N11ILxPresetDo2DoE11LXtObjectIDPKc"></span><span id="_CPPv2N11ILxPresetDo2DoE11LXtObjectIDPKc"></span><span id="ILxPresetDo::Do__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_do_1a8885eb413853a846086fd92f0c8fb002"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Do</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxPresetDo2DoE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_preset_do_1a8885eb413853a846086fd92f0c8fb002"><span class="std std-ref">Do()</span></a> method is called to actually perform an action on a double-click.. If the server recognizes the file and wants to handle it, it should perform the action and return LXe_OK. Again, this may pass an empty string for the path. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresetbrowsersource">
+<h2><a class="toc-backref" href="#id7">ILxPresetBrowserSource</a><a class="headerlink" href="#ilxpresetbrowsersource" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxPresetBrowserSource">
+<span id="_CPPv322ILxPresetBrowserSource"></span><span id="_CPPv222ILxPresetBrowserSource"></span><span id="ILxPresetBrowserSource"></span><span class="target" id="class_i_lx_preset_browser_source"></span><em class="property">class </em><code class="sig-name descname">ILxPresetBrowserSource</code><a class="headerlink" href="#_CPPv422ILxPresetBrowserSource" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dragging from the preset browser is done with LXsDROUPSOURCE_FILES and LXsDROUPSOURCE_FILES_SYNTH. It also includes an <a class="reference internal" href="#class_i_lx_preset_browser_source"><span class="std std-ref">ILxPresetBrowserSource</span></a> interface to provideo the hash of the browser, mostly for adding the dropped preset to a matching recent list. The metrics object is passed to the server’s Metrics() method to get information about the file. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxPresetBrowserSource12ViewportHashE11LXtObjectIDPci">
+<span id="_CPPv3N22ILxPresetBrowserSource12ViewportHashE11LXtObjectIDPci"></span><span id="_CPPv2N22ILxPresetBrowserSource12ViewportHashE11LXtObjectIDPci"></span><span id="ILxPresetBrowserSource::ViewportHash__LXtObjectID.cP.i"></span><span class="target" id="class_i_lx_preset_browser_source_1acea4dae524e4f36a14f454d0374bf0e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ViewportHash</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxPresetBrowserSource12ViewportHashE11LXtObjectIDPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The single method returns the hash of the viewport. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresetbrowserservice">
+<h2><a class="toc-backref" href="#id8">ILxPresetBrowserService</a><a class="headerlink" href="#ilxpresetbrowserservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxPresetBrowserService">
+<span id="_CPPv323ILxPresetBrowserService"></span><span id="_CPPv223ILxPresetBrowserService"></span><span id="ILxPresetBrowserService"></span><span class="target" id="class_i_lx_preset_browser_service"></span><em class="property">class </em><code class="sig-name descname">ILxPresetBrowserService</code><a class="headerlink" href="#_CPPv423ILxPresetBrowserService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The global service allows clients to request updates to the browser and walk the server list. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N23ILxPresetBrowserService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N23ILxPresetBrowserService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxPresetBrowserService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_browser_service_1a7b201ffe514362a99cb3a378073c398c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As with all globals, the first method gets the ILxScriptQueryID interface for the system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService21SubtypeFromIdentifierE11LXtObjectIDPKcPi">
+<span id="_CPPv3N23ILxPresetBrowserService21SubtypeFromIdentifierE11LXtObjectIDPKcPi"></span><span id="_CPPv2N23ILxPresetBrowserService21SubtypeFromIdentifierE11LXtObjectIDPKcPi"></span><span id="ILxPresetBrowserService::SubtypeFromIdentifier__LXtObjectID.cCP.iP"></span><span class="target" id="class_i_lx_preset_browser_service_1a60f4af8826477f5d86aa5cf377a70755"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SubtypeFromIdentifier</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, int *<em>subtype</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService21SubtypeFromIdentifierE11LXtObjectIDPKcPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The packets in a particular subtype can then be walked with the SelClient…() series of functions defined in sel.qq. The selection client and index together are used to walk a particular list of packets. There is also a function to listen for events for a specific subtype. Selection should also be done with the select.preset command, and dropped with select.presetDrop. This ensures that only one subtype is affected. There is also a special “global” subtype that can be obtained by passing NULL to <a class="reference internal" href="#class_i_lx_preset_browser_service_1a60f4af8826477f5d86aa5cf377a70755"><span class="std std-ref">SubtypeFromIdentifier()</span></a>. Note that this is not the same as uses the clientless selection functions; the global selection subtype is considered separate from the other subtypes, while the clientless selection functions ignore subtypes and operates on the entire selection. As described above, this method returns a selection subtype for a given client identifier, which can be any arbitrary string that the client would like to use to identify its sub-selection. If NULL is passed in, then the “global” subtype is returned. The optional identifier may be used to further narrow the selection down to a specialized client, which is unique and separate from a NULL identifier. See the LXtPresetPathPacket section for more information on identifiers. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService21UpdateIdentifierStateE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N23ILxPresetBrowserService21UpdateIdentifierStateE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N23ILxPresetBrowserService21UpdateIdentifierStateE11LXtObjectIDPKcPKc"></span><span id="ILxPresetBrowserService::UpdateIdentifierState__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_preset_browser_service_1ac27e2f96f0822d11148b33d7a8d5eaf9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UpdateIdentifierState</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService21UpdateIdentifierStateE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>On the flip side, the client needs to notify the browser when its state changes externally. This method will update the preset selection if necessary, as well as updating the current path of any preset browser with that identifier so that the current selection is visible there. The identifier must be non-NULL. Note that this works by executing commands for the normal selection mode. If in special selection mode, <a class="reference internal" href="#class_i_lx_preset_browser_service_1ad340097587438ecc869ad785272a1903"><span class="std std-ref">SetSpecialSelModePath()</span></a> sohuld be used isntead. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService11ServerCountE11LXtObjectIDPi">
+<span id="_CPPv3N23ILxPresetBrowserService11ServerCountE11LXtObjectIDPi"></span><span id="_CPPv2N23ILxPresetBrowserService11ServerCountE11LXtObjectIDPi"></span><span id="ILxPresetBrowserService::ServerCount__LXtObjectID.iP"></span><span class="target" id="class_i_lx_preset_browser_service_1a06f72cabfa2ab42099f4dbfcf1c1f937"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService11ServerCountE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods allow the server list to be walked, and allow a server to be looked up by name. When a COM object is returned, the client is responsible for freeing it as usual. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService13ServerByIndexE11LXtObjectIDiPPv">
+<span id="_CPPv3N23ILxPresetBrowserService13ServerByIndexE11LXtObjectIDiPPv"></span><span id="_CPPv2N23ILxPresetBrowserService13ServerByIndexE11LXtObjectIDiPPv"></span><span id="ILxPresetBrowserService::ServerByIndex__LXtObjectID.i.voidPP"></span><span class="target" id="class_i_lx_preset_browser_service_1a3e13ec02da6f0a2013962bbeeaa49f5a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService13ServerByIndexE11LXtObjectIDiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService12ServerLookupE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N23ILxPresetBrowserService12ServerLookupE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N23ILxPresetBrowserService12ServerLookupE11LXtObjectIDPKcPPv"></span><span id="ILxPresetBrowserService::ServerLookup__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_preset_browser_service_1adbd81adff7d21ef1735f4f4ffcafa744"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService12ServerLookupE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService17ServerNameByIndexE11LXtObjectIDiPPKc">
+<span id="_CPPv3N23ILxPresetBrowserService17ServerNameByIndexE11LXtObjectIDiPPKc"></span><span id="_CPPv2N23ILxPresetBrowserService17ServerNameByIndexE11LXtObjectIDiPPKc"></span><span id="ILxPresetBrowserService::ServerNameByIndex__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_preset_browser_service_1a72d7e24922c039d08449e51a4c272b1c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerNameByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService17ServerNameByIndexE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods return the name and username of a server given an index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService21ServerUserNameByIndexE11LXtObjectIDiPPKc">
+<span id="_CPPv3N23ILxPresetBrowserService21ServerUserNameByIndexE11LXtObjectIDiPPKc"></span><span id="_CPPv2N23ILxPresetBrowserService21ServerUserNameByIndexE11LXtObjectIDiPPKc"></span><span id="ILxPresetBrowserService::ServerUserNameByIndex__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_preset_browser_service_1a77f0ebd271bc65491125c503c2e78396"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerUserNameByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService21ServerUserNameByIndexE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService13RecognizeFileE11LXtObjectIDPKciPPKcPPKc">
+<span id="_CPPv3N23ILxPresetBrowserService13RecognizeFileE11LXtObjectIDPKciPPKcPPKc"></span><span id="_CPPv2N23ILxPresetBrowserService13RecognizeFileE11LXtObjectIDPKciPPKcPPKc"></span><span id="ILxPresetBrowserService::RecognizeFile__LXtObjectID.cCP.i.cCPP.cCPP"></span><span class="target" id="class_i_lx_preset_browser_service_1a7e5259253385940c35cceaefd7192aa5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RecognizeFile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int <em>flags</em>, <em class="property">const</em> char **<em>serverName</em>, <em class="property">const</em> char **<em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService13RecognizeFileE11LXtObjectIDPKciPPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService18RecognizeFileForceE11LXtObjectIDPKciPPKcPPKc">
+<span id="_CPPv3N23ILxPresetBrowserService18RecognizeFileForceE11LXtObjectIDPKciPPKcPPKc"></span><span id="_CPPv2N23ILxPresetBrowserService18RecognizeFileForceE11LXtObjectIDPKciPPKcPPKc"></span><span id="ILxPresetBrowserService::RecognizeFileForce__LXtObjectID.cCP.i.cCPP.cCPP"></span><span class="target" id="class_i_lx_preset_browser_service_1af2775a1fa17c19e18c2db888dcfd38eb"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RecognizeFileForce</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em>, int <em>flags</em>, <em class="property">const</em> char **<em>serverName</em>, <em class="property">const</em> char **<em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService18RecognizeFileForceE11LXtObjectIDPKciPPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is identical to <a class="reference internal" href="#class_i_lx_preset_browser_service_1a7e5259253385940c35cceaefd7192aa5"><span class="std std-ref">RecognizeFile()</span></a>, but does not use any cached recognized state. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService6RescanE11LXtObjectIDPKc">
+<span id="_CPPv3N23ILxPresetBrowserService6RescanE11LXtObjectIDPKc"></span><span id="_CPPv2N23ILxPresetBrowserService6RescanE11LXtObjectIDPKc"></span><span id="ILxPresetBrowserService::Rescan__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_browser_service_1aad177ee5bce5beb865800f66c6de1fd8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Rescan</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService6RescanE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The rescan method is a wrapper for <a class="reference internal" href="lxd_dirbrowse.html#class_i_lx_dir_cache_service_1afcbf795ebfa2badd4ebfb4ec947d42a1"><span class="std std-ref">ILxDirCacheService::ScanForChanges()</span></a>, and updates a single path or the entire cache for any new changes to the files and directories on disk. If the path provided is NULL, the entire cache is scanned for updates. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService17IsViewportVisibleE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N23ILxPresetBrowserService17IsViewportVisibleE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N23ILxPresetBrowserService17IsViewportVisibleE11LXtObjectIDPKcPKc"></span><span id="ILxPresetBrowserService::IsViewportVisible__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_preset_browser_service_1a16d6ba1a70f4532d8d5e83983b713f32"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">IsViewportVisible</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, <em class="property">const</em> char *<em>hash</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService17IsViewportVisibleE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService21GetSpecialSelModePathE11LXtObjectIDPKcPci">
+<span id="_CPPv3N23ILxPresetBrowserService21GetSpecialSelModePathE11LXtObjectIDPKcPci"></span><span id="_CPPv2N23ILxPresetBrowserService21GetSpecialSelModePathE11LXtObjectIDPKcPci"></span><span id="ILxPresetBrowserService::GetSpecialSelModePath__LXtObjectID.cCP.cP.i"></span><span class="target" id="class_i_lx_preset_browser_service_1a4bec579144f67188e5802f5e456439c7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetSpecialSelModePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, char *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService21GetSpecialSelModePathE11LXtObjectIDPKcPci" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Normally, preset selection is done through the selection system. However, this requires executing commands, which can limit how the browser is used (such as using the Preset Browser as a clipChoice component). To handle this, the Preset Browser can be set to a special selection mode that allows only one path to be selected at a time. This path (given an identifier) can set and read with these methods. Toggling the special selection mode is done with viewport arguments when embedded in a form, or through the viewport preset when in a layout. Note that when in this mode, the “do” (double-click) behavior and the preset region in general are disabled, as those require executing commands and the selection system. These functions will always work, even if the a viewport with the identifier doesn’t exist or isn’t in special selection mode. This allows the path to be set and read at any time. When setting, if asInteractive is true, the “do” action associated with browser is executed for the path as though the user had double-clicked it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService21SetSpecialSelModePathE11LXtObjectIDPKcPKci">
+<span id="_CPPv3N23ILxPresetBrowserService21SetSpecialSelModePathE11LXtObjectIDPKcPKci"></span><span id="_CPPv2N23ILxPresetBrowserService21SetSpecialSelModePathE11LXtObjectIDPKcPKci"></span><span id="ILxPresetBrowserService::SetSpecialSelModePath__LXtObjectID.cCP.cCP.i"></span><span class="target" id="class_i_lx_preset_browser_service_1ad340097587438ecc869ad785272a1903"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSpecialSelModePath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, <em class="property">const</em> char *<em>path</em>, int <em>asInteractive</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService21SetSpecialSelModePathE11LXtObjectIDPKcPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPresetBrowserService9GetServerER18CLxUser_PresetTypePKc">
+<span id="_CPPv3N23ILxPresetBrowserService9GetServerER18CLxUser_PresetTypePKc"></span><span id="_CPPv2N23ILxPresetBrowserService9GetServerER18CLxUser_PresetTypePKc"></span><span id="ILxPresetBrowserService::GetServer__CLxUser_PresetTypeR.cCP"></span><span class="target" id="class_i_lx_preset_browser_service_1aa1560d43aa72376f508e903620295903"></span>bool <code class="sig-name descname">GetServer</code><span class="sig-paren">(</span>CLxUser_PresetType &amp;<em>srv</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPresetBrowserService9GetServerER18CLxUser_PresetTypePKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfPRESETRECOGNIZE_CAN_APPLY">
+<span class="target" id="lxd__pretype_8hpp_1a26bc1a87699e11efb9a42cf50525eabb"></span><code class="sig-name descname">LXfPRESETRECOGNIZE_CAN_APPLY</code><a class="headerlink" href="#c.LXfPRESETRECOGNIZE_CAN_APPLY" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method scans all of the servers, looking for one that can identify the file. If successful, it indirectly the name of the server that identified it, although the argument may be NULL if desired. The flags determine what subset of servers will be scanned. This can inclued servers that have the (now-obsolete) Apply() and/or Do() methods, or all servers. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfPRESETRECOGNIZE_CAN_DO</p></li>
+<li><p>LXiPRESETRECOGNIZE_ALL</p></li>
+</ul>
+</div>
+<div class="section" id="ilxpbspecialsellistener">
+<h2><a class="toc-backref" href="#id9">ILxPBSpecialSelListener</a><a class="headerlink" href="#ilxpbspecialsellistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv423ILxPBSpecialSelListener">
+<span id="_CPPv323ILxPBSpecialSelListener"></span><span id="_CPPv223ILxPBSpecialSelListener"></span><span id="ILxPBSpecialSelListener"></span><span class="target" id="class_i_lx_p_b_special_sel_listener"></span><em class="property">class </em><code class="sig-name descname">ILxPBSpecialSelListener</code><a class="headerlink" href="#_CPPv423ILxPBSpecialSelListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When a preset browser is in special mode, we need a way to tell any clients when the selection changes. This listener can be used to monitor for changes to any changes to that selection, and provides the identifier and the selected path. There are two methods: the first reports all changes, including changes made through calls to <a class="reference internal" href="#class_i_lx_preset_browser_service_1a4bec579144f67188e5802f5e456439c7"><span class="std std-ref">ILxPresetBrowserService::GetSpecialSelModePath()</span></a>, while the second one only reports changes made by the user by clicking on a preset in the browser. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N23ILxPBSpecialSelListener13SelChangedAnyE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N23ILxPBSpecialSelListener13SelChangedAnyE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N23ILxPBSpecialSelListener13SelChangedAnyE11LXtObjectIDPKcPKc"></span><span id="ILxPBSpecialSelListener::SelChangedAny__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_p_b_special_sel_listener_1adb52688632f99433558db28127b9c2e2"></span>void <code class="sig-name descname">SelChangedAny</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPBSpecialSelListener13SelChangedAnyE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N23ILxPBSpecialSelListener25SelChangedInteractiveOnlyE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N23ILxPBSpecialSelListener25SelChangedInteractiveOnlyE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N23ILxPBSpecialSelListener25SelChangedInteractiveOnlyE11LXtObjectIDPKcPKc"></span><span id="ILxPBSpecialSelListener::SelChangedInteractiveOnly__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_p_b_special_sel_listener_1ab48be40bcdfcc96f6e36aac32e818f63"></span>void <code class="sig-name descname">SelChangedInteractiveOnly</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>identifier</em>, <em class="property">const</em> char *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23ILxPBSpecialSelListener25SelChangedInteractiveOnlyE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_preview.html" class="btn btn-neutral float-right" title="Preview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_predest.html" class="btn btn-neutral float-left" title="Predest" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_pretype.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

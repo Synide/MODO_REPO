@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_pmodel.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pmodel &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Poly" href="lxd_poly.html" />
+    <link rel="prev" title="Persist" href="lxd_persist.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pmodel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmeshelementgroup">ILxMeshElementGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectionoperation">ILxSelectionOperation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectionoperation1">ILxSelectionOperation1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxselectionstate">ILxSelectionState</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Pmodel</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pmodel">
+<h1>Pmodel<a class="headerlink" href="#pmodel" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxmeshelementgroup" id="id1">ILxMeshElementGroup</a></p></li>
+<li><p><a class="reference internal" href="#ilxselectionoperation" id="id2">ILxSelectionOperation</a></p></li>
+<li><p><a class="reference internal" href="#ilxselectionoperation1" id="id3">ILxSelectionOperation1</a></p></li>
+<li><p><a class="reference internal" href="#ilxselectionstate" id="id4">ILxSelectionState</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsITYPE_MESHOP">
+<span class="target" id="lxd__pmodel_8hpp_1ab602c8a6f97ec3d1fd7f0376584738f5"></span><code class="sig-name descname">LXsITYPE_MESHOP</code><a class="headerlink" href="#c.LXsITYPE_MESHOP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The procedural modeling system works by evaluating a series of mesh operations, on a target mesh, to result in a final modified mesh. To integrate a mesh operation interface into the procedural modeling system, the mesh operations need to be associated with an item, that can be managed by the user. The mesh operation item performs this duty. It contains a MeshOpObj channel which stores the mesh operation, and is evaluated by the procedural modeling system, to perform an edit to the mesh. Mesh Operation items all derive from a common type. This type is extremely basic and has no transforms or position in 3D space. There are four default channels on every Mesh Operation Item, defining things like selection type and the enable state. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsICHAN_MESHOP_ENABLE</p></li>
+<li><p>LXsICHAN_MESHOP_OBJ</p></li>
+<li><p>LXsICHAN_MESHOP_SELTYPE</p></li>
+<li><p>LXsICHAN_MESHOP_USEXFRM</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPKG_MESHOP_CREATECMD">
+<span class="target" id="lxd__pmodel_8hpp_1aba1b19858e702386410c7b2b0e81c585"></span><code class="sig-name descname">LXsPKG_MESHOP_CREATECMD</code><a class="headerlink" href="#c.LXsPKG_MESHOP_CREATECMD" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The custom creation command allows a custom command to be fired to handle the creation of the mesh operation item. This is useful if additional setup is required, that is unique to a specific mesh operation item. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPMODEL_NOTRANSFORM">
+<span class="target" id="lxd__pmodel_8hpp_1a47363d0f76e83e8fc02b9869f8e9bed2"></span><code class="sig-name descname">LXsPMODEL_NOTRANSFORM</code><a class="headerlink" href="#c.LXsPMODEL_NOTRANSFORM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adding this tag to a mesh operation, selection operation or tool operation items specifies that the item does not require the transform of the mesh being modified. This can improve performance in certain cases, as the operation will not be reevaluated when the mesh transform changes. The tag can have any value. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsMESHOP_PMODEL">
+<span class="target" id="lxd__pmodel_8hpp_1ae3d156fad4dc1c736ad7c9407bce7177"></span><code class="sig-name descname">LXsMESHOP_PMODEL</code><a class="headerlink" href="#c.LXsMESHOP_PMODEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The steps to manually implement a Mesh Operation item can be quite complex. Because of this, a simpler method is provided, allowing <a class="reference internal" href="lxd_mesh.html#class_i_lx_mesh_operation"><span class="std std-ref">ILxMeshOperation</span></a> interfaces to be automatically converted into Mesh Operation items. This is only useful for simple mesh operations, that simply take a mesh, modify it and return a modified mesh, using nothing more than a few simple attributes. Applying the following server tag to an <a class="reference internal" href="lxd_mesh.html#class_i_lx_mesh_operation"><span class="std std-ref">ILxMeshOperation</span></a> interface, will automatically create a mesh operation item and a modifier, writing the mesh operation server into a channel, so that it can be evaluated as part of the procedural system. The Mesh Operation server being converted, should also implement an Attributes interface. The attributes will be automatically converted into channels on the newly created item. The value of this tag doesn’t matter, as the presence of the server tag is enough to automatically create a mesh operation item. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsITYPE_TOOLOP">
+<span class="target" id="lxd__pmodel_8hpp_1a71c9999006913ac2916c6f654820e21c"></span><code class="sig-name descname">LXsITYPE_TOOLOP</code><a class="headerlink" href="#c.LXsITYPE_TOOLOP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tool Operation items all derive from a common type, which it itself a sub-type of the Mesh Operation item type. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsGRAPH_TOOL">
+<span class="target" id="lxd__pmodel_8hpp_1ab66a0739b3ace2220d32bc4cf16c3d85"></span><code class="sig-name descname">LXsGRAPH_TOOL</code><a class="headerlink" href="#c.LXsGRAPH_TOOL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The “tool” graph is automatically added to any tool operation item that performs an “actor” task. It is used to connect non-actor tools into the actor tool to create a mini-toolpipe. This mini tool pipe is evaluated, allowing the behavior of an actor tool to be modified. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsTOOL_PMODEL">
+<span class="target" id="lxd__pmodel_8hpp_1a70a8cc8df5b9782b724ffc8d9e5c86cb"></span><code class="sig-name descname">LXsTOOL_PMODEL</code><a class="headerlink" href="#c.LXsTOOL_PMODEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>There are a number of similarities between procedural mesh operations and traditional tools that operate on meshes. Rather than implementing a tool for one context and a mesh operation for another context, it is often desirable to implement functionality once and use in both contexts. As we have a large library of existing tools, converting a tool to work with the procedural modeling system needs to be quick and painless. Adding the following server tag to an <a class="reference internal" href="lxd_tool.html#class_i_lx_tool"><span class="std std-ref">ILxTool</span></a> server, will automatically convert the tool into a Tool Operation Item, that can be integrated directly into the procedural modeling system. The value of this tag doesn’t matter, as the presence of the server tag is enough to convert the tool to work with the procedural modeling system. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsICHAN_TOOL_OBJ">
+<span class="target" id="lxd__pmodel_8hpp_1a249e54ee1cc4cd0e1f231fa1fe9afc00"></span><code class="sig-name descname">LXsICHAN_TOOL_OBJ</code><a class="headerlink" href="#c.LXsICHAN_TOOL_OBJ" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whilst the addition of the server tag makes it simple to convert an existing tool to work with the procedural modeling system, more work is often needed to the tool itself, to ensure it works correctly in an evaluated context. The tool should implement a GetOp function that spawns and returns a Tool Operation interface. Some considerations also need to be made to the evaluation of the tool operation. The general rule is that when evaluated procedurally, a tool should not rely on any global state, or values that aren’t provided by either tool attributes or tool packets. It should not attempt any operation that requires an undo context or attempt to execute commands. With some thought and design, it should be possible to convert most tools that operate on meshes, to work in a procedural context, without altering the functionality of the tool itself. On automatically generated tool operation items, the tool object will be stored in the following channel. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPKG_TOOL_CHANNEL">
+<span class="target" id="lxd__pmodel_8hpp_1af7841c001ee61b1dc25264415e8924db"></span><code class="sig-name descname">LXsPKG_TOOL_CHANNEL</code><a class="headerlink" href="#c.LXsPKG_TOOL_CHANNEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whilst it’s often desirable to automatically generate a Tool Operation item from an existing tool, it is also possible to manually implement Tool Operation items that can be integrated into the procedural system. This is useful for writing tool operation items that provide more complexity than is usually supported through the tool system. To create a Tool Operation Item from scratch. A package should be created, with a SuperType of LXsITYPE_TOOLOP. This will provide it with the standard set of channels, common to all Tool Operation items. A Modifier, associated with the Tool Operation Item, should read any channels it requires to evaluate the tool. It should spawn an <a class="reference internal" href="lxd_tool.html#class_i_lx_tool"><span class="std std-ref">ILxTool</span></a> interface and write it into a channel on the package of the type LXsTYPE_OBJREF. The channel name used for storing the tool, should be defined on the server tags using the following tag. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPKG_TOOL_TASK">
+<span class="target" id="lxd__pmodel_8hpp_1a23174153309d83514858c874eeae440d"></span><code class="sig-name descname">LXsPKG_TOOL_TASK</code><a class="headerlink" href="#c.LXsPKG_TOOL_TASK" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Two other server tags should also be added to the package. One defines the task of the tool, and should be of the type LXs_TASK. The other defines the order of evaluation and should be one of the LXs_ORDPKG_ defines here. In the majority of cases, the TASK value should match what is returned by the tool, and the ORD value should be equivalent to the LXs_ORD value returned by the tool. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsPKG_TOOL_ORDER</p></li>
+<li><p>LXs_ORDPKG_WORK</p></li>
+<li><p>LXs_ORDPKG_SYMM</p></li>
+<li><p>LXs_ORDPKG_CONT</p></li>
+<li><p>LXs_ORDPKG_STYL</p></li>
+<li><p>LXs_ORDPKG_SNAP</p></li>
+<li><p>LXs_ORDPKG_CONS</p></li>
+<li><p>LXs_ORDPKG_ACEN</p></li>
+<li><p>LXs_ORDPKG_AXIS</p></li>
+<li><p>LXs_ORDPKG_PATH</p></li>
+<li><p>LXs_ORDPKG_WGHT</p></li>
+<li><p>LXs_ORDPKG_PINK</p></li>
+<li><p>LXs_ORDPKG_NOZL</p></li>
+<li><p>LXs_ORDPKG_BRSH</p></li>
+<li><p>LXs_ORDPKG_PTCL</p></li>
+<li><p>LXs_ORDPKG_SIDE</p></li>
+<li><p>LXs_ORDPKG_EFFR</p></li>
+<li><p>LXs_ORDPKG_ACTR</p></li>
+<li><p>LXs_ORDPKG_POST</p></li>
+</ul>
+<div class="section" id="ilxmeshelementgroup">
+<h2><a class="toc-backref" href="#id1">ILxMeshElementGroup</a><a class="headerlink" href="#ilxmeshelementgroup" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxMeshElementGroup">
+<span id="_CPPv319ILxMeshElementGroup"></span><span id="_CPPv219ILxMeshElementGroup"></span><span id="ILxMeshElementGroup"></span><span class="target" id="class_i_lx_mesh_element_group"></span><em class="property">class </em><code class="sig-name descname">ILxMeshElementGroup</code><a class="headerlink" href="#_CPPv419ILxMeshElementGroup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Mesh Operations and Tool Operations can optionally implement an <a class="reference internal" href="#class_i_lx_mesh_element_group"><span class="std std-ref">ILxMeshElementGroup</span></a> interface. This interface is used to get named groups of elements that have been modified, or created by the procedural operation. These can then be used to define new selections later in the stack, allowing the user to easily access elements from an earlier operation. The returned groups should have a descriptive name that is easily understandable to the user, and is clear how it relates to the operation. For example, a curve extrude operation may return two groups; one named “End Caps” and another named “Sides”. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshElementGroup10GroupCountE11LXtObjectIDPj">
+<span id="_CPPv3N19ILxMeshElementGroup10GroupCountE11LXtObjectIDPj"></span><span id="_CPPv2N19ILxMeshElementGroup10GroupCountE11LXtObjectIDPj"></span><span id="ILxMeshElementGroup::GroupCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_mesh_element_group_1a54ea93a0c1565418c8299c6576e7c95a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GroupCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshElementGroup10GroupCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is expected to return the number of element groups. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshElementGroup9GroupNameE11LXtObjectIDjPPKc">
+<span id="_CPPv3N19ILxMeshElementGroup9GroupNameE11LXtObjectIDjPPKc"></span><span id="_CPPv2N19ILxMeshElementGroup9GroupNameE11LXtObjectIDjPPKc"></span><span id="ILxMeshElementGroup::GroupName__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_mesh_element_group_1ad3c65ae557fa2706d37808766773fbb5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GroupName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshElementGroup9GroupNameE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method should return the name of an element group by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshElementGroup13GroupUserNameE11LXtObjectIDjPPKc">
+<span id="_CPPv3N19ILxMeshElementGroup13GroupUserNameE11LXtObjectIDjPPKc"></span><span id="_CPPv2N19ILxMeshElementGroup13GroupUserNameE11LXtObjectIDjPPKc"></span><span id="ILxMeshElementGroup::GroupUserName__LXtObjectID.unsigned-i.cCPP"></span><span class="target" id="class_i_lx_mesh_element_group_1aa0335c6d57b3d385e99053892671ba11"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GroupUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshElementGroup13GroupUserNameE11LXtObjectIDjPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method should return the username of an element group by index. Ideally, this would be a translatable entry in a message table. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshElementGroup9TestPointE11LXtObjectIDj10LXtPointID">
+<span id="_CPPv3N19ILxMeshElementGroup9TestPointE11LXtObjectIDj10LXtPointID"></span><span id="_CPPv2N19ILxMeshElementGroup9TestPointE11LXtObjectIDj10LXtPointID"></span><span id="ILxMeshElementGroup::TestPoint__LXtObjectID.unsigned-i.LXtPointID"></span><span class="target" id="class_i_lx_mesh_element_group_1a8090058bf94a44350fb769701f6591be"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPoint</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, LXtPointID <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshElementGroup9TestPointE11LXtObjectIDj10LXtPointID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given point exists in the group. The group to test is given by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshElementGroup8TestEdgeE11LXtObjectIDj9LXtEdgeID">
+<span id="_CPPv3N19ILxMeshElementGroup8TestEdgeE11LXtObjectIDj9LXtEdgeID"></span><span id="_CPPv2N19ILxMeshElementGroup8TestEdgeE11LXtObjectIDj9LXtEdgeID"></span><span id="ILxMeshElementGroup::TestEdge__LXtObjectID.unsigned-i.LXtEdgeID"></span><span class="target" id="class_i_lx_mesh_element_group_1aa0eef4bd4e5b7942ef2d998d9b10cef3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestEdge</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, LXtEdgeID <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshElementGroup8TestEdgeE11LXtObjectIDj9LXtEdgeID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given edge exists in the group. The group to test is given by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshElementGroup11TestPolygonE11LXtObjectIDj12LXtPolygonID">
+<span id="_CPPv3N19ILxMeshElementGroup11TestPolygonE11LXtObjectIDj12LXtPolygonID"></span><span id="_CPPv2N19ILxMeshElementGroup11TestPolygonE11LXtObjectIDj12LXtPolygonID"></span><span id="ILxMeshElementGroup::TestPolygon__LXtObjectID.unsigned-i.LXtPolygonID"></span><span class="target" id="class_i_lx_mesh_element_group_1a93234ffe4ffad2877549f3f2eb44e927"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPolygon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, LXtPolygonID <em>polygon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshElementGroup11TestPolygonE11LXtObjectIDj12LXtPolygonID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given polygon exists in the group. The group to test is given by index. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsGRAPH_SELOP">
+<span class="target" id="lxd__pmodel_8hpp_1a019f1e3e88913dc753b4905ff6415ff7"></span><code class="sig-name descname">LXsGRAPH_SELOP</code><a class="headerlink" href="#c.LXsGRAPH_SELOP" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The selection operation item provides a selection to the procedural system. It encapsulates channels that can be evaluated to determine the current selection state. This item will be evaluated prior to a procedural edit to determine which elements should be operated on. Selection Operation items all derive from a common type. This type is extremely basic and has no transforms or position in 3D space. The default channels define enable state, the output channel to which the ILxSelectionOperationID is written, whether the selection operation should be inverted, and the blend mode used to blend multiple selection operations together. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsITYPE_SELOP</p></li>
+<li><p>LXsICHAN_SELOP_ENABLE</p></li>
+<li><p>LXsICHAN_SELOP_OBJ</p></li>
+<li><p>LXsICHAN_SELOP_INVERT</p></li>
+<li><p>LXsICHAN_SELOP_BLENDMODE</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiSELOP_BLEND_OVERRIDE">
+<span class="target" id="lxd__pmodel_8hpp_1aa3a79ff047b23b1b4e49b0c0aa702169"></span><code class="sig-name descname">LXiSELOP_BLEND_OVERRIDE</code><a class="headerlink" href="#c.LXiSELOP_BLEND_OVERRIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When multiple selection operations are connected to a mesh operation, they can be blended together to create complex selections. This is similar to the concept of shading, where multiple texture layers can be blended together to create a final texture. The following blending modes are available:<ul class="simple">
+<li><p>OVERRIDE This blending mode (default) will override all selection operations below it in the stack. Any previous selection will be discarded, and the new selection will be used instead.</p></li>
+<li><p>ADD This blending mode will add the new selection to the previous selection. Elements will only be treated as deselected if they are deselected by all selection operations in the stack.</p></li>
+<li><p>SUBTRACT This blending mode will remove any elements that are selected by the selection operation from the previous selection. Deselected elements will be ignored.</p></li>
+<li><p>MULTIPLY This blending mode will only select elements from the second selection operation that are selected by the first, essentially filtering the previous selection. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiSELOP_BLEND_ADD</p></li>
+<li><p>LXiSELOP_BLEND_SUBTRACT</p></li>
+<li><p>LXiSELOP_BLEND_MULTIPLY</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsPMODEL_SELECTIONTYPES">
+<span class="target" id="lxd__pmodel_8hpp_1a319c7be7b01fcc4cbf173d5ea3fe21e6"></span><code class="sig-name descname">LXsPMODEL_SELECTIONTYPES</code><a class="headerlink" href="#c.LXsPMODEL_SELECTIONTYPES" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Selection Operations should specify the types of selection they support. Mesh Operation and Tool Operation items should also specify the type of selections they require. This combination of selection types on both the selection operation and the mesh operation, helps determine which selection operations can be used with which mesh operations. Supported selection types are defined using the following server tag. The server is expected to provide a comma seperated list of selection types. The server can also specify that no selection is required by returning the NONE value. If no tag is provided, it will be assumed that all types are supported. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSELOP_TYPE_NONE">
+<span class="target" id="lxd__pmodel_8hpp_1ad32af0f1119f2f4ae11afb9d75d69eb0"></span><code class="sig-name descname">LXsSELOP_TYPE_NONE</code><a class="headerlink" href="#c.LXsSELOP_TYPE_NONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The server tag must have one of the following values. Any other value will be treated as supporting all selection types. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsSELOP_TYPE_VERTEX</p></li>
+<li><p>LXsSELOP_TYPE_EDGE</p></li>
+<li><p>LXsSELOP_TYPE_POLYGON</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSELOP_PMODEL">
+<span class="target" id="lxd__pmodel_8hpp_1a3db1bcd7fa7dd1651437ac8cd5f481b8"></span><code class="sig-name descname">LXsSELOP_PMODEL</code><a class="headerlink" href="#c.LXsSELOP_PMODEL" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The steps to manually implement a Selection Operation item can be quite complex. Because of this, a simpler method is provided, allowing <a class="reference internal" href="#class_i_lx_selection_operation"><span class="std std-ref">ILxSelectionOperation</span></a> interfaces to be automatically converted into Selection Operation items. This is only useful for simple selection operations, that can test the selection status of an element without any complex channel input-&gt; Applying the following server tag to an <a class="reference internal" href="#class_i_lx_selection_operation"><span class="std std-ref">ILxSelectionOperation</span></a> interface, will automatically create a selection operation item and a modifier, writing the Selection operation server into a channel, so that it can be queried as part of the procedural system. The Selection Operation server being converted, should also implement an Attributes interface. The attributes will be automatically converted into channels on the newly created item. The value of this tag doesn’t matter, as the presence of the server tag is enough to automatically create a selection operation item. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxselectionoperation">
+<h2><a class="toc-backref" href="#id2">ILxSelectionOperation</a><a class="headerlink" href="#ilxselectionoperation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxSelectionOperation">
+<span id="_CPPv321ILxSelectionOperation"></span><span id="_CPPv221ILxSelectionOperation"></span><span id="ILxSelectionOperation"></span><span class="target" id="class_i_lx_selection_operation"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionOperation</code><a class="headerlink" href="#_CPPv421ILxSelectionOperation" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface allows the procedural modeling system to test the selection status of a given element, allowing it to mark it for use during mesh operation evaluation. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxSelectionOperation7SetMeshE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N21ILxSelectionOperation7SetMeshE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N21ILxSelectionOperation7SetMeshE11LXtObjectID11LXtObjectID"></span><span id="ILxSelectionOperation::SetMesh__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_selection_operation_1acb0e6d9192fef7e03b7b70c5d7e45c06"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMesh</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>mesh</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSelectionOperation7SetMeshE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function is called before any elements are tested, to set the mesh that the elements belong to. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSelectionOperation12SetTransformE11LXtObjectID10LXtMatrix4">
+<span id="_CPPv3N21ILxSelectionOperation12SetTransformE11LXtObjectID10LXtMatrix4"></span><span id="_CPPv2N21ILxSelectionOperation12SetTransformE11LXtObjectID10LXtMatrix4"></span><span id="ILxSelectionOperation::SetTransform__LXtObjectID.LXtMatrix4"></span><span class="target" id="class_i_lx_selection_operation_1a91536800eee83e970dc16ba630bf26ce"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>xfrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSelectionOperation12SetTransformE11LXtObjectID10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function is called before any elements are tested. It provides the transform matrix for the mesh being tested. It can then be used for transforming any component position tests into world space. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSelectionOperation9TestPointE11LXtObjectID10LXtPointID">
+<span id="_CPPv3N21ILxSelectionOperation9TestPointE11LXtObjectID10LXtPointID"></span><span id="_CPPv2N21ILxSelectionOperation9TestPointE11LXtObjectID10LXtPointID"></span><span id="ILxSelectionOperation::TestPoint__LXtObjectID.LXtPointID"></span><span class="target" id="class_i_lx_selection_operation_1aaf3ec18cede431e1dc814bc6d1b2220c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPoint</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPointID <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSelectionOperation9TestPointE11LXtObjectID10LXtPointID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given point should be included in the selection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSelectionOperation8TestEdgeE11LXtObjectID9LXtEdgeID">
+<span id="_CPPv3N21ILxSelectionOperation8TestEdgeE11LXtObjectID9LXtEdgeID"></span><span id="_CPPv2N21ILxSelectionOperation8TestEdgeE11LXtObjectID9LXtEdgeID"></span><span id="ILxSelectionOperation::TestEdge__LXtObjectID.LXtEdgeID"></span><span class="target" id="class_i_lx_selection_operation_1aeed334f365d7b9d3fe19421db6aed64b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestEdge</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtEdgeID <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSelectionOperation8TestEdgeE11LXtObjectID9LXtEdgeID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given edge should be included in the selection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSelectionOperation11TestPolygonE11LXtObjectID12LXtPolygonID">
+<span id="_CPPv3N21ILxSelectionOperation11TestPolygonE11LXtObjectID12LXtPolygonID"></span><span id="_CPPv2N21ILxSelectionOperation11TestPolygonE11LXtObjectID12LXtPolygonID"></span><span id="ILxSelectionOperation::TestPolygon__LXtObjectID.LXtPolygonID"></span><span class="target" id="class_i_lx_selection_operation_1a3a961ba4e1a488edb25a0e9313b80a89"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPolygon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPolygonID <em>polygon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSelectionOperation11TestPolygonE11LXtObjectID12LXtPolygonID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given polygon should be included in the selection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N21ILxSelectionOperation8EvaluateE11LXtObjectID6LXtID411LXtObjectID">
+<span id="_CPPv3N21ILxSelectionOperation8EvaluateE11LXtObjectID6LXtID411LXtObjectID"></span><span id="_CPPv2N21ILxSelectionOperation8EvaluateE11LXtObjectID6LXtID411LXtObjectID"></span><span id="ILxSelectionOperation::Evaluate__LXtObjectID.LXtID4.LXtObjectID"></span><span class="target" id="class_i_lx_selection_operation_1af1862f40e51f63a11b81f6deaa6ccc0d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxSelectionOperation8EvaluateE11LXtObjectID6LXtID411LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This function is called at the start of selection evaluation. It can be used to modify a previous selection, or initialize any state needed to evaluate individual elements. The function is called with the selection type that is being evaluated, as well as a <a class="reference internal" href="#class_i_lx_selection_state"><span class="std std-ref">ILxSelectionState</span></a> object. The <a class="reference internal" href="#class_i_lx_selection_state"><span class="std std-ref">ILxSelectionState</span></a> object allows individual elements to be tested for selection, and elements to be added or removed from the selection. If this function returns LXe_TRUE, the selection operation has finished modifying the selection, and then TestPoint, TestEdge and TestPolygon functions will not be called, whereas if the function returns LXe_FALSE, the various test functions will be called. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxselectionoperation1">
+<h2><a class="toc-backref" href="#id3">ILxSelectionOperation1</a><a class="headerlink" href="#ilxselectionoperation1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxSelectionOperation1">
+<span id="_CPPv322ILxSelectionOperation1"></span><span id="_CPPv222ILxSelectionOperation1"></span><span id="ILxSelectionOperation1"></span><span class="target" id="class_i_lx_selection_operation1"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionOperation1</code><a class="headerlink" href="#_CPPv422ILxSelectionOperation1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This selection operation interface was deprecated in 10.2v1. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxSelectionOperation17SetMeshE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N22ILxSelectionOperation17SetMeshE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N22ILxSelectionOperation17SetMeshE11LXtObjectID11LXtObjectID"></span><span id="ILxSelectionOperation1::SetMesh__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_selection_operation1_1a22f5d0c5e912d0b42f2f924afaddac9f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMesh</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>mesh</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSelectionOperation17SetMeshE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSelectionOperation112SetTransformE11LXtObjectID10LXtMatrix4">
+<span id="_CPPv3N22ILxSelectionOperation112SetTransformE11LXtObjectID10LXtMatrix4"></span><span id="_CPPv2N22ILxSelectionOperation112SetTransformE11LXtObjectID10LXtMatrix4"></span><span id="ILxSelectionOperation1::SetTransform__LXtObjectID.LXtMatrix4"></span><span class="target" id="class_i_lx_selection_operation1_1a8c22865a8362aec6bb2dc3396a3619b5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTransform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>xfrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSelectionOperation112SetTransformE11LXtObjectID10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSelectionOperation19TestPointE11LXtObjectID10LXtPointID">
+<span id="_CPPv3N22ILxSelectionOperation19TestPointE11LXtObjectID10LXtPointID"></span><span id="_CPPv2N22ILxSelectionOperation19TestPointE11LXtObjectID10LXtPointID"></span><span id="ILxSelectionOperation1::TestPoint__LXtObjectID.LXtPointID"></span><span class="target" id="class_i_lx_selection_operation1_1a5e104ecbb891551757775983afb5340e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPoint</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPointID <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSelectionOperation19TestPointE11LXtObjectID10LXtPointID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSelectionOperation18TestEdgeE11LXtObjectID9LXtEdgeID">
+<span id="_CPPv3N22ILxSelectionOperation18TestEdgeE11LXtObjectID9LXtEdgeID"></span><span id="_CPPv2N22ILxSelectionOperation18TestEdgeE11LXtObjectID9LXtEdgeID"></span><span id="ILxSelectionOperation1::TestEdge__LXtObjectID.LXtEdgeID"></span><span class="target" id="class_i_lx_selection_operation1_1a18fea8a55d4f68d02e7c5b81e41d921c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestEdge</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtEdgeID <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSelectionOperation18TestEdgeE11LXtObjectID9LXtEdgeID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxSelectionOperation111TestPolygonE11LXtObjectID12LXtPolygonID">
+<span id="_CPPv3N22ILxSelectionOperation111TestPolygonE11LXtObjectID12LXtPolygonID"></span><span id="_CPPv2N22ILxSelectionOperation111TestPolygonE11LXtObjectID12LXtPolygonID"></span><span id="ILxSelectionOperation1::TestPolygon__LXtObjectID.LXtPolygonID"></span><span class="target" id="class_i_lx_selection_operation1_1ae29643fc31cabcb6b632216b05f42182"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPolygon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPolygonID <em>polygon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxSelectionOperation111TestPolygonE11LXtObjectID12LXtPolygonID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxselectionstate">
+<h2><a class="toc-backref" href="#id4">ILxSelectionState</a><a class="headerlink" href="#ilxselectionstate" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxSelectionState">
+<span id="_CPPv317ILxSelectionState"></span><span id="_CPPv217ILxSelectionState"></span><span id="ILxSelectionState"></span><span class="target" id="class_i_lx_selection_state"></span><em class="property">class </em><code class="sig-name descname">ILxSelectionState</code><a class="headerlink" href="#_CPPv417ILxSelectionState" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface caches the procedural selection state. It can be used by selection operations to query the selection state, and well as modify the selection state. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxSelectionState9TestPointE11LXtObjectID10LXtPointID">
+<span id="_CPPv3N17ILxSelectionState9TestPointE11LXtObjectID10LXtPointID"></span><span id="_CPPv2N17ILxSelectionState9TestPointE11LXtObjectID10LXtPointID"></span><span id="ILxSelectionState::TestPoint__LXtObjectID.LXtPointID"></span><span class="target" id="class_i_lx_selection_state_1afd6efedb4c398efbf870a017b9ff1062"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPoint</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPointID <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSelectionState9TestPointE11LXtObjectID10LXtPointID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given point is selected. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSelectionState8TestEdgeE11LXtObjectID9LXtEdgeID">
+<span id="_CPPv3N17ILxSelectionState8TestEdgeE11LXtObjectID9LXtEdgeID"></span><span id="_CPPv2N17ILxSelectionState8TestEdgeE11LXtObjectID9LXtEdgeID"></span><span id="ILxSelectionState::TestEdge__LXtObjectID.LXtEdgeID"></span><span class="target" id="class_i_lx_selection_state_1aaadbe63c1c1b3d73990a14c81935d984"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestEdge</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtEdgeID <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSelectionState8TestEdgeE11LXtObjectID9LXtEdgeID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given edge is selected. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSelectionState11TestPolygonE11LXtObjectID12LXtPolygonID">
+<span id="_CPPv3N17ILxSelectionState11TestPolygonE11LXtObjectID12LXtPolygonID"></span><span id="_CPPv2N17ILxSelectionState11TestPolygonE11LXtObjectID12LXtPolygonID"></span><span id="ILxSelectionState::TestPolygon__LXtObjectID.LXtPolygonID"></span><span class="target" id="class_i_lx_selection_state_1a60570e280e57cd5776946a6e16bf14a5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestPolygon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPolygonID <em>polygon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSelectionState11TestPolygonE11LXtObjectID12LXtPolygonID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns either LXe_TRUE or LXe_FALSE, indicating whether or not the given polygon is selected. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSelectionState8SetPointE11LXtObjectID10LXtPointID8LxResult">
+<span id="_CPPv3N17ILxSelectionState8SetPointE11LXtObjectID10LXtPointID8LxResult"></span><span id="_CPPv2N17ILxSelectionState8SetPointE11LXtObjectID10LXtPointID8LxResult"></span><span id="ILxSelectionState::SetPoint__LXtObjectID.LXtPointID.LxResult"></span><span class="target" id="class_i_lx_selection_state_1a4165fe46812a7c6f0ac644f8b6421920"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPoint</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPointID <em>point</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSelectionState8SetPointE11LXtObjectID10LXtPointID8LxResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to set a point as selected. The function should be passed either LXe_TRUE or LXe_FALSE to specify the selection state. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSelectionState7SetEdgeE11LXtObjectID9LXtEdgeID8LxResult">
+<span id="_CPPv3N17ILxSelectionState7SetEdgeE11LXtObjectID9LXtEdgeID8LxResult"></span><span id="_CPPv2N17ILxSelectionState7SetEdgeE11LXtObjectID9LXtEdgeID8LxResult"></span><span id="ILxSelectionState::SetEdge__LXtObjectID.LXtEdgeID.LxResult"></span><span class="target" id="class_i_lx_selection_state_1aee4aaa40e092f6b834987c8214fdd902"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetEdge</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtEdgeID <em>edge</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSelectionState7SetEdgeE11LXtObjectID9LXtEdgeID8LxResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to set an edge as selected. The function should be passed either LXe_TRUE or LXe_FALSE to specify the selection state. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxSelectionState10SetPolygonE11LXtObjectID12LXtPolygonID8LxResult">
+<span id="_CPPv3N17ILxSelectionState10SetPolygonE11LXtObjectID12LXtPolygonID8LxResult"></span><span id="_CPPv2N17ILxSelectionState10SetPolygonE11LXtObjectID12LXtPolygonID8LxResult"></span><span id="ILxSelectionState::SetPolygon__LXtObjectID.LXtPolygonID.LxResult"></span><span class="target" id="class_i_lx_selection_state_1a66bb22d27cbc29d47f13e8a626b17608"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetPolygon</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtPolygonID <em>polygon</em>, <a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxSelectionState10SetPolygonE11LXtObjectID12LXtPolygonID8LxResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is used to set a polygon as selected. The function should be passed either LXe_TRUE or LXe_FALSE to specify the selection state. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_poly.html" class="btn btn-neutral float-right" title="Poly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_persist.html" class="btn btn-neutral float-left" title="Persist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_pmodel.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:30 GMT -->
+</html>

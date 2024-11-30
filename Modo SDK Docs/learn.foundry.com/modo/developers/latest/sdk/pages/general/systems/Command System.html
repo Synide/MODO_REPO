@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/systems/Command System.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command System &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="DDE" href="DDE.html" />
+    <link rel="prev" title="Bonjour" href="Bonjour.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../_general.html">Editorial Info</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#general-info">General Info</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../_general.html#underlying-systems">Underlying Systems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Bonjour.html">Bonjour</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Command System</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-commands">Working With Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#related">Related</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="DDE.html">DDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Headless.html">Headless</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Interfacing%20with%20the%20Undo%20System.html">Interfacing with the Undo System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Selection%20System%20Overview.html">Selection System Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Telnet.html">Telnet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#interface-details">Interface Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#metaclasses">MetaClasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_general.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../_general.html">Editorial Info</a> &raquo;</li>
+        
+      <li>Command System</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-system">
+<h1>Command System<a class="headerlink" href="#command-system" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#working-with-commands" id="id25">Working With Commands</a></p>
+<ul>
+<li><p><a class="reference internal" href="#command-history" id="id26">Command History</a></p></li>
+<li><p><a class="reference internal" href="#event-log" id="id27">Event Log</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#related" id="id28">Related</a></p></li>
+</ul>
+</div>
+<p>Any time you interact with modo, you are executing a ‘’’command’’’. Anything from clicking in a viewport to creating a primitive to saving your work is done through commands. Using commands is also how scripts affect modo, including providing user interfaces and changing the scene itself.</p>
+<div class="section" id="working-with-commands">
+<h2><a class="toc-backref" href="#id25">Working With Commands</a><a class="headerlink" href="#working-with-commands" title="Permalink to this headline">¶</a></h2>
+<p>These articles break down the command system in more detail:</p>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Command System: Basics covers command classes, the standard syntax format, arguments and datatypes, and command blocks.
+<a href="#id3"><span class="problematic" id="id4">*</span></a>Command System: Executing that can appear.
+<a href="#id5"><span class="problematic" id="id6">*</span></a>Command System: Executing Scripts looks at how to execute scripts and pass arguments through the command system.
+<a href="#id7"><span class="problematic" id="id8">*</span></a>Command System: Querying
+<a href="#id9"><span class="problematic" id="id10">*</span></a>Command System: Query Operators examines the use of special operators to modify the values of command arguments before execution.
+<a href="#id11"><span class="problematic" id="id12">*</span></a>Command System: Aliases details an advanced feature that allows one command to completely replace another command in the application.
+<a href="#id13"><span class="problematic" id="id14">*</span></a><a class="reference internal" href="../../tutorials/Startup%20Commands.html"><span class="doc">Startup Commands</span></a> covers adding commands to your config that execute every time the application launches.
+<a href="#id15"><span class="problematic" id="id16">*</span></a>CommandService Reference]] explains how to obtain information about the command system through the [[ScriptQuery Overview mechanism.</p>
+<p>These articles deal with creating new commands as plug-ins through the SDK:</p>
+<p><a href="#id17"><span class="problematic" id="id18">*</span></a>Command: Server basics discusses implementing a plug-in command.
+<a href="#id19"><span class="problematic" id="id20">*</span></a><a class="reference internal" href="../../ui/Command%20Help.html"><span class="doc">Command Help</span></a> covers adding localized strings, icons and help URLs for command plug-ins.
+<a href="#id21"><span class="problematic" id="id22">*</span></a>Command Interface provides an overview of the command object and related interfaces
+<a href="#id23"><span class="problematic" id="id24">*</span></a>ILxCommand (index) interface reference</p>
+<p>There are a couple of viewports that are particularly useful when working with commands and scripts:  the ‘’’Command History’’’ and the ‘’’Event Log’’’.</p>
+<div class="section" id="command-history">
+<h3><a class="toc-backref" href="#id26">Command History</a><a class="headerlink" href="#command-history" title="Permalink to this headline">¶</a></h3>
+<p>The Command History Viewport]] tracks command executions, making it an essential development tool. This viewport also contains the undo stack, a complete command list, a simple scripting interface, and the results of any queries performed from the [[Command History Viewport#Command Entry at the bottom of the viewport.</p>
+</div>
+<div class="section" id="event-log">
+<h3><a class="toc-backref" href="#id27">Event Log</a><a class="headerlink" href="#event-log" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="../../ui/Event%20Log%20Viewport.html"><span class="doc">Event Log Viewport</span></a> provides information a list of messages from various subsystems.  Plug-ins can define their own log subsystems, or can use one of the existing ones.  Scripts use a standard scripting subsystem.  The log view can be filtered to show only certain subsystems and can be saved to disk.</p>
+</div>
+</div>
+<div class="section" id="related">
+<h2><a class="toc-backref" href="#id28">Related</a><a class="headerlink" href="#related" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Telnet.html"><span class="doc">Telnet</span></a></p></li>
+<li><p><a class="reference internal" href="Headless.html"><span class="doc">Headless</span></a></p></li>
+<li><p>Command_Interface</p></li>
+<li><p>Commands</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DDE.html" class="btn btn-neutral float-right" title="DDE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Bonjour.html" class="btn btn-neutral float-left" title="Bonjour" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/general/systems/Command System.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:52 GMT -->
+</html>

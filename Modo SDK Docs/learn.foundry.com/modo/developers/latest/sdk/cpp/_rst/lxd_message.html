@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_message.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Message &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Network" href="lxd_network.html" />
+    <link rel="prev" title="Mesh" href="lxd_mesh.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Message</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmessageservice">ILxMessageService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmessageservice-tmp-sgs">ILxMessageService::Tmp_Sgs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxautosavelistener">ILxAutoSaveListener</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Message</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="message">
+<h1>Message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxmessageservice" id="id1">ILxMessageService</a></p></li>
+<li><p><a class="reference internal" href="#ilxmessageservice-tmp-sgs" id="id2">ILxMessageService::Tmp_Sgs</a></p></li>
+<li><p><a class="reference internal" href="#ilxautosavelistener" id="id3">ILxAutoSaveListener</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXiCM_ACT_ERROR">
+<span class="target" id="lxd__message_8hpp_1a656259293f405198278b14b7d73c397a"></span><code class="sig-name descname">LXiCM_ACT_ERROR</code><a class="headerlink" href="#c.LXiCM_ACT_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The “common” message table contains a set of translatable strings that have consistent uses throughout the application. The codes are all old-style numeric, defined here. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiCM_ACT_WARNING</p></li>
+<li><p>LXiCM_ACT_OK</p></li>
+<li><p>LXiCM_ACT_CANCEL</p></li>
+<li><p>LXiCM_ACT_YES</p></li>
+<li><p>LXiCM_ACT_NO</p></li>
+<li><p>LXiCM_ACT_DONE</p></li>
+<li><p>LXiCM_ACT_YESALL</p></li>
+<li><p>LXiCM_ACT_RENAME</p></li>
+<li><p>LXiCM_ACT_ADD</p></li>
+<li><p>LXiCM_ACT_DELETE</p></li>
+<li><p>LXiCM_ACT_CLEAR</p></li>
+<li><p>LXiCM_ACT_SAVE</p></li>
+<li><p>LXiCM_ACT_NOSAVE</p></li>
+<li><p>LXiCM_ACT_LOAD</p></li>
+<li><p>LXiCM_ACT_CLOSE</p></li>
+<li><p>LXiCM_ACT_CONTINUE</p></li>
+<li><p>LXiCM_SPC_NONE</p></li>
+<li><p>LXiCM_SPC_UNNAMED</p></li>
+<li><p>LXiCM_SPC_MIXED</p></li>
+<li><p>LXiCM_ACT_INFO</p></li>
+<li><p>LXiCM_ACT_QUIT</p></li>
+<li><p>LXiCM_ACT_NAME</p></li>
+<li><p>LXiCM_ACT_TYPE</p></li>
+<li><p>LXiCM_ACT_PROJ</p></li>
+<li><p>LXiCM_ACT_AXIS</p></li>
+<li><p>LXiCM_SPC_UNKNOWN</p></li>
+<li><p>LXiCM_ACT_COPY</p></li>
+<li><p>LXiCM_ACT_CUT</p></li>
+<li><p>LXiCM_ACT_PASTE</p></li>
+<li><p>LXiCM_SPC_NEW</p></li>
+<li><p>LXiCM_ACT_NEW</p></li>
+<li><p>LXiCM_ACT_VOID</p></li>
+<li><p>LXiCM_SPC_VOID</p></li>
+<li><p>LXiCM_ACT_ALL</p></li>
+<li><p>LXiCM_SPC_ALL</p></li>
+<li><p>LXiCM_ACT_EXPORT</p></li>
+<li><p>LXiCM_ACT_PROPS</p></li>
+<li><p>LXiCM_ACT_HELP</p></li>
+<li><p>LXiCM_ACT_FUTURE</p></li>
+<li><p>LXiCM_ACT_SHOWM</p></li>
+<li><p>LXiCM_ACT_HIDE</p></li>
+<li><p>LXiCM_SPC_UNTITLE</p></li>
+<li><p>LXiCM_ACT_REPLACE</p></li>
+<li><p>LXiCM_ACT_RELOAD</p></li>
+<li><p>LXiCM_ACT_DUPLICATE</p></li>
+<li><p>LXiCM_SPC_PRIVATE</p></li>
+<li><p>LXiCM_SPC_PLUGINS</p></li>
+<li><p>LXiCM_SPC_ALLFILES</p></li>
+<li><p>LXiCM_SPC_ALLFORMATS</p></li>
+<li><p>LXiCM_ACT_SAVEAS</p></li>
+<li><p>LXiCM_ACT_BAKE</p></li>
+<li><p>LXiCM_ACT_INSTANCE</p></li>
+<li><p>LXiCM_SPC_DEFAULT</p></li>
+<li><p>LXiCM_ACT_LOADIMAGE</p></li>
+<li><p>LXiCM_ACT_NOALL</p></li>
+<li><p>LXiCM_ACT_NEWIMAGE</p></li>
+<li><p>LXiCM_ACT_LOADSEQ</p></li>
+<li><p>LXiCM_ACT_NEWSEQ</p></li>
+<li><p>LXiCM_ACT_DEFORM</p></li>
+<li><p>LXiCM_ACT_CHOOSECOLOR</p></li>
+<li><p>LXiCM_ACT_ADDMAP</p></li>
+<li><p>LXiCM_ACT_EMPTY_PAREN</p></li>
+<li><p>LXiCM_ACT_MOVE</p></li>
+<li><p>LXiCM_ACT_PERFORMDROP</p></li>
+<li><p>LXiCM_ACT_CREATEPRESET</p></li>
+<li><p>LXiCM_ACT_CANCELDROP</p></li>
+<li><p>LXiCM_ACT_GRADIENT_PAREN</p></li>
+<li><p>LXiCM_ACT_MATRIX4_PAREN</p></li>
+<li><p>LXiCM_ACT_MESH_PAREN</p></li>
+</ul>
+<div class="section" id="ilxmessageservice">
+<h2><a class="toc-backref" href="#id1">ILxMessageService</a><a class="headerlink" href="#ilxmessageservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxMessageService">
+<span id="_CPPv317ILxMessageService"></span><span id="_CPPv217ILxMessageService"></span><span id="ILxMessageService"></span><span class="target" id="class_i_lx_message_service"></span><em class="property">class </em><code class="sig-name descname">ILxMessageService</code><a class="headerlink" href="#_CPPv417ILxMessageService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>MessageService provides access to message tables, which contain localized human-readable versions of internal strings used within the application. All strings presented to the user should come from messagte tables. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxMessageService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxMessageService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxMessageService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_message_service_1a2561332f960317b05bce5b6c747f1981"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As usual, the service starts with a ScriptQuery method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService8AllocateE11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxMessageService8AllocateE11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxMessageService8AllocateE11LXtObjectIDPPv"></span><span id="ILxMessageService::Allocate__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_message_service_1a43d721525045afeaf7f514a82158c68e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Allocate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService8AllocateE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allocate a new <a class="reference internal" href="lxd_value.html#class_i_lx_message"><span class="std std-ref">ILxMessage</span></a> object. This object can then be populated with a message code and message table entry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService9DuplicateE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N17ILxMessageService9DuplicateE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N17ILxMessageService9DuplicateE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxMessageService::Duplicate__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_message_service_1aaa3d5f0a8c6a35f1ed06d6b8da55bc9f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Duplicate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService9DuplicateE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An existing <a class="reference internal" href="lxd_value.html#class_i_lx_message"><span class="std std-ref">ILxMessage</span></a> object can be duplicated with this method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService11MessageTextE11LXtObjectID11LXtObjectIDPcj">
+<span id="_CPPv3N17ILxMessageService11MessageTextE11LXtObjectID11LXtObjectIDPcj"></span><span id="_CPPv2N17ILxMessageService11MessageTextE11LXtObjectID11LXtObjectIDPcj"></span><span id="ILxMessageService::MessageText__LXtObjectID.LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1a52d1a0c933e70347487a645f7ced5d40"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MessageText</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService11MessageTextE11LXtObjectID11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This return a human-readable string from the given message object. This fails if there is no message text, but will also set the buffer to an empty string. Note that messages returned in this way will not have any rich text encodings from modo markup in them. If you want the encodings, see <a class="reference internal" href="#class_i_lx_message_service_1ae3a11a2a9ffd30de96ac2825d2708185"><span class="std std-ref">MessageTextRich()</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService7RawTextE11LXtObjectIDPKcPKcPPKc">
+<span id="_CPPv3N17ILxMessageService7RawTextE11LXtObjectIDPKcPKcPPKc"></span><span id="_CPPv2N17ILxMessageService7RawTextE11LXtObjectIDPKcPKcPPKc"></span><span id="ILxMessageService::RawText__LXtObjectID.cCP.cCP.cCPP"></span><span class="target" id="class_i_lx_message_service_1af0c0095336aca9a7cc3dd82d309c0bb9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RawText</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>table</em>, <em class="property">const</em> char *<em>msg</em>, <em class="property">const</em> char **<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService7RawTextE11LXtObjectIDPKcPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Finally it’s possible to get the raw message pattern directly from the message table, without substitution and without using an <a class="reference internal" href="lxd_value.html#class_i_lx_message"><span class="std std-ref">ILxMessage</span></a> object. If ‘table’ is null, the message text will be decoded using the ‘&#64;table&#64;msg&#64;’ format. Note that messages returned in this way will not have any rich text encodings from modo markup in them. If you want the encodings, see <a class="reference internal" href="#class_i_lx_message_service_1a5ef9edb72c8cc909d9bdc142c3f18090"><span class="std std-ref">RawTextRich()</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService15ArgTypeUserNameE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N17ILxMessageService15ArgTypeUserNameE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N17ILxMessageService15ArgTypeUserNameE11LXtObjectIDPKcPcj"></span><span id="ILxMessageService::ArgTypeUserName__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1aeb05601a92b3a881fe452e7c85b4f66a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArgTypeUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>argType</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService15ArgTypeUserNameE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods return the username and description of a given argument type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService11ArgTypeDescE11LXtObjectIDPKcPcj">
+<span id="_CPPv3N17ILxMessageService11ArgTypeDescE11LXtObjectIDPKcPcj"></span><span id="_CPPv2N17ILxMessageService11ArgTypeDescE11LXtObjectIDPKcPcj"></span><span id="ILxMessageService::ArgTypeDesc__LXtObjectID.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1a94011e0e3595151b763ec94be1efad24"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArgTypeDesc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>argType</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService11ArgTypeDescE11LXtObjectIDPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService21ArgTypeOptionUserNameE11LXtObjectIDPKcPKcPcj">
+<span id="_CPPv3N17ILxMessageService21ArgTypeOptionUserNameE11LXtObjectIDPKcPKcPcj"></span><span id="_CPPv2N17ILxMessageService21ArgTypeOptionUserNameE11LXtObjectIDPKcPKcPcj"></span><span id="ILxMessageService::ArgTypeOptionUserName__LXtObjectID.cCP.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1a6b94a73b21ad2c8a3717005e3a6671b7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArgTypeOptionUserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>argType</em>, <em class="property">const</em> char *<em>option</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService21ArgTypeOptionUserNameE11LXtObjectIDPKcPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These get a specific user string given an internal option name and an argument type name. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService17ArgTypeOptionDescE11LXtObjectIDPKcPKcPcj">
+<span id="_CPPv3N17ILxMessageService17ArgTypeOptionDescE11LXtObjectIDPKcPKcPcj"></span><span id="_CPPv2N17ILxMessageService17ArgTypeOptionDescE11LXtObjectIDPKcPKcPcj"></span><span id="ILxMessageService::ArgTypeOptionDesc__LXtObjectID.cCP.cCP.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1ab1f342977112118ca4506257904d2445"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ArgTypeOptionDesc</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>argType</em>, <em class="property">const</em> char *<em>option</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService17ArgTypeOptionDescE11LXtObjectIDPKcPKcPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService15MessageTextRichE11LXtObjectID11LXtObjectIDPcj">
+<span id="_CPPv3N17ILxMessageService15MessageTextRichE11LXtObjectID11LXtObjectIDPcj"></span><span id="_CPPv2N17ILxMessageService15MessageTextRichE11LXtObjectID11LXtObjectIDPcj"></span><span id="ILxMessageService::MessageTextRich__LXtObjectID.LXtObjectID.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1ae3a11a2a9ffd30de96ac2825d2708185"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MessageTextRich</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService15MessageTextRichE11LXtObjectID11LXtObjectIDPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For backwards compatibility, message strings have any modo markup removed before they are returned. This makes them suitable for use in non-modo UIs, like web pages or Qt widgets. These functions return the string without stripping the decoded markup, allowing them to be displayed as rich text in modo. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService11RawTextRichE11LXtObjectIDPKcPKcPPKc">
+<span id="_CPPv3N17ILxMessageService11RawTextRichE11LXtObjectIDPKcPKcPPKc"></span><span id="_CPPv2N17ILxMessageService11RawTextRichE11LXtObjectIDPKcPKcPPKc"></span><span id="ILxMessageService::RawTextRich__LXtObjectID.cCP.cCP.cCPP"></span><span class="target" id="class_i_lx_message_service_1a5ef9edb72c8cc909d9bdc142c3f18090"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RawTextRich</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>table</em>, <em class="property">const</em> char *<em>msg</em>, <em class="property">const</em> char **<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService11RawTextRichE11LXtObjectIDPKcPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService13StripRichTextE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N17ILxMessageService13StripRichTextE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N17ILxMessageService13StripRichTextE11LXtObjectIDPKcPPKc"></span><span id="ILxMessageService::StripRichText__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_message_service_1a8567ff2638c17b0e46f49cf74154b2d5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StripRichText</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>string</em>, <em class="property">const</em> char **<em>stripped</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService13StripRichTextE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If you do have a srting with rich text codes in it, they can be stripped with this function. The string returned should be considered volatile, and used or copied as soon as possible. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService12StringLookupE11LXtObjectIDPKcPKcPPKc">
+<span id="_CPPv3N17ILxMessageService12StringLookupE11LXtObjectIDPKcPKcPPKc"></span><span id="_CPPv2N17ILxMessageService12StringLookupE11LXtObjectIDPKcPKcPPKc"></span><span id="ILxMessageService::StringLookup__LXtObjectID.cCP.cCP.cCPP"></span><span class="target" id="class_i_lx_message_service_1a640fb02a8606741aae2aeb53efc34f73"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">StringLookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>table</em>, <em class="property">const</em> char *<em>ident</em>, <em class="property">const</em> char **<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService12StringLookupE11LXtObjectIDPKcPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Strings tables are like message tables, but aren’t localized. They can be useful if you want to store an internal string in a config so that ti can be easily changed. This looks up a string given a table/ident pair and returns it. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService10NewMessageER14CLxLoc_Message">
+<span id="_CPPv3N17ILxMessageService10NewMessageER14CLxLoc_Message"></span><span id="_CPPv2N17ILxMessageService10NewMessageER14CLxLoc_Message"></span><span id="ILxMessageService::NewMessage__CLxLoc_MessageR"></span><span class="target" id="class_i_lx_message_service_1a288c8030ab88ce7aada986323890fef0"></span>bool <code class="sig-name descname">NewMessage</code><span class="sig-paren">(</span>CLxLoc_Message &amp;<em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService10NewMessageER14CLxLoc_Message" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService16DuplicateMessageER14CLxLoc_MessageR14CLxLoc_Message">
+<span id="_CPPv3N17ILxMessageService16DuplicateMessageER14CLxLoc_MessageR14CLxLoc_Message"></span><span id="_CPPv2N17ILxMessageService16DuplicateMessageER14CLxLoc_MessageR14CLxLoc_Message"></span><span id="ILxMessageService::DuplicateMessage__CLxLoc_MessageR.CLxLoc_MessageR"></span><span class="target" id="class_i_lx_message_service_1a440a3c3c8057f0b0ee8e8e6bcef7653f"></span>bool <code class="sig-name descname">DuplicateMessage</code><span class="sig-paren">(</span>CLxLoc_Message &amp;<em>msg</em>, CLxLoc_Message &amp;<em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService16DuplicateMessageER14CLxLoc_MessageR14CLxLoc_Message" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService7GetTextER14CLxLoc_MessagePcj">
+<span id="_CPPv3N17ILxMessageService7GetTextER14CLxLoc_MessagePcj"></span><span id="_CPPv2N17ILxMessageService7GetTextER14CLxLoc_MessagePcj"></span><span id="ILxMessageService::GetText__CLxLoc_MessageR.cP.unsigned"></span><span class="target" id="class_i_lx_message_service_1aa5b6fb39c92fd8c937975ec08d83d2f2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetText</code><span class="sig-paren">(</span>CLxLoc_Message &amp;<em>msg</em>, char *<em>buf</em>, unsigned <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService7GetTextER14CLxLoc_MessagePcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService7GetTextER14CLxLoc_MessageRNSt6stringE">
+<span id="_CPPv3N17ILxMessageService7GetTextER14CLxLoc_MessageRNSt6stringE"></span><span id="_CPPv2N17ILxMessageService7GetTextER14CLxLoc_MessageRNSt6stringE"></span><span id="ILxMessageService::GetText__CLxLoc_MessageR.ssR"></span><span class="target" id="class_i_lx_message_service_1a9280521bbe6f784407236c36aacad69f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetText</code><span class="sig-paren">(</span>CLxLoc_Message &amp;<em>msg</em>, std::string &amp;<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService7GetTextER14CLxLoc_MessageRNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService13ResultMessageE8LxResult">
+<span id="_CPPv3N17ILxMessageService13ResultMessageE8LxResult"></span><span id="_CPPv2N17ILxMessageService13ResultMessageE8LxResult"></span><span id="ILxMessageService::ResultMessage__LxResult"></span><span class="target" id="class_i_lx_message_service_1a03d9911af06a89b5b1aabf6605570a16"></span>std::string <code class="sig-name descname">ResultMessage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <em>rc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService13ResultMessageE8LxResult" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The special message table for result codes can be accessed using LxResutl values as keys. </p>
+</dd></dl>
+
+</div>
+<dl class="class">
+<dt id="_CPPv4N17ILxMessageService7Tmp_SgsE">
+<span id="_CPPv3N17ILxMessageService7Tmp_SgsE"></span><span id="_CPPv2N17ILxMessageService7Tmp_SgsE"></span><span id="ILxMessageService::Tmp_Sgs"></span><span class="target" id="class_i_lx_message_service_1_1_tmp___sgs"></span><em class="property">class </em><code class="sig-name descname">Tmp_Sgs</code><a class="headerlink" href="#_CPPv4N17ILxMessageService7Tmp_SgsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> This is a safe string “get” using a dummy class to act as callback for the safe string “read” template. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxMessageService7Tmp_Sgs13sgs_GetStringEPcj">
+<span id="_CPPv3N17ILxMessageService7Tmp_Sgs13sgs_GetStringEPcj"></span><span id="_CPPv2N17ILxMessageService7Tmp_Sgs13sgs_GetStringEPcj"></span><span id="ILxMessageService::Tmp_Sgs::sgs_GetString__cP.unsigned-i"></span><span class="target" id="class_i_lx_message_service_1_1_tmp___sgs_1af4ad934fd5bbe5ade194129920f32b48"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">sgs_GetString</code><span class="sig-paren">(</span>char *<em>buf</em>, unsigned int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxMessageService7Tmp_Sgs13sgs_GetStringEPcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N17ILxMessageService7Tmp_Sgs3srvE">
+<span id="_CPPv3N17ILxMessageService7Tmp_Sgs3srvE"></span><span id="_CPPv2N17ILxMessageService7Tmp_Sgs3srvE"></span><span id="ILxMessageService::Tmp_Sgs::srv__CLxLoc_MessageServiceP"></span><span class="target" id="class_i_lx_message_service_1_1_tmp___sgs_1ae8bcad9ccd9a5211fa1c5d75c8a79885"></span>CLxLoc_MessageService *<code class="sig-name descname">srv</code><a class="headerlink" href="#_CPPv4N17ILxMessageService7Tmp_Sgs3srvE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17ILxMessageService7Tmp_Sgs3msgE">
+<span id="_CPPv3N17ILxMessageService7Tmp_Sgs3msgE"></span><span id="_CPPv2N17ILxMessageService7Tmp_Sgs3msgE"></span><span id="ILxMessageService::Tmp_Sgs::msg__ILxUnknownID"></span><span class="target" id="class_i_lx_message_service_1_1_tmp___sgs_1adaaf30c435bac49a0f74b60bdc8bc4b2"></span>ILxUnknownID <code class="sig-name descname">msg</code><a class="headerlink" href="#_CPPv4N17ILxMessageService7Tmp_Sgs3msgE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ilxmessageservice-tmp-sgs">
+<h2><a class="toc-backref" href="#id2">ILxMessageService::Tmp_Sgs</a><a class="headerlink" href="#ilxmessageservice-tmp-sgs" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt>
+<span class="target" id="class_i_lx_message_service_1_1_tmp___sgs"></span><em class="property">class </em><code class="sig-name descname">Tmp_Sgs</code><br /></dt>
+<dd><p><em>User Class Only:</em> This is a safe string “get” using a dummy class to act as callback for the safe string “read” template. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt>
+<span class="target" id="class_i_lx_message_service_1_1_tmp___sgs_1af4ad934fd5bbe5ade194129920f32b48"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">sgs_GetString</code><span class="sig-paren">(</span>char *<em>buf</em>, unsigned int <em>len</em><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_message_service_1_1_tmp___sgs_1ae8bcad9ccd9a5211fa1c5d75c8a79885"></span>CLxLoc_MessageService *<code class="sig-name descname">srv</code><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="class_i_lx_message_service_1_1_tmp___sgs_1adaaf30c435bac49a0f74b60bdc8bc4b2"></span>ILxUnknownID <code class="sig-name descname">msg</code><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxautosavelistener">
+<h2><a class="toc-backref" href="#id3">ILxAutoSaveListener</a><a class="headerlink" href="#ilxautosavelistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxAutoSaveListener">
+<span id="_CPPv319ILxAutoSaveListener"></span><span id="_CPPv219ILxAutoSaveListener"></span><span id="ILxAutoSaveListener"></span><span class="target" id="class_i_lx_auto_save_listener"></span><em class="property">class </em><code class="sig-name descname">ILxAutoSaveListener</code><a class="headerlink" href="#_CPPv419ILxAutoSaveListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Auto-saving is triggered periodically based on user preferences, modified by when the system believes an autosave is safe to perform. Other clients can get in on this by listening to the auto-save event port. There is only one event, <a class="reference internal" href="#class_i_lx_auto_save_listener_1accfe994f403c1f8a91cf15b6012bef1e"><span class="std std-ref">AutoSaveNow()</span></a>, at which point the client can safely perform an auto-save if applicable. This event is sent after the nexus has done its own auto-saving. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxAutoSaveListener11AutoSaveNowE11LXtObjectID">
+<span id="_CPPv3N19ILxAutoSaveListener11AutoSaveNowE11LXtObjectID"></span><span id="_CPPv2N19ILxAutoSaveListener11AutoSaveNowE11LXtObjectID"></span><span id="ILxAutoSaveListener::AutoSaveNow__LXtObjectID"></span><span class="target" id="class_i_lx_auto_save_listener_1accfe994f403c1f8a91cf15b6012bef1e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AutoSaveNow</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxAutoSaveListener11AutoSaveNowE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_network.html" class="btn btn-neutral float-right" title="Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_mesh.html" class="btn btn-neutral float-left" title="Mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_message.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

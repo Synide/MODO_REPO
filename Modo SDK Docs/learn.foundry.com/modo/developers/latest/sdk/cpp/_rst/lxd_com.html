@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_com.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Com &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Command" href="lxd_command.html" />
+    <link rel="prev" title="Colormapping" href="lxd_colormapping.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Com</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lxtguid">LXtGUID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxobject">ILxObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxguidservice">ILxGUIDService</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Com</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="com">
+<h1>Com<a class="headerlink" href="#com" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#lxtguid" id="id1">LXtGUID</a></p></li>
+<li><p><a class="reference internal" href="#ilxobject" id="id2">ILxObject</a></p></li>
+<li><p><a class="reference internal" href="#ilxguidservice" id="id3">ILxGUIDService</a></p></li>
+</ul>
+</div>
+<div class="section" id="lxtguid">
+<h2><a class="toc-backref" href="#id1">LXtGUID</a><a class="headerlink" href="#lxtguid" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410st_LXtGUID">
+<span id="_CPPv310st_LXtGUID"></span><span id="_CPPv210st_LXtGUID"></span><span id="st_LXtGUID"></span><span class="target" id="structst___l_xt_g_u_i_d"></span><em class="property">struct </em><code class="sig-name descname">st_LXtGUID</code><a class="headerlink" href="#_CPPv410st_LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GUIDs are structures containing 128 bits of pure noise, hopefully unique throughout all time and space. They are used to identify interfaces and object classes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N10st_LXtGUID2x4E">
+<span id="_CPPv3N10st_LXtGUID2x4E"></span><span id="_CPPv2N10st_LXtGUID2x4E"></span><span id="st_LXtGUID::x4__unsigned-i"></span><span class="target" id="structst___l_xt_g_u_i_d_1a81d3f9fbbf64cd60a371948aab88bfe5"></span>unsigned int <code class="sig-name descname">x4</code><a class="headerlink" href="#_CPPv4N10st_LXtGUID2x4E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N10st_LXtGUID2x2E">
+<span id="_CPPv3N10st_LXtGUID2x2E"></span><span id="_CPPv2N10st_LXtGUID2x2E"></span><span id="st_LXtGUID::x2__unsigned-shortA"></span><span class="target" id="structst___l_xt_g_u_i_d_1acac7fb709ec3f659933eb5f831f56018"></span>unsigned short <code class="sig-name descname">x2</code>[2]<a class="headerlink" href="#_CPPv4N10st_LXtGUID2x2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N10st_LXtGUID2x1E">
+<span id="_CPPv3N10st_LXtGUID2x1E"></span><span id="_CPPv2N10st_LXtGUID2x1E"></span><span id="st_LXtGUID::x1__unsigned-cA"></span><span class="target" id="structst___l_xt_g_u_i_d_1a5f5f323d53c3227ec12bb54c10c893ca"></span>unsigned char <code class="sig-name descname">x1</code>[8]<a class="headerlink" href="#_CPPv4N10st_LXtGUID2x1E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv411LXtObjectID">
+<span id="_CPPv311LXtObjectID"></span><span id="_CPPv211LXtObjectID"></span><span id="LXtObjectID"></span><span class="target" id="lxd__com_8hpp_1a5a9f9a7a1af6686a76cf7f5b8a160599"></span><em class="property">typedef </em>void *<code class="sig-name descname">LXtObjectID</code><a class="headerlink" href="#_CPPv411LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An object is a pointer. The first element of the pointer is the vTable, so an object of type IUnknown (all COM objects) is a pointer to a pointer to the IUnknown vTable. </p>
+</dd></dl>
+
+<dl class="type">
+<dt id="_CPPv46LXtID4">
+<span id="_CPPv36LXtID4"></span><span id="_CPPv26LXtID4"></span><span id="LXtID4"></span><span class="target" id="lxd__com_8hpp_1a765017e1d58b6fc03a84ed325eb35681"></span><em class="property">typedef </em>unsigned int <code class="sig-name descname">LXtID4</code><a class="headerlink" href="#_CPPv46LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An ID code is a 32-bit word, with values constructed by passing four characters to the macro below. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXxID4</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXxMETHOD">
+<span class="target" id="lxd__com_8hpp_1abcf3ec7dfdf9f0ab7bf06a84e2c3ce4e"></span><code class="sig-name descname">LXxMETHOD</code><span class="sig-paren">(</span><em>rv</em>, <em>fn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.LXxMETHOD" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is the IUnknown interface. In COM terminology, an “interface” describes the layout of a table containing method function vectors, or “vTable.” Three functions at the start of all COM object vTables control polymorphism and reference counting. The LXxMETHOD macro allows us to control the function declaration across different systems or compilers, although it is just the default for now. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxobject">
+<h2><a class="toc-backref" href="#id2">ILxObject</a><a class="headerlink" href="#ilxobject" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxObject">
+<span id="_CPPv39ILxObject"></span><span id="_CPPv29ILxObject"></span><span id="ILxObject"></span><span class="target" id="class_i_lx_object"></span><em class="property">class </em><code class="sig-name descname">ILxObject</code><a class="headerlink" href="#_CPPv49ILxObject" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>COM objects are relative black boxes; They are passed around as ILxUnknown objects, and only become more descriptive and useful when queried for an interface. Often it can be helpful for clients to be able to perform basic interaction with the COM object, without knowing which interfaces it implements. The <a class="reference internal" href="#class_i_lx_object"><span class="std std-ref">ILxObject</span></a> interface is implemented by all COM objects. It provides methods for querying the object name, as well as enumerating over interfaces implemented by the COM interface. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxObject10IdentifierE11LXtObjectIDPPKc">
+<span id="_CPPv3N9ILxObject10IdentifierE11LXtObjectIDPPKc"></span><span id="_CPPv2N9ILxObject10IdentifierE11LXtObjectIDPPKc"></span><span id="ILxObject::Identifier__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_object_1a57376844beb3c86e794679d7b7fd1ff5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Identifier</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxObject10IdentifierE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the identifier of the COM object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxObject14InterfaceCountE11LXtObjectIDPj">
+<span id="_CPPv3N9ILxObject14InterfaceCountE11LXtObjectIDPj"></span><span id="_CPPv2N9ILxObject14InterfaceCountE11LXtObjectIDPj"></span><span id="ILxObject::InterfaceCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_object_1aab14f31b3b0a2bdef37565d7f765b1ac"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InterfaceCount</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxObject14InterfaceCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the number of interfaces implemented by the object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxObject16InterfaceByIndexE11LXtObjectIDjPPK7LXtGUID">
+<span id="_CPPv3N9ILxObject16InterfaceByIndexE11LXtObjectIDjPPK7LXtGUID"></span><span id="_CPPv2N9ILxObject16InterfaceByIndexE11LXtObjectIDjPPK7LXtGUID"></span><span id="ILxObject::InterfaceByIndex__LXtObjectID.unsigned-i.LXtGUIDCPP"></span><span class="target" id="class_i_lx_object_1ab3895f7ddaf302a79414c1771823cb28"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InterfaceByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> LXtGUID **<em>guid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxObject16InterfaceByIndexE11LXtObjectIDjPPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the GUID of an interface specified by index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxObject11AddObserverE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N9ILxObject11AddObserverE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N9ILxObject11AddObserverE11LXtObjectID11LXtObjectID"></span><span id="ILxObject::AddObserver__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_object_1a2d02f8a2c84cab47b5117d71d20fe634"></span>void <code class="sig-name descname">AddObserver</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxObject11AddObserverE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Attach a visitor to the lifetime of the COM object. When the reference count of the COM object reaches zero, and the object is destroyed, the Evaluate method on the visitor will be called. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxObject14RemoveObserverE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N9ILxObject14RemoveObserverE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N9ILxObject14RemoveObserverE11LXtObjectID11LXtObjectID"></span><span id="ILxObject::RemoveObserver__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_object_1a2488283ef5449b6331ef43038dcf24d4"></span>void <code class="sig-name descname">RemoveObserver</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxObject14RemoveObserverE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Detaches the visitor from tracking the lifetime of the COM object. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxguidservice">
+<h2><a class="toc-backref" href="#id3">ILxGUIDService</a><a class="headerlink" href="#ilxguidservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxGUIDService">
+<span id="_CPPv314ILxGUIDService"></span><span id="_CPPv214ILxGUIDService"></span><span id="ILxGUIDService"></span><span class="target" id="class_i_lx_g_u_i_d_service"></span><em class="property">class </em><code class="sig-name descname">ILxGUIDService</code><a class="headerlink" href="#_CPPv414ILxGUIDService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxGUIDService9TranslateE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxGUIDService9TranslateE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxGUIDService9TranslateE11LXtObjectIDPKc"></span><span id="ILxGUIDService::Translate__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_g_u_i_d_service_1a0a08bfcfd943af8c27d511ef9dd57c83"></span><em class="property">const</em> LXtGUID *<code class="sig-name descname">Translate</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>guidStr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxGUIDService9TranslateE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A service interface for converting between GUID strings and LXtGUID structs is exported as part of the application global.<ul class="simple">
+<li><p>Translate takes a GUID string (either the LXu_* long format or an LXa_* alias) and returns a pointer to an LXtGUID. The returned pointer is non-volatile and can be stored.</p></li>
+<li><p>GetName takes a pointer to an LXtGUID struct and returns the name for the GUID. This will be the short alias for the GUID if it exists.</p></li>
+<li><p>Compare takes two LXtGUID pointers and returns a ranking metric for sorting them. The result is similar to strcmp().</p></li>
+<li><p>Fixed takes a GUID pointer that may be volatile and returns a non-volatile version from the global pool.</p></li>
+<li><p>Class takes a GUID pointer and returns the class GUID, if any.</p></li>
+<li><p>ClassName takes a GUID pointer and returns the name for the class, if any. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxGUIDService7GetNameE11LXtObjectIDPK7LXtGUID">
+<span id="_CPPv3N14ILxGUIDService7GetNameE11LXtObjectIDPK7LXtGUID"></span><span id="_CPPv2N14ILxGUIDService7GetNameE11LXtObjectIDPK7LXtGUID"></span><span id="ILxGUIDService::GetName__LXtObjectID.LXtGUIDCP"></span><span class="target" id="class_i_lx_g_u_i_d_service_1ac332aec2d6321c0dee2b85fdb24a7838"></span><em class="property">const</em> char *<code class="sig-name descname">GetName</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>guid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxGUIDService7GetNameE11LXtObjectIDPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxGUIDService7CompareE11LXtObjectIDPK7LXtGUIDPK7LXtGUID">
+<span id="_CPPv3N14ILxGUIDService7CompareE11LXtObjectIDPK7LXtGUIDPK7LXtGUID"></span><span id="_CPPv2N14ILxGUIDService7CompareE11LXtObjectIDPK7LXtGUIDPK7LXtGUID"></span><span id="ILxGUIDService::Compare__LXtObjectID.LXtGUIDCP.LXtGUIDCP"></span><span class="target" id="class_i_lx_g_u_i_d_service_1a0af2f58069b3b04b573d52d037089c35"></span>int <code class="sig-name descname">Compare</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>guid1</em>, <em class="property">const</em> LXtGUID *<em>guid2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxGUIDService7CompareE11LXtObjectIDPK7LXtGUIDPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxGUIDService5FixedE11LXtObjectIDPK7LXtGUID">
+<span id="_CPPv3N14ILxGUIDService5FixedE11LXtObjectIDPK7LXtGUID"></span><span id="_CPPv2N14ILxGUIDService5FixedE11LXtObjectIDPK7LXtGUID"></span><span id="ILxGUIDService::Fixed__LXtObjectID.LXtGUIDCP"></span><span class="target" id="class_i_lx_g_u_i_d_service_1ad0c077577e563e009731147634327c2f"></span><em class="property">const</em> LXtGUID *<code class="sig-name descname">Fixed</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>guid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxGUIDService5FixedE11LXtObjectIDPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxGUIDService5ClassE11LXtObjectIDPK7LXtGUID">
+<span id="_CPPv3N14ILxGUIDService5ClassE11LXtObjectIDPK7LXtGUID"></span><span id="_CPPv2N14ILxGUIDService5ClassE11LXtObjectIDPK7LXtGUID"></span><span id="ILxGUIDService::Class__LXtObjectID.LXtGUIDCP"></span><span class="target" id="class_i_lx_g_u_i_d_service_1aea0a5b028c6f48ce436b18c02861528d"></span><em class="property">const</em> LXtGUID *<code class="sig-name descname">Class</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>guid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxGUIDService5ClassE11LXtObjectIDPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxGUIDService9ClassNameE11LXtObjectIDPK7LXtGUID">
+<span id="_CPPv3N14ILxGUIDService9ClassNameE11LXtObjectIDPK7LXtGUID"></span><span id="_CPPv2N14ILxGUIDService9ClassNameE11LXtObjectIDPK7LXtGUID"></span><span id="ILxGUIDService::ClassName__LXtObjectID.LXtGUIDCP"></span><span class="target" id="class_i_lx_g_u_i_d_service_1af67983837c82f07dd93be0e2240c7aaf"></span><em class="property">const</em> char *<code class="sig-name descname">ClassName</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>guid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxGUIDService9ClassNameE11LXtObjectIDPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.__has_feature">
+<span class="target" id="lxd__com_8hpp_1af989845e24678c452b9222afdac95e7f"></span><code class="sig-name descname">__has_feature</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__has_feature" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Crazy-ass Mac code needed to define LXx_OVERRIDE, which doesn’t need to be part of the public docs. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXx_OVERRIDE</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_command.html" class="btn btn-neutral float-right" title="Command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_colormapping.html" class="btn btn-neutral float-left" title="Colormapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_com.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+</html>

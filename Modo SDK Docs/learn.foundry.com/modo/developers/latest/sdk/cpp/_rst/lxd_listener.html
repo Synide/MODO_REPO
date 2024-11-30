@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_listener.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Listener &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Locator" href="lxd_locator.html" />
+    <link rel="prev" title="Listcache" href="lxd_listcache.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Listener</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlistenerservice">ILxListenerService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxlistenerport">ILxListenerPort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clxsingletonlistener">CLxSingletonListener</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Listener</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="listener">
+<h1>Listener<a class="headerlink" href="#listener" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxlistenerservice" id="id1">ILxListenerService</a></p></li>
+<li><p><a class="reference internal" href="#ilxlistenerport" id="id2">ILxListenerPort</a></p></li>
+<li><p><a class="reference internal" href="#clxsingletonlistener" id="id3">CLxSingletonListener</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxlistenerservice">
+<h2><a class="toc-backref" href="#id1">ILxListenerService</a><a class="headerlink" href="#ilxlistenerservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv418ILxListenerService">
+<span id="_CPPv318ILxListenerService"></span><span id="_CPPv218ILxListenerService"></span><span id="ILxListenerService"></span><span class="target" id="class_i_lx_listener_service"></span><em class="property">class </em><code class="sig-name descname">ILxListenerService</code><a class="headerlink" href="#_CPPv418ILxListenerService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N18ILxListenerService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N18ILxListenerService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N18ILxListenerService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxListenerService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_listener_service_1aca7fa4004d197a0da1766b05ab4bf2ff"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxListenerService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A listener service allows a client to submit itself as a global listener. The client object is queried for all global listener interfaces and any that are found will subsequently receive notifications as events occur. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxListenerService11AddListenerE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N18ILxListenerService11AddListenerE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N18ILxListenerService11AddListenerE11LXtObjectID11LXtObjectID"></span><span id="ILxListenerService::AddListener__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_listener_service_1adddd3223b73d6a01aba5d3cf946284f3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddListener</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxListenerService11AddListenerE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N18ILxListenerService14RemoveListenerE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N18ILxListenerService14RemoveListenerE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N18ILxListenerService14RemoveListenerE11LXtObjectID11LXtObjectID"></span><span id="ILxListenerService::RemoveListener__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_listener_service_1af708aaf58f27ba6dedc4dd9d5763a5ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RemoveListener</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18ILxListenerService14RemoveListenerE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxlistenerport">
+<h2><a class="toc-backref" href="#id2">ILxListenerPort</a><a class="headerlink" href="#ilxlistenerport" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxListenerPort">
+<span id="_CPPv315ILxListenerPort"></span><span id="_CPPv215ILxListenerPort"></span><span id="ILxListenerPort"></span><span class="target" id="class_i_lx_listener_port"></span><em class="property">class </em><code class="sig-name descname">ILxListenerPort</code><a class="headerlink" href="#_CPPv415ILxListenerPort" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxListenerPort11AddListenerE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N15ILxListenerPort11AddListenerE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N15ILxListenerPort11AddListenerE11LXtObjectID11LXtObjectID"></span><span id="ILxListenerPort::AddListener__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_listener_port_1a417ceb4870fcefbd413700d3a41fabf0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddListener</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxListenerPort11AddListenerE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Many nexus objects may also support listener ports. By querying for a port interface on an item or scene and adding to that, the listener client will receive events for changes only on that specific object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxListenerPort14RemoveListenerE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N15ILxListenerPort14RemoveListenerE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N15ILxListenerPort14RemoveListenerE11LXtObjectID11LXtObjectID"></span><span id="ILxListenerPort::RemoveListener__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_listener_port_1a1e424b1ee5c0fced951c2f609c4a79d8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RemoveListener</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxListenerPort14RemoveListenerE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="clxsingletonlistener">
+<h2><a class="toc-backref" href="#id3">CLxSingletonListener</a><a class="headerlink" href="#clxsingletonlistener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv4I0E20CLxSingletonListener">
+<span id="_CPPv3I0E20CLxSingletonListener"></span><span id="_CPPv2I0E20CLxSingletonListener"></span><span class="target" id="class_c_lx_singleton_listener"></span>template&lt;class <code class="sig-name descname">T</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">CLxSingletonListener</code><a class="headerlink" href="#_CPPv4I0E20CLxSingletonListener" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Since it’s relatively common to declare listeners as singletons, we provide a template class to install the listener when needed and remove it when done. This is done using reference counting on the clients. Test lifecycle to prevent listeners from being removed after shutdown in static objects. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListener20CLxSingletonListenerEv">
+<span id="_CPPv3N20CLxSingletonListener20CLxSingletonListenerEv"></span><span id="_CPPv2N20CLxSingletonListener20CLxSingletonListenerEv"></span><span id="CLxSingletonListener::CLxSingletonListener"></span><span class="target" id="class_c_lx_singleton_listener_1a896d4e822be325629ee2acdaf047f945"></span><code class="sig-name descname">CLxSingletonListener</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListener20CLxSingletonListenerEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListenerD0Ev">
+<span id="_CPPv3N20CLxSingletonListenerD0Ev"></span><span id="_CPPv2N20CLxSingletonListenerD0Ev"></span><span id="CLxSingletonListener::~CLxSingletonListener"></span><span class="target" id="class_c_lx_singleton_listener_1aaf50b99def7f55154e1ded425d677f08"></span><code class="sig-name descname">~CLxSingletonListener</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListenerD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListener7acquireEv">
+<span id="_CPPv3N20CLxSingletonListener7acquireEv"></span><span id="_CPPv2N20CLxSingletonListener7acquireEv"></span><span id="CLxSingletonListener::acquire"></span><span class="target" id="class_c_lx_singleton_listener_1a0852f986fc04d43b8396ada9dfc0d476"></span>void <code class="sig-name descname">acquire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListener7acquireEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListener7releaseEv">
+<span id="_CPPv3N20CLxSingletonListener7releaseEv"></span><span id="_CPPv2N20CLxSingletonListener7releaseEv"></span><span id="CLxSingletonListener::release"></span><span class="target" id="class_c_lx_singleton_listener_1a90c47c6322fb9300546b3a4fae0bf03e"></span>void <code class="sig-name descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListener7releaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListenercvP1TEv">
+<span id="_CPPv3N20CLxSingletonListenercvP1TEv"></span><span id="_CPPv2N20CLxSingletonListenercvP1TEv"></span><span id="CLxSingletonListener::castto-TP-operator"></span><span class="target" id="class_c_lx_singleton_listener_1aacd781ccf5feb58821204b4d920da89a"></span><code class="sig-name descname">operator T*</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListenercvP1TEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListenercvPK1TEv">
+<span id="_CPPv3N20CLxSingletonListenercvPK1TEv"></span><span id="_CPPv2N20CLxSingletonListenercvPK1TEv"></span><span id="CLxSingletonListener::castto-TCP-operator"></span><span class="target" id="class_c_lx_singleton_listener_1a910dd73715caeaece949f703e622e4e2"></span><code class="sig-name descname">operator const T*</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListenercvPK1TEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListenermlEv">
+<span id="_CPPv3N20CLxSingletonListenermlEv"></span><span id="_CPPv2N20CLxSingletonListenermlEv"></span><span id="CLxSingletonListener::mul-operator"></span><span class="target" id="class_c_lx_singleton_listener_1abd0e3ff97d490b6efc70957603078ce3"></span>T &amp;<code class="sig-name descname">operator*</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListenermlEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK20CLxSingletonListenermlEv">
+<span id="_CPPv3NK20CLxSingletonListenermlEv"></span><span id="_CPPv2NK20CLxSingletonListenermlEv"></span><span id="CLxSingletonListener::mul-operatorC"></span><span class="target" id="class_c_lx_singleton_listener_1ae6cb3343562ae72ef29d2be8ff02db95"></span><em class="property">const</em> T &amp;<code class="sig-name descname">operator*</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK20CLxSingletonListenermlEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20CLxSingletonListenerptEv">
+<span id="_CPPv3N20CLxSingletonListenerptEv"></span><span id="_CPPv2N20CLxSingletonListenerptEv"></span><span id="CLxSingletonListener::pointer-operator"></span><span class="target" id="class_c_lx_singleton_listener_1a6adfd19dc08b0362a1413b81b43577a1"></span>T *<code class="sig-name descname">operator-&gt;</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20CLxSingletonListenerptEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK20CLxSingletonListenerptEv">
+<span id="_CPPv3NK20CLxSingletonListenerptEv"></span><span id="_CPPv2NK20CLxSingletonListenerptEv"></span><span id="CLxSingletonListener::pointer-operatorC"></span><span class="target" id="class_c_lx_singleton_listener_1a69b4d50b18122f044ede69e7a3f11735"></span><em class="property">const</em> T *<code class="sig-name descname">operator-&gt;</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK20CLxSingletonListenerptEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N20CLxSingletonListener3refE">
+<span id="_CPPv3N20CLxSingletonListener3refE"></span><span id="_CPPv2N20CLxSingletonListener3refE"></span><span id="CLxSingletonListener::ref__TP"></span><span class="target" id="class_c_lx_singleton_listener_1a172a42a6c1fa20821793ee83b25e5fea"></span>T *<code class="sig-name descname">ref</code><a class="headerlink" href="#_CPPv4N20CLxSingletonListener3refE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N20CLxSingletonListener5countE">
+<span id="_CPPv3N20CLxSingletonListener5countE"></span><span id="_CPPv2N20CLxSingletonListener5countE"></span><span id="CLxSingletonListener::count__unsigned"></span><span class="target" id="class_c_lx_singleton_listener_1a8503b0671d08dafd80545c20c2134b4b"></span>unsigned <code class="sig-name descname">count</code><a class="headerlink" href="#_CPPv4N20CLxSingletonListener5countE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_locator.html" class="btn btn-neutral float-right" title="Locator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_listcache.html" class="btn btn-neutral float-left" title="Listcache" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_listener.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

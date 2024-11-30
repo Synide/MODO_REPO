@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_server.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Server &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Shade" href="lxd_shade.html" />
+    <link rel="prev" title="Seltypes" href="lxd_seltypes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxfactory">ILxFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxhostservice">ILxHostService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmodule">ILxModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxttaginfodesc">LXtTagInfoDesc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxtagdescription">ILxTagDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxneedcontext">ILxNeedContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxserviceextension">ILxServiceExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmodule1">ILxModule1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Server</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="server">
+<h1>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxfactory" id="id1">ILxFactory</a></p></li>
+<li><p><a class="reference internal" href="#ilxhostservice" id="id2">ILxHostService</a></p></li>
+<li><p><a class="reference internal" href="#ilxmodule" id="id3">ILxModule</a></p></li>
+<li><p><a class="reference internal" href="#lxttaginfodesc" id="id4">LXtTagInfoDesc</a></p></li>
+<li><p><a class="reference internal" href="#ilxtagdescription" id="id5">ILxTagDescription</a></p></li>
+<li><p><a class="reference internal" href="#ilxneedcontext" id="id6">ILxNeedContext</a></p></li>
+<li><p><a class="reference internal" href="#ilxserviceextension" id="id7">ILxServiceExtension</a></p></li>
+<li><p><a class="reference internal" href="#ilxmodule1" id="id8">ILxModule1</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSRV_USERNAME">
+<span class="target" id="lxd__server_8hpp_1abd134895977e37aeb288fd7f1d72e156"></span><code class="sig-name descname">LXsSRV_USERNAME</code><a class="headerlink" href="#c.LXsSRV_USERNAME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The nexus plug-in system maintains a database of the external servers which can be accessed. The servers in the system are referenced by a combination of class and name. A Server Class is a GUID which determines the type of service which the server can perform. This is also the main interface provided by the server. There can be many servers of the same class, including many built-in to the nexus application. A Server Name is a string which refers to a specific server within a given class. This might be something like “FractalNoise3D” or “JPEG”. The name must be unique among the servers of the same class. A server name must be a byte string containing characters only in the ASCII range 33-127. It can contain no spaces and except for built-in servers must start with an alphabetic character. Case is significant unless it is ignored in a specific usage context, such as commands which are looked up in a case-insensitive manner.</p>
+<p>Servers also have a set of tagged strings which define their fixed attributes, and which describe the kinds of services they perform within their class. These tags strings are read from the server and are stored in the database for reference while the server is not loaded. There are some tags common to all servers:</p>
+<p><ul class="simple">
+<li><p>USERNAME is the name of the server to be presented to the user in the UI. This can be a reference to a message table using “&#64;table&#64;msg&#64;” syntax.</p></li>
+<li><p>LICENSE indicates that the server needs a license in order to function. The license string is the product ID followed by a feature or build number. For example “iblend 12231” or “corel_X 300”. Feature numbers should always be multiple digits for security. The string can also optionally contain a date for maintainance licenses, of the form “d:YYYY.MMDD”. Example: “product 99999 d:2015.0130”.</p></li>
+<li><p>OWNER, SERIAL are set to the name of the license holder and the serial number for the license, for plug-ins that require licenses. The plug-in can read these values by looking up itself in the host service. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsSRV_LICENSE</p></li>
+<li><p>LXsSRV_OWNER</p></li>
+<li><p>LXsSRV_SERIAL</p></li>
+</ul>
+<div class="section" id="ilxfactory">
+<h2><a class="toc-backref" href="#id1">ILxFactory</a><a class="headerlink" href="#ilxfactory" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxFactory">
+<span id="_CPPv310ILxFactory"></span><span id="_CPPv210ILxFactory"></span><span id="ILxFactory"></span><span class="target" id="class_i_lx_factory"></span><em class="property">class </em><code class="sig-name descname">ILxFactory</code><a class="headerlink" href="#_CPPv410ILxFactory" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <a class="reference internal" href="#class_i_lx_factory"><span class="std std-ref">ILxFactory</span></a> is an internal nexus object that can create servers of a specific type. Internally it has a handle to a plug-in module which will be loaded as needed. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory4NameE11LXtObjectIDPPKc">
+<span id="_CPPv3N10ILxFactory4NameE11LXtObjectIDPPKc"></span><span id="_CPPv2N10ILxFactory4NameE11LXtObjectIDPPKc"></span><span id="ILxFactory::Name__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_factory_1a0fa66a8ecae4a46ad42edbd04c749b8b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Name</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory4NameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Accessors for the server’s name, username and class. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory8UserNameE11LXtObjectIDPPKc">
+<span id="_CPPv3N10ILxFactory8UserNameE11LXtObjectIDPPKc"></span><span id="_CPPv2N10ILxFactory8UserNameE11LXtObjectIDPPKc"></span><span id="ILxFactory::UserName__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_factory_1a0c1289c525eaab4ef93ea32516d87322"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UserName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>userName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory8UserNameE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory9ClassGUIDE11LXtObjectIDP7LXtGUID">
+<span id="_CPPv3N10ILxFactory9ClassGUIDE11LXtObjectIDP7LXtGUID"></span><span id="_CPPv2N10ILxFactory9ClassGUIDE11LXtObjectIDP7LXtGUID"></span><span id="ILxFactory::ClassGUID__LXtObjectID.LXtGUIDP"></span><span class="target" id="class_i_lx_factory_1a8f07a3393555ccf0bcfc65e9cd1799f3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ClassGUID</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtGUID *<em>guid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory9ClassGUIDE11LXtObjectIDP7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory6ModuleE11LXtObjectIDPPKc">
+<span id="_CPPv3N10ILxFactory6ModuleE11LXtObjectIDPPKc"></span><span id="_CPPv2N10ILxFactory6ModuleE11LXtObjectIDPPKc"></span><span id="ILxFactory::Module__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_factory_1a550d472536902e6967032b98552a1267"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Module</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>module</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory6ModuleE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the module the server is in, or NULL if this is a built-in server. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory7InfoTagE11LXtObjectIDPKcPPKc">
+<span id="_CPPv3N10ILxFactory7InfoTagE11LXtObjectIDPKcPPKc"></span><span id="_CPPv2N10ILxFactory7InfoTagE11LXtObjectIDPKcPPKc"></span><span id="ILxFactory::InfoTag__LXtObjectID.cCP.cCPP"></span><span class="target" id="class_i_lx_factory_1a3a92ce6326822c74bf585f4444d09448"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">InfoTag</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>type</em>, <em class="property">const</em> char **<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory7InfoTagE11LXtObjectIDPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This allow reading the tags for a factory. These do not need to be implemented by extension factories since the tags are read from the server instance. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory8TagCountE11LXtObjectIDPj">
+<span id="_CPPv3N10ILxFactory8TagCountE11LXtObjectIDPj"></span><span id="_CPPv2N10ILxFactory8TagCountE11LXtObjectIDPj"></span><span id="ILxFactory::TagCount__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_factory_1a7bec967a7e26846ad03a62c5c767f0e2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TagCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory8TagCountE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory10TagByIndexE11LXtObjectIDjPPKcPPKc">
+<span id="_CPPv3N10ILxFactory10TagByIndexE11LXtObjectIDjPPKcPPKc"></span><span id="_CPPv2N10ILxFactory10TagByIndexE11LXtObjectIDjPPKcPPKc"></span><span id="ILxFactory::TagByIndex__LXtObjectID.unsigned-i.cCPP.cCPP"></span><span class="target" id="class_i_lx_factory_1a57aeb8cdae2e8a34f6e23e5e5d261a37"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TagByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>index</em>, <em class="property">const</em> char **<em>type</em>, <em class="property">const</em> char **<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory10TagByIndexE11LXtObjectIDjPPKcPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory5SpawnE11LXtObjectIDPPv">
+<span id="_CPPv3N10ILxFactory5SpawnE11LXtObjectIDPPv"></span><span id="_CPPv2N10ILxFactory5SpawnE11LXtObjectIDPPv"></span><span id="ILxFactory::Spawn__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_factory_1ac8ba35d23e041ebb91d4c35f345dd60e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Spawn</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory5SpawnE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Aditionally, servers can be spawned using these functions. The COM interface returned needs to be released by the caller using Release(), as usual. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxFactory3NewER18CLxLocalizedObject">
+<span id="_CPPv3N10ILxFactory3NewER18CLxLocalizedObject"></span><span id="_CPPv2N10ILxFactory3NewER18CLxLocalizedObject"></span><span id="ILxFactory::New__CLxLocalizedObjectR"></span><span class="target" id="class_i_lx_factory_1ad2bc4c8e2008cc41159cb90ea6a1331c"></span>bool <code class="sig-name descname">New</code><span class="sig-paren">(</span>CLxLocalizedObject &amp;<em>loc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxFactory3NewER18CLxLocalizedObject" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxhostservice">
+<h2><a class="toc-backref" href="#id2">ILxHostService</a><a class="headerlink" href="#ilxhostservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxHostService">
+<span id="_CPPv314ILxHostService"></span><span id="_CPPv214ILxHostService"></span><span id="ILxHostService"></span><span class="target" id="class_i_lx_host_service"></span><em class="property">class </em><code class="sig-name descname">ILxHostService</code><a class="headerlink" href="#_CPPv414ILxHostService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This provides access to the list of factories. For convenience these methods all take the class GUID as a string, which is how they are defined in the API. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N14ILxHostService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N14ILxHostService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxHostService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_host_service_1af2ff2081dc672d63eaa917847fbf7162"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>As with all globals, the first method gets the ILxScriptQueryID interface for the system. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService12LookupServerE11LXtObjectIDPKcPKcjPPv">
+<span id="_CPPv3N14ILxHostService12LookupServerE11LXtObjectIDPKcPKcjPPv"></span><span id="_CPPv2N14ILxHostService12LookupServerE11LXtObjectIDPKcPKcjPPv"></span><span id="ILxHostService::LookupServer__LXtObjectID.cCP.cCP.unsigned.voidPP"></span><span class="target" id="class_i_lx_host_service_1ae2c0f49f27a651f041f6751089193b65"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LookupServer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>className</em>, <em class="property">const</em> char *<em>name</em>, unsigned <em>allowLoad</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService12LookupServerE11LXtObjectIDPKcPKcjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method can be used to lookup a factory it’s class and server name. If allowLoad is true it will prompt the user to find a module if the server is not known. The factory must be released when no longer needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService10TestServerE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N14ILxHostService10TestServerE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N14ILxHostService10TestServerE11LXtObjectIDPKcPKc"></span><span id="ILxHostService::TestServer__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_host_service_1ab3d25774b106caa6947a00829d050cda"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestServer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>className</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService10TestServerE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This simply tests to see if a server exists, and skips the error reporting. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService10NumServersE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxHostService10NumServersE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxHostService10NumServersE11LXtObjectIDPKc"></span><span id="ILxHostService::NumServers__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_host_service_1ad29c2999a11929aea3f31bc51ab251e5"></span>unsigned <code class="sig-name descname">NumServers</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>className</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService10NumServersE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods allow the server database to be scanned. These first two allow the server list to walked by class. The factory returned must be released when no longer needed. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService13ServerByIndexE11LXtObjectIDPKcjPPv">
+<span id="_CPPv3N14ILxHostService13ServerByIndexE11LXtObjectIDPKcjPPv"></span><span id="_CPPv2N14ILxHostService13ServerByIndexE11LXtObjectIDPKcjPPv"></span><span id="ILxHostService::ServerByIndex__LXtObjectID.cCP.unsigned.voidPP"></span><span class="target" id="class_i_lx_host_service_1ad371ac285d6ab8093a05629fa1379585"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>className</em>, unsigned <em>index</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService13ServerByIndexE11LXtObjectIDPKcjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService14ServerGetIndexE11LXtObjectIDPKcPKcPj">
+<span id="_CPPv3N14ILxHostService14ServerGetIndexE11LXtObjectIDPKcPKcPj"></span><span id="_CPPv2N14ILxHostService14ServerGetIndexE11LXtObjectIDPKcPKcPj"></span><span id="ILxHostService::ServerGetIndex__LXtObjectID.cCP.cCP.unsignedP"></span><span class="target" id="class_i_lx_host_service_1adaa9ae4370ba51a6d05b03eac502377b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ServerGetIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>className</em>, <em class="property">const</em> char *<em>name</em>, unsigned *<em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService14ServerGetIndexE11LXtObjectIDPKcPKcPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Servers can also be looked up by name to get their index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService9AddServerE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxHostService9AddServerE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxHostService9AddServerE11LXtObjectID11LXtObjectID"></span><span id="ILxHostService::AddServer__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_host_service_1a28b32c479b07c65087b70d9ad14864a4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AddServer</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>factory</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService9AddServerE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Application hosts can add servers as factories. This should not be done by plug-ins becuase they can add servers through the module method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService11DefaultPathE11LXtObjectIDPPKc">
+<span id="_CPPv3N14ILxHostService11DefaultPathE11LXtObjectIDPPKc"></span><span id="_CPPv2N14ILxHostService11DefaultPathE11LXtObjectIDPPKc"></span><span id="ILxHostService::DefaultPath__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_host_service_1af09a1e99fdec254521a3227c00eacd0c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">DefaultPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService11DefaultPathE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns the path to the plug-in directory. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService16SpawnForTagsOnlyE11LXtObjectID">
+<span id="_CPPv3N14ILxHostService16SpawnForTagsOnlyE11LXtObjectID"></span><span id="_CPPv2N14ILxHostService16SpawnForTagsOnlyE11LXtObjectID"></span><span id="ILxHostService::SpawnForTagsOnly__LXtObjectID"></span><span class="target" id="class_i_lx_host_service_1a9b3055703ac575cccbead9a8244c30b5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SpawnForTagsOnly</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService16SpawnForTagsOnlyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We can also query things specific to our module. This return LXe_TRUE if the server is being spawned only to read tags. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService12UpdateModuleE11LXtObjectIDPKc">
+<span id="_CPPv3N14ILxHostService12UpdateModuleE11LXtObjectIDPKc"></span><span id="_CPPv2N14ILxHostService12UpdateModuleE11LXtObjectIDPKc"></span><span id="ILxHostService::UpdateModule__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_host_service_1a29780584e5071f590bbefbadd5c4441d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">UpdateModule</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService12UpdateModuleE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dynamic modules can update - well, dynamically. Calling this method will force the server database to update the contents of the dynamic module. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService11SaverVerifyE11LXtObjectIDPKc11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxHostService11SaverVerifyE11LXtObjectIDPKc11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxHostService11SaverVerifyE11LXtObjectIDPKc11LXtObjectID11LXtObjectID"></span><span id="ILxHostService::SaverVerify__LXtObjectID.cCP.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_host_service_1aa5acdf796b90ab622a80980f0b1ce746"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SaverVerify</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>format</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService11SaverVerifyE11LXtObjectIDPKc11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Saver verification can be triggered directly for a given format and data object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService9SaverSaveE11LXtObjectIDPKcPKc11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxHostService9SaverSaveE11LXtObjectIDPKcPKc11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxHostService9SaverSaveE11LXtObjectIDPKcPKc11LXtObjectID11LXtObjectID"></span><span id="ILxHostService::SaverSave__LXtObjectID.cCP.cCP.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_host_service_1accb7621cbb8cbfe0fa2b3f352c36205c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SaverSave</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, <em class="property">const</em> char *<em>format</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>object</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService9SaverSaveE11LXtObjectIDPKcPKc11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This will perform a save using the filename, format and data object. The monitor is optional. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService6LookupER14CLxLoc_FactoryPKcPKcb">
+<span id="_CPPv3N14ILxHostService6LookupER14CLxLoc_FactoryPKcPKcb"></span><span id="_CPPv2N14ILxHostService6LookupER14CLxLoc_FactoryPKcPKcb"></span><span id="ILxHostService::Lookup__CLxLoc_FactoryR.cCP.cCP.b"></span><span class="target" id="class_i_lx_host_service_1ad949b3f03fb328f65072842089eba7b8"></span>bool <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span>CLxLoc_Factory &amp;<em>fac</em>, <em class="property">const</em> char *<em>className</em>, <em class="property">const</em> char *<em>name</em>, bool <em>allowLoad</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService6LookupER14CLxLoc_FactoryPKcPKcb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The C++ service has methods to get a factory directly into a user object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N14ILxHostService7ByIndexER14CLxLoc_FactoryPKcj">
+<span id="_CPPv3N14ILxHostService7ByIndexER14CLxLoc_FactoryPKcj"></span><span id="_CPPv2N14ILxHostService7ByIndexER14CLxLoc_FactoryPKcj"></span><span id="ILxHostService::ByIndex__CLxLoc_FactoryR.cCP.unsigned-i"></span><span class="target" id="class_i_lx_host_service_1abe0852cc64619fb494457d4a92e2e8f0"></span>bool <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span>CLxLoc_Factory &amp;<em>fac</em>, <em class="property">const</em> char *<em>className</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxHostService7ByIndexER14CLxLoc_FactoryPKcj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxmodule">
+<h2><a class="toc-backref" href="#id3">ILxModule</a><a class="headerlink" href="#ilxmodule" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxModule">
+<span id="_CPPv39ILxModule"></span><span id="_CPPv29ILxModule"></span><span id="ILxModule"></span><span class="target" id="class_i_lx_module"></span><em class="property">class </em><code class="sig-name descname">ILxModule</code><a class="headerlink" href="#_CPPv49ILxModule" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxModule8GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv">
+<span id="_CPPv3N9ILxModule8GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv"></span><span id="_CPPv2N9ILxModule8GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv"></span><span id="ILxModule::Generate__LXtObjectID.cCP.LXtGUIDCP.voidPP"></span><span class="target" id="class_i_lx_module_1abed9aecddc03ecfddb0e667fa3bc080b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Generate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> LXtGUID *<em>iid</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxModule8GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Plug-in modules are loaded like any file, using an <a class="reference internal" href="lxd_io.html#class_i_lx_loader"><span class="std std-ref">ILxLoader</span></a>. The load is opaque, and the object type loaded is “module”. An <a class="reference internal" href="#class_i_lx_module"><span class="std std-ref">ILxModule</span></a> is a special type of factory capable of spawning servers of different classes which are the servers implemented by the module.<ul class="simple">
+<li><p>Generate creates a new server instance given the class GUID and server name.</p></li>
+<li><p>GetTags optional method returns a StringTag interface for a server based on the name and class ID. Allows tags to be read without creating a server inst. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxModule7GetTagsE11LXtObjectIDPKcPK7LXtGUIDPPv">
+<span id="_CPPv3N9ILxModule7GetTagsE11LXtObjectIDPKcPK7LXtGUIDPPv"></span><span id="_CPPv2N9ILxModule7GetTagsE11LXtObjectIDPKcPK7LXtGUIDPPv"></span><span id="ILxModule::GetTags__LXtObjectID.cCP.LXtGUIDCP.voidPP"></span><span class="target" id="class_i_lx_module_1a1912f85228bddc9762b8ea0935458841"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> LXtGUID *<em>iid</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxModule7GetTagsE11LXtObjectIDPKcPK7LXtGUIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lxttaginfodesc">
+<h2><a class="toc-backref" href="#id4">LXtTagInfoDesc</a><a class="headerlink" href="#lxttaginfodesc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417st_LXtTagInfoDesc">
+<span id="_CPPv317st_LXtTagInfoDesc"></span><span id="_CPPv217st_LXtTagInfoDesc"></span><span id="st_LXtTagInfoDesc"></span><span class="target" id="structst___l_xt_tag_info_desc"></span><em class="property">struct </em><code class="sig-name descname">st_LXtTagInfoDesc</code><a class="headerlink" href="#_CPPv417st_LXtTagInfoDesc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Modules are servers are self-describing by presenting a Tag Description interface. For a module the tags of “server” type give the name (as info) and the interface type (as GUID) for the servers in the module, and is used by the nexus to determine which servers are exported by an unknown module. For servers the tags can define various properties, including the user name. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N17st_LXtTagInfoDesc4typeE">
+<span id="_CPPv3N17st_LXtTagInfoDesc4typeE"></span><span id="_CPPv2N17st_LXtTagInfoDesc4typeE"></span><span id="st_LXtTagInfoDesc::type__cCP"></span><span class="target" id="structst___l_xt_tag_info_desc_1a132956e09fdc99b440e833cd940e28ea"></span><em class="property">const</em> char *<code class="sig-name descname">type</code><a class="headerlink" href="#_CPPv4N17st_LXtTagInfoDesc4typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtTagInfoDesc4infoE">
+<span id="_CPPv3N17st_LXtTagInfoDesc4infoE"></span><span id="_CPPv2N17st_LXtTagInfoDesc4infoE"></span><span id="st_LXtTagInfoDesc::info__cCP"></span><span class="target" id="structst___l_xt_tag_info_desc_1a39aa6e11927cfc5a7be6696743334d5b"></span><em class="property">const</em> char *<code class="sig-name descname">info</code><a class="headerlink" href="#_CPPv4N17st_LXtTagInfoDesc4infoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtTagInfoDesc4guidE">
+<span id="_CPPv3N17st_LXtTagInfoDesc4guidE"></span><span id="_CPPv2N17st_LXtTagInfoDesc4guidE"></span><span id="st_LXtTagInfoDesc::guid__LXtGUIDCP"></span><span class="target" id="structst___l_xt_tag_info_desc_1a492505f352ecc179a4a176a0162ad260"></span><em class="property">const</em> LXtGUID *<code class="sig-name descname">guid</code><a class="headerlink" href="#_CPPv4N17st_LXtTagInfoDesc4guidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxtagdescription">
+<h2><a class="toc-backref" href="#id5">ILxTagDescription</a><a class="headerlink" href="#ilxtagdescription" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417ILxTagDescription">
+<span id="_CPPv317ILxTagDescription"></span><span id="_CPPv217ILxTagDescription"></span><span id="ILxTagDescription"></span><span class="target" id="class_i_lx_tag_description"></span><em class="property">class </em><code class="sig-name descname">ILxTagDescription</code><a class="headerlink" href="#_CPPv417ILxTagDescription" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N17ILxTagDescription5CountE11LXtObjectID">
+<span id="_CPPv3N17ILxTagDescription5CountE11LXtObjectID"></span><span id="_CPPv2N17ILxTagDescription5CountE11LXtObjectID"></span><span id="ILxTagDescription::Count__LXtObjectID"></span><span class="target" id="class_i_lx_tag_description_1a8a18f777c59d19b3badd7408c59f8e98"></span>unsigned <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxTagDescription5CountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#class_i_lx_tag_description_1a8a18f777c59d19b3badd7408c59f8e98"><span class="std std-ref">Count()</span></a> function returns the number of info tags for the object, and the <a class="reference internal" href="#class_i_lx_tag_description_1a46e96c6cb56767111205e5741ee40b14"><span class="std std-ref">Describe()</span></a> method fills in the info for a given tag index. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N17ILxTagDescription8DescribeE11LXtObjectIDjP14LXtTagInfoDesc">
+<span id="_CPPv3N17ILxTagDescription8DescribeE11LXtObjectIDjP14LXtTagInfoDesc"></span><span id="_CPPv2N17ILxTagDescription8DescribeE11LXtObjectIDjP14LXtTagInfoDesc"></span><span id="ILxTagDescription::Describe__LXtObjectID.unsigned.LXtTagInfoDescP"></span><span class="target" id="class_i_lx_tag_description_1a46e96c6cb56767111205e5741ee40b14"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Describe</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em>, LXtTagInfoDesc *<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17ILxTagDescription8DescribeE11LXtObjectIDjP14LXtTagInfoDesc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsMOD_SERVER</p></li>
+</ul>
+</div>
+<div class="section" id="ilxneedcontext">
+<h2><a class="toc-backref" href="#id6">ILxNeedContext</a><a class="headerlink" href="#ilxneedcontext" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv414ILxNeedContext">
+<span id="_CPPv314ILxNeedContext"></span><span id="_CPPv214ILxNeedContext"></span><span id="ILxNeedContext"></span><span class="target" id="class_i_lx_need_context"></span><em class="property">class </em><code class="sig-name descname">ILxNeedContext</code><a class="headerlink" href="#_CPPv414ILxNeedContext" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N14ILxNeedContext10SetContextE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N14ILxNeedContext10SetContextE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N14ILxNeedContext10SetContextE11LXtObjectID11LXtObjectID"></span><span id="ILxNeedContext::SetContext__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_need_context_1a248646625422948cd1350d693e74a75e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetContext</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>app</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14ILxNeedContext10SetContextE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The “need context” interface can be defined by any module or server that wants to be informed about the application context when it’s first created. The application passed to the <a class="reference internal" href="#class_i_lx_need_context_1a248646625422948cd1350d693e74a75e"><span class="std std-ref">SetContext()</span></a> method can be queried for globals, and is owned by the client and needs to be released. Note: this conflicts with the COM standard, so you cannot “set” this argument, you must “take” it. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxserviceextension">
+<h2><a class="toc-backref" href="#id7">ILxServiceExtension</a><a class="headerlink" href="#ilxserviceextension" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxServiceExtension">
+<span id="_CPPv319ILxServiceExtension"></span><span id="_CPPv219ILxServiceExtension"></span><span id="ILxServiceExtension"></span><span class="target" id="class_i_lx_service_extension"></span><em class="property">class </em><code class="sig-name descname">ILxServiceExtension</code><a class="headerlink" href="#_CPPv419ILxServiceExtension" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxServiceExtension5DummyE11LXtObjectID">
+<span id="_CPPv3N19ILxServiceExtension5DummyE11LXtObjectID"></span><span id="_CPPv2N19ILxServiceExtension5DummyE11LXtObjectID"></span><span id="ILxServiceExtension::Dummy__LXtObjectID"></span><span class="target" id="class_i_lx_service_extension_1aed074bceba18e450fba03753f6f52a7d"></span>void <code class="sig-name descname">Dummy</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxServiceExtension5DummyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Global services can be extended by plug-ins. The extension interface itself is just a handle that lets lets us allocate a server object, which is then queried for the real service interface. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsSRVEXT_GUID</p></li>
+</ul>
+</div>
+<div class="section" id="ilxmodule1">
+<h2><a class="toc-backref" href="#id8">ILxModule1</a><a class="headerlink" href="#ilxmodule1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxModule1">
+<span id="_CPPv310ILxModule1"></span><span id="_CPPv210ILxModule1"></span><span id="ILxModule1"></span><span class="target" id="class_i_lx_module1"></span><em class="property">class </em><code class="sig-name descname">ILxModule1</code><a class="headerlink" href="#_CPPv410ILxModule1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxModule18GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv">
+<span id="_CPPv3N10ILxModule18GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv"></span><span id="_CPPv2N10ILxModule18GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv"></span><span id="ILxModule1::Generate__LXtObjectID.cCP.LXtGUIDCP.voidPP"></span><span class="target" id="class_i_lx_module1_1a4c44645ff36a219173c862d0b6ed23d2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Generate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> LXtGUID *<em>iid</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxModule18GenerateE11LXtObjectIDPKcPK7LXtGUIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Legacy Module1 interface, which is exported by all the pre-701 plug-ins. We declare it here, add a translator, and convert from one to the other. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxModule18IsLockedE11LXtObjectID">
+<span id="_CPPv3N10ILxModule18IsLockedE11LXtObjectID"></span><span id="_CPPv2N10ILxModule18IsLockedE11LXtObjectID"></span><span id="ILxModule1::IsLocked__LXtObjectID"></span><span class="target" id="class_i_lx_module1_1adacb9fc27777742d4b7478ac540401b8"></span>unsigned <code class="sig-name descname">IsLocked</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxModule18IsLockedE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_shade.html" class="btn btn-neutral float-right" title="Shade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_seltypes.html" class="btn btn-neutral float-left" title="Seltypes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_server.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

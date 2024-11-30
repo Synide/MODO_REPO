@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/TextScriptInterpreter -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TextScriptInterpreter: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="TextureEffect: Server basics" href="TextureEffect%20-%20%20Server%20basics.html" />
+    <link rel="prev" title="Server Tags" href="Server%20Tags.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">TextScriptInterpreter: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#textscriptinterpreter-validatefiletype">TextScriptInterpreter::ValidateFileType()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#textscriptinterpreter-run">TextScriptInterpreter::Run()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Value%20-%20%20Server%20basics.html">Value: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>TextScriptInterpreter: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="textscriptinterpreter-server-basics">
+<h1>TextScriptInterpreter: Server basics<a class="headerlink" href="#textscriptinterpreter-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id4">Headers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#textscriptinterpreter-validatefiletype" id="id5">TextScriptInterpreter::ValidateFileType()</a></p></li>
+<li><p><a class="reference internal" href="#textscriptinterpreter-run" id="id6">TextScriptInterpreter::Run()</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>A <strong>TextScriptInterpreter</strong> is a plug-in server that runs a text buffer as a script.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id3">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>When running scripts and macros, nexus uses script-interpreter servers. When presented with an unknown script it enumerates the servers until it finds one that recognizes the file, and then it passes control to the interpreter. When the script completes the interpreter returns an optional message. The script functions by querying ScriptQuery Overview interfaces to read state and firing commands to perform actions.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id4">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’scripts (lx-scripts.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_TextScriptInterpreter’’</p></li>
+<li><p>‘’CLxUser_Script’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’command (lx-command.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_CommandService’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’value (lx-value.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxUser_Message’’</p></li>
+<li><p><strong>LXsSAV_DOSPATTERN</strong> – the DOS-format search string for finding appropriate script files (e.g. “<a href="#id1"><span class="problematic" id="id2">*</span></a>.pl”).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The plug-in server class derives from CLxImpl_TextScriptInterpreter, and exports the ILxTextScriptInterpreter interface.</p>
+<div class="section" id="textscriptinterpreter-validatefiletype">
+<h3><a class="toc-backref" href="#id5">TextScriptInterpreter::ValidateFileType()</a><a class="headerlink" href="#textscriptinterpreter-validatefiletype" title="Permalink to this headline">¶</a></h3>
+<p>The ValidateFileType() method is called to quickly check if a file matches this interpreter. This is meant to be fast, so typically interpreters use their name on the first line of the script as a key.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         LxResult
+ tsi_ValidateFileType (
+         ILxUnknownID            script,
+         const char             *firstList)     LXx_OVERRIDE
+ {
+         if (!strstr (firstLine, &quot;myscript&quot;))
+                 return LXe_SCRIPT_UNKNOWN;
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="textscriptinterpreter-run">
+<h3><a class="toc-backref" href="#id6">TextScriptInterpreter::Run()</a><a class="headerlink" href="#textscriptinterpreter-run" title="Permalink to this headline">¶</a></h3>
+<p>The Run() method executes the script. The text is read from the script object, and its contents interpreted. In this example it’s a very simple macro interpreter, executing each line as a command. If an error occurs it can be reported through the message object.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">tsi_Run</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">script</span><span class="p">,</span>
+         <span class="nb">int</span>                     <span class="n">execFlags</span><span class="p">,</span>
+         <span class="n">const</span> <span class="n">char</span>             <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">message</span><span class="p">)</span>       <span class="n">LXx_OVERRIDE</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_Script</span>          <span class="n">scr</span> <span class="p">(</span><span class="n">script</span><span class="p">);</span>
+         <span class="n">CLxUser_CommandService</span>  <span class="n">cmd_srv</span><span class="p">;</span>
+         <span class="n">const</span> <span class="n">char</span>             <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="o">*</span><span class="n">line</span><span class="p">;</span>
+         <span class="n">unsigned</span>                <span class="nb">len</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">scr</span><span class="o">.</span><span class="n">GetBuffer</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">while</span> <span class="p">(</span><span class="n">line</span> <span class="o">=</span> <span class="n">get_next_line</span> <span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">line</span><span class="p">))</span> <span class="p">{</span>
+                 <span class="n">rc</span> <span class="o">=</span> <span class="n">cmd_srv</span><span class="o">.</span><span class="n">ExecuteArgString</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">LXiCTAG_NULL</span><span class="p">,</span> <span class="n">line</span><span class="p">);</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">LXx_FAIL</span> <span class="p">(</span><span class="n">rc</span><span class="p">))</span> <span class="p">{</span>
+                         <span class="n">CLxUser_Message</span>         <span class="n">msg</span> <span class="p">(</span><span class="n">message</span><span class="p">);</span>
+                         <span class="n">msg</span><span class="o">.</span><span class="n">SetCode</span> <span class="p">(</span><span class="n">LXe_WARNING</span><span class="p">);</span>
+                         <span class="n">msg</span><span class="o">.</span><span class="n">SetMsg</span> <span class="p">(</span><span class="s2">&quot;mymessagetable&quot;</span><span class="p">,</span> <span class="s2">&quot;myerrormessagekey&quot;</span><span class="p">);</span>
+                         <span class="k">return</span> <span class="n">LXe_FAILED</span><span class="p">;</span>
+                 <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="TextureEffect%20-%20%20Server%20basics.html" class="btn btn-neutral float-right" title="TextureEffect: Server basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Server%20Tags.html" class="btn btn-neutral float-left" title="Server Tags" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/TextScriptInterpreter -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

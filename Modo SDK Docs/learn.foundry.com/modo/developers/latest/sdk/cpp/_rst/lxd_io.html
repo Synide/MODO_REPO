@@ -1,0 +1,1157 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_io.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Io &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Item" href="lxd_item.html" />
+    <link rel="prev" title="Intrange" href="lxd_intrange.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Io</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lxtblockheader">LXtBlockHeader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxblockread">ILxBlockRead</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxblockwrite">ILxBlockWrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxloader">ILxLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxloaderinfo">ILxLoaderInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsaver">ILxSaver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmonitor">ILxMonitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxstreamio">ILxStreamIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxioservice">ILxIOService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxblockstore">ILxBlockStore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lxtloadaccess1">LXtLoadAccess1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxloader1">ILxLoader1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Io</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="io">
+<h1>Io<a class="headerlink" href="#io" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#lxtblockheader" id="id1">LXtBlockHeader</a></p></li>
+<li><p><a class="reference internal" href="#ilxblockread" id="id2">ILxBlockRead</a></p></li>
+<li><p><a class="reference internal" href="#ilxblockwrite" id="id3">ILxBlockWrite</a></p></li>
+<li><p><a class="reference internal" href="#ilxloader" id="id4">ILxLoader</a></p></li>
+<li><p><a class="reference internal" href="#ilxloaderinfo" id="id5">ILxLoaderInfo</a></p></li>
+<li><p><a class="reference internal" href="#ilxsaver" id="id6">ILxSaver</a></p></li>
+<li><p><a class="reference internal" href="#ilxmonitor" id="id7">ILxMonitor</a></p></li>
+<li><p><a class="reference internal" href="#ilxstreamio" id="id8">ILxStreamIO</a></p></li>
+<li><p><a class="reference internal" href="#ilxioservice" id="id9">ILxIOService</a></p></li>
+<li><p><a class="reference internal" href="#ilxblockstore" id="id10">ILxBlockStore</a></p></li>
+<li><p><a class="reference internal" href="#lxtloadaccess1" id="id11">LXtLoadAccess1</a></p></li>
+<li><p><a class="reference internal" href="#ilxloader1" id="id12">ILxLoader1</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.Int64">
+<span class="target" id="lxd__io_8hpp_1aa47bb7cdaba2a18f1b1214feda9601c3"></span><code class="sig-name descname">Int64</code><a class="headerlink" href="#c.Int64" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Writing block files is pretty simple. There is a stack which represents the levels of block nesting. Each stack entry points to a block header with the position and size of the block for deferred writing. A block does not count the length of any block higher in the stack until those blocks have been closed. Flags bits are used by the save state API. </p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXe_IO_ERROR">
+<span class="target" id="lxd__io_8hpp_1a834f10026ed5468c6e32889a22a0d9e6"></span><code class="sig-name descname">LXe_IO_ERROR</code><a class="headerlink" href="#c.LXe_IO_ERROR" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These are error codes for this subsystem and all other I/O-related subsystems. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXe_REF_BADID</p></li>
+<li><p>LXe_REF_BADPTR</p></li>
+<li><p>LXe_REF_DUPLICATE</p></li>
+<li><p>LXe_IO_SHORTREAD</p></li>
+<li><p>LXe_IO_NEEDGL</p></li>
+<li><p>LXe_IO_TRUNCATED</p></li>
+<li><p>LXe_IO_PARTIALSTRING</p></li>
+</ul>
+<div class="section" id="lxtblockheader">
+<h2><a class="toc-backref" href="#id1">LXtBlockHeader</a><a class="headerlink" href="#lxtblockheader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417st_LXtBlockHeader">
+<span id="_CPPv317st_LXtBlockHeader"></span><span id="_CPPv217st_LXtBlockHeader"></span><span id="st_LXtBlockHeader"></span><span class="target" id="structst___l_xt_block_header"></span><em class="property">struct </em><code class="sig-name descname">st_LXtBlockHeader</code><a class="headerlink" href="#_CPPv417st_LXtBlockHeader" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Block streams are also style-transparent, reading and writing using the same API for both text and binary streams. As result, blocks have to be identified by both a binary ID code and a text string. Internally, the binary ID code value is always used. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N17st_LXtBlockHeader2idE">
+<span id="_CPPv3N17st_LXtBlockHeader2idE"></span><span id="_CPPv2N17st_LXtBlockHeader2idE"></span><span id="st_LXtBlockHeader::id__LXtID4"></span><span class="target" id="structst___l_xt_block_header_1a05872896c72fa436a71522034a0c4f5f"></span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <code class="sig-name descname">id</code><a class="headerlink" href="#_CPPv4N17st_LXtBlockHeader2idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtBlockHeader5tokenE">
+<span id="_CPPv3N17st_LXtBlockHeader5tokenE"></span><span id="_CPPv2N17st_LXtBlockHeader5tokenE"></span><span id="st_LXtBlockHeader::token__cCP"></span><span class="target" id="structst___l_xt_block_header_1aee09a1e9d1441f25ae926dbf245e27ca"></span><em class="property">const</em> char *<code class="sig-name descname">token</code><a class="headerlink" href="#_CPPv4N17st_LXtBlockHeader5tokenE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfBLKS_FORCE">
+<span class="target" id="lxd__io_8hpp_1a1d036a6993da406e56506c2bbb667453"></span><code class="sig-name descname">LXfBLKS_FORCE</code><a class="headerlink" href="#c.LXfBLKS_FORCE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For string reading, there are two modes - FORCE and RAW. Force will raise an exception if the string is not found. If not set, however, the function will return true if any string is read, including the empty string. RAW causes the stream to be read as a literal string, ignoring quotes and reading to eol. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfBLKS_RAW</p></li>
+</ul>
+</div>
+<div class="section" id="ilxblockread">
+<h2><a class="toc-backref" href="#id2">ILxBlockRead</a><a class="headerlink" href="#ilxblockread" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxBlockRead">
+<span id="_CPPv312ILxBlockRead"></span><span id="_CPPv212ILxBlockRead"></span><span id="ILxBlockRead"></span><span class="target" id="class_i_lx_block_read"></span><em class="property">class </em><code class="sig-name descname">ILxBlockRead</code><a class="headerlink" href="#_CPPv412ILxBlockRead" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Block stream interfaces support block-structured I/O with multiple data types. There is an interface for reading and one for writing. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead9FindBlockE11LXtObjectIDPK14LXtBlockHeaderiP6LXtID4">
+<span id="_CPPv3N12ILxBlockRead9FindBlockE11LXtObjectIDPK14LXtBlockHeaderiP6LXtID4"></span><span id="_CPPv2N12ILxBlockRead9FindBlockE11LXtObjectIDPK14LXtBlockHeaderiP6LXtID4"></span><span id="ILxBlockRead::FindBlock__LXtObjectID.LXtBlockHeaderCP.i.LXtID4P"></span><span class="target" id="class_i_lx_block_read_1a7f5553b5e6f1948c20571aff68e1acb6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FindBlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtBlockHeader *<em>head</em>, int <em>flags</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> *<em>blkId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead9FindBlockE11LXtObjectIDPK14LXtBlockHeaderiP6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Function descriptions are not provided since these objects are not commonly encountered in nexus file I/O. TODO: fill these in. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead3EndE11LXtObjectID">
+<span id="_CPPv3N12ILxBlockRead3EndE11LXtObjectID"></span><span id="_CPPv2N12ILxBlockRead3EndE11LXtObjectID"></span><span id="ILxBlockRead::End__LXtObjectID"></span><span class="target" id="class_i_lx_block_read_1a0b268eb9f20fb4bb7d6c48cf37bf366e"></span>void <code class="sig-name descname">End</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead3EndE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead5DepthE11LXtObjectID">
+<span id="_CPPv3N12ILxBlockRead5DepthE11LXtObjectID"></span><span id="_CPPv2N12ILxBlockRead5DepthE11LXtObjectID"></span><span id="ILxBlockRead::Depth__LXtObjectID"></span><span class="target" id="class_i_lx_block_read_1a9d9a9ae4ffcbf55afd4bddf3be27a5ef"></span>int <code class="sig-name descname">Depth</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead5DepthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadI1E11LXtObjectIDPciPi">
+<span id="_CPPv3N12ILxBlockRead6ReadI1E11LXtObjectIDPciPi"></span><span id="_CPPv2N12ILxBlockRead6ReadI1E11LXtObjectIDPciPi"></span><span id="ILxBlockRead::ReadI1__LXtObjectID.cP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a73ffdf658ef47feb64acc7f9a73023d8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadI1</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadI1E11LXtObjectIDPciPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadI2E11LXtObjectIDPsiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadI2E11LXtObjectIDPsiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadI2E11LXtObjectIDPsiPi"></span><span id="ILxBlockRead::ReadI2__LXtObjectID.shortP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a0ec369ca38dd6517f7490ddcee30eb09"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadI2</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, short *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadI2E11LXtObjectIDPsiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadI4E11LXtObjectIDPiiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadI4E11LXtObjectIDPiiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadI4E11LXtObjectIDPiiPi"></span><span id="ILxBlockRead::ReadI4__LXtObjectID.iP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a0de3b17eab14e539cbb0de0e770ee209"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadI4</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadI4E11LXtObjectIDPiiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadU1E11LXtObjectIDPhiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadU1E11LXtObjectIDPhiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadU1E11LXtObjectIDPhiPi"></span><span id="ILxBlockRead::ReadU1__LXtObjectID.unsigned-cP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a628e5e6bda5822cc509a03cd7d7e21dd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadU1</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned char *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadU1E11LXtObjectIDPhiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadU2E11LXtObjectIDPtiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadU2E11LXtObjectIDPtiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadU2E11LXtObjectIDPtiPi"></span><span id="ILxBlockRead::ReadU2__LXtObjectID.unsigned-shortP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a479da70031ed5a6afbd0f90fbdf449c5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadU2</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned short *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadU2E11LXtObjectIDPtiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadU4E11LXtObjectIDPjiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadU4E11LXtObjectIDPjiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadU4E11LXtObjectIDPjiPi"></span><span id="ILxBlockRead::ReadU4__LXtObjectID.unsigned-iP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a865b431e0febf330951febc584a69562"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadU4</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadU4E11LXtObjectIDPjiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadFPE11LXtObjectIDPfiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadFPE11LXtObjectIDPfiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadFPE11LXtObjectIDPfiPi"></span><span id="ILxBlockRead::ReadFP__LXtObjectID.floatP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a62d4ade9efec55dda8058ed49b8aab36"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadFP</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadFPE11LXtObjectIDPfiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead7ReadFP8E11LXtObjectIDPdiPi">
+<span id="_CPPv3N12ILxBlockRead7ReadFP8E11LXtObjectIDPdiPi"></span><span id="_CPPv2N12ILxBlockRead7ReadFP8E11LXtObjectIDPdiPi"></span><span id="ILxBlockRead::ReadFP8__LXtObjectID.doubleP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a17ec9fb04852bdbbd3365a44f8e742de"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadFP8</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead7ReadFP8E11LXtObjectIDPdiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead10ReadStringE11LXtObjectIDPciiPi">
+<span id="_CPPv3N12ILxBlockRead10ReadStringE11LXtObjectIDPciiPi"></span><span id="_CPPv2N12ILxBlockRead10ReadStringE11LXtObjectIDPciiPi"></span><span id="ILxBlockRead::ReadString__LXtObjectID.cP.i.i.iP"></span><span class="target" id="class_i_lx_block_read_1a4cb0d301db34f34508833d7669c03bc2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadString</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char *<em>buf</em>, int <em>max</em>, int <em>flags</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead10ReadStringE11LXtObjectIDPciiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reading a string takes a buffer for the result and its size. If FORCE is true this will return an error if no string is found. If PARTIAL is true then as much string as can be found will be read into the buffer and LXe_IO_PARTIALSTRING will be returned if there is more left to read. Otherwise the entire string will always be read and LXe_IO_TRUNCATED will be returned if some of the string had to be discarded. The returned count is the number of characters read including the terminating null. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead10ReadIDCodeE11LXtObjectIDPK14LXtBlockHeaderP6LXtID4">
+<span id="_CPPv3N12ILxBlockRead10ReadIDCodeE11LXtObjectIDPK14LXtBlockHeaderP6LXtID4"></span><span id="_CPPv2N12ILxBlockRead10ReadIDCodeE11LXtObjectIDPK14LXtBlockHeaderP6LXtID4"></span><span id="ILxBlockRead::ReadIDCode__LXtObjectID.LXtBlockHeaderCP.LXtID4P"></span><span class="target" id="class_i_lx_block_read_1a7d5411def4e821c4c325c1576f6061b4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadIDCode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtBlockHeader *<em>list</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> *<em>idCode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead10ReadIDCodeE11LXtObjectIDPK14LXtBlockHeaderP6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead6ReadVXE11LXtObjectIDPjiPi">
+<span id="_CPPv3N12ILxBlockRead6ReadVXE11LXtObjectIDPjiPi"></span><span id="_CPPv2N12ILxBlockRead6ReadVXE11LXtObjectIDPjiPi"></span><span id="ILxBlockRead::ReadVX__LXtObjectID.unsignedP.i.iP"></span><span class="target" id="class_i_lx_block_read_1a3a8605ea253d4f40aa5682b36bcb8ad0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadVX</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned *<em>data</em>, int <em>count</em>, int *<em>ocount</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead6ReadVXE11LXtObjectIDPjiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead17SetSourceEncodingE11LXtObjectIDj">
+<span id="_CPPv3N12ILxBlockRead17SetSourceEncodingE11LXtObjectIDj"></span><span id="_CPPv2N12ILxBlockRead17SetSourceEncodingE11LXtObjectIDj"></span><span id="ILxBlockRead::SetSourceEncoding__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_block_read_1a00493dd03440e6dc04858eccc66f04e0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSourceEncoding</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead17SetSourceEncodingE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>ReadString converts a text encoding of string to another text encoding given by the following methods using <a class="reference internal" href="lxd_value.html#class_i_lx_text_encoding"><span class="std std-ref">ILxTextEncoding</span></a> service. The source encoding is the encoding for strings to read. The target encoding is for a string set to “buf” of ReadString. The text encoding convertion does not work with PARTIAL mode. The returned count is the number of characters read including the terminating null based on the source string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead17SetTargetEncodingE11LXtObjectIDj">
+<span id="_CPPv3N12ILxBlockRead17SetTargetEncodingE11LXtObjectIDj"></span><span id="_CPPv2N12ILxBlockRead17SetTargetEncodingE11LXtObjectIDj"></span><span id="ILxBlockRead::SetTargetEncoding__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_block_read_1a4535be7f81d810494f182fe03a9dcd1a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTargetEncoding</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead17SetTargetEncodingE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead18SetMiniBlockHeightE11LXtObjectIDj">
+<span id="_CPPv3N12ILxBlockRead18SetMiniBlockHeightE11LXtObjectIDj"></span><span id="_CPPv2N12ILxBlockRead18SetMiniBlockHeightE11LXtObjectIDj"></span><span id="ILxBlockRead::SetMiniBlockHeight__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_block_read_1aefce6b80fb2493dece246e1ef07c68dd"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetMiniBlockHeight</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>mini</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead18SetMiniBlockHeightE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadEPsb">
+<span id="_CPPv3N12ILxBlockRead4ReadEPsb"></span><span id="_CPPv2N12ILxBlockRead4ReadEPsb"></span><span id="ILxBlockRead::Read__shortP.b"></span><span class="target" id="class_i_lx_block_read_1ace7f57c72e7758982ef055a51c657f28"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>short *<em>val</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadEPsb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> User class methods are relatively more C++ friendly, using argument types and throwing exceptions on errors. The read count is discarded for these methods because they require reading. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadEPtb">
+<span id="_CPPv3N12ILxBlockRead4ReadEPtb"></span><span id="_CPPv2N12ILxBlockRead4ReadEPtb"></span><span id="ILxBlockRead::Read__unsigned-shortP.b"></span><span class="target" id="class_i_lx_block_read_1a21a79ab3429573c529bfff70fdacb1ef"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>unsigned short *<em>val</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadEPtb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadEPib">
+<span id="_CPPv3N12ILxBlockRead4ReadEPib"></span><span id="_CPPv2N12ILxBlockRead4ReadEPib"></span><span id="ILxBlockRead::Read__iP.b"></span><span class="target" id="class_i_lx_block_read_1a1045f8533722e350bb15878faf87b6b7"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>int *<em>val</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadEPib" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadEPjb">
+<span id="_CPPv3N12ILxBlockRead4ReadEPjb"></span><span id="_CPPv2N12ILxBlockRead4ReadEPjb"></span><span id="ILxBlockRead::Read__unsigned-iP.b"></span><span class="target" id="class_i_lx_block_read_1ab6ab98ad061e0d5b509200685d5aef30"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>unsigned int *<em>val</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadEPjb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadEPfb">
+<span id="_CPPv3N12ILxBlockRead4ReadEPfb"></span><span id="_CPPv2N12ILxBlockRead4ReadEPfb"></span><span id="ILxBlockRead::Read__floatP.b"></span><span class="target" id="class_i_lx_block_read_1af9ed7c5e8604275627eab527833fe27e"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>float *<em>val</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadEPfb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadEPdb">
+<span id="_CPPv3N12ILxBlockRead4ReadEPdb"></span><span id="_CPPv2N12ILxBlockRead4ReadEPdb"></span><span id="ILxBlockRead::Read__doubleP.b"></span><span class="target" id="class_i_lx_block_read_1a594617758c8cd232c8578f638864396d"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>double *<em>val</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadEPdb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxBlockRead4ReadERNSt6stringEb">
+<span id="_CPPv3N12ILxBlockRead4ReadERNSt6stringEb"></span><span id="_CPPv2N12ILxBlockRead4ReadERNSt6stringEb"></span><span id="ILxBlockRead::Read__ssR.b"></span><span class="target" id="class_i_lx_block_read_1a89253982a1f8d7c9b21de4f1242f8196"></span>bool <code class="sig-name descname">Read</code><span class="sig-paren">(</span>std::string &amp;<em>result</em>, bool <em>force</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxBlockRead4ReadERNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> Reading strings in C++ does partial reads to build up an STL string. If force is true it will raise an exception if the string is not found. Otherwise no string and a valid empty string will both return false. The terminal string has a final null, which we don’t want included in the STL string. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfREADSTRING_FORCE</p></li>
+<li><p>LXfREADSTRING_RAW</p></li>
+<li><p>LXfREADSTRING_PARTIAL</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfBLKW_LEAF">
+<span class="target" id="lxd__io_8hpp_1a1d452784a3a6ec5d8a6d38222d98aae8"></span><code class="sig-name descname">LXfBLKW_LEAF</code><a class="headerlink" href="#c.LXfBLKW_LEAF" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The write methods are very similar to the read methods. Function descriptions are not provided since these objects are not commonly encountered in nexus file I/O. TODO: fill these in. LEAF blocks can contain no sub-blocks. PARAM blocks are leaf blocks written at the start of a non-leaf block. In XML they are written into the block header, but otherwise are identical to normal blocks. </p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfBLKW_PARAM</p></li>
+</ul>
+</div>
+<div class="section" id="ilxblockwrite">
+<h2><a class="toc-backref" href="#id3">ILxBlockWrite</a><a class="headerlink" href="#ilxblockwrite" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxBlockWrite">
+<span id="_CPPv313ILxBlockWrite"></span><span id="_CPPv213ILxBlockWrite"></span><span id="ILxBlockWrite"></span><span class="target" id="class_i_lx_block_write"></span><em class="property">class </em><code class="sig-name descname">ILxBlockWrite</code><a class="headerlink" href="#_CPPv413ILxBlockWrite" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Block stream interfaces support block-structured I/O with multiple data types. There is an interface for reading and one for writing. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite10WriteBlockE11LXtObjectIDPK14LXtBlockHeaderi">
+<span id="_CPPv3N13ILxBlockWrite10WriteBlockE11LXtObjectIDPK14LXtBlockHeaderi"></span><span id="_CPPv2N13ILxBlockWrite10WriteBlockE11LXtObjectIDPK14LXtBlockHeaderi"></span><span id="ILxBlockWrite::WriteBlock__LXtObjectID.LXtBlockHeaderCP.i"></span><span class="target" id="class_i_lx_block_write_1a4f8b18c1cd1147c03b7cc157d01740f9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteBlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtBlockHeader *<em>head</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite10WriteBlockE11LXtObjectIDPK14LXtBlockHeaderi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite3EndE11LXtObjectID">
+<span id="_CPPv3N13ILxBlockWrite3EndE11LXtObjectID"></span><span id="_CPPv2N13ILxBlockWrite3EndE11LXtObjectID"></span><span id="ILxBlockWrite::End__LXtObjectID"></span><span class="target" id="class_i_lx_block_write_1a586a5e82643ed1776cccc59716147ebf"></span>void <code class="sig-name descname">End</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite3EndE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5DepthE11LXtObjectID">
+<span id="_CPPv3N13ILxBlockWrite5DepthE11LXtObjectID"></span><span id="_CPPv2N13ILxBlockWrite5DepthE11LXtObjectID"></span><span id="ILxBlockWrite::Depth__LXtObjectID"></span><span class="target" id="class_i_lx_block_write_1a2e36b555d5be190b9ab4491e87a44656"></span>int <code class="sig-name descname">Depth</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5DepthE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteI1E11LXtObjectIDPKci">
+<span id="_CPPv3N13ILxBlockWrite7WriteI1E11LXtObjectIDPKci"></span><span id="_CPPv2N13ILxBlockWrite7WriteI1E11LXtObjectIDPKci"></span><span id="ILxBlockWrite::WriteI1__LXtObjectID.cCP.i"></span><span class="target" id="class_i_lx_block_write_1a8fc2f00585a1abad6ca7e89f12028f21"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteI1</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteI1E11LXtObjectIDPKci" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteI2E11LXtObjectIDPKsi">
+<span id="_CPPv3N13ILxBlockWrite7WriteI2E11LXtObjectIDPKsi"></span><span id="_CPPv2N13ILxBlockWrite7WriteI2E11LXtObjectIDPKsi"></span><span id="ILxBlockWrite::WriteI2__LXtObjectID.shortCP.i"></span><span class="target" id="class_i_lx_block_write_1af392e77baf2f52e4ac68d18a5581d715"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteI2</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> short *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteI2E11LXtObjectIDPKsi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteI4E11LXtObjectIDPKii">
+<span id="_CPPv3N13ILxBlockWrite7WriteI4E11LXtObjectIDPKii"></span><span id="_CPPv2N13ILxBlockWrite7WriteI4E11LXtObjectIDPKii"></span><span id="ILxBlockWrite::WriteI4__LXtObjectID.iCP.i"></span><span class="target" id="class_i_lx_block_write_1ad878775dfd468d98cac0bffbcc4a01c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteI4</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> int *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteI4E11LXtObjectIDPKii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteU1E11LXtObjectIDPKhi">
+<span id="_CPPv3N13ILxBlockWrite7WriteU1E11LXtObjectIDPKhi"></span><span id="_CPPv2N13ILxBlockWrite7WriteU1E11LXtObjectIDPKhi"></span><span id="ILxBlockWrite::WriteU1__LXtObjectID.unsigned-cCP.i"></span><span class="target" id="class_i_lx_block_write_1a01a69da1577ad26f56c7b86d3b35052c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteU1</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> unsigned char *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteU1E11LXtObjectIDPKhi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteU2E11LXtObjectIDPKti">
+<span id="_CPPv3N13ILxBlockWrite7WriteU2E11LXtObjectIDPKti"></span><span id="_CPPv2N13ILxBlockWrite7WriteU2E11LXtObjectIDPKti"></span><span id="ILxBlockWrite::WriteU2__LXtObjectID.unsigned-shortCP.i"></span><span class="target" id="class_i_lx_block_write_1adb5ada1899a577650c4d672417e29fae"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteU2</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> unsigned short *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteU2E11LXtObjectIDPKti" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteU4E11LXtObjectIDPKji">
+<span id="_CPPv3N13ILxBlockWrite7WriteU4E11LXtObjectIDPKji"></span><span id="_CPPv2N13ILxBlockWrite7WriteU4E11LXtObjectIDPKji"></span><span id="ILxBlockWrite::WriteU4__LXtObjectID.unsigned-iCP.i"></span><span class="target" id="class_i_lx_block_write_1a0da07dcbfcfa2ab47488cdc613c46267"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteU4</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> unsigned int *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteU4E11LXtObjectIDPKji" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteFPE11LXtObjectIDPKfi">
+<span id="_CPPv3N13ILxBlockWrite7WriteFPE11LXtObjectIDPKfi"></span><span id="_CPPv2N13ILxBlockWrite7WriteFPE11LXtObjectIDPKfi"></span><span id="ILxBlockWrite::WriteFP__LXtObjectID.floatCP.i"></span><span class="target" id="class_i_lx_block_write_1a05ba7dab64fc724b5cd1455e34bb93b0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteFP</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> float *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteFPE11LXtObjectIDPKfi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite8WriteFP8E11LXtObjectIDPKdi">
+<span id="_CPPv3N13ILxBlockWrite8WriteFP8E11LXtObjectIDPKdi"></span><span id="_CPPv2N13ILxBlockWrite8WriteFP8E11LXtObjectIDPKdi"></span><span id="ILxBlockWrite::WriteFP8__LXtObjectID.doubleCP.i"></span><span class="target" id="class_i_lx_block_write_1aafef42ff97fe296af3c1281c275a1616"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteFP8</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> double *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite8WriteFP8E11LXtObjectIDPKdi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite11WriteStringE11LXtObjectIDPKc">
+<span id="_CPPv3N13ILxBlockWrite11WriteStringE11LXtObjectIDPKc"></span><span id="_CPPv2N13ILxBlockWrite11WriteStringE11LXtObjectIDPKc"></span><span id="ILxBlockWrite::WriteString__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_block_write_1ae1f8d199db6e506c5d3f3f0f4c88d7f6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteString</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite11WriteStringE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite11WriteIDCodeE11LXtObjectIDPK14LXtBlockHeader">
+<span id="_CPPv3N13ILxBlockWrite11WriteIDCodeE11LXtObjectIDPK14LXtBlockHeader"></span><span id="_CPPv2N13ILxBlockWrite11WriteIDCodeE11LXtObjectIDPK14LXtBlockHeader"></span><span id="ILxBlockWrite::WriteIDCode__LXtObjectID.LXtBlockHeaderCP"></span><span class="target" id="class_i_lx_block_write_1a1d71d8c711153487f6f9a23a44770136"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteIDCode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtBlockHeader *<em>ident</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite11WriteIDCodeE11LXtObjectIDPK14LXtBlockHeader" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite7WriteVXE11LXtObjectIDPKji">
+<span id="_CPPv3N13ILxBlockWrite7WriteVXE11LXtObjectIDPKji"></span><span id="_CPPv2N13ILxBlockWrite7WriteVXE11LXtObjectIDPKji"></span><span id="ILxBlockWrite::WriteVX__LXtObjectID.unsigned-iCP.i"></span><span class="target" id="class_i_lx_block_write_1ab2c0a841d47c365d3f0778b1e3a5cf06"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteVX</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> unsigned int *<em>data</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite7WriteVXE11LXtObjectIDPKji" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite17SetSourceEncodingE11LXtObjectIDj">
+<span id="_CPPv3N13ILxBlockWrite17SetSourceEncodingE11LXtObjectIDj"></span><span id="_CPPv2N13ILxBlockWrite17SetSourceEncodingE11LXtObjectIDj"></span><span id="ILxBlockWrite::SetSourceEncoding__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_block_write_1a46023d1412ac3b3ba38cbbc70fd77d3e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetSourceEncoding</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite17SetSourceEncodingE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>WriteString converts a text encoding of string to another text encoding given by the following methods using <a class="reference internal" href="lxd_value.html#class_i_lx_text_encoding"><span class="std std-ref">ILxTextEncoding</span></a> service. The source encoding is for a string set to “buf” of WriteString. The target encoding is the encoding for strings to write. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite17SetTargetEncodingE11LXtObjectIDj">
+<span id="_CPPv3N13ILxBlockWrite17SetTargetEncodingE11LXtObjectIDj"></span><span id="_CPPv2N13ILxBlockWrite17SetTargetEncodingE11LXtObjectIDj"></span><span id="ILxBlockWrite::SetTargetEncoding__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_block_write_1ab22830d19c97dd112d0001567ce353d0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetTargetEncoding</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>encoding</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite17SetTargetEncodingE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEKs">
+<span id="_CPPv3N13ILxBlockWrite5WriteEKs"></span><span id="_CPPv2N13ILxBlockWrite5WriteEKs"></span><span id="ILxBlockWrite::Write__shortC"></span><span class="target" id="class_i_lx_block_write_1ae9208160415aa1530ed88c46f2f82ab3"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> short <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEKs" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> User class methods are relatively more C++ friendly, using argument types and throwing exceptions on errors. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEKt">
+<span id="_CPPv3N13ILxBlockWrite5WriteEKt"></span><span id="_CPPv2N13ILxBlockWrite5WriteEKt"></span><span id="ILxBlockWrite::Write__unsigned-shortC"></span><span class="target" id="class_i_lx_block_write_1a473f9bf84d0a834a79cbddcf3531712e"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> unsigned short <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEKt" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEKi">
+<span id="_CPPv3N13ILxBlockWrite5WriteEKi"></span><span id="_CPPv2N13ILxBlockWrite5WriteEKi"></span><span id="ILxBlockWrite::Write__iC"></span><span class="target" id="class_i_lx_block_write_1ac5846ad808fae1df6e1ecfb849387b27"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEKi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEKj">
+<span id="_CPPv3N13ILxBlockWrite5WriteEKj"></span><span id="_CPPv2N13ILxBlockWrite5WriteEKj"></span><span id="ILxBlockWrite::Write__unsigned-iC"></span><span class="target" id="class_i_lx_block_write_1ad6aa9c337dda3b10b46faae51d9a1d97"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> unsigned int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEKj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEKf">
+<span id="_CPPv3N13ILxBlockWrite5WriteEKf"></span><span id="_CPPv2N13ILxBlockWrite5WriteEKf"></span><span id="ILxBlockWrite::Write__floatC"></span><span class="target" id="class_i_lx_block_write_1a9525646ca9be0798d31a84610ef24154"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> float <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEKf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEKd">
+<span id="_CPPv3N13ILxBlockWrite5WriteEKd"></span><span id="_CPPv2N13ILxBlockWrite5WriteEKd"></span><span id="ILxBlockWrite::Write__doubleC"></span><span class="target" id="class_i_lx_block_write_1a18fc5a3711741f8911d71d5f0e372449"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> double <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEKd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteEPKc">
+<span id="_CPPv3N13ILxBlockWrite5WriteEPKc"></span><span id="_CPPv2N13ILxBlockWrite5WriteEPKc"></span><span id="ILxBlockWrite::Write__cCP"></span><span class="target" id="class_i_lx_block_write_1a7c88dd5a5692e89b3b9c09165d8177b9"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockWrite5WriteERKNSt6stringE">
+<span id="_CPPv3N13ILxBlockWrite5WriteERKNSt6stringE"></span><span id="_CPPv2N13ILxBlockWrite5WriteERKNSt6stringE"></span><span id="ILxBlockWrite::Write__ssCR"></span><span class="target" id="class_i_lx_block_write_1a40add32cb50439255cd8ee6219d1788c"></span>void <code class="sig-name descname">Write</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockWrite5WriteERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxloader">
+<h2><a class="toc-backref" href="#id4">ILxLoader</a><a class="headerlink" href="#ilxloader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv49ILxLoader">
+<span id="_CPPv39ILxLoader"></span><span id="_CPPv29ILxLoader"></span><span id="ILxLoader"></span><span class="target" id="class_i_lx_loader"></span><em class="property">class </em><code class="sig-name descname">ILxLoader</code><a class="headerlink" href="#_CPPv49ILxLoader" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N9ILxLoader9RecognizeE11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N9ILxLoader9RecognizeE11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N9ILxLoader9RecognizeE11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxLoader::Recognize__LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_loader_1a4ffdf3269e62128b1fa8d26280b7c46a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Recognize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>loadInfo</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxLoader9RecognizeE11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <a class="reference internal" href="#class_i_lx_loader"><span class="std std-ref">ILxLoader</span></a> interface is an extensible server for loading objects of many different classes. Methods on the loader interface are called in sequence. Specifically <a class="reference internal" href="#class_i_lx_loader_1a4ffdf3269e62128b1fa8d26280b7c46a"><span class="std std-ref">Recognize()</span></a> is called to open a file, and <a class="reference internal" href="#class_i_lx_loader_1a58225c0c956b277cc4982aa9c40e3c24"><span class="std std-ref">Cleanup()</span></a> is called to close it. <a class="reference internal" href="#class_i_lx_loader_1a4ffdf3269e62128b1fa8d26280b7c46a"><span class="std std-ref">Recognize()</span></a> is given the filename and LoadInfo object, and it should return OK if the file can be loaded by this loader. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxLoader12LoadInstanceE11LXtObjectID11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N9ILxLoader12LoadInstanceE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N9ILxLoader12LoadInstanceE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxLoader::LoadInstance__LXtObjectID.LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_loader_1ab34277edaf546f3ba8471af097a37c0c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LoadInstance</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>loadInfo</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxLoader12LoadInstanceE11LXtObjectID11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The loader can also set other data by querying for additional interfaces based on object type. This is useful when doing a direct load to specify the attributes of the object to contain the data. For instance to do a direct load of an image the loader would query for ImageLoaderTarget and use its methods to set the pixel format and size of the destination image. The LoadInfo object can also be queried for a monitor. After recognition, the <a class="reference internal" href="#class_i_lx_loader_1ab34277edaf546f3ba8471af097a37c0c"><span class="std std-ref">LoadInstance()</span></a> method may be called to load opaque objects, in which case the new COM object should be returned in the void pointer. For non-opaque loads the (perhaps confusingly named) <a class="reference internal" href="#class_i_lx_loader_1a5ed0279ac0bfae537e4865987ef9b340"><span class="std std-ref">LoadObject()</span></a> method may be called to load the data into the destination object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxLoader10LoadObjectE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N9ILxLoader10LoadObjectE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N9ILxLoader10LoadObjectE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxLoader::LoadObject__LXtObjectID.LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_loader_1a5ed0279ac0bfae537e4865987ef9b340"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LoadObject</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>loadInfo</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxLoader10LoadObjectE11LXtObjectID11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxLoader7CleanupE11LXtObjectID">
+<span id="_CPPv3N9ILxLoader7CleanupE11LXtObjectID"></span><span id="_CPPv2N9ILxLoader7CleanupE11LXtObjectID"></span><span id="ILxLoader::Cleanup__LXtObjectID"></span><span class="target" id="class_i_lx_loader_1a58225c0c956b277cc4982aa9c40e3c24"></span>void <code class="sig-name descname">Cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxLoader7CleanupE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>After any attempt at recognition <a class="reference internal" href="#class_i_lx_loader_1a58225c0c956b277cc4982aa9c40e3c24"><span class="std std-ref">Cleanup()</span></a> will be called to allow the loader to close the file and reset its state. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N9ILxLoader12SpawnOptionsE11LXtObjectIDPPv">
+<span id="_CPPv3N9ILxLoader12SpawnOptionsE11LXtObjectIDPPv"></span><span id="_CPPv2N9ILxLoader12SpawnOptionsE11LXtObjectIDPPv"></span><span id="ILxLoader::SpawnOptions__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_loader_1ab723e611459250bfbcc0b07db71e8ea1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SpawnOptions</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9ILxLoader12SpawnOptionsE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method creates an option object for this loader. This should have a StreamIO interface to allow it to be saved and loaded. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxloaderinfo">
+<h2><a class="toc-backref" href="#id5">ILxLoaderInfo</a><a class="headerlink" href="#ilxloaderinfo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxLoaderInfo">
+<span id="_CPPv313ILxLoaderInfo"></span><span id="_CPPv213ILxLoaderInfo"></span><span id="ILxLoaderInfo"></span><span class="target" id="class_i_lx_loader_info"></span><em class="property">class </em><code class="sig-name descname">ILxLoaderInfo</code><a class="headerlink" href="#_CPPv413ILxLoaderInfo" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxLoaderInfo9TestClassE11LXtObjectIDPK7LXtGUIDPj">
+<span id="_CPPv3N13ILxLoaderInfo9TestClassE11LXtObjectIDPK7LXtGUIDPj"></span><span id="_CPPv2N13ILxLoaderInfo9TestClassE11LXtObjectIDPK7LXtGUIDPj"></span><span id="ILxLoaderInfo::TestClass__LXtObjectID.LXtGUIDCP.unsignedP"></span><span class="target" id="class_i_lx_loader_info_1ada6eadcd51d0a2fa0b4300ea3e6fd753"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">TestClass</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>clsGUID</em>, unsigned *<em>priority</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLoaderInfo9TestClassE11LXtObjectIDPK7LXtGUIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The LoaderInfo interface can be used to read the context of the load and to set the attributes that apply to this file. For loaders that can load more than one object type, <a class="reference internal" href="#class_i_lx_loader_info_1ada6eadcd51d0a2fa0b4300ea3e6fd753"><span class="std std-ref">TestClass()</span></a> returns LXe_TRUE for classes that the client wants to accept. The priority for each type can be used to decide which one to accept, where lower is better. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLoaderInfo8SetClassE11LXtObjectIDPK7LXtGUID">
+<span id="_CPPv3N13ILxLoaderInfo8SetClassE11LXtObjectIDPK7LXtGUID"></span><span id="_CPPv2N13ILxLoaderInfo8SetClassE11LXtObjectIDPK7LXtGUID"></span><span id="ILxLoaderInfo::SetClass__LXtObjectID.LXtGUIDCP"></span><span class="target" id="class_i_lx_loader_info_1a3e0dd513fcf710daf4ed7c3a855668d1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetClass</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> LXtGUID *<em>clsGUID</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLoaderInfo8SetClassE11LXtObjectIDPK7LXtGUID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>During recognition the loader can set information about a file that it’s capable of loading. All of this is optional. The class is the object type for loaders that can load more than one type. Flags can suggest opaque versus direct load and if the format has options. The format can be set if a different saver should be used for this object type. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLoaderInfo8SetFlagsE11LXtObjectIDj">
+<span id="_CPPv3N13ILxLoaderInfo8SetFlagsE11LXtObjectIDj"></span><span id="_CPPv2N13ILxLoaderInfo8SetFlagsE11LXtObjectIDj"></span><span id="ILxLoaderInfo::SetFlags__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_loader_info_1a2d12b858b459dde3ffbeea79281b96c1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetFlags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLoaderInfo8SetFlagsE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxLoaderInfo9SetFormatE11LXtObjectIDPKc">
+<span id="_CPPv3N13ILxLoaderInfo9SetFormatE11LXtObjectIDPKc"></span><span id="_CPPv2N13ILxLoaderInfo9SetFormatE11LXtObjectIDPKc"></span><span id="ILxLoaderInfo::SetFormat__LXtObjectID.cCP"></span><span class="target" id="class_i_lx_loader_info_1a41c9dcd7301346a0a2cfac2c3e366153"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetFormat</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxLoaderInfo9SetFormatE11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfLOAD_OPAQUE</p></li>
+<li><p>LXfLOAD_OPTIONS</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsLOD_CLASSLIST">
+<span class="target" id="lxd__io_8hpp_1a87c6d393862b502c9e775db39ae6e9af"></span><code class="sig-name descname">LXsLOD_CLASSLIST</code><a class="headerlink" href="#c.LXsLOD_CLASSLIST" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tags define the classes this loader server supports and hints about the files that it might be able to process.<ul class="simple">
+<li><p><p>CLASSLIST a string of class aliases or GUIDs separated by spaces, such as “image</p>
+<p>animation”. These are the classes which this loader can support.</p>
+</p></li>
+<li><p>DOSPATTERN a pattern string for filenames in Microsoft Windows (really DOS) format. This is typically something like “*.avi;*.jpg”.</p></li>
+<li><p>MACPATTERN a pattern string for Macintosh filetypes that might be read with this loader. This is typically something like “MooV;TTXT”.</p></li>
+<li><p>THREADSAFE indicates whether the loader is threadsafe (i.e. multiple loaders of the same type can be executed at once). Values other than “Yes” are all interpreted as no. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsLOD_DOSPATTERN</p></li>
+<li><p>LXsLOD_MACPATTERN</p></li>
+<li><p>LXsLOD_THREADSAFE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxsaver">
+<h2><a class="toc-backref" href="#id6">ILxSaver</a><a class="headerlink" href="#ilxsaver" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv48ILxSaver">
+<span id="_CPPv38ILxSaver"></span><span id="_CPPv28ILxSaver"></span><span id="ILxSaver"></span><span class="target" id="class_i_lx_saver"></span><em class="property">class </em><code class="sig-name descname">ILxSaver</code><a class="headerlink" href="#_CPPv48ILxSaver" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N8ILxSaver6VerifyE11LXtObjectID11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N8ILxSaver6VerifyE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N8ILxSaver6VerifyE11LXtObjectID11LXtObjectID11LXtObjectID"></span><span id="ILxSaver::Verify__LXtObjectID.LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_saver_1ab78957e099441b626c79f6ed9685d8b6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Verify</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>source</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxSaver6VerifyE11LXtObjectID11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <a class="reference internal" href="#class_i_lx_saver"><span class="std std-ref">ILxSaver</span></a> interface knows how to save objects of a specific type. This is a very much simpler interface and just has a single function to perform the save to the given file using the given monitor. The Verify method allows the plugin to inform the user if parts of his scene will not be saved. The source is the object being saved. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N8ILxSaver4SaveE11LXtObjectID11LXtObjectIDPKc11LXtObjectID">
+<span id="_CPPv3N8ILxSaver4SaveE11LXtObjectID11LXtObjectIDPKc11LXtObjectID"></span><span id="_CPPv2N8ILxSaver4SaveE11LXtObjectID11LXtObjectIDPKc11LXtObjectID"></span><span id="ILxSaver::Save__LXtObjectID.LXtObjectID.cCP.LXtObjectID"></span><span class="target" id="class_i_lx_saver_1af1657f82b9637879f9903663fb6c4d12"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Save</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>source</em>, <em class="property">const</em> char *<em>filename</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8ILxSaver4SaveE11LXtObjectID11LXtObjectIDPKc11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXsSAV_OUTCLASS">
+<span class="target" id="lxd__io_8hpp_1aae0ad501dc3fa3e57ed9d7e7f894be7f"></span><code class="sig-name descname">LXsSAV_OUTCLASS</code><a class="headerlink" href="#c.LXsSAV_OUTCLASS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tags define the single class and file type.<ul class="simple">
+<li><p>OUTCLASS the class alias or GUID for objects that can be saved. (“image”)</p></li>
+<li><p>DOSTYPE the three-character DOS file extension that should be used by default. (“JPG”)</p></li>
+<li><p>MACTYPE the four-character Macintosh type code that should be applied to the new file. (“PICT”)</p></li>
+<li><p>OVERWRITE indicates that the saver needs to original file in place in order to save changes into it. This disables any safety mechanism that renames the original file to prevent save errors from destroying data. Savers that set this tag to “1” are expected to handle save errors gracefully on their own.</p></li>
+<li><p>SAVEAS indicates that the saver can be used in the Save As dialog. Save As will allow only savers that have appropriate loader to be listed and it’s comparing saver and loader by using server name. If you have named loader and saver for the same file format differently, then you can use this flag in order to get your saver to be displayed in the Save As dialog. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXsSAV_DOSTYPE</p></li>
+<li><p>LXsSAV_MACTYPE</p></li>
+<li><p>LXsSAV_OVERWRITE</p></li>
+<li><p>LXsSAV_SAVEAS</p></li>
+</ul>
+</div>
+<div class="section" id="ilxmonitor">
+<h2><a class="toc-backref" href="#id7">ILxMonitor</a><a class="headerlink" href="#ilxmonitor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxMonitor">
+<span id="_CPPv310ILxMonitor"></span><span id="_CPPv210ILxMonitor"></span><span id="ILxMonitor"></span><span class="target" id="class_i_lx_monitor"></span><em class="property">class </em><code class="sig-name descname">ILxMonitor</code><a class="headerlink" href="#_CPPv410ILxMonitor" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These macros support calling the function vectors on monitor objects. If the monitor pointer is null, these do no harm. Init returns zero on failure and incr/step returns zero to continue. The <a class="reference internal" href="#class_i_lx_monitor_1a7f19222f15eae8d5b6195097aa335038"><span class="std std-ref">Increment()</span></a> method can be called directly to determine if it returned a failure code or LXe_ABORT. The most useful macros here are:<ul class="simple">
+<li><p>INIT() Returns true if the monitor was successfully initialized. This may return false to indicate that that the monitor was aborted as soon as it was opened, usually because it wound up being a sub-monitor of another monitor.</p></li>
+<li><p>INCR() Increment a monitor by the given number of steps. Returns true if the user aborted, and false if it is still running.</p></li>
+<li><p>STEP() Increment the monitor by one step. Returns true if the user aborted.</p></li>
+<li><p>TEST() Returns true if the user aborted, and false if it is still running. Under the hood, this is simply calling INCR() with a step of 0, and will check for user input before returning. If you are running a long but unbounded task where you can’t step the monitor, this will allow you to check for aborts without the app appearing to be locked.</p></li>
+<li><p>STATUS() Same as TEST(), but returns an LxResult code of LXe_ABORT if the user aborted, and LXe_OK if the monitor is still running. </p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxMonitor10InitializeE11LXtObjectIDj">
+<span id="_CPPv3N10ILxMonitor10InitializeE11LXtObjectIDj"></span><span id="_CPPv2N10ILxMonitor10InitializeE11LXtObjectIDj"></span><span id="ILxMonitor::Initialize__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_monitor_1a3c9db7b2975dbab2fe8df6be8f15e748"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Initialize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxMonitor10InitializeE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <a class="reference internal" href="#class_i_lx_monitor"><span class="std std-ref">ILxMonitor</span></a> interface allows progress tracking. The monitor is initialized with a max count, and each stage of processing increments the count by something. <a class="reference internal" href="#class_i_lx_monitor_1a3c9db7b2975dbab2fe8df6be8f15e748"><span class="std std-ref">Initialize()</span></a> takes the total number of steps the monitor has, and returns a result code. It is possible that the monitor will be immediately aborted, so you should check for LXe_ABORT codes from this call. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxMonitor9IncrementE11LXtObjectIDj">
+<span id="_CPPv3N10ILxMonitor9IncrementE11LXtObjectIDj"></span><span id="_CPPv2N10ILxMonitor9IncrementE11LXtObjectIDj"></span><span id="ILxMonitor::Increment__LXtObjectID.unsigned-i"></span><span class="target" id="class_i_lx_monitor_1a7f19222f15eae8d5b6195097aa335038"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Increment</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxMonitor9IncrementE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This steps the monitor by the count provided. Care should be taken to keep from exceeding the total number of steps set with <a class="reference internal" href="#class_i_lx_monitor_1a3c9db7b2975dbab2fe8df6be8f15e748"><span class="std std-ref">Initialize()</span></a>. Of the user has aborted the operation, this method will return LXe_ABORT and the client should stop the operation. Commands normally set the LXe_ABORT code on their message object so that the caller knows that the command has been aborted by the user. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxMonitor4InitEj">
+<span id="_CPPv3N10ILxMonitor4InitEj"></span><span id="_CPPv2N10ILxMonitor4InitEj"></span><span id="ILxMonitor::Init__unsigned-i"></span><span class="target" id="class_i_lx_monitor_1a86e97229ba94d701cbd4f96d1d40d633"></span>bool <code class="sig-name descname">Init</code><span class="sig-paren">(</span>unsigned int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxMonitor4InitEj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> The above macros are made more or less obsolete by the user class, which provides simpler methods which do nothing if there is no interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxMonitor4StepEj">
+<span id="_CPPv3N10ILxMonitor4StepEj"></span><span id="_CPPv2N10ILxMonitor4StepEj"></span><span id="ILxMonitor::Step__unsigned-i"></span><span class="target" id="class_i_lx_monitor_1a5761f2d580318f5c548455c38e343629"></span>bool <code class="sig-name descname">Step</code><span class="sig-paren">(</span>unsigned int <em>count</em> = 1<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxMonitor4StepEj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXxMON_CALL</p></li>
+<li><p>LXxMON_OCAL</p></li>
+<li><p>LXxMON_INIT</p></li>
+<li><p>LXxMON_INCR</p></li>
+<li><p>LXxMON_STEP</p></li>
+<li><p>LXxMON_TEST</p></li>
+<li><p>LXxMON_STATUS</p></li>
+</ul>
+</div>
+<div class="section" id="ilxstreamio">
+<h2><a class="toc-backref" href="#id8">ILxStreamIO</a><a class="headerlink" href="#ilxstreamio" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv411ILxStreamIO">
+<span id="_CPPv311ILxStreamIO"></span><span id="_CPPv211ILxStreamIO"></span><span id="ILxStreamIO"></span><span class="target" id="class_i_lx_stream_i_o"></span><em class="property">class </em><code class="sig-name descname">ILxStreamIO</code><a class="headerlink" href="#_CPPv411ILxStreamIO" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N11ILxStreamIO5WriteE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxStreamIO5WriteE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxStreamIO5WriteE11LXtObjectID11LXtObjectID"></span><span id="ILxStreamIO::Write__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_stream_i_o_1ad795715758230e9c897f064c8dee0f9a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Write</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxStreamIO5WriteE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>An <a class="reference internal" href="#class_i_lx_stream_i_o"><span class="std std-ref">ILxStreamIO</span></a> interface allows any object to save or load itself on a block stream. The <a class="reference internal" href="#class_i_lx_stream_i_o_1ad795715758230e9c897f064c8dee0f9a"><span class="std std-ref">Write()</span></a> method writes the underlying object to the block stream, while the <a class="reference internal" href="#class_i_lx_stream_i_o_1a65059a88f4de3e53d4ad4a10136fe50e"><span class="std std-ref">Read()</span></a> method reads the data and sets the state of the object to match the one that was written. The caller will have determined that an object of the right type follows in the stream. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N11ILxStreamIO4ReadE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N11ILxStreamIO4ReadE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N11ILxStreamIO4ReadE11LXtObjectID11LXtObjectID"></span><span id="ILxStreamIO::Read__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_stream_i_o_1a65059a88f4de3e53d4ad4a10136fe50e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Read</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ILxStreamIO4ReadE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxioservice">
+<h2><a class="toc-backref" href="#id9">ILxIOService</a><a class="headerlink" href="#ilxioservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv412ILxIOService">
+<span id="_CPPv312ILxIOService"></span><span id="_CPPv212ILxIOService"></span><span id="ILxIOService"></span><span class="target" id="class_i_lx_i_o_service"></span><em class="property">class </em><code class="sig-name descname">ILxIOService</code><a class="headerlink" href="#_CPPv412ILxIOService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>We provide some global IO services. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N12ILxIOService11ScriptQueryE11LXtObjectIDPPv">
+<span id="_CPPv3N12ILxIOService11ScriptQueryE11LXtObjectIDPPv"></span><span id="_CPPv2N12ILxIOService11ScriptQueryE11LXtObjectIDPPv"></span><span id="ILxIOService::ScriptQuery__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_i_o_service_1a2809c5b8708c3130aefffa56319f1417"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ScriptQuery</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxIOService11ScriptQueryE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxIOService10SetOptionsE11LXtObjectID11LXtObjectID">
+<span id="_CPPv3N12ILxIOService10SetOptionsE11LXtObjectID11LXtObjectID"></span><span id="_CPPv2N12ILxIOService10SetOptionsE11LXtObjectID11LXtObjectID"></span><span id="ILxIOService::SetOptions__LXtObjectID.LXtObjectID"></span><span class="target" id="class_i_lx_i_o_service_1a0cdd442b5ecc6c6ba03ae55870455fd5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetOptions</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxIOService10SetOptionsE11LXtObjectID11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>These methods are used to access the global load-options object. This is an object set by the loader’s options command which can then be read by the loader during the actual load. It will also be stored in the case of sub-object loads. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxIOService11PeekOptionsE11LXtObjectID">
+<span id="_CPPv3N12ILxIOService11PeekOptionsE11LXtObjectID"></span><span id="_CPPv2N12ILxIOService11PeekOptionsE11LXtObjectID"></span><span id="ILxIOService::PeekOptions__LXtObjectID"></span><span class="target" id="class_i_lx_i_o_service_1ad779089317da6b6a471c6af3fb742e7f"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">PeekOptions</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxIOService11PeekOptionsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N12ILxIOService14OpenBlockStoreE11LXtObjectIDPKcPKcjPPv">
+<span id="_CPPv3N12ILxIOService14OpenBlockStoreE11LXtObjectIDPKcPKcjPPv"></span><span id="_CPPv2N12ILxIOService14OpenBlockStoreE11LXtObjectIDPKcPKcjPPv"></span><span id="ILxIOService::OpenBlockStore__LXtObjectID.cCP.cCP.unsigned.voidPP"></span><span class="target" id="class_i_lx_i_o_service_1a7641269d6a9fa65a1bfb74b1cad69279"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">OpenBlockStore</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filename</em>, <em class="property">const</em> char *<em>format</em>, unsigned <em>flags</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12ILxIOService14OpenBlockStoreE11LXtObjectIDPKcPKcjPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Open a block store. Each store has a format given by a string up to 8 charaters in length. Depending on the flags the file may be created if it doesn’t exist, in which case this method returns FALSE instead of OK. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxblockstore">
+<h2><a class="toc-backref" href="#id10">ILxBlockStore</a><a class="headerlink" href="#ilxblockstore" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv413ILxBlockStore">
+<span id="_CPPv313ILxBlockStore"></span><span id="_CPPv213ILxBlockStore"></span><span id="ILxBlockStore"></span><span class="target" id="class_i_lx_block_store"></span><em class="property">class </em><code class="sig-name descname">ILxBlockStore</code><a class="headerlink" href="#_CPPv413ILxBlockStore" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It can be useful to store data in a format that allows blocks to be randomly accessed. The indexed block store is a format where blocks are given by type and name, and the blocks can be read or written in any sequence. The block store object presents the main BlockStore interface, as well as BlockRead and BlockWrite interfaces for access the contents of blocks using a serial block structure. Blocks are hierarchical, so blocks can contain sub-blocks which can also be accessed randomly. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore13AllocBookmarkE11LXtObjectIDP18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore13AllocBookmarkE11LXtObjectIDP18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore13AllocBookmarkE11LXtObjectIDP18LXtBlockBookmarkID"></span><span id="ILxBlockStore::AllocBookmark__LXtObjectID.LXtBlockBookmarkIDP"></span><span class="target" id="class_i_lx_block_store_1a7db4fb58247fe4cb5c9a116675d183ce"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">AllocBookmark</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBlockBookmarkID *<em>loc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore13AllocBookmarkE11LXtObjectIDP18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore6LookupE11LXtObjectID6LXtID4PKc18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore6LookupE11LXtObjectID6LXtID4PKc18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore6LookupE11LXtObjectID6LXtID4PKc18LXtBlockBookmarkID"></span><span id="ILxBlockStore::Lookup__LXtObjectID.LXtID4.cCP.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1a8ac93c51803c97df5a48801b834ce45e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, <em class="property">const</em> char *<em>id</em>, LXtBlockBookmarkID <em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore6LookupE11LXtObjectID6LXtID4PKc18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The main function of the interface is to set the current block. This can be done by finding a block by type and id code. This returns LXe_TRUE for an existing block, and FALSE for a block that doesn’t exist. If the parent is null this will look for root blocks, otherwise it will search for sub-blocks of the parent block. The user class version of the method makes it optional. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore5StackE11LXtObjectIDj">
+<span id="_CPPv3N13ILxBlockStore5StackE11LXtObjectIDj"></span><span id="_CPPv2N13ILxBlockStore5StackE11LXtObjectIDj"></span><span id="ILxBlockStore::Stack__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_block_store_1a3f27fe437d1a098964d0325742ddf332"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Stack</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>operation</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore5StackE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>It can be useful when traversing a block store to set the current location as the new root, so that subsequent lookup occur in that context. That can be done by pushing it onto the location stack. The stack can be popped when done or cleared to reset searches back to the root. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore5CountE11LXtObjectID6LXtID4Pj18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore5CountE11LXtObjectID6LXtID4Pj18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore5CountE11LXtObjectID6LXtID4Pj18LXtBlockBookmarkID"></span><span id="ILxBlockStore::Count__LXtObjectID.LXtID4.unsignedP.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1afc8d1fbe214254dec58538ae40282dc7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned *<em>count</em>, LXtBlockBookmarkID <em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore5CountE11LXtObjectID6LXtID4Pj18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>You can also enumerate blocks by type. The <a class="reference internal" href="#class_i_lx_block_store_1afc8d1fbe214254dec58538ae40282dc7"><span class="std std-ref">Count()</span></a> returns the number of blocks of that type, and <a class="reference internal" href="#class_i_lx_block_store_1a070005f2ca4881013d605a08abc9a202"><span class="std std-ref">ByIndex()</span></a> sets the current block. Parent determines whether these are root or sub-blocks. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore7ByIndexE11LXtObjectID6LXtID4j18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore7ByIndexE11LXtObjectID6LXtID4j18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore7ByIndexE11LXtObjectID6LXtID4j18LXtBlockBookmarkID"></span><span id="ILxBlockStore::ByIndex__LXtObjectID.LXtID4.unsigned.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1a070005f2ca4881013d605a08abc9a202"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned <em>index</em>, LXtBlockBookmarkID <em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore7ByIndexE11LXtObjectID6LXtID4j18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore15RestoreBookmarkE11LXtObjectID18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore15RestoreBookmarkE11LXtObjectID18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore15RestoreBookmarkE11LXtObjectID18LXtBlockBookmarkID"></span><span id="ILxBlockStore::RestoreBookmark__LXtObjectID.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1a1f38d69c6b7407d761c32661760a3f03"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RestoreBookmark</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBlockBookmarkID <em>loc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore15RestoreBookmarkE11LXtObjectID18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Or, of course, the current location can be set using a bookmark. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore12SaveBookmarkE11LXtObjectID18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore12SaveBookmarkE11LXtObjectID18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore12SaveBookmarkE11LXtObjectID18LXtBlockBookmarkID"></span><span id="ILxBlockStore::SaveBookmark__LXtObjectID.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1ad6d8d31eae21f7672eecb8eca14c6b97"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SaveBookmark</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBlockBookmarkID <em>loc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore12SaveBookmarkE11LXtObjectID18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Once the current block is set a location can be remembered to bookmark this spot. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore4TypeE11LXtObjectIDP6LXtID4">
+<span id="_CPPv3N13ILxBlockStore4TypeE11LXtObjectIDP6LXtID4"></span><span id="_CPPv2N13ILxBlockStore4TypeE11LXtObjectIDP6LXtID4"></span><span id="ILxBlockStore::Type__LXtObjectID.LXtID4P"></span><span class="target" id="class_i_lx_block_store_1a43da47b8ca0fb89e72103d1d5fdb3bb7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Type</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore4TypeE11LXtObjectIDP6LXtID4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Properties of the current block can be read. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore5IdentE11LXtObjectIDPPKc">
+<span id="_CPPv3N13ILxBlockStore5IdentE11LXtObjectIDPPKc"></span><span id="_CPPv2N13ILxBlockStore5IdentE11LXtObjectIDPPKc"></span><span id="ILxBlockStore::Ident__LXtObjectID.cCPP"></span><span class="target" id="class_i_lx_block_store_1a36078f40b7224f122c1e2abb7df425e3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Ident</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char **<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore5IdentE11LXtObjectIDPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore4SizeE11LXtObjectIDP6size_t">
+<span id="_CPPv3N13ILxBlockStore4SizeE11LXtObjectIDP6size_t"></span><span id="_CPPv2N13ILxBlockStore4SizeE11LXtObjectIDP6size_t"></span><span id="ILxBlockStore::Size__LXtObjectID.sP"></span><span class="target" id="class_i_lx_block_store_1a9220aa6d88aabb1704a28cf8aef818f9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Size</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, size_t *<em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore4SizeE11LXtObjectIDP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore6DeleteE11LXtObjectID">
+<span id="_CPPv3N13ILxBlockStore6DeleteE11LXtObjectID"></span><span id="_CPPv2N13ILxBlockStore6DeleteE11LXtObjectID"></span><span id="ILxBlockStore::Delete__LXtObjectID"></span><span class="target" id="class_i_lx_block_store_1a24d81e869da3ae0e77cbacfd61ca2423"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Delete</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore6DeleteE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The current block can also be deleted. This also deletes any sub-blocks. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore9WriteSizeE11LXtObjectID6size_t">
+<span id="_CPPv3N13ILxBlockStore9WriteSizeE11LXtObjectID6size_t"></span><span id="_CPPv2N13ILxBlockStore9WriteSizeE11LXtObjectID6size_t"></span><span id="ILxBlockStore::WriteSize__LXtObjectID.s"></span><span class="target" id="class_i_lx_block_store_1a8ba394fa6f8bae937efb858dee8f690c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteSize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore9WriteSizeE11LXtObjectID6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The BlockRead and BlockWrite interfaces on the store object are convenient for writing structured data, but they do use intermediate memory and so may not be as fast or efficient as possible. As an alternative writing and reading can be done directly to and from the block store file. To write a new block or to resize and exisitng block this function can be used. The space will be allocated for the data in the file, but its contents are undefined. To set the contents of the block the next function should be used. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore10WriteBlockE11LXtObjectIDPKv6size_t6size_t">
+<span id="_CPPv3N13ILxBlockStore10WriteBlockE11LXtObjectIDPKv6size_t6size_t"></span><span id="_CPPv2N13ILxBlockStore10WriteBlockE11LXtObjectIDPKv6size_t6size_t"></span><span id="ILxBlockStore::WriteBlock__LXtObjectID.voidCP.s.s"></span><span class="target" id="class_i_lx_block_store_1ad9e9f59bdb3208309143972c3adb3124"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">WriteBlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> void *<em>buf</em>, size_t <em>offset</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore10WriteBlockE11LXtObjectIDPKv6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If the current block is writable, this function will write a given number of raw bytes from the buffer into the file at a position offset from the start of the block. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore9ReadBlockE11LXtObjectIDPv6size_t6size_t">
+<span id="_CPPv3N13ILxBlockStore9ReadBlockE11LXtObjectIDPv6size_t6size_t"></span><span id="_CPPv2N13ILxBlockStore9ReadBlockE11LXtObjectIDPv6size_t6size_t"></span><span id="ILxBlockStore::ReadBlock__LXtObjectID.voidP.s.s"></span><span class="target" id="class_i_lx_block_store_1a025ce6b740c55da3f43faec9658b817a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ReadBlock</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void *<em>buf</em>, size_t <em>offset</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore9ReadBlockE11LXtObjectIDPv6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Likewise for a readable block this function will read raw bytes into the buffer from the given position and size in the block. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore6LookupE6LXtID4PKc18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore6LookupE6LXtID4PKc18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore6LookupE6LXtID4PKc18LXtBlockBookmarkID"></span><span id="ILxBlockStore::Lookup__LXtID4.cCP.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1a11aed232a5f62bee21a1f45ba512f422"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Lookup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, <em class="property">const</em> char *<em>id</em>, LXtBlockBookmarkID <em>parent</em> = 0<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore6LookupE6LXtID4PKc18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore5CountE6LXtID4Pj18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore5CountE6LXtID4Pj18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore5CountE6LXtID4Pj18LXtBlockBookmarkID"></span><span id="ILxBlockStore::Count__LXtID4.unsignedP.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1af7ba9228d741815097401c59dafd2023"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned *<em>count</em>, LXtBlockBookmarkID <em>parent</em> = 0<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore5CountE6LXtID4Pj18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>User Class Only:</em> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N13ILxBlockStore7ByIndexE6LXtID4j18LXtBlockBookmarkID">
+<span id="_CPPv3N13ILxBlockStore7ByIndexE6LXtID4j18LXtBlockBookmarkID"></span><span id="_CPPv2N13ILxBlockStore7ByIndexE6LXtID4j18LXtBlockBookmarkID"></span><span id="ILxBlockStore::ByIndex__LXtID4.unsigned.LXtBlockBookmarkID"></span><span class="target" id="class_i_lx_block_store_1aaf033a55b3a3d4984e2d34abb204090b"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, unsigned <em>index</em>, LXtBlockBookmarkID <em>parent</em> = 0<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13ILxBlockStore7ByIndexE6LXtID4j18LXtBlockBookmarkID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXiOBS_PUSH</p></li>
+<li><p>LXiOBS_POP</p></li>
+<li><p>LXiOBS_CLEAR</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="macro">
+<dt id="c.LXfOBS_WRITE">
+<span class="target" id="lxd__io_8hpp_1a6ca1b9e2e9071ae401d7483a71ff8da6"></span><code class="sig-name descname">LXfOBS_WRITE</code><a class="headerlink" href="#c.LXfOBS_WRITE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Files are normally opened for read unless the flags specify otherwise.<ul class="simple">
+<li><p>WRITE Opens the file for write. If the file doesn’t exist it will be created and if it does exist it will be cleared.</p></li>
+<li><p>MODIFY Same as WRITE, except that if the file already exists it won’t be cleared and its existing contents can be altered.</p></li>
+<li><p>MUSTEXIST If this flag is set then the method will raise an error if the file can’t be found. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXfOBS_MODIFY</p></li>
+<li><p>LXfOBS_MUSTEXIST</p></li>
+</ul>
+</div>
+<div class="section" id="lxtloadaccess1">
+<h2><a class="toc-backref" href="#id11">LXtLoadAccess1</a><a class="headerlink" href="#lxtloadaccess1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv417st_LXtLoadAccess1">
+<span id="_CPPv317st_LXtLoadAccess1"></span><span id="_CPPv217st_LXtLoadAccess1"></span><span id="st_LXtLoadAccess1"></span><span class="target" id="structst___l_xt_load_access1"></span><em class="property">struct </em><code class="sig-name descname">st_LXtLoadAccess1</code><a class="headerlink" href="#_CPPv417st_LXtLoadAccess1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess18filenameE">
+<span id="_CPPv3N17st_LXtLoadAccess18filenameE"></span><span id="_CPPv2N17st_LXtLoadAccess18filenameE"></span><span id="st_LXtLoadAccess1::filename__cCP"></span><span class="target" id="structst___l_xt_load_access1_1a34ee1147e5971991e75f49149dbd4e4a"></span><em class="property">const</em> char *<code class="sig-name descname">filename</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess18filenameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess15typesE">
+<span id="_CPPv3N17st_LXtLoadAccess15typesE"></span><span id="_CPPv2N17st_LXtLoadAccess15typesE"></span><span id="st_LXtLoadAccess1::types__LXtGUIDCPP"></span><span class="target" id="structst___l_xt_load_access1_1ab1633c3e3c32d200a16fe482060ee52d"></span><em class="property">const</em> LXtGUID **<code class="sig-name descname">types</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess15typesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess17monitorE">
+<span id="_CPPv3N17st_LXtLoadAccess17monitorE"></span><span id="_CPPv2N17st_LXtLoadAccess17monitorE"></span><span id="st_LXtLoadAccess1::monitor__LXtObjectID"></span><span class="target" id="structst___l_xt_load_access1_1a280b70ef00f88415ebf4f1b8cb02fc5f"></span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <code class="sig-name descname">monitor</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess17monitorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess15foundE">
+<span id="_CPPv3N17st_LXtLoadAccess15foundE"></span><span id="_CPPv2N17st_LXtLoadAccess15foundE"></span><span id="st_LXtLoadAccess1::found__LXtGUIDCP"></span><span class="target" id="structst___l_xt_load_access1_1aa86926141cb63c079b67dbed9c0e3cc4"></span><em class="property">const</em> LXtGUID *<code class="sig-name descname">found</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess15foundE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess16opaqueE">
+<span id="_CPPv3N17st_LXtLoadAccess16opaqueE"></span><span id="_CPPv2N17st_LXtLoadAccess16opaqueE"></span><span id="st_LXtLoadAccess1::opaque__i"></span><span class="target" id="structst___l_xt_load_access1_1a2c4800e03488cdc0dac3cfbeaf1d7e32"></span>int <code class="sig-name descname">opaque</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess16opaqueE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess16targetE">
+<span id="_CPPv3N17st_LXtLoadAccess16targetE"></span><span id="_CPPv2N17st_LXtLoadAccess16targetE"></span><span id="st_LXtLoadAccess1::target__voidP"></span><span class="target" id="structst___l_xt_load_access1_1a1e20b8065b374aeb17546e58eaa83b51"></span>void *<code class="sig-name descname">target</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess16targetE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess16formatE">
+<span id="_CPPv3N17st_LXtLoadAccess16formatE"></span><span id="_CPPv2N17st_LXtLoadAccess16formatE"></span><span id="st_LXtLoadAccess1::format__cCP"></span><span class="target" id="structst___l_xt_load_access1_1a9fdc3fdbfdfe0842251ee2ffa249bebf"></span><em class="property">const</em> char *<code class="sig-name descname">format</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess16formatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N17st_LXtLoadAccess17optionsE">
+<span id="_CPPv3N17st_LXtLoadAccess17optionsE"></span><span id="_CPPv2N17st_LXtLoadAccess17optionsE"></span><span id="st_LXtLoadAccess1::options__i"></span><span class="target" id="structst___l_xt_load_access1_1a25e0a60fb3729274203efea0bd322663"></span>int <code class="sig-name descname">options</code><a class="headerlink" href="#_CPPv4N17st_LXtLoadAccess17optionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxloader1">
+<h2><a class="toc-backref" href="#id12">ILxLoader1</a><a class="headerlink" href="#ilxloader1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv410ILxLoader1">
+<span id="_CPPv310ILxLoader1"></span><span id="_CPPv210ILxLoader1"></span><span id="ILxLoader1"></span><span class="target" id="class_i_lx_loader1"></span><em class="property">class </em><code class="sig-name descname">ILxLoader1</code><a class="headerlink" href="#_CPPv410ILxLoader1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N10ILxLoader19RecognizeE11LXtObjectIDP14LXtLoadAccess1">
+<span id="_CPPv3N10ILxLoader19RecognizeE11LXtObjectIDP14LXtLoadAccess1"></span><span id="_CPPv2N10ILxLoader19RecognizeE11LXtObjectIDP14LXtLoadAccess1"></span><span id="ILxLoader1::Recognize__LXtObjectID.LXtLoadAccess1P"></span><span class="target" id="class_i_lx_loader1_1a9c6f99d2479e10d3f372f4219735494a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Recognize</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtLoadAccess1 *<em>load</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLoader19RecognizeE11LXtObjectIDP14LXtLoadAccess1" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLoader112LoadInstanceE11LXtObjectIDP14LXtLoadAccess1PPv">
+<span id="_CPPv3N10ILxLoader112LoadInstanceE11LXtObjectIDP14LXtLoadAccess1PPv"></span><span id="_CPPv2N10ILxLoader112LoadInstanceE11LXtObjectIDP14LXtLoadAccess1PPv"></span><span id="ILxLoader1::LoadInstance__LXtObjectID.LXtLoadAccess1P.voidPP"></span><span class="target" id="class_i_lx_loader1_1a9f22f4d140422c4649a396884e9925d5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LoadInstance</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtLoadAccess1 *<em>load</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLoader112LoadInstanceE11LXtObjectIDP14LXtLoadAccess1PPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLoader110LoadObjectE11LXtObjectIDP14LXtLoadAccess111LXtObjectID">
+<span id="_CPPv3N10ILxLoader110LoadObjectE11LXtObjectIDP14LXtLoadAccess111LXtObjectID"></span><span id="_CPPv2N10ILxLoader110LoadObjectE11LXtObjectIDP14LXtLoadAccess111LXtObjectID"></span><span id="ILxLoader1::LoadObject__LXtObjectID.LXtLoadAccess1P.LXtObjectID"></span><span class="target" id="class_i_lx_loader1_1a13d852f3d443eb039194a49159d8b9e9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LoadObject</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtLoadAccess1 *<em>load</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLoader110LoadObjectE11LXtObjectIDP14LXtLoadAccess111LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLoader17CleanupE11LXtObjectIDP14LXtLoadAccess1">
+<span id="_CPPv3N10ILxLoader17CleanupE11LXtObjectIDP14LXtLoadAccess1"></span><span id="_CPPv2N10ILxLoader17CleanupE11LXtObjectIDP14LXtLoadAccess1"></span><span id="ILxLoader1::Cleanup__LXtObjectID.LXtLoadAccess1P"></span><span class="target" id="class_i_lx_loader1_1a163e035d67d91aead455ad3d0b56c900"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtLoadAccess1 *<em>load</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLoader17CleanupE11LXtObjectIDP14LXtLoadAccess1" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N10ILxLoader112SpawnOptionsE11LXtObjectIDPPv">
+<span id="_CPPv3N10ILxLoader112SpawnOptionsE11LXtObjectIDPPv"></span><span id="_CPPv2N10ILxLoader112SpawnOptionsE11LXtObjectIDPPv"></span><span id="ILxLoader1::SpawnOptions__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_loader1_1a941cf946d2e210980c9000518adfbf61"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SpawnOptions</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10ILxLoader112SpawnOptionsE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_item.html" class="btn btn-neutral float-right" title="Item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_intrange.html" class="btn btn-neutral float-left" title="Intrange" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_io.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:28 GMT -->
+</html>

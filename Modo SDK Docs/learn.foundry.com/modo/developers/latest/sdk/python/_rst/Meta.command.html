@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.command.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Meta.command &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Meta.drop" href="Meta.drop.html" />
+    <link rel="prev" title="Meta.channel" href="Meta.channel.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../python.html">Python Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Attrdesc.html">Attrdesc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.chanmod.html">Meta.chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.channel.html">Meta.channel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta.command</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command">Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customargument">CustomArgument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metaserver">MetaServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Meta_Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifierhost">NotifierHost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#impl-command">impl_Command</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.drop.html">Meta.drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.falloff.html">Meta.falloff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.modifier.html">Meta.modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.package.html">Meta.package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.schematic.html">Meta.schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Meta.select.html">Meta.select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vector.html">Vector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../python.html">Python Reference</a> &raquo;</li>
+        
+      <li>Meta.command</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meta-command">
+<h1>Meta.command<a class="headerlink" href="#meta-command" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#command" id="id3">Command</a></p></li>
+<li><p><a class="reference internal" href="#customargument" id="id4">CustomArgument</a></p></li>
+<li><p><a class="reference internal" href="#metaserver" id="id5">MetaServer</a></p></li>
+<li><p><a class="reference internal" href="#types" id="id6">Types</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id7">Meta_Command</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id8">Types</a></p></li>
+<li><p><a class="reference internal" href="#notifierhost" id="id9">NotifierHost</a></p></li>
+<li><p><a class="reference internal" href="#impl-command" id="id10">impl_Command</a></p></li>
+</ul>
+</div>
+<div class="section" id="command">
+<h2><a class="toc-backref" href="#id3">Command</a><a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.command.Command">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.command.</code><code class="sig-name descname">Command</code><a class="headerlink" href="#lxu.meta.command.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for defining Command servers. The client will
+subclass this base class, filling in the methods that they require.
+It’s then instantiated as a metaclass to be promoted to server.</p>
+<dl class="py method">
+<dt id="lxu.meta.command.Command.button_name">
+<code class="sig-name descname">button_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.button_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to return custom button or icon names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_add_notifier">
+<code class="sig-name descname">cmd_add_notifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_add_notifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to add a notifier for this command.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_arg_custom">
+<code class="sig-name descname">cmd_arg_custom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cust</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_arg_custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call during argument setup to customize the current argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_args">
+<code class="sig-name descname">cmd_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to access arguments directly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_error">
+<code class="sig-name descname">cmd_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">err</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to raise an error with optional message key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_exec_flags">
+<code class="sig-name descname">cmd_exec_flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_exec_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to get execution flags.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_interaction_ok">
+<code class="sig-name descname">cmd_interaction_ok</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">err</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_interaction_ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to test if interaction is OK. If error is true the command fails.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_message">
+<code class="sig-name descname">cmd_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to get the message for the command, or – if the key is set
+– set the message key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_read_args">
+<code class="sig-name descname">cmd_read_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_read_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to read all argument values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_read_args_isset">
+<code class="sig-name descname">cmd_read_args_isset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_read_args_isset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to read all argument ‘isset’ values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.cmd_set_arg">
+<code class="sig-name descname">cmd_set_arg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.cmd_set_arg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call to set the value of an argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.enabled">
+<code class="sig-name descname">enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to test if your command is enabled.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.execute">
+<code class="sig-name descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to execute your command.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.icon_name">
+<code class="sig-name descname">icon_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.icon_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to return custom button or icon names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.interact">
+<code class="sig-name descname">interact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.interact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to do user interaction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.notifiers">
+<code class="sig-name descname">notifiers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.notifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to add notifiers to your command.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.preflight">
+<code class="sig-name descname">preflight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.preflight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to test your command for execution before starting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Command.setup_args">
+<code class="sig-name descname">setup_args</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Command.setup_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to define command arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="customargument">
+<h2><a class="toc-backref" href="#id4">CustomArgument</a><a class="headerlink" href="#customargument" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.command.CustomArgument">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.command.</code><code class="sig-name descname">CustomArgument</code><a class="headerlink" href="#lxu.meta.command.CustomArgument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for implementing custom command argument behaviors.</p>
+<dl class="py method">
+<dt id="lxu.meta.command.CustomArgument.enabled">
+<code class="sig-name descname">enabled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.CustomArgument.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to enable or disable the argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.CustomArgument.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.CustomArgument.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to return a list of query results.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.CustomArgument.type">
+<code class="sig-name descname">type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.CustomArgument.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement to set the variable type.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="metaserver">
+<h2><a class="toc-backref" href="#id5">MetaServer</a><a class="headerlink" href="#metaserver" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.command.MetaServer">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.command.</code><code class="sig-name descname">MetaServer</code><a class="headerlink" href="#lxu.meta.command.MetaServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server meta node defines a plug-in server. The name and class guid
+must be specified, and the alloc() method (defined by the client, returns
+the server class. There is also a dictionary of server tags.</p>
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the signature for this metaclass. Depends on type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.MetaServer.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.MetaServer.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="types">
+<h2><a class="toc-backref" href="#id6">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id7">Meta_Command</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.command.Meta_Command">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.command.</code><code class="sig-name descname">Meta_Command</code><a class="headerlink" href="#lxu.meta.command.Meta_Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the metaclass for the Command server type.</p>
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another meta object as a child of this one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.add_notifier">
+<code class="sig-name descname">add_notifier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.add_notifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifiers that don’t vary with arguments can be added here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.add_tag">
+<code class="sig-name descname">add_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.add_tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.alloc">
+<code class="sig-name descname">alloc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.alloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal metaclass method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the contents of the meta node tree with indenting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.find_any">
+<code class="sig-name descname">find_any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em>, <em class="sig-param"><span class="n">miss</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.find_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a node with matching type/guid, searching first inside this node
+but searching higher up the tree until somthing matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.find_sub">
+<code class="sig-name descname">find_sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.find_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first node with a matching type/guid under this node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.flatten">
+<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this meta and all sub-metas in a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.get_ifcs">
+<code class="sig-name descname">get_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.get_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of interfaces matching the given guid under this node.
+The list is returned as tuples: ((class, meta), …)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.init_ifcs">
+<code class="sig-name descname">init_ifcs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.init_ifcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the _sub_ifcs attribute as a list of interfaces. If no
+guid is given we use the metaclass guid itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.pre_init">
+<code class="sig-name descname">pre_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.pre_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do any self-modification or other steps before initialization. Return
+true as long as there is more to do.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.set_type_UI">
+<code class="sig-name descname">set_type_UI</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.set_type_UI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.set_type_flags">
+<code class="sig-name descname">set_type_flags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.set_type_flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.set_type_model">
+<code class="sig-name descname">set_type_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.set_type_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.set_username">
+<code class="sig-name descname">set_username</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.set_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.Meta_Command.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">guid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.Meta_Command.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test this meta node against a type and guid and return true for match.
+All testing allows for type or guid to be None for wildcard.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">Types</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="notifierhost">
+<h2><a class="toc-backref" href="#id9">NotifierHost</a><a class="headerlink" href="#notifierhost" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.command.NotifierHost">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.command.</code><code class="sig-name descname">NotifierHost</code><a class="headerlink" href="#lxu.meta.command.NotifierHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility class for managing notifiers on a command.</p>
+<dl class="py method">
+<dt id="lxu.meta.command.NotifierHost.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.NotifierHost.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a notifier by name and args. It’s spawned and appended to the
+list, but only if there are no clients yet.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.NotifierHost.add_client">
+<code class="sig-name descname">add_client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.NotifierHost.add_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a client to all notifiers. It’s placed into a dictionary to
+prevent adding more than once.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.NotifierHost.rem_client">
+<code class="sig-name descname">rem_client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.NotifierHost.rem_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a client from all notifiers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.NotifierHost.set_arg">
+<code class="sig-name descname">set_arg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dyna</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.NotifierHost.set_arg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the notifiers associated with an argument of the command. This can
+only be done before clients are added, and only once.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="impl-command">
+<h2><a class="toc-backref" href="#id10">impl_Command</a><a class="headerlink" href="#impl-command" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="lxu.meta.command.impl_Command">
+<em class="property">class </em><code class="sig-prename descclassname">lxu.meta.command.</code><code class="sig-name descname">impl_Command</code><a class="headerlink" href="#lxu.meta.command.impl_Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>This internal class implements the actual Command server.
+It defers to the metaclass state and the client subclass for specific
+behaviors.</p>
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.arg_DisableMsg">
+<code class="sig-name descname">arg_DisableMsg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.arg_DisableMsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the argument is disabled, and set the message if any.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.arg_UIHints">
+<code class="sig-name descname">arg_UIHints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">hints</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.arg_UIHints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set hints for the argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.arg_UIValueHints">
+<code class="sig-name descname">arg_UIValueHints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.arg_UIValueHints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a UIValueHints object for the argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.atrui_DisableMsg">
+<code class="sig-name descname">atrui_DisableMsg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.atrui_DisableMsg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.atrui_UIHints">
+<code class="sig-name descname">atrui_UIHints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">hints</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.atrui_UIHints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.atrui_UIValueHints">
+<code class="sig-name descname">atrui_UIValueHints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.atrui_UIValueHints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_Count">
+<code class="sig-name descname">attr_Count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_Count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of attributes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_GetFlt">
+<code class="sig-name descname">attr_GetFlt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_GetFlt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_GetInt">
+<code class="sig-name descname">attr_GetInt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_GetInt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_GetString">
+<code class="sig-name descname">attr_GetString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_GetString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_Hints">
+<code class="sig-name descname">attr_Hints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_Hints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns hint vector for an attribute by index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_Lookup">
+<code class="sig-name descname">attr_Lookup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_Lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of an attribute given the name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_Name">
+<code class="sig-name descname">attr_Name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns name of an attribute by index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_SetFlt">
+<code class="sig-name descname">attr_SetFlt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_SetFlt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_SetInt">
+<code class="sig-name descname">attr_SetInt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_SetInt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_SetString">
+<code class="sig-name descname">attr_SetString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_SetString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_Type">
+<code class="sig-name descname">attr_Type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns basic type of an attribute by index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_TypeName">
+<code class="sig-name descname">attr_TypeName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_TypeName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns value type string of an attribute by index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.attr_Value">
+<code class="sig-name descname">attr_Value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">writeOK</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.attr_Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get value object for an attribute.
+If writeOK is true the value will be created if it doesn’t exist.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgClear">
+<code class="sig-name descname">cmd_ArgClear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgClear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgDesc">
+<code class="sig-name descname">cmd_ArgDesc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgDesc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgEnable">
+<code class="sig-name descname">cmd_ArgEnable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgEnable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgExample">
+<code class="sig-name descname">cmd_ArgExample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgExample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgFlags">
+<code class="sig-name descname">cmd_ArgFlags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgOptionDesc">
+<code class="sig-name descname">cmd_ArgOptionDesc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">optIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgOptionDesc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgOptionUserName">
+<code class="sig-name descname">cmd_ArgOptionUserName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">optIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgOptionUserName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgParseString">
+<code class="sig-name descname">cmd_ArgParseString</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argIndex</span></em>, <em class="sig-param"><span class="n">argString</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgParseString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgResetAll">
+<code class="sig-name descname">cmd_ArgResetAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgResetAll" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgSetDatatypes">
+<code class="sig-name descname">cmd_ArgSetDatatypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgSetDatatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgType">
+<code class="sig-name descname">cmd_ArgType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgTypeDesc">
+<code class="sig-name descname">cmd_ArgTypeDesc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgTypeDesc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgTypeUserName">
+<code class="sig-name descname">cmd_ArgTypeUserName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgTypeUserName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ArgUserName">
+<code class="sig-name descname">cmd_ArgUserName</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ArgUserName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ButtonName">
+<code class="sig-name descname">cmd_ButtonName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ButtonName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ContainedEnable">
+<code class="sig-name descname">cmd_ContainedEnable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ContainedEnable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Copy">
+<code class="sig-name descname">cmd_Copy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sourceCommand</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Desc">
+<code class="sig-name descname">cmd_Desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Desc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_DialogArgChange">
+<code class="sig-name descname">cmd_DialogArgChange</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_DialogArgChange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_DialogFormatting">
+<code class="sig-name descname">cmd_DialogFormatting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_DialogFormatting" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_DialogInit">
+<code class="sig-name descname">cmd_DialogInit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_DialogInit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Enable">
+<code class="sig-name descname">cmd_Enable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Enable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Example">
+<code class="sig-name descname">cmd_Example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Example" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Execute">
+<code class="sig-name descname">cmd_Execute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Flags">
+<code class="sig-name descname">cmd_Flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Help">
+<code class="sig-name descname">cmd_Help</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Icon">
+<code class="sig-name descname">cmd_Icon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Icon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_IconImage">
+<code class="sig-name descname">cmd_IconImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_IconImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Interact">
+<code class="sig-name descname">cmd_Interact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Interact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Message">
+<code class="sig-name descname">cmd_Message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Name">
+<code class="sig-name descname">cmd_Name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_NotifyAddClient">
+<code class="sig-name descname">cmd_NotifyAddClient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argidx</span></em>, <em class="sig-param"><span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_NotifyAddClient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_NotifyRemoveClient">
+<code class="sig-name descname">cmd_NotifyRemoveClient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_NotifyRemoveClient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_PostExecBehaviorFlags">
+<code class="sig-name descname">cmd_PostExecBehaviorFlags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_PostExecBehaviorFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_PostExecFlags">
+<code class="sig-name descname">cmd_PostExecFlags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_PostExecFlags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_PostExecHints">
+<code class="sig-name descname">cmd_PostExecHints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_PostExecHints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_PreExecute">
+<code class="sig-name descname">cmd_PreExecute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_PreExecute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Query">
+<code class="sig-name descname">cmd_Query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">vaQuery</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_SandboxGUID">
+<code class="sig-name descname">cmd_SandboxGUID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_SandboxGUID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Tag">
+<code class="sig-name descname">cmd_Tag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_ToggleArg">
+<code class="sig-name descname">cmd_ToggleArg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_ToggleArg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_Tooltip">
+<code class="sig-name descname">cmd_Tooltip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_Tooltip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.cmd_UserName">
+<code class="sig-name descname">cmd_UserName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.cmd_UserName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_Add">
+<code class="sig-name descname">dyna_Add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_Add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an attribute to the end of the attribute list.
+Takes a name and value type string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_Bool">
+<code class="sig-name descname">dyna_Bool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_Bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_Clear">
+<code class="sig-name descname">dyna_Clear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_Clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear a single argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_ClearAll">
+<code class="sig-name descname">dyna_ClearAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_ClearAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all arguments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_Float">
+<code class="sig-name descname">dyna_Float</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_Float" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_GetFlags">
+<code class="sig-name descname">dyna_GetFlags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_GetFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the argument flags. This computes the VALUE_SET flag dynamically.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_GetType">
+<code class="sig-name descname">dyna_GetType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_GetType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_HasVariable">
+<code class="sig-name descname">dyna_HasVariable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_HasVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if any arguments have variable type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_Int">
+<code class="sig-name descname">dyna_Int</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_Int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_IsSet">
+<code class="sig-name descname">dyna_IsSet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_IsSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the attribute value is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_SetFlags">
+<code class="sig-name descname">dyna_SetFlags</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_SetFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the optional flags int for an attribute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_SetHint">
+<code class="sig-name descname">dyna_SetHint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">hint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_SetHint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the optional hint vector for an attribute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_SetType">
+<code class="sig-name descname">dyna_SetType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_SetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the value type for an attribute by index.
+Setting it to None clears the stored value without changing the type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_SetVariable">
+<code class="sig-name descname">dyna_SetVariable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_SetVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the type of all arguments that have variable type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lxu.meta.command.impl_Command.dyna_String">
+<code class="sig-name descname">dyna_String</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lxu.meta.command.impl_Command.dyna_String" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Meta.drop.html" class="btn btn-neutral float-right" title="Meta.drop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Meta.channel.html" class="btn btn-neutral float-left" title="Meta.channel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/python/_rst/Meta.command.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:27 GMT -->
+</html>

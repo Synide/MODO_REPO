@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/ChangeRenderFrameRange Script.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ChangeRenderFrameRange Script &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Layerservice" href="Layerservice.html" />
+    <link rel="prev" title="Bouncing Ball Script (Transform Channels)" href="Bouncing%20Ball%20Script%20(Transform%20Channels).html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_scripting.html">Scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppleScript.html">AppleScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bouncing%20Ball%20Script%20(Transform%20Channels).html">Bouncing Ball Script (Transform Channels)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ChangeRenderFrameRange Script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Layerservice.html">Layerservice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lua.html">Lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Macros.html">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Script%20lua.html">Script lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Interface%20701%20Updates.html">ScriptQuery Interface 701 Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScriptQuery%20Overview.html">ScriptQuery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting.html">Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scripting%20Preview.html">Scripting Preview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_scripting.html">Scripting</a> &raquo;</li>
+        
+      <li>ChangeRenderFrameRange Script</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="changerenderframerange-script">
+<h1>ChangeRenderFrameRange Script<a class="headerlink" href="#changerenderframerange-script" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#more-information" id="id1">More Information</a></p></li>
+</ul>
+</div>
+<p>This simple script changes the first frame, last frame and frame step of the first render item in the scene. This is a bit easier than calling three separate item.channel commands and making sure that the first render item is actually selected.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="nv">@ChangeRenderFrameRange</span><span class="o">.</span><span class="n">pl</span> <span class="n">first</span> <span class="k">last</span> <span class="sr">&lt;step&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>@ChangeRenderFrameRange.lua first last &lt;step&gt;
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@ChangeRenderFrameRange</span><span class="o">.</span><span class="n">py</span> <span class="n">first</span> <span class="n">last</span> <span class="o">&lt;</span><span class="n">step</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first and last frame arguments are required, while the frame step is optional. This sets the first frame to 1 and the last frame to 60.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="nv">@ChangeRenderFrameRange</span><span class="o">.</span><span class="n">pl</span> <span class="mi">1</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>@ChangeRenderFrameRange.lua 1 60
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@ChangeRenderFrameRange</span><span class="o">.</span><span class="n">py</span> <span class="mi">1</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This script could be simplified by directly selecting the render items with select.itemType, but this extended version can be used as a framework for other scripts that operate on item types.</p>
+<div class="content-tabs docutils container">
+<div class="tab-content docutils container" id="tab-perl">
+<p class="tab-title">Perl</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="c1"># perl</span>
+<span class="c1">#</span>
+<span class="c1"># ChangeRenderFrameRange.pl</span>
+<span class="c1">#  Joe Angell, Luxology LLC</span>
+<span class="c1">#  Copyright (c) 2008 Luxology, LLC. All Rights Reserved.</span>
+<span class="c1">#   Patents pending.</span>
+<span class="c1">#</span>
+<span class="c1"># Changes the render frame range for the first render item</span>
+<span class="c1">#  in the scene.</span>
+
+<span class="c1"># Make sure we have our arguments</span>
+<span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="nv">$#ARGV</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nv">$#ARGV</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">lxout</span><span class="p">(</span> <span class="s">&quot;Usage: \@ChangeRenderFrameRange.pl first last &lt;step&gt;&quot;</span> <span class="p">);</span>
+    <span class="n">lxout</span><span class="p">(</span> <span class="s">&quot;Changes the render frame range for the first render item in the scene.&quot;</span> <span class="p">);</span>
+    <span class="n">lxout</span><span class="p">(</span> <span class="s">&quot;First and last frame are required; frame step is optional.&quot;</span> <span class="p">);</span>
+    <span class="nb">die</span><span class="p">(</span> <span class="s">&quot;Missing required first and last frame arguments&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"># Get the item count</span>
+<span class="k">my</span> <span class="nv">$n</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query sceneservice item.N ?&quot;</span> <span class="p">);</span>
+
+<span class="c1"># Loop through the items in the scene, looking for output items</span>
+<span class="k">for</span><span class="p">(</span> <span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$n</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="nv">$type</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query sceneservice item.type ? $i&quot;</span> <span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nv">$type</span> <span class="ow">eq</span> <span class="s">&quot;polyRender&quot;</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Get the item ID</span>
+        <span class="nv">$itemID</span> <span class="o">=</span> <span class="n">lxq</span><span class="p">(</span> <span class="s">&quot;query sceneservice item.id ? $i&quot;</span> <span class="p">);</span>
+        <span class="c1">#lxout( &quot;Item ID:  $itemID&quot; );</span>
+
+        <span class="c1"># Select the item</span>
+        <span class="n">lx</span><span class="p">(</span> <span class="s">&quot;select.item $itemID&quot;</span> <span class="p">);</span>
+
+        <span class="c1"># Set the first frame</span>
+        <span class="n">lx</span><span class="p">(</span> <span class="s">&quot;item.channel polyRender\$first $ARGV[0]&quot;</span> <span class="p">);</span>
+
+        <span class="c1"># Set the last frame</span>
+        <span class="n">lx</span><span class="p">(</span> <span class="s">&quot;item.channel polyRender\$last $ARGV[1]&quot;</span> <span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$#ARGV</span><span class="o">==</span><span class="mi">3</span><span class="p">){</span>
+            <span class="c1"># Set the frame step</span>
+            <span class="n">lx</span><span class="p">(</span> <span class="s">&quot;item.channel polyRender\$step $ARGV[2]&quot;</span> <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-lua">
+<p class="tab-title">Lua</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span>-- lua
+--
+-- ChangeRenderFrameRange.lua
+--  Joe Angell, Luxology LLC
+--  Copyright (c) 2008 Luxology, LLC. All Rights Reserved.
+--   Patents pending.
+--
+-- Changes the render frame range for the first render item
+--  in the scene.
+
+-- Make sure we have our arguments
+if( (#arg != 1) &amp;&amp; (#arg != 2) ) {
+    lxout( &quot;Usage: @ChangeRenderFrameRange.lua first last &lt;step&gt;&quot; );
+    lxout( &quot;Changes the render frame range for the first render item in the scene.&quot; );
+    lxout( &quot;First and last frame are required; frame step is optional.&quot; );
+    error( &quot;Missing required first and last frame arguments&quot; );
+}
+
+-- Get the item count
+n = lxq( &quot;query sceneservice item.N ?&quot; );
+
+-- Loop through the items in the scene, looking for output items
+for i=0,n do
+    type = lxq( &quot;query sceneservice item.type ? &quot;..i );
+    if type == &quot;polyRender&quot; then
+        -- Get the item ID
+        itemID = lxq( &quot;query sceneservice item.id ? &quot;..i );
+        -- lxout( &quot;Item ID:  &quot;..itemID );
+
+        -- Select the item
+        lx( &quot;select.item &quot;..itemID );
+
+        -- Set the first frame
+        lx( &quot;item.channel polyRender$first &quot;..arg[1] );
+
+        -- Set the last frame
+        lx( &quot;item.channel polyRender$last &quot;..arg[2] );
+
+        if #arg==3 then
+            -- Set the frame step
+            lx( &quot;item.channel polyRender$step &quot;..arg[3]&quot; );
+        end
+
+        break;
+    end
+end
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tab-python">
+<p class="tab-title">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#python</span>
+<span class="c1">#</span>
+<span class="c1"># ChangeRenderFrameRange.py</span>
+<span class="c1">#  Joe Angell, Luxology LLC</span>
+<span class="c1">#  Copyright (c) 2008 Luxology, LLC. All Rights Reserved.</span>
+<span class="c1">#   Patents pending.</span>
+<span class="c1">#</span>
+<span class="c1"># Changes the render frame range for the first render item</span>
+<span class="c1">#  in the scene.</span>
+
+<span class="c1"># Make sure we have our arguments</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">args</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="s2">&quot;Usage: @ChangeRenderFrameRange.py first last &lt;step&gt;&quot;</span> <span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="s2">&quot;Changes the render frame range for the first render item in the scene.&quot;</span> <span class="p">)</span>
+    <span class="n">lx</span><span class="o">.</span><span class="n">out</span><span class="p">(</span> <span class="s2">&quot;First and last frame are required; frame step is optional.&quot;</span> <span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span> <span class="s2">&quot;LXe_INVALIDARG:Missing required first and last frame arguments&quot;</span> <span class="p">)</span>
+
+<span class="c1"># Get the item count</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval1</span><span class="p">(</span> <span class="s2">&quot;query sceneservice item.N ?&quot;</span> <span class="p">)</span>
+
+<span class="c1"># Loop through the items in the scene, looking for output items</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">itemtype</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span> <span class="s2">&quot;query sceneservice item.type ? </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span> <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">itemtype</span> <span class="o">==</span> <span class="s2">&quot;polyRender&quot;</span><span class="p">:</span>
+        <span class="c1"># Get the item ID</span>
+        <span class="n">itemID</span> <span class="o">=</span> <span class="n">lx</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span> <span class="s2">&quot;query sceneservice item.id ?&quot;</span><span class="p">)</span>
+        <span class="c1"># lx.out( &quot;Item ID:  &quot;, itemID )</span>
+
+        <span class="c1"># Select the item</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;select.item&quot;</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="n">itemID</span> <span class="p">)</span>
+
+        <span class="c1"># Set the first frame</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;item.channel&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;polyRender$first&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+        <span class="c1"># Set the last frame</span>
+        <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;item.channel&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;polyRender$last&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="c1"># Set the frame step</span>
+            <span class="n">lx</span><span class="o">.</span><span class="n">command</span><span class="p">(</span> <span class="s2">&quot;item.channel&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;polyRender$step&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="more-information">
+<h2><a class="toc-backref" href="#id1">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Scripting.html"><span class="doc">Scripting</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+<li><p><a class="reference internal" href="../ui/User%20Values.html"><span class="doc">User Values</span></a></p></li>
+<li><p><a class="reference internal" href="ScriptQuery%20Overview.html"><span class="doc">ScriptQuery Overview</span></a></p></li>
+<li><p><a class="reference internal" href="../ui/Form%20System.html"><span class="doc">Form System</span></a></p></li>
+<li><p>Script Examples</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Layerservice.html" class="btn btn-neutral float-right" title="Layerservice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Bouncing%20Ball%20Script%20(Transform%20Channels).html" class="btn btn-neutral float-left" title="Bouncing Ball Script (Transform Channels)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/scripting/ChangeRenderFrameRange Script.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:00 GMT -->
+</html>

@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_colormapping.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Colormapping &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Com" href="lxd_com.html" />
+    <link rel="prev" title="Color" href="lxd_color.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Colormapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolormappingmodule">ILxColorMappingModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolormapping">ILxColorMapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolormapping1">ILxColorMapping1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolormappingservice">ILxColorMappingService</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_predest.html">Predest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Colormapping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="colormapping">
+<h1>Colormapping<a class="headerlink" href="#colormapping" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxcolormappingmodule" id="id1">ILxColorMappingModule</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolormapping" id="id2">ILxColorMapping</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolormapping1" id="id3">ILxColorMapping1</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolormappingservice" id="id4">ILxColorMappingService</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxcolormappingmodule">
+<h2><a class="toc-backref" href="#id1">ILxColorMappingModule</a><a class="headerlink" href="#ilxcolormappingmodule" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv421ILxColorMappingModule">
+<span id="_CPPv321ILxColorMappingModule"></span><span id="_CPPv221ILxColorMappingModule"></span><span id="ILxColorMappingModule"></span><span class="target" id="class_i_lx_color_mapping_module"></span><em class="property">class </em><code class="sig-name descname">ILxColorMappingModule</code><a class="headerlink" href="#_CPPv421ILxColorMappingModule" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N21ILxColorMappingModule5FlagsE11LXtObjectID">
+<span id="_CPPv3N21ILxColorMappingModule5FlagsE11LXtObjectID"></span><span id="_CPPv2N21ILxColorMappingModule5FlagsE11LXtObjectID"></span><span id="ILxColorMappingModule::Flags__LXtObjectID"></span><span class="target" id="class_i_lx_color_mapping_module_1a7e273bfff8a9f80efeb3a43ba5173d46"></span>unsigned <code class="sig-name descname">Flags</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21ILxColorMappingModule5FlagsE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>CMS_GPU_LUT3D_EDGE_SIZE</p></li>
+</ul>
+</div>
+<div class="section" id="ilxcolormapping">
+<h2><a class="toc-backref" href="#id2">ILxColorMapping</a><a class="headerlink" href="#ilxcolormapping" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxColorMapping">
+<span id="_CPPv315ILxColorMapping"></span><span id="_CPPv215ILxColorMapping"></span><span id="ILxColorMapping"></span><span class="target" id="class_i_lx_color_mapping"></span><em class="property">class </em><code class="sig-name descname">ILxColorMapping</code><a class="headerlink" href="#_CPPv415ILxColorMapping" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping5SetupE11LXtObjectIDi">
+<span id="_CPPv3N15ILxColorMapping5SetupE11LXtObjectIDi"></span><span id="_CPPv2N15ILxColorMapping5SetupE11LXtObjectIDi"></span><span id="ILxColorMapping::Setup__LXtObjectID.i"></span><span class="target" id="class_i_lx_color_mapping_1a72e25e1d7aa1fc5def8ee74f74921fa5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Setup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>toLinear</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping5SetupE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping8ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj">
+<span id="_CPPv3N15ILxColorMapping8ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="_CPPv2N15ILxColorMapping8ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="ILxColorMapping::ToLinear__LXtObjectID.LXtFVectorC.LXtFVector.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping_1a72cb8ade99dd3ea9939d9ef7f8ce9e51"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLinear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>sourceValues</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>linearValues</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping8ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping10FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj">
+<span id="_CPPv3N15ILxColorMapping10FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="_CPPv2N15ILxColorMapping10FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="ILxColorMapping::FromLinear__LXtObjectID.LXtFVectorC.LXtFVector.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping_1a8c72bde2716602ecbae272b7475855fe"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromLinear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>linearValues</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>targetValues</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping10FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping12ToLinearFastE11LXtObjectIDPfj">
+<span id="_CPPv3N15ILxColorMapping12ToLinearFastE11LXtObjectIDPfj"></span><span id="_CPPv2N15ILxColorMapping12ToLinearFastE11LXtObjectIDPfj"></span><span id="ILxColorMapping::ToLinearFast__LXtObjectID.floatP.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping_1a36ccd691b4d5cff5476181b92a438872"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLinearFast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>buf</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping12ToLinearFastE11LXtObjectIDPfj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping14FromLinearFastE11LXtObjectIDPfj">
+<span id="_CPPv3N15ILxColorMapping14FromLinearFastE11LXtObjectIDPfj"></span><span id="_CPPv2N15ILxColorMapping14FromLinearFastE11LXtObjectIDPfj"></span><span id="ILxColorMapping::FromLinearFast__LXtObjectID.floatP.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping_1ac142be772261466a63f4209d0cc6a1a7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromLinearFast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>buf</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping14FromLinearFastE11LXtObjectIDPfj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping11GetLUTImageE11LXtObjectIDPPf">
+<span id="_CPPv3N15ILxColorMapping11GetLUTImageE11LXtObjectIDPPf"></span><span id="_CPPv2N15ILxColorMapping11GetLUTImageE11LXtObjectIDPPf"></span><span id="ILxColorMapping::GetLUTImage__LXtObjectID.floatPP"></span><span class="target" id="class_i_lx_color_mapping_1ad26b7998e0995c0b98f98995772620b1"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetLUTImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float **<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping11GetLUTImageE11LXtObjectIDPPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping15GetShaderSourceE11LXtObjectIDPPc">
+<span id="_CPPv3N15ILxColorMapping15GetShaderSourceE11LXtObjectIDPPc"></span><span id="_CPPv2N15ILxColorMapping15GetShaderSourceE11LXtObjectIDPPc"></span><span id="ILxColorMapping::GetShaderSource__LXtObjectID.cPP"></span><span class="target" id="class_i_lx_color_mapping_1aa4554f3ffdf2b8f5c154cbbc3fd4a7af"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetShaderSource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char **<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping15GetShaderSourceE11LXtObjectIDPPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping7GetNameE11LXtObjectID">
+<span id="_CPPv3N15ILxColorMapping7GetNameE11LXtObjectID"></span><span id="_CPPv2N15ILxColorMapping7GetNameE11LXtObjectID"></span><span id="ILxColorMapping::GetName__LXtObjectID"></span><span class="target" id="class_i_lx_color_mapping_1a52ba6fe3a10d710f1890645907b7c9cd"></span><em class="property">const</em> char *<code class="sig-name descname">GetName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping7GetNameE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping15GetCMServerNameE11LXtObjectID">
+<span id="_CPPv3N15ILxColorMapping15GetCMServerNameE11LXtObjectID"></span><span id="_CPPv2N15ILxColorMapping15GetCMServerNameE11LXtObjectID"></span><span id="ILxColorMapping::GetCMServerName__LXtObjectID"></span><span class="target" id="class_i_lx_color_mapping_1ae5b2707c3bc14101d1e112b3609a3a89"></span><em class="property">const</em> char *<code class="sig-name descname">GetCMServerName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping15GetCMServerNameE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorMapping18GenerateICCProfileE11LXtObjectIDPj">
+<span id="_CPPv3N15ILxColorMapping18GenerateICCProfileE11LXtObjectIDPj"></span><span id="_CPPv2N15ILxColorMapping18GenerateICCProfileE11LXtObjectIDPj"></span><span id="ILxColorMapping::GenerateICCProfile__LXtObjectID.unsigned-iP"></span><span class="target" id="class_i_lx_color_mapping_1ab3aa9b900b71f32b53f188fde78ef899"></span>unsigned char *<code class="sig-name descname">GenerateICCProfile</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned int *<em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorMapping18GenerateICCProfileE11LXtObjectIDPj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcolormapping1">
+<h2><a class="toc-backref" href="#id3">ILxColorMapping1</a><a class="headerlink" href="#ilxcolormapping1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxColorMapping1">
+<span id="_CPPv316ILxColorMapping1"></span><span id="_CPPv216ILxColorMapping1"></span><span id="ILxColorMapping1"></span><span class="target" id="class_i_lx_color_mapping1"></span><em class="property">class </em><code class="sig-name descname">ILxColorMapping1</code><a class="headerlink" href="#_CPPv416ILxColorMapping1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><p> Old ColorMapping interface </p>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping15SetupE11LXtObjectIDi">
+<span id="_CPPv3N16ILxColorMapping15SetupE11LXtObjectIDi"></span><span id="_CPPv2N16ILxColorMapping15SetupE11LXtObjectIDi"></span><span id="ILxColorMapping1::Setup__LXtObjectID.i"></span><span class="target" id="class_i_lx_color_mapping1_1a00d8a98b6e38150e48c627ff21a57c83"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Setup</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>toLinear</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping15SetupE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping18ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj">
+<span id="_CPPv3N16ILxColorMapping18ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="_CPPv2N16ILxColorMapping18ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="ILxColorMapping1::ToLinear__LXtObjectID.LXtFVectorC.LXtFVector.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping1_1a1d2be658b5e728795bacbd4e588fd9e6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLinear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>sourceValues</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>linearValues</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping18ToLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping110FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj">
+<span id="_CPPv3N16ILxColorMapping110FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="_CPPv2N16ILxColorMapping110FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj"></span><span id="ILxColorMapping1::FromLinear__LXtObjectID.LXtFVectorC.LXtFVector.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping1_1ad1fb006c3a480bb53d93ac575fe77f8f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromLinear</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>linearValues</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtFVector" title="LXtFVector">LXtFVector</a> <em>targetValues</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping110FromLinearE11LXtObjectIDK10LXtFVector10LXtFVectorj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping112ToLinearFastE11LXtObjectIDPfj">
+<span id="_CPPv3N16ILxColorMapping112ToLinearFastE11LXtObjectIDPfj"></span><span id="_CPPv2N16ILxColorMapping112ToLinearFastE11LXtObjectIDPfj"></span><span id="ILxColorMapping1::ToLinearFast__LXtObjectID.floatP.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping1_1a83e58b983571828395a897867dc15ec0"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ToLinearFast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>buf</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping112ToLinearFastE11LXtObjectIDPfj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping114FromLinearFastE11LXtObjectIDPfj">
+<span id="_CPPv3N16ILxColorMapping114FromLinearFastE11LXtObjectIDPfj"></span><span id="_CPPv2N16ILxColorMapping114FromLinearFastE11LXtObjectIDPfj"></span><span id="ILxColorMapping1::FromLinearFast__LXtObjectID.floatP.unsigned-i"></span><span class="target" id="class_i_lx_color_mapping1_1a8b71506508ed01f794df623332430920"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">FromLinearFast</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float *<em>buf</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping114FromLinearFastE11LXtObjectIDPfj" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping111GetLUTImageE11LXtObjectIDPPf">
+<span id="_CPPv3N16ILxColorMapping111GetLUTImageE11LXtObjectIDPPf"></span><span id="_CPPv2N16ILxColorMapping111GetLUTImageE11LXtObjectIDPPf"></span><span id="ILxColorMapping1::GetLUTImage__LXtObjectID.floatPP"></span><span class="target" id="class_i_lx_color_mapping1_1a9376c372da3714591dfdeb3efa072349"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetLUTImage</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, float **<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping111GetLUTImageE11LXtObjectIDPPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping115GetShaderSourceE11LXtObjectIDPPc">
+<span id="_CPPv3N16ILxColorMapping115GetShaderSourceE11LXtObjectIDPPc"></span><span id="_CPPv2N16ILxColorMapping115GetShaderSourceE11LXtObjectIDPPc"></span><span id="ILxColorMapping1::GetShaderSource__LXtObjectID.cPP"></span><span class="target" id="class_i_lx_color_mapping1_1a036707a670c08aac86c72287701067ca"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetShaderSource</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, char **<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping115GetShaderSourceE11LXtObjectIDPPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxColorMapping17GetNameE11LXtObjectID">
+<span id="_CPPv3N16ILxColorMapping17GetNameE11LXtObjectID"></span><span id="_CPPv2N16ILxColorMapping17GetNameE11LXtObjectID"></span><span id="ILxColorMapping1::GetName__LXtObjectID"></span><span class="target" id="class_i_lx_color_mapping1_1a4c81cfae70634efca757557c5f960239"></span><em class="property">const</em> char *<code class="sig-name descname">GetName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxColorMapping17GetNameE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcolormappingservice">
+<h2><a class="toc-backref" href="#id4">ILxColorMappingService</a><a class="headerlink" href="#ilxcolormappingservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv422ILxColorMappingService">
+<span id="_CPPv322ILxColorMappingService"></span><span id="_CPPv222ILxColorMappingService"></span><span id="ILxColorMappingService"></span><span class="target" id="class_i_lx_color_mapping_service"></span><em class="property">class </em><code class="sig-name descname">ILxColorMappingService</code><a class="headerlink" href="#_CPPv422ILxColorMappingService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The color mapping service allows color mapping items to be enumerated and created. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService16MakeColorMappingE11LXtObjectIDPKciPPv">
+<span id="_CPPv3N22ILxColorMappingService16MakeColorMappingE11LXtObjectIDPKciPPv"></span><span id="_CPPv2N22ILxColorMappingService16MakeColorMappingE11LXtObjectIDPKciPPv"></span><span id="ILxColorMappingService::MakeColorMapping__LXtObjectID.cCP.i.voidPP"></span><span class="target" id="class_i_lx_color_mapping_service_1a93b39ebbe1e3d961972866d6d6e888a4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MakeColorMapping</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>colorspaceName</em>, int <em>toLinear</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService16MakeColorMappingE11LXtObjectIDPKciPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService11ConfigCountE11LXtObjectID">
+<span id="_CPPv3N22ILxColorMappingService11ConfigCountE11LXtObjectID"></span><span id="_CPPv2N22ILxColorMappingService11ConfigCountE11LXtObjectID"></span><span id="ILxColorMappingService::ConfigCount__LXtObjectID"></span><span class="target" id="class_i_lx_color_mapping_service_1acafb593964fe94faf849a1c59b2b8f82"></span>int <code class="sig-name descname">ConfigCount</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService11ConfigCountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService10ConfigNameE11LXtObjectIDiPPKc">
+<span id="_CPPv3N22ILxColorMappingService10ConfigNameE11LXtObjectIDiPPKc"></span><span id="_CPPv2N22ILxColorMappingService10ConfigNameE11LXtObjectIDiPPKc"></span><span id="ILxColorMappingService::ConfigName__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_color_mapping_service_1ad53e14d4c35d9139ac9695e36e1ef6c2"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ConfigName</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>configName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService10ConfigNameE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService14ConfigFullPathE11LXtObjectIDiPPKc">
+<span id="_CPPv3N22ILxColorMappingService14ConfigFullPathE11LXtObjectIDiPPKc"></span><span id="_CPPv2N22ILxColorMappingService14ConfigFullPathE11LXtObjectIDiPPKc"></span><span id="ILxColorMappingService::ConfigFullPath__LXtObjectID.i.cCPP"></span><span class="target" id="class_i_lx_color_mapping_service_1a197fa3626679a567e67b837ae0a0c600"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ConfigFullPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>index</em>, <em class="property">const</em> char **<em>configPath</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService14ConfigFullPathE11LXtObjectIDiPPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService27RegisterColorspaceForConfigE11LXtObjectIDPKcPKc">
+<span id="_CPPv3N22ILxColorMappingService27RegisterColorspaceForConfigE11LXtObjectIDPKcPKc"></span><span id="_CPPv2N22ILxColorMappingService27RegisterColorspaceForConfigE11LXtObjectIDPKcPKc"></span><span id="ILxColorMappingService::RegisterColorspaceForConfig__LXtObjectID.cCP.cCP"></span><span class="target" id="class_i_lx_color_mapping_service_1a4f695d9b52db157879b369d05fcd3fda"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">RegisterColorspaceForConfig</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>configName</em>, <em class="property">const</em> char *<em>colorspaceName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService27RegisterColorspaceForConfigE11LXtObjectIDPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService22GetDisplayColorMappingE11LXtObjectIDPPv">
+<span id="_CPPv3N22ILxColorMappingService22GetDisplayColorMappingE11LXtObjectIDPPv"></span><span id="_CPPv2N22ILxColorMappingService22GetDisplayColorMappingE11LXtObjectIDPPv"></span><span id="ILxColorMappingService::GetDisplayColorMapping__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_color_mapping_service_1aa4a391a01c92ab5af413ef3c362c91c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetDisplayColorMapping</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService22GetDisplayColorMappingE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the color mapping used for displaying colors in the interface. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N22ILxColorMappingService22GetNumericColorMappingE11LXtObjectIDPPv">
+<span id="_CPPv3N22ILxColorMappingService22GetNumericColorMappingE11LXtObjectIDPPv"></span><span id="_CPPv2N22ILxColorMappingService22GetNumericColorMappingE11LXtObjectIDPPv"></span><span id="ILxColorMappingService::GetNumericColorMapping__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_color_mapping_service_1a5013a1c2756742d3b982216bf312f1e5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetNumericColorMapping</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22ILxColorMappingService22GetNumericColorMappingE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the color mapping used for numeric values in the interface. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_com.html" class="btn btn-neutral float-right" title="Com" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_color.html" class="btn btn-neutral float-left" title="Color" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_colormapping.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

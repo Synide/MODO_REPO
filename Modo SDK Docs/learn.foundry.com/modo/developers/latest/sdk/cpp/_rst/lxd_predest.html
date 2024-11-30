@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_predest.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Predest &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Pretype" href="lxd_pretype.html" />
+    <link rel="prev" title="Poly" href="lxd_poly.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lxd_action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_actionclip.html">Actionclip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_anim.html">Anim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_arrayui.html">Arrayui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_canvasitem.html">Canvasitem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_chanmod.html">Chanmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_channelui.html">Channelui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_clip.html">Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_cliped.html">Cliped</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_color.html">Color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_colormapping.html">Colormapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_com.html">Com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_command.html">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_customview.html">Customview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_deform.html">Deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_dirbrowse.html">Dirbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_draw.html">Draw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drawover.html">Drawover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_drop.html">Drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_envelope.html">Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_externalrender.html">Externalrender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_file.html">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_force.html">Force</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_formsys.html">Formsys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_generic.html">Generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_group.html">Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_groupui.html">Groupui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_handles.html">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_imagemon.html">Imagemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_inputmap.html">Inputmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_intrange.html">Intrange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_io.html">Io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_item.html">Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_itemui.html">Itemui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listcache.html">Listcache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_locator.html">Locator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_log.html">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_media.html">Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_mesh.html">Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_network.html">Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_notify.html">Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_particle.html">Particle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_persist.html">Persist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pmodel.html">Pmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_poly.html">Poly</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Predest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ilxshaderpredest">ILxShaderPreDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxmeshlayerpredest">ILxMeshLayerPreDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxsceneitempredest">ILxSceneItemPreDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxprofile1dpredest">ILxProfile1DPreDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxprofile1dpredest1">ILxProfile1DPreDest1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxprofile2dpredest">ILxProfile2DPreDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxprofile2dpredest1">ILxProfile2DPreDest1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxcolorpredest">ILxColorPreDest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ilxpresetdestinationservice">ILxPresetDestinationService</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pretype.html">Pretype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_preview.html">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_previewsocket.html">Previewsocket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_projdir.html">Projdir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_pvedit.html">Pvedit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_raycast.html">Raycast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_render.html">Render</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rendercache.html">Rendercache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_rndjob.html">Rndjob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_schematic.html">Schematic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_select.html">Select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_seltypes.html">Seltypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shade.html">Shade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_shdr.html">Shdr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_stddialog.html">Stddialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_surface.html">Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tableau.html">Tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thread.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_thumbbrowse.html">Thumbbrowse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_toolui.html">Toolui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_tree.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_treeview.html">Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_trisurf.html">Trisurf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_txtr.html">Txtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_uiimage.html">Uiimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_undo.html">Undo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_value.html">Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_variation.html">Variation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vectortools.html">Vectortools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vertex.html">Vertex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewobject.html">Viewobject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_viewportframe.html">Viewportframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmath.html">Vmath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vmodel.html">Vmodel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_volume.html">Volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lxd_vp.html">Vp</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cpp.html">C++ Reference</a> &raquo;</li>
+        
+      <li>Predest</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="predest">
+<h1>Predest<a class="headerlink" href="#predest" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#ilxshaderpredest" id="id1">ILxShaderPreDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxmeshlayerpredest" id="id2">ILxMeshLayerPreDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxsceneitempredest" id="id3">ILxSceneItemPreDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxprofile1dpredest" id="id4">ILxProfile1DPreDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxprofile1dpredest1" id="id5">ILxProfile1DPreDest1</a></p></li>
+<li><p><a class="reference internal" href="#ilxprofile2dpredest" id="id6">ILxProfile2DPreDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxprofile2dpredest1" id="id7">ILxProfile2DPreDest1</a></p></li>
+<li><p><a class="reference internal" href="#ilxcolorpredest" id="id8">ILxColorPreDest</a></p></li>
+<li><p><a class="reference internal" href="#ilxpresetdestinationservice" id="id9">ILxPresetDestinationService</a></p></li>
+</ul>
+</div>
+<div class="section" id="ilxshaderpredest">
+<h2><a class="toc-backref" href="#id1">ILxShaderPreDest</a><a class="headerlink" href="#ilxshaderpredest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv416ILxShaderPreDest">
+<span id="_CPPv316ILxShaderPreDest"></span><span id="_CPPv216ILxShaderPreDest"></span><span id="ILxShaderPreDest"></span><span class="target" id="class_i_lx_shader_pre_dest"></span><em class="property">class </em><code class="sig-name descname">ILxShaderPreDest</code><a class="headerlink" href="#_CPPv416ILxShaderPreDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Item presets are .LXP (IFF LXPR) files that require a destination item and/or scene to apply themselves, usually somewhere in a shader tree. The presets store a primary item, and possibly also linked or child items. Their destination requirements are identified based on the type of the primary item, which will typically be a material item, or a group/mask item with material, texture(s), etc. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N16ILxShaderPreDest5SceneE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxShaderPreDest5SceneE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxShaderPreDest5SceneE11LXtObjectIDPPv"></span><span id="ILxShaderPreDest::Scene__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_shader_pre_dest_1ae39249900f326c1bc1336aab4de44fe6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Scene</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxShaderPreDest5SceneE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The shader preset may need a scene to load into, if it was no item is directly applicable. In this case, the contents of the preset will simply be added to the scene. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxShaderPreDest4ItemE11LXtObjectIDPiPPv">
+<span id="_CPPv3N16ILxShaderPreDest4ItemE11LXtObjectIDPiPPv"></span><span id="_CPPv2N16ILxShaderPreDest4ItemE11LXtObjectIDPiPPv"></span><span id="ILxShaderPreDest::Item__LXtObjectID.iP.voidPP"></span><span class="target" id="class_i_lx_shader_pre_dest_1a535b6d0edb45b6912d9f8546531d25c6"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>mode</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxShaderPreDest4ItemE11LXtObjectIDPiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The destination item will ‘receive’ the preset, and either have some channels changed, or have some items added as children, or possibly, have its children all killed, and replaced by new children that it must love just as much. The mode argument gives the loader’s Apply method a hint about how to treat the destination content. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxShaderPreDest13ContainerItemE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxShaderPreDest13ContainerItemE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxShaderPreDest13ContainerItemE11LXtObjectIDPPv"></span><span id="ILxShaderPreDest::ContainerItem__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_shader_pre_dest_1adc2c523cb74f48e76dcc211727a6fbbc"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ContainerItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxShaderPreDest13ContainerItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the parent or container for the the destination item. In most cases, this is simply the scene’s render item, and if this method returns NOT_IMPLEMENTED, the client can just find the first render item in the scene, as so much other code does. It will often be useful however, to provide a container group for the preset. In the case of a material preset, this could specify the group into which the material should be added, (though the Item should have returned a material in this group…). For a group preset, the group would be added inside the container, which will let a preset import be encapsulated by the client. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxShaderPreDest7HitItemE11LXtObjectIDPPv">
+<span id="_CPPv3N16ILxShaderPreDest7HitItemE11LXtObjectIDPPv"></span><span id="_CPPv2N16ILxShaderPreDest7HitItemE11LXtObjectIDPPv"></span><span id="ILxShaderPreDest::HitItem__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_shader_pre_dest_1acc49c31a31e9a18790f06d064c0f9215"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">HitItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxShaderPreDest7HitItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the geometry item the preset was dropped on. This may be NULL if the preset wasn’t dropped on actual geometry. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxShaderPreDest6GetTagE11LXtObjectID6LXtID4PPKc">
+<span id="_CPPv3N16ILxShaderPreDest6GetTagE11LXtObjectID6LXtID4PPKc"></span><span id="_CPPv2N16ILxShaderPreDest6GetTagE11LXtObjectID6LXtID4PPKc"></span><span id="ILxShaderPreDest::GetTag__LXtObjectID.LXtID4.cCPP"></span><span class="target" id="class_i_lx_shader_pre_dest_1a206b153820c0ca2959f879942ae97fa8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">GetTag</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv46LXtID4" title="LXtID4">LXtID4</a> <em>type</em>, <em class="property">const</em> char **<em>tag</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxShaderPreDest6GetTagE11LXtObjectID6LXtID4PPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method allows the client to read tags defining the surface being shaded. This can be useful for positioning some more complex shading presets. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N16ILxShaderPreDest4ModeE11LXtObjectIDPi">
+<span id="_CPPv3N16ILxShaderPreDest4ModeE11LXtObjectIDPi"></span><span id="_CPPv2N16ILxShaderPreDest4ModeE11LXtObjectIDPi"></span><span id="ILxShaderPreDest::Mode__LXtObjectID.iP"></span><span class="target" id="class_i_lx_shader_pre_dest_1a0af0397b29324a42cf363f1099eca45a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Mode</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N16ILxShaderPreDest4ModeE11LXtObjectIDPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the preset mode either add or apply. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxmeshlayerpredest">
+<h2><a class="toc-backref" href="#id2">ILxMeshLayerPreDest</a><a class="headerlink" href="#ilxmeshlayerpredest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxMeshLayerPreDest">
+<span id="_CPPv319ILxMeshLayerPreDest"></span><span id="_CPPv219ILxMeshLayerPreDest"></span><span id="ILxMeshLayerPreDest"></span><span class="target" id="class_i_lx_mesh_layer_pre_dest"></span><em class="property">class </em><code class="sig-name descname">ILxMeshLayerPreDest</code><a class="headerlink" href="#_CPPv419ILxMeshLayerPreDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>At this point the vague consensus serving as a design indicates mesh presets will be single layer mesh information, along with the necessary materials. (we will ignore for a moment the completely open-ended nature of this requirement, given the potential dependency of shading a single poly on the entire scene graph.) All that we need for a mesh preset destination, besides a potentially infinite bit of the shader tree, is a mesh. While it has been suggested that the destination should also supply a transformation for the mesh elements, this does not make sense in the driving scenario of meshpaint, since each painted mesh will need a different transform. If the transform is built into the destination, it implies that each painted clone will be reloaded from disk individually. Further, existing tools that use mesh layers (booleans, meshpaint, etc) expect to work with a source mesh, and little else. Nevertheless, a transform may be specified, for a initial transformation. Clients which will be duplicating the mesh with different transforms are expected to hold the mesh themselves, rather than reloading it, and transform the copies as needed. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshLayerPreDest4MeshE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxMeshLayerPreDest4MeshE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxMeshLayerPreDest4MeshE11LXtObjectIDPPv"></span><span id="ILxMeshLayerPreDest::Mesh__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_mesh_layer_pre_dest_1ab665eabfa791e328f01dd249c348937a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Mesh</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshLayerPreDest4MeshE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The mesh layer preset needs an existing mesh to load into (what else?). This method returns the destination mesh. It may be a current user mesh, or it may be a newly created ‘template’ mesh which will then be used like a BG layer for cloning, booleans, etc. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshLayerPreDest9TransformE11LXtObjectID10LXtMatrix4">
+<span id="_CPPv3N19ILxMeshLayerPreDest9TransformE11LXtObjectID10LXtMatrix4"></span><span id="_CPPv2N19ILxMeshLayerPreDest9TransformE11LXtObjectID10LXtMatrix4"></span><span id="ILxMeshLayerPreDest::Transform__LXtObjectID.LXtMatrix4"></span><span class="target" id="class_i_lx_mesh_layer_pre_dest_1ad2f81637524212704da4acfc6751d917"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Transform</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv410LXtMatrix4" title="LXtMatrix4">LXtMatrix4</a> <em>xform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshLayerPreDest9TransformE11LXtObjectID10LXtMatrix4" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For false convenience, and to adhere to the fascination with bloated, lossy homogeneous matrices for passing transformations around, the desired transformation of the mesh elements as they are placed in the mesh is returned in an LXtMatrix4 by this function. If this function returns not implemented, no transformation is applied. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxMeshLayerPreDest10ShaderDestE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxMeshLayerPreDest10ShaderDestE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxMeshLayerPreDest10ShaderDestE11LXtObjectIDPPv"></span><span id="ILxMeshLayerPreDest::ShaderDest__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_mesh_layer_pre_dest_1a80ba8c2843be0357d4af0088feb0b227"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShaderDest</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxMeshLayerPreDest10ShaderDestE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>To facilitate the loading of a mesh layer’s various shader tree components, we will simply demand a shader tree destination object. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXSHPRE_MODEi_ADD</p></li>
+<li><p>LXSHPRE_MODEi_APPLY</p></li>
+<li><p>LXSHPRE_MODEi_REF</p></li>
+</ul>
+</div>
+<div class="section" id="ilxsceneitempredest">
+<h2><a class="toc-backref" href="#id3">ILxSceneItemPreDest</a><a class="headerlink" href="#ilxsceneitempredest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxSceneItemPreDest">
+<span id="_CPPv319ILxSceneItemPreDest"></span><span id="_CPPv219ILxSceneItemPreDest"></span><span id="ILxSceneItemPreDest"></span><span class="target" id="class_i_lx_scene_item_pre_dest"></span><em class="property">class </em><code class="sig-name descname">ILxSceneItemPreDest</code><a class="headerlink" href="#_CPPv419ILxSceneItemPreDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destination requirements for a general item preset seem, based on the current vague consensus of what an item preset does, to be similar to tha shader destination; there is possibly a target item, or there might be an item that should become the parent, and there is almost certainly a scene. Thus for efficiency we can start of with an identical interface, and see where it goes as requirements are first defined then refined. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxSceneItemPreDest5SceneE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxSceneItemPreDest5SceneE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxSceneItemPreDest5SceneE11LXtObjectIDPPv"></span><span id="ILxSceneItemPreDest::Scene__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_scene_item_pre_dest_1a5b04926dd33f24ab23d26353690b0de9"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Scene</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSceneItemPreDest5SceneE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the <a class="reference internal" href="lxd_item.html#class_i_lx_scene"><span class="std std-ref">ILxScene</span></a> </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSceneItemPreDest4ItemE11LXtObjectIDPiPPv">
+<span id="_CPPv3N19ILxSceneItemPreDest4ItemE11LXtObjectIDPiPPv"></span><span id="_CPPv2N19ILxSceneItemPreDest4ItemE11LXtObjectIDPiPPv"></span><span id="ILxSceneItemPreDest::Item__LXtObjectID.iP.voidPP"></span><span class="target" id="class_i_lx_scene_item_pre_dest_1a855a1b32e7a8ea8bdddc2a3dce85b124"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Item</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int *<em>mode</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSceneItemPreDest4ItemE11LXtObjectIDPiPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This is the target item, presumably the same type as the preset, that will have channels replaced by the incoming item’s channels.. or whatever. It can be null to just add a new item from the preset to the scene. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSceneItemPreDest13ContainerItemE11LXtObjectIDPPv">
+<span id="_CPPv3N19ILxSceneItemPreDest13ContainerItemE11LXtObjectIDPPv"></span><span id="_CPPv2N19ILxSceneItemPreDest13ContainerItemE11LXtObjectIDPPv"></span><span id="ILxSceneItemPreDest::ContainerItem__LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_scene_item_pre_dest_1a9e1155e0db632aa174df50ca96925575"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ContainerItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSceneItemPreDest13ContainerItemE11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns the parent or container for the the destination item. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSceneItemPreDest8PositionE11LXtObjectID9LXtVector">
+<span id="_CPPv3N19ILxSceneItemPreDest8PositionE11LXtObjectID9LXtVector"></span><span id="_CPPv2N19ILxSceneItemPreDest8PositionE11LXtObjectID9LXtVector"></span><span id="ILxSceneItemPreDest::Position__LXtObjectID.LXtVector"></span><span class="target" id="class_i_lx_scene_item_pre_dest_1adc8548b6cd155ac02423059a82ba6aee"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Position</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSceneItemPreDest8PositionE11LXtObjectID9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns a position at which to place the item, if it has been set, or LXe_FAIL otherwise </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxSceneItemPreDest11OrientationE11LXtObjectID9LXtMatrix">
+<span id="_CPPv3N19ILxSceneItemPreDest11OrientationE11LXtObjectID9LXtMatrix"></span><span id="_CPPv2N19ILxSceneItemPreDest11OrientationE11LXtObjectID9LXtMatrix"></span><span id="ILxSceneItemPreDest::Orientation__LXtObjectID.LXtMatrix"></span><span class="target" id="class_i_lx_scene_item_pre_dest_1a3e67b09e913ef4c531d0d570d0cf756d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Orientation</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtMatrix" title="LXtMatrix">LXtMatrix</a> <em>xfrm</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxSceneItemPreDest11OrientationE11LXtObjectID9LXtMatrix" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method returns an orientation for the item, if it has been set, or LXe_FAIL otherwise. The orientation is stored in a matrix to assure that no useful information can be retrieved from it and rotations are clipped to 1 cycle. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxprofile1dpredest">
+<h2><a class="toc-backref" href="#id4">ILxProfile1DPreDest</a><a class="headerlink" href="#ilxprofile1dpredest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxProfile1DPreDest">
+<span id="_CPPv319ILxProfile1DPreDest"></span><span id="_CPPv219ILxProfile1DPreDest"></span><span id="ILxProfile1DPreDest"></span><span class="target" id="class_i_lx_profile1_d_pre_dest"></span><em class="property">class </em><code class="sig-name descname">ILxProfile1DPreDest</code><a class="headerlink" href="#_CPPv419ILxProfile1DPreDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Profile presets store a geometry pattern used with modeling tools. There are two types of profile. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest6MoveToE11LXtObjectIDdd">
+<span id="_CPPv3N19ILxProfile1DPreDest6MoveToE11LXtObjectIDdd"></span><span id="_CPPv2N19ILxProfile1DPreDest6MoveToE11LXtObjectIDdd"></span><span id="ILxProfile1DPreDest::MoveTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a2fa02cde0e06f0ae9ba633ac090d920e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MoveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest6MoveToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>1D profile is a single path consist of lines and cubic bezier curves and it would be used for a parametric function to modulate a scale parameter along a path in modeling tools such as tube, sketch extrude and path step generator. The 1D profile would be also worked with lathe tool as a source profile curve. The following are methods to build an open path. “MoveTo” sets the start position. “LineTo” makes a segment line with the last position and the given position. “CurveTo” defines a cubic bezier curve. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest6LineToE11LXtObjectIDdd">
+<span id="_CPPv3N19ILxProfile1DPreDest6LineToE11LXtObjectIDdd"></span><span id="_CPPv2N19ILxProfile1DPreDest6LineToE11LXtObjectIDdd"></span><span id="ILxProfile1DPreDest::LineTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a1e497a17d5a71e85037cb00ae437d9c3"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LineTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest6LineToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest7CurveToE11LXtObjectIDdddddd">
+<span id="_CPPv3N19ILxProfile1DPreDest7CurveToE11LXtObjectIDdddddd"></span><span id="_CPPv2N19ILxProfile1DPreDest7CurveToE11LXtObjectIDdddddd"></span><span id="ILxProfile1DPreDest::CurveTo__LXtObjectID.double.double.double.double.double.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a6a76dd361cc54857fbad76dba85895c8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x0</em>, double <em>y0</em>, double <em>x1</em>, double <em>y1</em>, double <em>x2</em>, double <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest7CurveToE11LXtObjectIDdddddd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest8EvaluateE11LXtObjectIDdii">
+<span id="_CPPv3N19ILxProfile1DPreDest8EvaluateE11LXtObjectIDdii"></span><span id="_CPPv2N19ILxProfile1DPreDest8EvaluateE11LXtObjectIDdii"></span><span id="ILxProfile1DPreDest::Evaluate__LXtObjectID.double.i.i"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a94ab904adab50dbf64e9336e828649c8"></span>double <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>t</em>, int <em>flags</em>, int <em>axis</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest8EvaluateE11LXtObjectIDdii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“Evaluate” method returns X or Y value at position ‘t’ along the path. If ‘NORMALIZE’ is set, it returns the normalized value between 0 and 1. If ‘RESETZERO’ is set, the origin is reset to the minimum of the bbox. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest9PathStepsE11LXtObjectIDdiPdPdi">
+<span id="_CPPv3N19ILxProfile1DPreDest9PathStepsE11LXtObjectIDdiPdPdi"></span><span id="_CPPv2N19ILxProfile1DPreDest9PathStepsE11LXtObjectIDdiPdPdi"></span><span id="ILxProfile1DPreDest::PathSteps__LXtObjectID.double.i.doubleP.doubleP.i"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1ad9498b6c0ad65b0b9bb297e769dc680e"></span>int <code class="sig-name descname">PathSteps</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>tol</em>, int <em>flags</em>, double *<em>x</em>, double *<em>y</em>, int <em>nstep</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest9PathStepsE11LXtObjectIDdiPdPdi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“PathSteps” generates all freezed positions and it returns the number of steps. “tol” is allowable maximum height when the function subdivides bezier curve to polyline. If “nstep” is zero, it returns only returns the best number of steps with the given tolerance. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest3BoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N19ILxProfile1DPreDest3BoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N19ILxProfile1DPreDest3BoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxProfile1DPreDest::Box__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a1b7804ee29749f05b8661dbfe9f82ab7"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Box</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>box</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest3BoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“Box” method sets the bounding box on the profile space. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest5CountE11LXtObjectID">
+<span id="_CPPv3N19ILxProfile1DPreDest5CountE11LXtObjectID"></span><span id="_CPPv2N19ILxProfile1DPreDest5CountE11LXtObjectID"></span><span id="ILxProfile1DPreDest::Count__LXtObjectID"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1ad5f14b1f5edf2ed39fff25474a038782"></span>unsigned <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest5CountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“Count” method returns the number of profile in the packet. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest13SelectByIndexE11LXtObjectIDj">
+<span id="_CPPv3N19ILxProfile1DPreDest13SelectByIndexE11LXtObjectIDj"></span><span id="_CPPv2N19ILxProfile1DPreDest13SelectByIndexE11LXtObjectIDj"></span><span id="ILxProfile1DPreDest::SelectByIndex__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a8422d5f0308f3b3d9c98e5763772a4ec"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest13SelectByIndexE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“SelectByIndex” method sets the current profile to generate by “PathSteps” by index. The index must be between 0 to count-1. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest17SelectByParameterE11LXtObjectIDd">
+<span id="_CPPv3N19ILxProfile1DPreDest17SelectByParameterE11LXtObjectIDd"></span><span id="_CPPv2N19ILxProfile1DPreDest17SelectByParameterE11LXtObjectIDd"></span><span id="ILxProfile1DPreDest::SelectByParameter__LXtObjectID.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1a4a57b10731745d2ee5e69174b3e68391"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectByParameter</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest17SelectByParameterE11LXtObjectIDd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“SelectByParameter” method sets the current profile to generate by “PathSteps” by parameter value between 0.0 to 1.0.”PathSteps” generates an interpolated x and y positions at ‘t’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile1DPreDest14SelectByVertexE11LXtObjectID9LXtMeshID10LXtPointID">
+<span id="_CPPv3N19ILxProfile1DPreDest14SelectByVertexE11LXtObjectID9LXtMeshID10LXtPointID"></span><span id="_CPPv2N19ILxProfile1DPreDest14SelectByVertexE11LXtObjectID9LXtMeshID10LXtPointID"></span><span id="ILxProfile1DPreDest::SelectByVertex__LXtObjectID.LXtMeshID.LXtPointID"></span><span class="target" id="class_i_lx_profile1_d_pre_dest_1abc44a4eca74e460775347314d3f0da72"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectByVertex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtMeshID <em>meshID</em>, LXtPointID <em>pointID</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile1DPreDest14SelectByVertexE11LXtObjectID9LXtMeshID10LXtPointID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“SelectByVertex” method sets the current profile to generate by “PathSteps” for the given vertex. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<ul class="simple">
+<li><p>LXPROFILEf_NORMALIZE</p></li>
+<li><p>LXPROFILEf_RESETZERO</p></li>
+<li><p>LXPROFILEf_BLENDING</p></li>
+</ul>
+</div>
+<div class="section" id="ilxprofile1dpredest1">
+<h2><a class="toc-backref" href="#id5">ILxProfile1DPreDest1</a><a class="headerlink" href="#ilxprofile1dpredest1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxProfile1DPreDest1">
+<span id="_CPPv320ILxProfile1DPreDest1"></span><span id="_CPPv220ILxProfile1DPreDest1"></span><span id="ILxProfile1DPreDest1"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1"></span><em class="property">class </em><code class="sig-name descname">ILxProfile1DPreDest1</code><a class="headerlink" href="#_CPPv420ILxProfile1DPreDest1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 10.1, and was replaced with an updated one that adds a method for multiple profile support. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile1DPreDest16MoveToE11LXtObjectIDdd">
+<span id="_CPPv3N20ILxProfile1DPreDest16MoveToE11LXtObjectIDdd"></span><span id="_CPPv2N20ILxProfile1DPreDest16MoveToE11LXtObjectIDdd"></span><span id="ILxProfile1DPreDest1::MoveTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1_1a1db298eb8a2ec2330ed53bef64e58203"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MoveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile1DPreDest16MoveToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile1DPreDest16LineToE11LXtObjectIDdd">
+<span id="_CPPv3N20ILxProfile1DPreDest16LineToE11LXtObjectIDdd"></span><span id="_CPPv2N20ILxProfile1DPreDest16LineToE11LXtObjectIDdd"></span><span id="ILxProfile1DPreDest1::LineTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1_1ab6566ffa08e54bd96cc0df811500d58e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LineTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile1DPreDest16LineToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile1DPreDest17CurveToE11LXtObjectIDdddddd">
+<span id="_CPPv3N20ILxProfile1DPreDest17CurveToE11LXtObjectIDdddddd"></span><span id="_CPPv2N20ILxProfile1DPreDest17CurveToE11LXtObjectIDdddddd"></span><span id="ILxProfile1DPreDest1::CurveTo__LXtObjectID.double.double.double.double.double.double"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1_1abfe1363c55810621c7b42044ac4642d8"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x0</em>, double <em>y0</em>, double <em>x1</em>, double <em>y1</em>, double <em>x2</em>, double <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile1DPreDest17CurveToE11LXtObjectIDdddddd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile1DPreDest18EvaluateE11LXtObjectIDdii">
+<span id="_CPPv3N20ILxProfile1DPreDest18EvaluateE11LXtObjectIDdii"></span><span id="_CPPv2N20ILxProfile1DPreDest18EvaluateE11LXtObjectIDdii"></span><span id="ILxProfile1DPreDest1::Evaluate__LXtObjectID.double.i.i"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1_1ab72946d4106c1f3645e705d18d1c7621"></span>double <code class="sig-name descname">Evaluate</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>t</em>, int <em>flags</em>, int <em>axis</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile1DPreDest18EvaluateE11LXtObjectIDdii" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile1DPreDest19PathStepsE11LXtObjectIDdiPdPdi">
+<span id="_CPPv3N20ILxProfile1DPreDest19PathStepsE11LXtObjectIDdiPdPdi"></span><span id="_CPPv2N20ILxProfile1DPreDest19PathStepsE11LXtObjectIDdiPdPdi"></span><span id="ILxProfile1DPreDest1::PathSteps__LXtObjectID.double.i.doubleP.doubleP.i"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1_1a18b72ea36cae9fdab8af42506bdcb118"></span>int <code class="sig-name descname">PathSteps</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>tol</em>, int <em>flags</em>, double *<em>x</em>, double *<em>y</em>, int <em>nstep</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile1DPreDest19PathStepsE11LXtObjectIDdiPdPdi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile1DPreDest13BoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N20ILxProfile1DPreDest13BoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N20ILxProfile1DPreDest13BoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxProfile1DPreDest1::Box__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_profile1_d_pre_dest1_1a4eda5ca97c18f1f53824fa7abcc04900"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Box</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>box</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile1DPreDest13BoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxprofile2dpredest">
+<h2><a class="toc-backref" href="#id6">ILxProfile2DPreDest</a><a class="headerlink" href="#ilxprofile2dpredest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv419ILxProfile2DPreDest">
+<span id="_CPPv319ILxProfile2DPreDest"></span><span id="_CPPv219ILxProfile2DPreDest"></span><span id="ILxProfile2DPreDest"></span><span class="target" id="class_i_lx_profile2_d_pre_dest"></span><em class="property">class </em><code class="sig-name descname">ILxProfile2DPreDest</code><a class="headerlink" href="#_CPPv419ILxProfile2DPreDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Profile presets store a geometry pattern used with modeling tools. There are two types of profile. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest6MoveToE11LXtObjectIDdd">
+<span id="_CPPv3N19ILxProfile2DPreDest6MoveToE11LXtObjectIDdd"></span><span id="_CPPv2N19ILxProfile2DPreDest6MoveToE11LXtObjectIDdd"></span><span id="ILxProfile2DPreDest::MoveTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1aa01e66a677decff09625a8821516fc03"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MoveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest6MoveToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>2D profile is a 2-dimentional pattern shape consist of lines and cubic bezier curves. This profile would be useful when it is used with sweep tools. The following are methods to build an open path. “MoveTo” sets the start position. “LineTo” makes a segment line with the last position and the given position. “CurveTo” defines a cubic bezier curve. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest6LineToE11LXtObjectIDdd">
+<span id="_CPPv3N19ILxProfile2DPreDest6LineToE11LXtObjectIDdd"></span><span id="_CPPv2N19ILxProfile2DPreDest6LineToE11LXtObjectIDdd"></span><span id="ILxProfile2DPreDest::LineTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1a326f8ddf3185ab3689a214eb7a1928da"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LineTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest6LineToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest7CurveToE11LXtObjectIDdddddd">
+<span id="_CPPv3N19ILxProfile2DPreDest7CurveToE11LXtObjectIDdddddd"></span><span id="_CPPv2N19ILxProfile2DPreDest7CurveToE11LXtObjectIDdddddd"></span><span id="ILxProfile2DPreDest::CurveTo__LXtObjectID.double.double.double.double.double.double"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1a041b862c0b87fb56d82c45fda28f60fa"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x0</em>, double <em>y0</em>, double <em>x1</em>, double <em>y1</em>, double <em>x2</em>, double <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest7CurveToE11LXtObjectIDdddddd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest7NewPathE11LXtObjectID">
+<span id="_CPPv3N19ILxProfile2DPreDest7NewPathE11LXtObjectID"></span><span id="_CPPv2N19ILxProfile2DPreDest7NewPathE11LXtObjectID"></span><span id="ILxProfile2DPreDest::NewPath__LXtObjectID"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1ac94fdb73e60de670917108ed76a9863f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest7NewPathE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“NewPath” starts a new profile in the object. 2D profile allows to have multiple pathes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest6ClosedE11LXtObjectIDi">
+<span id="_CPPv3N19ILxProfile2DPreDest6ClosedE11LXtObjectIDi"></span><span id="_CPPv2N19ILxProfile2DPreDest6ClosedE11LXtObjectIDi"></span><span id="ILxProfile2DPreDest::Closed__LXtObjectID.i"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1a400e3a508320419a53a534716ee4cd34"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Closed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>closed</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest6ClosedE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set closed flag to the current path. The default is true. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest3BoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N19ILxProfile2DPreDest3BoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N19ILxProfile2DPreDest3BoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxProfile2DPreDest::Box__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1ab6c7bd2124d5e936fdc750b78bc021fa"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Box</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>box</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest3BoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“Box” method sets the bounding box on the profile space. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest5CountE11LXtObjectID">
+<span id="_CPPv3N19ILxProfile2DPreDest5CountE11LXtObjectID"></span><span id="_CPPv2N19ILxProfile2DPreDest5CountE11LXtObjectID"></span><span id="ILxProfile2DPreDest::Count__LXtObjectID"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1abe33c3f5d797f51ef86ecaa13d70e626"></span>unsigned <code class="sig-name descname">Count</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest5CountE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“Count” method returns the number of profile in the packet. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N19ILxProfile2DPreDest13SelectByIndexE11LXtObjectIDj">
+<span id="_CPPv3N19ILxProfile2DPreDest13SelectByIndexE11LXtObjectIDj"></span><span id="_CPPv2N19ILxProfile2DPreDest13SelectByIndexE11LXtObjectIDj"></span><span id="ILxProfile2DPreDest::SelectByIndex__LXtObjectID.unsigned"></span><span class="target" id="class_i_lx_profile2_d_pre_dest_1a7c24444f00c7884899ce2f199a149002"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SelectByIndex</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, unsigned <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ILxProfile2DPreDest13SelectByIndexE11LXtObjectIDj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“SelectByIndex” method sets the current profile to generate by “PathSteps” by index. The index must be between 0 to count-1. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxprofile2dpredest1">
+<h2><a class="toc-backref" href="#id7">ILxProfile2DPreDest1</a><a class="headerlink" href="#ilxprofile2dpredest1" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv420ILxProfile2DPreDest1">
+<span id="_CPPv320ILxProfile2DPreDest1"></span><span id="_CPPv220ILxProfile2DPreDest1"></span><span id="ILxProfile2DPreDest1"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1"></span><em class="property">class </em><code class="sig-name descname">ILxProfile2DPreDest1</code><a class="headerlink" href="#_CPPv420ILxProfile2DPreDest1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This interface was retired in modo 10.1, and was replaced with an updated one that adds a method for multiple profile support. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile2DPreDest16MoveToE11LXtObjectIDdd">
+<span id="_CPPv3N20ILxProfile2DPreDest16MoveToE11LXtObjectIDdd"></span><span id="_CPPv2N20ILxProfile2DPreDest16MoveToE11LXtObjectIDdd"></span><span id="ILxProfile2DPreDest1::MoveTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1_1aa65fb2831829125c02a6dfac0e881f62"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">MoveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile2DPreDest16MoveToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile2DPreDest16LineToE11LXtObjectIDdd">
+<span id="_CPPv3N20ILxProfile2DPreDest16LineToE11LXtObjectIDdd"></span><span id="_CPPv2N20ILxProfile2DPreDest16LineToE11LXtObjectIDdd"></span><span id="ILxProfile2DPreDest1::LineTo__LXtObjectID.double.double"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1_1aa03e582b77673b0d93a60d1c720b9e59"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">LineTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x</em>, double <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile2DPreDest16LineToE11LXtObjectIDdd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile2DPreDest17CurveToE11LXtObjectIDdddddd">
+<span id="_CPPv3N20ILxProfile2DPreDest17CurveToE11LXtObjectIDdddddd"></span><span id="_CPPv2N20ILxProfile2DPreDest17CurveToE11LXtObjectIDdddddd"></span><span id="ILxProfile2DPreDest1::CurveTo__LXtObjectID.double.double.double.double.double.double"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1_1adb3eed04b51c5506b3bdf294400a6eb4"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CurveTo</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, double <em>x0</em>, double <em>y0</em>, double <em>x1</em>, double <em>y1</em>, double <em>x2</em>, double <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile2DPreDest17CurveToE11LXtObjectIDdddddd" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile2DPreDest17NewPathE11LXtObjectID">
+<span id="_CPPv3N20ILxProfile2DPreDest17NewPathE11LXtObjectID"></span><span id="_CPPv2N20ILxProfile2DPreDest17NewPathE11LXtObjectID"></span><span id="ILxProfile2DPreDest1::NewPath__LXtObjectID"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1_1ab49a9c4b95e766a91eadbbdb1697ed7e"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">NewPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile2DPreDest17NewPathE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile2DPreDest16ClosedE11LXtObjectIDi">
+<span id="_CPPv3N20ILxProfile2DPreDest16ClosedE11LXtObjectIDi"></span><span id="_CPPv2N20ILxProfile2DPreDest16ClosedE11LXtObjectIDi"></span><span id="ILxProfile2DPreDest1::Closed__LXtObjectID.i"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1_1a5b9398b656fb7626b62a597077c51946"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Closed</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, int <em>closed</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile2DPreDest16ClosedE11LXtObjectIDi" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N20ILxProfile2DPreDest13BoxE11LXtObjectIDP7LXtBBox">
+<span id="_CPPv3N20ILxProfile2DPreDest13BoxE11LXtObjectIDP7LXtBBox"></span><span id="_CPPv2N20ILxProfile2DPreDest13BoxE11LXtObjectIDP7LXtBBox"></span><span id="ILxProfile2DPreDest1::Box__LXtObjectID.LXtBBoxP"></span><span class="target" id="class_i_lx_profile2_d_pre_dest1_1a7006ab4af3f3e34682b09596ed78b914"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Box</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, LXtBBox *<em>box</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20ILxProfile2DPreDest13BoxE11LXtObjectIDP7LXtBBox" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxcolorpredest">
+<h2><a class="toc-backref" href="#id8">ILxColorPreDest</a><a class="headerlink" href="#ilxcolorpredest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv415ILxColorPreDest">
+<span id="_CPPv315ILxColorPreDest"></span><span id="_CPPv215ILxColorPreDest"></span><span id="ILxColorPreDest"></span><span class="target" id="class_i_lx_color_pre_dest"></span><em class="property">class </em><code class="sig-name descname">ILxColorPreDest</code><a class="headerlink" href="#_CPPv415ILxColorPreDest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The color preset destination is used to apply color presets to a target. Due to the various ways that colors can be used, we let the destination decide how to actually perform the apply. The destination works by the preset loader calling its various methods to set up state, followed by the <a class="reference internal" href="#class_i_lx_color_pre_dest_1ae4a10f7780a7d8a639cbe275cc3ac5ff"><span class="std std-ref">Apply()</span></a> method. Appy() should execute a command (thus ensuring it is undoable) that actually applies the contents of the object to the desired target. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N15ILxColorPreDest8SetColorE11LXtObjectIDK9LXtVector">
+<span id="_CPPv3N15ILxColorPreDest8SetColorE11LXtObjectIDK9LXtVector"></span><span id="_CPPv2N15ILxColorPreDest8SetColorE11LXtObjectIDK9LXtVector"></span><span id="ILxColorPreDest::SetColor__LXtObjectID.LXtVectorC"></span><span class="target" id="class_i_lx_color_pre_dest_1adff3067470037a465047575a4dcb7b9c"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetColor</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> <a class="reference internal" href="lxd_vmath.html#_CPPv49LXtVector" title="LXtVector">LXtVector</a> <em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorPreDest8SetColorE11LXtObjectIDK9LXtVector" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is called by the preset server to set the HDR RGB color on the destination. If this method fails, <a class="reference internal" href="#class_i_lx_color_pre_dest_1ae4a10f7780a7d8a639cbe275cc3ac5ff"><span class="std std-ref">Apply()</span></a> will not be called. Colors should always be set in linear space. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorPreDest13SetColorModelE11LXtObjectIDPKcPKd">
+<span id="_CPPv3N15ILxColorPreDest13SetColorModelE11LXtObjectIDPKcPKd"></span><span id="_CPPv2N15ILxColorPreDest13SetColorModelE11LXtObjectIDPKcPKd"></span><span id="ILxColorPreDest::SetColorModel__LXtObjectID.cCP.doubleCP"></span><span class="target" id="class_i_lx_color_pre_dest_1a30f87798113d72222e222f3491c53964"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">SetColorModel</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> double *<em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorPreDest13SetColorModelE11LXtObjectIDPKcPKd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This optional method sets the name of the color model server that the color was originally saved in, as well as the color in the model’s space. Only color pickers generally care about this. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N15ILxColorPreDest5ApplyE11LXtObjectID">
+<span id="_CPPv3N15ILxColorPreDest5ApplyE11LXtObjectID"></span><span id="_CPPv2N15ILxColorPreDest5ApplyE11LXtObjectID"></span><span id="ILxColorPreDest::Apply__LXtObjectID"></span><span class="target" id="class_i_lx_color_pre_dest_1ae4a10f7780a7d8a639cbe275cc3ac5ff"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Apply</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15ILxColorPreDest5ApplyE11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#class_i_lx_color_pre_dest_1adff3067470037a465047575a4dcb7b9c"><span class="std std-ref">SetColor()</span></a> will always be called, but <a class="reference internal" href="#class_i_lx_color_pre_dest_1a30f87798113d72222e222f3491c53964"><span class="std std-ref">SetColorModel()</span></a> may not be. Once set, the preset loader will call <a class="reference internal" href="#class_i_lx_color_pre_dest_1ae4a10f7780a7d8a639cbe275cc3ac5ff"><span class="std std-ref">Apply()</span></a> so that the destination can perform its specific apply of the color to the target, preferably through a command (to ensure that it is undable and scriptable). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ilxpresetdestinationservice">
+<h2><a class="toc-backref" href="#id9">ILxPresetDestinationService</a><a class="headerlink" href="#ilxpresetdestinationservice" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv427ILxPresetDestinationService">
+<span id="_CPPv327ILxPresetDestinationService"></span><span id="_CPPv227ILxPresetDestinationService"></span><span id="ILxPresetDestinationService"></span><span class="target" id="class_i_lx_preset_destination_service"></span><em class="property">class </em><code class="sig-name descname">ILxPresetDestinationService</code><a class="headerlink" href="#_CPPv427ILxPresetDestinationService" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The preset destination service provides utilities for allocating preset destination objects. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N27ILxPresetDestinationService16ShaderPDFromItemE11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N27ILxPresetDestinationService16ShaderPDFromItemE11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N27ILxPresetDestinationService16ShaderPDFromItemE11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxPresetDestinationService::ShaderPDFromItem__LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_destination_service_1ad6435f74450eefa0a12241194e5401b5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ShaderPDFromItem</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>item</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N27ILxPresetDestinationService16ShaderPDFromItemE11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Various preset destination objects can be allocated through the SDK.<ul class="simple">
+<li><p>ShaderPDFromItem A ShaderPreDest object can be created from a material group item in the scene.</p></li>
+<li><p>CreateMeshLayerPD A MeshLayerPreDest object can be created from a mesh. The optional shadeItem is a material group where any loaded materials will be applied.</p></li>
+<li><p>Profile1DPDFromPath A Profile1DPreDest object can be created from a filepath pointing to a valid 1D profile preset.</p></li>
+<li><p>Profile2DPDFromPath A Profile2DPreDest object can be created from a filepath pointing to a valid 2D profile preset. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N27ILxPresetDestinationService17CreateMeshLayerPDE11LXtObjectID11LXtObjectID11LXtObjectIDPPv">
+<span id="_CPPv3N27ILxPresetDestinationService17CreateMeshLayerPDE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="_CPPv2N27ILxPresetDestinationService17CreateMeshLayerPDE11LXtObjectID11LXtObjectID11LXtObjectIDPPv"></span><span id="ILxPresetDestinationService::CreateMeshLayerPD__LXtObjectID.LXtObjectID.LXtObjectID.voidPP"></span><span class="target" id="class_i_lx_preset_destination_service_1a3ca05fc5208ac6f08f1ef15eb2d67c4d"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">CreateMeshLayerPD</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>mesh</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>shadeItem</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N27ILxPresetDestinationService17CreateMeshLayerPDE11LXtObjectID11LXtObjectID11LXtObjectIDPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N27ILxPresetDestinationService19Profile1DPDFromPathE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N27ILxPresetDestinationService19Profile1DPDFromPathE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N27ILxPresetDestinationService19Profile1DPDFromPathE11LXtObjectIDPKcPPv"></span><span id="ILxPresetDestinationService::Profile1DPDFromPath__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_preset_destination_service_1a88355a535127bcf4e357ec79e2f6460f"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Profile1DPDFromPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filepath</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N27ILxPresetDestinationService19Profile1DPDFromPathE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N27ILxPresetDestinationService19Profile2DPDFromPathE11LXtObjectIDPKcPPv">
+<span id="_CPPv3N27ILxPresetDestinationService19Profile2DPDFromPathE11LXtObjectIDPKcPPv"></span><span id="_CPPv2N27ILxPresetDestinationService19Profile2DPDFromPathE11LXtObjectIDPKcPPv"></span><span id="ILxPresetDestinationService::Profile2DPDFromPath__LXtObjectID.cCP.voidPP"></span><span class="target" id="class_i_lx_preset_destination_service_1a85c5e85f186f3556560fc16cade31ff5"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">Profile2DPDFromPath</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <em class="property">const</em> char *<em>filepath</em>, void **<em>ppvObj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N27ILxPresetDestinationService19Profile2DPDFromPathE11LXtObjectIDPKcPPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N27ILxPresetDestinationService20ApplyProfilePDToMeshE11LXtObjectID11LXtObjectIDdii11LXtObjectID">
+<span id="_CPPv3N27ILxPresetDestinationService20ApplyProfilePDToMeshE11LXtObjectID11LXtObjectIDdii11LXtObjectID"></span><span id="_CPPv2N27ILxPresetDestinationService20ApplyProfilePDToMeshE11LXtObjectID11LXtObjectIDdii11LXtObjectID"></span><span id="ILxPresetDestinationService::ApplyProfilePDToMesh__LXtObjectID.LXtObjectID.double.i.i.LXtObjectID"></span><span class="target" id="class_i_lx_preset_destination_service_1a015bd67120d9dd024e2d47445fc77014"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ApplyProfilePDToMesh</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>predest</em>, double <em>tolerance</em>, int <em>freeze</em>, int <em>axis</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>mesh</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N27ILxPresetDestinationService20ApplyProfilePDToMeshE11LXtObjectID11LXtObjectIDdii11LXtObjectID" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Some Preset Destination items can be applied programmatically as well. This function makes mesh elements from the preset. If ‘freeze’ is on, it converts the preset to face polygons. If ‘center’ is NULL, the shape center will be located in the raw position of the file. ‘tol’ is the tolerance to subdive curve. If ‘tol’ is zero, this subdivide curves based on curve display level. “metrics” stores optional data to transform the profile.<ul class="simple">
+<li><p>ApplyProfilePDToMesh A ProfilePreDest object can be loaded into an existing mesh. It requires setting a distance tolerance for subdividing the profile curves, a freeze boolean to force convert the shape into face polygons, and integer representing the plane axis (0,1,2 for x,y,z) to load the preset on, and the editable mesh to load the preset shape into. #item ApplyMeshPresetToMeshPD A MeshLayerPreDest object can have a mesh preset loaded into it. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N27ILxPresetDestinationService23ApplyMeshPresetToMeshPDE11LXtObjectID11LXtObjectIDPKc">
+<span id="_CPPv3N27ILxPresetDestinationService23ApplyMeshPresetToMeshPDE11LXtObjectID11LXtObjectIDPKc"></span><span id="_CPPv2N27ILxPresetDestinationService23ApplyMeshPresetToMeshPDE11LXtObjectID11LXtObjectIDPKc"></span><span id="ILxPresetDestinationService::ApplyMeshPresetToMeshPD__LXtObjectID.LXtObjectID.cCP"></span><span class="target" id="class_i_lx_preset_destination_service_1aca761e266b2161e7fe35bbb019d7904a"></span><a class="reference internal" href="lxd_result.html#_CPPv48LxResult" title="LxResult">LxResult</a> <code class="sig-name descname">ApplyMeshPresetToMeshPD</code><span class="sig-paren">(</span><a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>self</em>, <a class="reference internal" href="lxd_com.html#_CPPv411LXtObjectID" title="LXtObjectID">LXtObjectID</a> <em>predest</em>, <em class="property">const</em> char *<em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N27ILxPresetDestinationService23ApplyMeshPresetToMeshPDE11LXtObjectID11LXtObjectIDPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lxd_pretype.html" class="btn btn-neutral float-right" title="Pretype" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lxd_poly.html" class="btn btn-neutral float-left" title="Poly" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/cpp/_rst/lxd_predest.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:29 GMT -->
+</html>

@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Value -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Value: Server basics &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ValueTexture: Server basics" href="ValueTexture%20-%20%20Server%20basics.html" />
+    <link rel="prev" title="TextureEffect: Server basics" href="TextureEffect%20-%20%20Server%20basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_server_basics.html">Server Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Command%20-%20%20Server%20basics.html">Command: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CompShader%20-%20%20Server%20basics.html">CompShader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomMaterial%20-%20%20Server%20basics.html">CustomMaterial: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Loader%20-%20%20Server%20basics.html">Loader: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20-%20%20Server%20basics.html">Movie: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20-%20%20Server%20basics.html">Package: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Saver%20-%20%20Server%20basics.html">Saver: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextScriptInterpreter%20-%20%20Server%20basics.html">TextScriptInterpreter: Server basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextureEffect%20-%20%20Server%20basics.html">TextureEffect: Server basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Value: Server basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headers">Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-methods">Sample Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#value-type">Value::Type()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#value-copy">Value::Copy()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-i-o">File I/O</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#streamio-write">StreamIO::Write()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streamio-read">StreamIO::Read()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-your-datatype">Using Your Datatype</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ValueTexture%20-%20%20Server%20basics.html">ValueTexture: Server basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/_tutorials.html">SDK Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_server_basics.html">Server Basics</a> &raquo;</li>
+        
+      <li>Value: Server basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="value-server-basics">
+<h1>Value: Server basics<a class="headerlink" href="#value-server-basics" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#headers" id="id2">Headers</a></p></li>
+<li><p><a class="reference internal" href="#sample-methods" id="id3">Sample Methods</a></p>
+<ul>
+<li><p><a class="reference internal" href="#value-type" id="id4">Value::Type()</a></p></li>
+<li><p><a class="reference internal" href="#value-copy" id="id5">Value::Copy()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#file-i-o" id="id6">File I/O</a></p>
+<ul>
+<li><p><a class="reference internal" href="#streamio-write" id="id7">StreamIO::Write()</a></p></li>
+<li><p><a class="reference internal" href="#streamio-read" id="id8">StreamIO::Read()</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-your-datatype" id="id9">Using Your Datatype</a></p></li>
+</ul>
+</div>
+<p>A <strong>Value</strong> is a plug-in server that defines a datatype and its behaviors.</p>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Named datatypes are used in nexus when specifying attributes or parameters that can vary in type. For example channels, command arguments, and tool attributes are all given by datatypes. The Common Datatypes are implemented internally, but these types can also be extended by value plug-in servers.</p>
+</div>
+<div class="section" id="headers">
+<h2><a class="toc-backref" href="#id2">Headers</a><a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘’’value (lx-value.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_Value’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘’’io (lx-io.hpp)’’’</dt><dd><ul>
+<li><p>‘’CLxImpl_StreamIO’’</p></li>
+<li><p>‘’CLxUser_BlockRead’’</p></li>
+<li><p>‘’CLxUser_BlockWrite’’</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>none.</p>
+</div>
+<div class="section" id="sample-methods">
+<h2><a class="toc-backref" href="#id3">Sample Methods</a><a class="headerlink" href="#sample-methods" title="Permalink to this headline">¶</a></h2>
+<p>The plug-in server class derives from CLxImpl_Value, and exports the ILxValue interface. There are only a couple of required methods. Of course that will get your datatype into the system but it won’t do anything. More interfaces are required for that.</p>
+<div class="section" id="value-type">
+<h3><a class="toc-backref" href="#id4">Value::Type()</a><a class="headerlink" href="#value-type" title="Permalink to this headline">¶</a></h3>
+<p>The Type() method returns one of the four intrinsic types supported for values. In most cases plug-in types will be objects, so they have to be read through the Value() and Object() methods of the various interfaces that access them.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">unsigned</span>
+ <span class="n">val_Type</span> <span class="p">()</span>
+ <span class="p">{</span>
+         <span class="k">return</span> <span class="n">LXi_TYPE_OBJECT</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="value-copy">
+<h3><a class="toc-backref" href="#id5">Value::Copy()</a><a class="headerlink" href="#value-copy" title="Permalink to this headline">¶</a></h3>
+<p>The system must be able to copy the value of one of your value object to another of exactly the same type. The Copy() method is called to do that, and the <em>from</em> argument is a COM object implementing your class as a server. The COM object can be unwrapped using the name of the server (or the cached polymorph) and the copying can them be done with two equivalent C++ object pointers.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">val_Copy</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">from</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CMyValue</span>               <span class="o">*</span><span class="n">vp</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">lx</span><span class="p">::</span><span class="n">CastServer</span> <span class="p">(</span><span class="s2">&quot;myValue&quot;</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">vp</span><span class="p">);</span>
+         <span class="o">*</span><span class="n">this</span> <span class="o">=</span> <span class="o">*</span><span class="n">vp</span><span class="p">;</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="file-i-o">
+<h2><a class="toc-backref" href="#id6">File I/O</a><a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h2>
+<p>If your value is a channel, it can be saved to LXO files and reloaded. The plug-in server class needs to derive from CLxImpl_StreamIO, and exports the ILxStreamIO interface.</p>
+<div class="section" id="streamio-write">
+<h3><a class="toc-backref" href="#id7">StreamIO::Write()</a><a class="headerlink" href="#streamio-write" title="Permalink to this headline">¶</a></h3>
+<p>The Write() method using a BlockWrite Interface to write the contents of the value to a block-structured stream. Suppose the value consisted of a float, a string, and an optional int. They could be written using Write() methods. These methods are useful because they detect write errors and throw IO exceptions that will be caught by the CLxImpl_StreamIO wrapper and returned as error codes.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">io_Write</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">stream</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_BlockWrite</span>      <span class="n">write</span> <span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">write</span><span class="o">.</span><span class="n">Write</span> <span class="p">(</span><span class="n">my_float</span><span class="p">);</span>
+         <span class="n">write</span><span class="o">.</span><span class="n">Write</span> <span class="p">(</span><span class="n">my_string</span><span class="p">);</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">my_int_is_set</span><span class="p">)</span>
+                 <span class="n">write</span><span class="o">.</span><span class="n">Write</span> <span class="p">(</span><span class="n">my_int</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="streamio-read">
+<h3><a class="toc-backref" href="#id8">StreamIO::Read()</a><a class="headerlink" href="#streamio-read" title="Permalink to this headline">¶</a></h3>
+<p>The Read() method does the reverse – parsing the stream and restoring the object. This can be done using forced reads on the float and string (throwing IO errors if missing) and a non-forced read on the int (which just returns false if not found).</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">LxResult</span>
+ <span class="n">io_Read</span> <span class="p">(</span>
+         <span class="n">ILxUnknownID</span>            <span class="n">stream</span><span class="p">)</span>
+ <span class="p">{</span>
+         <span class="n">CLxUser_BlockRead</span>       <span class="n">read</span> <span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">read</span><span class="o">.</span><span class="n">Read</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">my_float</span><span class="p">);</span>
+         <span class="n">read</span><span class="o">.</span><span class="n">Read</span> <span class="p">(</span><span class="n">my_string</span><span class="p">);</span>
+         <span class="n">my_int_is_set</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">Read</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">my_int</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+         <span class="k">return</span> <span class="n">LXe_OK</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="using-your-datatype">
+<h2><a class="toc-backref" href="#id9">Using Your Datatype</a><a class="headerlink" href="#using-your-datatype" title="Permalink to this headline">¶</a></h2>
+<p>When you access your type by name you have to remember to add “+” to the start of the name. While internal datatypes have names like “distance” and “&amp;item”, datatypes implemented by plug-ins have names that start with a “+” prefix to indicate that they are external, like “+intRange”. So if your value server is called “myValueServer”, your datatype is called “+myValueServer”. You have to refer to it that way in any method that requires the name of your datatype.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ValueTexture%20-%20%20Server%20basics.html" class="btn btn-neutral float-right" title="ValueTexture: Server basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TextureEffect%20-%20%20Server%20basics.html" class="btn btn-neutral float-left" title="TextureEffect: Server basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/server_basics/Value -  Server basics.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:15:48 GMT -->
+</html>

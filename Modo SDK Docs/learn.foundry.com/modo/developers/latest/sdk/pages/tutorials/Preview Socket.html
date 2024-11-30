@@ -1,0 +1,979 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Preview Socket.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preview Socket &mdash; Modo SDK 14.2v0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Procedural Geometry" href="Procedural%20Geometry.html" />
+    <link rel="prev" title="Preset Browser Paths" href="Preset%20Browser%20Paths.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Modo SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.foundry.com/modo/developers/latest/sdk/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../starting/_starting.html">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_basics/_server_basics.html">Server Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/_general.html">Editorial Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui/_ui.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/_scripting.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/_faqs.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Code Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_tutorials.html">SDK Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Linear%20Blend.html">Channel Mod Linear Blend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Math%20Multi.html">Channel Mod Math Multi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel%20Mod%20Simple%20Kinematics.html">Channel Mod Simple Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Color%20Model%20HSV.html">Color Model HSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colormodel%20kelvin.html">Colormodel kelvin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%20VertValue.html">Command VertValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Creating%20a%20Selection%20Set.html">Creating a Selection Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomView.html">CustomView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HostService%20Reference.html">HostService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20image%20raw.html">Io image raw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20geo.html">Io scene geo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Io%20scene%20hgpl.html">Io scene hgpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20Command%20Arguments.html">Item Command Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20gasket.html">Item gasket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20mandelbrot.html">Item mandelbrot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Item%20orb.html">Item orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Language%20Wrappers.html">Language Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Automatic%20implementation.html">Mesh Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Example.html">Mesh Operation - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mesh%20Operation%20-%20Manual%20implementation.html">Mesh Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modo%20Version%20History.html">Modo Version History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Movie%20cocoaqt.html">Movie cocoaqt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiple%20Servers%20in%20One%20Module.html">Multiple Servers in One Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network%20Rendering.html">Network Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package%20or%20Item%20Type%20(metaclass).html">Package or Item Type (metaclass)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path%20Aliases.html">Path Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pattern%20Matching.html">Pattern Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PlatformService%20Reference.html">PlatformService Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plug-ins%20vs.%20Scripts.html">Plug-ins vs. Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pop-up%20List%20Choice.html">Pop-up List Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preference%20Forms.html">Preference Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prepare_Evaluate%20Protocol.html">Prepare/Evaluate Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Filtering.html">Preset Browser Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Preset%20Browser%20Paths.html">Preset Browser Paths</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preview Socket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server-commands">Server Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocol">Protocol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#errors">Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialization-and-setup">Initialization and Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requesting-rendered-frames">Requesting Rendered Frames</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#render-id">Render ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-loop">Basic Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synchronizing">Synchronizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#headless">Headless</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Procedural%20Geometry.html">Procedural Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20API%20Overview.html">Python API Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Command%20Overview.html">Python Command Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Notifier%20Example.html">Python Notifier Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Samples.html">Python Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20Treeview%20Example.html">Python Treeview Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python%20in%20Modo.html">Python in Modo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Query%20Command%20Values%20example.html">Query Command Values example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RandomSel%20Script.html">RandomSel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Files%20with%20Python.html">Reading Files with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20Persistant%20Data.html">Reading Persistant Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading%20UV%20Values.html">Reading UV Values in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Render%20Frame%20Size.html">Render Frame Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Scene%20Query.cpp.html">Scene Query.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Select.typeFrom.html">Select.typeFrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Automatic%20implementation.html">Selection Operation - Automatic implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Selection%20Operation%20-%20Manual%20implementation.html">Selection Operation - Manual implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server%20Tags.html">Server Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Listener.html">Singleton Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%20Polymorph.html">Singleton Polymorph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Startup%20Commands.html">Startup Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Symbols%20defined%20in%20the%20lx%20package.html">Symbols defined in the lx package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Texture%20test.html">Texture test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tool%20spikey.html">Tool spikey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using%20Loader%20Options.html">Using Loader Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20Event%20Log.html">Writing to the Event Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Writing%20to%20the%20modo%20event%20log%20and%20debugger.html">Writing to the modo event log and debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Your%20First%20Tool%20in%20Modo.html">Your First Tool in Modo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/_examples.html">Code Examples and Snippets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/python.html">Python Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp.html">C++ Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modo SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_tutorials.html">SDK Tutorials</a> &raquo;</li>
+        
+      <li>Preview Socket</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preview-socket">
+<h1>Preview Socket<a class="headerlink" href="#preview-socket" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#server-commands" id="id433">Server Commands</a></p></li>
+<li><p><a class="reference internal" href="#protocol" id="id434">Protocol</a></p>
+<ul>
+<li><p><a class="reference internal" href="#errors" id="id435">Errors</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ack-error" id="id436">ACK_ERROR</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#initialization-and-setup" id="id437">Initialization and Setup</a></p>
+<ul>
+<li><p><a class="reference internal" href="#req-set-protocol" id="id438">REQ_SET_PROTOCOL</a></p></li>
+<li><p><a class="reference internal" href="#ack-protocol-set" id="id439">ACK_PROTOCOL_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-res" id="id440">REQ_SET_RES</a></p></li>
+<li><p><a class="reference internal" href="#ack-res-set" id="id441">ACK_RES_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-format" id="id442">REQ_SET_FORMAT</a></p></li>
+<li><p><a class="reference internal" href="#ack-format-set" id="id443">ACK_FORMAT_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-stereo" id="id444">REQ_SET_STEREO</a></p></li>
+<li><p><a class="reference internal" href="#ack-stereo-set" id="id445">ACK_STEREO_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-samples" id="id446">REQ_SET_SAMPLES</a></p></li>
+<li><p><a class="reference internal" href="#ack-samples-set" id="id447">ACK_SAMPLES_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-draft" id="id448">REQ_SET_DRAFT</a></p></li>
+<li><p><a class="reference internal" href="#ack-draft-set" id="id449">ACK_DRAFT_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-final" id="id450">REQ_SET_FINAL</a></p></li>
+<li><p><a class="reference internal" href="#ack-final-set" id="id451">ACK_FINAL_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-extended" id="id452">REQ_SET_EXTENDED</a></p></li>
+<li><p><a class="reference internal" href="#ack-extended-set" id="id453">ACK_EXTENDED_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-effect" id="id454">REQ_SET_EFFECT</a></p></li>
+<li><p><a class="reference internal" href="#ack-effect-set" id="id455">ACK_EFFECT_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-mousepos" id="id456">REQ_SET_MOUSEPOS</a></p></li>
+<li><p><a class="reference internal" href="#ack-mousepos-set" id="id457">ACK_MOUSEPOS_SET</a></p></li>
+<li><p><a class="reference internal" href="#req-set-camera" id="id458">REQ_SET_CAMERA</a></p></li>
+<li><p><a class="reference internal" href="#ack-camera-set" id="id459">ACK_CAMERA_SET</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#requesting-rendered-frames" id="id460">Requesting Rendered Frames</a></p>
+<ul>
+<li><p><a class="reference internal" href="#req-send-full-frame" id="id461">REQ_SEND_FULL_FRAME</a></p></li>
+<li><p><a class="reference internal" href="#ack-send-full-frame-rgb24" id="id462">ACK_SEND_FULL_FRAME_RGB24</a></p></li>
+<li><p><a class="reference internal" href="#ack-send-full-frame-rgbafp" id="id463">ACK_SEND_FULL_FRAME_RGBAFP</a></p></li>
+<li><p><a class="reference internal" href="#ack-full-frame-unavailable" id="id464">ACK_FULL_FRAME_UNAVAILABLE</a></p></li>
+<li><p><a class="reference internal" href="#ack-full-frame-done" id="id465">ACK_FULL_FRAME_DONE</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#render-id" id="id466">Render ID</a></p>
+<ul>
+<li><p><a class="reference internal" href="#req-get-id" id="id467">REQ_GET_ID</a></p></li>
+<li><p><a class="reference internal" href="#ack-id-get" id="id468">ACK_ID_GET</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#basic-loop" id="id469">Basic Loop</a></p></li>
+<li><p><a class="reference internal" href="#synchronizing" id="id470">Synchronizing</a></p></li>
+<li><p><a class="reference internal" href="#headless" id="id471">Headless</a></p></li>
+<li><p><a class="reference internal" href="#more-information" id="id472">More Information</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>‘’Preview Socket’’ is a protocol for extracting real-time images from ‘’modo’’s’ preview renderer.  Preview Socket clients are separate applications that communicate with modo over a TCP/IP network connection or through pipes and implements the Preview Socket protocol.</p>
+<p>While the name implies a TCP (socket) connection, a named pipe variant is also supported.  For the purposes of this article, “Preview Socket” refers to both sockets and pipes unless otherwise indicated (usually by through the word “TCP” or “pipe’).</p>
+<p>Note that Preview Socket is only used for obtaining preview renders and setting up said renderer.  Changes to the actual scene must be done through commands, either through modo itself or through <a class="reference internal" href="../general/systems/Telnet.html"><span class="doc">Telnet</span></a>.</p>
+<div class="section" id="server-commands">
+<h2><a class="toc-backref" href="#id433">Server Commands</a><a class="headerlink" href="#server-commands" title="Permalink to this headline">¶</a></h2>
+<p>High-level control of the Preview Socket server is done through commands.</p>
+<ul class="simple">
+<li><p>previewSocket.listen is used to start or stop listening for TCP connections on the given port.  In other words, this starts and stops the Preview Socket server.  Any number of clients can connect to the server, with each getting their own preview renderer.</p></li>
+<li><p>preview.suspend pauses all preview instances, including sockets and pipes.  When used with its identifier argument, this can be used to maintain sync with between applications while other commands are being executed.</p></li>
+<li><p>previewPipe.start opens the named pipe.  Unlike the TCP based server, only one client can be connected to the pipe at a time.</p></li>
+<li><p>previewPipe.stop closes the named pipe.</p></li>
+</ul>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">previewSocket</span><span class="o">.</span><span class="n">listen</span> <span class="n">port</span><span class="p">:</span><span class="mi">12378</span> <span class="nb">open</span><span class="p">:</span><span class="n">true</span>
+</pre></div>
+</td></tr></table></div>
+<p>Once the port is open, clients can connect to setup a preview renderer and receive renderings.</p>
+</div>
+<div class="section" id="protocol">
+<h2><a class="toc-backref" href="#id434">Protocol</a><a class="headerlink" href="#protocol" title="Permalink to this headline">¶</a></h2>
+<p>These codes are used to identify any data sent to or from Preview Socket, and are used to prefix the packet.</p>
+<p>Preview Socket uses a request/response protocol to communicate with clients.  For the most part, this means that the client sends request packets to the Preview Socket server. Preview Socket then sends back acknowledgements or errors.  Every message sent by the client will have a matching response from Preview Socket.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="c1">#define LXfPREVIEWMSG_REQ                               0x10000000</span>
+        <span class="c1">#define LXfPREVIEWMSG_ACK                               0x20000000</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_ACK_ERROR                         (LXfPREVIEWMSG_ACK | 0x01000000)</span>
+
+        <span class="o">//</span> <span class="n">Initial</span> <span class="n">Setup</span>
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_PROTOCOL                  (LXfPREVIEWMSG_REQ | 0x00001000)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_PROTOCOL_SET                  (LXfPREVIEWMSG_ACK | 0x00001000)</span>
+
+        <span class="o">//</span> <span class="n">Image</span> <span class="n">Property</span> <span class="n">Setup</span>
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_RES                       (LXfPREVIEWMSG_REQ | 0x00002000)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_RES_SET                       (LXfPREVIEWMSG_ACK | 0x00002000)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_FORMAT                    (LXfPREVIEWMSG_REQ | 0x00002001)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_FORMAT_SET                    (LXfPREVIEWMSG_ACK | 0x00002001)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_STEREO                    (LXfPREVIEWMSG_REQ | 0x00002002)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_STEREO_SET                    (LXfPREVIEWMSG_ACK | 0x00002002)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_SAMPLES                   (LXfPREVIEWMSG_REQ | 0x00002003)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_SAMPLES_SET                   (LXfPREVIEWMSG_ACK | 0x00002003)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_DRAFT                     (LXfPREVIEWMSG_REQ | 0x00002004)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_DRAFT_SET                     (LXfPREVIEWMSG_ACK | 0x00002004)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_FINAL                     (LXfPREVIEWMSG_REQ | 0x00002005)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_FINAL_SET                     (LXfPREVIEWMSG_ACK | 0x00002005)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_EXTENDED                  (LXfPREVIEWMSG_REQ | 0x00002006)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_EXTENDED_SET                  (LXfPREVIEWMSG_ACK | 0x00002006)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_EFFECT                    (LXfPREVIEWMSG_REQ | 0x00002007)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_EFFECT_SET                    (LXfPREVIEWMSG_ACK | 0x00002007)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_MOUSEPOS                  (LXfPREVIEWMSG_REQ | 0x00002008)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_MOUSEPOS_SET                  (LXfPREVIEWMSG_ACK | 0x00002008)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SET_CAMERA                    (LXfPREVIEWMSG_REQ | 0x00002009)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_CAMERA_SET                    (LXfPREVIEWMSG_ACK | 0x00002009)</span>
+
+        <span class="o">//</span> <span class="n">Frame</span> <span class="n">Requests</span>
+        <span class="c1">#define LXiPREVIEWMSG_REQ_SEND_FULL_FRAME               (LXfPREVIEWMSG_REQ | 0x00003000)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_SEND_FULL_FRAME               (LXfPREVIEWMSG_ACK | 0x00003000)</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_PREVIEW_UNAVAILABLE                                    0x00000001</span>
+        <span class="c1">#define LXiPREVIEWMSG_PREVIEW_RGBAFP                                         0x00000002</span>
+        <span class="c1">#define LXiPREVIEWMSG_PREVIEW_COMPLETE                                       0x00000100</span>
+
+        <span class="c1">#define LXiPREVIEWMSG_ACK_SEND_FULL_FRAME_RGB24         (LXiPREVIEWMSG_ACK_SEND_FULL_FRAME)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_SEND_FULL_FRAME_RGBAFP        (LXiPREVIEWMSG_ACK_SEND_FULL_FRAME | LXiPREVIEWMSG_PREVIEW_RGBAFP)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_FULL_FRAME_UNAVAILABLE        (LXiPREVIEWMSG_ACK_SEND_FULL_FRAME | LXiPREVIEWMSG_PREVIEW_UNAVAILABLE)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_FULL_FRAME_DONE               (LXiPREVIEWMSG_ACK_FULL_FRAME_UNAVAILABLE | LXiPREVIEWMSG_PREVIEW_COMPLETE)</span>
+
+        <span class="o">//</span> <span class="n">Preview</span> <span class="n">image</span> <span class="n">ID</span>
+        <span class="c1">#define LXiPREVIEWMSG_REQ_GET_ID                        (LXfPREVIEWMSG_REQ | 0x00004000)</span>
+        <span class="c1">#define LXiPREVIEWMSG_ACK_ID_GET                        (LXfPREVIEWMSG_ACK | 0x00004000)</span>
+</pre></div>
+</td></tr></table></div>
+<p>In general, <em>REQ_</em> packets are sent by the client to the server, <em>ACK_</em> packets are sent from the server to the client in response.</p>
+<p>The datatypes used for the packet are as follows.  Note that when packing multi-byte datatypes, Preview Socket uses Intel byte order (little endian), as opposed to the Motorola byte order (big endian) more commonly used more with networking.</p>
+<p>{| class=”wikitable” {{Template:Center Table}}
+! Shorthand
+! Description
+! C Datatype
+<a href="#id1"><span class="problematic" id="id2">|</span></a>-
+<a href="#id3"><span class="problematic" id="id4">|</span></a>U1
+<a href="#id5"><span class="problematic" id="id6">|</span></a>One byte unsigned integer
+<a href="#id7"><span class="problematic" id="id8">|</span></a>unsigned char
+<a href="#id9"><span class="problematic" id="id10">|</span></a>-
+<a href="#id11"><span class="problematic" id="id12">|</span></a>U1[]
+<a href="#id13"><span class="problematic" id="id14">|</span></a>Array of one byte unsigned integers
+<a href="#id15"><span class="problematic" id="id16">|</span></a>unsigned char []
+<a href="#id17"><span class="problematic" id="id18">|</span></a>-
+<a href="#id19"><span class="problematic" id="id20">|</span></a>U4
+<a href="#id21"><span class="problematic" id="id22">|</span></a>Four byte unsigned integer
+<a href="#id23"><span class="problematic" id="id24">|</span></a>unsigned int
+<a href="#id25"><span class="problematic" id="id26">|</span></a>-
+<a href="#id27"><span class="problematic" id="id28">|</span></a>Float
+<a href="#id29"><span class="problematic" id="id30">|</span></a>Four byte floating point number
+<a href="#id31"><span class="problematic" id="id32">|</span></a>float
+<a href="#id33"><span class="problematic" id="id34">|</span></a>-
+<a href="#id35"><span class="problematic" id="id36">|</span></a>Float[]
+<a href="#id37"><span class="problematic" id="id38">|</span></a>Array of four byte floating point numbers
+<a href="#id39"><span class="problematic" id="id40">|</span></a>float []
+<a href="#id41"><span class="problematic" id="id42">|</span></a>-
+<a href="#id43"><span class="problematic" id="id44">|</span></a>S
+<a href="#id45"><span class="problematic" id="id46">|</span></a>Array of bytes representing a string
+<a href="#id47"><span class="problematic" id="id48">|</span></a>char []
+<a href="#id49"><span class="problematic" id="id50">|</span></a>}</p>
+<div class="section" id="errors">
+<h3><a class="toc-backref" href="#id435">Errors</a><a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ack-error">
+<h4><a class="toc-backref" href="#id436">ACK_ERROR</a><a class="headerlink" href="#ack-error" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: The last request resulted in an error.  The request was not completed.  This may be sent as a response to any request made by the client in place of an acknowledgement.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id51"><span class="problematic" id="id52">|</span></a>-
+<a href="#id53"><span class="problematic" id="id54">|</span></a>U4
+<a href="#id55"><span class="problematic" id="id56">|</span></a>LXiPREVIEWMSG_ACK_ERROR
+<a href="#id57"><span class="problematic" id="id58">|</span></a>-
+<a href="#id59"><span class="problematic" id="id60">|</span></a>U4
+<a href="#id61"><span class="problematic" id="id62">|</span></a>LxResult code describing the error
+<a href="#id63"><span class="problematic" id="id64">|</span></a>-
+<a href="#id65"><span class="problematic" id="id66">|</span></a>U4
+<a href="#id67"><span class="problematic" id="id68">|</span></a>Length of an optional string describing the error (may be a human-readable or internal string); may be 0 if no string is sent.
+<a href="#id69"><span class="problematic" id="id70">|</span></a>-
+<a href="#id71"><span class="problematic" id="id72">|</span></a>S
+<a href="#id73"><span class="problematic" id="id74">|</span></a>If the previous U4 is non-zero, this is an array of bytes represnting a C string describing the error message.  Note that the the string is NOT ‘0’ terminated.
+<a href="#id75"><span class="problematic" id="id76">|</span></a>}</p>
+</div>
+</div>
+<div class="section" id="initialization-and-setup">
+<h3><a class="toc-backref" href="#id437">Initialization and Setup</a><a class="headerlink" href="#initialization-and-setup" title="Permalink to this headline">¶</a></h3>
+<p>Before doing anything else after connection to the server, the client must indicate which version of the protocol to use.  After that, the other the other setup requests can be made at any time to change the render, although some must be called before obtaining the first frame.</p>
+<div class="section" id="req-set-protocol">
+<h4><a class="toc-backref" href="#id438">REQ_SET_PROTOCOL</a><a class="headerlink" href="#req-set-protocol" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to set the protocol used to communicate with Preview Socekt.  Currently only the default protocol 0 is supported, and attempts to set any other protocol will result in an ACK_ERROR.  This message must be sent before any other messages are sent.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id77"><span class="problematic" id="id78">|</span></a>-
+<a href="#id79"><span class="problematic" id="id80">|</span></a>U4
+<a href="#id81"><span class="problematic" id="id82">|</span></a>LXiPREVIEWMSG_REQ_SET_PROTOCOL
+<a href="#id83"><span class="problematic" id="id84">|</span></a>-
+<a href="#id85"><span class="problematic" id="id86">|</span></a>U1
+<a href="#id87"><span class="problematic" id="id88">|</span></a>Protocol used for communication.  Currently only protocol 0 is supported.
+<a href="#id89"><span class="problematic" id="id90">|</span></a>}</p>
+</div>
+<div class="section" id="ack-protocol-set">
+<h4><a class="toc-backref" href="#id439">ACK_PROTOCOL_SET</a><a class="headerlink" href="#ack-protocol-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to REQ_SET_PROTOCOL stating that the requested protocol will be used for communication between Preview Socekt and the client.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id91"><span class="problematic" id="id92">|</span></a>-
+<a href="#id93"><span class="problematic" id="id94">|</span></a>U4
+<a href="#id95"><span class="problematic" id="id96">|</span></a>LXiPREVIEWMSG_ACK_PROTOCOL_SET
+<a href="#id97"><span class="problematic" id="id98">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-res">
+<h4><a class="toc-backref" href="#id440">REQ_SET_RES</a><a class="headerlink" href="#req-set-res" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to the Preview Socket to set the frame resolution.  The server will begin rendering when the resolution changes.  The resolution must be set before frames can be sent.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id99"><span class="problematic" id="id100">|</span></a>-
+<a href="#id101"><span class="problematic" id="id102">|</span></a>U4
+<a href="#id103"><span class="problematic" id="id104">|</span></a>LXiPREVIEWMSG_REQ_SET_RES
+<a href="#id105"><span class="problematic" id="id106">|</span></a>-
+<a href="#id107"><span class="problematic" id="id108">|</span></a>U4
+<a href="#id109"><span class="problematic" id="id110">|</span></a>width in pixels
+<a href="#id111"><span class="problematic" id="id112">|</span></a>-
+<a href="#id113"><span class="problematic" id="id114">|</span></a>U4
+<a href="#id115"><span class="problematic" id="id116">|</span></a>height in pixels
+<a href="#id117"><span class="problematic" id="id118">|</span></a>}</p>
+</div>
+<div class="section" id="ack-res-set">
+<h4><a class="toc-backref" href="#id441">ACK_RES_SET</a><a class="headerlink" href="#ack-res-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_RES event stating that the resolution has been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id119"><span class="problematic" id="id120">|</span></a>-
+<a href="#id121"><span class="problematic" id="id122">|</span></a>U4
+<a href="#id123"><span class="problematic" id="id124">|</span></a>LXiPREVIEWMSG_ACK_RES_SET
+<a href="#id125"><span class="problematic" id="id126">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-format">
+<h4><a class="toc-backref" href="#id442">REQ_SET_FORMAT</a><a class="headerlink" href="#req-set-format" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to the Preview Socket to set the frame’s pixel format.  The server will begin rendering when the format changes.  If the format is not set, LXiIMD_BYTE is assumed.  Note that the only options are byte RGB and float RGBA.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id127"><span class="problematic" id="id128">|</span></a>-
+<a href="#id129"><span class="problematic" id="id130">|</span></a>U4
+<a href="#id131"><span class="problematic" id="id132">|</span></a>LXiPREVIEWMSG_REQ_SET_FORMAT
+<a href="#id133"><span class="problematic" id="id134">|</span></a>-
+<a href="#id135"><span class="problematic" id="id136">|</span></a>U4
+<a href="#id137"><span class="problematic" id="id138">|</span></a>Format; LXiIMD_BYTE for 24 bit RGB; LXiIMD_FLOAT for floating point RGBA.  These defines can be found in the image (lx_image.hpp)#Pixel Formats.
+<a href="#id139"><span class="problematic" id="id140">|</span></a>}</p>
+</div>
+<div class="section" id="ack-format-set">
+<h4><a class="toc-backref" href="#id443">ACK_FORMAT_SET</a><a class="headerlink" href="#ack-format-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_FORMAT event stating that the format has been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id141"><span class="problematic" id="id142">|</span></a>-
+<a href="#id143"><span class="problematic" id="id144">|</span></a>U4
+<a href="#id145"><span class="problematic" id="id146">|</span></a>LXiPREVIEWMSG_ACK_FORMAT_SET
+<a href="#id147"><span class="problematic" id="id148">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-stereo">
+<h4><a class="toc-backref" href="#id444">REQ_SET_STEREO</a><a class="headerlink" href="#req-set-stereo" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to the Preview Socket to set the stereoscopic mode, which causes it to render frames for the left eye, the right eye or monocularly.  By simultaneously connecting to two Preview Sockets set to different eyes, you can render a stereo pair.  Preview Socket will begin rendering when the mode changes.  If no stereoscopic mode is set, monocular mode is assumed.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id149"><span class="problematic" id="id150">|</span></a>-
+<a href="#id151"><span class="problematic" id="id152">|</span></a>U4
+<a href="#id153"><span class="problematic" id="id154">|</span></a>LXiPREVIEWMSG_REQ_SET_STEREO
+<a href="#id155"><span class="problematic" id="id156">|</span></a>-
+<a href="#id157"><span class="problematic" id="id158">|</span></a>U4
+<a href="#id159"><span class="problematic" id="id160">|</span></a>Mode; 0 for monocular, 1 for the left eye and 2 for the right eye
+<a href="#id161"><span class="problematic" id="id162">|</span></a>}</p>
+</div>
+<div class="section" id="ack-stereo-set">
+<h4><a class="toc-backref" href="#id445">ACK_STEREO_SET</a><a class="headerlink" href="#ack-stereo-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_STEREO event stating that the stereo mode has been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id163"><span class="problematic" id="id164">|</span></a>-
+<a href="#id165"><span class="problematic" id="id166">|</span></a>U4
+<a href="#id167"><span class="problematic" id="id168">|</span></a>LXiPREVIEWMSG_ACK_STEREO_SET
+<a href="#id169"><span class="problematic" id="id170">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-samples">
+<h4><a class="toc-backref" href="#id446">REQ_SET_SAMPLES</a><a class="headerlink" href="#req-set-samples" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to Preview Socekt to set the maximum number of samples.  Only applies when preview quality is DRAFT or EXTENDED. If the quality is FINAL, the settings from the scene are used. Preview Socket will begin rendering when the number of samples changes.  If not explicitly set, the current scene values are used.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id171"><span class="problematic" id="id172">|</span></a>-
+<a href="#id173"><span class="problematic" id="id174">|</span></a>U4
+<a href="#id175"><span class="problematic" id="id176">|</span></a>LXiPREVIEWMSG_REQ_SET_SAMPLES
+<a href="#id177"><span class="problematic" id="id178">|</span></a>-
+<a href="#id179"><span class="problematic" id="id180">|</span></a>U4
+<a href="#id181"><span class="problematic" id="id182">|</span></a>Samples; maximum number of samples to use
+<a href="#id183"><span class="problematic" id="id184">|</span></a>}</p>
+</div>
+<div class="section" id="ack-samples-set">
+<h4><a class="toc-backref" href="#id447">ACK_SAMPLES_SET</a><a class="headerlink" href="#ack-samples-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_SAMPLES event stating that the number of samples have been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id185"><span class="problematic" id="id186">|</span></a>-
+<a href="#id187"><span class="problematic" id="id188">|</span></a>U4
+<a href="#id189"><span class="problematic" id="id190">|</span></a>LXiPREVIEWMSG_ACK_SAMPLES_SET
+<a href="#id191"><span class="problematic" id="id192">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-draft">
+<h4><a class="toc-backref" href="#id448">REQ_SET_DRAFT</a><a class="headerlink" href="#req-set-draft" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request that Preview Socket use draft quality with an optional number of antialiasing samples and quality level (fraction of final quality).  Preview Socket will begin rendering when the quailty changes. If the samples or quality level are set to 0, the current preferences are used.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id193"><span class="problematic" id="id194">|</span></a>-
+<a href="#id195"><span class="problematic" id="id196">|</span></a>U4
+<a href="#id197"><span class="problematic" id="id198">|</span></a>LXiPREVIEWMSG_REQ_SET_DRAFT
+<a href="#id199"><span class="problematic" id="id200">|</span></a>-
+<a href="#id201"><span class="problematic" id="id202">|</span></a>U4
+<a href="#id203"><span class="problematic" id="id204">|</span></a>Samples; maximum number of samples to use
+<a href="#id205"><span class="problematic" id="id206">|</span></a>-
+<a href="#id207"><span class="problematic" id="id208">|</span></a>Float
+<a href="#id209"><span class="problematic" id="id210">|</span></a>Quality; fraction of final render (0.0 to 1.0)
+<a href="#id211"><span class="problematic" id="id212">|</span></a>}</p>
+</div>
+<div class="section" id="ack-draft-set">
+<h4><a class="toc-backref" href="#id449">ACK_DRAFT_SET</a><a class="headerlink" href="#ack-draft-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_DRAFT event stating that the number of samples have been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id213"><span class="problematic" id="id214">|</span></a>-
+<a href="#id215"><span class="problematic" id="id216">|</span></a>U4
+<a href="#id217"><span class="problematic" id="id218">|</span></a>LXiPREVIEWMSG_ACK_DRAFT_SET
+<a href="#id219"><span class="problematic" id="id220">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-final">
+<h4><a class="toc-backref" href="#id450">REQ_SET_FINAL</a><a class="headerlink" href="#req-set-final" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request final render quality Preview.  Preview will begin rendering when the quailty changes.
+The current scene and rendering preferences are used.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id221"><span class="problematic" id="id222">|</span></a>-
+<a href="#id223"><span class="problematic" id="id224">|</span></a>U4
+<a href="#id225"><span class="problematic" id="id226">|</span></a>LXiPREVIEWMSG_REQ_SET_FINAL
+<a href="#id227"><span class="problematic" id="id228">|</span></a>}</p>
+</div>
+<div class="section" id="ack-final-set">
+<h4><a class="toc-backref" href="#id451">ACK_FINAL_SET</a><a class="headerlink" href="#ack-final-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_FINAL event stating that the number of samples have been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id229"><span class="problematic" id="id230">|</span></a>-
+<a href="#id231"><span class="problematic" id="id232">|</span></a>U4
+<a href="#id233"><span class="problematic" id="id234">|</span></a>LXiPREVIEWMSG_ACK_FINAL_SET
+<a href="#id235"><span class="problematic" id="id236">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-extended">
+<h4><a class="toc-backref" href="#id452">REQ_SET_EXTENDED</a><a class="headerlink" href="#req-set-extended" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request extended quality for the Preview Socket render, using an optional number of antialiasing samples.  Preview Socket will begin rendering when the quality changes. Rendering settings are the same as used for final rendering quality, except using a potentially greater number of antialiasing samples. If the samples are set to 0, the current preferences are used.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id237"><span class="problematic" id="id238">|</span></a>-
+<a href="#id239"><span class="problematic" id="id240">|</span></a>U4
+<a href="#id241"><span class="problematic" id="id242">|</span></a>LXiPREVIEWMSG_REQ_SET_EXTENDED
+<a href="#id243"><span class="problematic" id="id244">|</span></a>-
+<a href="#id245"><span class="problematic" id="id246">|</span></a>U4
+<a href="#id247"><span class="problematic" id="id248">|</span></a>Samples; maximum number of samples to use
+<a href="#id249"><span class="problematic" id="id250">|</span></a>}</p>
+</div>
+<div class="section" id="ack-extended-set">
+<h4><a class="toc-backref" href="#id453">ACK_EXTENDED_SET</a><a class="headerlink" href="#ack-extended-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_EXTENDED event stating that the number of samples have been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id251"><span class="problematic" id="id252">|</span></a>-
+<a href="#id253"><span class="problematic" id="id254">|</span></a>U4
+<a href="#id255"><span class="problematic" id="id256">|</span></a>LXiPREVIEWMSG_ACK_EXTENDED_SET
+<a href="#id257"><span class="problematic" id="id258">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-effect">
+<h4><a class="toc-backref" href="#id454">REQ_SET_EFFECT</a><a class="headerlink" href="#req-set-effect" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to Preview Socket to set the output channel or effect.  Preview will begin rendering when the effect changes.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id259"><span class="problematic" id="id260">|</span></a>-
+<a href="#id261"><span class="problematic" id="id262">|</span></a>U4
+<a href="#id263"><span class="problematic" id="id264">|</span></a>LXiPREVIEWMSG_REQ_SET_EXTENDED
+<a href="#id265"><span class="problematic" id="id266">|</span></a>-
+<a href="#id267"><span class="problematic" id="id268">|</span></a>U4
+<a href="#id269"><span class="problematic" id="id270">|</span></a>length of effect string (‘’’without’’’ a ‘0’)
+<a href="#id271"><span class="problematic" id="id272">|</span></a>-
+<a href="#id273"><span class="problematic" id="id274">|</span></a>S
+<a href="#id275"><span class="problematic" id="id276">|</span></a>Effect string (‘’’not’’’ terminated with ‘0’)
+<a href="#id277"><span class="problematic" id="id278">|</span></a>}</p>
+</div>
+<div class="section" id="ack-effect-set">
+<h4><a class="toc-backref" href="#id455">ACK_EFFECT_SET</a><a class="headerlink" href="#ack-effect-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_EFFECT event stating that the effect has been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id279"><span class="problematic" id="id280">|</span></a>-
+<a href="#id281"><span class="problematic" id="id282">|</span></a>U4
+<a href="#id283"><span class="problematic" id="id284">|</span></a>LXiPREVIEWMSG_ACK_EFFECT_SET
+<a href="#id285"><span class="problematic" id="id286">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-mousepos">
+<h4><a class="toc-backref" href="#id456">REQ_SET_MOUSEPOS</a><a class="headerlink" href="#req-set-mousepos" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to Preview Socket to focus the preview on the mouse position – or rather, the given X/Y position within the rendering frame as defined by a previous call to ‘’REQ_SET_RES’’.  Preview will continue rendering, but reorder the buckets to concentrate on the position specified for the next update only, You must send continue to send repeated mouse position requests for continued refinement.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id287"><span class="problematic" id="id288">|</span></a>-
+<a href="#id289"><span class="problematic" id="id290">|</span></a>U4
+<a href="#id291"><span class="problematic" id="id292">|</span></a>LXiPREVIEWMSG_REQ_SET_MOUSEPOS
+<a href="#id293"><span class="problematic" id="id294">|</span></a>-
+<a href="#id295"><span class="problematic" id="id296">|</span></a>U4
+<a href="#id297"><span class="problematic" id="id298">|</span></a>X position of mouse
+<a href="#id299"><span class="problematic" id="id300">|</span></a>-
+<a href="#id301"><span class="problematic" id="id302">|</span></a>U4
+<a href="#id303"><span class="problematic" id="id304">|</span></a>Y position of mouse
+<a href="#id305"><span class="problematic" id="id306">|</span></a>}</p>
+</div>
+<div class="section" id="ack-mousepos-set">
+<h4><a class="toc-backref" href="#id457">ACK_MOUSEPOS_SET</a><a class="headerlink" href="#ack-mousepos-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_MOUSEPOS event stating that the mouse position has been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id307"><span class="problematic" id="id308">|</span></a>-
+<a href="#id309"><span class="problematic" id="id310">|</span></a>U4
+<a href="#id311"><span class="problematic" id="id312">|</span></a>LXiPREVIEWMSG_ACK_MOUSEPOS_SET
+<a href="#id313"><span class="problematic" id="id314">|</span></a>}</p>
+</div>
+<div class="section" id="req-set-camera">
+<h4><a class="toc-backref" href="#id458">REQ_SET_CAMERA</a><a class="headerlink" href="#req-set-camera" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request to set camera position, direction &amp; zoom for preview.  Preview Socket will restart rendering with the new camera state.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id315"><span class="problematic" id="id316">|</span></a>-
+<a href="#id317"><span class="problematic" id="id318">|</span></a>U4
+<a href="#id319"><span class="problematic" id="id320">|</span></a>LXiPREVIEWMSG_REQ_SET_CAMERA
+<a href="#id321"><span class="problematic" id="id322">|</span></a>-
+<a href="#id323"><span class="problematic" id="id324">|</span></a>Float[]
+<a href="#id325"><span class="problematic" id="id326">|</span></a>XYZ position of camera
+<a href="#id327"><span class="problematic" id="id328">|</span></a>-
+<a href="#id329"><span class="problematic" id="id330">|</span></a>Float[]
+<a href="#id331"><span class="problematic" id="id332">|</span></a>XYZ direction of camera
+<a href="#id333"><span class="problematic" id="id334">|</span></a>-
+<a href="#id335"><span class="problematic" id="id336">|</span></a>Float
+<a href="#id337"><span class="problematic" id="id338">|</span></a>Zoom factor
+<a href="#id339"><span class="problematic" id="id340">|</span></a>}</p>
+</div>
+<div class="section" id="ack-camera-set">
+<h4><a class="toc-backref" href="#id459">ACK_CAMERA_SET</a><a class="headerlink" href="#ack-camera-set" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Acknowledgement to a REQ_SET_CAMERA event stating that the mouse position has been set.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id341"><span class="problematic" id="id342">|</span></a>-
+<a href="#id343"><span class="problematic" id="id344">|</span></a>U4
+<a href="#id345"><span class="problematic" id="id346">|</span></a>LXiPREVIEWMSG_ACK_CAMERA_SET
+<a href="#id347"><span class="problematic" id="id348">|</span></a>}</p>
+</div>
+</div>
+<div class="section" id="requesting-rendered-frames">
+<h3><a class="toc-backref" href="#id460">Requesting Rendered Frames</a><a class="headerlink" href="#requesting-rendered-frames" title="Permalink to this headline">¶</a></h3>
+<p>To request a rendered frame, you send the LXiPREVIEWMSG_REQ_SEND_FULL_FRAME message.  The client will receive the currently waiting RGB or RGBAFP  if one is available.  Otherwise it will get ACK_FULL_FRAME_UNAVAILABLE if there is not currently a frame ready to send, or LXiPREVIEWMSG_ACK_FULL_FRAME_DONE if rendering has finished, thus indicating that the most recently received frame represents the final render.</p>
+<div class="section" id="req-send-full-frame">
+<h4><a class="toc-backref" href="#id461">REQ_SEND_FULL_FRAME</a><a class="headerlink" href="#req-send-full-frame" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Request the most recently rendered image as single large packet.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id349"><span class="problematic" id="id350">|</span></a>-
+<a href="#id351"><span class="problematic" id="id352">|</span></a>U4
+<a href="#id353"><span class="problematic" id="id354">|</span></a>LXiPREVIEWMSG_REQ_SEND_FULL_FRAME
+<a href="#id355"><span class="problematic" id="id356">|</span></a>}</p>
+</div>
+<div class="section" id="ack-send-full-frame-rgb24">
+<h4><a class="toc-backref" href="#id462">ACK_SEND_FULL_FRAME_RGB24</a><a class="headerlink" href="#ack-send-full-frame-rgb24" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Send the most recently rendered frame to the client as a response to REQ_SEND_FULL_FRAME. The frame is sent as a single large packet containing a byte-format RGB image.  The RGB part of the packet is ‘’’width * height * 3’’’ bytes long.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id357"><span class="problematic" id="id358">|</span></a>-
+<a href="#id359"><span class="problematic" id="id360">|</span></a>U4
+<a href="#id361"><span class="problematic" id="id362">|</span></a>LXiPREVIEWMSG_ACK_SEND_FULL_FRAME_RGB24 (synonym: LXiPREVIEWMSG_ACK_SEND_FULL_FRAME)
+<a href="#id363"><span class="problematic" id="id364">|</span></a>U4
+<a href="#id365"><span class="problematic" id="id366">|</span></a>Image width
+<a href="#id367"><span class="problematic" id="id368">|</span></a>U4
+<a href="#id369"><span class="problematic" id="id370">|</span></a>Image height
+<a href="#id371"><span class="problematic" id="id372">|</span></a>U1[]
+<a href="#id373"><span class="problematic" id="id374">|</span></a>Byte array of RGB color triples
+<a href="#id375"><span class="problematic" id="id376">|</span></a>}</p>
+</div>
+<div class="section" id="ack-send-full-frame-rgbafp">
+<h4><a class="toc-backref" href="#id463">ACK_SEND_FULL_FRAME_RGBAFP</a><a class="headerlink" href="#ack-send-full-frame-rgbafp" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Send the most recently rendered floating point frame to the client as a response to REQ_SEND_FULL_FRAME, when the format is LXiIMD_FLOAT. The frame is sent as a single large packet.  The RBGA part of the packet is ‘’’width * height * 16 bytes long’’’ (4 floats per pixel).
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id377"><span class="problematic" id="id378">|</span></a>-
+<a href="#id379"><span class="problematic" id="id380">|</span></a>U4
+<a href="#id381"><span class="problematic" id="id382">|</span></a>LXiPREVIEWMSG_ACK_SEND_FULL_FRAME_RGBAFP
+<a href="#id383"><span class="problematic" id="id384">|</span></a>U4
+<a href="#id385"><span class="problematic" id="id386">|</span></a>Image width
+<a href="#id387"><span class="problematic" id="id388">|</span></a>U4
+<a href="#id389"><span class="problematic" id="id390">|</span></a>Image height
+<a href="#id391"><span class="problematic" id="id392">|</span></a>Float[]
+<a href="#id393"><span class="problematic" id="id394">|</span></a>Float array of RGBA colors
+<a href="#id395"><span class="problematic" id="id396">|</span></a>}</p>
+</div>
+<div class="section" id="ack-full-frame-unavailable">
+<h4><a class="toc-backref" href="#id464">ACK_FULL_FRAME_UNAVAILABLE</a><a class="headerlink" href="#ack-full-frame-unavailable" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’: Sent as an alternate response to REQ_SEND_FULL_FRAME_RGB24 and REQ_SEND_FULL_FRAME_RGBAFP when no frame is available to send.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id397"><span class="problematic" id="id398">|</span></a>-
+<a href="#id399"><span class="problematic" id="id400">|</span></a>U4
+<a href="#id401"><span class="problematic" id="id402">|</span></a>LXiPREVIEWMSG_ACK_FULL_FRAME_UNAVAILABLE
+<a href="#id403"><span class="problematic" id="id404">|</span></a>}</p>
+</div>
+<div class="section" id="ack-full-frame-done">
+<h4><a class="toc-backref" href="#id465">ACK_FULL_FRAME_DONE</a><a class="headerlink" href="#ack-full-frame-done" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’: Sent as an alternate request to REQ_SEND_FULL_FRAME_RGB24 and REQ_SEND_FULL_FRAME_RGBAFP when the render is complete and no more rendering is required.  The last frame sent to the client represents the most recent render, and no further renders will be sent until the scene or Preview Socket state are changed.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id405"><span class="problematic" id="id406">|</span></a>-
+<a href="#id407"><span class="problematic" id="id408">|</span></a>U4
+| LXiPREVIEWMSG_ACK_FULL_FRAME_DONE
+<a href="#id409"><span class="problematic" id="id410">|</span></a>}</p>
+</div>
+</div>
+<div class="section" id="render-id">
+<h3><a class="toc-backref" href="#id466">Render ID</a><a class="headerlink" href="#render-id" title="Permalink to this headline">¶</a></h3>
+<p>The render ID is a unique identifier assigned to each specific requested frame.   This can be used to <span class="xref std std-ref">Synchronizing</span></p>
+<div class="section" id="req-get-id">
+<h4><a class="toc-backref" href="#id467">REQ_GET_ID</a><a class="headerlink" href="#req-get-id" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Client to Server’’’:  Request the server ID assigned to the last completed render.  This message is only valid after REQ_SEND_FULL_FRAME has returned a state, including FULL_FRAME_DONE.  This ID can be used for <span class="xref std std-ref">Synchronizing</span>.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id411"><span class="problematic" id="id412">|</span></a>-
+<a href="#id413"><span class="problematic" id="id414">|</span></a>U4
+<a href="#id415"><span class="problematic" id="id416">|</span></a>LXiPREVIEWMSG_REQ_GET_ID
+<a href="#id417"><span class="problematic" id="id418">|</span></a>}</p>
+</div>
+<div class="section" id="ack-id-get">
+<h4><a class="toc-backref" href="#id468">ACK_ID_GET</a><a class="headerlink" href="#ack-id-get" title="Permalink to this headline">¶</a></h4>
+<p>‘’’Server to Client’’’:
+Acknowledgement to a REQ_GET_ID event, returning application ID assigned to the last completed render. If the last REQ_SEND_FULL_FRAME did not return a state (which may include FULL_FRAME_DONE), this value will be 0.
+{| class=”wikitable” {{Template:Center Table}}  width=”90%”
+! Data
+! Description
+<a href="#id419"><span class="problematic" id="id420">|</span></a>-
+<a href="#id421"><span class="problematic" id="id422">|</span></a>U4
+<a href="#id423"><span class="problematic" id="id424">|</span></a>LXiPREVIEWMSG_ACK_ID_GET
+<a href="#id425"><span class="problematic" id="id426">|</span></a>-
+<a href="#id427"><span class="problematic" id="id428">|</span></a>U4
+<a href="#id429"><span class="problematic" id="id430">|</span></a>Render ID
+<a href="#id431"><span class="problematic" id="id432">|</span></a>}</p>
+</div>
+</div>
+<div class="section" id="basic-loop">
+<h3><a class="toc-backref" href="#id469">Basic Loop</a><a class="headerlink" href="#basic-loop" title="Permalink to this headline">¶</a></h3>
+<p>A client implements the protocol by first connecting to the server, and then sending the LXiPREVIEWMSG_REQ_SET_PROTOCOL packet to indicate which version of the protocol it wants to communicate over.  The current protocol version is 0.  An acknowledgment will be returned indicating that the protocol was set.</p>
+<p>Once the protocol version has been established, the client can send other setup-oriented requests to change the resolution, pixel format, samples, quality, stereo eye, camera position, and other options.  These can be set at any time, although some must be set at least once before rendering can begin.  After sending any request, the client should wait for an acknowledgment to ensure that the request was accepted and that there were no errors.</p>
+<p>Once setup is complete, the client can begin asking for frames.  Preview Socket must be polled for the latest frame; it will not simply send frames to the client without being asked first.  Sending LXiPREVIEWMSG_REQ_SEND_FULL_FRAME to the server will return either LXiPREVIEWMSG_ACK_SEND_FULL_FRAME_RGB24 or LXiPREVIEWMSG_ACK_SEND_FULL_FRAME_RGBAFP depending on the pixel format previously defined along with the most recent render.  If there is no render, the response will be LXiPREVIEWMSG_ACK_FULL_FRAME_UNAVAILABLE to indicate that no newer frame is available, or LXiPREVIEWMSG_ACK_FULL_FRAME_DONE to indicate that the last render received by the client represents the final render.</p>
+<p>Note that if a packet header cannot be identified by Preview Socket, the connection will be closed.  This is because there is no way for Preview Socket to know how far to seek ahead to find the next packet, so there’s really nothing else it can do.</p>
+</div>
+<div class="section" id="synchronizing">
+<h3><a class="toc-backref" href="#id470">Synchronizing</a><a class="headerlink" href="#synchronizing" title="Permalink to this headline">¶</a></h3>
+<p>Often a Preview Socket client will also use <a class="reference internal" href="../general/systems/Telnet.html"><span class="doc">Telnet</span></a> command over telnet to suspend all Preview Sockets.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">preview</span><span class="o">.</span><span class="n">suspend</span> <span class="n">true</span>
+</pre></div>
+</td></tr></table></div>
+<p>At this point there may already be a pending image waiting to be sent to the client.  The client isn’t interested in this image, and wants to be sure that it gets only images after it has finished executing its commands. This can be done by using LXiPREVIEWMSG_REQ_GET_ID to request the unique identifier of the last image sent to the client.  When all other commands have been sent over telnet, the client can resume rendering with preivew.suspend, but this time setting the suspend argument to false and providing the previously-obtained unique identifier.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">preview</span><span class="o">.</span><span class="n">suspend</span> <span class="n">false</span> <span class="n">identifier</span>
+</pre></div>
+</td></tr></table></div>
+<p>The identifier is optional, in which case the client’s next request for an image may actually be a pending image from before Preview Socket was suspended.  This behavior is useful if you just wanted to pause rendering to free up some CPU time, and then want it to continue afterward.</p>
+</div>
+<div class="section" id="headless">
+<h3><a class="toc-backref" href="#id471">Headless</a><a class="headerlink" href="#headless" title="Permalink to this headline">¶</a></h3>
+<p>When using Preview Socket with <a class="reference internal" href="../general/systems/Headless.html"><span class="doc">Headless</span></a>’’ switch and a port number to start the telnet server.  Chances are that you’ll be doing this anyway, since you’ll need be using telnet to communicate with <em>modo</em> to control manipulate the scene.  If you do not launch the application with ‘’-telnet:’’, Preview Socket will fail to process input and appear to hang.  This happens because ‘’modo’’’s main loop is blocked while it waits for the user to enter a new command in normal headless mode.  Using the <em>-telnet:</em> switch causes the application to use an alternate input loop for processing network traffic, and thus allows Preview Socket to work properly.</p>
+</div>
+<div class="section" id="more-information">
+<h3><a class="toc-backref" href="#id472">More Information</a><a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../general/systems/Telnet.html"><span class="doc">Telnet</span></a></p></li>
+<li><p><a class="reference internal" href="../general/systems/Command%20System.html"><span class="doc">Command System</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Procedural%20Geometry.html" class="btn btn-neutral float-right" title="Procedural Geometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Preset%20Browser%20Paths.html" class="btn btn-neutral float-left" title="Preset Browser Paths" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Foundry
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+
+<!-- Mirrored from learn.foundry.com/modo/developers/latest/sdk/pages/tutorials/Preview Socket.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2024 03:16:09 GMT -->
+</html>
